@@ -1,0 +1,26 @@
+{
+  "name": "xernerx",
+  "version": "1.0.0",
+  "description": "A bot framework for discord.js",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheDummi/xernerx.git"
+  },
+  "author": "Dummi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TheDummi/xernerx/issues"
+  },
+  "homepage": "https://github.com/TheDummi/xernerx#readme",
+  "dependencies": {
+    "dumfunctions": "^1.0.3",
+    "@discordjs/builders": "^0.13.0",
+    "@discordjs/rest": "^0.4.1-canary.0",
+    "discord-api-types": "^0.31.2",
+    "discord.js": "^13.6.0"
+  }
+}
