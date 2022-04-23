@@ -1,6 +1,6 @@
 {
   "name": "xernerx",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A bot framework for discord.js",
   "main": "main.js",
   "scripts": {
@@ -22,5 +22,6 @@
     "@discordjs/rest": "^0.4.1-canary.0",
     "discord-api-types": "^0.31.2",
     "discord.js": "^13.6.0"
-  }
+  },
+  "packageManager": "npm@8.5.5"
 }

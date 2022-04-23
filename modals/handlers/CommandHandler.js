@@ -1,40 +1,64 @@
 const fs = require('fs');
-const { time, delay } = require('../funcs');
 const Discord = require('discord.js');
+const { REST } = require('@discordjs/rest');
+const { Routes } = require('discord-api-types/v9');
+const { delay } = require('dumfunctions')
 
 /**
- * ! This is all still work in progress!
+ * @param {object} client - The client.
+ * @param {string} guildId - The main guild ID.
+ * @param {boolean} global - Whether the command should be loaded globally or locally.
+ * @returns a commmandhandler.
  */
-
 class CommandHandler {
-    constructor(client) {
-        client.commands = new Discord.Collection()
+    constructor({ client, guildId, global = false }) {
+
+        this.client = client;
+
+        this.guildId = guildId;
+
+        this.global = global;
+
+        this.commands = []
+
+        client.messageCommands = new Discord.Collection()
+        client.interactionCommands = new Discord.Collection()
     }
 
-    load(client, type, path, logging, global) {
-        // if (type == 'interaction' && global == false && (!client.options.guildId || !client.options.clientId)) throw new Error(`Expected guildId and clientId to be strings, got ${typeof client.guildId || typeof client.clientId} instead.`)
-        if (type != 'interaction' && type != 'message') throw new Error(`Expected type to be interaction or message, got ${type} instead.`)
-        if (type == 'interaction') {
-            const interactionCommandFiles = fs.readdirSync(path).filter(file => file.endsWith('.js'))
+    loadInteractionCommands(path) {
+        const commandFiles = fs.readdirSync(`.${path}`).filter(file => file.endsWith('.js'))
 
-            for (const file of interactionCommandFiles) {
-                let command = require(`../../.${path}/${file}`)
-                command.data.toJSON();
-                client.commands.set(command.data.name, command)
-            }
-
-            if (logging == true) console.log(`${time(new Date())} | Loaded interaction commands: ${Array.from(interactionCommandFiles).join(', ') || 'No commands found'}.`.replace(/.js/g, ""))
+        for (const file of commandFiles) {
+            let command = require(`../../.${path}/${file}`)
+            this.commands.push(command.data.toJSON());
+            this.client.interactionCommands.set(command.data.name, command)
         }
 
-        if (type == 'message') {
-            const messageCommandFiles = fs.readdirSync(`${path}`).filter(file => file.endsWith('.js'))
+        this.client.once('ready', client => {
+            const rest = new REST({ version: '9' }).setToken(client.token);
 
-            for (const file of messageCommandFiles) {
-                let command = require(`../../.${path}/${file}`)
-                client.commands.set(command.name, command)
-            }
+            (async () => {
+                await delay(1000)
+                if (this.global == true) {
+                    rest.put(Routes.applicationCommands(client.user.id), {
+                        body: this.commands
+                    })
+                }
+                else {
+                    rest.put(Routes.applicationGuildCommands(client.user.id, this.guildId), {
+                        body: this.commands
+                    })
+                }
+            })();
+        })
+    }
 
-            if (logging == true) console.log(`${time(new Date())} | Loaded message commands: ${messageCommandFiles ? Array.from(messageCommandFiles).join(', ') : 'No commands found'}.`.replace(/.js/g, ""));
+    loadMessageCommands(path) {
+        const commandFiles = fs.readdirSync(`.${path}`).filter(file => file.endsWith('.js'))
+
+        for (const file of commandFiles) {
+            let command = require(`../../.${path}/${file}`)
+            this.client.messageCommands.set(command.name, command)
         }
     }
 }
