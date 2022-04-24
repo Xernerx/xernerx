@@ -22,21 +22,21 @@ class EventHandler {
             }
         }
 
-        // const builderFiles = fs.readdirSync(`../package/modals/events`).filter(file => file.endsWith('.js'))
+        const builderFiles = fs.readdirSync(`../package/models/events`).filter(file => file.endsWith('.js'))
 
-        // for (const file of builderFiles) {
-        //     let event = require(`../events/${file}`)
-        //     if (event.once) {
-        //         this.client.once(event.name, (...args) => {
-        //             event.execute(...args)
-        //         })
-        //     }
-        //     else {
-        //         this.client.on(event.name, (...args) => {
-        //             event.execute(...args)
-        //         })
-        //     }
-        // }
+        for (const file of builderFiles) {
+            let event = require(`../events/${file}`)
+            if (event.once) {
+                this.client.once(event.name, (...args) => {
+                    event.execute(...args)
+                })
+            }
+            else {
+                this.client.on(event.name, (...args) => {
+                    event.execute(...args)
+                })
+            }
+        }
     }
 }
 

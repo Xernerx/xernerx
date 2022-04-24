@@ -11,13 +11,9 @@ const { delay } = require('dumfunctions')
  * @returns a commmandhandler.
  */
 class CommandHandler {
-    constructor({ client, guildId, global = false }) {
+    constructor({ client: client }) {
 
         this.client = client;
-
-        this.guildId = guildId;
-
-        this.global = global;
 
         this.commands = []
 
@@ -30,6 +26,7 @@ class CommandHandler {
 
         for (const file of commandFiles) {
             let command = require(`../../.${path}/${file}`)
+            command = new command;
             this.commands.push(command.data.toJSON());
             this.client.interactionCommands.set(command.data.name, command)
         }
@@ -39,13 +36,13 @@ class CommandHandler {
 
             (async () => {
                 await delay(1000)
-                if (this.global == true) {
+                if (client.global == true) {
                     rest.put(Routes.applicationCommands(client.user.id), {
                         body: this.commands
                     })
                 }
                 else {
-                    rest.put(Routes.applicationGuildCommands(client.user.id, this.guildId), {
+                    rest.put(Routes.applicationGuildCommands(client.user.id, client.guildId), {
                         body: this.commands
                     })
                 }
@@ -57,8 +54,9 @@ class CommandHandler {
         const commandFiles = fs.readdirSync(`.${path}`).filter(file => file.endsWith('.js'))
 
         for (const file of commandFiles) {
-            let command = require(`../../.${path}/${file}`)
-            this.client.messageCommands.set(command.name, command)
+            let command = require(`../../.${path}/${file}`);
+            command = new command;
+            command.aliases.forEach((alias) => this.client.messageCommands.set(alias, command));
         }
     }
 }

@@ -12,9 +12,21 @@ class Client extends Discord.Client {
         s.object({
             prefix: s.array(s.string).optional,
             ownerId: s.array(s.string).optional,
+            guildId: s.string,
+            global: s.boolean
         }).parse(options)
 
-        return this.client = new Discord.Client({ intents: [this.options.intents] })
+        this.client = new Discord.Client({ intents: [this.options.intents] })
+
+        this.client.prefix = this.options.prefix;
+
+        this.client.ownerId = this.options.ownerId;
+
+        this.client.guildId = this.options.guildId;
+
+        this.client.global = this.options.global;
+
+        return this.client;
     }
 }
 
