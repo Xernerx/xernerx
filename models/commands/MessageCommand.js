@@ -26,6 +26,8 @@ class MessageCommand {
         this.admin = options.admin;
 
         this.channel = options.channel;
+
+        this.args = options.args;
     }
 
     exec(message) {

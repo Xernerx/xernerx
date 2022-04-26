@@ -1,8 +1,16 @@
-module.exports = {
-    name: 'messageCreate',
-    once: false,
+const { Error } = require("../handlers/Error.js");
+const { Event } = require('../handlers/Event.js');
 
-    async execute(message) {
+
+class BuildInMessageEvent extends Event {
+    constructor() {
+        super('messageCreate', {
+            name: 'messageCreate',
+            once: false,
+        })
+    }
+
+    async run(message) {
         for (const prefix of message.client.prefix) {
             if (!message.content.startsWith(prefix))
                 continue;
@@ -11,7 +19,16 @@ module.exports = {
             if (!message.client.messageCommands.has(cmd)) return;
             let command = message.client.messageCommands.get(cmd);
             command.client = message.client;
-            command.exec(message);
+            try {
+                const rest = message.content.split(/ +/).slice(1).join(" ");
+                command.exec(message, rest);
+            }
+            catch (error) {
+                console.log(error)
+                new Error({ error: error });
+            }
         }
-    },
+    }
 };
+
+module.exports = BuildInMessageEvent;

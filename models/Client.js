@@ -3,7 +3,7 @@ const { s } = require('@sapphire/shapeshift');
 
 /**
  * @param {Array} ownerId - All Id's of the bot owners. 
- * @returns discord client ready to login.
+ * @returns Discord client ready to login.
  */
 class Client extends Discord.Client {
     constructor(options = {}) {

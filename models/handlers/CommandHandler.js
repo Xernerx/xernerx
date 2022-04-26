@@ -22,9 +22,11 @@ class CommandHandler {
     }
 
     loadInteractionCommands(path) {
+        // ! path
         const commandFiles = fs.readdirSync(`.${path}`).filter(file => file.endsWith('.js'))
 
         for (const file of commandFiles) {
+            // ! ../../../../
             let command = require(`../../.${path}/${file}`)
             command = new command;
             this.commands.push(command.data.toJSON());
@@ -51,9 +53,11 @@ class CommandHandler {
     }
 
     loadMessageCommands(path) {
+        // ! path
         const commandFiles = fs.readdirSync(`.${path}`).filter(file => file.endsWith('.js'))
 
         for (const file of commandFiles) {
+            // ! ../../../../
             let command = require(`../../.${path}/${file}`);
             command = new command;
             command.aliases.forEach((alias) => this.client.messageCommands.set(alias, command));
