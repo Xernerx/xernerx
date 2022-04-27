@@ -22,12 +22,11 @@ class CommandHandler {
     }
 
     loadInteractionCommands(path) {
-        // ! path
-        const commandFiles = fs.readdirSync(`.${path}`).filter(file => file.endsWith('.js'))
+        const commandFiles = fs.readdirSync(path).filter(file => file.endsWith('.js'))
 
         for (const file of commandFiles) {
-            // ! ../../../../
-            let command = require(`../../.${path}/${file}`)
+            console.log(fs.realpathSync(path))
+            let command = require(`${path}/${file}`)
             command = new command;
             this.commands.push(command.data.toJSON());
             this.client.interactionCommands.set(command.data.name, command)
