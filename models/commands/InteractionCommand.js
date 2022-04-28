@@ -58,7 +58,9 @@ class InteractionCommand {
 
             if (argument.options) {
                 for (const [key, value] of Object.entries(argument.options)) {
-                    if (key == 'choices') build[`set${toTitleCase(key)}`](...value);
+                    if (key == 'choices') {
+                        build[`set${toTitleCase(key)}`](...value);
+                    }
                     else build[`set${toTitleCase(key)}`](value);
                 }
             }

@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
 const { s } = require('@sapphire/shapeshift');
+const { ErrorHandler } = require('./handlers/ErrorHandler.js');
 
 /**
  * @param {Array} ownerId - All Id's of the bot owners. 
@@ -13,7 +14,7 @@ class Client extends Discord.Client {
             prefix: s.array(s.string).optional,
             ownerId: s.array(s.string).optional,
             guildId: s.string,
-            global: s.boolean
+            global: s.boolean,
         }).parse(options)
 
         this.client = new Discord.Client({ intents: [this.options.intents] })
@@ -25,6 +26,8 @@ class Client extends Discord.Client {
         this.client.guildId = this.options.guildId;
 
         this.client.global = this.options.global;
+
+        this.client.errorHandler = new ErrorHandler(this.client);
 
         return this.client;
     }

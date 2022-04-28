@@ -3,6 +3,7 @@ const Discord = require('discord.js');
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
 const { delay } = require('dumfunctions')
+const paths = require("path")
 
 /**
  * @param {object} client - The client.
@@ -22,11 +23,10 @@ class CommandHandler {
     }
 
     loadInteractionCommands(path) {
-        const commandFiles = fs.readdirSync(path).filter(file => file.endsWith('.js'))
+        const commandFiles = fs.readdirSync(`.${path}`).filter(file => file.endsWith('.js'))
 
         for (const file of commandFiles) {
-            console.log(fs.realpathSync(path))
-            let command = require(`${path}/${file}`)
+            let command = require(`../../../${path}/${file}`)
             command = new command;
             this.commands.push(command.data.toJSON());
             this.client.interactionCommands.set(command.data.name, command)
@@ -52,12 +52,10 @@ class CommandHandler {
     }
 
     loadMessageCommands(path) {
-        // ! path
         const commandFiles = fs.readdirSync(`.${path}`).filter(file => file.endsWith('.js'))
 
         for (const file of commandFiles) {
-            // ! ../../../../
-            let command = require(`../../.${path}/${file}`);
+            let command = require(`../../../${path}/${file}`);
             command = new command;
             command.aliases.forEach((alias) => this.client.messageCommands.set(alias, command));
         }

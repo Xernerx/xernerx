@@ -5,7 +5,6 @@ class MessageCommand {
         s.object({
             name: s.string,
             aliases: s.array(s.string).optional,
-            type: s.string,
             description: s.string,
             detailedDescription: s.string.optional,
             owner: s.boolean.optional,
