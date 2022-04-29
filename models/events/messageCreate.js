@@ -1,6 +1,7 @@
 const { Error } = require("../handlers/Error.js");
 const { Event } = require('../handlers/Event.js');
-
+const Discord = require('discord.js');
+const { messageArgs } = require("../../data/Functions.js");
 
 class BuildInMessageEvent extends Event {
     constructor() {
@@ -12,20 +13,23 @@ class BuildInMessageEvent extends Event {
 
     async run(message) {
         for (const prefix of message.client.prefix) {
-            if (!message.content.startsWith(prefix))
-                continue;
-            let cmd = message.content.replace(prefix, "").split(/ +/).shift().toLowerCase();
-            if (cmd == "") return;
-            if (!message.client.messageCommands.has(cmd)) return;
-            let command = message.client.messageCommands.get(cmd);
+            if (!message.content.startsWith(prefix)) continue;
+
+            let command = message.content.replace(prefix, "").split(/ +/).shift().toLowerCase();
+
+            if (!message.client.messageCommands.has(command) || command == '') return;
+
+            command = message.client.messageCommands.get(command);
+
             command.client = message.client;
+
+            const args = messageArgs({ message: message, command: command });
+
             try {
-                const rest = message.content.split(/ +/).slice(1).join(" ");
-                command.exec(message, rest);
+                command.exec(message, args);
             }
             catch (error) {
-                console.log(error)
-                new Error({ error: error });
+                console.error(error)
             }
         }
     }

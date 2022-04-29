@@ -57,7 +57,10 @@ class CommandHandler {
         for (const file of commandFiles) {
             let command = require(`../../../${path}/${file}`);
             command = new command;
-            command.aliases.forEach((alias) => this.client.messageCommands.set(alias, command));
+            command.aliases.forEach((alias) => {
+                if (this.client.messageCommands.has(alias)) throw new Error('Cannot have duplicated aliases.')
+                this.client.messageCommands.set(alias, command)
+            });
         }
     }
 }
