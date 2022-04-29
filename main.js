@@ -22,5 +22,5 @@ module.exports = {
 
     // Events
     Event,
-    Error
+    Error,
 } 

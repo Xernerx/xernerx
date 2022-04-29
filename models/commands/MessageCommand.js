@@ -5,12 +5,12 @@ class MessageCommand {
         s.object({
             name: s.string,
             aliases: s.array(s.string).optional,
-            type: s.string,
             description: s.string,
             detailedDescription: s.string.optional,
             owner: s.boolean.optional,
             admin: s.boolean.optional,
-            channel: s.string.optional
+            channel: s.string.optional,
+            seperator: s.string.optional,
         }).parse(options);
 
         this.id = id;
@@ -26,6 +26,8 @@ class MessageCommand {
         this.admin = options.admin;
 
         this.channel = options.channel;
+
+        this.seperator = options.seperator;
 
         this.args = options.args;
     }

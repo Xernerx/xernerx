@@ -54,16 +54,18 @@ class InteractionCommand {
 
             if (!types.includes(argument.type.toLowerCase())) throw new Error(`Expected one of ${types.join(', ')}, received ${argument.type} instead.`);
 
-            let build = new Builders[`SlashCommand${toTitleCase(argument.type)}Option`];
+            let build = new Builders[`SlashCommand${toTitleCase(argument.type, true)}Option`];
 
             if (argument.options) {
                 for (const [key, value] of Object.entries(argument.options)) {
-                    if (key == 'choices') build[`set${toTitleCase(key)}`](...value);
-                    else build[`set${toTitleCase(key)}`](value);
+                    if (key == 'choices') {
+                        build[`set${toTitleCase(key, true)}`](...value);
+                    }
+                    else build[`set${toTitleCase(key, true)}`](value);
                 }
             }
 
-            where[`add${toTitleCase(argument.type)}Option`](build);
+            where[`add${toTitleCase(argument.type, true)}Option`](build);
         }
     }
 
