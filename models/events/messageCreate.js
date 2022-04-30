@@ -3,6 +3,9 @@ const { Event } = require('../handlers/Event.js');
 const Discord = require('discord.js');
 const { messageArgs } = require("../../data/Functions.js");
 
+/**
+ * @returns message command executor.
+ */
 class BuildInMessageEvent extends Event {
     constructor() {
         super('messageCreate', {
@@ -23,7 +26,7 @@ class BuildInMessageEvent extends Event {
 
             command.client = message.client;
 
-            const args = messageArgs({ message: message, command: command });
+            const args = await messageArgs({ message: message, command: command });
 
             try {
                 command.exec(message, args);

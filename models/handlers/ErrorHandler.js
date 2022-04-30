@@ -2,6 +2,7 @@ class ErrorHandler {
     contructor(id, { error: error }) {
         this.error = error;
     }
+
     exec(error) {
         /*
         * For custom error handling:

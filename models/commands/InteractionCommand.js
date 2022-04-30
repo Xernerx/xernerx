@@ -2,8 +2,14 @@ const { s } = require('@sapphire/shapeshift');
 const Builders = require('@discordjs/builders');
 const { toTitleCase } = require('dumfunctions');
 
-
-
+/**
+ * @param {string} name - The name of the command. @required
+ * @param {string} description - The brief description of the command. @required
+ * @param {string} detailedDescription - The detailed description of the command.
+ * @param {boolean} owner - Wether the command can be executed by the bot owner only or not.
+ * @param {boolean} admin - Wether the command can be executed by the guild admins only or not.
+ * @param {string} channel - Wheter the command can only be executed in a DM, a Guild, or both.
+ */
 class InteractionCommand {
     constructor(id, options = {}) {
 
@@ -44,7 +50,9 @@ class InteractionCommand {
     }
 
     exec(interaction) {
-
+        /*
+         * Make your custom command here.
+         */
     }
 
     addOptions(where, args) {

@@ -7,8 +7,6 @@ const paths = require("path")
 
 /**
  * @param {object} client - The client.
- * @param {string} guildId - The main guild ID.
- * @param {boolean} global - Whether the command should be loaded globally or locally.
  * @returns a commmandhandler.
  */
 class CommandHandler {
