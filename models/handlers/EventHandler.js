@@ -1,5 +1,8 @@
 const fs = require('fs');
 
+/**
+ * @param {object} client - Client object.
+ */
 class EventHandler {
     constructor({ client: client }) {
         this.client = client;

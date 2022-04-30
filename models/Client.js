@@ -4,7 +4,12 @@ const { ErrorHandler } = require('./handlers/ErrorHandler.js');
 const { color, config } = require('../data/Functions.js');
 
 /**
- * @param {Array} ownerId - All Id's of the bot owners. 
+ * @param {string} guildId - Test guild ID. 
+ * @param {boolean} global - Whether the bot shoumd be globally or locally loaded. 
+ * @param {string[]} prefix - An array of prefix'. 
+ * @param {string[]} ownerId - An array of bot owners. 
+ * @param {boolean} ignoreOwner - Whether the bot should ignore owner privileges. 
+ * @param {number} defaultCooldown - A cooldown between each command in milliseconds. 
  * @returns Discord client ready to login.
  */
 class Client extends Discord.Client {

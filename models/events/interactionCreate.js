@@ -2,6 +2,9 @@ const { ErrorHandler } = require('../handlers/ErrorHandler.js');
 const { Event } = require('../handlers/Event.js');
 const { interactionArgs } = require('../../data/Functions.js');
 
+/**
+ * @returns interaction command executor.
+ */
 class BuildInInteractionEvent extends Event {
     constructor() {
         super('interactionCreate', {

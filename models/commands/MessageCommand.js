@@ -1,4 +1,15 @@
 const { s } = require('@sapphire/shapeshift');
+
+/**
+ * @param {string} name - The name of the command. @required
+ * @param {string} aliases - Optional aliases of the command.
+ * @param {string} description - The brief description of the command. @required
+ * @param {string} detailedDescription - The detailed description of the command.
+ * @param {boolean} owner - Wether the command can be executed by the bot owner only or not.
+ * @param {boolean} admin - Wether the command can be executed by the guild admins only or not.
+ * @param {string} channel - Wheter the command can only be executed in a DM, a Guild, or both.
+ * @param {string} seperator - A string used to seperate arguments.
+ */
 class MessageCommand {
     constructor(id, options = {}) {
 
@@ -33,7 +44,9 @@ class MessageCommand {
     }
 
     exec(message) {
-
+        /*
+         * Make your custom command here.
+         */
     }
 }
 
