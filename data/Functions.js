@@ -85,34 +85,39 @@ class Functions {
                     args[argument.name] = content[0];
                 }
 
-                if (argument.type == 'number') {
+                else if (argument.type == 'number') {
                     args[argument.name] = parseInt(content[0]);
                 }
 
-                if (argument.type == 'boolean') {
+                else if (argument.type == 'boolean') {
                     if (content[0]?.toLowerCase() != 'true' && content[0]?.toLowerCase() != 'false') content[0] = undefined;
                     args[argument.name] = content[0];
                 }
 
-                if (argument.type == 'user') {
+                else if (argument.type == 'user') {
                     let user = await message.client.users.fetch(content[0].replace(/<@|>/g, ""))
                     args[argument.name] = user;
                 }
 
-                if (argument.type == 'member') {
+                else if (argument.type == 'member') {
                     let member = await message.guild.members.fetch(content[0].replace(/<@|>/g, ""))
                     args[argument.name] = member;
                 }
 
-                if (argument.type == 'channel') {
+                else if (argument.type == 'channel') {
                     let channel = await message.client.channels.fetch(content[0].replace(/<#|>/g, ""))
                     args[argument.name] = channel;
                 }
 
-                if (argument.type == 'rest') {
+                else if (argument.type == 'rest') {
                     args[argument.name] = content.join(seperator);
                     break;
                 }
+
+                else if (argument.prompt) {
+                    if (argument.prompt.reply) return message.reply(argument.prompt.reply);
+                }
+
                 i++
             }
         }

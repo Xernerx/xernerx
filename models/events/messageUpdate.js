@@ -1,8 +1,9 @@
-const { Error } = require("../handlers/Error.js");
 const { Event } = require('../handlers/Event.js');
+const Discord = require('discord.js');
+const { messageArgs } = require("../../data/Functions.js");
 
 /**
- * @returns message update command executor.
+ * @returns message command executor.
  */
 class BuildInMessageUpdateEvent extends Event {
     constructor() {
@@ -12,8 +13,30 @@ class BuildInMessageUpdateEvent extends Event {
         })
     }
 
-    async run(message) {
-        console.log(this.ranCommands)
+    async run(oldMessage, newMessage) {
+        if (!oldMessage.author.bot && !newMessage.author.bot) {
+            if (!newMessage.client.messages.has(newMessage.id)) return;
+            for (const prefix of newMessage.client.prefix) {
+                if (!newMessage.content.startsWith(prefix)) continue;
+
+                let command = newMessage.content.replace(prefix, "").split(/ +/).shift().toLowerCase();
+
+                if (!newMessage.client.messageCommands.has(command) || command == '') return;
+
+                command = newMessage.client.messageCommands.get(command);
+
+                command.client = newMessage.client;
+
+                const args = await messageArgs({ message: newMessage, command: command });
+
+                try {
+                    command.exec(newMessage, args);
+                }
+                catch (error) {
+                    console.error(error)
+                }
+            }
+        }
     }
 };
 

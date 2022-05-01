@@ -1,7 +1,8 @@
-const { Error } = require("../handlers/Error.js");
 const { Event } = require('../handlers/Event.js');
 const Discord = require('discord.js');
 const { messageArgs } = require("../../data/Functions.js");
+const { ErrorHandler } = require("../handlers/ErrorHandler.js");
+const ErrorEvent = require('../../../src/events/error.js');
 
 /**
  * @returns message command executor.
@@ -15,24 +16,29 @@ class BuildInMessageEvent extends Event {
     }
 
     async run(message) {
-        for (const prefix of message.client.prefix) {
-            if (!message.content.startsWith(prefix)) continue;
+        if (!message.author.bot) {
+            message.client.messages.set(message.id, null)
+            setTimeout(() => message.client.messages.delete(message.id), 300000)
 
-            let command = message.content.replace(prefix, "").split(/ +/).shift().toLowerCase();
+            for (const prefix of message.client.prefix) {
+                if (!message.content.startsWith(prefix)) continue;
 
-            if (!message.client.messageCommands.has(command) || command == '') return;
+                let command = message.content.replace(prefix, "").split(/ +/).shift().toLowerCase();
 
-            command = message.client.messageCommands.get(command);
+                if (!message.client.messageCommands.has(command) || command == '') return;
 
-            command.client = message.client;
+                command = message.client.messageCommands.get(command);
 
-            const args = await messageArgs({ message: message, command: command });
+                command.client = message.client;
 
-            try {
-                command.exec(message, args);
-            }
-            catch (error) {
-                console.error(error)
+                const args = await messageArgs({ message: message, command: command });
+
+                // try {
+                await command.exec(message, args);
+                // }
+                // catch (error) {
+                //     new ErrorEvent(message, error)
+                // }
             }
         }
     }

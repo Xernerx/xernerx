@@ -28,9 +28,13 @@ class Client extends Discord.Client {
             defaultCooldown: s.number.optional
         }).parse(options)
 
-        this.client = new Discord.Client({ intents: [this.options.intents] })
+        this.client = new Discord.Client({ intents: [this.options.intents] });
 
-        this.client.errorHandler = new ErrorHandler(this.client);
+        this.client.messages = new Discord.Collection();
+
+        this.client.actions.ErrorCreate = new ErrorHandler('errorCreate', new Error());
+
+        this.client.emit('errorCreate')
 
         this.client.prefix = options.prefix;
 

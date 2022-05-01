@@ -1,13 +1,13 @@
 class ErrorHandler {
-    contructor(id, { error: error }) {
+    contructor(error) {
         this.error = error;
     }
 
-    exec(error) {
+    throw(error) {
         /*
         * For custom error handling:
         * class CustomErrorHandler extends ErrorHandler {
-        *    exec(error) {
+        *    throw(error) {
         *       channel send or whatever
         *   }
         * }

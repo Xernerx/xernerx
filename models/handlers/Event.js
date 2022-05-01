@@ -10,12 +10,15 @@ class Event {
     constructor(id, options = {}) {
         s.object({
             name: s.string,
-            once: s.boolean.optional
+            once: s.boolean.optional,
+            process: s.boolean.optional
         }).parse(options)
 
         this.name = options.name;
 
         this.once = options.once || false;
+
+        this.process = options.process || false;
     }
 
     run(event) {

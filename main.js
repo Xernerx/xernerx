@@ -5,7 +5,6 @@ const { ErrorHandler } = require('./models/handlers/ErrorHandler.js');
 const { MessageCommand } = require('./models/commands/MessageCommand.js');
 const { InteractionCommand } = require('./models/commands/InteractionCommand.js')
 const { Event } = require('./models/handlers/Event.js');
-const { Error } = require('./models/handlers/Error.js');
 
 module.exports = {
     // Client
@@ -22,5 +21,5 @@ module.exports = {
 
     // Events
     Event,
-    Error,
+
 } 
