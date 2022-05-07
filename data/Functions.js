@@ -77,8 +77,6 @@ class Functions {
 
             let content = message.content.split(seperator).slice(i + 1);
 
-            // if (argument.type != (typeof content.join(seperator)).toLowerCase()) console.error(new Error());
-
             if (content.join(seperator) != '') {
 
                 if (argument?.content?.includes(content[0])) {
@@ -116,6 +114,7 @@ class Functions {
 
                 else if (argument.prompt) {
                     if (argument.prompt.reply) return message.reply(argument.prompt.reply);
+                    else if (argument.prompt.send) return message.channel.send(argument.prompt.send);
                 }
 
                 i++

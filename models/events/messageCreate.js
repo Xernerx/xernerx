@@ -2,7 +2,6 @@ const { Event } = require('../handlers/Event.js');
 const Discord = require('discord.js');
 const { messageArgs } = require("../../data/Functions.js");
 const { ErrorHandler } = require("../handlers/ErrorHandler.js");
-const ErrorEvent = require('../../../src/events/error.js');
 
 /**
  * @returns message command executor.
@@ -33,14 +32,18 @@ class BuildInMessageEvent extends Event {
 
                 const args = await messageArgs({ message: message, command: command });
 
-                // try {
-                await command.exec(message, args);
-                // }
-                // catch (error) {
-                //     new ErrorEvent(message, error)
-                // }
+                try {
+                    await command.exec(message, args);
+                }
+                catch (error) {
+                    this.onError(error)
+                }
             }
         }
+    }
+
+    onError(error) {
+        console.log(error)
     }
 };
 

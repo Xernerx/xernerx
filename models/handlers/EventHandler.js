@@ -14,7 +14,7 @@ class EventHandler {
 
         for (const file of eventFiles) {
             // ! ../../../../
-            let event = require(`../../../../${path}/${file}`)
+            let event = require(`../../../${path}/${file}`)
             event = new event
 
             event.client = this.client;
@@ -36,7 +36,7 @@ class EventHandler {
             }
         }
         // "./node_modules/xernerx/models/events"
-        const builderFiles = fs.readdirSync(`./node_modules/xernerx/models/events`).filter(file => file.endsWith('.js'))
+        const builderFiles = fs.readdirSync(`../xernerx/models/events`).filter(file => file.endsWith('.js'))
 
         for (const file of builderFiles) {
             let event = require(`../events/${file}`);

@@ -1,10 +1,9 @@
-const { Client } = require('./models/Client.js');
-const { CommandHandler } = require('./models/handlers/CommandHandler.js');
-const { EventHandler } = require('./models/handlers/EventHandler.js');
-const { ErrorHandler } = require('./models/handlers/ErrorHandler.js');
-const { MessageCommand } = require('./models/commands/MessageCommand.js');
-const { InteractionCommand } = require('./models/commands/InteractionCommand.js')
-const { Event } = require('./models/handlers/Event.js');
+const { Client } = require('./models/Client.js'),
+    { CommandHandler } = require('./models/handlers/CommandHandler.js'),
+    { EventHandler } = require('./models/handlers/EventHandler.js'),
+    { MessageCommand } = require('./models/commands/MessageCommand.js'),
+    { InteractionCommand } = require('./models/commands/InteractionCommand.js'),
+    { Event } = require('./models/handlers/Event.js');
 
 module.exports = {
     // Client
@@ -13,7 +12,6 @@ module.exports = {
     // Handlers
     CommandHandler,
     EventHandler,
-    ErrorHandler,
 
     // Commands
     MessageCommand,
