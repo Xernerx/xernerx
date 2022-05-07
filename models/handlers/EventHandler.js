@@ -14,7 +14,7 @@ class EventHandler {
 
         for (const file of eventFiles) {
             // ! ../../../../
-            let event = require(`../../../${path}/${file}`)
+            let event = require(`../../../../${path}/${file}`)
             event = new event
 
             event.client = this.client;

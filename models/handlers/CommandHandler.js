@@ -25,7 +25,7 @@ class CommandHandler {
 
         for (const file of commandFiles) {
             // ! ../../../../
-            let command = require(`../../../${path}/${file}`)
+            let command = require(`../../../../${path}/${file}`)
             command = new command;
             this.commands.push(command.data.toJSON());
             this.client.interactionCommands.set(command.data.name, command)
@@ -55,7 +55,7 @@ class CommandHandler {
 
         for (const file of commandFiles) {
             // ! ../../../../
-            let command = require(`../../../${path}/${file}`);
+            let command = require(`../../../../${path}/${file}`);
             command = new command;
             command.aliases.forEach((alias) => {
                 if (this.client.messageCommands.has(alias)) throw new Error('Cannot have duplicated aliases.');
