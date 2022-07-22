@@ -3,7 +3,7 @@ const { Client } = require('./models/Client.js'),
     { EventHandler } = require('./models/handlers/EventHandler.js'),
     { MessageCommand } = require('./models/commands/MessageCommand.js'),
     { InteractionCommand } = require('./models/commands/InteractionCommand.js'),
-    { Event } = require('./models/handlers/Event.js');
+    { Event } = require('./models/commands/Event.js');
 
 module.exports = {
     // Client

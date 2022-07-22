@@ -1,7 +1,6 @@
 const Discord = require('discord.js');
 const { s } = require('@sapphire/shapeshift');
-const { ErrorHandler } = require('./handlers/ErrorHandler.js');
-const { color, config } = require('../data/Functions.js');
+const { color, config } = require('./data/Functions.js');
 
 /**
  * @param {string} guildId - Test guild ID. 
@@ -31,8 +30,6 @@ class Client extends Discord.Client {
         this.client = new Discord.Client({ intents: [this.options.intents] });
 
         this.client.messages = new Discord.Collection();
-
-        this.client.actions.ErrorCreate = new ErrorHandler('errorCreate', new Error());
 
         this.client.emit('errorCreate')
 

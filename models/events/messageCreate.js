@@ -1,7 +1,5 @@
-const { Event } = require('../handlers/Event.js');
-const Discord = require('discord.js');
-const { messageArgs } = require("../../data/Functions.js");
-const { ErrorHandler } = require("../handlers/ErrorHandler.js");
+const { Event } = require('../commands/Event.js');
+const { messageArgs } = require("./../data/Functions.js");
 
 /**
  * @returns message command executor.
@@ -16,9 +14,6 @@ class BuildInMessageEvent extends Event {
 
     async run(message) {
         if (!message.author.bot) {
-            message.client.messages.set(message.id, null)
-            setTimeout(() => message.client.messages.delete(message.id), 300000)
-
             for (const prefix of message.client.prefix) {
                 if (!message.content.startsWith(prefix)) continue;
 
@@ -36,14 +31,10 @@ class BuildInMessageEvent extends Event {
                     await command.exec(message, args);
                 }
                 catch (error) {
-                    this.onError(error)
+                    message.client.emit("error", message, error);
                 }
             }
         }
-    }
-
-    onError(error) {
-        console.log(error)
     }
 };
 

@@ -7,28 +7,33 @@ const paths = require("path")
 
 /**
  * @param {object} client - The client.
- * @returns a commmandhandler.
+ * @returns a command handler.
  */
 class CommandHandler {
     constructor({ client: client }) {
 
         this.client = client;
 
-        this.commands = []
+        this.commands = [];
 
-        client.messageCommands = new Discord.Collection()
-        client.interactionCommands = new Discord.Collection()
+        client.messageCommands = new Discord.Collection();
+
+        client.interactionCommands = new Discord.Collection();
+
+        client.contextMenuCommands = new Discord.Collection();
     }
 
     loadInteractionCommands(path) {
-        const commandFiles = fs.readdirSync(`.${path}`).filter(file => file.endsWith('.js'))
+        const commandFiles = fs.readdirSync(path).filter(file => file.endsWith('.js'))
 
         for (const file of commandFiles) {
-            // ! ../../../../
-            let command = require(`../../../../${path}/${file}`)
+            let command = require(`${require("path").resolve(path)}/${file}`);
+
             command = new command;
+
             this.commands.push(command.data.toJSON());
-            this.client.interactionCommands.set(command.data.name, command)
+
+            this.client.interactionCommands.set(command.data.name, command);
         }
 
         this.client.once('ready', client => {
@@ -50,15 +55,21 @@ class CommandHandler {
         })
     }
 
+    loadContextMenuCommands(path) {
+
+    }
+
     loadMessageCommands(path) {
-        const commandFiles = fs.readdirSync(`.${path}`).filter(file => file.endsWith('.js'));
+        const commandFiles = fs.readdirSync(path).filter(file => file.endsWith('.js'));
 
         for (const file of commandFiles) {
-            // ! ../../../../
-            let command = require(`../../../../${path}/${file}`);
+            let command = require(`${require("path").resolve(path)}/${file}`);
+
             command = new command;
+
             command.aliases.forEach((alias) => {
                 if (this.client.messageCommands.has(alias)) throw new Error('Cannot have duplicated aliases.');
+
                 this.client.messageCommands.set(alias, command);
             });
         }
