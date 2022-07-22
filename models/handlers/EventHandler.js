@@ -10,11 +10,10 @@ class EventHandler {
     }
 
     loadEvents(path) {
-        const eventFiles = fs.readdirSync(`.${path}`).filter(file => file.endsWith('.js'))
+        const eventFiles = fs.readdirSync(path).filter(file => file.endsWith('.js'))
 
         for (const file of eventFiles) {
-            // ! ../../../../
-            let event = require(`../../../${path}/${file}`)
+            let event = require(`${require("path").resolve(path)}/${file}`)
             event = new event
 
             event.client = this.client;
