@@ -38,6 +38,21 @@ class BuildInInteractionEvent extends Event {
                 return interaction.client.emit("error", interaction, error);
             }
         }
+
+        if (interaction.isContextMenu()) {
+            if (!interaction.client.contextMenuCommands.has(interaction.commandName)) return;
+
+            let command = interaction.client.contextMenuCommands.get(interaction.commandName);
+
+            command.client = interaction.client;
+
+            try {
+                await command.exec(interaction);
+            }
+            catch (error) {
+                return interaction.client.emit("error", interaction, error);
+            }
+        }
     }
 }
 

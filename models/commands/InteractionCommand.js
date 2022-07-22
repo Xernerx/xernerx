@@ -20,6 +20,7 @@ class InteractionCommand {
             owner: s.boolean.optional,
             admin: s.boolean.optional,
             channel: s.string.optional,
+            category: s.string.optional
         }).parse(options);
 
         this.data = new Builders.SlashCommandBuilder()
@@ -47,6 +48,8 @@ class InteractionCommand {
         this.admin = options.admin || false;
 
         this.channel = options.channel;
+
+        this.category = options.category;
     }
 
     exec(interaction) {

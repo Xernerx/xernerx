@@ -7,8 +7,8 @@ const { s } = require('@sapphire/shapeshift');
  * @param {string} detailedDescription - The detailed description of the command.
  * @param {boolean} owner - Wether the command can be executed by the bot owner only or not.
  * @param {boolean} admin - Wether the command can be executed by the guild admins only or not.
- * @param {string} channel - Wheter the command can only be executed in a DM, a Guild, or both.
- * @param {string} seperator - A string used to seperate arguments.
+ * @param {string} channel - Whether the command can only be executed in a DM, a Guild, or both.
+ * @param {string} separator - A string used to separate arguments.
  */
 class MessageCommand {
     constructor(id, options = {}) {
@@ -21,7 +21,8 @@ class MessageCommand {
             owner: s.boolean.optional,
             admin: s.boolean.optional,
             channel: s.string.optional,
-            seperator: s.string.optional,
+            separator: s.string.optional,
+            category: s.string.optional
         }).parse(options);
 
         this.id = id;
@@ -38,9 +39,11 @@ class MessageCommand {
 
         this.channel = options.channel;
 
-        this.seperator = options.seperator;
+        this.separator = options.separator;
 
         this.args = options.args;
+
+        this.category = options.category;
     }
 
     exec(message) {
