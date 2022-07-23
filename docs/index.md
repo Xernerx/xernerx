@@ -1,3 +1,0 @@
-# Xernerx
-
-## foo bar
