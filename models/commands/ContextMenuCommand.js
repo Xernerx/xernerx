@@ -27,8 +27,8 @@ class ContextMenuCommand {
     }
 
     types(str) {
-        if (str?.toLowerCase() == "message") str = 2
-        if (str?.toLowerCase() == "user") str = 3
+        if (String(str)?.toLowerCase() == "message") str = 3
+        if (String(str)?.toLowerCase() == "user") str = 2
         return str
     }
 }
