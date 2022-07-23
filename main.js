@@ -6,7 +6,8 @@ const { Client } = require('./models/Client.js'),
     { Event } = require('./models/commands/Event.js'),
     { LanguageHandler } = require('./models/handlers/LanguageHandler.js'),
     { ContextMenuCommand } = require('./models/commands/ContextMenuCommand.js'),
-    Discord = require('discord.js');
+    Discord = require('discord.js'),
+    pkg = require('./package.json');
 
 module.exports = {
     // Client
@@ -26,5 +27,8 @@ module.exports = {
     Event,
 
     // Discord
-    Discord
+    Discord,
+
+    // Details
+    version: pkg.version
 } 
