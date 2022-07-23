@@ -19,6 +19,8 @@ class Event {
         this.once = options.once || false;
 
         this.process = options.process || false;
+
+        this.config = options.config;
     }
 
     run(event) {

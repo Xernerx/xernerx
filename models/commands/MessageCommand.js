@@ -22,7 +22,9 @@ class MessageCommand {
             admin: s.boolean.optional,
             channel: s.string.optional,
             separator: s.string.optional,
-            category: s.string.optional
+            category: s.string.optional,
+            cooldown: s.number.optional,
+            ignoreOwner: s.boolean.optional
         }).parse(options);
 
         this.id = id;
@@ -44,6 +46,12 @@ class MessageCommand {
         this.args = options.args;
 
         this.category = options.category;
+
+        this.config = options.config;
+
+        this.cooldown = options.cooldown;
+
+        this.ignoreOwner = options.ignoreOwner || false;
     }
 
     exec(message) {

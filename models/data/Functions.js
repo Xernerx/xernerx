@@ -1,6 +1,6 @@
-const FLAGS = require('./flags.json');
-const { toTitleCase } = require('dumfunctions')
+const colors = require('./colors.json');
 
+const Cooldown = new Set();
 /**
  * @param {object} Functions - Build in functions of the bot hidden away in the handlers/setters.
  */
@@ -11,10 +11,10 @@ class Functions {
      * 
      * @param {object} client - Client object.
      * @param {object} options - Client options.   
-     * @returns an object of default colors and custom colors to be imported anywhere witout having to import them.
+     * @returns an object of default colors and custom colors to be imported anywhere without having to import them.
      */
     color({ client: client, options: options }) {
-        client.color = { FLAGS }
+        client.color = { FLAGS: colors }
 
         if (options.color) {
             for (const [name, color] of Object.entries(options.color)) {
@@ -71,15 +71,15 @@ class Functions {
      * @returns argument options without having to make them yourself.
      */
     async messageArgs({ message: message, command: command }) {
-        let args = {}, seperator = command.seperator || ' ', i = 0;
+        let args = {}, separator = command.separator || ' ', i = 0;
 
         if (!command.args) return;
 
         for (const argument of command.args) {
 
-            let content = message.content.split(seperator).slice(i + 1);
+            let content = message.content.split(separator).slice(i + 1);
 
-            if (content.join(seperator) != '') {
+            if (content.join(separator) != '') {
 
                 if (argument?.content?.includes(content[0])) {
                     args[argument.name] = content[0];
@@ -110,7 +110,7 @@ class Functions {
                 }
 
                 else if (argument.type == 'rest') {
-                    args[argument.name] = content.join(seperator);
+                    args[argument.name] = content.join(separator);
                     break;
                 }
 
@@ -124,6 +124,45 @@ class Functions {
         }
 
         return args;
+    }
+
+    access(event, command, res = false) {
+        if ((command.ignoreOwner || event.client.ignoreOwner) && event.client.ownerId.includes((event.user || event.author).id)) return res;
+
+        if (Cooldown.has((event.user || event.author).id)) {
+            res = false
+            return event.client.emit('commandBlocked', event, "command is on cooldown");
+        }
+
+        if (!Cooldown.has((event.user || event.author).id)) {
+            Cooldown.add((event.user || event.author).id);
+
+            setTimeout(() => {
+                Cooldown.delete((event.user || event.author).id);
+            }, command.cooldown || event.client.defaultCooldown || 0)
+        }
+
+        if (command.owner && !event.client.ownerId.includes(event.user.id)) {
+            res = true;
+            return event.client.emit('commandBlocked', event, "missing ownership")
+        }
+
+        if (command.admin && event?.member?.permissions?.has(Discord.Permissions.FLAGS.ADMINISTRATOR) == false) {
+            res = true;
+            return event.client.emit('commandBlocked', event, "missing admin permission")
+        }
+
+        if (command?.channel == "guild" && event?.channel?.type != "GUILD_TEXT") {
+            res = true
+            return event.client.emit('commandBlocked', event, "not a guild channel");
+        }
+
+        if (command?.channel == "dm" && event?.type != null) {
+            res = true;
+            return event.client.emit('commandBlocked', event, "not a dm channel");
+        }
+
+        return res;
     }
 }
 

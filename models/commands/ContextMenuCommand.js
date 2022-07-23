@@ -1,7 +1,10 @@
 const { s } = require('@sapphire/shapeshift');
 const Builders = require('@discordjs/builders');
 
-
+/**
+ * @param {String} name - The name of the context menu;
+ * @param {String || Number} type - The type of the context menu 1 || 2 - user || message 
+ */
 class ContextMenuCommand {
     constructor(id, options = {}) {
 
@@ -13,6 +16,8 @@ class ContextMenuCommand {
         this.data = new Builders.ContextMenuCommandBuilder()
             .setName(options.name)
             .setType(this.types(options.type))
+
+        this.config = options.config;
     }
 
     exec(interaction) {

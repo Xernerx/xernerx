@@ -29,6 +29,8 @@ class BuildInMessageUpdateEvent extends Event {
 
                 const args = await messageArgs({ message: newMessage, command: command });
 
+                if (access(newMessage, command)) return;
+
                 try {
                     command.exec(newMessage, args);
                 }

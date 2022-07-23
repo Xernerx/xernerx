@@ -20,7 +20,9 @@ class InteractionCommand {
             owner: s.boolean.optional,
             admin: s.boolean.optional,
             channel: s.string.optional,
-            category: s.string.optional
+            category: s.string.optional,
+            cooldown: s.number.optional,
+            ignoreOwner: s.boolean.optional
         }).parse(options);
 
         this.data = new Builders.SlashCommandBuilder()
@@ -50,6 +52,12 @@ class InteractionCommand {
         this.channel = options.channel;
 
         this.category = options.category;
+
+        this.config = options.config;
+
+        this.cooldown = options.cooldown;
+
+        this.ignoreOwner = options.ignoreOwner || false;
     }
 
     exec(interaction) {

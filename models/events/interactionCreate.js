@@ -1,5 +1,5 @@
 const { Event } = require('../commands/Event.js');
-const { interactionArgs } = require('./../data/Functions.js');
+const { interactionArgs, access } = require('./../data/Functions.js');
 const Discord = require('discord.js')
 
 /**
@@ -27,9 +27,7 @@ class BuildInInteractionEvent extends Event {
 
             let options = interactionArgs(interaction).options;
 
-            if (command.owner && !interaction.client.ownerId.includes(interaction.user.id)) return interaction.client.emit('commandBlocked', interaction, "missing ownership")
-
-            if (command.admin && !interaction.member.permissions.has(Discord.Permissions.FLAGS.ADMINISTRATOR)) return interaction.client.emit('commandBlocked', interaction, "missing admin permission")
+            if (access(interaction, command)) return;
 
             try {
                 await command.exec(interaction, { group: group, sub: sub, options: options });

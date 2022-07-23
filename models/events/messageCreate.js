@@ -1,5 +1,5 @@
 const { Event } = require('../commands/Event.js');
-const { messageArgs } = require("./../data/Functions.js");
+const { messageArgs, access } = require("./../data/Functions.js");
 
 /**
  * @returns message command executor.
@@ -26,6 +26,8 @@ class BuildInMessageEvent extends Event {
                 command.client = message.client;
 
                 const args = await messageArgs({ message: message, command: command });
+
+                if (access(message, command)) return;
 
                 try {
                     await command.exec(message, args);
