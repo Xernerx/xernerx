@@ -1,3 +1,4 @@
+const { Message } = require('discord.js');
 const colors = require('./colors.json');
 
 const Cooldown = new Set();

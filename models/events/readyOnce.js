@@ -13,7 +13,7 @@ class BuildInReadyOnceEvent extends Event {
     }
 
     async run(client) {
-        console.log(logStyle(`${client.user.tag} is online in ${(await client.guilds.fetch()).size} server(s).`, "text", "green"))
+        if (client.logging) console.log(logStyle(`${client.user.tag} is online in ${(await client.guilds.fetch()).size} server(s).`, "text", "green"))
     }
 };
 

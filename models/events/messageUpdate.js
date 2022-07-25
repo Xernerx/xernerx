@@ -13,8 +13,13 @@ class BuildInMessageUpdateEvent extends Event {
     }
 
     async run(oldMessage, newMessage) {
+
         if (!oldMessage.author.bot && !newMessage.author.bot) {
-            if (!newMessage.client.messages.has(newMessage.id)) return;
+
+            console.log(newMessage.client.messages[newMessage.id])
+
+            if (!newMessage.client.messages[newMessage.id] == undefined) return;
+
             for (const prefix of newMessage.client.prefix) {
                 if (!newMessage.content.startsWith(prefix)) continue;
 

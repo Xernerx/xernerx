@@ -4,15 +4,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Xernerx</title>
+    <link rel="icon" type="image/x-icon" href="styles/icon.png" />
     <link rel="stylesheet" href="styles/styles.css" />
+    <script src="scripts/script.js" defer></script>
   </head>
   <body>
-    <div class="sidebar">menu</div>
-    <div class="component">
+    <div class="top-bar">
+      <div class="dropdown" data-dropdown>
+        <button class="link" data-dropdown-menu>home</button>
+        <div class="dropdown-menu">
+          <div class="dropdown-links">
+            <a href="index.html" class="link">Get Started</a>
+            <a href="documentation.html" class="link">Documentation</a>
+            <a href="#" class="link">Guide</a>
+            <a href="#" class="link">Argument Types</a>
+          </div>
+        </div>
+      </div>
+      <a href="documentation.html" class="link">Documentation</a>
+      <a href="#" class="link">Guide</a>
+      <a href="https://github.com/TheDummi/xernerx" class="link">Github</a>
+      <a href="index.html" class="link">Get Started</a>
+    </div>
+    <div class="page">
+      <div class="component">
       <center>
-        <h1>Xernerx</h1>
+      </br>
+        <img
+          alt="Xernerx Framework"
+          width="900"
+          height="350"
+          src="styles/banner.png"
+        />
 
-        A class based discord.js framework. [BETA]
+        <h1>A lightweight class based Discord.js framework. [BETA]</h1>
       </center>
     </div>
 
@@ -26,5 +51,10 @@
         <li>i18next language handler</li>
       </p>
     </div>
+
+    <div class="component">
+      <button class="button" href="#"> <a href="#" class="link">Get Started</a></button>
+    </div>
+  </div>
   </body>
 </html>

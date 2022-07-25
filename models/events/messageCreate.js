@@ -14,7 +14,13 @@ class BuildInMessageEvent extends Event {
 
     async run(message) {
         if (!message.author.bot) {
+
+            message.client.messages = {};
+
+            message.client.messages[message.id] = null;
+
             for (const prefix of message.client.prefix) {
+
                 if (!message.content.startsWith(prefix)) continue;
 
                 let command = message.content.replace(prefix, "").split(/ +/).shift().toLowerCase();
