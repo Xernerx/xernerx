@@ -31,6 +31,8 @@ class BuildInInteractionEvent extends Event {
 
             try {
                 await command.exec(interaction, { group: group, sub: sub, options: options });
+
+                interaction.client.emit('commandRun', interaction, 'interaction');
             }
             catch (error) {
                 return interaction.client.emit("error", interaction, error);
@@ -46,6 +48,8 @@ class BuildInInteractionEvent extends Event {
 
             try {
                 await command.exec(interaction);
+
+                interaction.client.emit('commandRun', interaction, 'contextMenu');
             }
             catch (error) {
                 return interaction.client.emit("error", interaction, error);

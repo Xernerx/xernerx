@@ -16,13 +16,14 @@ class InteractionCommand {
         s.object({
             name: s.string,
             description: s.string,
-            detailedDescription: s.string.optional,
+            info: s.string.optional,
             owner: s.boolean.optional,
             admin: s.boolean.optional,
             channel: s.string.optional,
             category: s.string.optional,
             cooldown: s.number.optional,
-            ignoreOwner: s.boolean.optional
+            ignoreOwner: s.boolean.optional,
+            inVoice: s.boolean.optional
         }).parse(options);
 
         this.data = new Builders.SlashCommandBuilder()
@@ -58,6 +59,10 @@ class InteractionCommand {
         this.cooldown = options.cooldown;
 
         this.ignoreOwner = options.ignoreOwner || false;
+
+        this.inVoice = options.inVoice || false;
+
+        this.info = options.info;
     }
 
     exec(interaction) {

@@ -1,12 +1,16 @@
 {
-  "lightBlue": "#8ad4eb",
-  "rose": "#fd625e",
-  "white": "#ffffff",
-  "black": "#000000",
-  "purple": "#a66999",
-  "orange": "#fe9666",
-  "yellow": "#f2c80f",
   "red": "#ff0000",
+  "orange": "#ff8000",
+  "yellow": "#ffff00",
+  "chartreuse": "#80ff00",
   "green": "#00ff00",
-  "blue": "#0000ff"
+  "springGreen": "#00ff80",
+  "cyan": "#00ffff",
+  "dodgerBlue": "#0080ff",
+  "blue": "#0000ff",
+  "purple": "#8000ff",
+  "violet": "#ff00ff",
+  "magenta": "#ff0080",
+  "black": "#000000",
+  "white": "#FFFFFF"
 }

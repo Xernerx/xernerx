@@ -7,7 +7,8 @@ const { Client } = require('./models/Client.js'),
     { LanguageHandler } = require('./models/handlers/LanguageHandler.js'),
     { ContextMenuCommand } = require('./models/commands/ContextMenuCommand.js'),
     Discord = require('discord.js'),
-    pkg = require('./package.json');
+    pkg = require('./package.json'),
+    Dumfunctions = require('dumfunctions');
 
 module.exports = {
     // Client
@@ -28,6 +29,7 @@ module.exports = {
 
     // Discord
     Discord,
+    Dumfunctions,
 
     // Details
     version: pkg.version

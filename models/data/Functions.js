@@ -5,7 +5,6 @@ const Cooldown = new Set();
  * @param {object} Functions - Build in functions of the bot hidden away in the handlers/setters.
  */
 class Functions {
-    constructor() { }
 
     /**
      * 
@@ -95,17 +94,20 @@ class Functions {
                 }
 
                 else if (argument.type == 'user') {
-                    let user = await message.client.users.fetch(content[0].replace(/<@|>/g, ""))
+                    let user;
+                    try { user = await message.client.users.fetch(content[0].replace(/<@|>/g, "")) } catch (e) { user = e }
                     args[argument.name] = user;
                 }
 
                 else if (argument.type == 'member') {
-                    let member = await message.guild.members.fetch(content[0].replace(/<@|>/g, ""))
+                    let member;
+                    try { member = await message.guild.members.fetch(content[0].replace(/<@|>/g, "")) } catch (e) { member = e }
                     args[argument.name] = member;
                 }
 
                 else if (argument.type == 'channel') {
-                    let channel = await message.client.channels.fetch(content[0].replace(/<#|>/g, ""))
+                    let channel;
+                    try { channel = await message.client.channels.fetch(content[0].replace(/<#|>/g, "")) } catch (e) { channel = e }
                     args[argument.name] = channel;
                 }
 
@@ -119,8 +121,12 @@ class Functions {
                     else if (argument.prompt.send) return message.channel.send(argument.prompt.send);
                 }
 
+                else args[argument.name] = undefined;
+
                 i++
             }
+
+            else args[argument.name] = undefined;
         }
 
         return args;
@@ -160,6 +166,11 @@ class Functions {
         if (command?.channel == "dm" && event?.type != null) {
             res = true;
             return event.client.emit('commandBlocked', event, "not a dm channel");
+        }
+
+        if (command.inVoice && !event?.member?.voice?.channelId) {
+            res = true;
+            return event.client.emit('commandBlocked', event, "not a in a voice channel");
         }
 
         return res;

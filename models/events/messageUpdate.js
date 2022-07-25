@@ -33,6 +33,8 @@ class BuildInMessageUpdateEvent extends Event {
 
                 try {
                     command.exec(newMessage, args);
+
+                    newMessage.client.emit('commandRun', newMessage, 'message');
                 }
                 catch (error) {
                     newMessage.client.emit("error", newMessage, error);
