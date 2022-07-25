@@ -32,7 +32,7 @@ class BuildInMessageEvent extends Event {
                 try {
                     await command.exec(message, args);
 
-                    message.client.emit('commandRun', message, 'message');
+                    return message.client.emit('commandRun', message, 'message', command);
                 }
                 catch (error) {
                     message.client.emit("error", message, error);

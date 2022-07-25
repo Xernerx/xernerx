@@ -24,7 +24,8 @@ class Client extends Discord.Client {
             prefix: s.array(s.string).optional,
             ownerId: s.array(s.string).optional,
             ignoreOwner: s.boolean.optional,
-            defaultCooldown: s.number.optional
+            defaultCooldown: s.number.optional,
+            logging: s.boolean.optional
         }).parse(options)
 
         this.client = new Discord.Client({ intents: [this.options.intents] });
@@ -48,6 +49,8 @@ class Client extends Discord.Client {
         this.client.color = color({ client: this.client, options: options });
 
         this.client.config = config({ client: this.client, options: options });
+
+        this.client.logging = options.logging || false;
 
         return this.client;
     }

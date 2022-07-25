@@ -42,7 +42,7 @@ class LanguageHandler {
             langs.push(file.replace('.json', ""));
         }
 
-        if (logging) console.info(logStyle(`Loaded languages: ${langs.join(', ')}`, 'text', 'purple'))
+        if (logging || this.client.logging) console.info(logStyle(`Loaded languages: ${langs.join(', ')}`, 'text', 'purple'))
     }
 }
 

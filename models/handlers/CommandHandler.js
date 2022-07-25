@@ -42,7 +42,7 @@ class CommandHandler {
 
         this.#deployCommands("interaction commands", logging);
 
-        if (logging) console.info(logStyle(`Loading interaction commands: ${commands.join(', ')}`, "text", "yellow"));
+        if (logging || this.client.logging) console.info(logStyle(`Loading interaction commands: ${commands.join(', ')}`, "text", "yellow"));
     }
 
     loadContextMenuCommands(path, logging = false) {
@@ -64,7 +64,7 @@ class CommandHandler {
 
         this.#deployCommands("context menu commands", logging);
 
-        if (logging) console.info(logStyle(`Loading context menu commands: ${commands.join(', ')}`, 'text', 'yellow'));
+        if (logging || this.client.logging) console.info(logStyle(`Loading context menu commands: ${commands.join(', ')}`, 'text', 'yellow'));
     }
 
     loadMessageCommands(path, logging = false) {
@@ -73,8 +73,6 @@ class CommandHandler {
         const commandFiles = fs.readdirSync(path).filter(file => file.endsWith('.js'));
 
         for (const file of commandFiles) {
-
-
             let command = require(`${require("path").resolve(path)}/${file}`);
 
             command = new command;
@@ -88,7 +86,7 @@ class CommandHandler {
             commands.push(command.name || command.id);
         }
 
-        if (logging) console.info(logStyle(`Loaded message commands: ${commands.join(', ')}`, 'text', 'purple'));
+        if (logging || this.client.logging) console.info(logStyle(`Loaded message commands: ${commands.join(', ')}`, 'text', 'purple'));
     }
 
     #deployCommands(type, logging = false) {
@@ -96,15 +94,14 @@ class CommandHandler {
             const rest = new REST({ version: '9' }).setToken(client.token);
 
             (async () => {
-                await delay(1000)
                 if (client.global == true) {
-                    if (logging) console.info(logStyle(`Loaded ${type} in ${(await client.guilds.fetch()).size} server(s) globally.`, 'text', 'purple'));
+                    if (logging || this.client.logging) console.info(logStyle(`Loaded ${type} in ${(await client.guilds.fetch()).size} server(s) globally.`, 'text', 'purple'));
                     rest.put(Routes.applicationCommands(client.user.id), {
                         body: this.commands
                     })
                 }
                 else {
-                    if (logging) console.info(logStyle(`Loaded ${type} locally.`, 'text', 'purple'));
+                    if (logging || this.client.logging) console.info(logStyle(`Loaded ${type} locally.`, 'text', 'purple'));
                     rest.put(Routes.applicationGuildCommands(client.user.id, client.guildId), {
                         body: this.commands
                     })

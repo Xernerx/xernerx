@@ -1,6 +1,5 @@
 const { Event } = require('../commands/Event.js');
-const Discord = require('discord.js');
-const { messageArgs } = require("./../data/Functions.js");
+const { messageArgs, access } = require("./../data/Functions.js");
 
 /**
  * @returns message command executor.
@@ -34,7 +33,7 @@ class BuildInMessageUpdateEvent extends Event {
                 try {
                     command.exec(newMessage, args);
 
-                    newMessage.client.emit('commandRun', newMessage, 'message');
+                    return newMessage.client.emit('commandRun', newMessage, 'message', command);
                 }
                 catch (error) {
                     newMessage.client.emit("error", newMessage, error);
