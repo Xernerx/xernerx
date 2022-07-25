@@ -149,7 +149,7 @@ class Functions {
             }, command.cooldown || event.client.defaultCooldown || 0)
         }
 
-        if (command.owner && !event.client.ownerId.includes((event.user || event.author).id)) {
+        if (command.owner && event?.client?.ownerId != undefined && !event?.client?.ownerId?.includes((event.user || event.author).id)) {
             res = true;
             return event.client.emit('commandBlocked', event, "missing ownership")
         }
