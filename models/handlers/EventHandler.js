@@ -1,4 +1,3 @@
-const { Collection } = require('discord.js');
 const { logStyle } = require('dumfunctions');
 const fs = require('fs');
 
@@ -16,8 +15,6 @@ class EventHandler {
         let events = [];
 
         for (const file of eventFiles) {
-
-
             let event = require(`${require("path").resolve(path)}/${file}`);
 
             event = new event;
@@ -45,7 +42,7 @@ class EventHandler {
             }
         }
 
-        if (logging || this.client.logging) console.info(logStyle(`Loaded events: ${events.join(', ')}`, 'text', 'purple'));
+        if (logging) console.info(logStyle(`Loaded events: ${events.join(', ')}`, 'text', 'purple'));
 
         const builderFiles = fs.readdirSync(`${__dirname}/../events`).filter(file => file.endsWith('.js'))
 
@@ -53,8 +50,6 @@ class EventHandler {
             let event = require(`../events/${file}`);
 
             event = new event;
-
-            event.messages = new Collection();
 
             if (event.process) {
                 process.on(event.name, (...args) => {
