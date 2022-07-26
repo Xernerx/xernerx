@@ -1,5 +1,5 @@
 const { Event } = require('../commands/Event.js');
-const { messageArgs, access } = require("./../data/Functions.js");
+const { messageArgs, access, messageEdit } = require("./../data/Functions.js");
 
 /**
  * @returns message command executor.
@@ -15,12 +15,9 @@ class BuildInMessageEvent extends Event {
     async run(message) {
         if (!message.author.bot) {
 
-            message.client.messages = {};
-
-            message.client.messages[message.id] = null;
+            await messageEdit(message, "create");
 
             for (const prefix of message.client.prefix) {
-
                 if (!message.content.startsWith(prefix)) continue;
 
                 let command = message.content.replace(prefix, "").split(/ +/).shift().toLowerCase();

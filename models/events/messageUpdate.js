@@ -1,5 +1,5 @@
 const { Event } = require('../commands/Event.js');
-const { messageArgs, access } = require("./../data/Functions.js");
+const { messageArgs, access, messageEdit } = require("./../data/Functions.js");
 
 /**
  * @returns message command executor.
@@ -14,9 +14,9 @@ class BuildInMessageUpdateEvent extends Event {
 
     async run(oldMessage, newMessage) {
 
-        if (!oldMessage.author.bot && !newMessage.author.bot) {
+        await messageEdit(newMessage, "edit");
 
-            console.log(newMessage.client.messages[newMessage.id])
+        if (!oldMessage.author.bot && !newMessage.author.bot) {
 
             if (!newMessage.client.messages[newMessage.id] == undefined) return;
 

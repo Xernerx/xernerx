@@ -30,7 +30,7 @@ class Client extends Discord.Client {
 
         this.client = new Discord.Client({ intents: [this.options.intents] });
 
-        this.client.messages = new Discord.Collection();
+        this.client.messages = {};
 
         this.client.emit('errorCreate')
 

@@ -176,6 +176,59 @@ class Functions {
 
         return res;
     }
+
+    async messageEdit(message, type) {
+
+        message.util = {};
+
+        if (type == "create") {
+            message.client.messages[message.id] = null;
+
+            message.util.send = async (e) => {
+                const msg = await message.channel.send(e);
+
+                message.client.messages[message.id] = msg.id;
+            }
+
+            message.util.reply = async (e) => {
+                const msg = await message.reply(e);
+
+                message.client.messages[message.id] = msg.id;
+            }
+        }
+
+        if (type == 'edit') {
+            if (message.client.messages[message.id] == null) {
+                message.util.send = async (e) => {
+                    const msg = await message.channel.send(e);
+
+                    message.client.messages[message.id] = msg.id;
+                }
+
+                message.util.reply = async (e) => {
+                    const msg = await message.reply(e);
+
+                    message.client.messages[message.id] = msg.id;
+                }
+
+                return;
+            }
+
+            else {
+                const msg = await message.channel.messages.fetch(message.client.messages[message.id]);
+
+                message.util.send = async (e) => {
+                    await msg.edit(e);
+                }
+
+                message.util.reply = async (e) => {
+                    await msg.edit(e);
+                }
+
+                return;
+            }
+        }
+    }
 }
 
 module.exports = new Functions();
