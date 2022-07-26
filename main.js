@@ -8,7 +8,8 @@ const { Client } = require('./models/Client.js'),
     { ContextMenuCommand } = require('./models/commands/ContextMenuCommand.js'),
     Discord = require('discord.js'),
     pkg = require('./package.json'),
-    Dumfunctions = require('dumfunctions');
+    Dumfunctions = require('dumfunctions'),
+    { reply, selectMenuPaginator, buttonPaginator, commandName } = require('dumdiscord.js');
 
 module.exports = {
     // Client
@@ -29,7 +30,13 @@ module.exports = {
 
     // Discord
     Discord,
-    Dumfunctions,
+    functions: Dumfunctions,
+
+    // Extra functions
+    reply,
+    selectMenuPaginator,
+    buttonPaginator,
+    commandName,
 
     // Details
     version: pkg.version
