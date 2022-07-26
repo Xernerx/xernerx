@@ -57,7 +57,7 @@ class Functions {
 
         if (interaction?.options?._hoistedOptions) {
             for (const option of interaction.options._hoistedOptions) {
-                options[option.name] = option.value;
+                options[option.name] = option.channel || option.user || option.role || option.value;
             }
         }
 
