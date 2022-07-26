@@ -188,7 +188,7 @@ class Functions {
 
                 message.client.messages[message.id] = msg.id;
 
-                return msg;
+                return message;
             }
 
             message.util.reply = async (e) => {
@@ -196,7 +196,7 @@ class Functions {
 
                 message.client.messages[message.id] = msg.id;
 
-                return msg;
+                return message;
             }
 
             return;
@@ -209,7 +209,7 @@ class Functions {
 
                     message.client.messages[message.id] = msg.id;
 
-                    return msg;
+                    return message;
                 }
 
                 message.util.reply = async (e) => {
@@ -217,7 +217,7 @@ class Functions {
 
                     message.client.messages[message.id] = msg.id;
 
-                    return msg;
+                    return message;
                 }
 
                 return;
