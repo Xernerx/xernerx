@@ -211,7 +211,7 @@ class Functions {
                     message.client.messages[message.id] = msg.id;
                 }
 
-                return;
+                return message;
             }
 
             else {
@@ -225,7 +225,7 @@ class Functions {
                     await msg.edit(e);
                 }
 
-                return;
+                return message;
             }
         }
     }
