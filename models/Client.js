@@ -33,8 +33,6 @@ class Client extends Discord.Client {
 
         this.client.messages = {};
 
-        this.client.emit('errorCreate')
-
         this.client.prefix = options.prefix;
 
         this.client.ownerId = options.ownerId;

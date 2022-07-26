@@ -3,7 +3,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Xernerx</title>
+    <title>Xernerx - Docs</title>
     <link rel="icon" type="image/x-icon" href="styles/icon.png" />
     <link rel="stylesheet" href="styles/styles.css" />
     <script src="scripts/script.js" defer></script>
@@ -11,10 +11,10 @@
   <body>
     <div class="top-bar">
       <div class="dropdown" data-dropdown>
-        <button class="link" data-dropdown-menu>home</button>
+        <button class="link" data-dropdown-menu>Home</button>
         <div class="dropdown-menu">
           <div class="dropdown-links">
-            <a href="index.html" class="link">Get Started</a>
+            <a href="home.html" class="link">Home</a>
             <a href="documentation.html" class="link">Documentation</a>
             <a href="#" class="link">Guide</a>
             <a href="#" class="link">Argument Types</a>
@@ -24,16 +24,220 @@
       <a href="documentation.html" class="link">Documentation</a>
       <a href="#" class="link">Guide</a>
       <a href="https://github.com/TheDummi/xernerx" class="link">Github</a>
-      <a href="index.html" class="link">Get Started</a>
-      <a href="index.html" class="link">Contribute</a>
-      <a href="index.html" class="link">Report a bug</a>
-      <a href="index.html" class="link">Support</a>
+      <a href="https://github.com/TheDummi/xernerx/pulls" class="link"
+        >Contribute</a
+      >
+      <a href="https://github.com/TheDummi/xernerx/issues" class="link"
+        >Report a bug</a
+      >
+      <a href="#" class="link">Support</a>
     </div>
     <div class="side-bar">
-      <select name="versions" class="select">
-        <option value="Stable">Stable</option>
-      </select>
+      <div>
+        <select name="versions" class="select">
+          <option value="Stable">Stable</option>
+        </select>
+      </div>
+
+      <div class="index">
+        <h1>
+          <li><a href="#client" class="link">Client</a></li>
+        </h1>
+        <li><a href="#client#intents" class="link">Intents</a></li>
+        <li><a href="#client#global" class="link">Global</a></li>
+        <li><a href="#client#guildId" class="link">guildId</a></li>
+        <li><a href="#client#prefix" class="link">Prefix</a></li>
+        <li><a href="#client#ownerId" class="link">OwnerId</a></li>
+        <li><a href="#client#ignoreOwner" class="link">IgnoreOwner</a></li>
+        <li>
+          <a href="#client#defaultCooldown" class="link">DefaultCooldown</a>
+        </li>
+        <li><a href="#client#logging" class="link">Logging</a></li>
+        <li><a href="#client#cacheTime" class="link">CacheTime</a></li>
+        <li><a href="#client#messages" class="link">Messages</a></li>
+        <li><a href="#client#color" class="link">Color</a></li>
+        <li><a href="#client#config" class="link">Config</a></li>
+      </div>
+      <div class="index">
+        <h1><a href="#handlers" class="link">Handlers</a></h1>
+        <h2><a href="#handlers#commands" class="link">Commands</a></h2>
+        <li><a href="#handlers#commands#client" class="link">Client</a></li>
+        <h3>Message</h3>
+        <li><a href="#handlers#commands#message#path" class="link">Path</a></li>
+        <li>
+          <a href="#handlers#commands#message#logging" class="link">Logging</a>
+        </li>
+        <h3>Interaction</h3>
+        <li>
+          <a href="#handlers#commands#interaction#path" class="link">Path</a>
+        </li>
+        <li>
+          <a href="#handlers#commands#interaction#logging" class="link"
+            >Logging</a
+          >
+        </li>
+        <h3>Context Menu</h3>
+        <li>
+          <a href="#handlers#commands#contextMenu#path" class="link">Path</a>
+        </li>
+        <li>
+          <a href="#handlers#commands#contextMenu#logging" class="link"
+            >Logging</a
+          >
+        </li>
+        <h2>Events</h2>
+        <li><a href="#handlers#events#path" class="link">Path</a></li>
+        <li><a href="#handlers#events#logging" class="link">Logging</a></li>
+        <h2>i18next</h2>
+        <li><a href="#handlers#i18next#client" class="link">Client</a></li>
+        <li><a href="#handlers#i18next#lang" class="link">Lang</a></li>
+        <li>
+          <a href="#handlers#i18next#fallBackLang" class="link">FallBackLang</a>
+        </li>
+        <li><a href="#handlers#i18next#ns" class="link">NS</a></li>
+        <h3>Language</h3>
+        <li>
+          <a href="#handlers#i18next#languages#path" class="link">Path</a>
+        </li>
+        <li>
+          <a href="#handlers#i18next#languages#resources" class="link"
+            >Resources</a
+          >
+        </li>
+        <li>
+          <a href="#handlers#i18next#languages#deep" class="link">Deep</a>
+        </li>
+        <li>
+          <a href="#handlers#commands#languages#logging" class="link"
+            >Logging</a
+          >
+        </li>
+      </div>
     </div>
-    <div class="page">soon™️</div>
+    <div class="page" id="page">
+      <div id="client" class="component">
+        <h1>Client</h1>
+        <p>Client is an extension of the Discord Client.</p>
+        <table class="table">
+          <tr id="table-header">
+            <td>Parameter</td>
+            <td>Type</td>
+            <td>Default</td>
+            <td>Required</td>
+            <td>Description</td>
+          </tr>
+          <tr>
+            <td id="client#intents">Intents</td>
+            <td>Number[]</td>
+            <td>None</td>
+            <td>true</td>
+            <td>Array of an intent number or Discord FLAGS.</td>
+          </tr>
+          <tr>
+            <td id="client#guildId">GuildId</td>
+            <td>String</td>
+            <td>None</td>
+            <td>true</td>
+            <td>
+              Whether the bot should deploy it's Interaction commands globally
+              or locally.
+            </td>
+          </tr>
+          <tr>
+            <td id="client#global">Global</td>
+            <td>Boolean</td>
+            <td>None</td>
+            <td>false</td>
+            <td>
+              Whether the bot should deploy it's Interaction commands globally
+              or locally.
+            </td>
+          </tr>
+          <tr>
+            <td id="client#prefix">Prefix</td>
+            <td>String[]</td>
+            <td>None</td>
+            <td>false</td>
+            <td>An array of prefixes that the bot should listen to.</td>
+          </tr>
+          <tr>
+            <td id="client#ownerId">OwnerId</td>
+            <td>String[]</td>
+            <td>None</td>
+            <td>false</td>
+            <td>Array Owner Id's.</td>
+          </tr>
+          <tr>
+            <td id="client#ignoreOwner">IgnoreOwner</td>
+            <td>Boolean</td>
+            <td>false</td>
+            <td>false</td>
+            <td>Whether the bot should ignore all preconditions on owners.</td>
+          </tr>
+          <tr>
+            <td id="client#defaultCooldown">DefaultCooldown</td>
+            <td>Number</td>
+            <td>0</td>
+            <td>false</td>
+            <td>
+              How long it takes before a user can run the command again. (in ms)
+            </td>
+          </tr>
+          <tr>
+            <td id="client#logging">Logging</td>
+            <td>Boolean</td>
+            <td>false</td>
+            <td>false</td>
+            <td>
+              Whether the bot should log loading of items (enables globally)
+            </td>
+          </tr>
+          <tr>
+            <td id="client#cacheTime">CacheTime</td>
+            <td>Number</td>
+            <td>300000</td>
+            <td>false</td>
+            <td>
+              How long it takes before messages become invalid to edit. (in ms)
+            </td>
+          </tr>
+          <tr>
+            <td id="client#messages">Messages</td>
+            <td>Object</td>
+            <td>Object</td>
+            <td>false</td>
+            <td>
+              An array of cache messages and their command message ID (cannot be
+              set)
+            </td>
+          </tr>
+          <tr>
+            <td id="client#color">Color</td>
+            <td>Object</td>
+            <td>FLAGS</td>
+            <td>false</td>
+            <td>Object of colors you want to use in your bot.</td>
+          </tr>
+          <tr>
+            <td id="client#config">Config</td>
+            <td>Config</td>
+            <td>Object</td>
+            <td>false</td>
+            <td>Any additional info you want to save to the bot.</td>
+          </tr>
+        </table>
+      </div>
+      <div id="handlers" class="component">
+        <h1>Handlers</h1>
+        <p>Handlers execute files you specify</p>
+        <div id="handlers#commands">
+          <h2>Commands</h2>
+          <div id="handlers#commands#message">
+            <h3>Message</h3>
+            <p>message handler</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
