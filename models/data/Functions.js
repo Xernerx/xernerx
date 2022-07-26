@@ -178,6 +178,11 @@ class Functions {
     }
 
     async messageEdit(message, type) {
+        setTimeout(() => {
+            if (message.client.messages[message.id] === null || message.client.messages[message.id]) delete message.client.messages[message.id];
+            if (message.channel.messages.cache.has(message.id)) message.channel.messages.cache.delete(message.id)
+        }, message.client.cacheTime)
+
         message.util = {};
 
         if (type == "create") {
@@ -203,7 +208,7 @@ class Functions {
         }
 
         if (type == 'edit') {
-            if (message.client.messages[message.id] == null) {
+            if (message.client.messages[message.id] === null) {
                 message.util.send = async (e) => {
                     const msg = await message.channel.send(e);
 
@@ -223,7 +228,7 @@ class Functions {
                 return;
             }
 
-            else {
+            else if (message.client.messages[message.id] !== null) {
                 const msg = await message.channel.messages.fetch(message.client.messages[message.id]);
 
                 message.util.send = async (e) => {
@@ -238,7 +243,7 @@ class Functions {
             }
         }
 
-        return;
+        else return;
     }
 }
 

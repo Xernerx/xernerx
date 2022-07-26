@@ -25,7 +25,8 @@ class Client extends Discord.Client {
             ownerId: s.array(s.string).optional,
             ignoreOwner: s.boolean.optional,
             defaultCooldown: s.number.optional,
-            logging: s.boolean.optional
+            logging: s.boolean.optional,
+            cacheTime: s.number.optional
         }).parse(options)
 
         this.client = new Discord.Client({ intents: [this.options.intents] });
@@ -51,6 +52,8 @@ class Client extends Discord.Client {
         this.client.config = config({ client: this.client, options: options });
 
         this.client.logging = options.logging || false;
+
+        this.client.cacheTime = options.cacheTime || 300000;
 
         return this.client;
     }
