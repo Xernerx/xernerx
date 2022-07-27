@@ -11,7 +11,17 @@
 
 ## Client
 
-> - [intents](#Client#Intents)
+> <table border="0">
+>  <tr>
+>     <td>Methods</td>
+>     <td>Properties</td>
+>  </tr>
+>  <tr>
+>     <td> - [intents](#Client#Intents)</td>
+>     <td></td>
+>  </tr>
+> </table>
+> Methods
 
 ## Handlers
 
@@ -24,30 +34,30 @@
 > > - [.loadMessageCommands()](<#.loadMessageCommands()>)
 > > - [.loadInteractionCommands()](<#.loadInteractionCommands()>)
 > > - [.loadContextMenuCommands()](<#.loadContextMenuCommands()>)
-
-#### .loadMessageCommands()
-
-The message command handler.
-
-| parameter | type    | default | required | description                              |
-| --------- | ------- | ------- | -------- | ---------------------------------------- |
-| path      | string  | none    | true     | The path of your message command folder. |
-| logging   | boolean | false   | false    | Whether the bot logs commands on start.  |
-
-#### .loadInteractionCommands()
-
-The interaction command handler.
-
-| parameter | type    | default | required | description                              |
-| --------- | ------- | ------- | -------- | ---------------------------------------- |
-| path      | string  | none    | true     | The path of your message command folder. |
-| logging   | boolean | false   | false    | Whether the bot logs commands on start.  |
-
-#### .loadContextMenuCommands()
-
-The context menu command handler.
-
-| parameter | type    | default | required | description                              |
-| --------- | ------- | ------- | -------- | ---------------------------------------- |
-| path      | string  | none    | true     | The path of your message command folder. |
-| logging   | boolean | false   | false    | Whether the bot logs commands on start.  |
+> >
+> > #### .loadMessageCommands()
+> >
+> > The message command handler.
+> >
+> > | parameter | type    | default | required | description                              |
+> > | --------- | ------- | ------- | -------- | ---------------------------------------- |
+> > | path      | string  | none    | true     | The path of your message command folder. |
+> > | logging   | boolean | false   | false    | Whether the bot logs commands on start.  |
+> >
+> > #### .loadInteractionCommands()
+> >
+> > The interaction command handler.
+> >
+> > | parameter | type    | default | required | description                              |
+> > | --------- | ------- | ------- | -------- | ---------------------------------------- |
+> > | path      | string  | none    | true     | The path of your message command folder. |
+> > | logging   | boolean | false   | false    | Whether the bot logs commands on start.  |
+> >
+> > #### .loadContextMenuCommands()
+> >
+> > The context menu command handler.
+> >
+> > | parameter | type    | default | required | description                              |
+> > | --------- | ------- | ------- | -------- | ---------------------------------------- |
+> > | path      | string  | none    | true     | The path of your message command folder. |
+> > | logging   | boolean | false   | false    | Whether the bot logs commands on start.  |
