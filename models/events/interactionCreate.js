@@ -20,16 +20,16 @@ class BuildInInteractionEvent extends Event {
 
                 command.client = interaction.client;
 
-                let group = interactionArgs(interaction).group;
+                const group = interactionArgs(interaction).group;
 
-                let sub = interactionArgs(interaction).sub;
+                const subcommand = interactionArgs(interaction).sub;
 
-                let options = interactionArgs(interaction).options;
+                const args = interactionArgs(interaction).options;
 
                 if (access(interaction, command)) return;
 
                 try {
-                    await command.exec(interaction, { group: group, sub: sub, options: options });
+                    await command.exec(interaction, { group: group, subcommand: subcommand, args: args });
 
                     return interaction.client.emit('commandRun', interaction, "interaction", command)
                 }

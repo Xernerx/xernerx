@@ -1,5 +1,5 @@
 const { s } = require('@sapphire/shapeshift');
-const Builders = require('@discordjs/builders');
+const { SlashCommandSubcommandGroupBuilder, SlashCommandSubcommandBuilder, SlashCommandBuilder } = require('discord.js');
 const { toTitleCase } = require('dumfunctions');
 
 /**
@@ -26,7 +26,7 @@ class InteractionCommand {
             inVoice: s.boolean.optional
         }).parse(options);
 
-        this.data = new Builders.SlashCommandBuilder()
+        this.data = new SlashCommandBuilder()
             .setName(options.name)
             .setDescription(options.description)
 
@@ -75,27 +75,23 @@ class InteractionCommand {
         const types = ["boolean", "integer", "number", "string", "user", "role", "channel", "mentionable"];
 
         for (const argument of args) {
-
             if (!types.includes(argument.type.toLowerCase())) throw new Error(`Expected one of ${types.join(', ')}, received ${argument.type} instead.`);
 
-            let build = new Builders[`SlashCommand${toTitleCase(argument.type, true)}Option`];
+            where[`add${toTitleCase(argument.type, true)}Option`](option => {
+                option
+                    .setName(argument.name)
+                    .setDescription(argument.description)
+                    .setRequired(argument.required || false)
+                if (argument.choices) option.setChoices(...argument?.choices);
 
-            if (argument.options) {
-                for (const [key, value] of Object.entries(argument.options)) {
-                    if (key == 'choices') {
-                        build[`set${toTitleCase(key, true)}`](...value);
-                    }
-                    else build[`set${toTitleCase(key, true)}`](value);
-                }
-            }
-
-            where[`add${toTitleCase(argument.type, true)}Option`](build);
+                return option;
+            })
         }
     }
 
     addSubcommands(where, subs) {
         for (const sub of subs) {
-            let subCommand = new Builders.SlashCommandSubcommandBuilder()
+            let subCommand = new SlashCommandSubcommandBuilder()
                 .setName(sub.name)
                 .setDescription(sub.description);
             if (sub?.args?.length > 0) {
@@ -107,7 +103,7 @@ class InteractionCommand {
 
     addSubcommandGroups(groups) {
         for (const group of groups) {
-            let subcommandGroup = new Builders.SlashCommandSubcommandGroupBuilder()
+            let subcommandGroup = new SlashCommandSubcommandGroupBuilder()
                 .setName(group.name)
                 .setDescription(group.description)
 
