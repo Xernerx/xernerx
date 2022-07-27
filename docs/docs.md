@@ -41,14 +41,14 @@
 >
 > ### Commands
 >
-> ```js
-> const { Client, CommandHandler } = require("xernerx");
->
-> const client = new Client({ intents: [0] });
->
-> const commandHandler = new CommandHandler({ client: client });
-> ```
->
+> > ```js
+> > const { Client, CommandHandler } = require("xernerx");
+> >
+> > const client = new Client({ intents: [0] });
+> >
+> > const commandHandler = new CommandHandler({ client: client });
+> > ```
+> >
 > > methods
 > >
 > > - [.loadMessageCommands()](<#.loadMessageCommands()>)
@@ -68,16 +68,41 @@
 > >
 > > The interaction command handler.
 > >
-> > | parameter | type    | default | required | description                              |
-> > | --------- | ------- | ------- | -------- | ---------------------------------------- |
-> > | path      | String  | none    | true     | The path of your message command folder. |
-> > | logging   | Boolean | false   | false    | Whether the bot logs commands on start.  |
+> > | parameter | type    | default | required | description                                  |
+> > | --------- | ------- | ------- | -------- | -------------------------------------------- |
+> > | path      | String  | none    | true     | The path of your interaction command folder. |
+> > | logging   | Boolean | false   | false    | Whether the bot logs commands on start.      |
 > >
 > > #### .loadContextMenuCommands()
 > >
 > > The context menu command handler.
 > >
-> > | parameter | type    | default | required | description                              |
-> > | --------- | ------- | ------- | -------- | ---------------------------------------- |
-> > | path      | String  | none    | true     | The path of your message command folder. |
-> > | logging   | Boolean | false   | false    | Whether the bot logs commands on start.  |
+> > | parameter | type    | default | required | description                                   |
+> > | --------- | ------- | ------- | -------- | --------------------------------------------- |
+> > | path      | String  | none    | true     | The path of your context menu command folder. |
+> > | logging   | Boolean | false   | false    | Whether the bot logs commands on start.       |
+>
+> ### Events
+>
+> > The event handler is much simpler than the command handler.
+> >
+> > ```js
+> > const { Client, EventHandler } = require("xernerx");
+> >
+> > const client = new Client({ intents: [0] });
+> >
+> > const eventHandler = new EventHandler({ client: client });
+> > ```
+> >
+> > methods
+> >
+> > - [.loadEvents()](<#.loadEvents()>)
+> >
+> > #### .loadEvents()
+> >
+> > The context menu command handler.
+> >
+> > | parameter | type    | default | required | description                           |
+> > | --------- | ------- | ------- | -------- | ------------------------------------- |
+> > | path      | String  | none    | true     | The path of your events folder.       |
+> > | logging   | Boolean | false   | false    | Whether the bot logs events on start. |
