@@ -1,7 +1,6 @@
 const { Event } = require('../commands/Event.js');
 const { interactionArgs, access } = require('./../data/Functions.js');
-const Discord = require('discord.js')
-
+const { InteractionType } = require('discord.js')
 /**
  * @returns interaction command executor.
  */
@@ -9,50 +8,49 @@ class BuildInInteractionEvent extends Event {
     constructor() {
         super('interactionCreate', {
             name: 'interactionCreate',
+            type: 'client',
             once: false,
         })
     }
 
     async run(interaction) {
-        if (interaction.isCommand()) {
-            if (!interaction.client.interactionCommands.has(interaction.commandName)) return;
+        if (interaction.type == InteractionType.ApplicationCommand) {
+            if (interaction.client.interactionCommands.has(interaction.commandName)) {
+                let command = interaction.client.interactionCommands.get(interaction.commandName);
 
-            let command = interaction.client.interactionCommands.get(interaction.commandName);
+                command.client = interaction.client;
 
-            command.client = interaction.client;
+                let group = interactionArgs(interaction).group;
 
-            let group = interactionArgs(interaction).group;
+                let sub = interactionArgs(interaction).sub;
 
-            let sub = interactionArgs(interaction).sub;
+                let options = interactionArgs(interaction).options;
 
-            let options = interactionArgs(interaction).options;
+                if (access(interaction, command)) return;
 
-            if (access(interaction, command)) return;
+                try {
+                    await command.exec(interaction, { group: group, sub: sub, options: options });
 
-            try {
-                await command.exec(interaction, { group: group, sub: sub, options: options });
-
-                return interaction.client.emit('commandRun', interaction, "interaction", command)
+                    return interaction.client.emit('commandRun', interaction, "interaction", command)
+                }
+                catch (error) {
+                    return interaction.client.emit("error", interaction, error);
+                }
             }
-            catch (error) {
-                return interaction.client.emit("error", interaction, error);
-            }
-        }
 
-        if (interaction.isContextMenu()) {
-            if (!interaction.client.contextMenuCommands.has(interaction.commandName)) return;
+            if (interaction.client.contextMenuCommands.has(interaction.commandName)) {
+                let command = interaction.client.contextMenuCommands.get(interaction.commandName);
 
-            let command = interaction.client.contextMenuCommands.get(interaction.commandName);
+                command.client = interaction.client;
 
-            command.client = interaction.client;
+                try {
+                    await command.exec(interaction);
 
-            try {
-                await command.exec(interaction);
-
-                return interaction.client.emit('commandRun', interaction, 'contextMenu', command);
-            }
-            catch (error) {
-                return interaction.client.emit("error", interaction, error);
+                    return interaction.client.emit('commandRun', interaction, 'contextMenu', command);
+                }
+                catch (error) {
+                    return interaction.client.emit("error", interaction, error);
+                }
             }
         }
     }

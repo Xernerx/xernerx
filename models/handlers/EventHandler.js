@@ -23,20 +23,13 @@ class EventHandler {
 
             events.push(event.name);
 
-            if (event.process) {
-                process.on(event.name, (...args) => {
-                    event.run(...args);
+            if (event.once) {
+                this.emitter(event.type).once(event.name, (...args) => {
+                    event.run(...args)
                 })
             }
-
-            else if (event.once) {
-                this.client.once(event.name, (...args) => {
-                    event.run(...args);
-                })
-            }
-
             else {
-                this.client.on(event.name, (...args) => {
+                this.emitter(event.type).on(event.name, (...args) => {
                     event.run(...args)
                 })
             }
@@ -51,24 +44,23 @@ class EventHandler {
 
             event = new event;
 
-            if (event.process) {
-                process.on(event.name, (...args) => {
-                    event.run(...args);
+            if (event.once) {
+                this.emitter(event.type).once(event.name, (...args) => {
+                    event.run(...args)
                 })
             }
-
-            else if (event.once) {
-                this.client.once(event.name, (...args) => {
-                    event.run(...args);
-                })
-            }
-
             else {
-                this.client.on(event.name, (...args) => {
-                    event.run(...args);
+                this.emitter(event.type).on(event.name, (...args) => {
+                    event.run(...args)
                 })
             }
         }
+    }
+
+    emitter(type) {
+        if (type == 'client') return this.client;
+        if (type == 'rest') return this.client.rest;
+        else return eval(type)
     }
 }
 

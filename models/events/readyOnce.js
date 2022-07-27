@@ -8,6 +8,7 @@ class BuildInReadyOnceEvent extends Event {
     constructor() {
         super('ready', {
             name: 'ready',
+            type: 'client',
             once: true,
         })
     }

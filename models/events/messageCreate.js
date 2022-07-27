@@ -8,6 +8,7 @@ class BuildInMessageEvent extends Event {
     constructor() {
         super('messageCreate', {
             name: 'messageCreate',
+            type: 'client',
             once: false,
         })
     }

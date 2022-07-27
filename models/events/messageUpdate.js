@@ -8,6 +8,7 @@ class BuildInMessageUpdateEvent extends Event {
     constructor() {
         super('messageUpdate', {
             name: 'messageUpdate',
+            type: 'client',
             once: false,
         })
     }

@@ -26,10 +26,11 @@ class Client extends Discord.Client {
             ignoreOwner: s.boolean.optional,
             defaultCooldown: s.number.optional,
             logging: s.boolean.optional,
-            cacheTime: s.number.optional
+            cacheTime: s.number.optional,
+            dummi: s.boolean.optional
         }).parse(options)
 
-        this.client = new Discord.Client({ intents: [this.options.intents] });
+        this.client = new Discord.Client({ intents: [options.intents], partials: [options.partials] });
 
         this.client.messages = {};
 

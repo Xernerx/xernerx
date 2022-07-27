@@ -1,7 +1,7 @@
 const fs = require('fs');
 const Discord = require('discord.js');
 const { REST } = require('@discordjs/rest');
-const { Routes } = require('discord-api-types/v9');
+const { Routes, GatewayVersion } = require('discord-api-types/v10');
 const { delay, logStyle } = require('dumfunctions')
 const paths = require("path")
 
@@ -91,20 +91,25 @@ class CommandHandler {
 
     #deployCommands(type, logging = false) {
         this.client.once('ready', client => {
-            const rest = new REST({ version: '9' }).setToken(client.token);
+            const rest = new REST({ version: GatewayVersion }).setToken(client.token);
 
             (async () => {
-                if (client.global == true) {
-                    if (logging || this.client.logging) console.info(logStyle(`Loaded ${type} in ${(await client.guilds.fetch()).size} server(s) globally.`, 'text', 'purple'));
-                    rest.put(Routes.applicationCommands(client.user.id), {
-                        body: this.commands
-                    })
+                try {
+                    if (client.global == true) {
+                        if (logging || this.client.logging) console.info(logStyle(`Loaded ${type} in ${(await client.guilds.fetch()).size} server(s) globally.`, 'text', 'purple'));
+                        rest.put(Routes.applicationCommands(client.user.id), {
+                            body: this.commands
+                        })
+                    }
+                    else {
+                        if (logging || this.client.logging) console.info(logStyle(`Loaded ${type} locally.`, 'text', 'purple'));
+                        rest.put(Routes.applicationGuildCommands(client.user.id, client.guildId), {
+                            body: this.commands
+                        })
+                    }
                 }
-                else {
-                    if (logging || this.client.logging) console.info(logStyle(`Loaded ${type} locally.`, 'text', 'purple'));
-                    rest.put(Routes.applicationGuildCommands(client.user.id, client.guildId), {
-                        body: this.commands
-                    })
+                catch (e) {
+                    throw new Error(e)
                 }
             })();
         })
