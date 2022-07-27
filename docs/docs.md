@@ -18,3 +18,8 @@
 ## Handlers
 
 ### Handlers#Message
+
+| parameter | type    | default | required | description                              |
+| --------- | ------- | ------- | -------- | ---------------------------------------- |
+| path      | string  | none    | true     | The path of your message command folder. |
+| logging   | boolean | false   | false    | Whether the bot logs commands on start.  |
