@@ -15,15 +15,15 @@
 
 ## Handlers
 
-Below you can see all the different types of handlers. Each command handler needs it's own folder.
-
-### Commands
-
-methods
-
-- [.loadMessageCommands()](<#.loadMessageCommands()>)
-- [.loadInteractionCommands()](<#.loadInteractionCommands()>)
-- [.loadContextMenuCommands()](<#.loadContextMenuCommands()>)
+> Below you can see all the different types of handlers. Each command handler needs it's own folder.
+>
+> ### Commands
+>
+> > methods
+> >
+> > - [.loadMessageCommands()](<#.loadMessageCommands()>)
+> > - [.loadInteractionCommands()](<#.loadInteractionCommands()>)
+> > - [.loadContextMenuCommands()](<#.loadContextMenuCommands()>)
 
 #### .loadMessageCommands()
 
