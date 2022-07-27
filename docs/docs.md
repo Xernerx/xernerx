@@ -1,16 +1,20 @@
-[![Xernerx](./styles/banner.png)]
+![Xernerx](./styles/banner.png)
 
 # A lightweight class based Discord.js framework.
 
-> - [Client](#client)
-> - [Handlers](#handlers)
->   - [Message Commands](#handlers#message)
->   - [Interaction Commands](#handlers#interaction)
->   - [Context Menu Commands](#handlers#contextMenu)
->   - [Events](#handlers#events)
-> - [Arguments](#arguments)
->   - [Types](#argument#types)
+> - [Client](#Client)
+> - [Handlers](#Handlers)
+>   - [Message Commands](#Handlers#Message)
+>   - [Interaction Commands](#Handlers#Interaction)
+>   - [Context Menu Commands](#Handlers#ContextMenu)
+>   - [Events](#Handlers#Events)
+> - [Arguments](#Arguments)
+>   - [Types](#Argument#Types)
 
 ## Client
 
-> - [intents](#client#intents)
+> - [intents](#Client#Intents)
+
+## Handlers
+
+### Handlers#Message
