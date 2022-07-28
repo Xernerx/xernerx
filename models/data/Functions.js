@@ -100,25 +100,25 @@ class Functions {
 
                 else if (argument.type == 'user') {
                     let user;
-                    try { user = await message.client.users.fetch(content[0].replace(/<?@?!?|>?/g, "")) } catch (e) { user = e }
+                    try { user = await message.client.users.fetch(content[0].replace(/<@!?|>/g, "")) } catch (e) { user = e }
                     args[argument.name] = user;
                 }
 
                 else if (argument.type == 'role') {
                     let role;
-                    try { role = await message.guild.roles.fetch(content[0].replace(/<?@?&?|>?/g, "")) } catch (e) { role = e }
+                    try { role = await message.guild.roles.fetch(content[0].replace(/<@&?|>/g, "")) } catch (e) { role = e }
                     args[argument.name] = role;
                 }
 
                 else if (argument.type == 'member') {
                     let member;
-                    try { member = await message.guild.members.fetch(content[0].replace(/<?@?!?|>?/g, "")) } catch (e) { member = e }
+                    try { member = await message.guild.members.fetch(content[0].replace(/<@!?|>/g, "")) } catch (e) { member = e }
                     args[argument.name] = member;
                 }
 
                 else if (argument.type == 'channel') {
                     let channel;
-                    try { channel = await message.client.channels.fetch(content[0].replace(/<?#\?|>?/g, "")) } catch (e) { channel = e }
+                    try { channel = await message.client.channels.fetch(content[0].replace(/<#|>/g, "")) } catch (e) { channel = e }
                     args[argument.name] = channel;
                 }
 
