@@ -7,7 +7,7 @@ const { LanguageHandler } = require('./handlers/LanguageHandler.js');
 
 /**
  * @param {string} guildId - Test guild ID. 
- * @param {boolean} global - Whether the bot shoumd be globally or locally loaded. 
+ * @param {boolean} global - Whether the bot should be globally or locally loaded. 
  * @param {string[]} prefix - An array of prefix'. 
  * @param {string[]} ownerId - An array of bot owners. 
  * @param {boolean} ignoreOwner - Whether the bot should ignore owner privileges. 
@@ -30,7 +30,6 @@ class Client extends Discord.Client {
             defaultCooldown: s.number.optional,
             logging: s.boolean.optional,
             cacheTime: s.number.optional,
-            dummi: s.boolean.optional,
             userPermissions: s.array(s.string).optional,
             clientPermissions: s.array(s.string).optional
         }).parse(options)

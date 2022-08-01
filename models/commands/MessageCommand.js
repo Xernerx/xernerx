@@ -34,7 +34,7 @@ class MessageCommand {
 
         this.id = id;
 
-        this.aliases = [...(options.aliases ? options.aliases : []), options.name];
+        this.aliases = [options.name, ...(options.aliases ? options.aliases : [])];
 
         this.type = options.type;
 
