@@ -7,24 +7,25 @@ module.exports = function commandValidation(event, command, res = false) {
     function emit(reason, extra) {
         return event.client.emit('commandBlocked', event, reason, extra);
     }
-    if ((command.ignoreOwner || event.client.ignoreOwner) && event.client.ownerId.includes((event.user || event.author).id)) return res;
+
+    if ((command?.ignoreOwner || event?.client?.settings?.ignoreOwner) && event?.client?.settings?.ownerId?.includes((event.user || event.author).id)) return res;
 
     if (Cooldown[(event.user || event.author).id]) {
         res = true;
-        return emit("command on cooldown", (Cooldown[(event.user || event.author).id] - event.createdTimestamp));
+        return emit("command on cooldown", (Cooldown[(event.user || event.author).id] - (event.editedTimestamp || event.createdTimestamp)));
     }
 
     if (!Cooldown[(event.user || event.author).id]) {
-        Cooldown[(event.user || event.author).id] = (event.createdTimestamp + (command.cooldown || event.client.settings.defaultCooldown || 0));
+        Cooldown[(event.user || event.author).id] = ((event.editedTimestamp || event.createdTimestamp) + (command.cooldown || event.client.settings.defaultCooldown || 0));
 
         setTimeout(() => {
             delete Cooldown[(event.user || event.author).id]
-        }, command.cooldown || event.client.settings.defaultCooldown || 0)
+        }, command.cooldown || event?.client?.settings?.defaultCooldown || 0);
     }
 
-    if (command?.owner && event?.client?.ownerId != undefined && !event?.client?.ownerId?.includes((event.user || event.author).id)) {
+    if (command?.owner && event?.client?.settings?.ownerId != undefined && !event?.client?.settings?.ownerId?.includes((event.user || event.author).id)) {
         res = true;
-        return emit("missing ownership", client.ownerId)
+        return emit("missing ownership", event?.client?.settings?.ownerId)
     }
 
     if (command?.admin && event?.member?.permissions?.has(Discord.PermissionFlagsBits.Administrator) == false) {
@@ -47,14 +48,14 @@ module.exports = function commandValidation(event, command, res = false) {
         return emit("not a in a voice channel");
     }
 
-    if (event?.guild && command?.userPermissions.length >= 1 || event?.client?.settings?.userPermissions.length >= 1) {
+    if (event?.guild && command?.userPermissions?.length >= 1 || event?.client?.settings?.userPermissions?.length >= 1) {
         let missingPerms = [];
 
         for (const permission of command.userPermissions) {
             if (!event?.member?.permissions?.has(Discord.PermissionFlagsBits[toPascalCase(permission)])) missingPerms.push(toPascalCase(permission));
         }
 
-        for (const permission of event.client.settings.userPermissions) {
+        for (const permission of event?.client?.settings?.userPermissions) {
             if (!event?.member?.permissions?.has(Discord.PermissionFlagsBits[toPascalCase(permission)])) missingPerms.push(toPascalCase(permission));
         }
 
@@ -67,11 +68,11 @@ module.exports = function commandValidation(event, command, res = false) {
     if (event?.guild && command?.clientPermissions.length >= 1 || event.client.settings.clientPermissions.length >= 1) {
         let missingPerms = [];
 
-        for (const permission of command.clientPermissions) {
+        for (const permission of command?.clientPermissions) {
             if (!event?.guild?.members?.me?.permissions?.has(Discord.PermissionFlagsBits[toPascalCase(permission)])) missingPerms.push(toPascalCase(permission));
         }
 
-        for (const permission of event.client.settings.clientPermissions) {
+        for (const permission of event?.client?.settings?.clientPermissions) {
             if (!event?.guild?.members?.me?.permissions?.has(Discord.PermissionFlagsBits[toPascalCase(permission)])) missingPerms.push(toPascalCase(permission));
         }
 
@@ -81,12 +82,12 @@ module.exports = function commandValidation(event, command, res = false) {
         }
     }
 
-    if (command.guilds.length >= 1 && !command?.guilds?.includes(event.guild)) {
+    if (command?.guilds?.length >= 1 && !command?.guilds?.includes(event.guild)) {
         res = true;
         return emit('not in a specified guild', command.guilds);
     }
 
-    if (command.channels.length >= 1 && !command?.channels?.includes(event.channel.id)) {
+    if (command?.channels?.length >= 1 && !command?.channels?.includes(event.channel.id)) {
         res = true;
         return emit('not in a specified channel', command.channels);
     }
