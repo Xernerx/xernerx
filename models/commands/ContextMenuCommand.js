@@ -1,5 +1,5 @@
 const { s } = require('@sapphire/shapeshift');
-const Builders = require('@discordjs/builders');
+const Discord = require('discord.js');
 
 /**
  * @param {String} name - The name of the context menu;
@@ -22,7 +22,7 @@ class ContextMenuCommand {
             clientPermissions: s.array(s.string).optional
         }).parse(options)
 
-        this.data = new Builders.ContextMenuCommandBuilder()
+        this.data = new Discord.ContextMenuCommandBuilder()
             .setName(options.name)
             .setType(this.types(options.type))
 
