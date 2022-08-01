@@ -1,7 +1,8 @@
 const { Event } = require('../commands/Event.js');
-const { interactionArgs } = require('./../data/Functions.js');
+const { interactionArgs } = require('./../data/Arguments.js');
 const { InteractionType } = require('discord.js')
 const commandValidation = require('./../data/CommandValidation.js');
+const { interactionUtil } = require('./../data/Util.js');
 /**
  * @returns interaction command executor.
  */
@@ -15,6 +16,8 @@ class BuildInInteractionEvent extends Event {
     }
 
     async run(interaction) {
+        await interactionUtil(interaction)
+
         if (interaction.type == InteractionType.ApplicationCommand) {
             if (interaction.client.interactionCommands.has(interaction.commandName)) {
                 let command = interaction.client.interactionCommands.get(interaction.commandName);
@@ -28,13 +31,6 @@ class BuildInInteractionEvent extends Event {
                 const args = interactionArgs(interaction).options;
 
                 if (commandValidation(interaction, command)) return;
-
-                interaction.util = {}
-
-                interaction.util.reply = (text) => {
-                    if (interaction.replied || interaction.deferred) return interaction.editReply(text);
-                    else return interaction.reply(text);
-                }
 
                 try {
                     await command.exec(interaction, { group: group, subcommand: subcommand, args: args });

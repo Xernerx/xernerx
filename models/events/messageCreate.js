@@ -1,6 +1,7 @@
 const { Event } = require('../commands/Event.js');
-const { messageArgs, messageEdit } = require("./../data/Functions.js");
+const { messageArgs } = require("./../data/Arguments.js");
 const commandValidation = require('./../data/CommandValidation.js');
+const { messageUtil } = require('../data/Util.js');
 
 /**
  * @returns message command executor.
@@ -16,8 +17,7 @@ class BuildInMessageEvent extends Event {
 
     async run(message) {
         if (!message.author.bot) {
-
-            await messageEdit(message, "create");
+            await messageUtil(message, "create");
 
             for (const prefix of message.client.settings.prefix) {
                 if (!message.content.startsWith(prefix)) continue;

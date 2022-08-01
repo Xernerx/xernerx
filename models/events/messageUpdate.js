@@ -1,6 +1,7 @@
 const { Event } = require('../commands/Event.js');
-const { messageArgs, messageEdit } = require("./../data/Functions.js");
+const { messageArgs } = require("./../data/Arguments.js");
 const commandValidation = require('./../data/CommandValidation.js');
+const { messageUtil } = require('../data/Util.js');
 
 /**
  * @returns message command executor.
@@ -16,18 +17,18 @@ class BuildInMessageUpdateEvent extends Event {
 
     async run(oldMessage, newMessage) {
 
-        await messageEdit(newMessage, "edit");
+        await messageUtil(newMessage, "edit");
 
         if (!oldMessage.author.bot && !newMessage.author.bot) {
 
-            if (!newMessage.client.messages[newMessage.id] == undefined) return;
+            if (!newMessage.client.messages[newMessage.id] === undefined) return;
 
             for (const prefix of newMessage.client.settings.prefix) {
                 if (!newMessage.content.startsWith(prefix)) continue;
 
                 let command = newMessage.content.replace(prefix, "").split(/ +/).shift().toLowerCase();
 
-                if (!newMessage.client.messageCommands.has(command) || command == '') return;
+                if (!newMessage.client.messageCommands.has(command) || command === '') return;
 
                 command = newMessage.client.messageCommands.get(command);
 
