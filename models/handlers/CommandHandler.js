@@ -23,15 +23,19 @@ class CommandHandler {
         client.contextMenuCommands = new Discord.Collection();
     }
 
-    loadInteractionCommands(path, logging = false) {
+    loadAllInteractionCommands(path, logging = false) {
         let commands = [];
 
         const commandFiles = fs.readdirSync(path).filter(file => file.endsWith('.js'))
 
         for (const file of commandFiles) {
-            let command = require(`${require("path").resolve(path)}/${file}`);
+            let filepath = `${require("path").resolve(path)}/${file}`
+
+            let command = require(filepath);
 
             command = new command;
+
+            command.filepath = filepath;
 
             this.commands.push(command.data.toJSON());
 
@@ -45,15 +49,19 @@ class CommandHandler {
         if (logging || this.client.logging) console.info(logStyle(`Loading interaction commands: ${commands.join(', ')}`, "text", "yellow"));
     }
 
-    loadContextMenuCommands(path, logging = false) {
+    loadAllContextMenuCommands(path, logging = false) {
         let commands = [];
 
         const commandFiles = fs.readdirSync(path).filter(file => file.endsWith('.js'));
 
         for (const file of commandFiles) {
-            let command = require(`${require("path").resolve(path)}/${file}`);
+            let filepath = `${require("path").resolve(path)}/${file}`
+
+            let command = require(filepath);
 
             command = new command;
+
+            command.filepath = filepath;
 
             this.commands.push(command.data.toJSON());
 
@@ -67,15 +75,19 @@ class CommandHandler {
         if (logging || this.client.logging) console.info(logStyle(`Loading context menu commands: ${commands.join(', ')}`, 'text', 'yellow'));
     }
 
-    loadMessageCommands(path, logging = false) {
+    loadAllMessageCommands(path, logging = false) {
         let commands = [];
 
         const commandFiles = fs.readdirSync(path).filter(file => file.endsWith('.js'));
 
         for (const file of commandFiles) {
-            let command = require(`${require("path").resolve(path)}/${file}`);
+            let filepath = `${require("path").resolve(path)}/${file}`
+
+            let command = require(filepath);
 
             command = new command;
+
+            command.filepath = filepath;
 
             command.aliases.forEach((alias) => {
                 if (this.client.messageCommands.has(alias)) throw new Error('Cannot have duplicated aliases.');
@@ -103,7 +115,7 @@ class CommandHandler {
                     }
                     else {
                         if (logging || this.client.logging) console.info(logStyle(`Loaded ${type} locally.`, 'text', 'purple'));
-                        rest.put(Routes.applicationGuildCommands(client.user.id, client.guildId), {
+                        rest.put(Routes.applicationGuildCommands(client.user.id, client.settings.guildId), {
                             body: this.commands
                         })
                     }

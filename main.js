@@ -6,10 +6,10 @@ const { Client } = require('./models/Client.js'),
     { Event } = require('./models/commands/Event.js'),
     { LanguageHandler } = require('./models/handlers/LanguageHandler.js'),
     { ContextMenuCommand } = require('./models/commands/ContextMenuCommand.js'),
-    Discord = require('discord.js'),
     pkg = require('./package.json'),
     Dumfunctions = require('dumfunctions'),
-    { reply, selectMenuPaginator, buttonPaginator, commandName } = require('dumdiscord.js');
+    { reply, selectMenuPaginator, buttonPaginator, commandName } = require('dumdiscord.js'),
+    Discord = require('discord.js');
 
 module.exports = {
     // Client
@@ -39,5 +39,5 @@ module.exports = {
     commandName,
 
     // Details
-    version: pkg.version
+    version: pkg.version,
 } 

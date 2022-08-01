@@ -23,7 +23,11 @@ class InteractionCommand {
             category: s.string.optional,
             cooldown: s.number.optional,
             ignoreOwner: s.boolean.optional,
-            inVoice: s.boolean.optional
+            inVoice: s.boolean.optional,
+            channels: s.array(s.string).optional,
+            guilds: s.array(s.string).optional,
+            userPermissions: s.array(s.string).optional,
+            clientPermissions: s.array(s.string).optional
         }).parse(options);
 
         this.data = new SlashCommandBuilder()
@@ -50,19 +54,27 @@ class InteractionCommand {
 
         this.admin = options.admin || false;
 
-        this.channel = options.channel;
+        this.channel = options.channel || undefined;
 
-        this.category = options.category;
+        this.category = options.category || undefined;
 
         this.config = options.config;
 
-        this.cooldown = options.cooldown;
+        this.cooldown = options.cooldown || 0;
 
         this.ignoreOwner = options.ignoreOwner || false;
 
         this.inVoice = options.inVoice || false;
 
-        this.info = options.info;
+        this.info = options.info || undefined;
+
+        this.channels = options.channels || [];
+
+        this.guilds = options.guilds || [];
+
+        this.userPermissions = options.userPermissions || [];
+
+        this.clientPermissions = options.clientPermissions || [];
     }
 
     exec(interaction) {

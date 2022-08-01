@@ -1,5 +1,6 @@
 const { Event } = require('../commands/Event.js');
-const { messageArgs, access, messageEdit } = require("./../data/Functions.js");
+const { messageArgs, messageEdit } = require("./../data/Functions.js");
+const commandValidation = require('./../data/CommandValidation.js');
 
 /**
  * @returns message command executor.
@@ -21,7 +22,7 @@ class BuildInMessageUpdateEvent extends Event {
 
             if (!newMessage.client.messages[newMessage.id] == undefined) return;
 
-            for (const prefix of newMessage.client.prefix) {
+            for (const prefix of newMessage.client.settings.prefix) {
                 if (!newMessage.content.startsWith(prefix)) continue;
 
                 let command = newMessage.content.replace(prefix, "").split(/ +/).shift().toLowerCase();
@@ -34,7 +35,7 @@ class BuildInMessageUpdateEvent extends Event {
 
                 const args = await messageArgs({ message: newMessage, command: command });
 
-                if (access(newMessage, command)) return;
+                if (commandValidation(newMessage, command)) return;
 
                 try {
                     command.exec(newMessage, args);

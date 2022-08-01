@@ -16,21 +16,33 @@ class ContextMenuCommand {
             admin: s.boolean.optional,
             info: s.string.optional,
             category: s.string.optional,
+            channels: s.array(s.string).optional,
+            guilds: s.array(s.string).optional,
+            userPermissions: s.array(s.string).optional,
+            clientPermissions: s.array(s.string).optional
         }).parse(options)
 
         this.data = new Builders.ContextMenuCommandBuilder()
             .setName(options.name)
             .setType(this.types(options.type))
 
-        this.inVoice = options.inVoice;
+        this.inVoice = options.inVoice || false;
 
-        this.category = options.category;
+        this.category = options.category || undefined;
 
-        this.owner = options.owner;
+        this.owner = options.owner || false;
 
-        this.admin = options.admin;
+        this.admin = options.admin || false;
 
-        this.info = options.info;
+        this.info = options.info || undefined;
+
+        this.channels = options.channels || [];
+
+        this.guilds = options.guilds || [];
+
+        this.userPermissions = options.userPermissions || [];
+
+        this.clientPermissions = options.clientPermissions || [];
 
         this.config = options.config;
     }

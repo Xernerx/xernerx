@@ -25,7 +25,11 @@ class MessageCommand {
             category: s.string.optional,
             cooldown: s.number.optional,
             ignoreOwner: s.boolean.optional,
-            inVoice: s.boolean.optional
+            inVoice: s.boolean.optional,
+            channels: s.array(s.string).optional,
+            guilds: s.array(s.string).optional,
+            userPermissions: s.array(s.string).optional,
+            clientPermissions: s.array(s.string).optional
         }).parse(options);
 
         this.id = id;
@@ -34,29 +38,37 @@ class MessageCommand {
 
         this.type = options.type;
 
-        this.description = options.description;
+        this.description = options.description || undefined;
 
-        this.owner = options.owner;
+        this.owner = options.owner || undefined;
 
-        this.admin = options.admin;
+        this.admin = options.admin || undefined;
 
-        this.channel = options.channel;
+        this.channel = options.channel || undefined;
 
-        this.separator = options.separator;
+        this.separator = options.separator || ' '
 
         this.args = options.args;
 
-        this.category = options.category;
+        this.category = options.category || undefined;
 
         this.config = options.config;
 
-        this.cooldown = options.cooldown;
+        this.cooldown = options.cooldown || 0;
 
         this.ignoreOwner = options.ignoreOwner || false;
 
         this.inVoice = options.inVoice || false;
 
-        this.info = options.info;
+        this.info = options.info || undefined;
+
+        this.channels = options.channels || [];
+
+        this.guilds = options.guilds || [];
+
+        this.userPermissions = options.userPermissions || [];
+
+        this.clientPermissions = options.clientPermissions || [];
     }
 
     exec(message) {

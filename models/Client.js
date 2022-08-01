@@ -1,6 +1,9 @@
 const Discord = require('discord.js');
 const { s } = require('@sapphire/shapeshift');
 const { color, config } = require('./data/Functions.js');
+const { CommandHandler } = require('./handlers/CommandHandler.js');
+const { EventHandler } = require('./handlers/EventHandler.js');
+const { LanguageHandler } = require('./handlers/LanguageHandler.js');
 
 /**
  * @param {string} guildId - Test guild ID. 
@@ -27,32 +30,48 @@ class Client extends Discord.Client {
             defaultCooldown: s.number.optional,
             logging: s.boolean.optional,
             cacheTime: s.number.optional,
-            dummi: s.boolean.optional
+            dummi: s.boolean.optional,
+            userPermissions: s.array(s.string).optional,
+            clientPermissions: s.array(s.string).optional
         }).parse(options)
 
         this.client = new Discord.Client({ intents: [options.intents], partials: [options.partials] });
 
-        this.client.messages = {};
+        this.client.settings = {
+            prefix: options.prefix,
 
-        this.client.prefix = options.prefix;
+            ownerId: options.ownerId,
 
-        this.client.ownerId = options.ownerId;
+            guildId: options.guildId,
 
-        this.client.guildId = options.guildId;
+            global: options.global || false,
 
-        this.client.global = options.global || false;
+            ignoreOwner: options.ignoreOwner || false,
 
-        this.client.ignoreOwner = options.ignoreOwner || false;
+            defaultCooldown: options.defaultCooldown || 0,
 
-        this.client.defaultCooldown = options.defaultCooldown || 0;
+            logging: options.logging || false,
+
+            cacheTime: options.cacheTime || 300000,
+
+            userPermissions: options.userPermissions || [],
+
+            clientPermissions: options.clientPermissions || []
+        }
 
         this.client.color = color({ client: this.client, options: options });
 
         this.client.config = config({ client: this.client, options: options });
 
-        this.client.logging = options.logging || false;
+        this.client.messages = {};
 
-        this.client.cacheTime = options.cacheTime || 300000;
+        this.client.modules = {
+            commandHandler: new CommandHandler({ client: this.client }),
+
+            eventHandler: new EventHandler({ client: this.client }),
+
+            // languageHandler: new LanguageHandler({ client: this.client })
+        }
 
         return this.client;
     }

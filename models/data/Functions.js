@@ -1,12 +1,9 @@
-const { Message } = require('discord.js');
 const colors = require('./colors.json');
 
-const Cooldown = new Set();
 /**
  * @param {object} Functions - Build in functions of the bot hidden away in the handlers/setters.
  */
 class Functions {
-
     /**
      * 
      * @param {object} client - Client object.
@@ -143,55 +140,12 @@ class Functions {
         return args;
     }
 
-    access(event, command, res = false) {
-        if ((command.ignoreOwner || event.client.ignoreOwner) && event.client.ownerId.includes((event.user || event.author).id)) return res;
-
-        if (Cooldown.has((event.user || event.author).id)) {
-            res = false
-            return event.client.emit('commandBlocked', event, "command is on cooldown");
-        }
-
-        if (!Cooldown.has((event.user || event.author).id)) {
-            Cooldown.add((event.user || event.author).id);
-
-            setTimeout(() => {
-                Cooldown.delete((event.user || event.author).id);
-            }, command.cooldown || event.client.defaultCooldown || 0)
-        }
-
-        if (command.owner && event?.client?.ownerId != undefined && !event?.client?.ownerId?.includes((event.user || event.author).id)) {
-            res = true;
-            return event.client.emit('commandBlocked', event, "missing ownership")
-        }
-
-        if (command.admin && event?.member?.permissions?.has(Discord.Permissions.FLAGS.ADMINISTRATOR) == false) {
-            res = true;
-            return event.client.emit('commandBlocked', event, "missing admin permission")
-        }
-
-        if (command?.channel == "guild" && event?.channel?.type != "GUILD_TEXT") {
-            res = true
-            return event.client.emit('commandBlocked', event, "not a guild channel");
-        }
-
-        if (command?.channel == "dm" && event?.type != null) {
-            res = true;
-            return event.client.emit('commandBlocked', event, "not a dm channel");
-        }
-
-        if (command.inVoice && !event?.member?.voice?.channelId) {
-            res = true;
-            return event.client.emit('commandBlocked', event, "not a in a voice channel");
-        }
-
-        return res;
-    }
-
     async messageEdit(message, type) {
         setTimeout(() => {
             if (message.client.messages[message.id] === null || message.client.messages[message.id]) delete message.client.messages[message.id];
-            if (message.channel.messages.cache.has(message.id)) message.channel.messages.cache.delete(message.id)
-        }, message.client.cacheTime)
+
+            if (message.channel.messages.cache.has(message.id)) message.channel.messages.cache.delete(message.id);
+        }, message.client.settings.cacheTime);
 
         message.util = {};
 
