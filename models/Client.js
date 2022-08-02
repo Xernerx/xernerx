@@ -37,11 +37,11 @@ class Client extends Discord.Client {
         this.client = new Discord.Client({ intents: [options.intents], partials: [options.partials] });
 
         this.client.settings = {
-            prefix: options.prefix,
+            prefix: options.prefix || [],
 
-            ownerId: options.ownerId,
+            ownerId: options.ownerId || [],
 
-            guildId: options.guildId,
+            guildId: options.guildId || undefined,
 
             global: options.global || false,
 
