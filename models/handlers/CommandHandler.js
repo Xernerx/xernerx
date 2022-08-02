@@ -109,7 +109,7 @@ class CommandHandler {
                 if (type === "interaction commands" && client.settings.logging) console.log(logStyle(`${client.user.tag} is online in ${(await client.guilds.fetch()).size} servers.`, "text", "cyan"));
 
                 try {
-                    if (client.global == true) {
+                    if (client.settings.global == true) {
                         if (logging || this.client.settings.logging) console.info(logStyle(`Loaded ${type} in ${(await client.guilds.fetch()).size} server(s) globally.`, 'text', 'purple'));
                         rest.put(Routes.applicationCommands(client.user.id), {
                             body: this.commands

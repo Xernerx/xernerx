@@ -35,7 +35,7 @@ class EventHandler {
             }
         }
 
-        if (logging || this.client.logging) console.info(logStyle(`Loaded events: ${events.join(', ')}`, 'text', 'purple'));
+        if (logging || this.client.settings.logging) console.info(logStyle(`Loaded events: ${events.join(', ')}`, 'text', 'purple'));
 
         const builderFiles = fs.readdirSync(`${__dirname}/../events`).filter(file => file.endsWith('.js'))
 
