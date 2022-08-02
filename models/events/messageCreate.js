@@ -17,6 +17,8 @@ class BuildInMessageEvent extends Event {
 
     async run(message) {
         if (!message.author.bot) {
+            if (message?.client?.settings?.prefix?.length <= 0) return;
+
             await messageUtil(message, "create");
 
             for (const prefix of message.client.settings.prefix) {

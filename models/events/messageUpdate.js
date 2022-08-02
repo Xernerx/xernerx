@@ -16,6 +16,7 @@ class BuildInMessageUpdateEvent extends Event {
     }
 
     async run(oldMessage, newMessage) {
+        if (newMessage?.client?.settings?.prefix?.length <= 0) return;
 
         await messageUtil(newMessage, "edit");
 
