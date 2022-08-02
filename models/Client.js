@@ -34,7 +34,7 @@ class Client extends Discord.Client {
             clientPermissions: s.array(s.string).optional
         }).parse(options)
 
-        this.client = new Discord.Client({ intents: [options.intents], partials: [options.partials] });
+        this.client = new Discord.Client({ intents: [options.intents || 0], partials: [options.partials] });
 
         this.client.settings = {
             prefix: options.prefix || [],
