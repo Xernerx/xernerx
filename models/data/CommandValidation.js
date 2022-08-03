@@ -34,7 +34,7 @@ class CommandValidation {
             return emit("missing admin permission", "Administrator")
         }
 
-        if (command?.channel == "guild" && event?.channel?.type != "GUILD_TEXT") {
+        if (command?.channel == "guild" && event?.channel?.type != Discord.ChannelType.GuildText) {
             res = true
             return emit("not a guild channel");
         }
