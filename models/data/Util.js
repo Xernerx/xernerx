@@ -182,11 +182,21 @@ class Util {
                 const msg = await message.channel.messages.fetch(message.client.messages[message.id]);
 
                 message.util.send = async (e) => {
-                    return await msg.edit(e);
+                    try {
+                        return await msg.edit(e);
+                    }
+                    catch {
+                        message.channel.send(e);
+                    }
                 }
 
                 message.util.reply = async (e) => {
-                    return await msg.edit(e);
+                    try {
+                        return await msg.edit(e);
+                    }
+                    catch {
+                        message.reply(e);
+                    }
                 }
 
                 return;
