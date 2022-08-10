@@ -19,7 +19,8 @@ class ContextMenuCommand {
             channels: s.array(s.string).optional,
             guilds: s.array(s.string).optional,
             userPermissions: s.array(s.string).optional,
-            clientPermissions: s.array(s.string).optional
+            clientPermissions: s.array(s.string).optional,
+            description: s.string.optional
         }).parse(options)
 
         this.data = new Discord.ContextMenuCommandBuilder()
@@ -45,6 +46,8 @@ class ContextMenuCommand {
         this.clientPermissions = options.clientPermissions || [];
 
         this.config = options.config;
+
+        this.description = options.description || undefined;
     }
 
     exec(interaction) {
