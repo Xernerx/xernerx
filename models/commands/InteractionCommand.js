@@ -27,7 +27,11 @@ class InteractionCommand {
             channels: s.array(s.string).optional,
             guilds: s.array(s.string).optional,
             userPermissions: s.array(s.string).optional,
-            clientPermissions: s.array(s.string).optional
+            clientPermissions: s.array(s.string).optional,
+            defer: s.object({
+                reply: s.boolean.optional,
+                ephemeral: s.boolean.optional
+            }).optional
         }).parse(options);
 
         this.data = new SlashCommandBuilder()
@@ -75,6 +79,11 @@ class InteractionCommand {
         this.userPermissions = options.userPermissions || [];
 
         this.clientPermissions = options.clientPermissions || [];
+
+        this.defer = {
+            reply: options?.defer?.reply === undefined ? null : options?.defer?.reply,
+            ephemeral: options?.defer?.ephemeral === undefined ? null : options?.defer?.ephemeral
+        }
     }
 
     exec(interaction) {

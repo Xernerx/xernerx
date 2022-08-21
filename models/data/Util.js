@@ -63,12 +63,72 @@ function selectMenuPaginator(interaction, embeds, options = {}) {
     })();
 }
 
+function commandName(interaction, cmd) {
+    if (cmd) {
+        cmds = [];
+
+        for (const commands of Object.values(interaction.client.commands)) {
+            let commandInfo = {};
+
+            if (commands.has(cmd)) {
+                const command = commands.get(cmd);
+
+                if (command?.data?.options?.length > 0) {
+                    command?.data?.options?.map(option => {
+                        if (!option?.type) {
+                            if (option?.options?.length > 0) {
+                                option?.options?.map(opt => {
+                                    if (!opt.type) {
+                                        commandInfo.name = command?.data?.name + " " + option?.name + " " + opt?.name;
+
+                                        commandInfo.description = opt.description;
+                                    }
+
+                                    else {
+                                        commandInfo.name = command?.data?.name + " " + option?.name;
+
+                                        commandInfo.description = option?.description;
+                                    }
+                                })
+                            }
+
+                            else {
+                                commandInfo.name = command?.data?.name + " " + option?.name;
+
+                                commandInfo.description = option?.description;
+                            }
+                        }
+
+                        else {
+                            commandInfo.name = command?.data?.name || command?.id;
+
+                            commandInfo.description = command?.data?.description || command?.description;
+                        }
+                    })
+                }
+
+                else {
+                    commandInfo.name = command?.data?.name || command?.id;
+
+                    commandInfo.description = command?.data?.description || command?.description;
+                }
+
+                cmds.push(commandInfo);
+            }
+
+        }
+        return cmds;
+    }
+
+    if (!cmd) return [interaction?.commandName || interaction.content?.replace(interaction.client.settings.prefix.find(p => interaction.content.startsWith(p)), "").split(/ +/)[0], interaction?.options?._group, interaction?.options?._subcommand].join(' ').replace(/  +/g, " ").trim();
+}
+
 function buttonPaginator(interaction, embeds, options = {}) {
     if (!options.buttons) options.buttons = ["⏪", "◀️", "⏹️", "▶️", "⏩"];
 
-    if (options.buttons.length <= 4 || options.buttons.length > 5) throw new Error('Must specify 5 emotes.')
+    if (options.buttons.length <= 4 || options.buttons.length > 5) throw new Error('Must specify 5 emotes.');
 
-    options.row = new ActionRowBuilder()
+    options.row = new ActionRowBuilder();
 
     for (const button of options.buttons) {
         options.row
@@ -78,7 +138,7 @@ function buttonPaginator(interaction, embeds, options = {}) {
                     .setStyle(ButtonStyle[options.style || 'Primary'])
                     .setEmoji(button)
             )
-    }
+    };
 
     (async () => {
         let embed = embeds[options.index || 0];
@@ -134,6 +194,8 @@ class Util {
         message.util.selectMenuPaginator = (embeds, options) => selectMenuPaginator(message, embeds, options);
 
         message.util.buttonPaginator = (embeds, options) => buttonPaginator(message, embeds, options);
+
+        message.util.commandName = (command) => commandName(message, command);
 
         if (type == "create") {
             message.client.messages[message.id] = null;
@@ -212,6 +274,8 @@ class Util {
         interaction.util.selectMenuPaginator = (embeds, options) => selectMenuPaginator(interaction, embeds, options);
 
         interaction.util.buttonPaginator = (embeds, options) => buttonPaginator(interaction, embeds, options);
+
+        interaction.util.commandName = (command) => commandName(interaction, command);
     }
 }
 

@@ -19,8 +19,10 @@ class BuildInInteractionEvent extends Event {
         await interactionUtil(interaction)
 
         if (interaction.type == InteractionType.ApplicationCommand) {
-            if (interaction.client.interactionCommands.has(interaction.commandName)) {
-                let command = interaction.client.interactionCommands.get(interaction.commandName);
+            if (interaction.client.commands.interaction.has(interaction.commandName)) {
+                let command = interaction.client.commands.interaction.get(interaction.commandName);
+
+                await this.defer(interaction, command);
 
                 command.client = interaction.client;
 
@@ -42,8 +44,10 @@ class BuildInInteractionEvent extends Event {
                 }
             }
 
-            if (interaction.client.contextMenuCommands.has(interaction.commandName)) {
-                let command = interaction.client.contextMenuCommands.get(interaction.commandName);
+            if (interaction.client.commands.contextMenu.has(interaction.commandName)) {
+                let command = interaction.client.commands.contextMenu.get(interaction.commandName);
+
+                await this.defer(interaction, command);
 
                 command.client = interaction.client;
 
@@ -57,6 +61,14 @@ class BuildInInteractionEvent extends Event {
                 }
             }
         }
+    }
+
+    async defer(interaction, command) {
+        if (command?.defer?.reply) return await interaction.deferReply({ ephemeral: command?.defer?.ephemeral });
+
+        else if (command?.defer?.reply === false && interaction.client?.settings?.defer?.reply) return;
+
+        else if (interaction.client?.settings?.defer?.reply) return await interaction.deferReply({ ephemeral: interaction.client?.settings?.defer?.ephemeral || command?.defer?.ephemeral });
     }
 }
 

@@ -4,6 +4,7 @@ const { color, config } = require('./data/Functions.js');
 const { CommandHandler } = require('./handlers/CommandHandler.js');
 const { EventHandler } = require('./handlers/EventHandler.js');
 const { LanguageHandler } = require('./handlers/LanguageHandler.js');
+const Loader = require('./handlers/Loader.js');
 
 /**
  * @param {string} guildId - Test guild ID. 
@@ -28,10 +29,14 @@ class Client extends Discord.Client {
             ownerId: s.array(s.string).optional,
             ignoreOwner: s.boolean.optional,
             defaultCooldown: s.number.optional,
-            logging: s.boolean.optional,
+            logging: s.array(s.string).optional,
             cacheTime: s.number.optional,
             userPermissions: s.array(s.string).optional,
-            clientPermissions: s.array(s.string).optional
+            clientPermissions: s.array(s.string).optional,
+            defer: s.object({
+                reply: s.boolean.optional,
+                ephemeral: s.boolean.optional
+            }).optional,
         }).parse(options)
 
         this.client = new Discord.Client({ intents: [options.intents || 0], partials: [options.partials] });
@@ -49,13 +54,20 @@ class Client extends Discord.Client {
 
             defaultCooldown: options.defaultCooldown || 0,
 
-            logging: options.logging || false,
+            logging: options.logging || undefined,
 
             cacheTime: options.cacheTime || 300000,
 
             userPermissions: options.userPermissions || [],
 
-            clientPermissions: options.clientPermissions || []
+            clientPermissions: options.clientPermissions || [],
+
+            defer: {
+                reply: options?.defer?.reply === undefined ? null : options?.defer?.reply,
+                ephemeral: options?.defer?.ephemeral === undefined ? null : options?.defer?.ephemeral
+            },
+
+            language: options.language
         }
 
         this.client.color = color({ client: this.client, options: options });
@@ -69,7 +81,9 @@ class Client extends Discord.Client {
 
             eventHandler: new EventHandler({ client: this.client }),
 
-            // languageHandler: new LanguageHandler({ client: this.client })
+            languageHandler: new LanguageHandler(this.client),
+
+            loader: new Loader(this.client)
         }
 
         return this.client;

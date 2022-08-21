@@ -26,9 +26,9 @@ class BuildInMessageEvent extends Event {
 
                 let command = message.content.replace(prefix, "").split(/ +/).shift().toLowerCase();
 
-                if (!message.client.messageCommands.has(command) || command == '') return;
+                if (!message.client.commands.message.has(command) || command == '') return;
 
-                command = message.client.messageCommands.get(command);
+                command = message.client.commands.message.get(command);
 
                 command.client = message.client;
 

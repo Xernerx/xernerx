@@ -1,5 +1,5 @@
-const { logStyle } = require('dumfunctions');
 const fs = require('fs');
+const Discord = require('discord.js');
 
 /**
  * @param {object} client - Client object.
@@ -7,12 +7,12 @@ const fs = require('fs');
 class EventHandler {
     constructor({ client: client }) {
         this.client = client;
+
+        client.events = new Discord.Collection()
     }
 
-    loadEvents(path, logging) {
+    loadAllEvents(path, logging) {
         const eventFiles = fs.readdirSync(path).filter(file => file.endsWith('.js'))
-
-        let events = [];
 
         for (const file of eventFiles) {
             let event = require(`${require("path").resolve(path)}/${file}`);
@@ -21,7 +21,7 @@ class EventHandler {
 
             event.client = this.client;
 
-            events.push(event.name);
+            this.client.events.set(event.name, event);
 
             if (event.once) {
                 this.emitter(event.type).once(event.name, (...args) => {
@@ -34,8 +34,6 @@ class EventHandler {
                 })
             }
         }
-
-        if (logging || this.client.settings.logging) console.info(logStyle(`Loaded events: ${events.join(', ')}`, 'text', 'purple'));
 
         const builderFiles = fs.readdirSync(`${__dirname}/../events`).filter(file => file.endsWith('.js'))
 
