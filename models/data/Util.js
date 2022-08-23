@@ -181,6 +181,25 @@ function buttonPaginator(interaction, embeds, options = {}) {
     })();
 }
 
+function uptime(interaction, timestamp) {
+    if (!timestamp) timestamp = interaction.client.uptime;
+    let totalSeconds = timestamp / 1000;
+    let years = Math.floor(totalSeconds / 31536000);
+    totalSeconds %= 31536000;
+    let days = Math.floor(totalSeconds / 86400);
+    totalSeconds %= 86400;
+    let hours = Math.floor(totalSeconds / 3600);
+    totalSeconds %= 3600;
+    let minutes = Math.floor(totalSeconds / 60);
+    let seconds = Math.floor(totalSeconds % 60);
+
+    if (years >= 1) return `${years}y ${days}d ${hours}h ${minutes}m`
+    else if (days >= 1) return `${days}d ${hours}h ${minutes}m`;
+    else if (hours >= 1) return `${hours}h ${minutes}m`;
+    else if (minutes >= 1) return `${minutes}m ${seconds}s`;
+    else return `${seconds}s`;
+}
+
 class Util {
     async messageUtil(message, type) {
         setTimeout(() => {
@@ -196,6 +215,8 @@ class Util {
         message.util.buttonPaginator = (embeds, options) => buttonPaginator(message, embeds, options);
 
         message.util.commandName = (command) => commandName(message, command);
+
+        message.util.uptime = (timestamp) => uptime(message, timestamp);
 
         if (type == "create") {
             message.client.messages[message.id] = null;
@@ -276,6 +297,8 @@ class Util {
         interaction.util.buttonPaginator = (embeds, options) => buttonPaginator(interaction, embeds, options);
 
         interaction.util.commandName = (command) => commandName(interaction, command);
+
+        interaction.util.uptime = (timestamp) => uptime(interaction, timestamp);
     }
 }
 
