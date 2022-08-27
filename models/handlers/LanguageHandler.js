@@ -6,7 +6,8 @@ class LanguageHandler {
     constructor(client) {
         this.client = client;
 
-        i.init(this.client.settings.language)
+
+        i.init(this.client.language)
 
         this.client.languages = []
     }
