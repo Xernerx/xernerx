@@ -66,9 +66,9 @@ class Client extends Discord.Client {
                 reply: options?.defer?.reply === undefined ? null : options?.defer?.reply,
                 ephemeral: options?.defer?.ephemeral === undefined ? null : options?.defer?.ephemeral
             },
-
-            language: options.language
         }
+
+        this.client.language = options.language;
 
         this.client.color = color({ client: this.client, options: options });
 

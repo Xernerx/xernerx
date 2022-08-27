@@ -19,7 +19,7 @@ class LanguageHandler {
         for (const file of languages) {
             const language = require(`${require("path").resolve(path)}/${file}`);
 
-            i.addResourceBundle(file.replace('.json', ""), this.ns, language, deep, overwrite)
+            i.addResourceBundle(file.replace('.json', ""), this.client.language.ns, language, deep, overwrite);
 
             this.client.languages.push(file.replace('.json', ""));
 
