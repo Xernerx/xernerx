@@ -8,7 +8,8 @@ const { Client } = require('./models/Client.js'),
     { ContextMenuCommand } = require('./models/commands/ContextMenuCommand.js'),
     pkg = require('./package.json'),
     Dumfunctions = require('dumfunctions'),
-    Discord = require('discord.js');
+    Discord = require('discord.js'),
+    i18next = require('i18next');
 
 module.exports = {
     // Client
@@ -29,6 +30,7 @@ module.exports = {
 
     // Discord
     Discord,
+    i18next,
     functions: Dumfunctions,
 
     // Details

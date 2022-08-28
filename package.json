@@ -1,28 +1,28 @@
 {
-  "name": "xernerx",
-  "version": "2.4.1",
-  "description": "A bot framework for discord.js. [BETA]",
-  "main": "main.js",
-  "scripts": {
-    "test": "echo Setup a bot then start the bot."
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/TheDummi/xernerx.git"
-  },
-  "author": "Dummi",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/TheDummi/xernerx/issues"
-  },
-  "homepage": "https://github.com/TheDummi/xernerx#readme",
-  "dependencies": {
-    "@discordjs/rest": "1.0.1",
-    "@sapphire/shapeshift": "3.5.1",
-    "discord-api-types": "^0.37.3",
-    "discord.js": "^14.2.0",
-    "dumfunctions": "^1.0.7",
-    "i18next": "^21.9.1"
-  },
-  "packageManager": "npm@8.5.5"
+	"name": "xernerx",
+	"version": "2.4.2",
+	"description": "A bot framework for discord.js. [BETA]",
+	"main": "main.js",
+	"scripts": {
+		"test": "echo Setup a bot then start the bot."
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/TheDummi/xernerx.git"
+	},
+	"author": "Dummi",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/TheDummi/xernerx/issues"
+	},
+	"homepage": "https://github.com/TheDummi/xernerx#readme",
+	"dependencies": {
+		"@discordjs/rest": "1.0.1",
+		"@sapphire/shapeshift": "3.5.1",
+		"discord-api-types": "^0.37.3",
+		"discord.js": "^14.2.0",
+		"dumfunctions": "^1.0.7",
+		"i18next": "^21.9.1"
+	},
+	"packageManager": "npm@8.5.5"
 }
