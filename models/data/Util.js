@@ -79,30 +79,38 @@ function commandName(interaction, cmd) {
                             if (option?.options?.length > 0) {
                                 option?.options?.map(opt => {
                                     if (!opt.type) {
-                                        commandInfo.name = command?.data?.name + " " + option?.name + " " + opt?.name;
-
-                                        commandInfo.description = opt.description;
+                                        commandInfo = {
+                                            name: command?.data?.name + " " + option?.name + " " + opt?.name,
+                                            description: opt.description,
+                                            category: command.category
+                                        }
                                     }
 
                                     else {
-                                        commandInfo.name = command?.data?.name + " " + option?.name;
-
-                                        commandInfo.description = option?.description;
+                                        commandInfo = {
+                                            name: command?.data?.name + " " + option?.name,
+                                            description: option?.description,
+                                            category: command.category
+                                        }
                                     }
                                 })
                             }
 
                             else {
-                                commandInfo.name = command?.data?.name + " " + option?.name;
-
-                                commandInfo.description = option?.description;
+                                commandInfo = {
+                                    name: command?.data?.name + " " + option?.name,
+                                    description: option?.description,
+                                    category: command.category
+                                }
                             }
                         }
 
                         else {
-                            commandInfo.name = command?.data?.name || command?.id;
-
-                            commandInfo.description = command?.data?.description || command?.description;
+                            commandInfo = {
+                                name: command?.data?.name || command?.id,
+                                description: command?.data?.description || command?.description,
+                                category: command.category
+                            }
                         }
                     })
                 }
