@@ -116,7 +116,6 @@ function commandName(interaction, cmd) {
                 }
 
                 else {
-
                     commandInfo = {
                         name: command?.data?.name || command?.id,
                         description: command?.data?.description || command?.description,
