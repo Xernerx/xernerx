@@ -1,8 +1,8 @@
 const { Event } = require('../commands/Event.js');
-const { interactionArgs } = require('./../data/Arguments.js');
+const { interactionArgs } = require('./../utils/Arguments.js');
 const { InteractionType } = require('discord.js')
-const commandValidation = require('./../data/CommandValidation.js');
-const { interactionUtil } = require('./../data/Util.js');
+const { commandValidation } = require('./../utils/CommandValidation.js');
+const { interactionUtil } = require('./../utils/Util.js');
 /**
  * @returns interaction command executor.
  */

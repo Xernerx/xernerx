@@ -23,17 +23,22 @@ class Loader {
         const commandFiles = fs.readdirSync(path).filter(file => file.endsWith('.js'))
 
         for (const file of commandFiles) {
-            let filepath = `${require("path").resolve(path)}/${file}`
+            try {
+                let filepath = `${require("path").resolve(path)}/${file}`
 
-            let command = require(filepath);
+                let command = require(filepath);
 
-            command = new command;
+                command = new command;
 
-            command.filepath = filepath;
+                command.filepath = filepath;
 
-            this.commands.push(command.data.toJSON());
+                this.commands.push(command.data.toJSON());
 
-            this.client.commands.interaction.set(command.data.name, command);
+                this.client.commands.interaction.set(command.data.name, command);
+            }
+            catch (error) {
+                console.error(logStyle(`Couldn't load ${file} because of <${error.message}>!`, "text", "red"));
+            }
         }
 
         this.#deployCommands("interaction commands", logging);
@@ -67,17 +72,22 @@ class Loader {
         const commandFiles = fs.readdirSync(path).filter(file => file.endsWith('.js'));
 
         for (const file of commandFiles) {
-            let filepath = `${require("path").resolve(path)}/${file}`
+            try {
+                let filepath = `${require("path").resolve(path)}/${file}`
 
-            let command = require(filepath);
+                let command = require(filepath);
 
-            command = new command;
+                command = new command;
 
-            command.filepath = filepath;
+                command.filepath = filepath;
 
-            this.commands.push(command.data.toJSON());
+                this.commands.push(command.data.toJSON());
 
-            this.client.commands.contextMenu.set(command.data.name, command);
+                this.client.commands.contextMenu.set(command.data.name, command);
+            }
+            catch (error) {
+                console.error(logStyle(`Couldn't load ${file} because of <${error.message}>!`, "text", "red"));
+            }
         }
 
         this.#deployCommands("context menu commands", logging);
@@ -111,19 +121,24 @@ class Loader {
         const commandFiles = fs.readdirSync(path).filter(file => file.endsWith('.js'));
 
         for (const file of commandFiles) {
-            let filepath = `${require("path").resolve(path)}/${file}`
+            try {
+                let filepath = `${require("path").resolve(path)}/${file}`
 
-            let command = require(filepath);
+                let command = require(filepath);
 
-            command = new command;
+                command = new command;
 
-            command.filepath = filepath;
+                command.filepath = filepath;
 
-            command.aliases.forEach((alias) => {
-                if (this.client.commands.message.has(alias)) throw new Error('Cannot have duplicated aliases.');
+                command.aliases.forEach((alias) => {
+                    if (this.client.commands.message.has(alias)) throw new Error('Cannot have duplicated aliases.');
 
-                this.client.commands.message.set(alias, command);
-            });
+                    this.client.commands.message.set(alias, command);
+                });
+            }
+            catch (error) {
+                console.error(logStyle(`Couldn't load ${file} because of <${error.message}>!`, "text", "red"));
+            }
         }
     }
 
@@ -154,8 +169,6 @@ class Loader {
             const rest = new REST({ version: GatewayVersion }).setToken(client.token);
 
             (async () => {
-                if (type === "interaction commands" && client.settings.logging) console.log(logStyle(`${client.user.tag} is online in ${(await client.guilds.fetch()).size} servers.`, "text", "cyan"));
-
                 try {
                     if (client.settings.global == true) {
                         if (logging || this.client.settings.logging) console.info(logStyle(`Loaded ${type} in ${(await client.guilds.fetch()).size} server(s) globally.`, 'text', 'purple'));

@@ -13,9 +13,9 @@ class BuildInReadyOnceEvent extends Event {
     }
 
     async run(client) {
-        if (client.logging) console.log(logStyle(`${client.user.tag} is online in ${(await client.guilds.fetch()).size} server(s).`, "text", "green"))
+        if (client.settings.logging) console.info(logStyle(`${client.user.tag} is online in ${(await client.guilds.fetch()).size} servers.`, "text", "cyan"));
 
-        if (client.settings.logging) {
+        if (Array.isArray(client.settings.logging)) {
             let loaded = [];
 
             for (const [type, commands] of Object.entries(client.commands)) {
@@ -29,15 +29,22 @@ class BuildInReadyOnceEvent extends Event {
                     if (!loaded.includes(command)) loaded.push(command);
                 }
             }
-            for (const [id, event] of [...client.events]) {
-                event.runType = 'event'
 
-                loaded.push(event)
+            for (const [id, event] of [...client.events]) {
+                event.runType = 'event';
+
+                loaded.push(event);
             }
 
             console.table(loaded, client.settings.logging);
         }
+        else {
+            Object.entries(client.commands).map(([type, commands]) => {
+                console.info(logStyle(`Loaded ${type} commands: ${commands.map(command => command?.data?.name || command?.name || command?.id).join(', ')}`, "text", "cyan"));
+            })
+        }
     }
+
 };
 
 module.exports = BuildInReadyOnceEvent;

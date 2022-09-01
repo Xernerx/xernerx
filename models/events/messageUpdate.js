@@ -1,7 +1,7 @@
 const { Event } = require('../commands/Event.js');
-const { messageArgs } = require("./../data/Arguments.js");
-const commandValidation = require('./../data/CommandValidation.js');
-const { messageUtil } = require('../data/Util.js');
+const { messageArgs } = require("./../utils/Arguments.js");
+const { commandValidation } = require('./../utils/CommandValidation.js');
+const { messageUtil } = require('../utils/Util.js');
 
 /**
  * @returns message command executor.

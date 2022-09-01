@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const { s } = require('@sapphire/shapeshift');
-const { color, config } = require('./data/Functions.js');
+const { color, config } = require('./utils/Functions.js');
 const { CommandHandler } = require('./handlers/CommandHandler.js');
 const { EventHandler } = require('./handlers/EventHandler.js');
 const { LanguageHandler } = require('./handlers/LanguageHandler.js');
@@ -29,7 +29,6 @@ class Client extends Discord.Client {
             ownerId: s.array(s.string).optional,
             ignoreOwner: s.boolean.optional,
             defaultCooldown: s.number.optional,
-            logging: s.array(s.string).optional,
             cacheTime: s.number.optional,
             userPermissions: s.array(s.string).optional,
             clientPermissions: s.array(s.string).optional,

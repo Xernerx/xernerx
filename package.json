@@ -1,6 +1,6 @@
 {
 	"name": "xernerx",
-	"version": "2.4.5",
+	"version": "2.5.0",
 	"description": "A bot framework for discord.js. [BETA]",
 	"main": "main.js",
 	"scripts": {

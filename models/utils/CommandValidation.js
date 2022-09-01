@@ -3,7 +3,7 @@ const { toPascalCase } = require('dumfunctions');
 
 const Cooldown = {};
 
-class CommandValidation {
+module.exports = new class CommandValidation {
     commandValidation(event, command, res = false) {
         function emit(reason, extra) {
             return event.client.emit('commandBlocked', event, reason, extra);
@@ -96,5 +96,3 @@ class CommandValidation {
         return res;
     }
 }
-
-module.exports = new CommandValidation().commandValidation;

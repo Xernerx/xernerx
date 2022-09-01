@@ -1,4 +1,4 @@
-class Arguments {
+module.exports = new class Arguments {
     /**
      * 
      * @param {object} interaction - Interaction event.
@@ -98,11 +98,4 @@ class Arguments {
 
         return args;
     }
-}
-
-args = new Arguments()
-
-module.exports = {
-    interactionArgs: args.interactionArgs,
-    messageArgs: args.messageArgs
 }
