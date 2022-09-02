@@ -36,12 +36,20 @@ class BuildInReadyOnceEvent extends Event {
                 loaded.push(event);
             }
 
+            for (const [id, inhibitor] of [...client.inhibitors]) {
+                inhibitor.runType = 'inhibitor';
+
+                loaded.push(inhibitor);
+            }
+
             console.table(loaded, client.settings.logging);
         }
         else {
             Object.entries(client.commands).map(([type, commands]) => {
                 console.info(logStyle(`Loaded ${type} commands: ${commands.map(command => command?.data?.name || command?.name || command?.id).join(', ')}`, "text", "cyan"));
             })
+
+            // add events and inhibitors;
         }
     }
 

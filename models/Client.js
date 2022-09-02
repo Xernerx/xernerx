@@ -1,88 +1,55 @@
 const Discord = require('discord.js');
 const { s } = require('@sapphire/shapeshift');
-const { color, config } = require('./utils/Functions.js');
+const { color } = require('./utils/Functions.js');
 const { CommandHandler } = require('./handlers/CommandHandler.js');
 const { EventHandler } = require('./handlers/EventHandler.js');
 const { LanguageHandler } = require('./handlers/LanguageHandler.js');
-const Loader = require('./handlers/Loader.js');
+const InhibitorHandler = require('./handlers/InhibitorHandler.js');
+const Handler = require('./handlers/Handler.js');
 
-/**
- * @param {string} guildId - Test guild ID. 
- * @param {boolean} global - Whether the bot should be globally or locally loaded. 
- * @param {string[]} prefix - An array of prefix'. 
- * @param {string[]} ownerId - An array of bot owners. 
- * @param {boolean} ignoreOwner - Whether the bot should ignore owner privileges. 
- * @param {number} defaultCooldown - A cooldown between each command in milliseconds. 
- * @returns Discord client ready to login.
- */
 class Client extends Discord.Client {
-    constructor(options = {}) {
+    constructor(options = {}, settings = {}, i18next = {}, config = {}) {
         super(options)
 
-        s.object({
-            // Required
-            guildId: s.string,
-            global: s.boolean,
+        this.client = new Discord.Client({ intents: options.intents });
 
-            // optionals
-            prefix: s.array(s.string).optional,
-            ownerId: s.array(s.string).optional,
-            ignoreOwner: s.boolean.optional,
-            defaultCooldown: s.number.optional,
-            cacheTime: s.number.optional,
-            userPermissions: s.array(s.string).optional,
-            clientPermissions: s.array(s.string).optional,
-            defer: s.object({
-                reply: s.boolean.optional,
-                ephemeral: s.boolean.optional
-            }).optional,
-        }).parse(options)
+        this.client.settings = s.object({
+            guildId: s.string.default(undefined),
+            global: s.boolean.default(false),
+            prefix: s.array(s.string).default([]),
+            ownerId: s.array(s.string).default([]),
+            ignoreOwner: s.boolean.default(false),
+            defaultCooldown: s.number.default(0),
+            cacheTime: s.number.default(300000),
+            userPermissions: s.array(s.string).default([]),
+            clientPermissions: s.array(s.string).default([]),
+            logging: s.union(s.boolean, s.array(s.string)).default(false),
+        }).parse(settings);
 
-        this.client = new Discord.Client({ intents: [options.intents || 0], partials: [options.partials] });
+        this.client.language = i18next;
 
-        this.client.settings = {
-            prefix: options.prefix || [],
+        this.client.color = color({ client: this.client, options: settings });
 
-            ownerId: options.ownerId || [],
+        this.client.config = config;
 
-            guildId: options.guildId || undefined,
+        this.client.data = {
+            messages: {},
 
-            global: options.global || false,
-
-            ignoreOwner: options.ignoreOwner || false,
-
-            defaultCooldown: options.defaultCooldown || 0,
-
-            logging: options.logging || undefined,
-
-            cacheTime: options.cacheTime || 300000,
-
-            userPermissions: options.userPermissions || [],
-
-            clientPermissions: options.clientPermissions || [],
-
-            defer: {
-                reply: options?.defer?.reply === undefined ? null : options?.defer?.reply,
-                ephemeral: options?.defer?.ephemeral === undefined ? null : options?.defer?.ephemeral
-            },
-        }
-
-        this.client.language = options.language;
-
-        this.client.color = color({ client: this.client, options: options });
-
-        this.client.config = config({ client: this.client, options: options });
-
-        this.client.messages = {};
+            cooldowns: {}
+        };
 
         this.client.modules = {
             commandHandler: new CommandHandler({ client: this.client }),
 
             eventHandler: new EventHandler({ client: this.client }),
 
-            languageHandler: new LanguageHandler(this.client),
+            inhibitorHandler: new InhibitorHandler(this.client),
 
-            loader: new Loader(this.client)
+            languageHandler: new LanguageHandler(this.client)
+        }
+
+        this.client.util = {
+            handler: new Handler(this.client)
         }
 
         return this.client;

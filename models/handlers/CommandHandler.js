@@ -1,10 +1,5 @@
-const fs = require('fs');
 const Discord = require('discord.js');
-const { REST } = require('@discordjs/rest');
-const { Routes, GatewayVersion } = require('discord-api-types/v10');
-const { delay, logStyle } = require('dumfunctions')
-const paths = require("path");
-const Loader = require('./Loader.js');
+const Handler = require('./Handler.js');
 
 /**
  * @param {object} client - The client.
@@ -15,8 +10,6 @@ class CommandHandler {
 
         this.client = client;
 
-        this.commands = [];
-
         client.commands = {
             message: new Discord.Collection(),
 
@@ -25,7 +18,7 @@ class CommandHandler {
             contextMenu: new Discord.Collection()
         }
 
-        this.load = new Loader(client);
+        this.load = new Handler(client);
     }
 
     loadAllInteractionCommands(path, logging = false) {

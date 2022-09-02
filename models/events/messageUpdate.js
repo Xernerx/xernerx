@@ -2,6 +2,7 @@ const { Event } = require('../commands/Event.js');
 const { messageArgs } = require("./../utils/Arguments.js");
 const { commandValidation } = require('./../utils/CommandValidation.js');
 const { messageUtil } = require('../utils/Util.js');
+const { inhibitorsValidation } = require('../utils/InhibitorsValidation.js');
 
 /**
  * @returns message command executor.
@@ -16,37 +17,64 @@ class BuildInMessageUpdateEvent extends Event {
     }
 
     async run(oldMessage, newMessage) {
-        if (newMessage?.client?.settings?.prefix?.length <= 0) return;
-
-        await messageUtil(newMessage, "edit");
-
         if (!oldMessage.author.bot && !newMessage.author.bot) {
+            await messageUtil(newMessage, "edit");
 
-            if (!newMessage.client.messages[newMessage.id] === undefined) return;
+            let commands = newMessage.client.commands.message;
 
-            for (const prefix of newMessage.client.settings.prefix) {
-                if (!newMessage.content.startsWith(prefix)) continue;
+            commands.filter(c => c.regex).map(async command => {
+                let regex = command.regex.split(/\//).slice(1);
 
-                let command = newMessage.content.replace(prefix, "").split(/ +/).shift().toLowerCase();
+                regex = RegExp(...regex);
 
-                if (!newMessage.client.commands.message.has(command) || command === '') return;
+                if (newMessage.content.match(regex)) {
+                    try {
+                        if (command.conditions && (await command.conditions(newMessage))) return;
 
-                command = newMessage.client.commands.message.get(command);
+                        return await command.exec(newMessage);
+                    }
+                    catch (error) {
+                        newMessage.client.emit("error", newMessage, error);
+                    }
+                };
+            })
 
-                command.client = newMessage.client;
+            if (newMessage?.client?.settings?.prefix?.length <= 0) return;
 
-                const args = await messageArgs({ message: newMessage, command: command });
+            if (!newMessage.client.data.messages[newMessage.id] === undefined) return;
 
-                if (commandValidation(newMessage, command)) return;
+            commands.filter(c => !c.regex).map(async command => {
+                command.prefix.map(prefix => {
+                    this.commandCheck(newMessage, prefix, command);
+                })
 
-                try {
-                    command.exec(newMessage, args);
+                newMessage.client.settings.prefix.map(prefix => {
+                    this.commandCheck(newMessage, prefix, command);
+                });
+            })
+        }
+    }
 
-                    return newMessage.client.emit('commandRun', newMessage, 'message', command);
-                }
-                catch (error) {
-                    newMessage.client.emit("error", newMessage, error);
-                }
+    async commandCheck(message, prefix, command) {
+        for (const alias of command.aliases) {
+            if (message.content.split(/ +/)[0] !== prefix + alias) continue;
+
+            if (inhibitorsValidation(message, command)) break;
+
+            const args = await messageArgs({ message: message, command: command });
+
+            if (commandValidation(message, command)) break;
+
+            try {
+                if (command.conditions && (await command.conditions(message, args))) break;
+
+                await command.exec(message, args);
+
+                return message.client.emit('commandRun', message, 'message', command);
+            }
+            catch (error) {
+                message.client.emit("error", message, error);
+                break;
             }
         }
     }

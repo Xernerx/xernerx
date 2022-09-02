@@ -3,6 +3,7 @@ const { interactionArgs } = require('./../utils/Arguments.js');
 const { InteractionType } = require('discord.js')
 const { commandValidation } = require('./../utils/CommandValidation.js');
 const { interactionUtil } = require('./../utils/Util.js');
+const { inhibitorsValidation } = require('../utils/InhibitorsValidation.js');
 /**
  * @returns interaction command executor.
  */
@@ -16,11 +17,13 @@ class BuildInInteractionEvent extends Event {
     }
 
     async run(interaction) {
-        await interactionUtil(interaction)
+        await interactionUtil(interaction);
 
         if (interaction.type == InteractionType.ApplicationCommand) {
             if (interaction.client.commands.interaction.has(interaction.commandName)) {
                 let command = interaction.client.commands.interaction.get(interaction.commandName);
+
+                if (inhibitorsValidation(interaction, command)) return;
 
                 await this.defer(interaction, command);
 
@@ -35,7 +38,9 @@ class BuildInInteractionEvent extends Event {
                 if (commandValidation(interaction, command)) return;
 
                 try {
-                    await command.exec(interaction, { group: group, subcommand: subcommand, args: args });
+                    if (command.conditions) return command.conditions(interaction, { group, subcommand, args });
+
+                    await command.exec(interaction, { group, subcommand, args });
 
                     return interaction.client.emit('commandRun', interaction, "interaction", command)
                 }
@@ -47,11 +52,15 @@ class BuildInInteractionEvent extends Event {
             if (interaction.client.commands.contextMenu.has(interaction.commandName)) {
                 let command = interaction.client.commands.contextMenu.get(interaction.commandName);
 
+                if (inhibitorsValidation(interaction)) return;
+
                 await this.defer(interaction, command);
 
                 command.client = interaction.client;
 
                 try {
+                    if (command.conditions) return command.conditions(interaction);
+
                     await command.exec(interaction);
 
                     return interaction.client.emit('commandRun', interaction, 'contextMenu', command);

@@ -1,6 +1,6 @@
 {
 	"name": "xernerx",
-	"version": "2.5.0",
+	"version": "2.6.0",
 	"description": "A bot framework for discord.js. [BETA]",
 	"main": "main.js",
 	"scripts": {
@@ -17,10 +17,10 @@
 	},
 	"homepage": "https://github.com/TheDummi/xernerx#readme",
 	"dependencies": {
-		"@discordjs/rest": "1.0.1",
+		"@discordjs/rest": "1.1.0",
 		"@sapphire/shapeshift": "3.5.1",
-		"discord-api-types": "^0.37.3",
-		"discord.js": "^14.2.0",
+		"discord-api-types": "^0.37.5",
+		"discord.js": "^14.3.0",
 		"dumfunctions": "^1.0.7",
 		"i18next": "^21.9.1"
 	},

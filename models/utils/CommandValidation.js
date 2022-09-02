@@ -1,8 +1,6 @@
 const Discord = require('discord.js');
 const { toPascalCase } = require('dumfunctions');
 
-const Cooldown = {};
-
 module.exports = new class CommandValidation {
     commandValidation(event, command, res = false) {
         function emit(reason, extra) {
@@ -11,16 +9,16 @@ module.exports = new class CommandValidation {
 
         if ((command?.ignoreOwner || event?.client?.settings?.ignoreOwner) && event?.client?.settings?.ownerId?.includes((event.user || event.author).id)) return res;
 
-        if (Cooldown[(event.user || event.author).id]) {
+        if (event.client.data.cooldowns[(event.user || event.author).id]) {
             res = true;
-            return emit("command on cooldown", (Cooldown[(event.user || event.author).id] - (event.editedTimestamp || event.createdTimestamp)));
+            return emit("command on cooldown", (event.client.data.cooldowns[(event.user || event.author).id] - (event.editedTimestamp || event.createdTimestamp)));
         }
 
-        if (!Cooldown[(event.user || event.author).id]) {
-            Cooldown[(event.user || event.author).id] = ((event.editedTimestamp || event.createdTimestamp) + (command.cooldown || event.client.settings.defaultCooldown || 0));
+        if (!event.client.data.cooldowns[(event.user || event.author).id]) {
+            event.client.data.cooldowns[(event.user || event.author).id] = ((event.editedTimestamp || event.createdTimestamp) + (command.cooldown || event.client.settings.defaultCooldown || 0));
 
             setTimeout(() => {
-                delete Cooldown[(event.user || event.author).id]
+                delete event.client.data.cooldowns[(event.user || event.author).id]
             }, command.cooldown || event?.client?.settings?.defaultCooldown || 0);
         }
 

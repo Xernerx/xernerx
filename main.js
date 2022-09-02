@@ -4,6 +4,7 @@ const { Client } = require('./models/Client.js'),
     { MessageCommand } = require('./models/commands/MessageCommand.js'),
     { InteractionCommand } = require('./models/commands/InteractionCommand.js'),
     { Event } = require('./models/commands/Event.js'),
+    { Inhibitor } = require('./models/commands/Inhibitor.js'),
     { LanguageHandler } = require('./models/handlers/LanguageHandler.js'),
     { ContextMenuCommand } = require('./models/commands/ContextMenuCommand.js'),
     pkg = require('./package.json'),
@@ -27,6 +28,8 @@ module.exports = {
 
     // Events
     Event,
+
+    Inhibitor,
 
     // Discord
     Discord,

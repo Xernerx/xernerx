@@ -1,6 +1,7 @@
 const colors = require('../data/colors.json');
 const { EmbedBuilder, ActionRowBuilder, SelectMenuBuilder, Embed, ButtonBuilder, ButtonStyle } = require('discord.js');
 const opts = require('../data/options.json');
+const { logStyle } = require('dumfunctions');
 
 function reply(interaction, text) {
     return (interaction.replied || interaction.deferred) ? interaction.editReply(text) : interaction.reply(text);
@@ -152,7 +153,7 @@ module.exports = new class Functions {
 
                             else {
                                 commandInfo = {
-                                    name: command?.data?.name || command?.id,
+                                    name: command?.data?.name || command?.name || command?.id,
                                     description: command?.data?.description || command?.description,
                                     category: command.category
                                 }
@@ -162,7 +163,7 @@ module.exports = new class Functions {
 
                     else {
                         commandInfo = {
-                            name: command?.data?.name || command?.id,
+                            name: command?.data?.name || command?.name || command?.id,
                             description: command?.data?.description || command?.description,
                             category: command.category
                         }
@@ -175,7 +176,7 @@ module.exports = new class Functions {
             return cmds;
         }
 
-        if (!cmd) return [interaction?.commandName || interaction.content?.replace(interaction.client.settings.prefix.find(p => interaction.content.startsWith(p)), "").split(/ +/)[0], interaction?.options?._group, interaction?.options?._subcommand].join(' ').replace(/  +/g, " ").trim();
+        if (!cmd) return [interaction?.commandName || interaction.name || interaction.content?.replace(interaction.client.settings.prefix.find(p => interaction.content.startsWith(p)), "").split(/ +/)[0], interaction?.options?._group, interaction?.options?._subcommand].join(' ').replace(/  +/g, " ").trim();
     }
 
     buttonPaginator(interaction, embeds, options = {}) {

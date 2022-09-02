@@ -3,7 +3,7 @@ const { selectMenuPaginator, buttonPaginator, commandName, uptime, reply } = req
 module.exports = new class Util {
     async messageUtil(message, type) {
         setTimeout(() => {
-            if (message.client.messages[message.id] === null || message.client.messages[message.id]) delete message.client.messages[message.id];
+            if (message.client.data.messages[message.id] === null || message.client.data.messages[message.id]) delete message.client.data.messages[message.id];
 
             if (message.channel.messages.cache.has(message.id)) message.channel.messages.cache.delete(message.id);
         }, message.client.settings.cacheTime);
@@ -16,12 +16,12 @@ module.exports = new class Util {
         }
 
         if (type == "create") {
-            message.client.messages[message.id] = null;
+            message.client.data.messages[message.id] = null;
 
             message.util.send = async (e) => {
                 const msg = await message.channel.send(e);
 
-                message.client.messages[message.id] = msg.id;
+                message.client.data.messages[message.id] = msg.id;
 
                 return msg;
             }
@@ -29,7 +29,7 @@ module.exports = new class Util {
             message.util.reply = async (e) => {
                 const msg = await message.reply(e);
 
-                message.client.messages[message.id] = msg.id;
+                message.client.data.messages[message.id] = msg.id;
 
                 return msg;
             }
@@ -38,11 +38,11 @@ module.exports = new class Util {
         }
 
         if (type == 'edit') {
-            if (message.client.messages[message.id] === null) {
+            if (message.client.data.messages[message.id] === null) {
                 message.util.send = async (e) => {
                     const msg = await message.channel.send(e);
 
-                    message.client.messages[message.id] = msg.id;
+                    message.client.data.messages[message.id] = msg.id;
 
                     return msg;
                 }
@@ -50,7 +50,7 @@ module.exports = new class Util {
                 message.util.reply = async (e) => {
                     const msg = await message.reply(e);
 
-                    message.client.messages[message.id] = msg.id;
+                    message.client.data.messages[message.id] = msg.id;
 
                     return msg;
                 }
@@ -58,8 +58,8 @@ module.exports = new class Util {
                 return;
             }
 
-            else if (message.client.messages[message.id] !== null) {
-                const msg = await message.channel.messages.fetch(message.client.messages[message.id]);
+            else if (message.client.data.messages[message.id] !== null) {
+                const msg = await message.channel.messages.fetch(message.client.data.messages[message.id]);
 
                 message.util.send = async (e) => {
                     try {

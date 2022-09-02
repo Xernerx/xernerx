@@ -17,6 +17,7 @@ class MessageCommand {
             name: s.string,
             aliases: s.array(s.string).optional,
             description: s.string,
+            prefix: s.array(s.string).optional,
             info: s.string.optional,
             owner: s.boolean.optional,
             admin: s.boolean.optional,
@@ -34,9 +35,13 @@ class MessageCommand {
 
         this.id = id;
 
+        this.name = options.name;
+
         this.aliases = [options.name, ...(options.aliases ? options.aliases : [])];
 
-        this.type = options.type;
+        this.regex = options.regex instanceof RegExp ? String(options.regex) : undefined;
+
+        this.prefix = options.prefix || [];
 
         this.description = options.description || undefined;
 

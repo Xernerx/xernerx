@@ -56,9 +56,11 @@ class EventHandler {
     }
 
     emitter(type) {
-        if (type == 'client') return this.client;
-        if (type == 'rest') return this.client.rest;
-        else return eval(type)
+        const client = this.client;
+
+        if (type == 'client') return client;
+        if (type == 'rest') return client.rest;
+        else return eval(type);
     }
 }
 
