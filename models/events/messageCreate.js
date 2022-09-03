@@ -42,7 +42,7 @@ class BuildInMessageEvent extends Event {
             if (message?.client?.settings?.prefix?.length <= 0) return;
 
             commands.filter(c => !c.regex).map(async command => {
-                command.prefix.map(prefix => {
+                command?.prefix?.map(prefix => {
                     this.commandCheck(message, prefix, command);
                 })
 

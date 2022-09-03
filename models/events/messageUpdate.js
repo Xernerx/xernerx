@@ -44,7 +44,7 @@ class BuildInMessageUpdateEvent extends Event {
             if (!newMessage.client.data.messages[newMessage.id] === undefined) return;
 
             commands.filter(c => !c.regex).map(async command => {
-                command.prefix.map(prefix => {
+                command?.prefix?.map(prefix => {
                     this.commandCheck(newMessage, prefix, command);
                 })
 
