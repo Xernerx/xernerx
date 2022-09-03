@@ -58,13 +58,13 @@ module.exports = new class CommandValidation {
                 if (!event?.member?.permissions?.has(Discord.PermissionFlagsBits[toPascalCase(permission)])) missingPerms.push(toPascalCase(permission));
             }
 
-            if (missingPerms.length >= 1) {
+            if (missingPerms?.length >= 1) {
                 res = true;
                 return emit("missing user permissions", missingPerms);
             }
         }
 
-        if (event?.guild && command?.clientPermissions.length >= 1 || event.client.settings.clientPermissions.length >= 1) {
+        if (event?.guild && command?.clientPermissions?.length >= 1 || event?.client?.settings?.clientPermissions?.length >= 1) {
             let missingPerms = [];
 
             for (const permission of command?.clientPermissions) {
