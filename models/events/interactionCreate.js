@@ -23,7 +23,7 @@ class BuildInInteractionEvent extends Event {
             if (interaction.client.commands.interaction.has(interaction.commandName)) {
                 let command = interaction.client.commands.interaction.get(interaction.commandName);
 
-                if (inhibitorsValidation(interaction, command)) return;
+                if (await inhibitorsValidation(interaction, command)) return;
 
                 await this.defer(interaction, command);
 

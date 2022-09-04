@@ -57,7 +57,7 @@ class BuildInMessageEvent extends Event {
         for (const alias of command.aliases) {
             if (message.content.split(/ +/)[0] !== prefix + alias) continue;
 
-            if (inhibitorsValidation(message, command)) break;
+            if (await inhibitorsValidation(message, command)) break;
 
             const args = await messageArgs({ message: message, command: command });
 

@@ -12,9 +12,9 @@ const { Client } = require('./models/Client.js'),
     Discord = require('discord.js'),
     i18next = require('i18next');
 
-module.exports = {
+const exp = {
     // Client
-    Client,
+    XernerxClient: Client,
 
     // Handlers
     CommandHandler,
@@ -38,4 +38,10 @@ module.exports = {
 
     // Details
     version: pkg.version,
-} 
+}
+
+for (const [key, val] of Object.entries(Discord)) {
+    exp[key] = val;
+}
+
+module.exports = exp;
