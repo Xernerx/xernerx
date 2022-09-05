@@ -41,6 +41,8 @@ const exp = {
 }
 
 for (const [key, val] of Object.entries(Discord)) {
+    if (key == 'version') continue;
+
     exp[key] = val;
 }
 
