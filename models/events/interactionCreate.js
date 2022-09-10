@@ -38,7 +38,7 @@ class BuildInInteractionEvent extends Event {
                 if (commandValidation(interaction, command)) return;
 
                 try {
-                    if (await command.conditions(interaction, { group, subcommand, args })) return;
+                    if (command.conditions && await command.conditions(interaction, { group, subcommand, args })) return;
 
                     await command.exec(interaction, { group, subcommand, args });
 
@@ -59,7 +59,7 @@ class BuildInInteractionEvent extends Event {
                 command.client = interaction.client;
 
                 try {
-                    if (await command.conditions(interaction)) return;
+                    if (command.conditions && await command.conditions(interaction)) return;
 
                     await command.exec(interaction);
 
