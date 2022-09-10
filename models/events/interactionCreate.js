@@ -59,7 +59,7 @@ class BuildInInteractionEvent extends Event {
                 command.client = interaction.client;
 
                 try {
-                    if (command.conditions) return command.conditions(interaction);
+                    if (await command.conditions(interaction, args)) return;
 
                     await command.exec(interaction);
 
