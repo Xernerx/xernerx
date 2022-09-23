@@ -39,12 +39,14 @@ class BuildInMessageEvent extends Event {
                 };
             })
 
-            if (message?.client?.settings?.prefix?.length <= 0) return;
+            if (message?.client?.settings?.prefix?.length <= 0 && !message.client.settings.mentionPrefix) return;
 
             commands.filter(c => !c.regex).map(async command => {
                 command?.prefix?.map(prefix => {
                     this.commandCheck(message, prefix, command);
                 })
+
+                if (message.client.settings.mentionPrefix && !message.client.settings.prefix.includes(`<@${message.client.user.id}>`)) message.client.settings.prefix.push(`<@${message.client.user.id}>`)
 
                 message.client.settings.prefix.map(prefix => {
                     this.commandCheck(message, prefix, command);

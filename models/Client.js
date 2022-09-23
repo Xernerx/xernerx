@@ -17,6 +17,7 @@ class Client extends Discord.Client {
             guildId: s.string.default(undefined),
             global: s.boolean.default(false),
             prefix: s.array(s.string).default([]),
+            mentionPrefix: s.boolean.optional,
             ownerId: s.array(s.string).default([]),
             ignoreOwner: s.boolean.default(false),
             defaultCooldown: s.number.default(0),

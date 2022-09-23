@@ -1,155 +1,155 @@
 body {
-  font-family: "Cascadia Code";
-  color: white;
-  background: #424549;
-  margin: 0;
+	font-family: "Cascadia Code";
+	color: white;
+	background: #424549;
+	margin: 0;
 }
 
 .top-bar {
-  background-color: rgba(0, 0, 0, 0.4);
-  display: flex;
-  align-items: baseline;
-  border: 2px solid red;
-  border-radius: 0.5rem;
-  gap: 1rem;
-  padding: 0.5rem;
-  margin: 10;
-  position: sticky;
+	background-color: rgba(0, 0, 0, 0.4);
+	display: flex;
+	align-items: baseline;
+	border: 2px solid red;
+	border-radius: 0.5rem;
+	gap: 1rem;
+	padding: 0.5rem;
+	margin: 10;
+	position: sticky;
 }
 
 .link {
-  background: none;
-  border: none;
-  text-decoration: none;
-  color: white;
-  cursor: pointer;
-  font-family: inherit;
-  font-size: inherit;
-  cursor: pointer;
-  padding: 0;
+	background: none;
+	border: none;
+	text-decoration: none;
+	color: white;
+	cursor: pointer;
+	font-family: inherit;
+	font-size: inherit;
+	cursor: pointer;
+	padding: 0;
 }
 
 .dropdown.active > .link,
 .link:hover {
-  color: black;
-  background: red;
-  border-radius: 0.5rem;
+	color: black;
+	background: red;
+	border-radius: 0.5rem;
 }
 
 .dropdown {
-  position: relative;
+	position: relative;
 }
 
 .dropdown-menu {
-  position: absolute;
-  left: 0;
-  top: calc(100% + 0.25rem);
-  background-color: rgba(0, 0, 0, 0.4);
-  padding: 0.75rem;
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 5px, 0 rgba(0, 0, 0, 0.1);
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(-10px);
-  transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+	position: absolute;
+	left: 0;
+	top: calc(100% + 0.25rem);
+	background-color: rgba(0, 0, 0, 0.4);
+	padding: 0.75rem;
+	border-radius: 0.5rem;
+	box-shadow: 0 2px 5px, 0 rgba(0, 0, 0, 0.1);
+	opacity: 0;
+	pointer-events: none;
+	transform: translateY(-10px);
+	transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
 }
 
 .dropdown.active > .link + .dropdown-menu {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
+	opacity: 1;
+	transform: translateY(0);
+	pointer-events: auto;
 }
 
 .side-bar {
-  list-style-type: none;
-  border: 2px solid red;
-  border-radius: 0.5rem;
-  margin: 10px;
-  padding: 10;
-  width: 20%;
-  overflow: auto;
-  height: 85%;
-  text-align: left;
-  background-color: rgba(0, 0, 0, 0.4);
-  top: 6.4%;
-  position: fixed;
+	list-style-type: none;
+	border: 2px solid red;
+	border-radius: 0.5rem;
+	margin: 10px;
+	padding: 10;
+	width: 20%;
+	overflow: auto;
+	height: 85%;
+	text-align: left;
+	background-color: rgba(0, 0, 0, 0.4);
+	top: 6.4%;
+	position: fixed;
 }
 
 .page {
-  margin: 0;
-  right: 0;
+	margin: 0;
+	right: 0;
 }
 
 #page {
-  position: absolute;
-  right: 0;
-  width: 75vmax;
+	position: absolute;
+	right: 0;
+	width: 75vmax;
 }
 
 .component {
-  border-radius: 0.5rem;
-  border: 2px solid red;
-  padding: 10;
-  margin: 10px;
-  background-color: #53565a;
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
-  right: 0;
+	border-radius: 0.5rem;
+	border: 2px solid red;
+	padding: 10;
+	margin: 10px;
+	background-color: #53565a;
+	box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+	right: 0;
 }
 
 .index {
-  align-items: left;
+	align-items: left;
 }
 
 table {
-  border-collapse: collapse;
-  display: block;
-  overflow-x: auto;
-  white-space: nowrap;
-  width: 100%;
+	border-collapse: collapse;
+	display: block;
+	overflow-x: auto;
+	white-space: nowrap;
+	width: 100%;
 }
 
 tr,
 td {
-  align-items: center;
-  width: 100%;
-  padding: 10;
-  border: 2px solid red;
+	align-items: center;
+	width: 100%;
+	padding: 10;
+	border: 2px solid red;
 }
 
 #table-header {
-  background-color: rgba(0, 0, 0, 0.4);
+	background-color: rgba(0, 0, 0, 0.4);
 }
 
 .button {
-  font-family: Arial;
-  color: black;
-  border-radius: 0.5rem;
-  background-color: red; /* Green */
-  border: none;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 20;
+	font-family: Arial;
+	color: black;
+	border-radius: 0.5rem;
+	background-color: red; /* Green */
+	border: none;
+	padding: 15px 32px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 20;
 }
 
 .select {
-  background: none;
-  border: none;
-  text-decoration: none;
-  color: white;
-  cursor: pointer;
-  font-family: inherit;
-  font-size: inherit;
-  cursor: pointer;
-  padding: 0;
-  border: 2px solid red;
-  width: 100%;
-  border-radius: 0.5rem;
+	background: none;
+	border: none;
+	text-decoration: none;
+	color: white;
+	cursor: pointer;
+	font-family: inherit;
+	font-size: inherit;
+	cursor: pointer;
+	padding: 0;
+	border: 2px solid red;
+	width: 100%;
+	border-radius: 0.5rem;
 }
 
 .select:hover {
-  background-color: none;
-  background: none;
-  text-decoration: none;
+	background-color: none;
+	background: none;
+	text-decoration: none;
 }
