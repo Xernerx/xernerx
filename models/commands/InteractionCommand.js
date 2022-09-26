@@ -49,7 +49,7 @@ class InteractionCommand {
         }
 
         else if (options?.groups?.length > 0) {
-            this.addSubcommandGroups(options.groups)
+            this.addSubcommandGroups(options.groups);
         }
 
         this.id = id;

@@ -116,62 +116,59 @@ module.exports = new class Functions {
             for (const commands of Object.values(interaction.client.commands)) {
                 let commandInfo = {};
 
-                if (commands.has(cmd)) {
-                    const command = commands.get(cmd);
+                const command = commands.find(command => command?.data?.name === cmd.toLowerCase() || command?.name === cmd.toLowerCase() || command?.id == cmd.toLowerCase());
 
+                if (command) {
                     if (command?.data?.options?.length > 0) {
                         command?.data?.options?.map(option => {
                             if (!option?.type) {
                                 if (option?.options?.length > 0) {
                                     option?.options?.map(opt => {
                                         if (!opt.type) {
-                                            commandInfo = {
+                                            cmds.push(commandInfo = {
                                                 name: command?.data?.name + " " + option?.name + " " + opt?.name,
                                                 description: opt.description,
                                                 category: command.category
-                                            }
+                                            })
                                         }
 
                                         else {
-                                            commandInfo = {
+                                            cmds.push(commandInfo = {
                                                 name: command?.data?.name + " " + option?.name,
                                                 description: option?.description,
                                                 category: command.category
-                                            }
+                                            })
                                         }
                                     })
                                 }
 
                                 else {
-                                    commandInfo = {
+                                    cmds.push(commandInfo = {
                                         name: command?.data?.name + " " + option?.name,
                                         description: option?.description,
                                         category: command.category
-                                    }
+                                    })
                                 }
                             }
 
                             else {
-                                commandInfo = {
+                                cmds.push(commandInfo = {
                                     name: command?.data?.name || command?.name || command?.id,
                                     description: command?.data?.description || command?.description,
                                     category: command.category
-                                }
+                                })
                             }
                         })
                     }
 
                     else {
-                        commandInfo = {
+                        cmds.push(commandInfo = {
                             name: command?.data?.name || command?.name || command?.id,
                             description: command?.data?.description || command?.description,
                             category: command.category
-                        }
+                        })
                     }
-
-                    cmds.push(commandInfo);
                 }
-
             }
             return cmds;
         }
