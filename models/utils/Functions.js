@@ -125,48 +125,58 @@ module.exports = new class Functions {
                                 if (option?.options?.length > 0) {
                                     option?.options?.map(opt => {
                                         if (!opt.type) {
-                                            cmds.push(commandInfo = {
+                                            commandInfo = {
                                                 name: command?.data?.name + " " + option?.name + " " + opt?.name,
                                                 description: opt.description,
                                                 category: command.category
-                                            })
+                                            }
+
+                                            if (!cmds.find(c => c.name === commandInfo.name)) cmds.push(commandInfo);
                                         }
 
                                         else {
-                                            cmds.push(commandInfo = {
+                                            commandInfo = {
                                                 name: command?.data?.name + " " + option?.name,
                                                 description: option?.description,
                                                 category: command.category
-                                            })
+                                            }
+
+                                            if (!cmds.find(c => c.name === commandInfo.name)) cmds.push(commandInfo);
                                         }
                                     })
                                 }
 
                                 else {
-                                    cmds.push(commandInfo = {
+                                    commandInfo = {
                                         name: command?.data?.name + " " + option?.name,
                                         description: option?.description,
                                         category: command.category
-                                    })
+                                    }
+
+                                    if (!cmds.find(c => c.name === commandInfo.name)) cmds.push(commandInfo);
                                 }
                             }
 
                             else {
-                                cmds.push(commandInfo = {
+                                commandInfo = {
                                     name: command?.data?.name || command?.name || command?.id,
                                     description: command?.data?.description || command?.description,
                                     category: command.category
-                                })
+                                }
+
+                                if (!cmds.find(c => c.name === commandInfo.name)) cmds.push(commandInfo);
                             }
                         })
                     }
 
                     else {
-                        cmds.push(commandInfo = {
+                        commandInfo = {
                             name: command?.data?.name || command?.name || command?.id,
                             description: command?.data?.description || command?.description,
                             category: command.category
-                        })
+                        }
+
+                        if (!cmds.find(c => c.name === commandInfo.name)) cmds.push(commandInfo);
                     }
                 }
             }
