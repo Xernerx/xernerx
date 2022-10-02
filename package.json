@@ -17,12 +17,12 @@
 	},
 	"homepage": "https://github.com/TheDummi/xernerx#readme",
 	"dependencies": {
-		"@discordjs/rest": "1.1.0",
-		"@sapphire/shapeshift": "3.5.1",
-		"discord-api-types": "^0.37.5",
-		"discord.js": "^14.3.0",
+		"@discordjs/rest": "1.2.0",
+		"@sapphire/shapeshift": "3.6.0",
+		"discord-api-types": "^0.37.11",
+		"discord.js": "^14.5.0",
 		"dumfunctions": "^1.0.7",
-		"i18next": "^21.9.1"
+		"i18next": "^21.9.2"
 	},
 	"packageManager": "npm@8.5.5"
 }
