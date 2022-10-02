@@ -85,7 +85,7 @@ module.exports = new class Functions {
         (async () => {
             let embed = options.index;
 
-            let m = options.send ? await interaction.channel.send({ embeds: [embed], components: [options.row] }) : await reply(interaction, { embeds: [embed], components: [options.row] })
+            let m = options.send ? await interaction.channel.send({ embeds: [embed], components: [options.row, ...options.components] }) : await reply(interaction, { embeds: [embed], components: [options.row, ...options.components] })
 
             interaction.channel.createMessageComponentCollector({ filter: options.filter, time: options.time || 300000 })
 
@@ -206,7 +206,7 @@ module.exports = new class Functions {
         (async () => {
             let embed = embeds[options.index || 0];
 
-            let m = options.send ? await interaction.channel.send({ embeds: [embed], components: [options.row] }) : await reply(interaction, { embeds: [embed], components: [options.row] });
+            let m = options.send ? await interaction.channel.send({ embeds: [embed], components: [options.row, ...options.components] }) : await reply(interaction, { embeds: [embed], components: [options.row, ...options.components] });
 
             const collector = interaction.channel.createMessageComponentCollector({ filter: options.filter, time: options.time || 300000 })
 
