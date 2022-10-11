@@ -1,155 +1,96 @@
 body {
+	margin: 0;
 	font-family: "Cascadia Code";
 	color: white;
-	background: #424549;
-	margin: 0;
+	background: repeating-linear-gradient(
+		-45deg,
+		red 0%,
+		yellow 7.14%,
+		limegreen 14.28%,
+		cyan 21.4%,
+		blue 28.56%,
+		magenta 35.7%,
+		violet 42.84%,
+		red 50%
+	);
+	background-size: 600vw 600vw;
+	animation: slide 30s linear infinite forwards;
+	overflow-x: hidden;
+}
+
+@keyframes slide {
+	0% {
+		background-position-x: 0%;
+	}
+	100% {
+		background-position-x: 100%;
+	}
+}
+
+table {
+	border-radius: 0.5rem;
+	background-color: rgba(0, 0, 0, 0.4);
+	text-align: left;
+	table-layout: fixed;
+	width: 100%;
+	border-collapse: collapse;
+}
+
+th {
+	padding: 10px;
+}
+
+td {
+	padding: 2px;
+	border: 2px solid rgba(0, 0, 0, 0.4);
 }
 
 .top-bar {
+	position: sticky;
 	background-color: rgba(0, 0, 0, 0.4);
 	display: flex;
 	align-items: baseline;
 	border: 2px solid red;
-	border-radius: 0.5rem;
-	gap: 1rem;
-	padding: 0.5rem;
-	margin: 10;
-	position: sticky;
-}
-
-.link {
-	background: none;
-	border: none;
-	text-decoration: none;
-	color: white;
-	cursor: pointer;
-	font-family: inherit;
-	font-size: inherit;
-	cursor: pointer;
-	padding: 0;
-}
-
-.dropdown.active > .link,
-.link:hover {
-	color: black;
-	background: red;
-	border-radius: 0.5rem;
-}
-
-.dropdown {
-	position: relative;
-}
-
-.dropdown-menu {
-	position: absolute;
-	left: 0;
-	top: calc(100% + 0.25rem);
-	background-color: rgba(0, 0, 0, 0.4);
-	padding: 0.75rem;
-	border-radius: 0.5rem;
-	box-shadow: 0 2px 5px, 0 rgba(0, 0, 0, 0.1);
-	opacity: 0;
-	pointer-events: none;
-	transform: translateY(-10px);
-	transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
-}
-
-.dropdown.active > .link + .dropdown-menu {
-	opacity: 1;
-	transform: translateY(0);
-	pointer-events: auto;
-}
-
-.side-bar {
-	list-style-type: none;
-	border: 2px solid red;
-	border-radius: 0.5rem;
+	padding: 10px;
 	margin: 10px;
-	padding: 10;
-	width: 20%;
-	overflow: auto;
-	height: 85%;
-	text-align: left;
-	background-color: rgba(0, 0, 0, 0.4);
-	top: 6.4%;
-	position: fixed;
+	gap: 1px;
+	border-radius: 0.5rem;
 }
 
 .page {
-	margin: 0;
-	right: 0;
-}
-
-#page {
-	position: absolute;
-	right: 0;
-	width: 75vmax;
+	position: relative;
+	left: 23%;
+	padding: 10px;
 }
 
 .component {
+	border: 2px solid red;
 	border-radius: 0.5rem;
-	border: 2px solid red;
-	padding: 10;
-	margin: 10px;
-	background-color: #53565a;
-	box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
-	right: 0;
-}
-
-.index {
-	align-items: left;
-}
-
-table {
-	border-collapse: collapse;
-	display: block;
-	overflow-x: auto;
-	white-space: nowrap;
-	width: 100%;
-}
-
-tr,
-td {
-	align-items: center;
-	width: 100%;
-	padding: 10;
-	border: 2px solid red;
-}
-
-#table-header {
 	background-color: rgba(0, 0, 0, 0.4);
+	padding: 10px;
+	width: 74.7%;
 }
 
-.button {
-	font-family: Arial;
-	color: black;
-	border-radius: 0.5rem;
-	background-color: red; /* Green */
-	border: none;
-	padding: 15px 32px;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	font-size: 20;
-}
-
-.select {
-	background: none;
-	border: none;
-	text-decoration: none;
-	color: white;
-	cursor: pointer;
-	font-family: inherit;
-	font-size: inherit;
-	cursor: pointer;
-	padding: 0;
+.side-bar {
+	position: absolute;
+	background-color: rgba(0, 0, 0, 0.4);
+	display: flex;
+	align-items: baseline;
 	border: 2px solid red;
-	width: 100%;
+	padding: 10px;
+	margin: 10px;
+	gap: 1px;
+	border-radius: 0.5rem;
+	width: 20%;
+	height: 100%;
+	overflow: auto;
+}
+
+.table-header {
+	background: rgba(255, 0, 0, 0.8);
 	border-radius: 0.5rem;
 }
 
-.select:hover {
-	background-color: none;
-	background: none;
-	text-decoration: none;
+.code {
+	background: rgba(0, 0, 0, 0.7);
 }

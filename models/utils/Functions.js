@@ -1,7 +1,6 @@
 const colors = require('../data/colors.json');
 const { EmbedBuilder, ActionRowBuilder, SelectMenuBuilder, Embed, ButtonBuilder, ButtonStyle } = require('discord.js');
 const opts = require('../data/options.json');
-const { logStyle } = require('dumfunctions');
 
 function reply(interaction, text) {
     return (interaction.replied || interaction.deferred) ? interaction.editReply(text) : interaction.reply(text);
@@ -12,7 +11,6 @@ function reply(interaction, text) {
  */
 module.exports = new class Functions {
     /**
-     * 
      * @param {object} client - Client object.
      * @param {object} options - Client options.   
      * @returns an object of default colors and custom colors to be imported anywhere without having to import them.
@@ -84,6 +82,8 @@ module.exports = new class Functions {
 
         (async () => {
             let embed = options.index;
+
+            if (!options.components) options.components = [];
 
             let m = options.send ? await interaction.channel.send({ embeds: [embed], components: [options.row, ...options.components] }) : await reply(interaction, { embeds: [embed], components: [options.row, ...options.components] })
 
