@@ -1,7 +1,17 @@
-import { ChannelType, ContextMenuCommandBuilder, Message } from "discord.js";
+import {
+	ChannelType,
+	ContextMenuCommandBuilder,
+	ContextMenuCommandType,
+	Message,
+} from "discord.js";
 import { ContextCommandOptions } from "../interfaces/CommandInterfaces.js";
 import { s } from "@sapphire/shapeshift";
 
+/**
+ * @description The command builder for context commands.
+ * @param {String} id - The unique ID of the command.
+ * @param {ContextCommandOptions} options - The command options.
+ */
 export class ContextCommand {
 	id: string;
 	data: ContextMenuCommandBuilder;
@@ -17,6 +27,11 @@ export class ContextCommand {
 	guilds?: string[];
 	userPermissions?: string[];
 	clientPermissions?: string[];
+	defer?: {
+		reply?: boolean;
+		ephemeral?: boolean;
+		fetchReply?: boolean;
+	};
 
 	constructor(id: string, options: ContextCommandOptions) {
 		this.id = id;
@@ -54,6 +69,11 @@ export class ContextCommand {
 			guilds: s.array(s.string).optional,
 			userPermissions: s.array(s.string).optional,
 			clientPermissions: s.array(s.string).optional,
+			defer: s.object({
+				reply: s.boolean.optional,
+				ephemeral: s.boolean.optional,
+				fetchReply: s.boolean.optional,
+			}).optional,
 		}).parse(options);
 
 		this.description = options.description;
@@ -79,6 +99,8 @@ export class ContextCommand {
 		this.userPermissions = options.userPermissions;
 
 		this.clientPermissions = options.clientPermissions;
+
+		this.defer = options.defer;
 	}
 
 	/**
@@ -95,7 +117,7 @@ export class ContextCommand {
 	 */
 	exec(message: Message, args: object) {}
 
-	#types(type: any) {
+	#types(type: ContextMenuCommandType) {
 		if (String(type)?.toLowerCase() === "message") type = 3;
 		if (String(type)?.toLowerCase() === "user") type = 2;
 

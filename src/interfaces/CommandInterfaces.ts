@@ -18,12 +18,12 @@ export interface MessageCommandOptions {
 	userPermissions?: string[];
 	clientPermissions?: string[];
 	commandType?: string;
-	args: any;
+	args?: any;
 }
 
 export interface ContextCommandOptions {
 	name: string;
-	type: ContextMenuCommandType;
+	type: ContextMenuCommandType | number;
 	description?: string;
 	info?: string;
 	category?: string;
@@ -108,6 +108,11 @@ export interface ContextCommandOptions {
 		>
 	>;
 	commandType?: string;
+	defer?: {
+		reply?: boolean;
+		ephemeral?: boolean;
+		fetchReply?: boolean;
+	};
 }
 
 export interface SlashCommandOptions {
@@ -128,4 +133,9 @@ export interface SlashCommandOptions {
 	subcommands?: object[];
 	groups?: object[];
 	commandType?: string;
+	defer?: {
+		reply?: boolean;
+		ephemeral?: boolean;
+		fetchReply?: boolean;
+	};
 }

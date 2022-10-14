@@ -2,13 +2,13 @@ import XernerxClient from "../client/XernerxClient.js";
 import fs from "node:fs";
 import * as path from "path";
 import { CommandType } from "../types/Types.js";
+import { s } from "@sapphire/shapeshift";
 import {
 	ContextCommandOptions,
-	EventOptions,
 	MessageCommandOptions,
 	SlashCommandOptions,
-	Event,
-	InhibitorOptions,
+	EventLoadOptions,
+	InhibitorLoadOptions,
 } from "../interfaces/HandlerInterfaces.js";
 
 export class Handler {
@@ -22,9 +22,21 @@ export class Handler {
 	}
 
 	loadAllMessageCommands(options: MessageCommandOptions) {
-		const files = this.#readdir(options.directory);
+		this.client.handlerOptions.message = s
+			.object({
+				directory: s.string,
+				prefix: s.union(s.string, s.array(s.string)),
+				allowMention: s.boolean.default(false),
+				commandCooldown: s.number.default(0),
+				userPermissions: s.array(s.string).default([]),
+				clientPermissions: s.array(s.string).default([]),
+				handleEdits: s.boolean.default(false),
+				handleDeletes: s.boolean.default(false),
+				logging: s.boolean.default(false),
+			})
+			.parse(options);
 
-		this.client.handlerOptions.message = options;
+		const files = this.#readdir(options.directory);
 
 		for (const file of files) {
 			this.#load(options.directory, file, CommandType.MessageCommand);
@@ -32,9 +44,19 @@ export class Handler {
 	}
 
 	loadAllSlashCommands(options: SlashCommandOptions) {
-		const files = this.#readdir(options.directory);
+		this.client.handlerOptions.slash = s
+			.object({
+				directory: s.string,
+				guildId: s.string,
+				global: s.boolean,
+				commandCooldown: s.number.default(0),
+				userPermissions: s.array(s.string).default([]),
+				clientPermissions: s.array(s.string).default([]),
+				logging: s.boolean.default(false),
+			})
+			.parse(options);
 
-		this.client.handlerOptions.slash = options;
+		const files = this.#readdir(options.directory);
 
 		for (const file of files) {
 			this.#load(options.directory, file, CommandType.SlashCommand);
@@ -42,19 +64,34 @@ export class Handler {
 	}
 
 	loadAllContextCommands(options: ContextCommandOptions) {
-		const files = this.#readdir(options.directory);
+		this.client.handlerOptions.context = s
+			.object({
+				directory: s.string,
+				guildId: s.string,
+				global: s.boolean,
+				commandCooldown: s.number.default(0),
+				userPermissions: s.array(s.string).default([]),
+				clientPermissions: s.array(s.string).default([]),
+				logging: s.boolean.default(false),
+			})
+			.parse(options);
 
-		this.client.handlerOptions.context = options;
+		const files = this.#readdir(options.directory);
 
 		for (const file of files) {
 			this.#load(options.directory, file, CommandType.ContextCommand);
 		}
 	}
 
-	loadAllEvents(options: EventOptions) {
-		const files = this.#readdir(options.directory);
+	loadAllEvents(options: EventLoadOptions) {
+		this.client.handlerOptions.events = s
+			.object({
+				directory: s.string,
+				logging: s.boolean.default(false),
+			})
+			.parse(options);
 
-		this.client.handlerOptions.events = options;
+		const files = this.#readdir(options.directory);
 
 		(async () => {
 			for (const file of files) {
@@ -83,10 +120,15 @@ export class Handler {
 		})();
 	}
 
-	loadAllInhibitors(options: InhibitorOptions) {
-		const files = this.#readdir(options.directory);
+	loadAllInhibitors(options: InhibitorLoadOptions) {
+		this.client.handlerOptions.inhibitors = s
+			.object({
+				directory: s.string,
+				logging: s.boolean.default(false),
+			})
+			.parse(options);
 
-		this.client.handlerOptions.inhibitors = options;
+		const files = this.#readdir(options.directory);
 
 		for (const file of files) {
 			this.#load(options.directory, file, CommandType.Inhibitor);
@@ -136,11 +178,15 @@ export class Handler {
 				);
 			}
 
+			if (type === CommandType.Event) {
+				this.client.events.set(command.name, command);
+			}
+
 			if (type === CommandType.Inhibitor) {
 				this.client.inhibitors.set(command.name, command);
 			}
-		} catch (error: any) {
-			console.error(`Couldn't load ${file} because <${error.stack}>`);
+		} catch (error) {
+			console.error(`Couldn't load ${file} because <${error}>`);
 		}
 	}
 

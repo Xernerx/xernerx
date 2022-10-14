@@ -7,6 +7,11 @@ import {
 } from "discord.js";
 import { s } from "@sapphire/shapeshift";
 
+/**
+ * @description - The command builder for slash commands.
+ * @param {String} id - The unique ID of the command.
+ * @param {SlashCommandOptions} options - The command options.
+ */
 export class SlashCommand {
 	id: string;
 	data: SlashCommandBuilder;
@@ -24,6 +29,11 @@ export class SlashCommand {
 	args?: object[];
 	subcommands?: object[];
 	groups?: object[];
+	defer?: {
+		reply?: boolean;
+		ephemeral?: boolean;
+		fetchReply?: boolean;
+	};
 
 	constructor(id: string, options: SlashCommandOptions) {
 		this.id = id;
@@ -56,6 +66,11 @@ export class SlashCommand {
 			guilds: s.array(s.string).optional,
 			userPermissions: s.array(s.string).optional,
 			clientPermissions: s.array(s.string).optional,
+			defer: s.object({
+				reply: s.boolean.optional,
+				ephemeral: s.boolean.optional,
+				fetchReply: s.boolean.optional,
+			}).optional,
 		});
 
 		this.info = options.info;
@@ -79,6 +94,8 @@ export class SlashCommand {
 		this.userPermissions = options.userPermissions;
 
 		this.clientPermissions = options.clientPermissions;
+
+		this.defer = options.defer;
 	}
 
 	addArgs(method: any, args: any) {

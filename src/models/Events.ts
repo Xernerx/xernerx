@@ -267,6 +267,26 @@ export class SlashCommandEvents {
 						if (await inhibitor.inhibit()) return;
 
 						if (
+							command.defer?.reply !== false &&
+							this.client.handlerOptions.slash?.defer?.reply
+						) {
+							await interaction.deferReply({
+								ephemeral: this.client.handlerOptions.slash?.defer?.ephemeral,
+								fetchReply: this.client.handlerOptions.slash?.defer?.fetchReply,
+							});
+						}
+
+						if (
+							!(interaction.deferred || interaction.replied) &&
+							command.defer?.reply
+						) {
+							await interaction.deferReply({
+								ephemeral: command.defer?.ephemeral,
+								fetchReply: command.defer?.fetchReply,
+							});
+						}
+
+						if (
 							command.conditions &&
 							(await command.conditions(interaction, {
 								group: argumentsInfo.group(),
@@ -321,6 +341,27 @@ export class ContextCommandEvents {
 						if (command.conditions && (await command.conditions(interaction)))
 							return;
 
+						if (
+							command.defer?.reply !== false &&
+							this.client.handlerOptions.context?.defer?.reply
+						) {
+							await interaction.deferReply({
+								ephemeral: this.client.handlerOptions.context?.defer?.ephemeral,
+								fetchReply:
+									this.client.handlerOptions.context?.defer?.fetchReply,
+							});
+						}
+
+						if (
+							!(interaction.deferred || interaction.replied) &&
+							command.defer?.reply
+						) {
+							await interaction.deferReply({
+								ephemeral: command.defer?.ephemeral,
+								fetchReply: command.defer?.fetchReply,
+							});
+						}
+
 						await command.exec(interaction);
 					} catch (error) {
 						this.client.emit("commandError", interaction, error);
@@ -347,7 +388,7 @@ export class CommandsDeploy {
 				...this.client.commands.slash,
 			];
 
-			const deployableCommands: any[] = [];
+			const deployableCommands: object[] = [];
 
 			commands.map((commands) =>
 				commands.map((command: any) => {
@@ -395,14 +436,19 @@ export class CommandsDeploy {
 					);
 				}
 
-				console.log(
-					`Deployed ${deployableCommands.length} commands ${
-						this.client.handlerOptions.context?.global === false ||
-						this.client.handlerOptions.slash?.global === false
-							? "locally, deleted no local commands"
-							: `globally, deleted all local commands`
-					}`
-				);
+				if (this.client.settings.logging)
+					console.info(
+						`Deployed ${deployableCommands.length} of ${
+							commands.length
+						} commands ${
+							this.client.handlerOptions.slash?.global ||
+							this.client.handlerOptions.context?.global
+								? `globally in ${
+										(await this.client.guilds.fetch()).size
+								  } server(s)`
+								: "locally"
+						}.`
+					);
 			} catch (error) {
 				console.error(error);
 			}

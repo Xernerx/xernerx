@@ -16,6 +16,12 @@ import {
 	HandlerOptions,
 } from "../interfaces/ClientInterfaces.js";
 
+/**
+ * @description - The Client.
+ * @param {DiscordOptions} discordOptions - The options for discord.js.
+ * @param {ClientOptions} clientOptions - The options for the Xernerx Client.
+ * @extends {Client}
+ */
 export default class XernerxClient extends Client {
 	settings: ClientOptions;
 	commands: Commands;
@@ -35,7 +41,7 @@ export default class XernerxClient extends Client {
 				clientPermissions: s.array(s.string).default([]),
 				userPermissions: s.array(s.string).default([]),
 				ignoreOwner: s.boolean.default(false),
-				logging: s.union(s.array(s.string).unique, s.boolean).default(false),
+				logging: s.boolean.optional,
 				cooldown: s.object({
 					default: s.number.default(0),
 					cache: s.number.default(0),

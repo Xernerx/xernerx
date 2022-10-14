@@ -120,9 +120,13 @@ export class InteractionCommandUtil {
 		this.interaction = interaction;
 	}
 
-	async reply(content: any) {
-		return (await this.interaction.replied) || this.interaction.deferred
+	reply(content: any) {
+		return this.interaction.replied || this.interaction.deferred
 			? this.interaction.editReply(content)
 			: this.interaction.reply(content);
+	}
+
+	async defer(time: number) {
+		return new Promise((resolve: any) => setTimeout(resolve, time));
 	}
 }

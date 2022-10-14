@@ -2,6 +2,11 @@ import { MessageCommandOptions } from "../interfaces/CommandInterfaces.js";
 import { Message, ChannelType } from "discord.js";
 import { s } from "@sapphire/shapeshift";
 
+/**
+ * @description - The command builder for message commands.
+ * @param {String} id - The unique ID of the command.
+ * @param {MessageCommandOptions} options - The command options.
+ */
 export class MessageCommand {
 	id: string;
 	name: string;
@@ -19,7 +24,7 @@ export class MessageCommand {
 	guilds?: string[];
 	userPermissions?: string[];
 	clientPermissions?: string[];
-	args: any;
+	args: object;
 
 	constructor(id: string, options: MessageCommandOptions) {
 		this.id = id;

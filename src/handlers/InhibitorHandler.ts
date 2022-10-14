@@ -1,4 +1,4 @@
-import { InhibitorOptions } from "../interfaces/HandlerInterfaces.js";
+import { InhibitorLoadOptions } from "../interfaces/HandlerInterfaces.js";
 import XernerxClient from "../client/XernerxClient.js";
 import { Handler } from "./Handler.js";
 
@@ -12,7 +12,7 @@ export default class InhibitorHandler {
 		this.handler = new Handler(client);
 	}
 
-	loadAllInhibitors(options: InhibitorOptions) {
+	loadAllInhibitors(options: InhibitorLoadOptions) {
 		this.handler.loadAllInhibitors(options);
 	}
 }

@@ -6,8 +6,8 @@ import {
 	ContextCommandOptions,
 	MessageCommandOptions,
 	SlashCommandOptions,
-	EventOptions,
-	InhibitorOptions,
+	EventLoadOptions,
+	InhibitorLoadOptions,
 } from "./HandlerInterfaces.js";
 
 export interface DiscordOptions {
@@ -19,7 +19,7 @@ export interface ClientOptions {
 	clientPermissions?: string[];
 	userPermissions?: string[];
 	ignoreOwner?: boolean;
-	logging?: boolean | string[];
+	logging?: boolean;
 	cooldown?: {
 		default?: number;
 		cache?: number;
@@ -30,8 +30,8 @@ export interface HandlerOptions {
 	message?: MessageCommandOptions;
 	slash?: SlashCommandOptions;
 	context?: ContextCommandOptions;
-	events?: EventOptions;
-	inhibitors?: InhibitorOptions;
+	events?: EventLoadOptions;
+	inhibitors?: InhibitorLoadOptions;
 }
 
 export interface Commands {

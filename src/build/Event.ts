@@ -1,6 +1,10 @@
-import { Event as EventType } from "../interfaces/HandlerInterfaces.js";
+import { EventOptions } from "../interfaces/HandlerInterfaces.js";
 import { s } from "@sapphire/shapeshift";
-
+/**
+ * @description - The event builder for any events.
+ * @param {String} id - The unique ID of the event.
+ * @param {EventOptions} options - The event options.
+ */
 export class Event {
 	id: string;
 	name: string;
@@ -8,7 +12,7 @@ export class Event {
 	type?: string;
 	once?: boolean;
 
-	constructor(id: string, options: EventType) {
+	constructor(id: string, options: EventOptions) {
 		this.id = id;
 
 		s.object({

@@ -22,6 +22,11 @@ export interface SlashCommandOptions {
 	clientPermissions?: string[];
 	util?: boolean;
 	logging?: boolean;
+	defer?: {
+		reply?: boolean;
+		ephemeral?: boolean;
+		fetchReply?: boolean;
+	};
 }
 
 export interface ContextCommandOptions {
@@ -33,25 +38,30 @@ export interface ContextCommandOptions {
 	clientPermissions?: string[];
 	util?: boolean;
 	logging?: boolean;
+	defer?: {
+		reply?: boolean;
+		ephemeral?: boolean;
+		fetchReply?: boolean;
+	};
 }
 
-export interface EventOptions {
+export interface EventLoadOptions {
 	directory: string;
 	logging?: boolean;
 }
 
-export interface Event {
+export interface EventOptions {
 	name: string;
 	emitter?: EventEmitterType;
 	type?: string;
 	once?: boolean;
 }
 
-export interface InhibitorOptions {
+export interface InhibitorLoadOptions {
 	directory: string;
 }
 
-export interface Inhibitor {
+export interface InhibitorOptions {
 	name: string;
 	type: string;
 }
