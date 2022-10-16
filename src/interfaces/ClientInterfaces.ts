@@ -16,8 +16,8 @@ export interface DiscordOptions {
 
 export interface ClientOptions {
 	ownerId?: string | string[];
-	clientPermissions?: string[];
-	userPermissions?: string[];
+	clientPermissions?: bigint[];
+	userPermissions?: bigint[];
 	ignoreOwner?: boolean;
 	logging?: boolean;
 	cooldown?: {

@@ -1,5 +1,6 @@
 import { EventOptions } from "../interfaces/HandlerInterfaces.js";
 import { s } from "@sapphire/shapeshift";
+
 /**
  * @description - The event builder for any events.
  * @param {String} id - The unique ID of the event.

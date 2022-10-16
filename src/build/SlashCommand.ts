@@ -24,8 +24,8 @@ export class SlashCommand {
 	ignoreOwner?: boolean;
 	channels?: string[];
 	guilds?: string[];
-	userPermissions?: string[];
-	clientPermissions?: string[];
+	userPermissions?: bigint[];
+	clientPermissions?: bigint[];
 	args?: object[];
 	subcommands?: object[];
 	groups?: object[];
@@ -64,8 +64,8 @@ export class SlashCommand {
 			ignoreOwner: s.boolean.optional,
 			channels: s.array(s.string).optional,
 			guilds: s.array(s.string).optional,
-			userPermissions: s.array(s.string).optional,
-			clientPermissions: s.array(s.string).optional,
+			userPermissions: s.array(s.bigint).optional,
+			clientPermissions: s.array(s.bigint).optional,
 			defer: s.object({
 				reply: s.boolean.optional,
 				ephemeral: s.boolean.optional,

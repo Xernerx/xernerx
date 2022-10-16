@@ -38,8 +38,8 @@ export default class XernerxClient extends Client {
 		this.settings = s
 			.object({
 				ownerId: s.union(s.array(s.string).unique, s.string).default([]),
-				clientPermissions: s.array(s.string).default([]),
-				userPermissions: s.array(s.string).default([]),
+				clientPermissions: s.array(s.bigint).default([]),
+				userPermissions: s.array(s.bigint).default([]),
 				ignoreOwner: s.boolean.default(false),
 				logging: s.boolean.optional,
 				cooldown: s.object({
@@ -81,7 +81,18 @@ export default class XernerxClient extends Client {
 				console.info(
 					`Xernerx | ${client.user.tag} signed in watching ${size} server${
 						size > 1 ? "s" : ""
-					}.`
+					}. ${
+						(this.handlerOptions.slash || this.handlerOptions.context)?.guildId
+							? `Using ${
+									(
+										await this.guilds.fetch(
+											(this.handlerOptions.slash || this.handlerOptions.context)
+												?.guildId || "0"
+										)
+									).name
+							  } as local guild.`
+							: ""
+					}`
 				);
 			});
 		}

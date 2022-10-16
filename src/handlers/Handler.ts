@@ -28,8 +28,8 @@ export class Handler {
 				prefix: s.union(s.string, s.array(s.string)),
 				allowMention: s.boolean.default(false),
 				commandCooldown: s.number.default(0),
-				userPermissions: s.array(s.string).default([]),
-				clientPermissions: s.array(s.string).default([]),
+				userPermissions: s.array(s.bigint).default([]),
+				clientPermissions: s.array(s.bigint).default([]),
 				handleEdits: s.boolean.default(false),
 				handleDeletes: s.boolean.default(false),
 				logging: s.boolean.default(false),
@@ -60,8 +60,8 @@ export class Handler {
 				guildId: s.string,
 				global: s.boolean,
 				commandCooldown: s.number.default(0),
-				userPermissions: s.array(s.string).default([]),
-				clientPermissions: s.array(s.string).default([]),
+				userPermissions: s.array(s.bigint).default([]),
+				clientPermissions: s.array(s.bigint).default([]),
 				logging: s.boolean.default(false),
 				defer: s.object({
 					reply: s.boolean.optional,
@@ -95,8 +95,8 @@ export class Handler {
 				guildId: s.string,
 				global: s.boolean,
 				commandCooldown: s.number.default(0),
-				userPermissions: s.array(s.string).default([]),
-				clientPermissions: s.array(s.string).default([]),
+				userPermissions: s.array(s.bigint).default([]),
+				clientPermissions: s.array(s.bigint).default([]),
 				logging: s.boolean.default(false),
 				defer: s.object({
 					reply: s.boolean.optional,
@@ -155,7 +155,7 @@ export class Handler {
 
 					this.#emitter(event);
 				} catch (error) {
-					console.error(`Xernerx | Couldn't load${file} because <${error}>`);
+					console.error(`Xernerx | Couldn't load ${file} because <${error}>`);
 				}
 
 				loaded.push(file.replace(".js", ""));

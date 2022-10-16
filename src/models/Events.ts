@@ -419,8 +419,8 @@ export class CommandsDeploy {
 					rest.put(
 						Routes.applicationGuildCommands(
 							client.user.id,
-							this.client.handlerOptions.context?.guildId ||
-								this.client.handlerOptions.slash?.guildId ||
+							this.client.handlerOptions.slash?.guildId ||
+								this.client.handlerOptions.context?.guildId ||
 								""
 						),
 						{
@@ -435,8 +435,8 @@ export class CommandsDeploy {
 					rest.put(
 						Routes.applicationGuildCommands(
 							client.user.id,
-							this.client.handlerOptions.context?.guildId ||
-								this.client.handlerOptions.slash?.guildId ||
+							this.client.handlerOptions.slash?.guildId ||
+								this.client.handlerOptions.context?.guildId ||
 								""
 						),
 						{

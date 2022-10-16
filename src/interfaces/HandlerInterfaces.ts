@@ -5,8 +5,8 @@ export interface MessageCommandOptions {
 	prefix: string[] | string;
 	allowMention?: boolean;
 	commandCooldown?: number;
-	userPermissions?: string[];
-	clientPermissions?: string[];
+	userPermissions?: bigint[];
+	clientPermissions?: bigint[];
 	handleEdits?: boolean;
 	handleDeletes?: boolean;
 	util?: boolean;
@@ -18,8 +18,8 @@ export interface SlashCommandOptions {
 	guildId: string;
 	global: boolean;
 	commandCooldown?: number;
-	userPermissions?: string[];
-	clientPermissions?: string[];
+	userPermissions?: bigint[];
+	clientPermissions?: bigint[];
 	util?: boolean;
 	logging?: boolean;
 	defer?: {
@@ -34,8 +34,8 @@ export interface ContextCommandOptions {
 	guildId: string;
 	global: boolean;
 	commandCooldown?: number;
-	userPermissions?: string[];
-	clientPermissions?: string[];
+	userPermissions?: bigint[];
+	clientPermissions?: bigint[];
 	util?: boolean;
 	logging?: boolean;
 	defer?: {

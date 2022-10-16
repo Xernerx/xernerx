@@ -6,17 +6,82 @@ export default function commandValidation(
 	client: any,
 	res: boolean = false
 ) {
-	res = inCooldown(action.user || action.author, client, command, action);
-
-	if (res === true) return res;
-
 	if (
+		(command.ignoreOwner || client.settings.ignoreOwner) &&
+		client.util.isOwner((action.user || action.author).id)
+	)
+		return res;
+	else if (inCooldown(action.user || action.author, client, command, action))
+		return true;
+	else if (
 		command.owner &&
 		!client.util.isOwner((action.user || action.author).id)
 	) {
 		res = true;
 
 		emit(client, action, "Not an owner", client.settings.ownerId);
+	} else if (command.channelType !== action.channel.type) {
+		res = true;
+
+		emit(client, action, "Not the correct channel", command.channelType);
+	} else if (
+		command.channels.length > 0 &&
+		!command.channels.includes(action.channel.id)
+	) {
+		res = true;
+
+		emit(client, action, "Not a whitelisted channel", command.channels);
+	} else if (
+		command.guilds.length > 0 &&
+		!command.guilds.includes(action.guild.id)
+	) {
+		res = true;
+
+		emit(client, action, "Not a whitelisted guild", command.guilds);
+	} else if (
+		action?.guild &&
+		(command.userPermissions || client.settings.userPermissions)
+	) {
+		const permissions =
+				command.userPermissions ||
+				client.settings.userPermissions.push(
+					...handlerPermissions(client, command.commandType, "user")
+				),
+			missing: bigint[] = [];
+
+		permissions.map((permission: bigint) => {
+			if (!action.member.permissions.has(permission)) {
+				missing.push(permission);
+			}
+		});
+
+		if (missing.length > 0) {
+			res = true;
+
+			emit(client, action, "Missing User Permissions", missing);
+		}
+	} else if (
+		action?.guild &&
+		(command.clientPermissions || client.settings.clientPermissions)
+	) {
+		const permissions =
+				command.clientPermissions ||
+				client.settings.clientPermissions.push(
+					...handlerPermissions(client, command.commandType, "client")
+				),
+			missing: bigint[] = [];
+
+		permissions.map((permission: bigint) => {
+			if (!action.member.permissions.has(permission)) {
+				missing.push(permission);
+			}
+		});
+
+		if (missing.length > 0) {
+			res = true;
+
+			emit(client, action, "Missing Client Permissions", missing);
+		}
 	}
 
 	return res;
@@ -66,4 +131,25 @@ function handlerCooldown(client: any, type: CommandType) {
 	if (type === CommandType.SlashCommand)
 		return client.handlerOptions.slash.commandCooldown;
 	else return 0;
+}
+
+function handlerPermissions(
+	client: any,
+	commandType: CommandType,
+	type: string
+) {
+	if (commandType === CommandType.MessageCommand) {
+		if (type === "user") return client.handlerOptions.message.userPermissions;
+		if (type === "client")
+			return client.handlerOptions.message.clientPermissions;
+	}
+	if (commandType === CommandType.SlashCommand) {
+		if (type === "user") return client.handlerOptions.slash.userPermissions;
+		if (type === "client") return client.handlerOptions.slash.clientPermissions;
+	}
+	if (commandType === CommandType.ContextCommand) {
+		if (type === "user") return client.handlerOptions.context.userPermissions;
+		if (type === "client")
+			return client.handlerOptions.context.clientPermissions;
+	}
 }

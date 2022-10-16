@@ -15,8 +15,8 @@ export interface MessageCommandOptions {
 	ignoreOwner?: boolean;
 	channels?: string[];
 	guilds?: string[];
-	userPermissions?: string[];
-	clientPermissions?: string[];
+	userPermissions?: bigint[];
+	clientPermissions?: bigint[];
 	commandType?: string;
 	args?: any;
 }
@@ -34,9 +34,9 @@ export interface ContextCommandOptions {
 	ignoreOwner?: boolean;
 	channels?: string[];
 	guilds?: string[];
-	userPermissions?: string[];
-	clientPermissions?: string[];
-	defaultMemberPermissions?: string | number | bigint | null | undefined;
+	userPermissions?: bigint[];
+	clientPermissions?: bigint[];
+	defaultMemberPermissions?: bigint | number | bigint | null | undefined;
 	DMPermission?: undefined | null | boolean;
 	nameLocalization?: {
 		locale:
@@ -127,8 +127,8 @@ export interface SlashCommandOptions {
 	ignoreOwner?: boolean;
 	channels?: string[];
 	guilds?: string[];
-	userPermissions?: string[];
-	clientPermissions?: string[];
+	userPermissions?: bigint[];
+	clientPermissions?: bigint[];
 	args?: object[];
 	subcommands?: object[];
 	groups?: object[];

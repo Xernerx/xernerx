@@ -22,8 +22,8 @@ export class MessageCommand {
 	ignoreOwner?: boolean;
 	channels?: string[];
 	guilds?: string[];
-	userPermissions?: string[];
-	clientPermissions?: string[];
+	userPermissions?: bigint[];
+	clientPermissions?: bigint[];
 	args: object;
 
 	constructor(id: string, options: MessageCommandOptions) {
@@ -43,8 +43,8 @@ export class MessageCommand {
 			ignoreOwner: s.boolean.optional,
 			channels: s.array(s.string).unique.optional,
 			guilds: s.array(s.string).unique.optional,
-			userPermissions: s.array(s.string).unique.optional,
-			clientPermissions: s.array(s.string).unique.optional,
+			userPermissions: s.array(s.bigint).unique.optional,
+			clientPermissions: s.array(s.bigint).unique.optional,
 		}).parse(options);
 
 		this.name = options.name;

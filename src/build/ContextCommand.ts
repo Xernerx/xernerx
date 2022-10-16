@@ -20,13 +20,12 @@ export class ContextCommand {
 	category?: string;
 	owner?: boolean;
 	channelType?: ChannelType;
-	separator?: string;
 	cooldown?: number;
 	ignoreOwner?: boolean;
 	channels?: string[];
 	guilds?: string[];
-	userPermissions?: string[];
-	clientPermissions?: string[];
+	userPermissions?: bigint[];
+	clientPermissions?: bigint[];
 	defer?: {
 		reply?: boolean;
 		ephemeral?: boolean;
@@ -62,13 +61,12 @@ export class ContextCommand {
 			category: s.string.optional,
 			owner: s.boolean.optional,
 			// channelType?: ChannelType,
-			separator: s.string.optional,
 			cooldown: s.number.optional,
 			ignoreOwner: s.boolean.optional,
 			channels: s.array(s.string).optional,
 			guilds: s.array(s.string).optional,
-			userPermissions: s.array(s.string).optional,
-			clientPermissions: s.array(s.string).optional,
+			userPermissions: s.array(s.bigint).optional,
+			clientPermissions: s.array(s.bigint).optional,
 			defer: s.object({
 				reply: s.boolean.optional,
 				ephemeral: s.boolean.optional,
@@ -85,8 +83,6 @@ export class ContextCommand {
 		this.owner = options.owner;
 
 		this.channelType = options.channelType;
-
-		this.separator = options.separator;
 
 		this.cooldown = options.cooldown;
 
