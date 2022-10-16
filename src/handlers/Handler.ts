@@ -155,7 +155,7 @@ export class Handler {
 
 					this.#emitter(event);
 				} catch (error) {
-					console.error(error);
+					console.error(`Xernerx | Couldn't load${file} because <${error}>`);
 				}
 
 				loaded.push(file.replace(".js", ""));
@@ -197,9 +197,7 @@ export class Handler {
 				.readdirSync(path.resolve(dir))
 				.filter((file) => file.endsWith(".js"));
 		} catch (error) {
-			console.error(
-				`An error was found while trying to read the given directory. Error: ${error}`
-			);
+			console.error(`Xernerx | Couldn't read ${dir} because <${error}>.`);
 		}
 		return [];
 	}
@@ -251,7 +249,7 @@ export class Handler {
 
 			return command?.data?.name || command?.name || command.id;
 		} catch (error) {
-			console.error(`Couldn't load ${file} because <${error}>`);
+			console.error(`Xernerx | Couldn't load ${file} because <${error}>.`);
 		}
 	}
 
@@ -274,6 +272,15 @@ export class Handler {
 				});
 			else
 				client.on(event.name, (...args: any[]) => {
+					event.run(...args);
+				});
+		} else if (event.emitter === "process") {
+			if (event.once)
+				process.once(event.name, (...args: any[]) => {
+					event.run(...args);
+				});
+			else
+				process.on(event.name, (...args: any[]) => {
 					event.run(...args);
 				});
 		}

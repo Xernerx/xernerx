@@ -462,7 +462,9 @@ export class CommandsDeploy {
 						}.`
 					);
 			} catch (error) {
-				console.error(error);
+				console.error(
+					`Xernerx | Couldn't deploy interaction commands because <${error}>.`
+				);
 			}
 		});
 	}
