@@ -12,6 +12,7 @@ import {
 	MessageCommandUtil,
 } from "../utils/CommandUtil.js";
 import { CommandArguments, messageArgs } from "./CommandArguments.js";
+import commandValidation from "./CommandValidations.js";
 import { InhibitorValidation } from "./InhibitorValidations.js";
 
 export class MessageCommandEvents {
@@ -105,6 +106,8 @@ export class MessageCommandEvents {
 									message,
 									command
 								);
+
+								if (commandValidation(message, cmd, this.client)) return;
 
 								if (await inhibitor.inhibit()) return;
 
@@ -205,6 +208,8 @@ export class MessageCommandEvents {
 									command
 								);
 
+								if (commandValidation(message, cmd, this.client)) return;
+
 								if (await inhibitor.inhibit()) return;
 
 								if (cmd.conditions && (await cmd.conditions(message))) return;
@@ -265,6 +270,8 @@ export class SlashCommandEvents {
 						);
 
 						if (await inhibitor.inhibit()) return;
+
+						if (commandValidation(interaction, command, this.client)) return;
 
 						if (
 							command.defer?.reply !== false &&
@@ -335,6 +342,8 @@ export class ContextCommandEvents {
 							interaction,
 							command
 						);
+
+						if (commandValidation(interaction, command, this.client)) return;
 
 						if (await inhibitor.inhibit()) return;
 
@@ -436,16 +445,19 @@ export class CommandsDeploy {
 					);
 				}
 
-				if (this.client.settings.logging)
+				if (
+					this.client.handlerOptions.slash?.logging ||
+					this.client.handlerOptions?.context?.logging
+				)
 					console.info(
-						`Deployed ${deployableCommands.length} of ${
+						`Xernerx | Deployed ${deployableCommands.length} of ${
 							commands.length
-						} commands ${
+						} interaction commands ${
 							this.client.handlerOptions.slash?.global ||
 							this.client.handlerOptions.context?.global
 								? `globally in ${
 										(await this.client.guilds.fetch()).size
-								  } server(s)`
+								  } server(s), deleted local commands.`
 								: "locally"
 						}.`
 					);

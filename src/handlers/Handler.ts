@@ -36,11 +36,21 @@ export class Handler {
 			})
 			.parse(options);
 
-		const files = this.#readdir(options.directory);
+		const files = this.#readdir(options.directory),
+			loaded = [];
 
 		for (const file of files) {
 			this.#load(options.directory, file, CommandType.MessageCommand);
+
+			loaded.push(file.replace(".js", ""));
 		}
+
+		if (this.client.handlerOptions.message.logging)
+			console.info(
+				`Xernerx | Loaded ${loaded.length} message commands: ${loaded.join(
+					", "
+				)}.`
+			);
 	}
 
 	loadAllSlashCommands(options: SlashCommandOptions) {
@@ -53,14 +63,29 @@ export class Handler {
 				userPermissions: s.array(s.string).default([]),
 				clientPermissions: s.array(s.string).default([]),
 				logging: s.boolean.default(false),
+				defer: s.object({
+					reply: s.boolean.optional,
+					ephemeral: s.boolean.optional,
+					fetchReply: s.boolean.optional,
+				}).optional,
 			})
 			.parse(options);
 
-		const files = this.#readdir(options.directory);
+		const files = this.#readdir(options.directory),
+			loaded = [];
 
 		for (const file of files) {
 			this.#load(options.directory, file, CommandType.SlashCommand);
+
+			loaded.push(file.replace(".js", ""));
 		}
+
+		if (this.client.handlerOptions.slash.logging)
+			console.info(
+				`Xernerx | Loaded ${loaded.length} slash commands: ${loaded.join(
+					", "
+				)}.`
+			);
 	}
 
 	loadAllContextCommands(options: ContextCommandOptions) {
@@ -73,14 +98,29 @@ export class Handler {
 				userPermissions: s.array(s.string).default([]),
 				clientPermissions: s.array(s.string).default([]),
 				logging: s.boolean.default(false),
+				defer: s.object({
+					reply: s.boolean.optional,
+					ephemeral: s.boolean.optional,
+					fetchReply: s.boolean.optional,
+				}).optional,
 			})
 			.parse(options);
 
-		const files = this.#readdir(options.directory);
+		const files = this.#readdir(options.directory),
+			loaded = [];
 
 		for (const file of files) {
 			this.#load(options.directory, file, CommandType.ContextCommand);
+
+			loaded.push(file.replace(".js", ""));
 		}
+
+		if (this.client.handlerOptions.context.logging)
+			console.info(
+				`Xernerx | Loaded ${loaded.length} context commands: ${loaded.join(
+					", "
+				)}.`
+			);
 	}
 
 	loadAllEvents(options: EventLoadOptions) {
@@ -91,7 +131,8 @@ export class Handler {
 			})
 			.parse(options);
 
-		const files = this.#readdir(options.directory);
+		const files = this.#readdir(options.directory),
+			loaded = [];
 
 		(async () => {
 			for (const file of files) {
@@ -116,7 +157,14 @@ export class Handler {
 				} catch (error) {
 					console.error(error);
 				}
+
+				loaded.push(file.replace(".js", ""));
 			}
+
+			if (this.client.handlerOptions.events?.logging)
+				console.info(
+					`Xernerx | Loaded ${loaded.length} events: ${loaded.join(", ")}.`
+				);
 		})();
 	}
 
@@ -128,17 +176,32 @@ export class Handler {
 			})
 			.parse(options);
 
-		const files = this.#readdir(options.directory);
+		const files = this.#readdir(options.directory),
+			loaded = [];
 
 		for (const file of files) {
 			this.#load(options.directory, file, CommandType.Inhibitor);
+
+			loaded.push(file.replace(".js", ""));
 		}
+
+		if (this.client.handlerOptions.inhibitors?.logging)
+			console.info(
+				`Xernerx | Loaded ${loaded.length} inhibitors: ${loaded.join(", ")}.`
+			);
 	}
 
 	#readdir(dir: string) {
-		return fs
-			.readdirSync(path.resolve(dir))
-			.filter((file) => file.endsWith(".js"));
+		try {
+			return fs
+				.readdirSync(path.resolve(dir))
+				.filter((file) => file.endsWith(".js"));
+		} catch (error) {
+			console.error(
+				`An error was found while trying to read the given directory. Error: ${error}`
+			);
+		}
+		return [];
 	}
 
 	async #load(dir: string, file: string, type: string) {
@@ -185,6 +248,8 @@ export class Handler {
 			if (type === CommandType.Inhibitor) {
 				this.client.inhibitors.set(command.name, command);
 			}
+
+			return command?.data?.name || command?.name || command.id;
 		} catch (error) {
 			console.error(`Couldn't load ${file} because <${error}>`);
 		}

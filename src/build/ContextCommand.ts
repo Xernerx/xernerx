@@ -2,7 +2,7 @@ import {
 	ChannelType,
 	ContextMenuCommandBuilder,
 	ContextMenuCommandType,
-	Message,
+	Interaction,
 } from "discord.js";
 import { ContextCommandOptions } from "../interfaces/CommandInterfaces.js";
 import { s } from "@sapphire/shapeshift";
@@ -104,18 +104,16 @@ export class ContextCommand {
 	}
 
 	/**
-	 * @param {Message} message - The Discord message event data.
-	 * @param {object} args - The arguments you created.
+	 * @param {Interaction} interaction - The Discord interaction event data.
 	 * @description make any preconditions here.
 	 */
-	conditions(message: Message, args: object) {}
+	conditions(interaction: Interaction) {}
 
 	/**
-	 * @param {Message} message - The Discord message event data.
-	 * @param {object} args - The arguments you created.
+	 * @param {Interaction} interaction - The Discord interaction event data.
 	 * @description Make your custom command here.
 	 */
-	exec(message: Message, args: object) {}
+	exec(interaction: Interaction) {}
 
 	#types(type: ContextMenuCommandType) {
 		if (String(type)?.toLowerCase() === "message") type = 3;

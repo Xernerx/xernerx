@@ -73,5 +73,17 @@ export default class XernerxClient extends Client {
 		this.util = new ClientUtil(this);
 
 		this.handlerOptions = {};
+
+		if (this.settings.logging) {
+			this.once("ready", async (client) => {
+				const size = (await client.guilds.fetch()).size;
+
+				console.info(
+					`Xernerx | ${client.user.tag} signed in watching ${size} server${
+						size > 1 ? "s" : ""
+					}.`
+				);
+			});
+		}
 	}
 }

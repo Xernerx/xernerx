@@ -33,7 +33,7 @@ export async function messageArgs(message: any, command: any) {
 	let args: any = { flags: {} },
 		separator = command.separator || " ",
 		i = 0;
-	console.log(command.args);
+
 	if (!command.args) return;
 
 	command.args

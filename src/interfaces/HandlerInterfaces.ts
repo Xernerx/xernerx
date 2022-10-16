@@ -59,6 +59,7 @@ export interface EventOptions {
 
 export interface InhibitorLoadOptions {
 	directory: string;
+	logging?: boolean;
 }
 
 export interface InhibitorOptions {
