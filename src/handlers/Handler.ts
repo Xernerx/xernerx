@@ -10,7 +10,10 @@ import {
 	EventLoadOptions,
 	InhibitorLoadOptions,
 } from "../interfaces/HandlerInterfaces.js";
-
+/**
+ * @description - The Handler class.
+ * @param {XernerxClient} client - The XernerxClient.
+ */
 export class Handler {
 	client: XernerxClient;
 	commands: object[];
@@ -21,13 +24,17 @@ export class Handler {
 		this.commands = [];
 	}
 
+	/**
+	 * @description - The loader for the message commands.
+	 * @param {MessageCommandOptions} options - The options for the message command loader.
+	 */
 	loadAllMessageCommands(options: MessageCommandOptions) {
 		this.client.handlerOptions.message = s
 			.object({
 				directory: s.string,
 				prefix: s.union(s.string, s.array(s.string)),
 				allowMention: s.boolean.default(false),
-				commandCooldown: s.number.default(0),
+				cooldown: s.number.default(0),
 				userPermissions: s.array(s.bigint).default([]),
 				clientPermissions: s.array(s.bigint).default([]),
 				handleEdits: s.boolean.default(false),
@@ -53,13 +60,17 @@ export class Handler {
 			);
 	}
 
+	/**
+	 * @description - The loader for the slash commands.
+	 * @param {SlashCommandOptions} options - The options for the slash command loader.
+	 */
 	loadAllSlashCommands(options: SlashCommandOptions) {
 		this.client.handlerOptions.slash = s
 			.object({
 				directory: s.string,
 				guildId: s.string,
 				global: s.boolean,
-				commandCooldown: s.number.default(0),
+				cooldown: s.number.default(0),
 				userPermissions: s.array(s.bigint).default([]),
 				clientPermissions: s.array(s.bigint).default([]),
 				logging: s.boolean.default(false),
@@ -88,13 +99,17 @@ export class Handler {
 			);
 	}
 
+	/**
+	 * @description - The loader for the context commands.
+	 * @param {ContextCommandOptions} options - The options for the context command loader.
+	 */
 	loadAllContextCommands(options: ContextCommandOptions) {
 		this.client.handlerOptions.context = s
 			.object({
 				directory: s.string,
 				guildId: s.string,
 				global: s.boolean,
-				commandCooldown: s.number.default(0),
+				cooldown: s.number.default(0),
 				userPermissions: s.array(s.bigint).default([]),
 				clientPermissions: s.array(s.bigint).default([]),
 				logging: s.boolean.default(false),
@@ -123,6 +138,10 @@ export class Handler {
 			);
 	}
 
+	/**
+	 * @description - The loader for the events.
+	 * @param {EventLoadOptions} options - The options for the event loader.
+	 */
 	loadAllEvents(options: EventLoadOptions) {
 		this.client.handlerOptions.events = s
 			.object({
@@ -168,6 +187,10 @@ export class Handler {
 		})();
 	}
 
+	/**
+	 * @description - The loader for the inhibitors.
+	 * @param {InhibitorLoadOptions} options - The options for the inhibitor loader.
+	 */
 	loadAllInhibitors(options: InhibitorLoadOptions) {
 		this.client.handlerOptions.inhibitors = s
 			.object({
@@ -191,6 +214,11 @@ export class Handler {
 			);
 	}
 
+	/**
+	 * @description - a reader for directories
+	 * @param {string} dir - the directory to look for.
+	 * @returns array of files.
+	 */
 	#readdir(dir: string) {
 		try {
 			return fs
@@ -202,6 +230,13 @@ export class Handler {
 		return [];
 	}
 
+	/**
+	 * @description file loader.
+	 * @param {string} dir - the directory.
+	 * @param {string} file - the file in the directory.
+	 * @param {string} type - the type of file.
+	 * @returns undefined
+	 */
 	async #load(dir: string, file: string, type: string) {
 		try {
 			dir.split(/\//).shift();
@@ -246,14 +281,22 @@ export class Handler {
 			if (type === CommandType.Inhibitor) {
 				this.client.inhibitors.set(command.name, command);
 			}
-
-			return command?.data?.name || command?.name || command.id;
 		} catch (error) {
 			console.error(`Xernerx | Couldn't load ${file} because <${error}>.`);
 		}
 	}
 
-	#emitter(event: any) {
+	/**
+	 * @description the event emitter to emit all events.
+	 * @param {object} event - the event to be emitted.
+	 * @returns void
+	 */
+	#emitter(event: {
+		name: string;
+		emitter: string;
+		once: boolean;
+		run: Function;
+	}) {
 		const client = this.client;
 
 		if (event.emitter === "client") {

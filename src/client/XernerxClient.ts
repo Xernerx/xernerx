@@ -62,6 +62,10 @@ export default class XernerxClient extends Client {
 		this.cache = {
 			messages: new Collection(),
 			cooldowns: new Collection(),
+			messageCommands: new Collection(),
+			slashCommands: new Collection(),
+			contextCommands: new Collection(),
+			commands: new Collection(),
 		};
 
 		this.modules = {

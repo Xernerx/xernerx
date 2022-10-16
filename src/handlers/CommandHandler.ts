@@ -12,6 +12,10 @@ import {
 	SlashCommandEvents,
 } from "../models/Events.js";
 
+/**
+ * @description - The command handler.
+ * @param {XernerxClient} client - The XernerxClient.
+ */
 export default class CommandHandler {
 	client: XernerxClient;
 	handler: Handler;
@@ -25,8 +29,8 @@ export default class CommandHandler {
 	}
 
 	/**
-	 *
-	 * @param {object} options - message command options
+	 * @description - The message command loader.
+	 * @param {MessageCommandOptions} options - message command loader options.
 	 */
 	loadAllMessageCommands(options: MessageCommandOptions) {
 		this.handler.loadAllMessageCommands(options);
@@ -40,12 +44,20 @@ export default class CommandHandler {
 		events.messageDelete();
 	}
 
+	/**
+	 * @description - The slash command loader.
+	 * @param {SlashCommandOptions} options - slash command loader options.
+	 */
 	loadAllSlashCommands(options: SlashCommandOptions) {
 		this.handler.loadAllSlashCommands(options);
 
 		new SlashCommandEvents(this.client).slashCreate();
 	}
 
+	/**
+	 * @description - The context command loader.
+	 * @param {ContextCommandOptions} options - context command loader options.
+	 */
 	loadAllContextCommands(options: ContextCommandOptions) {
 		this.handler.loadAllContextCommands(options);
 

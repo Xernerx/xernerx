@@ -5,7 +5,7 @@ import {
 	ContextCommandOptions,
 } from "../interfaces/CommandInterfaces.js";
 import { InhibitorType } from "../types/InhibitorTypes.js";
-import { XernerxClient } from "../main.js";
+import XernerxClient from "../client/XernerxClient.js";
 
 export class InhibitorValidation {
 	client: XernerxClient;

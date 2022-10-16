@@ -16,32 +16,45 @@ export default {
 	// Imported methods
 	Discord,
 
-	// Custom methods
+	// Client
 	Client: XernerxClient,
-	version,
+	XernerxClient,
+
+	// Types
 	CommandType,
 	EventEmitterType,
+	InhibitorType,
+
+	// Builds
 	Event,
 	MessageCommand,
 	ContextCommand,
 	SlashCommand,
 	Inhibitor,
-	InhibitorType,
+
+	// Constants
+	version,
 };
 
 export {
 	// Imported methods
 	Discord,
 
-	// Custom methods
+	// Client
 	XernerxClient,
-	version,
+
+	// Types
 	CommandType,
-	Event,
 	EventEmitterType,
+	InhibitorType,
+
+	// Builds
+	Event,
 	MessageCommand,
 	ContextCommand,
 	SlashCommand,
 	Inhibitor,
-	InhibitorType,
+
+	// Constants
+	version,
 };

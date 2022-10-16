@@ -1,4 +1,4 @@
-import { CommandType } from "../main.js";
+import { CommandType } from "../types/Types.js";
 
 export default function commandValidation(
 	action: any,
@@ -20,10 +20,15 @@ export default function commandValidation(
 		res = true;
 
 		emit(client, action, "Not an owner", client.settings.ownerId);
-	} else if (command.channelType !== action.channel.type) {
-		res = true;
+	} else if (command.channelType?.length > 0 || command.channelType) {
+		if (!Array.isArray(command.channelType))
+			command.channelType = [command.channelType];
 
-		emit(client, action, "Not the correct channel", command.channelType);
+		if (!command.channelType.includes(action.channel.type)) {
+			res = true;
+
+			emit(client, action, "Not the correct channel", command.channelType);
+		}
 	} else if (
 		command.channels.length > 0 &&
 		!command.channels.includes(action.channel.id)
@@ -92,45 +97,178 @@ function emit(client: any, action: any, reason: any, extra: any) {
 }
 
 function inCooldown(user: any, client: any, command: any, action: any) {
-	const cooldown =
-		command.cooldown ||
-		handlerCooldown(client, command.commandType) ||
-		client.settings?.cooldown?.default;
+	let res = false,
+		downs: any = {};
 
-	if (client.cache.cooldowns.has(user.id)) {
-		const { deleteAt } = client.cache.cooldowns.get(user.id);
+	const {
+		cooldowns,
+		messageCommands,
+		slashCommands,
+		contextCommands,
+		commands,
+	} = client.cache;
 
-		client.emit(
-			"commandCooldown",
-			action,
-			command,
-			user,
-			deleteAt - Number(Date.now())
-		);
+	if (
+		command.commandType === CommandType.MessageCommand &&
+		client.handlerOptions.message.cooldown
+	) {
+		if (messageCommands.has(user.id)) {
+			const usr = messageCommands.get(user.id);
 
-		return true;
-	} else {
-		user.setAt = Number(Date.now());
-		user.deleteAt = Number(Date.now() + cooldown);
+			usr.timeRemaining = usr.endsAt - Date.now();
 
-		client.cache.cooldowns.set(user.id, user);
+			downs.message = usr;
 
-		setTimeout(() => {
-			client.cache.cooldowns.delete(user.id);
-		}, cooldown);
+			res = true;
+		}
 
-		return false;
+		if (!messageCommands.has(user.id)) {
+			messageCommands.set(
+				user.id,
+				toCooldown(
+					action,
+					command,
+					client.handlerOptions.message.cooldown,
+					user.id
+				)
+			);
+
+			setInterval(() => {
+				messageCommands.delete(user.id);
+			}, client.handlerOptions.message.cooldown);
+		}
 	}
+
+	if (
+		command.commandType === CommandType.SlashCommand &&
+		client.handlerOptions.slash.cooldown
+	) {
+		if (slashCommands.has(user.id)) {
+			const usr = slashCommands.get(user.id);
+
+			usr.timeRemaining = usr.endsAt - Date.now();
+
+			downs.slash = usr;
+
+			res = true;
+		}
+
+		if (!slashCommands.has(user.id)) {
+			slashCommands.set(
+				user.id,
+				toCooldown(
+					action,
+					command,
+					client.handlerOptions.slash.cooldown,
+					user.id
+				)
+			);
+
+			setInterval(() => {
+				slashCommands.delete(user.id);
+			}, client.handlerOptions.slash.cooldown);
+		}
+	}
+
+	if (
+		command.commandType === CommandType.ContextCommand &&
+		client.handlerOptions.context.cooldown
+	) {
+		if (contextCommands.has(user.id)) {
+			const usr = contextCommands.get(user.id);
+
+			usr.timeRemaining = usr.endsAt - Date.now();
+
+			downs.context = usr;
+
+			res = true;
+		}
+
+		if (!contextCommands.has(user.id)) {
+			contextCommands.set(
+				user.id,
+				toCooldown(
+					action,
+					command,
+					client.handlerOptions.context.cooldown,
+					user.id
+				)
+			);
+
+			setInterval(() => {
+				contextCommands.delete(user.id);
+			}, client.handlerOptions.context.cooldown);
+		}
+	}
+
+	if (client.settings.cooldown.default) {
+		if (cooldowns.has(user.id)) {
+			const usr = cooldowns.get(user.id);
+
+			usr.timeRemaining = usr.endsAt - Date.now();
+
+			downs.default = usr;
+
+			res = true;
+		}
+
+		if (!cooldowns.has(user.id)) {
+			cooldowns.set(
+				user.id,
+				toCooldown(action, command, client.settings.cooldown.default, user.id)
+			);
+
+			setInterval(() => {
+				cooldowns.delete(user.id);
+			}, client.settings.cooldown.default);
+		}
+	}
+
+	if (command.cooldown) {
+		const name =
+			user.id +
+			"-" +
+			(command.data?.name || command?.name) +
+			"-" +
+			command.commandType;
+
+		if (commands.has(name)) {
+			const usr = commands.get(name);
+
+			usr.timeRemaining = usr.endsAt - Date.now();
+
+			downs.command = usr;
+
+			res = true;
+		}
+
+		if (!commands.has(name)) {
+			commands.set(name, toCooldown(action, command, command.cooldown, name));
+
+			setInterval(() => {
+				commands.delete(name);
+			}, command.cooldown);
+		}
+	}
+
+	if (Object.keys(downs).length > 0)
+		client.emit("commandCooldown", action, command, downs);
+
+	return res;
 }
 
-function handlerCooldown(client: any, type: CommandType) {
-	if (type === CommandType.MessageCommand)
-		return client.handlerOptions.message.commandCooldown;
-	if (type === CommandType.ContextCommand)
-		return client.handlerOptions.context.commandCooldown;
-	if (type === CommandType.SlashCommand)
-		return client.handlerOptions.slash.commandCooldown;
-	else return 0;
+function toCooldown(action: any, command: any, cooldown: number, name: string) {
+	return {
+		name,
+		id: (action.user || action.author).id,
+		tag: (action.user || action.author).tag,
+		commandType: command.commandType,
+		commandName: command?.data?.name || command?.name,
+		guildId: action?.guild?.id,
+		channelId: action?.channel?.id,
+		startsAt: Number(Date.now()),
+		endsAt: Number(Date.now()) + cooldown,
+	};
 }
 
 function handlerPermissions(

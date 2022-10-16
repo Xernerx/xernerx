@@ -13,8 +13,8 @@ export default class EventHandler {
 	}
 
 	/**
-	 *
-	 * @param {object} options - message command options
+	 * @description - The event loader
+	 * @param {EventLoadOptions} options - message command options
 	 */
 	loadAllEvents(options: EventLoadOptions) {
 		this.handler.loadAllEvents(options);

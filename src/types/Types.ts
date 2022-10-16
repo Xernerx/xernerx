@@ -12,6 +12,7 @@ export enum CommandType {
 export enum EventEmitterType {
 	Client = "client",
 	Rest = "rest",
+	Process = "process",
 }
 
 export default {

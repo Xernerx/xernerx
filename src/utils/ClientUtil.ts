@@ -88,4 +88,55 @@ export class ClientUtil {
 			}, options.interval);
 		}
 	}
+
+	getCooldownTimers(id: string, command?: string) {
+		let cooldowns: any = [];
+
+		for (const [key, value] of Object.entries(this.client.cache)) {
+			if (
+				![
+					"cooldowns",
+					"messageCommands",
+					"slashCommands",
+					"contextCommands",
+					"commands",
+				].includes(key)
+			)
+				continue;
+
+			if (key === "commands") {
+				if (command) {
+					value.map((x: any) => {
+						const name = x.name.split(/-/);
+						name.pop();
+						if (name.join("-") === id + "-" + command) {
+							cooldowns.push({ [x.commandName]: x.endsAt - Date.now() });
+						}
+					});
+				} else {
+					value.map((x: any) => {
+						if (x.name.split(/-/).shift() === id) {
+							cooldowns.push({ [x.commandName]: x.endsAt - Date.now() });
+						}
+					});
+				}
+			} else {
+				if (value.has(id)) {
+					const x = value.get(id);
+
+					cooldowns.push({ [key]: x.endsAt - Date.now() });
+				}
+			}
+		}
+
+		const sort = cooldowns
+			.map((x: any) => Object.entries(x).shift())
+			.sort((a: any, b: any) => b[1] - a[1]);
+
+		cooldowns = [];
+
+		sort.map(([key, value]: any) => cooldowns.push({ [key]: value }));
+
+		return cooldowns;
+	}
 }

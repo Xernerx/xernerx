@@ -12,6 +12,7 @@ import {
 
 export interface DiscordOptions {
 	intents: number[];
+	[index: string]: any;
 }
 
 export interface ClientOptions {
@@ -43,6 +44,10 @@ export interface Commands {
 export interface Cache {
 	messages: Collection<string, object>;
 	cooldowns: Collection<string, object>;
+	messageCommands: Collection<string, object>;
+	slashCommands: Collection<string, object>;
+	contextCommands: Collection<string, object>;
+	commands: Collection<string, object>;
 }
 
 export interface Modules {

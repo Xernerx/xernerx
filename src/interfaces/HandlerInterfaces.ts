@@ -4,7 +4,7 @@ export interface MessageCommandOptions {
 	directory: string;
 	prefix: string[] | string;
 	allowMention?: boolean;
-	commandCooldown?: number;
+	cooldown?: number;
 	userPermissions?: bigint[];
 	clientPermissions?: bigint[];
 	handleEdits?: boolean;
@@ -17,7 +17,7 @@ export interface SlashCommandOptions {
 	directory: string;
 	guildId: string;
 	global: boolean;
-	commandCooldown?: number;
+	cooldown?: number;
 	userPermissions?: bigint[];
 	clientPermissions?: bigint[];
 	util?: boolean;
@@ -33,7 +33,7 @@ export interface ContextCommandOptions {
 	directory: string;
 	guildId: string;
 	global: boolean;
-	commandCooldown?: number;
+	cooldown?: number;
 	userPermissions?: bigint[];
 	clientPermissions?: bigint[];
 	util?: boolean;
