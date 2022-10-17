@@ -15,6 +15,7 @@ import {
 	Util,
 	HandlerOptions,
 } from "../interfaces/ClientInterfaces.js";
+import { logStyle } from "../models/Functions.js";
 
 /**
  * @description - The Client.
@@ -31,8 +32,13 @@ export default class XernerxClient extends Client {
 	handlerOptions: HandlerOptions;
 	events: Collection<string, object>;
 	inhibitors: Collection<string, object>;
+	config: { [index: string]: any };
 
-	constructor(discordOptions: DiscordOptions, clientOptions: ClientOptions) {
+	constructor(
+		discordOptions: DiscordOptions,
+		clientOptions: ClientOptions,
+		config?: object
+	) {
 		super(discordOptions);
 
 		this.settings = s
@@ -48,6 +54,8 @@ export default class XernerxClient extends Client {
 				}).optional,
 			})
 			.parse(clientOptions);
+
+		this.config = config || {};
 
 		this.commands = {
 			message: new Collection(),
@@ -83,20 +91,27 @@ export default class XernerxClient extends Client {
 				const size = (await client.guilds.fetch()).size;
 
 				console.info(
-					`Xernerx | ${client.user.tag} signed in watching ${size} server${
-						size > 1 ? "s" : ""
-					}. ${
-						(this.handlerOptions.slash || this.handlerOptions.context)?.guildId
-							? `Using ${
-									(
-										await this.guilds.fetch(
-											(this.handlerOptions.slash || this.handlerOptions.context)
-												?.guildId || "0"
-										)
-									).name
-							  } as local guild.`
-							: ""
-					}`
+					logStyle(
+						`Xernerx | ${client.user.tag} signed in watching ${size} server${
+							size > 1 ? "s" : ""
+						}. ${
+							(this.handlerOptions.slash || this.handlerOptions.context)
+								?.guildId
+								? `Using ${
+										(
+											await this.guilds.fetch(
+												(
+													this.handlerOptions.slash ||
+													this.handlerOptions.context
+												)?.guildId || "0"
+											)
+										).name
+								  } as local guild.`
+								: ""
+						}`,
+						"text",
+						"purple"
+					)
 				);
 			});
 		}

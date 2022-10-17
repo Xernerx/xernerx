@@ -18,7 +18,7 @@ export interface MessageCommandOptions {
 	userPermissions?: bigint[];
 	clientPermissions?: bigint[];
 	commandType?: string;
-	args?: any;
+	args: object[];
 }
 
 export interface ContextCommandOptions {
@@ -115,6 +115,14 @@ export interface ContextCommandOptions {
 	};
 }
 
+export interface SlashArgs {
+	type: string;
+	name: string;
+	choices: object[];
+	required: boolean;
+	description: string;
+}
+
 export interface SlashCommandOptions {
 	name: string;
 	description: string;
@@ -129,7 +137,7 @@ export interface SlashCommandOptions {
 	guilds?: string[];
 	userPermissions?: bigint[];
 	clientPermissions?: bigint[];
-	args?: object[];
+	args?: Array<SlashArgs>;
 	subcommands?: object[];
 	groups?: object[];
 	commandType?: string;

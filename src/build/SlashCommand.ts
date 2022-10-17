@@ -1,7 +1,11 @@
-import { SlashCommandOptions } from "../interfaces/CommandInterfaces.js";
+import {
+	SlashArgs,
+	SlashCommandOptions,
+} from "../interfaces/CommandInterfaces.js";
 import {
 	ChannelType,
 	SlashCommandBuilder,
+	SlashCommandStringOption,
 	SlashCommandSubcommandBuilder,
 	SlashCommandSubcommandGroupBuilder,
 } from "discord.js";
@@ -98,7 +102,7 @@ export class SlashCommand {
 		this.defer = options.defer;
 	}
 
-	addArgs(method: any, args: any) {
+	addArgs(method: any, args: Array<SlashArgs>) {
 		const types = [
 			"boolean",
 			"integer",

@@ -1,4 +1,13 @@
-import { Collection } from "discord.js";
+import {
+	CacheFactory,
+	Collection,
+	MessageMentionOptions,
+	Partials,
+	PresenceData,
+	RESTOptions,
+	SweeperOptions,
+	WebSocketOptions,
+} from "discord.js";
 import CommandHandler from "../handlers/CommandHandler.js";
 import EventHandler from "../handlers/EventHandler.js";
 import InhibitorHandler from "../handlers/InhibitorHandler.js";
@@ -11,8 +20,20 @@ import {
 } from "./HandlerInterfaces.js";
 
 export interface DiscordOptions {
+	shards?: number | number[] | "auto";
+	closeTimeout?: number;
+	shardCount?: number;
+	makeCache?: CacheFactory;
+	allowedMentions?: MessageMentionOptions;
+	partials?: Array<Partials>;
+	failIfNotExists?: boolean;
+	presence?: PresenceData;
 	intents: number[];
-	[index: string]: any;
+	waitGuildTimeout?: number;
+	sweepers?: SweeperOptions;
+	ws?: WebSocketOptions;
+	rest?: RESTOptions;
+	jsonTransformer?: (obj: unknown) => unknown;
 }
 
 export interface ClientOptions {

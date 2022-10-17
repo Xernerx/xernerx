@@ -13,6 +13,7 @@ import {
 } from "../utils/CommandUtil.js";
 import { CommandArguments, messageArgs } from "./CommandArguments.js";
 import commandValidation from "./CommandValidations.js";
+import { logStyle } from "./Functions.js";
 import { InhibitorValidation } from "./InhibitorValidations.js";
 
 export class MessageCommandEvents {
@@ -114,6 +115,8 @@ export class MessageCommandEvents {
 								if (cmd.conditions && (await cmd.conditions(message))) return;
 
 								await cmd.exec(message, await messageArgs(message, cmd));
+
+								this.client.emit("commandRun", message, cmd);
 							} catch (error) {
 								return this.client.emit("commandError", message, error);
 							}
@@ -215,6 +218,8 @@ export class MessageCommandEvents {
 								if (cmd.conditions && (await cmd.conditions(message))) return;
 
 								await cmd.exec(message, await messageArgs(message, cmd));
+
+								this.client.emit("commandRun", message, cmd);
 							} catch (error) {
 								return this.client.emit("commandError", message, error);
 							}
@@ -308,6 +313,8 @@ export class SlashCommandEvents {
 							subcommand: argumentsInfo.subcommand(),
 							args: await argumentsInfo.arguments(),
 						});
+
+						this.client.emit("commandRun", interaction, command);
 					} catch (error) {
 						this.client.emit("commandError", interaction, error);
 					}
@@ -372,6 +379,8 @@ export class ContextCommandEvents {
 						}
 
 						await command.exec(interaction);
+
+						this.client.emit("commandRun", interaction, command);
 					} catch (error) {
 						this.client.emit("commandError", interaction, error);
 					}
@@ -450,20 +459,28 @@ export class CommandsDeploy {
 					this.client.handlerOptions?.context?.logging
 				)
 					console.info(
-						`Xernerx | Deployed ${deployableCommands.length} of ${
-							commands.length
-						} interaction commands ${
-							this.client.handlerOptions.slash?.global ||
-							this.client.handlerOptions.context?.global
-								? `globally in ${
-										(await this.client.guilds.fetch()).size
-								  } server(s), deleted local commands.`
-								: "locally"
-						}.`
+						logStyle(
+							`Xernerx | Deployed ${deployableCommands.length} of ${
+								commands.length
+							} interaction commands ${
+								this.client.handlerOptions.slash?.global ||
+								this.client.handlerOptions.context?.global
+									? `globally in ${
+											(await this.client.guilds.fetch()).size
+									  } server(s), deleted local commands.`
+									: "locally"
+							}.`,
+							"text",
+							"purple"
+						)
 					);
 			} catch (error) {
 				console.error(
-					`Xernerx | Couldn't deploy interaction commands because <${error}>.`
+					logStyle(
+						`Xernerx | Couldn't deploy interaction commands because <${error}>.`,
+						"background",
+						"red"
+					)
 				);
 			}
 		});
