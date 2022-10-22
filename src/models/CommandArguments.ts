@@ -16,7 +16,7 @@ export class CommandArguments {
 	}
 
 	arguments() {
-		const options: any = {};
+		const options: Record<string, object> = {};
 
 		if (this.action?.options?._hoistedOptions) {
 			for (const option of this.action.options._hoistedOptions) {
@@ -30,15 +30,15 @@ export class CommandArguments {
 }
 
 export async function messageArgs(message: any, command: any) {
-	let args: any = { flags: {} },
+	let args: Record<string, object | boolean> | any = { flags: {} },
 		separator = command.separator || " ",
 		i = 0;
 
 	if (!command.args) return;
 
 	command.args
-		.filter((c: any) => c.type == "flag")
-		.map((flag: any) => {
+		.filter((c: { type: string }) => c.type == "flag")
+		.map((flag: { content: string; name: string }) => {
 			for (const flg of message.content.matchAll(flag.content)) {
 				if (flag.content == flg) {
 					message.content = message.content.replace(flag.content, "");
@@ -75,7 +75,7 @@ export async function messageArgs(message: any, command: any) {
 
 				args[argument.name] = content[0];
 			} else if (argument.type == "user") {
-				let user = message.client.users.cache.find((u: any) =>
+				let user = message.client.users.cache.find((u: { username: string }) =>
 					u?.username?.toLowerCase()?.includes(content[0])
 				);
 
@@ -89,7 +89,7 @@ export async function messageArgs(message: any, command: any) {
 
 				args[argument.name] = user;
 			} else if (argument.type == "role") {
-				let role = message.guild.roles.cache.find((r: any) =>
+				let role = message.guild.roles.cache.find((r: { name: string }) =>
 					r?.name?.toLowerCase()?.includes(content[0])
 				);
 
@@ -104,7 +104,7 @@ export async function messageArgs(message: any, command: any) {
 				args[argument.name] = role;
 			} else if (argument.type == "member") {
 				let member = message.guild.members.cache.find(
-					(m: any) =>
+					(m: { user: { username: string }; nickname: string }) =>
 						m?.nickname?.toLowerCase()?.includes(content[0]) ||
 						m?.user?.username?.toLowerCase()?.includes(content[0])
 				);
@@ -119,7 +119,7 @@ export async function messageArgs(message: any, command: any) {
 
 				args[argument.name] = member;
 			} else if (argument.type == "channel") {
-				let channel = message.guild.channels.cache.find((c: any) =>
+				let channel = message.guild.channels.cache.find((c: { name: string }) =>
 					c?.name?.toLowerCase()?.includes(content[0])
 				);
 

@@ -1,4 +1,6 @@
+import { Message, User } from "discord.js";
 import { EventEmitterType } from "../types/Types.js";
+import { MessageCommandUtil } from "../utils/CommandUtil.js";
 
 export interface MessageCommandOptions {
 	directory: string;
@@ -65,4 +67,12 @@ export interface InhibitorLoadOptions {
 export interface InhibitorOptions {
 	name: string;
 	type: string;
+}
+
+export interface XernerxMessage extends Message {
+	util: MessageCommandUtil;
+}
+
+export interface XernerxUser extends User {
+	isOwner: boolean;
 }

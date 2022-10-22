@@ -1,6 +1,8 @@
 import {
-	SlashArgs,
+	SlashArg,
 	SlashCommandOptions,
+	SlashGroup,
+	SlashSubcommand,
 } from "../interfaces/CommandInterfaces.js";
 import {
 	ChannelType,
@@ -10,6 +12,7 @@ import {
 	SlashCommandSubcommandGroupBuilder,
 } from "discord.js";
 import { s } from "@sapphire/shapeshift";
+import { SlashCommandOption, NiceTypes } from "../types/Types.js";
 
 /**
  * @description - The command builder for slash commands.
@@ -47,15 +50,15 @@ export class SlashCommand {
 			.setDescription(options.description);
 
 		if (options.args && options?.args?.length > 0) {
-			this.addArgs(this.data, options.args);
+			this.#addArgs(this.data, options.args);
 		}
 
 		if (options.subcommands && options?.subcommands?.length > 0) {
-			this.addSubcommands(this.data, options.subcommands);
+			this.#addSubcommands(this.data, options.subcommands);
 		}
 
 		if (options.groups && options?.groups?.length > 0) {
-			this.addSubcommandGroups(options.groups);
+			this.#addSubcommandGroups(options.groups);
 		}
 
 		s.object({
@@ -102,7 +105,10 @@ export class SlashCommand {
 		this.defer = options.defer;
 	}
 
-	addArgs(method: any, args: Array<SlashArgs>) {
+	#addArgs(
+		command: SlashCommandBuilder | SlashCommandSubcommandBuilder,
+		args: Array<SlashArg>
+	) {
 		const types = [
 			"boolean",
 			"integer",
@@ -122,47 +128,49 @@ export class SlashCommand {
 					} instead.`
 				);
 
-			method[
-				`add${
-					argument.type.slice(0, 1).toUpperCase() +
-					argument.type.slice(1).toLowerCase()
-				}Option`
-			]((option: any) => {
-				option
-					.setName(argument.name)
-					.setDescription(argument.description)
-					.setRequired(argument.required || false);
-				if (argument.choices) option.setChoices(...argument?.choices);
+			let niceType: NiceTypes | string = `${argument.type
+				.slice(0, 1)
+				.toUpperCase()}${argument.type.slice(1).toLowerCase()}`;
+			(command[`add${niceType as NiceTypes}Option`] as Function)(
+				(option: SlashCommandOption) => {
+					option
+						.setName(argument.name)
+						.setDescription(argument.description)
+						.setRequired(argument.required || false);
+					if (argument.choices)
+						(option as SlashCommandStringOption).setChoices(
+							...argument?.choices
+						);
 
-				return option;
-			});
+					return option;
+				}
+			);
 		}
 	}
 
-	addSubcommands(method: any, subcommands: any) {
+	#addSubcommands(
+		method: SlashCommandBuilder | SlashCommandSubcommandGroupBuilder,
+		subcommands: Array<SlashSubcommand>
+	) {
 		for (const subcommand of subcommands) {
 			let sub = new SlashCommandSubcommandBuilder()
 				.setName(subcommand.name)
 				.setDescription(subcommand.description);
 
-			if (subcommand.args?.length > 0) this.addArgs(sub, subcommand.args);
+			if (subcommand.args?.length > 0) this.#addArgs(sub, subcommand.args);
 
 			method.addSubcommand(sub);
 		}
 	}
 
-	addSubcommandGroups(groups: any) {
+	#addSubcommandGroups(groups: Array<SlashGroup>) {
 		for (const group of groups) {
 			let subcommandGroup = new SlashCommandSubcommandGroupBuilder()
 				.setName(group.name)
 				.setDescription(group.description);
 
-			if (group.subcommands?.length > 0) {
-				this.addSubcommands(subcommandGroup, group.subcommands);
-
-				if (group.subcommands.args?.length > 0)
-					this.addArgs(group.subcommands, group.subcommands.args);
-			}
+			if (group.subcommands?.length > 0)
+				this.#addSubcommands(subcommandGroup, group.subcommands);
 
 			this.data.addSubcommandGroup(subcommandGroup);
 		}

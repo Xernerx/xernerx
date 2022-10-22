@@ -18,6 +18,7 @@ import {
 	EventLoadOptions,
 	InhibitorLoadOptions,
 } from "./HandlerInterfaces.js";
+import { MessageCommand } from "../build/MessageCommand.js";
 
 export interface DiscordOptions {
 	shards?: number | number[] | "auto";
@@ -57,7 +58,7 @@ export interface HandlerOptions {
 }
 
 export interface Commands {
-	message: Collection<string, object>;
+	message: Collection<string, MessageCommand>;
 	slash: Collection<string, object>;
 	context: Collection<string, object>;
 }
@@ -75,8 +76,4 @@ export interface Modules {
 	commandHandler: CommandHandler;
 	eventHandler: EventHandler;
 	inhibitorHandler: InhibitorHandler;
-}
-
-export interface Util {
-	[index: string]: any;
 }

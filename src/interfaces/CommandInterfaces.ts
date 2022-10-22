@@ -115,12 +115,33 @@ export interface ContextCommandOptions {
 	};
 }
 
-export interface SlashArgs {
-	type: string;
+export interface SlashArg {
+	type:
+		| "string"
+		| "number"
+		| "boolean"
+		| "user"
+		| "channel"
+		| "role"
+		| "mentionable"
+		| "integer";
+
 	name: string;
-	choices: object[];
+	choices: Array<{ name: string; value: string }>;
 	required: boolean;
 	description: string;
+}
+
+export interface SlashSubcommand {
+	name: string;
+	description: string;
+	args: Array<SlashArg>;
+}
+
+export interface SlashGroup {
+	name: string;
+	description: string;
+	subcommands: Array<SlashSubcommand>;
 }
 
 export interface SlashCommandOptions {
@@ -137,9 +158,9 @@ export interface SlashCommandOptions {
 	guilds?: string[];
 	userPermissions?: bigint[];
 	clientPermissions?: bigint[];
-	args?: Array<SlashArgs>;
-	subcommands?: object[];
-	groups?: object[];
+	args?: Array<SlashArg>;
+	subcommands?: Array<SlashSubcommand>;
+	groups?: Array<SlashGroup>;
 	commandType?: string;
 	defer?: {
 		reply?: boolean;

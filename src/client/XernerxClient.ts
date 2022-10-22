@@ -12,7 +12,6 @@ import {
 	Commands,
 	Cache,
 	Modules,
-	Util,
 	HandlerOptions,
 } from "../interfaces/ClientInterfaces.js";
 import { logStyle } from "../models/Functions.js";
@@ -28,11 +27,11 @@ export default class XernerxClient extends Client {
 	commands: Commands;
 	cache: Cache;
 	modules: Modules;
-	util: Util;
+	util: ClientUtil;
 	handlerOptions: HandlerOptions;
 	events: Collection<string, object>;
 	inhibitors: Collection<string, object>;
-	config: { [index: string]: any };
+	config: object;
 
 	constructor(
 		discordOptions: DiscordOptions,

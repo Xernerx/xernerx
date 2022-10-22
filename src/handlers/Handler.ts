@@ -341,29 +341,29 @@ export class Handler {
 
 		if (event.emitter === "client") {
 			if (event.once)
-				client.once(event.name, (...args: any[]) => {
+				client.once(event.name, (...args: object[]) => {
 					event.run(...args);
 				});
 			else
-				client.on(event.name, (...args: any[]) => {
+				client.on(event.name, (...args: object[]) => {
 					event.run(...args);
 				});
 		} else if (event.emitter === "rest") {
 			if (event.once)
-				client.once(event.name, (...args: any[]) => {
+				client.once(event.name, (...args: object[]) => {
 					event.run(...args);
 				});
 			else
-				client.on(event.name, (...args: any[]) => {
+				client.on(event.name, (...args: object[]) => {
 					event.run(...args);
 				});
 		} else if (event.emitter === "process") {
 			if (event.once)
-				process.once(event.name, (...args: any[]) => {
+				process.once(event.name, (...args: object[]) => {
 					event.run(...args);
 				});
 			else
-				process.on(event.name, (...args: any[]) => {
+				process.on(event.name, (...args: object[]) => {
 					event.run(...args);
 				});
 		}

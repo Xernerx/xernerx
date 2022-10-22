@@ -1,6 +1,7 @@
 import { MessageCommandOptions } from "../interfaces/CommandInterfaces.js";
 import { Message, ChannelType } from "discord.js";
 import { s } from "@sapphire/shapeshift";
+import { CommandType } from "../main.js";
 
 /**
  * @description - The command builder for message commands.

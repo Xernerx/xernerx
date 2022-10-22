@@ -1,3 +1,14 @@
+import {
+	SlashCommandStringOption,
+	SlashCommandNumberOption,
+	SlashCommandIntegerOption,
+	SlashCommandBooleanOption,
+	SlashCommandUserOption,
+	SlashCommandChannelOption,
+	SlashCommandRoleOption,
+	SlashCommandMentionableOption,
+} from "discord.js";
+
 export enum CommandType {
 	Message = "MessageCommand",
 	Slash = "SlashCommand",
@@ -14,6 +25,27 @@ export enum EventEmitterType {
 	Rest = "rest",
 	Process = "process",
 }
+export type SlashCommandOptionChoices =
+	| SlashCommandStringOption
+	| SlashCommandNumberOption
+	| SlashCommandIntegerOption;
+export type SlashCommandOption =
+	| SlashCommandOptionChoices
+	| SlashCommandBooleanOption
+	| SlashCommandUserOption
+	| SlashCommandChannelOption
+	| SlashCommandRoleOption
+	| SlashCommandMentionableOption;
+
+export type NiceTypes =
+	| "String"
+	| "Number"
+	| "Boolean"
+	| "User"
+	| "Channel"
+	| "Role"
+	| "Mentionable"
+	| "Integer";
 
 export default {
 	CommandType,
