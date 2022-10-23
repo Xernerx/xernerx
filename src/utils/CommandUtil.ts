@@ -3,15 +3,16 @@ import {
 	EmbedBuilder,
 	Interaction,
 	Message,
+	MessagePayload,
 	SelectMenuBuilder,
 } from "discord.js";
 import XernerxClient from "../client/XernerxClient.js";
-
+import { XernerxMessage } from "../interfaces/HandlerInterfaces.js";
 interface SelectMenuOptions {
 	index?: EmbedBuilder;
 	row?: ActionRowBuilder;
 	component?: SelectMenuBuilder;
-	components?: any;
+	components?: object[];
 	reply?: boolean;
 	id?: string;
 	filter?: Function;
@@ -27,15 +28,15 @@ interface ButtonOptions {
 
 export class MessageCommandUtil {
 	client: XernerxClient;
-	message: any;
+	message: XernerxMessage;
 
-	constructor(client: XernerxClient, message: Message) {
+	constructor(client: XernerxClient, message: Message & XernerxMessage) {
 		this.client = client;
 
 		this.message = message;
 	}
 
-	async reply(content: any) {
+	async reply(content: MessagePayload | string) {
 		if (this.client.cache.messages.has(this.message.id))
 			var existingMessage: any = this.client.cache.messages.get(
 				this.message.id
@@ -88,7 +89,7 @@ export class MessageCommandUtil {
 		}
 	}
 
-	async send(content: any) {
+	async send(content: MessagePayload | string) {
 		if (this.client.cache.messages.has(this.message.id))
 			var existingMessage: any = this.client.cache.messages.get(
 				this.message.id
@@ -142,7 +143,7 @@ export class MessageCommandUtil {
 	}
 
 	async defer(time: number) {
-		return new Promise((resolve: any) => setTimeout(resolve, time));
+		return new Promise((resolve: Function) => setTimeout(resolve, time));
 	}
 
 	getCommands() {
@@ -180,14 +181,14 @@ export class InteractionCommandUtil {
 		this.interaction = interaction;
 	}
 
-	reply(content: any) {
+	reply(content: MessagePayload | string) {
 		return this.interaction.replied || this.interaction.deferred
 			? this.interaction.editReply(content)
 			: this.interaction.reply(content);
 	}
 
 	async defer(time: number) {
-		return new Promise((resolve: any) => setTimeout(resolve, time));
+		return new Promise((resolve: Function) => setTimeout(resolve, time));
 	}
 
 	getCommands() {

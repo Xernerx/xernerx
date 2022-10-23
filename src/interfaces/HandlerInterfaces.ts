@@ -1,4 +1,4 @@
-import { Message, User } from "discord.js";
+import { Attachment, Component, Embed, Message, User } from "discord.js";
 import { EventEmitterType } from "../types/Types.js";
 import { MessageCommandUtil } from "../utils/CommandUtil.js";
 
@@ -70,7 +70,8 @@ export interface InhibitorOptions {
 }
 
 export interface XernerxMessage extends Message {
-	util: MessageCommandUtil;
+	util?: MessageCommandUtil;
+	response?: string;
 }
 
 export interface XernerxUser extends User {

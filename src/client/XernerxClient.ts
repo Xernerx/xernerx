@@ -115,4 +115,8 @@ export default class XernerxClient extends Client {
 			});
 		}
 	}
+
+	register(token: string) {
+		this.login(token);
+	}
 }

@@ -1,13 +1,14 @@
-import {
-	ActivityOptions,
-	ActivityType,
-	ClientPresenceStatus,
-} from "discord.js";
+import { ActivityType, ClientPresenceStatus } from "discord.js";
 import XernerxClient from "../client/XernerxClient.js";
 
 interface Presence {
 	text?: string;
-	type?: any;
+	type?:
+		| ActivityType.Playing
+		| ActivityType.Streaming
+		| ActivityType.Listening
+		| ActivityType.Watching
+		| ActivityType.Competing;
 	link?: string;
 	status?: ClientPresenceStatus;
 	interval?: number;
@@ -46,7 +47,7 @@ export class ClientUtil {
 				`Expected name to be of type string, received ${typeof name} instead!`
 			);
 
-		const commands: any[] = [];
+		const commands: object[] = [];
 
 		this.getAllCommands()
 			.filter(
