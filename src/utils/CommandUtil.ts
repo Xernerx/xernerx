@@ -1,5 +1,7 @@
 import {
 	ActionRowBuilder,
+	ButtonBuilder,
+	ButtonStyle,
 	EmbedBuilder,
 	Interaction,
 	Message,
@@ -24,6 +26,13 @@ interface ButtonOptions {
 	index?: number;
 	buttons?: Array<string>;
 	reply?: boolean;
+	row?: ActionRowBuilder;
+	component?: ButtonBuilder;
+	components?: object[];
+	id?: string;
+	filter?: any;
+	time?: number;
+	ephemeral?: boolean;
 }
 
 export class MessageCommandUtil {
@@ -255,7 +264,102 @@ export class InteractionCommandUtil {
 			: this.interaction.channel.send(content);
 	}
 
-	#buttonPaginator(embeds: Array<EmbedBuilder>, options: ButtonOptions) {}
+	buttonPaginator(embeds: Array<EmbedBuilder>, options: ButtonOptions) {
+		if (!Array.isArray(embeds))
+			throw new Error(
+				`Expected embeds to be of type array, received ${typeof embeds} instead.`
+			);
+
+		if (embeds.length <= 0) throw new Error(`The minimum embeds is 1.`);
+
+		if (typeof options !== "object") options = {};
+
+		if (!Array.isArray(options.components)) options.components = [];
+
+		if (!options.row) {
+			options.row = new ActionRowBuilder();
+
+			if (!options.id) options.id = `${this.interaction.id}-menu`;
+		}
+
+		if (!options.buttons) options.buttons = ["⏮️", "◀️", "⏹️", "▶️", "⏭️"];
+
+		for (const button of options.buttons) {
+			options.row.addComponents(
+				new ButtonBuilder()
+					.setCustomId(
+						`${this.interaction.id}-${options.buttons.indexOf(button)}`
+					)
+					.setEmoji(button)
+					.setStyle(ButtonStyle.Primary)
+			);
+		}
+
+		let embed = embeds[options.index || 0];
+
+		const content = {
+			embeds: [embed],
+			components: [options.row, ...options.components],
+			ephemeral: !!options.ephemeral,
+		};
+
+		(options.reply === undefined || options.reply === true
+			? this.interaction.util.reply(content)
+			: this.interaction.channel.send(content)
+		).then((message: XernerxMessage) => {
+			const collector = message.channel
+				.createMessageComponentCollector({
+					filter: options.filter,
+					time: options?.time || 60000,
+				})
+
+				.on("collect", (interaction) => {
+					let stop: boolean = false;
+
+					if (interaction.customId.startsWith(this.interaction.id)) {
+						switch (Number(interaction.customId.split(/-/).pop())) {
+							case 0: {
+								embed = embeds[0];
+								break;
+							}
+							case 1: {
+								embed =
+									embeds[
+										embeds.indexOf(embed) >= 1 ? embeds.indexOf(embed) - 1 : 0
+									];
+								break;
+							}
+							case 2: {
+								collector.stop();
+								stop = true;
+								break;
+							}
+							case 3: {
+								embed =
+									embeds[
+										embeds.indexOf(embed) < embeds.length - 1
+											? embeds.indexOf(embed) + 1
+											: embeds.length - 1
+									];
+								break;
+							}
+							case 4: {
+								embed = embeds[embeds.length - 1];
+								break;
+							}
+						}
+
+						stop
+							? interaction.update({ embeds: [embed], components: [] })
+							: interaction.update({ embeds: [embed] });
+					}
+				})
+
+				.on("end", () => {
+					this.interaction.editReply({ components: [] });
+				});
+		});
+	}
 
 	#buttonMenuPaginator(
 		embeds: Array<EmbedBuilder>,
