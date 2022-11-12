@@ -6,6 +6,7 @@ import {
 } from "discord.js";
 import { ContextCommandOptions } from "../interfaces/CommandInterfaces.js";
 import { s } from "@sapphire/shapeshift";
+import { XernerxClient } from "../main.js";
 
 /**
  * @description The command builder for context commands.
@@ -31,6 +32,7 @@ export class ContextCommand {
 		ephemeral?: boolean;
 		fetchReply?: boolean;
 	};
+	client: XernerxClient | object;
 
 	constructor(id: string, options: ContextCommandOptions) {
 		this.id = id;
@@ -97,19 +99,25 @@ export class ContextCommand {
 		this.clientPermissions = options.clientPermissions;
 
 		this.defer = options.defer;
+
+		this.client = {};
+
+		this.conditions = this.conditions;
+
+		this.exec = this.exec;
 	}
 
 	/**
 	 * @param {Interaction} interaction - The Discord interaction event data.
 	 * @description make any preconditions here.
 	 */
-	conditions(interaction: Interaction) {}
+	async conditions(interaction: Interaction) {}
 
 	/**
 	 * @param {Interaction} interaction - The Discord interaction event data.
 	 * @description Make your custom command here.
 	 */
-	exec(interaction: Interaction) {}
+	async exec(interaction: Interaction) {}
 
 	#types(type: ContextMenuCommandType) {
 		if (String(type)?.toLowerCase() === "message") type = 3;

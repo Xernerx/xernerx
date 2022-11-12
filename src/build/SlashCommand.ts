@@ -6,6 +6,7 @@ import {
 } from "../interfaces/CommandInterfaces.js";
 import {
 	ChannelType,
+	Interaction,
 	SlashCommandBuilder,
 	SlashCommandStringOption,
 	SlashCommandSubcommandBuilder,
@@ -13,6 +14,7 @@ import {
 } from "discord.js";
 import { s } from "@sapphire/shapeshift";
 import { SlashCommandOption, NiceTypes } from "../types/Types.js";
+import { XernerxClient } from "../main.js";
 
 /**
  * @description - The command builder for slash commands.
@@ -41,6 +43,7 @@ export class SlashCommand {
 		ephemeral?: boolean;
 		fetchReply?: boolean;
 	};
+	client: XernerxClient | object;
 
 	constructor(id: string, options: SlashCommandOptions) {
 		this.id = id;
@@ -103,7 +106,17 @@ export class SlashCommand {
 		this.clientPermissions = options.clientPermissions;
 
 		this.defer = options.defer;
+
+		this.client = {};
+
+		this.conditions = this.conditions;
+
+		this.exec = this.exec;
 	}
+
+	async conditions(interaction: Interaction) {}
+
+	async exec(interaction: Interaction) {}
 
 	#addArgs(
 		command: SlashCommandBuilder | SlashCommandSubcommandBuilder,

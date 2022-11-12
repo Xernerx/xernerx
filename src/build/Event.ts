@@ -1,5 +1,6 @@
 import { EventOptions } from "../interfaces/HandlerInterfaces.js";
 import { s } from "@sapphire/shapeshift";
+import { XernerxClient } from "../main.js";
 
 /**
  * @description - The event builder for any events.
@@ -12,6 +13,7 @@ export class Event {
 	emitter?: string;
 	type?: string;
 	once?: boolean;
+	client: XernerxClient | object;
 
 	constructor(id: string, options: EventOptions) {
 		this.id = id;
@@ -30,9 +32,13 @@ export class Event {
 		this.type = options.type || "discord";
 
 		this.once = options.once || false;
+
+		this.client = {};
+
+		this.run = this.run;
 	}
 
-	run() {
+	async run() {
 		/**
 		 * @description run your custom event here.
 		 */

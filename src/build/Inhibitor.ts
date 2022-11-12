@@ -1,5 +1,6 @@
 import { InhibitorOptions } from "../interfaces/HandlerInterfaces.js";
 import { s } from "@sapphire/shapeshift";
+import { XernerxClient } from "../main.js";
 
 /**
  * @description - The inhibitor builder for inhibitors.
@@ -10,6 +11,7 @@ export class Inhibitor {
 	id: string;
 	name: string;
 	type: string;
+	client: XernerxClient | object;
 
 	constructor(id: string, options: InhibitorOptions) {
 		this.id = id;
@@ -22,5 +24,11 @@ export class Inhibitor {
 		this.name = options.name;
 
 		this.type = options.type;
+
+		this.client = {};
+
+		this.check = this.check;
 	}
+
+	async check() {}
 }

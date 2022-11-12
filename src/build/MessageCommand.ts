@@ -1,7 +1,7 @@
 import { MessageCommandOptions } from "../interfaces/CommandInterfaces.js";
 import { Message, ChannelType } from "discord.js";
 import { s } from "@sapphire/shapeshift";
-import { CommandType } from "../main.js";
+import { XernerxClient } from "../main.js";
 
 /**
  * @description - The command builder for message commands.
@@ -26,6 +26,7 @@ export class MessageCommand {
 	userPermissions?: bigint[];
 	clientPermissions?: bigint[];
 	args: object;
+	client: XernerxClient | object;
 
 	constructor(id: string, options: MessageCommandOptions) {
 		this.id = id;
@@ -83,6 +84,12 @@ export class MessageCommand {
 		this.clientPermissions = options.clientPermissions || [];
 
 		this.args = options.args;
+
+		this.client = {};
+
+		this.conditions = this.conditions;
+
+		this.exec = this.exec;
 	}
 
 	/**
@@ -90,12 +97,12 @@ export class MessageCommand {
 	 * @param {object} args - The arguments you created.
 	 * @description make any preconditions here.
 	 */
-	conditions(message: Message, args: object) {}
+	async conditions(message: Message, args: object) {}
 
 	/**
 	 * @param {Message} message - The Discord message event data.
 	 * @param {object} args - The arguments you created.
 	 * @description Make your custom command here.
 	 */
-	exec(message: Message, args: object) {}
+	async exec(message: Message, args: object) {}
 }
