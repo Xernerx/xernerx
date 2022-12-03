@@ -1,7 +1,7 @@
 {
 	"type": "module",
 	"name": "xernerx",
-	"version": "3.0.2",
+	"version": "3.0.3",
 	"description": "A bot framework for discord.js. [BETA]",
 	"main": "dist/main.js",
 	"scripts": {
@@ -18,8 +18,8 @@
 	},
 	"homepage": "https://github.com/TheDummi/xernerx#readme",
 	"dependencies": {
-		"@sapphire/shapeshift": "^3.7.0",
-		"discord.js": "^14.6.0"
+		"@sapphire/shapeshift": "^3.7.1",
+		"discord.js": "^14.7.0"
 	},
 	"packageManager": "npm@8.5.5"
 }

@@ -6,14 +6,14 @@ import {
 	Interaction,
 	Message,
 	MessagePayload,
-	SelectMenuBuilder,
+	StringSelectMenuBuilder,
 } from "discord.js";
 import XernerxClient from "../client/XernerxClient.js";
 import { XernerxMessage } from "../interfaces/HandlerInterfaces.js";
 interface SelectMenuOptions {
 	index?: EmbedBuilder;
 	row?: ActionRowBuilder;
-	component?: SelectMenuBuilder;
+	component?: StringSelectMenuBuilder;
 	components?: object[];
 	reply?: boolean;
 	id?: string;
@@ -207,7 +207,7 @@ export class InteractionCommandUtil {
 
 	#getCommandName() {}
 
-	#selectMenuPaginator(
+	selectMenuPaginator(
 		embeds: Array<EmbedBuilder>,
 		options?: SelectMenuOptions
 	) {
@@ -241,27 +241,59 @@ export class InteractionCommandUtil {
 
 			if (!options.id) options.id = `${this.interaction.id}-menu`;
 
-			options.component = new SelectMenuBuilder()
+			options.component = new StringSelectMenuBuilder()
 				.setCustomId(options.id)
 				.setMaxValues(1)
 				.setMinValues(1)
 				.setPlaceholder("Select a page.")
-				.addOptions({ label: "index", value: "index" });
+				.addOptions({ label: "index", value: "0" });
 
-			embeds.map((embed, i = 0) => {});
+			embeds.map((embed, i = 0) => {
+				options?.component?.addOptions({
+					label: embed.data.title || "No Name",
+					description: embed.data.description || `Page ${i}`,
+					value: String(i + 1),
+				});
+			});
 
 			options.row.addComponents(options.component);
 		}
 
+		embeds.unshift(options.index);
+
 		const content = {
 			embeds: [options.index],
-			components: [options.component, ...options.components],
+			components: [options.row, ...options.components],
 			ephemeral: !!options.ephemeral,
 		};
 
-		options.reply === undefined || options.reply === true
+		(options.reply === undefined || options.reply === true
 			? this.interaction.util.reply(content)
-			: this.interaction.channel.send(content);
+			: this.interaction.channel.send(content)
+		).then(() => {
+			const collector = this.interaction.channel
+				.createMessageComponentCollector({
+					filter: options?.filter,
+					time: options?.time || 60000,
+				})
+
+				.on("collect", (interaction: Record<string, string | Function>) => {
+					if (!(interaction.customId as string).startsWith(this.interaction.id))
+						return;
+
+					(interaction.update as Function)({
+						embeds: [
+							embeds[
+								parseInt((interaction.values as unknown as Array<string>)[0])
+							],
+						],
+					});
+				})
+
+				.on("end", () => {
+					this.interaction.editReply({ components: [] });
+				});
+		});
 	}
 
 	buttonPaginator(embeds: Array<EmbedBuilder>, options: ButtonOptions) {
@@ -313,11 +345,13 @@ export class InteractionCommandUtil {
 					time: options?.time || 60000,
 				})
 
-				.on("collect", (interaction) => {
+				.on("collect", (interaction: Record<string, string | Function>) => {
 					let stop: boolean = false;
 
-					if (interaction.customId.startsWith(this.interaction.id)) {
-						switch (Number(interaction.customId.split(/-/).pop())) {
+					if (
+						(interaction.customId as string).startsWith(this.interaction.id)
+					) {
+						switch (Number((interaction.customId as string).split(/-/).pop())) {
 							case 0: {
 								embed = embeds[0];
 								break;
@@ -350,8 +384,13 @@ export class InteractionCommandUtil {
 						}
 
 						stop
-							? interaction.update({ embeds: [embed], components: [] })
-							: interaction.update({ embeds: [embed] });
+							? (interaction as Record<string, Function>).update({
+									embeds: [embed],
+									components: [],
+							  })
+							: (interaction as Record<string, Function>).update({
+									embeds: [embed],
+							  });
 					}
 				})
 
