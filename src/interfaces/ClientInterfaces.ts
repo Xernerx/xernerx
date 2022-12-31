@@ -19,6 +19,7 @@ import {
 	InhibitorLoadOptions,
 } from "./HandlerInterfaces.js";
 import { MessageCommand } from "../build/MessageCommand.js";
+import WebhookHandler from "../handlers/WebhookHandler.js";
 
 export interface DiscordOptions {
 	shards?: number | number[] | "auto";
@@ -49,6 +50,11 @@ export interface ClientOptions {
 	};
 }
 
+export interface DBLOptions {
+	token?: string;
+	webhook?: string;
+	logging?: boolean;
+}
 export interface HandlerOptions {
 	message?: MessageCommandOptions;
 	slash?: SlashCommandOptions;
@@ -76,4 +82,5 @@ export interface Modules {
 	commandHandler: CommandHandler;
 	eventHandler: EventHandler;
 	inhibitorHandler: InhibitorHandler;
+	webhookHandler: WebhookHandler;
 }

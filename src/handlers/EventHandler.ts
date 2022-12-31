@@ -17,6 +17,6 @@ export default class EventHandler {
 	 * @param {EventLoadOptions} options - message command options
 	 */
 	loadAllEvents(options: EventLoadOptions) {
-		this.handler.loadAllEvents(options);
+		return this.handler.loadAllEvents(options);
 	}
 }

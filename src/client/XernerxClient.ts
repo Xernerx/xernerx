@@ -9,12 +9,14 @@ import { ClientUtil } from "../utils/ClientUtil.js";
 import {
 	DiscordOptions,
 	ClientOptions,
+	DBLOptions,
 	Commands,
 	Cache,
 	Modules,
 	HandlerOptions,
 } from "../interfaces/ClientInterfaces.js";
 import { logStyle } from "../models/Functions.js";
+import WebhookHandler from "../handlers/WebhookHandler.js";
 
 /**
  * @description - The Client.
@@ -36,6 +38,7 @@ export default class XernerxClient extends Client {
 	constructor(
 		discordOptions: DiscordOptions,
 		clientOptions: ClientOptions,
+		dblOptions?: DBLOptions,
 		config?: object
 	) {
 		super(discordOptions);
@@ -79,6 +82,7 @@ export default class XernerxClient extends Client {
 			commandHandler: new CommandHandler(this),
 			eventHandler: new EventHandler(this),
 			inhibitorHandler: new InhibitorHandler(this),
+			webhookHandler: new WebhookHandler(this),
 		};
 
 		this.util = new ClientUtil(this);
@@ -91,22 +95,19 @@ export default class XernerxClient extends Client {
 
 				console.info(
 					logStyle(
-						`Xernerx | ${client.user.tag} signed in watching ${size} server${
-							size > 1 ? "s" : ""
-						}. ${
-							(this.handlerOptions.slash || this.handlerOptions.context)
-								?.guildId
-								? `Using ${
-										(
-											await this.guilds.fetch(
-												(
-													this.handlerOptions.slash ||
-													this.handlerOptions.context
-												)?.guildId || "0"
-											)
-										).name
-								  } as local guild.`
-								: ""
+						`Xernerx | ${client.user.tag} signed in watching ${size} server${size > 1 ? "s" : ""
+						}. ${(this.handlerOptions.slash || this.handlerOptions.context)
+							?.guildId
+							? `Using ${(
+								await this.guilds.fetch(
+									(
+										this.handlerOptions.slash ||
+										this.handlerOptions.context
+									)?.guildId || "0"
+								)
+							).name
+							} as local guild.`
+							: ""
 						}`,
 						"text",
 						"purple"
