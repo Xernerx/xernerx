@@ -10,7 +10,7 @@ import {
 	EventLoadOptions,
 	InhibitorLoadOptions,
 } from "../interfaces/HandlerInterfaces.js";
-import { logStyle } from "../models/Functions.js";
+import { Style } from 'dumfunctions';
 
 /**
  * @description - The Handler class.
@@ -55,15 +55,7 @@ export class Handler {
 		}
 
 		if (this.client.handlerOptions.message.logging)
-			console.info(
-				logStyle(
-					`Xernerx | Loaded ${loaded.length} message commands: ${loaded.join(
-						", "
-					)}.`,
-					"text",
-					"cyan"
-				)
-			);
+			console.info(Style.log(`Xernerx | Loaded ${loaded.length} message commands: ${loaded.join(", ")}.`, { color: Style.TextColor.Cyan }));
 	}
 
 	/**
@@ -98,15 +90,7 @@ export class Handler {
 		}
 
 		if (this.client.handlerOptions.slash.logging)
-			console.info(
-				logStyle(
-					`Xernerx | Loaded ${loaded.length} slash commands: ${loaded.join(
-						", "
-					)}.`,
-					"text",
-					"cyan"
-				)
-			);
+			console.info(Style.log(`Xernerx | Loaded ${loaded.length} slash commands: ${loaded.join(", ")}.`, { color: Style.TextColor.Cyan }));
 	}
 
 	/**
@@ -141,15 +125,7 @@ export class Handler {
 		}
 
 		if (this.client.handlerOptions.context.logging)
-			console.info(
-				logStyle(
-					`Xernerx | Loaded ${loaded.length} context commands: ${loaded.join(
-						", "
-					)}.`,
-					"text",
-					"cyan"
-				)
-			);
+			console.info(Style.log(`Xernerx | Loaded ${loaded.length} context commands: ${loaded.join(", ")}.`, { color: Style.TextColor.Cyan }));
 	}
 
 	/**
@@ -188,26 +164,14 @@ export class Handler {
 
 					this.#emitter(event);
 				} catch (error) {
-					console.error(
-						logStyle(
-							`Xernerx | Couldn't load ${file} because <${error}>`,
-							"background",
-							"red"
-						)
-					);
+					console.error(Style.log(`Xernerx | Couldn't load ${file} because <${error}>`, { color: Style.BackgroundColor.Red }));
 				}
 
 				loaded.push(file.replace(".js", ""));
 			}
 
 			if (this.client.handlerOptions.events?.logging)
-				console.info(
-					logStyle(
-						`Xernerx | Loaded ${loaded.length} events: ${loaded.join(", ")}.`,
-						"text",
-						"cyan"
-					)
-				);
+				console.info(Style.log(`Xernerx | Loaded ${loaded.length} events: ${loaded.join(", ")}.`, { color: Style.TextColor.Cyan }));
 		})();
 	}
 
@@ -233,13 +197,7 @@ export class Handler {
 		}
 
 		if (this.client.handlerOptions.inhibitors?.logging)
-			console.info(
-				logStyle(
-					`Xernerx | Loaded ${loaded.length} inhibitors: ${loaded.join(", ")}.`,
-					"text",
-					"cyan"
-				)
-			);
+			console.info(Style.log(`Xernerx | Loaded ${loaded.length} inhibitors: ${loaded.join(", ")}.`, { color: Style.TextColor.Cyan }));
 	}
 
 	/**
@@ -253,13 +211,7 @@ export class Handler {
 				.readdirSync(path.resolve(dir))
 				.filter((file) => file.endsWith(".js"));
 		} catch (error) {
-			console.error(
-				logStyle(
-					`Xernerx | Couldn't read ${dir} because <${error}>.`,
-					"background",
-					"red"
-				)
-			);
+			console.error(Style.log(`Xernerx | Couldn't read ${dir} because <${error}>.`, { color: Style.BackgroundColor.Red }));
 		}
 		return [];
 	}
@@ -316,13 +268,8 @@ export class Handler {
 				this.client.inhibitors.set(command.name, command);
 			}
 		} catch (error) {
-			console.error(
-				logStyle(
-					`Xernerx | Couldn't load ${file} because <${error}>.`,
-					"background",
-					"red"
-				)
-			);
+			console.error(Style.log(`Xernerx | Couldn't load ${file} because <${error}>`, { color: Style.BackgroundColor.Red }));
+
 		}
 	}
 

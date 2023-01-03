@@ -15,13 +15,12 @@ import {
 } from "../utils/CommandUtil.js";
 import { CommandArguments, messageArgs } from "./CommandArguments.js";
 import commandValidation from "./CommandValidations.js";
-import { logStyle } from "./Functions.js";
+import { Style } from "dumfunctions";
 import { InhibitorValidation } from "./InhibitorValidations.js";
 import {
 	XernerxMessage,
 	XernerxUser,
 } from "../interfaces/HandlerInterfaces.js";
-import { MessageCommand } from "../build/MessageCommand.js";
 
 export class MessageCommandEvents {
 	client: XernerxClient;
@@ -274,7 +273,7 @@ export class MessageCommandEvents {
 					const response = await message.channel.messages.fetch(msg?.response);
 
 					await response.delete();
-				} catch {}
+				} catch { }
 			}
 		});
 	}
@@ -463,8 +462,8 @@ export class CommandsDeploy {
 						Routes.applicationGuildCommands(
 							client.user.id,
 							this.client.handlerOptions.slash?.guildId ||
-								this.client.handlerOptions.context?.guildId ||
-								""
+							this.client.handlerOptions.context?.guildId ||
+							""
 						),
 						{
 							body: [],
@@ -479,8 +478,8 @@ export class CommandsDeploy {
 						Routes.applicationGuildCommands(
 							client.user.id,
 							this.client.handlerOptions.slash?.guildId ||
-								this.client.handlerOptions.context?.guildId ||
-								""
+							this.client.handlerOptions.context?.guildId ||
+							""
 						),
 						{
 							body: deployableCommands,
@@ -492,30 +491,17 @@ export class CommandsDeploy {
 					this.client.handlerOptions.slash?.logging ||
 					this.client.handlerOptions?.context?.logging
 				)
-					console.info(
-						logStyle(
-							`Xernerx | Deployed ${deployableCommands.length} of ${
-								commands.length
-							} interaction commands ${
-								this.client.handlerOptions.slash?.global ||
-								this.client.handlerOptions.context?.global
-									? `globally in ${
-											(await this.client.guilds.fetch()).size
-									  } server(s), deleted local commands.`
-									: "locally"
-							}.`,
-							"text",
-							"purple"
-						)
-					);
+					console.info(Style.log(
+						`Xernerx | Deployed ${deployableCommands.length} of ${commands.length
+						} interaction commands ${this.client.handlerOptions.slash?.global ||
+							this.client.handlerOptions.context?.global
+							? `globally in ${(await this.client.guilds.fetch()).size
+							} server(s), deleted local commands.`
+							: "locally"
+						}.`, { color: Style.TextColor.Purple }
+					));
 			} catch (error) {
-				console.error(
-					logStyle(
-						`Xernerx | Couldn't deploy interaction commands because <${error}>.`,
-						"background",
-						"red"
-					)
-				);
+				console.error(Style.log(`Xernerx | Couldn't deploy interaction commands because <${error}>.`, { color: Style.BackgroundColor.Red }));
 			}
 		});
 	}

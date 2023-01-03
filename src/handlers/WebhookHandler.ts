@@ -2,7 +2,8 @@
 
 import { XernerxClient } from "../main.js";
 import { AutoPoster } from 'topgg-autoposter';
-import SDK, { WebhookPayload } from '@top-gg/sdk';
+import SDK from '@top-gg/sdk';
+import { Style } from 'dumfunctions';
 import express from 'express';
 
 interface WebhookOptions {
@@ -26,11 +27,11 @@ export default class WebhookHandler {
 
         auto
             .on('posted', post => {
-                if (options.logging) console.info(`Xernerx | Successfully posted bot stats to Top.gg!`)
+                if (options.logging) console.info(Style.log(`Xernerx | Successfully posted bot stats to Top.gg!`, { color: Style.TextColor.Cyan }))
                 return this.client.emit('webhookPost', post)
             })
             .on('error', error => {
-                if (options.logging) console.info(`Xernerx | An error occurred while posting stats to Top.gg, ${error}.`)
+                if (options.logging) console.info(Style.log(`Xernerx | An error occurred while posting stats to Top.gg, ${error}.`, { color: Style.BackgroundColor.Red }))
                 return this.client.emit('webhookError', error)
             })
 

@@ -1,4 +1,4 @@
-{
+export default {
 	"XernerxClient": {
 		"description": "Client extender for building the client.",
 		"example": "const {XernerxClient} = require('xernerx');\n\nnew XernerxClient({/* options */});",

@@ -1,96 +1,19 @@
-body {
+* {
 	margin: 0;
-	font-family: "Cascadia Code";
-	color: white;
-	background: repeating-linear-gradient(
-		-45deg,
-		red 0%,
-		yellow 7.14%,
-		limegreen 14.28%,
-		cyan 21.4%,
-		blue 28.56%,
-		magenta 35.7%,
-		violet 42.84%,
-		red 50%
-	);
-	background-size: 600vw 600vw;
-	animation: slide 30s linear infinite forwards;
-	overflow-x: hidden;
+}
+*::after,
+*::before {
+	box-sizing: border-box;
 }
 
-@keyframes slide {
-	0% {
-		background-position-x: 0%;
-	}
-	100% {
-		background-position-x: 100%;
-	}
+body {
+	background: rgba(54, 57, 63, 1);
 }
 
-table {
-	border-radius: 0.5rem;
-	background-color: rgba(0, 0, 0, 0.4);
-	text-align: left;
-	table-layout: fixed;
-	width: 100%;
-	border-collapse: collapse;
-}
-
-th {
-	padding: 10px;
-}
-
-td {
-	padding: 2px;
-	border: 2px solid rgba(0, 0, 0, 0.4);
-}
-
-.top-bar {
+.sidebar {
+	display: flex;
+	flex-direction: column;
 	position: sticky;
-	background-color: rgba(0, 0, 0, 0.4);
-	display: flex;
-	align-items: baseline;
-	border: 2px solid red;
-	padding: 10px;
-	margin: 10px;
-	gap: 1px;
-	border-radius: 0.5rem;
-}
-
-.page {
-	position: relative;
-	left: 23%;
-	padding: 10px;
-}
-
-.component {
-	border: 2px solid red;
-	border-radius: 0.5rem;
-	background-color: rgba(0, 0, 0, 0.4);
-	padding: 10px;
-	width: 74.7%;
-}
-
-.side-bar {
-	position: absolute;
-	background-color: rgba(0, 0, 0, 0.4);
-	display: flex;
-	align-items: baseline;
-	border: 2px solid red;
-	padding: 10px;
-	margin: 10px;
-	gap: 1px;
-	border-radius: 0.5rem;
-	width: 20%;
-	height: 100%;
-	overflow: auto;
-}
-
-.table-header {
-	background: rgba(255, 0, 0, 0.8);
-	border-radius: 0.5rem;
-}
-
-.code {
-	background: rgba(0, 0, 0, 0.7);
+	background: rgba(47, 49, 54, 1);
+	width: 10%;
 }
