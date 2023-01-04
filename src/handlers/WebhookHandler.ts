@@ -39,19 +39,16 @@ export default class WebhookHandler {
     }
 
     vote(options: WebhookOptions) {
-        const app = express();
+        const app = express()
 
-        const webhook = new SDK.Webhook(options.token);
+        const webhook = new SDK.Webhook(options.token)
 
-        // app.post("/dblwebhook", webhook.listener(vote => {
-        //     try {
-        //         return this.client.emit("webhookVote", (vote as WebhookPayload))
-        //     }
-        //     catch (error) {
-        //         return this.client.emit("webhookError", error)
-        //     }
-        // }))
+        app.post("/dblwebhook", webhook.listener(vote => {
+            console.log(vote)
+        }));
 
-        app.listen(4444)
+        app.listen(80);
+
+        console.log(app)
     }
 }

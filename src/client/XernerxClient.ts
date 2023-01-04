@@ -9,7 +9,6 @@ import { ClientUtil } from "../utils/ClientUtil.js";
 import {
 	DiscordOptions,
 	ClientOptions,
-	DBLOptions,
 	Commands,
 	Cache,
 	Modules,
@@ -38,7 +37,6 @@ export default class XernerxClient extends Client {
 	constructor(
 		discordOptions: DiscordOptions,
 		clientOptions: ClientOptions,
-		dblOptions?: DBLOptions,
 		config?: object
 	) {
 		super(discordOptions);

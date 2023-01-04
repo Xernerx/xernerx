@@ -50,11 +50,6 @@ export interface ClientOptions {
 	};
 }
 
-export interface DBLOptions {
-	token?: string;
-	webhook?: string;
-	logging?: boolean;
-}
 export interface HandlerOptions {
 	message?: MessageCommandOptions;
 	slash?: SlashCommandOptions;
