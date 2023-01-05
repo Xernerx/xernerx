@@ -37,7 +37,7 @@ export type SlashCommandOption =
 	| SlashCommandRoleOption
 	| SlashCommandMentionableOption;
 
-export type NiceTypes =
+export type SlashArgumentTypes =
 	| "String"
 	| "Number"
 	| "Boolean"

@@ -13,8 +13,9 @@ import {
 	SlashCommandSubcommandGroupBuilder,
 } from "discord.js";
 import { s } from "@sapphire/shapeshift";
-import { SlashCommandOption, NiceTypes } from "../types/Types.js";
+import { SlashCommandOption, SlashArgumentTypes } from "../types/Types.js";
 import { XernerxClient } from "../main.js";
+import XernerxError from "../tools/XernerxError.js";
 
 /**
  * @description - The command builder for slash commands.
@@ -114,9 +115,9 @@ export class SlashCommand {
 		this.exec = this.exec;
 	}
 
-	async conditions(interaction: Interaction) {}
+	async conditions(interaction: Interaction) { }
 
-	async exec(interaction: Interaction) {}
+	async exec(interaction: Interaction) { }
 
 	#addArgs(
 		command: SlashCommandBuilder | SlashCommandSubcommandBuilder,
@@ -134,17 +135,11 @@ export class SlashCommand {
 		];
 
 		for (const argument of args) {
-			if (!types.includes(argument.type.toLowerCase()))
-				throw new Error(
-					`Expected one of ${types.join(", ")}, received ${
-						argument.type
-					} instead.`
-				);
+			if (!types.includes(argument.type.toLowerCase())) throw new XernerxError(`Expected one of ${types.join(", ")}, received ${argument.type} instead.`);
 
-			let niceType: NiceTypes | string = `${argument.type
-				.slice(0, 1)
-				.toUpperCase()}${argument.type.slice(1).toLowerCase()}`;
-			(command[`add${niceType as NiceTypes}Option`] as Function)(
+			let slashArgumentType: SlashArgumentTypes | string = `${argument.type.slice(0, 1).toUpperCase()}${argument.type.slice(1).toLowerCase()}`;
+
+			(command[(`add${slashArgumentType as SlashArgumentTypes}Option`)] as Function)(
 				(option: SlashCommandOption) => {
 					option
 						.setName(argument.name)

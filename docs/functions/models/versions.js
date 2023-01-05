@@ -1,22 +1,53 @@
-export default function loadVersions() {
+const versions = {
+    v1: "version 1",
+    v2: "version 2",
+    v3: "version 3"
+}
 
-    (async () => {
-        for (let i = 3; i > 0; i--) {
-            const version = await import(`../../versions/v${i}.js`);
+export default async function loadVersion() {
+    if (!document.URL.includes('pages')) return;
 
-            const select = document.getElementById('version');
+    const version = document.URL.match(/v\d{1}/)[0];
+    const build = (await import(`../../versions/${version}.js`)).default;
+    const page = document.getElementById('page');
 
-            const option = document.createElement('option');
+    const classes = document.getElementById("classes");
+    const header = document.createElement('h1')
 
-            option.value = `V${i}`;
+    header.innerText = "Classes";
+    classes.appendChild(header);
 
-            option.innerText = `Version ${i}`
+    page.innerHTML = `<center><img id="welcome" src="../../styles/banner.png" class="banner"></img><h1 >Welcome to xernerx ${versions[version]}</h1></center>`;
 
-            select.appendChild(option);
+    for (const [key, value] of Object.entries(build)) {
+        const content = document.createElement('div');
 
-            console.log(version.default)
+        content.innerHTML = `<h4>${key}</h4>`;
+
+        page.innerHTML += `<h1>${key}</h1>`
+
+        for (const [name, info] of Object.entries(value)) {
+            const a = document.createElement('a');
+
+            a.innerHTML = `<button class="link">${name}</button>`;
+
+            a.href = `#${name}`;
+
+            content.appendChild(a);
+
+            page.innerHTML += `<div id="${name}" class="component">`
+                + `<h2>${name}</h2>` +
+                `<p class="description">${info.description || "No description."}</p>` +
+                (info.properties?.length > 0 ? (info.properties.map(prop => `<h5>.${Object.keys(prop)}</h5><p class="description">${Object.values(prop)}</p>`)).join('') : "") +
+                (info.parameters?.length > 0 ? (
+                    '<table><tr>' +
+                    '<th>Parameter</th><th>Type</th><th>Default</th><th>Required</th><th>Description</th>' +
+                    info.parameters.map(param => `<tr><td>${param.name}</td><td>${param.type}</td><td>${param.default}</td><td>${param.required || false}</td><td>${param.description}</td></tr>`).join('') +
+                    '</tr></table>'
+                ) : "") +
+                '</div>'
         }
-    })();
 
-    return "e"
+        classes.appendChild(content);
+    }
 }

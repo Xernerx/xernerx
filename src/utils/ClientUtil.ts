@@ -1,14 +1,15 @@
 import { ActivityType, ClientPresenceStatus } from "discord.js";
 import XernerxClient from "../client/XernerxClient.js";
+import XernerxError from "../tools/XernerxError.js";
 
 interface Presence {
 	text?: string;
 	type?:
-		| ActivityType.Playing
-		| ActivityType.Streaming
-		| ActivityType.Listening
-		| ActivityType.Watching
-		| ActivityType.Competing;
+	| ActivityType.Playing
+	| ActivityType.Streaming
+	| ActivityType.Listening
+	| ActivityType.Watching
+	| ActivityType.Competing;
 	link?: string;
 	status?: ClientPresenceStatus;
 	interval?: number;
@@ -43,7 +44,7 @@ export class ClientUtil {
 
 	getSubcommands(name: string) {
 		if (!name || typeof name !== "string")
-			throw new Error(
+			throw new XernerxError(
 				`Expected name to be of type string, received ${typeof name} instead!`
 			);
 
@@ -113,7 +114,7 @@ export class ClientUtil {
 	}
 
 	isOwner(userId: string) {
-		if (!userId) throw new Error("No ID specified");
+		if (!userId) throw new XernerxError("No ID specified");
 
 		let owners = this.client.settings.ownerId;
 

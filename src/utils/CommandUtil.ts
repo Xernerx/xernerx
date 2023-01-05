@@ -10,6 +10,7 @@ import {
 } from "discord.js";
 import XernerxClient from "../client/XernerxClient.js";
 import { XernerxMessage } from "../interfaces/HandlerInterfaces.js";
+import XernerxError from "../tools/XernerxError.js";
 interface SelectMenuOptions {
 	index?: EmbedBuilder;
 	row?: ActionRowBuilder;
@@ -159,25 +160,25 @@ export class MessageCommandUtil {
 		return this.client.commands.message;
 	}
 
-	#getCommandName() {}
+	#getCommandName() { }
 
 	#selectMenuPaginator(
 		embeds: Array<EmbedBuilder>,
 		options?: SelectMenuOptions
-	) {}
+	) { }
 
-	#buttonPaginator(embeds: Array<EmbedBuilder>, options: ButtonOptions) {}
+	#buttonPaginator(embeds: Array<EmbedBuilder>, options: ButtonOptions) { }
 
 	#buttonMenuPaginator(
 		embeds: Array<EmbedBuilder>,
 		options: ButtonOptions & SelectMenuOptions
-	) {}
+	) { }
 
 	isOwner() {
 		return this.client.util.isOwner(this.message.author.id);
 	}
 
-	#createModal() {}
+	#createModal() { }
 }
 
 export class InteractionCommandUtil {
@@ -205,18 +206,18 @@ export class InteractionCommandUtil {
 		else return this.client.commands.context;
 	}
 
-	#getCommandName() {}
+	#getCommandName() { }
 
 	selectMenuPaginator(
 		embeds: Array<EmbedBuilder>,
 		options?: SelectMenuOptions
 	) {
 		if (!Array.isArray(embeds))
-			throw new Error(
+			throw new XernerxError(
 				`Expected embeds to be of type array, received ${typeof embeds} instead.`
 			);
 
-		if (embeds.length > 25) throw new Error(`Max select menu length is 25.`);
+		if (embeds.length > 25) throw new XernerxError(`Max select menu length is 25.`);
 
 		if (typeof options !== "object") options = {};
 
@@ -284,7 +285,7 @@ export class InteractionCommandUtil {
 					(interaction.update as Function)({
 						embeds: [
 							embeds[
-								parseInt((interaction.values as unknown as Array<string>)[0])
+							parseInt((interaction.values as unknown as Array<string>)[0])
 							],
 						],
 					});
@@ -298,11 +299,11 @@ export class InteractionCommandUtil {
 
 	buttonPaginator(embeds: Array<EmbedBuilder>, options: ButtonOptions) {
 		if (!Array.isArray(embeds))
-			throw new Error(
+			throw new XernerxError(
 				`Expected embeds to be of type array, received ${typeof embeds} instead.`
 			);
 
-		if (embeds.length <= 0) throw new Error(`The minimum embeds is 1.`);
+		if (embeds.length <= 0) throw new XernerxError(`The minimum embeds is 1.`);
 
 		if (typeof options !== "object") options = {};
 
@@ -359,7 +360,7 @@ export class InteractionCommandUtil {
 							case 1: {
 								embed =
 									embeds[
-										embeds.indexOf(embed) >= 1 ? embeds.indexOf(embed) - 1 : 0
+									embeds.indexOf(embed) >= 1 ? embeds.indexOf(embed) - 1 : 0
 									];
 								break;
 							}
@@ -371,9 +372,9 @@ export class InteractionCommandUtil {
 							case 3: {
 								embed =
 									embeds[
-										embeds.indexOf(embed) < embeds.length - 1
-											? embeds.indexOf(embed) + 1
-											: embeds.length - 1
+									embeds.indexOf(embed) < embeds.length - 1
+										? embeds.indexOf(embed) + 1
+										: embeds.length - 1
 									];
 								break;
 							}
@@ -385,12 +386,12 @@ export class InteractionCommandUtil {
 
 						stop
 							? (interaction as Record<string, Function>).update({
-									embeds: [embed],
-									components: [],
-							  })
+								embeds: [embed],
+								components: [],
+							})
 							: (interaction as Record<string, Function>).update({
-									embeds: [embed],
-							  });
+								embeds: [embed],
+							});
 					}
 				})
 
@@ -403,11 +404,11 @@ export class InteractionCommandUtil {
 	#buttonMenuPaginator(
 		embeds: Array<EmbedBuilder>,
 		options: ButtonOptions & SelectMenuOptions
-	) {}
+	) { }
 
 	isOwner() {
 		return this.client.util.isOwner(this.interaction.user.id);
 	}
 
-	#createModal() {}
+	#createModal() { }
 }

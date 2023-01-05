@@ -48,7 +48,5 @@ export default class WebhookHandler {
         }));
 
         app.listen(80);
-
-        console.log(app)
     }
 }

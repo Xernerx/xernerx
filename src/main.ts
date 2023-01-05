@@ -1,5 +1,5 @@
 import Discord from "discord.js";
-import { Math, Random, Style } from "dumfunctions";
+import DumFunctions from "dumfunctions";
 
 import XernerxClient from "./client/XernerxClient.js";
 import { Event } from "./build/Event.js";
@@ -16,9 +16,7 @@ const version: string = "3.1.1";
 export default {
 	// Imported methods
 	Discord,
-	Math,
-	Style,
-	Random,
+	DumFunctions,
 
 	// Client
 	Client: XernerxClient,
@@ -43,9 +41,7 @@ export default {
 export {
 	// Imported methods
 	Discord,
-	Math,
-	Style,
-	Random,
+	DumFunctions,
 
 	// Client
 	XernerxClient,

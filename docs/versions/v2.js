@@ -1,75 +1,110 @@
 export default {
-	"XernerxClient": {
-		"description": "Client extender for building the client.",
-		"example": "const {XernerxClient} = require('xernerx');\n\nnew XernerxClient({/* options */});",
-		"properties": [],
-		"params": [
-			{
-				"parameter": "guildId",
-				"type": "string",
-				"default": "undefined",
-				"description": "The guild ID used to globally load commands."
-			},
-			{
-				"parameter": "global",
-				"type": "boolean",
-				"default": "false",
-				"description": "Whether to load commands globally or locally."
-			},
-			{
-				"parameter": "prefix",
-				"type": "string[]",
-				"default": "[]",
-				"description": "An array of prefixes used for message commands."
-			},
-			{
-				"parameter": "mentionPrefix",
-				"type": "boolean",
-				"default": "false",
-				"description": "Whether the bot should listen to messages containing a client mention."
-			},
-			{
-				"parameter": "ownerId",
-				"type": "string[]",
-				"default": "[]",
-				"description": "An array of user IDs that are considered owner."
-			},
-			{
-				"parameter": "ignoreOwner",
-				"type": "boolean",
-				"default": "false",
-				"description": "Whether the bot should ignore owner privileges."
-			},
-			{
-				"parameter": "defaultCooldown",
-				"type": "number",
-				"default": "0",
-				"description": "A number of milliseconds each command cooldown should be."
-			},
-			{
-				"parameter": "cacheTime",
-				"type": "number",
-				"default": "300000",
-				"description": "A number of seconds for message cache to be deleted."
-			},
-			{
-				"parameter": "userPermissions",
-				"type": "string[]",
-				"default": "[]",
-				"description": "An array of permissions the user needs to use the commands."
-			},
-			{
-				"parameter": "clientPermissions",
-				"type": "string[]",
-				"default": "[]",
-				"description": "An array of permissions the client needs to use the commands."
-			},
-			{
-				"parameter": "logging",
-				"type": "boolean || string[]",
-				"default": "false",
-				"description": "True or array with names for logging in the console on login."
-			}
-		]
+	Client: {
+		XernerxClient: {
+			description: "Client extender for building the client.",
+			example: "const {XernerxClient} = require('xernerx');\n\nnew XernerxClient({/* options */});",
+			properties: [],
+			parameters: [
+				{
+					name: "guildId",
+					type: "string",
+					default: "undefined",
+					required: false,
+					description: "The guild ID used to globally load commands."
+				},
+				{
+					name: "global",
+					type: "boolean",
+					default: "false",
+					required: false,
+					description: "Whether to load commands globally or locally."
+				},
+				{
+					name: "prefix",
+					type: "string[]",
+					default: "[]",
+					required: false,
+					description: "An array of prefixes used for message commands."
+				},
+				{
+					name: "mentionPrefix",
+					type: "boolean",
+					default: "false",
+					required: false,
+					description: "Whether the bot should listen to messages containing a client mention."
+				},
+				{
+					name: "ownerId",
+					type: "string[]",
+					default: "[]",
+					required: false,
+					description: "An array of user IDs that are considered owner."
+				},
+				{
+					name: "ignoreOwner",
+					type: "boolean",
+					default: "false",
+					required: false,
+					description: "Whether the bot should ignore owner privileges."
+				},
+				{
+					name: "defaultCooldown",
+					type: "number",
+					default: "0",
+					required: false,
+					description: "A number of milliseconds each command cooldown should be."
+				},
+				{
+					name: "cacheTime",
+					type: "number",
+					default: "300000",
+					required: false,
+					description: "A number of seconds for message cache to be deleted."
+				},
+				{
+					name: "userPermissions",
+					type: "string[]",
+					default: "[]",
+					required: false,
+					description: "An array of permissions the user needs to use the commands."
+				},
+				{
+					name: "clientPermissions",
+					type: "string[]",
+					default: "[]",
+					required: false,
+					description: "An array of permissions the client needs to use the commands."
+				},
+				{
+					name: "logging",
+					type: "boolean || string[]",
+					default: "false",
+					required: false,
+					description: "True or array with names for logging in the console on login."
+				}
+			]
+		}
+	},
+	Handlers: {
+		CommandHandler: {},
+		EventHandler: {},
+		InhibitorHandler: {},
+		WebhookHandler: {}
+	},
+	Builds: {
+		ContextCommand: {},
+		Event: {},
+		Inhibitor: {},
+		MessageCommand: {},
+		SlashCommand: {}
+	},
+	Events: {
+		CommandRun: {},
+		CommandBlock: {},
+		CommandError: {}
+	},
+	Exports: {
+		Discord: {},
+		DumFunctions: {}
 	}
 }
