@@ -38,13 +38,9 @@ export default async function loadVersion() {
             page.innerHTML += `<div id="${name}" class="component">`
                 + `<h2>${name}</h2>` +
                 `<p class="description">${info.description || "No description."}</p>` +
-                (info.properties?.length > 0 ? (info.properties.map(prop => `<h5>.${Object.keys(prop)}</h5><p class="description">${Object.values(prop)}</p>`)).join('') : "") +
-                (info.parameters?.length > 0 ? (
-                    '<table><tr>' +
-                    '<th>Parameter</th><th>Type</th><th>Default</th><th>Required</th><th>Description</th>' +
-                    info.parameters.map(param => `<tr><td>${param.name}</td><td>${param.type}</td><td>${param.default}</td><td>${param.required || false}</td><td>${param.description}</td></tr>`).join('') +
-                    '</tr></table>'
-                ) : "") +
+                (info.properties?.length > 0 ? "<h3>Properties</h3>" + (info.properties.map(prop => `<h4>.${Object.keys(prop)}</h4><p class="description">${Object.values(prop)}</p>`)).join('') : "") +
+                (info.methods?.length > 0 ? "<h3>Methods</h3>" + (info.methods.map(method => `<h4>.${method.name}()</h4> <p class="description">${method.description}</p><table><tr><th>Parameter</th><th>Type</th><th>Default</th><th>Required</th><th>Description</th>${method.parameters.map(param => `<tr><td>${param.name}</td><td>${param.type}</td><td>${param.default}</td><td>${param.required || false}</td><td>${param.description}</td></tr>`).join('')}</tr ></table >`)).join('') : "") +
+                (info.parameters?.length > 0 ? (`<table><tr><th>Parameter</th><th>Type</th><th>Default</th><th>Required</th><th>Description</th>${info.parameters.map(param => `<tr><td>${param.name}</td><td>${param.type}</td><td>${param.default}</td><td>${param.required || false}</td><td>${param.description}</td></tr>`).join('')}</tr></table>`) : "") +
                 '</div>'
         }
 
