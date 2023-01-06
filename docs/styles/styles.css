@@ -77,13 +77,14 @@ footer {
 table {
 	border-radius: 0.5rem;
 	border: 1.5px solid black;
-	background-color: var(--grey);
+	background-color: rgba(0, 0, 0, 0.2);
 }
 
 th {
-	background-color: var(--dark-grey);
+	background-color: var(--red);
 	border-radius: 0.5rem;
 	padding: 5px;
+	color: white;
 }
 td {
 	padding: 5px;
@@ -162,6 +163,7 @@ select:hover {
 	padding: 5px;
 	border: black solid 1px;
 	margin: 15px;
+	color: white;
 }
 
 ::-webkit-scrollbar {
@@ -216,4 +218,23 @@ h2,
 h3,
 h4 {
 	padding: 5px;
+}
+
+.word-parameter {
+	color: rgb(220, 171, 112);
+}
+
+.word-class {
+	color: rgb(179, 146, 240);
+}
+
+.word-new,
+.word-const,
+.word-let,
+.word-var {
+	color: rgb(249, 117, 131);
+}
+
+.word-npm {
+	color: rgb(241, 234, 113);
 }

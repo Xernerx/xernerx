@@ -1,3 +1,5 @@
+import formatCode from "./formatCode.js";
+
 const versions = {
     v1: "version 1",
     v2: "version 2",
@@ -28,7 +30,7 @@ export default async function loadVersion() {
 
     page.innerHTML = `<center><img id="welcome" src="../../styles/banner.png" class="banner"><h1 >Welcome to xernerx ${versions[version]}</h1></center>`;
 
-    page.innerHTML += `<div class="component"><h1>Info</h1><div class="code">npm install xernerx@${build.info?.versions[0]}</div><br><p>${build.info?.description}</p><br><p class="">State: ${build.info?.deprecated ? "deprecated" : "stable"}</p><br><h4>Versions</h4>${`<div class="container">${Object.values(list).map(value => `<div>${value.map(version => `<li><a href="https://www.npmjs.com/package/xernerx/v/${version}" class="link">${version}</a></li>`).join('')}</div>`).join('')}</div>`}</div>`
+    page.innerHTML += `<div class="component"><h1>Info</h1><div class="code">${formatCode(`npm install xernerx@${build.info?.versions[0]}`)}</div><br><p>${build.info?.description}</p><br><p class="">State: ${build.info?.deprecated ? "deprecated" : "stable"}</p><br><h4>Versions</h4>${`<div class="container">${Object.values(list).map(value => `<div>${value.map(version => `<li><a href="https://www.npmjs.com/package/xernerx/v/${version}" class="link">${version}</a></li>`).join('')}</div>`).join('')}</div>`}</div>`
 
     delete build.info
 
@@ -51,9 +53,9 @@ export default async function loadVersion() {
             page.innerHTML += `<div id="${name}" class="component">`
                 + `<h2>${name}</h2>` +
                 `<p class="description">${info.description || "No description."}</p>` +
+                (info.parameters?.length > 0 ? (`<h3>Constructor</h3><div class="code">${formatCode(`new ${name}(${info.parameters.map(i => i.name).join(', ')});`)}</div><h3>Class Parameters</h3><table><tr><th>Parameter</th><th>Type</th><th>Default</th><th>Required</th><th>Description</th>${info.parameters.map(param => `<tr><td>${param.name}</td><td>${param.type}</td><td>${param.default}</td><td>${param.required || false}</td><td>${param.description}</td></tr>`).join('')}</tr></table>`) : "") +
                 (info.properties?.length > 0 ? "<h3>Properties</h3>" + (info.properties.map(prop => `<h4>.${Object.keys(prop)}</h4><p class="description">${Object.values(prop)}</p>`)).join('') : "") +
-                (info.methods?.length > 0 ? "<h3>Methods</h3>" + (info.methods.map(method => `<h4>.${method.name}()</h4> <p class="description">${method.description}</p><table><tr><th>Parameter</th><th>Type</th><th>Default</th><th>Required</th><th>Description</th>${method.parameters.map(param => `<tr><td>${param.name}</td><td>${param.type}</td><td>${param.default}</td><td>${param.required || false}</td><td>${param.description}</td></tr>`).join('')}</tr ></table >`)).join('') : "") +
-                (info.parameters?.length > 0 ? (`<table><tr><th>Parameter</th><th>Type</th><th>Default</th><th>Required</th><th>Description</th>${info.parameters.map(param => `<tr><td>${param.name}</td><td>${param.type}</td><td>${param.default}</td><td>${param.required || false}</td><td>${param.description}</td></tr>`).join('')}</tr></table>`) : "") +
+                (info.methods?.length > 0 ? "<h3>Methods</h3>" + (info.methods.map(method => `<h4>.${method.name}()</h4> <p class="description">${method.description}</p><table><tr><th>Parameter</th><th>Type</th><th>Default</th><th>Required</th><th>Description</th>${method.parameters.map(param => `<tr><td>${param.name}</td><td>${param.type}</td><td>${param.default}</td><td>${param.required || false}</td><td>${param.description}</td></tr>`).join('')}</tr ></table >`)).join('<br>') : "") +
                 '</div>'
         }
 
