@@ -5,12 +5,12 @@ export default function createHeader(page) {
 
     header.innerHTML =
         '<button id="dark" name="dark">' +
-        `<img class="icon" src="${page ? "../../" : ""}styles/darkMode.png" name="dark" dark-mode></img>` +
+        `<img class="icon" src="${page ? "../../" : ""}styles/darkMode.png" name="dark" dark-mode>` +
         '</button>' +
-        `<a href="${page ? "../../" : ""}home.html" class="link"><button class="link">Xernerx</button></a>` +
+        `<a href="${page ? "../../" : ""}home.html" class="button-link"><button class="button-link">Xernerx</button></a>` +
         '<div>' +
-        `<a href="${page ? "../../" : ""}pages/v1/welcome.html" class="link"><button class="link">Version 1</button></a>` +
-        `<a href="${page ? "../../" : ""}pages/v2/welcome.html" class="link"><button class="link">Version 2</button></a>` +
-        `<a href="${page ? "../../" : ""}pages/v3/welcome.html" class="link"><button class="link">Version 3</button></a>` +
+        `<a href="${page ? "../../" : ""}pages/v1/home.html" class="button-link"><button class="button-link">Version 1</button></a>` +
+        `<a href="${page ? "../../" : ""}pages/v2/home.html" class="button-link"><button class="button-link">Version 2</button></a>` +
+        `<a href="${page ? "../../" : ""}pages/v3/home.html" class="button-link"><button class="button-link">Version 3</button></a>` +
         '</div>'
 }

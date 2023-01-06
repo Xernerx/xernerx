@@ -13,6 +13,7 @@
 	--hover: rgba(60, 63, 69, 1);
 	--select: rgba(66, 70, 77, 1);
 	--codeblock: rgba(47, 49, 54, 1);
+	--red: rgba(236, 28, 36, 1);
 	--header-height: 20px;
 	--footer-height: 50px;
 	--sidebar-width: 190px;
@@ -21,10 +22,10 @@
 }
 
 body {
-	overflow: hidden;
 	background-color: var(--light-grey);
 	font-family: var(--font-family);
 	color: white;
+	overflow: hidden;
 }
 
 .deco {
@@ -34,8 +35,8 @@ body {
 .header {
 	display: flex;
 	align-items: center;
+	background-color: var(--red);
 	position: sticky;
-	height: var(--footer-height);
 	top: 0;
 	background-color: none;
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
@@ -43,15 +44,9 @@ body {
 	height: var(--header-height);
 }
 
-.footer {
-	text-align: center;
-	bottom: 0;
-	left: 210px;
-	background-color: red;
-	color: white;
-	padding: 10px;
-	width: calc(100vw - 230px);
-	font-family: var(--font-family);
+footer {
+	overflow: hidden;
+	position: relative;
 }
 
 .sidebar {
@@ -95,6 +90,7 @@ td {
 }
 
 .link,
+.header-link,
 select,
 button {
 	background: none;
@@ -112,15 +108,29 @@ button {
 	color: white;
 }
 
-#dark {
-	height: 20px;
-	width: 20px;
-	margin: 15px;
+.button-link {
+	color: white;
+}
+
+.link {
+	color: var(--red);
+}
+
+.button-link:hover {
+	background-color: var(--hover);
+	color: var(--red);
 }
 
 .link:hover,
 select:hover {
-	background-color: var(--hover);
+	color: var(--red);
+	text-decoration: underline;
+}
+
+#dark {
+	height: 20px;
+	width: 20px;
+	margin: 15px;
 }
 
 .list {
@@ -141,8 +151,9 @@ select:hover {
 	overflow-y: auto;
 	overflow-x: hidden;
 	width: calc(100vw - 210px);
-	height: calc(100vh - 50px);
+	height: calc(100vh - 80px);
 	padding: 10px;
+	margin: 10px;
 }
 
 .code {
@@ -150,7 +161,7 @@ select:hover {
 	border-radius: 0.3rem;
 	padding: 5px;
 	border: black solid 1px;
-	margin: 100px;
+	margin: 15px;
 }
 
 ::-webkit-scrollbar {
@@ -174,4 +185,35 @@ select:hover {
 .description {
 	padding: 10px;
 	margin: 10px;
+}
+
+li {
+	padding: 5px;
+	margin: 5px;
+}
+
+.main {
+	overflow-y: auto;
+	overflow-x: hidden;
+	width: calc(100vw - 30px);
+	height: calc(100vh - 70px);
+	padding: 10px;
+	margin: 10px;
+}
+
+.box {
+	display: flex;
+	flex-direction: column;
+	border-radius: 0.5rem;
+	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.7);
+	padding: 10px;
+	margin: 15px;
+	width: 390px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+	padding: 5px;
 }

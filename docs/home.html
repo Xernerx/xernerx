@@ -11,23 +11,67 @@
 	</head>
 	<body>
 		<header></header>
-		<center>
-			<img src="styles/banner.png" class="banner"></img>
-		</center>
-			<h2 class="description">About</h2>
-			<p class="description">
-			Xernerx is a class based framework for discord.js
-			</p>
 
+		<div class="main">
+			<center>
+				<img src="styles/banner.png" class="banner" />
+
+				<h1 id="version">Go to your preferred version here.</h1>
+				<div>
+					<a href="pages/v1/home.html" class="button-link"><button class="button-link">Version 1 (deprecated)</button></a>
+					<a href="pages/v2/home.html" class="button-link"><button class="button-link">Version 2 (deprecated)</button></a>
+					<a href="pages/v3/home.html" class="button-link"><button class="button-link">Version 3 (latest)</button></a>
+				</div>
+			</center>
+
+			<h2>About</h2>
+			<p class="description">Xernerx is a lightweight class based framework for discord.js</p>
+			<div class="container">
+				<div class="box">
+					Handlers
+					<li>Slash command handler</li>
+					<li>Message command handler</li>
+					<li>context command handler</li>
+					<li>Inhibitor handler</li>
+					<li>Event handler</li>
+					<li>Webhook handler</li>
+				</div>
+				<div class="box">
+					Custom
+					<li>Custom events</li>
+					<li>Custom utilities</li>
+					<li>Message command handles</li>
+				</div>
+				<div class="box">
+					Compatibility
+					<li>Class oriented</li>
+					<li>TypeScript</li>
+					<li>JavaScript</li>
+					<li>es modules</li>
+				</div>
+			</div>
+
+			<h2>Installation</h2>
+			<p class="description">Node.js 16.6.0 or newer is required.</p>
 			<div class="code">npm install xernerx</div>
 
-		<center>
-			<h1>Select your version</h1>
-			<div>
-				<a href="pages/v1/welcome.html" class="link"><button class="link">Version 1</button></a>
-				<a href="pages/v2/welcome.html" class="link"><button class="link">Version 2</button></a>
-				<a href="pages/v3/welcome.html" class="link"><button class="link">Version 3</button></a>
+			<!-- <h2>Optional Packages</h2> -->
+
+			<h2>Links</h2>
+			<div class="list">
+				<li><a href="https://discord.js.org/#/" class="link">Discord.js</a></li>
+				<li><a href="#version" class="link">Documentation</a></li>
+				<li><a href="#" class="link">Guide</a></li>
+				<li><a href="https://github.com/TheDummi/xernerx" class="link">Github</a></li>
+				<li><a href="https://www.npmjs.com/package/xernerx" class="link">npm</a></li>
 			</div>
-		</center>
+
+			<h2>Contributing</h2>
+			<p class="description">You can contribute or report issues on the <a href="https://github.com/TheDummi/xernerx" class="link">github</a> repository.</p>
+
+			<h2>Help</h2>
+
+			<p class="description">In case you need help with anything, consider looking at the <a href="#" class="link">guide</a> or the <a href="#version" class="link">documentation</a>.</p>
+		</div>
 	</body>
 </html>

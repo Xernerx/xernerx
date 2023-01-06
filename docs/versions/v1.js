@@ -1,4 +1,9 @@
 export default {
+    info: {
+        deprecated: true,
+        description: "The first version of Xernerx",
+        versions: ["1.2.6"]
+    },
     Client: {
         Client: {
             description: "The extended Discord.js client.",

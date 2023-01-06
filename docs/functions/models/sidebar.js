@@ -13,8 +13,8 @@ export default function createSidebar(pages) {
     aside.innerHTML =
         '<div class="deco">' +
         '<h1>General</h1>' +
-        '<a href="#welcome">' +
-        '<button class="link">Welcome</button>' +
+        '<a href="#welcome" class="button-link">' +
+        '<button class="button-link">Welcome</button>' +
         '</a>' +
         '</div > ' +
         '<div class="deco" id="classes"></div>'

@@ -17,7 +17,20 @@ export default async function loadVersion() {
     header.innerText = "Classes";
     classes.appendChild(header);
 
-    page.innerHTML = `<center><img id="welcome" src="../../styles/banner.png" class="banner"></img><h1 >Welcome to xernerx ${versions[version]}</h1></center>`;
+    let list = {}, i = 0;
+
+    build.info.versions.map(version => {
+        if (list[i]?.length >= 10) i++
+        if (!list[i]) list[i] = [];
+
+        list[i].push(version)
+    })
+
+    page.innerHTML = `<center><img id="welcome" src="../../styles/banner.png" class="banner"><h1 >Welcome to xernerx ${versions[version]}</h1></center>`;
+
+    page.innerHTML += `<div class="component"><h1>Info</h1><div class="code">npm install xernerx@${build.info?.versions[0]}</div><br><p>${build.info?.description}</p><br><p class="">State: ${build.info?.deprecated ? "deprecated" : "stable"}</p><br><h4>Versions</h4>${`<div class="container">${Object.values(list).map(value => `<div>${value.map(version => `<li><a href="https://www.npmjs.com/package/xernerx/v/${version}" class="link">${version}</a></li>`).join('')}</div>`).join('')}</div>`}</div>`
+
+    delete build.info
 
     for (const [key, value] of Object.entries(build)) {
         const content = document.createElement('div');
@@ -29,7 +42,7 @@ export default async function loadVersion() {
         for (const [name, info] of Object.entries(value)) {
             const a = document.createElement('a');
 
-            a.innerHTML = `<button class="link">${name}</button>`;
+            a.innerHTML = `<button class="button-link">${name}</button>`;
 
             a.href = `#${name}`;
 

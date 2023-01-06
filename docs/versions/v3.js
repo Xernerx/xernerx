@@ -1,4 +1,18 @@
 export default {
+    info: {
+        description: "The third version of Xernerx, coming in with TypeScript support and ESM.",
+        deprecated: false,
+        versions: [
+            "3.1.3",
+            "3.1.2",
+            "3.1.1",
+            "3.1.0",
+            "3.0.3",
+            "3.0.2",
+            "3.0.1",
+            "3.0.0"
+        ]
+    },
     Client: {
         XernerxClient: {
             description: "The Discord.js extended client.",
