@@ -20,6 +20,28 @@ export class ClientUtil {
 
 	constructor(client: XernerxClient) {
 		this.client = client;
+
+		this.uptime = this.uptime;
+
+		this.getSubcommands = this.getSubcommands;
+
+		this.isOwner = this.isOwner;
+
+		this.getAllCommands = this.getAllCommands;
+
+		this.getAllMessageCommands = this.getAllMessageCommands;
+
+		this.getAllSlashCommands = this.getAllSlashCommands;
+
+		this.getAllContextCommands = this.getAllContextCommands;
+
+		this.setPresence = this.setPresence;
+
+		this.getCooldowns = this.getCooldowns
+
+		this.getCooldownTimers = this.getCooldownTimers;
+
+		this.defer = this.defer;
 	}
 
 	uptime(timestamp: number | null) {

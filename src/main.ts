@@ -7,11 +7,11 @@ import { Inhibitor } from "./build/Inhibitor.js";
 import { MessageCommand } from "./build/MessageCommand.js";
 import { ContextCommand } from "./build/ContextCommand.js";
 import { SlashCommand } from "./build/SlashCommand.js";
-import { CommandType, EventEmitterType } from "./types/Types.js";
+import { CommandType, EventEmitterType, ContextCommandType } from "./types/Types.js";
 import { InhibitorType } from "./types/InhibitorTypes.js";
 
 
-const version: string = "3.1.1";
+const version: string = "3.1.4";
 
 export default {
 	// Imported methods
@@ -26,6 +26,7 @@ export default {
 	CommandType,
 	EventEmitterType,
 	InhibitorType,
+	ContextCommandType,
 
 	// Builds
 	Event,
@@ -50,6 +51,7 @@ export {
 	CommandType,
 	EventEmitterType,
 	InhibitorType,
+	ContextCommandType,
 
 	// Builds
 	Event,

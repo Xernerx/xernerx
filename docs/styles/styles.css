@@ -65,6 +65,10 @@ footer {
 	display: flex;
 }
 
+.dis {
+	gap: 250px;
+}
+
 .component {
 	display: flex;
 	flex-direction: column;
@@ -78,6 +82,8 @@ table {
 	border-radius: 0.5rem;
 	border: 1.5px solid black;
 	background-color: rgba(0, 0, 0, 0.2);
+	margin: 15px;
+	width: calc(100vw - 315px);
 }
 
 th {
@@ -92,6 +98,7 @@ td {
 
 .link,
 .header-link,
+.silent-link,
 select,
 button {
 	background: none;
@@ -123,6 +130,7 @@ button {
 }
 
 .link:hover,
+.silent-link:hover,
 select:hover {
 	color: var(--red);
 	text-decoration: underline;
@@ -152,7 +160,7 @@ select:hover {
 	overflow-y: auto;
 	overflow-x: hidden;
 	width: calc(100vw - 210px);
-	height: calc(100vh - 80px);
+	height: calc(100vh - 70px);
 	padding: 10px;
 	margin: 10px;
 }
@@ -177,6 +185,14 @@ select:hover {
 
 ::-webkit-scrollbar-thumb:hover {
 	background-color: rgba(32, 34, 37, 1);
+}
+
+summary {
+	list-style-type: none;
+}
+
+summary::-webkit-details-marker {
+	display: none;
 }
 
 .light {
@@ -213,6 +229,13 @@ li {
 	width: 390px;
 }
 
+.line {
+	background-color: black;
+	width: calc(100vw - 290px);
+	height: 1px;
+	border-radius: 0.75rem;
+}
+
 h1,
 h2,
 h3,
@@ -220,21 +243,38 @@ h4 {
 	padding: 5px;
 }
 
-.word-parameter {
-	color: rgb(220, 171, 112);
+h3 {
+	color: var(--red);
 }
 
-.word-class {
+.word-parameter {
+	color: rgb(255, 183, 77);
+}
+
+.word-class-name {
 	color: rgb(179, 146, 240);
+}
+
+.word-string {
+	color: rgb(158, 203, 255);
 }
 
 .word-new,
 .word-const,
 .word-let,
-.word-var {
+.word-var,
+.word-extends,
+.word-class,
+.word-import,
+.word-from {
 	color: rgb(249, 117, 131);
 }
 
 .word-npm {
 	color: rgb(241, 234, 113);
+}
+
+.details {
+	margin-top: 10px;
+	margin-bottom: 20px;
 }

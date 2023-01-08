@@ -128,7 +128,7 @@ export class MessageCommandEvents {
 
 								this.client.emit("commandRun", message, cmd);
 							} catch (error) {
-								return this.client.emit("commandError", message, error);
+								return this.client.emit("commandError", message, error, cmd);
 							}
 						}
 					});
@@ -253,7 +253,7 @@ export class MessageCommandEvents {
 
 									this.client.emit("commandRun", message, cmd);
 								} catch (error) {
-									return this.client.emit("commandError", message, error);
+									return this.client.emit("commandError", message, error, cmd);
 								}
 							}
 						});
@@ -349,7 +349,7 @@ export class SlashCommandEvents {
 
 						this.client.emit("commandRun", interaction, command);
 					} catch (error) {
-						this.client.emit("commandError", interaction, error);
+						this.client.emit("commandError", interaction, error, command);
 					}
 				}
 			}
@@ -415,7 +415,7 @@ export class ContextCommandEvents {
 
 						this.client.emit("commandRun", interaction, command);
 					} catch (error) {
-						this.client.emit("commandError", interaction, error);
+						this.client.emit("commandError", interaction, error, command);
 					}
 				}
 			}

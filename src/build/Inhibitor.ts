@@ -25,10 +25,10 @@ export class Inhibitor {
 
 		this.type = options.type;
 
-		this.client = {};
+		this.client = XernerxClient;
 
 		this.check = this.check;
 	}
 
-	async check() {}
+	async check() { }
 }

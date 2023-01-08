@@ -41,7 +41,7 @@ export class ContextCommand {
 
 		if (options.name) this.data.setName(options.name);
 
-		if (options.type) this.data.setType(this.#types(options.type));
+		if (options.type) this.data.setType(options.type);
 
 		if (options.defaultMemberPermissions)
 			this.data.setDefaultMemberPermissions(options.defaultMemberPermissions);
@@ -100,7 +100,7 @@ export class ContextCommand {
 
 		this.defer = options.defer;
 
-		this.client = {};
+		this.client = XernerxClient;
 
 		this.conditions = this.conditions;
 
@@ -111,18 +111,11 @@ export class ContextCommand {
 	 * @param {Interaction} interaction - The Discord interaction event data.
 	 * @description make any preconditions here.
 	 */
-	async conditions(interaction: Interaction) {}
+	async conditions(interaction: Interaction) { }
 
 	/**
 	 * @param {Interaction} interaction - The Discord interaction event data.
 	 * @description Make your custom command here.
 	 */
-	async exec(interaction: Interaction) {}
-
-	#types(type: ContextMenuCommandType) {
-		if (String(type)?.toLowerCase() === "message") type = 3;
-		if (String(type)?.toLowerCase() === "user") type = 2;
-
-		return type;
-	}
+	async exec(interaction: Interaction) { }
 }

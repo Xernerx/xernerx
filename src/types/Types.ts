@@ -20,6 +20,11 @@ export enum CommandType {
 	ContextCommand = "ContextCommand",
 }
 
+export enum ContextCommandType {
+	Message = 3,
+	User = 2,
+}
+
 export enum EventEmitterType {
 	Client = "client",
 	Rest = "rest",

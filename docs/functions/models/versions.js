@@ -35,30 +35,130 @@ export default async function loadVersion() {
     delete build.info
 
     for (const [key, value] of Object.entries(build)) {
-        const content = document.createElement('div');
+        const content = document.createElement('details');
 
-        content.innerHTML = `<h4>${key}</h4>`;
+        content.setAttribute('open', 'open')
+
+        content.innerHTML = `<summary><h4>${key}</h4><summary>`;
 
         page.innerHTML += `<h1>${key}</h1>`
 
         for (const [name, info] of Object.entries(value)) {
             const a = document.createElement('a');
-
             a.innerHTML = `<button class="button-link">${name}</button>`;
-
             a.href = `#${name}`;
-
             content.appendChild(a);
 
-            page.innerHTML += `<div id="${name}" class="component">`
-                + `<h2>${name}</h2>` +
-                `<p class="description">${info.description || "No description."}</p>` +
-                (info.parameters?.length > 0 ? (`<h3>Constructor</h3><div class="code">${formatCode(`new ${name}(${info.parameters.map(i => i.name).join(', ')});`)}</div><h3>Class Parameters</h3><table><tr><th>Parameter</th><th>Type</th><th>Default</th><th>Required</th><th>Description</th>${info.parameters.map(param => `<tr><td>${param.name}</td><td>${param.type}</td><td>${param.default}</td><td>${param.required || false}</td><td>${param.description}</td></tr>`).join('')}</tr></table>`) : "") +
-                (info.properties?.length > 0 ? "<h3>Properties</h3>" + (info.properties.map(prop => `<h4>.${Object.keys(prop)}</h4><p class="description">${Object.values(prop)}</p>`)).join('') : "") +
-                (info.methods?.length > 0 ? "<h3>Methods</h3>" + (info.methods.map(method => `<h4>.${method.name}()</h4> <p class="description">${method.description}</p><table><tr><th>Parameter</th><th>Type</th><th>Default</th><th>Required</th><th>Description</th>${method.parameters.map(param => `<tr><td>${param.name}</td><td>${param.type}</td><td>${param.default}</td><td>${param.required || false}</td><td>${param.description}</td></tr>`).join('')}</tr ></table >`)).join('<br>') : "") +
-                '</div>'
+            const component = document.createElement('div');
+
+            component.classList.add('component');
+
+            component.innerHTML += `<h2 id="${name}">${name}</h2>`;
+
+            if (info.description) component.innerHTML += `<p class="description">${info.description}</p>`;
+
+            if (info.example) component.innerHTML += `<h3>Constructor</h3><div class="code">${formatCode(info.example)}</div>`;
+
+            if (info.parameters) {
+                const table = loadTable(info.parameters)
+
+                component.appendChild(table);
+            }
+
+            const container = document.createElement('div');
+
+            container.classList.add('container');
+            container.classList.add('dis');
+
+            if (info.properties) {
+                const div = document.createElement('div');
+
+                div.innerHTML = `<details open class="details"><summary><h3>Properties</h3></summary>${info.properties.map(x => `<li><a class="silent-link" href="#${name}.${Object.keys(x)[0]}">${Object.keys(x)[0]}</a></li>`).join('')}</details>`;
+
+                container.appendChild(div);
+            }
+
+            if (info.methods) {
+                const div = document.createElement('div');
+
+                div.innerHTML = `<details open class="details"><summary><h3>Methods</h3></summary>${info.methods.map(x => `<li><a class="silent-link" href="#${name}.${x.name}">${x.name}</a></li>`).join('')}</details>`;
+
+                container.appendChild(div);
+            }
+
+            if (info.events) {
+                const div = document.createElement('div');
+
+                div.innerHTML = `<details open class="details"><summary><h3>Events</h3></summary>${info.events.map(x => `<li><a class="silent-link" href="#${name}.${x.name}">${x.name}</a></li>`).join('')}</details>`;
+
+                container.appendChild(div);
+            }
+
+            component.appendChild(container);
+
+            if (info.properties) {
+                const div = document.createElement('div');
+
+                div.innerHTML = `<h3>Properties</h3>${info.properties.map(x => `<h4 id="${name}.${Object.keys(x)}">.${Object.keys(x)}<h4><p class="description">${Object.values(x)}</p>`).join('')}`;
+
+                component.appendChild(div);
+            }
+
+            if (info.methods) {
+                const div = document.createElement('div');
+
+                div.innerHTML += `<h3>Methods</h3>`;
+
+                info.methods.map(x => {
+                    div.innerHTML += `<h4 id="${name}.${x.name}">.${x.name}(${x.parameters.map(p => p.name).join(', ')})</h4><p class="description">${x.description}</p>`;
+
+                    if (x.parameters) {
+                        const table = loadTable(x.parameters);
+
+                        div.appendChild(table)
+                    }
+                })
+
+                component.appendChild(div);
+            }
+
+            if (info.events) {
+                const div = document.createElement('div');
+
+                div.innerHTML += `<h3>Events</h3>`;
+
+                info.events.map(x => {
+                    div.innerHTML += `<h4 id=${name}.${x.name}>${x.name}</h4><p class="description">${x.description}</p>`;
+
+                    if (x.parameters) {
+                        const table = loadTable(x.parameters);
+
+                        div.appendChild(table)
+                    }
+                })
+
+                component.appendChild(div);
+            }
+
+            if (info.types) {
+                component.innerHTML += info.types.map(type => `<li>${type}</li>`).join('')
+            }
+
+            page.appendChild(component)
         }
 
         classes.appendChild(content);
     }
+}
+
+function loadTable(parameters) {
+    const table = document.createElement('table')
+
+    table.innerHTML += `<tr><th>Parameter</th><th>Type</th><th>Default</th><th>Required</th><th>Description</th></tr>`
+
+    parameters.map(param => {
+        table.innerHTML += `<tr><td>${param.name}</td><td>${param.type}</td><td>${param.default}</td><td>${param.required}</td><td>${param.description}</td></tr>`
+    })
+
+    return table
 }

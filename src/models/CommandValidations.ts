@@ -30,7 +30,7 @@ export default function commandValidation(
 	else if (command.owner && !client.util.isOwner(user.id)) {
 		res = true;
 
-		emit(client, action, "Not an owner", client.settings.ownerId);
+		emit(client, action, command, "Not an owner", client.settings.ownerId);
 	} else if (command.channelType?.length > 0 || command.channelType) {
 		if (!Array.isArray(command.channelType))
 			command.channelType = [command.channelType];
@@ -38,7 +38,7 @@ export default function commandValidation(
 		if (!command?.channelType?.includes(action.channel?.type)) {
 			res = true;
 
-			emit(client, action, "Not the correct channel", command.channelType);
+			emit(client, action, command, "Not the correct channel", command.channelType);
 		}
 	} else if (
 		command.channels?.length > 0 &&
@@ -46,23 +46,23 @@ export default function commandValidation(
 	) {
 		res = true;
 
-		emit(client, action, "Not a whitelisted channel", command.channels);
+		emit(client, action, command, "Not a whitelisted channel", command.channels);
 	} else if (
 		command.guilds?.length > 0 &&
 		!command.guilds.includes(action.guild?.id)
 	) {
 		res = true;
 
-		emit(client, action, "Not a whitelisted guild", command.guilds);
+		emit(client, action, command, "Not a whitelisted guild", command.guilds);
 	} else if (
 		action?.guild &&
 		(command.userPermissions || client.settings.userPermissions)
 	) {
 		const permissions =
-				command.userPermissions ||
-				client?.settings?.userPermissions?.push(
-					...handlerPermissions(client, command.commandType, "user")
-				),
+			command.userPermissions ||
+			client?.settings?.userPermissions?.push(
+				...handlerPermissions(client, command.commandType, "user")
+			),
 			missing: bigint[] = [];
 
 		if (Array.isArray(permissions))
@@ -77,17 +77,17 @@ export default function commandValidation(
 		if (missing.length > 0) {
 			res = true;
 
-			emit(client, action, "Missing User Permissions", missing);
+			emit(client, action, command, "Missing User Permissions", missing);
 		}
 	} else if (
 		action?.guild &&
 		(command.clientPermissions || client.settings.clientPermissions)
 	) {
 		const permissions =
-				command.clientPermissions ||
-				client?.settings?.clientPermissions?.push(
-					...handlerPermissions(client, command.commandType, "client")
-				),
+			command.clientPermissions ||
+			client?.settings?.clientPermissions?.push(
+				...handlerPermissions(client, command.commandType, "client")
+			),
 			missing: bigint[] = [];
 
 		if (Array.isArray(permissions))
@@ -102,7 +102,7 @@ export default function commandValidation(
 		if (missing.length > 0) {
 			res = true;
 
-			emit(client, action, "Missing Client Permissions", missing);
+			emit(client, action, command, "Missing Client Permissions", missing);
 		}
 	}
 
@@ -112,10 +112,11 @@ export default function commandValidation(
 function emit(
 	client: XernerxClient,
 	action: Message | Interaction,
+	command: MessageCommand | SlashCommand | ContextCommand,
 	reason: string,
 	extra?: string[] | number[] | number | string | object | object[]
 ) {
-	return client.emit("commandBlock", action, reason, extra);
+	return client.emit("commandBlock", action, command, reason, extra);
 }
 
 function inCooldown(

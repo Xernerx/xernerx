@@ -33,7 +33,7 @@ export class Event {
 
 		this.once = options.once || false;
 
-		this.client = {};
+		this.client = XernerxClient;
 
 		this.run = this.run;
 	}

@@ -94,6 +94,8 @@ export default class XernerxClient extends Client {
 				console.info(Style.log(`Xernerx | ${client.user.tag} signed in watching ${size} server${size > 1 ? "s" : ""}. ${(this.handlerOptions.slash || this.handlerOptions.context)?.guildId ? `Using ${(await this.guilds.fetch((this.handlerOptions.slash || this.handlerOptions.context)?.guildId || "0")).name} as local guild.` : ""}`, { color: Style.TextColor.Purple }));
 			});
 		}
+
+		this.register = this.register;
 	}
 
 	register(token: string) {

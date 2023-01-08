@@ -108,7 +108,7 @@ export class SlashCommand {
 
 		this.defer = options.defer;
 
-		this.client = {};
+		this.client = XernerxClient;
 
 		this.conditions = this.conditions;
 

@@ -25,4 +25,6 @@ lightMode.addEventListener('click', async (event) => {
     if (Object.values(body.classList).includes('light')) body.classList.remove('light');
 
     else body.classList.add('light');
+
+    const silentLinks = document.getElementsByClassName('silent-link')
 })

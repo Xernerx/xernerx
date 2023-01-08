@@ -1,4 +1,5 @@
 import { ChannelType, ContextMenuCommandType } from "discord.js";
+import { ContextCommandType } from "../types/Types.js";
 
 export interface MessageCommandOptions {
 	name: string;
@@ -23,13 +24,12 @@ export interface MessageCommandOptions {
 
 export interface ContextCommandOptions {
 	name: string;
-	type: ContextMenuCommandType | number;
+	type: ContextMenuCommandType | number | ContextCommandType;
 	description?: string;
 	info?: string;
 	category?: string;
 	owner?: boolean;
 	channelType?: ChannelType;
-	separator?: string;
 	cooldown?: number;
 	ignoreOwner?: boolean;
 	channels?: string[];
@@ -40,36 +40,36 @@ export interface ContextCommandOptions {
 	DMPermission?: undefined | null | boolean;
 	nameLocalization?: {
 		locale:
-			| "en-US"
-			| "en-GB"
-			| "bg"
-			| "zh-CN"
-			| "zh-TW"
-			| "hr"
-			| "cs"
-			| "da"
-			| "nl"
-			| "fi"
-			| "fr"
-			| "de"
-			| "el"
-			| "hi"
-			| "hu"
-			| "it"
-			| "ja"
-			| "ko"
-			| "lt"
-			| "no"
-			| "pl"
-			| "pt-BR"
-			| "ro"
-			| "ru"
-			| "es-ES"
-			| "sv-SE"
-			| "th"
-			| "tr"
-			| "uk"
-			| "vi";
+		| "en-US"
+		| "en-GB"
+		| "bg"
+		| "zh-CN"
+		| "zh-TW"
+		| "hr"
+		| "cs"
+		| "da"
+		| "nl"
+		| "fi"
+		| "fr"
+		| "de"
+		| "el"
+		| "hi"
+		| "hu"
+		| "it"
+		| "ja"
+		| "ko"
+		| "lt"
+		| "no"
+		| "pl"
+		| "pt-BR"
+		| "ro"
+		| "ru"
+		| "es-ES"
+		| "sv-SE"
+		| "th"
+		| "tr"
+		| "uk"
+		| "vi";
 		localizedName: null | string;
 	};
 	nameLocalizations?: null | Partial<
@@ -117,14 +117,14 @@ export interface ContextCommandOptions {
 
 export interface SlashArg {
 	type:
-		| "string"
-		| "number"
-		| "boolean"
-		| "user"
-		| "channel"
-		| "role"
-		| "mentionable"
-		| "integer";
+	| "string"
+	| "number"
+	| "boolean"
+	| "user"
+	| "channel"
+	| "role"
+	| "mentionable"
+	| "integer";
 
 	name: string;
 	choices: Array<{ name: string; value: string }>;
