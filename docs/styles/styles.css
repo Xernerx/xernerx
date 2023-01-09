@@ -205,6 +205,22 @@ summary::-webkit-details-marker {
 	margin: 10px;
 }
 
+.alert {
+	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.7);
+	background: rgba(236, 28, 36, 0.3);
+	padding: 10px;
+	margin: 15px;
+	border-radius: 0.5rem;
+}
+
+.note {
+	box-shadow: 0 1px 5px rgba(0, 0, 0, 0.7);
+	background: rgba(36, 28, 236, 0.3);
+	padding: 10px;
+	margin: 15px;
+	border-radius: 0.5rem;
+}
+
 li {
 	padding: 5px;
 	margin: 5px;

@@ -16,6 +16,7 @@ export default function createSidebar(pages) {
         '<a href="#welcome" class="button-link">' +
         '<button class="button-link">Welcome</button>' +
         '</a>' +
+        (document.URL.includes('guide') ? `<a href="home.html" class="button-link"><button class="button-link">Go to documentation</button></a>` : `<a href="guide.html" class="button-link"><button class="button-link">Go to guide</button></a>`) +
         '</div > ' +
         '<div class="deco" id="classes"></div>'
 

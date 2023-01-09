@@ -1,16 +1,11 @@
+import versions from "../tools/versions.js";
 import formatCode from "./formatCode.js";
 
-const versions = {
-    v1: "version 1",
-    v2: "version 2",
-    v3: "version 3"
-}
-
 export default async function loadVersion() {
-    if (!document.URL.includes('pages')) return;
+    if (!document.URL.includes('pages') || document.URL.includes('guide')) return;
 
     const version = document.URL.match(/v\d{1}/)[0];
-    const build = (await import(`../../versions/${version}.js`)).default;
+    const build = (await import(`../../documentation/${version}.js`)).default;
     const page = document.getElementById('page');
 
     const classes = document.getElementById("classes");
@@ -30,7 +25,7 @@ export default async function loadVersion() {
 
     page.innerHTML = `<center><img id="welcome" src="../../styles/banner.png" class="banner"><h1 >Welcome to xernerx ${versions[version]}</h1></center>`;
 
-    page.innerHTML += `<div class="component"><h1>Info</h1><div class="code">${formatCode(`npm install xernerx@${build.info?.versions[0]}`)}</div><br><p>${build.info?.description}</p><br><p class="">State: ${build.info?.deprecated ? "deprecated" : "stable"}</p><br><h4>Versions</h4>${`<div class="container">${Object.values(list).map(value => `<div>${value.map(version => `<li><a href="https://www.npmjs.com/package/xernerx/v/${version}" class="link">${version}</a></li>`).join('')}</div>`).join('')}</div>`}</div>`
+    page.innerHTML += `<div class="component"><h1>Info</h1><div class="code">${formatCode(`npm install xernerx@${build.info?.versions[0]}`)}</div><br><p>${build.info?.description}</p><br><p>State: ${build.info?.deprecated ? "deprecated" : "stable"}<br><br><p><a href="guide.html" class="link">Guide</a></p></p><br><h4>Versions</h4>${`<div class="container">${Object.values(list).map(value => `<div>${value.map(version => `<li><a href="https://www.npmjs.com/package/xernerx/v/${version}" class="link">${version}</a></li>`).join('')}</div>`).join('')}</div>`}</div>`
 
     delete build.info
 

@@ -1,5 +1,6 @@
 import createFooter from "./models/footer.js";
 import formatCode from "./models/formatCode.js";
+import loadGuide from "./models/guides.js";
 import createHeader from "./models/header.js";
 import createSidebar from "./models/sidebar.js";
 import loadVersion from "./models/versions.js";
@@ -10,6 +11,7 @@ createSidebar(document.URL.includes('pages'));
 
 loadVersion();
 
+loadGuide();
 // createFooter();
 
 const install = document.getElementById('install');
