@@ -79,3 +79,8 @@ export interface Modules {
 	inhibitorHandler: InhibitorHandler;
 	webhookHandler: WebhookHandler;
 }
+
+export interface ExtensionOptions {
+	extensions: Array<any>;
+	logging?: boolean;
+}

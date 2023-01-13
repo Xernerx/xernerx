@@ -3,6 +3,7 @@ export default {
         description: "The third version of Xernerx, coming in with TypeScript support and ESM.",
         deprecated: false,
         versions: [
+            "3.2.0",
             "3.1.4",
             "3.1.3",
             "3.1.2",
@@ -44,6 +45,16 @@ export default {
                     default: undefined,
                     required: true,
                     description: "The client token"
+                }]
+            }, {
+                name: "loadExtensions",
+                description: "Used to load any extensions.",
+                parameters: [{
+                    name: "options",
+                    type: "ExtensionOptions",
+                    default: undefined,
+                    required: true,
+                    description: "Options for the extension handler."
                 }]
             }],
             events: [{

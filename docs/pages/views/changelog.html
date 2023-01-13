@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Xernerx - V3 - Guide</title>
+		<link rel="icon" type="image/x-icon" href="../../styles/icon.png" />
+		<link rel="stylesheet" href="../../styles/styles.css" />
+		<script src="../../functions/main.js" defer type="module"></script>
+	</head>
+	<body>
+		<header></header>
+		<div class="container">
+			<aside class="sidebar" id="sidebar"><h1>Versions</h1></aside>
+			<main class="content" id="page">
+				<div class="component" id="3.2.0">
+					<h2>3.2.0</h2>
+					<p class="description">
+						In 3.2.0 I have added the ability to allow extensions, this will allow for things like auto posters for top.gg to be an extensions instead of a required method. (In this version the
+						autoposter is still built in, this will be removed in next update.)
+					</p>
+					<p class="description">The way to load extensions is very simple, in or on your client class run the method .loadExtensions(options)</p>
+					<pre class="code">
+            import XernerxCommands from 'xernerx-commands';
+            import XernerxClient from 'xernerx';
+        
+            new class Client extends XernerxClient {
+                constructor() {
+                    super(discordOptions, clientOptions, config)
+        
+                    this.register('token')
+        
+                    this.loadExtensions({extensions:[XernerxCommands], logging:true})
+                }
+            }
+                    </pre
+					>
+				</div>
+			</main>
+		</div>
+	</body>
+</html>

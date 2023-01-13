@@ -13,9 +13,11 @@ import {
 	Cache,
 	Modules,
 	HandlerOptions,
+	ExtensionOptions,
 } from "../interfaces/ClientInterfaces.js";
 import { Style } from "dumfunctions";
 import WebhookHandler from "../handlers/WebhookHandler.js";
+import Extensions from "../models/Extensions.js";
 
 /**
  * @description - The Client.
@@ -31,6 +33,7 @@ export default class XernerxClient extends Client {
 	util: ClientUtil;
 	handlerOptions: HandlerOptions;
 	events: Collection<string, object>;
+	extensions: Record<string, object>;
 	inhibitors: Collection<string, object>;
 	config: object;
 
@@ -83,6 +86,8 @@ export default class XernerxClient extends Client {
 			webhookHandler: new WebhookHandler(this),
 		};
 
+		this.extensions = {};
+
 		this.util = new ClientUtil(this);
 
 		this.handlerOptions = {};
@@ -101,4 +106,12 @@ export default class XernerxClient extends Client {
 	register(token: string) {
 		this.login(token);
 	}
+
+	loadExtensions(options: ExtensionOptions) {
+		const extensions = new Extensions(this);
+
+		return extensions.load(options.extensions, options.logging || false);
+	}
 }
+
+

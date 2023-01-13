@@ -38,7 +38,6 @@ body {
 	background-color: var(--red);
 	position: sticky;
 	top: 0;
-	background-color: none;
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 	padding: 0.6rem;
 	height: var(--header-height);
@@ -172,6 +171,7 @@ select:hover {
 	border: black solid 1px;
 	margin: 15px;
 	color: white;
+	overflow-y: auto;
 }
 
 ::-webkit-scrollbar {
@@ -263,31 +263,32 @@ h3 {
 	color: var(--red);
 }
 
-.word-parameter {
+.code-parameter {
 	color: rgb(255, 183, 77);
 }
 
-.word-class-name {
+.code-function {
 	color: rgb(179, 146, 240);
 }
 
-.word-string {
+.code-string {
 	color: rgb(158, 203, 255);
 }
 
-.word-new,
-.word-const,
-.word-let,
-.word-var,
-.word-extends,
-.word-class,
-.word-import,
-.word-from {
+.code-reserved {
 	color: rgb(249, 117, 131);
+}
+
+.code-variables {
+	color: rgb(94, 184, 255);
 }
 
 .word-npm {
 	color: rgb(241, 234, 113);
+}
+
+.code-comment {
+	color: rgb(89, 115, 125);
 }
 
 .details {

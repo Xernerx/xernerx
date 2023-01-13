@@ -1,8 +1,8 @@
 import versions from "../tools/versions.js";
 import formatCode from "./formatCode.js";
 
-export default async function loadVersion() {
-    if (!document.URL.includes('pages') || document.URL.includes('guide')) return;
+export async function loadVersion(type) {
+    if (type !== "Documentation") return;
 
     const version = document.URL.match(/v\d{1}/)[0];
     const build = (await import(`../../documentation/${version}.js`)).default;
@@ -156,4 +156,15 @@ function loadTable(parameters) {
     })
 
     return table
+}
+
+export function loadChanges(type) {
+    if (type !== "Changelog") return;
+
+    const sidebar = document.getElementById('sidebar');
+    const page = document.getElementById('page');
+
+    for (const version of page.getElementsByClassName('component')) {
+        sidebar.innerHTML += `<a href="#${version.id}" class="button-link"><button class="button-link">${version.id}</button></a>`
+    }
 }

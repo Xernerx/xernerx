@@ -12,6 +12,7 @@ export default function createHeader(page) {
         `<a href="${page ? "../../" : ""}pages/v1/home.html" class="button-link"><button class="button-link">Version 1</button></a>` +
         `<a href="${page ? "../../" : ""}pages/v2/home.html" class="button-link"><button class="button-link">Version 2</button></a>` +
         `<a href="${page ? "../../" : ""}pages/v3/home.html" class="button-link"><button class="button-link">Version 3</button></a>` +
+        `<a href="${page ? "../../" : ""}pages/views/extensions.html" class="button-link"><button class="button-link">Extensions</button></a>` +
         `<a href="https://discord.js.org/#/" class="button-link"><button class="button-link">Discord.js</button></a>` +
         '</div>'
 }
