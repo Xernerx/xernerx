@@ -229,7 +229,7 @@ function inCooldown(
 		}
 	}
 
-	if (client.settings.cooldown.default) {
+	if (client.settings?.cooldown?.default) {
 		if (cooldowns.has(user.id)) {
 			const usr = cooldowns.get(user.id);
 

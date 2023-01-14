@@ -3,7 +3,7 @@ export default {
         description: "An extension containing a bunch of commands that are useful for developing.",
         link: "https://npm.js.org/",
         install: "npm install xernerx-commands",
-        support: ["3.2.0"]
+        support: ["3.2.1"]
     },
     XernerxPoster: {
         description: "An extension used to deploy your stats to any api that allows for stats deployment.",

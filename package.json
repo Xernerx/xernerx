@@ -1,7 +1,7 @@
 {
 	"type": "module",
 	"name": "xernerx",
-	"version": "3.2.0",
+	"version": "3.2.1",
 	"description": "A bot framework for discord.js. [BETA]",
 	"main": "dist/main.js",
 	"scripts": {
