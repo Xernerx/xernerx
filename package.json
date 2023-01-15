@@ -17,7 +17,7 @@
 		"url": "https://github.com/TheDummi/xernerx/issues"
 	},
 	"publishConfig": {
-		"registry": "https://npm.pkg.github.com/"
+		"registry": "https://registry.npmjs.org"
 	},
 	"homepage": "https://thedummi.github.io/xernerx/home.html",
 	"dependencies": {
