@@ -11,7 +11,7 @@ import { CommandType, EventEmitterType, ContextCommandType } from "./types/Types
 import { InhibitorType } from "./types/InhibitorTypes.js";
 
 
-const version: string = "3.1.4";
+const version: string = "3.2.2";
 
 export default {
 	// Imported methods

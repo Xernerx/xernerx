@@ -14,6 +14,26 @@
 		<div class="container">
 			<aside class="sidebar" id="sidebar"><h1>Versions</h1></aside>
 			<main class="content" id="page">
+				<div class="component" id="3.2.1">
+					<h2>3.2.1</h2>
+					<p class="description">Changed how extensions are parsed.</p>
+
+					<h4>Before 3.2.2</h4>
+					<pre class="code">
+						this.loadExtensions({extensions:[XernerxCommands]})
+					</pre
+					>
+
+					<h4>After 3.2.2</h4>
+					<pre class="code">
+						this.loadExtensions({extensions:[new XernerxCommands(options)]})
+					</pre
+					>
+				</div>
+				<div class="component" id="3.2.1">
+					<h2>3.2.1</h2>
+					<p class="description">Fixed extension handler to be able to handle extensions.</p>
+				</div>
 				<div class="component" id="3.2.0">
 					<h2>3.2.0</h2>
 					<p class="description">
