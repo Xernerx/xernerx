@@ -36,14 +36,15 @@ loadLinks(pageType());
  * @returns the type of page the user is viewing
  */
 function pageType() {
-    const types = ["Documentation", "Guide", "Extensions", "Changelog", "Sitemap", "Home"], url = document.URL;
+    const types = ["Documentation", "Guide", "Extensions", "Changelog", "Sitemap", "Extension", "Home"], url = document.URL;
 
     if (url.includes('guide')) return types[1];
+    else if (url.includes('pages/extensions')) return types[5];
     else if (url.includes('extensions')) return types[2];
     else if (url.includes('changelog')) return types[3]
     else if (url.includes('sitemap')) return types[4]
     else if (url.includes('pages')) return types[0];
-    else return types[5];
+    else return types[6];
 }
 
 

@@ -43,6 +43,9 @@ export default function createSidebar(type) {
             '<a href="#implementation" class="button-link">' +
             '<button class="button-link">Implementation</button>' +
             '</a>' +
+            '<a href="#custom" class="button-link">' +
+            '<button class="button-link">Custom Extensions</button>' +
+            '</a>' +
             '</div > ' +
             '<div class="deco" id="classes"></div>'
 
