@@ -20,6 +20,7 @@ jobs:
       - run: npm install
       - run: npm fund
       - run: npm ci
+      - run: npm login
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
