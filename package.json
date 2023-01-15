@@ -26,9 +26,6 @@
 	"bugs": {
 		"url": "https://github.com/TheDummi/xernerx/issues"
 	},
-	"publishConfig": {
-		"registry": "https://npm.pkg.github.com"
-	},
 	"dependencies": {
 		"@sapphire/shapeshift": "^3.7.1",
 		"@top-gg/sdk": "^3.1.3",
