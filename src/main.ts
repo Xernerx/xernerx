@@ -9,9 +9,9 @@ import { ContextCommand } from "./build/ContextCommand.js";
 import { SlashCommand } from "./build/SlashCommand.js";
 import { CommandType, EventEmitterType, ContextCommandType } from "./types/Types.js";
 import { InhibitorType } from "./types/InhibitorTypes.js";
+import pkg from "../package.js";
 
-
-const version: string = "3.2.2";
+const version: string = pkg.version;
 
 export default {
 	// Imported methods

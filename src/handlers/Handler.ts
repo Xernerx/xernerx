@@ -19,11 +19,14 @@ import { Style } from 'dumfunctions';
 export class Handler {
 	client: XernerxClient;
 	commands: object[];
+	readyTimestamp: number;
 
 	constructor(client: XernerxClient) {
 		this.client = client;
 
 		this.commands = [];
+
+		this.readyTimestamp = Number(Date.now());
 	}
 
 	/**
@@ -54,7 +57,7 @@ export class Handler {
 			loaded.push(file.replace(".js", ""));
 		}
 
-		if (this.client.handlerOptions.message.logging)
+		if (this.client.handlerOptions.message?.logging)
 			console.info(Style.log(`Xernerx | Loaded ${loaded.length} message commands: ${loaded.join(", ")}.`, { color: Style.TextColor.Cyan }));
 	}
 
@@ -89,7 +92,7 @@ export class Handler {
 			loaded.push(file.replace(".js", ""));
 		}
 
-		if (this.client.handlerOptions.slash.logging)
+		if (this.client.handlerOptions.slash?.logging)
 			console.info(Style.log(`Xernerx | Loaded ${loaded.length} slash commands: ${loaded.join(", ")}.`, { color: Style.TextColor.Cyan }));
 	}
 
@@ -124,7 +127,7 @@ export class Handler {
 			loaded.push(file.replace(".js", ""));
 		}
 
-		if (this.client.handlerOptions.context.logging)
+		if (this.client.handlerOptions.context?.logging)
 			console.info(Style.log(`Xernerx | Loaded ${loaded.length} context commands: ${loaded.join(", ")}.`, { color: Style.TextColor.Cyan }));
 	}
 
