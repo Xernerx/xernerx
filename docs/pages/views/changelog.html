@@ -14,22 +14,38 @@
 		<div class="container">
 			<aside class="sidebar" id="sidebar"><h1>Versions</h1></aside>
 			<main class="content" id="page">
-				<div class="component" id="3.2.1">
-					<h2>3.2.1</h2>
+				<div class="component" id="3.2.6">
+					<h2>3.2.6</h2>
+					<p class="description">Added handleTyping to the message commandHandler, this will trigger the sendTyping function on a message command run.</p>
+				</div>
+
+				<div class="component" id="3.2.5">
+					<h2>3.2.5</h2>
+					<p class="description">No big changes but code optimization and bug fixes</p>
+
+					Fixes
+					<li>Made export version = current version</li>
+					<li>Added readyTimestamp on handlers</li>
+					<li>Fixed a bug where the code wouldn't handle command loggings</li>
+				</div>
+
+				<div class="component" id="3.2.2">
+					<h2>3.2.2</h2>
 					<p class="description">Changed how extensions are parsed.</p>
 
 					<h4>Before 3.2.2</h4>
 					<pre class="code">
-						this.loadExtensions({extensions:[XernerxCommands]})
+	this.loadExtensions({extensions:[XernerxCommands]})
 					</pre
 					>
 
 					<h4>After 3.2.2</h4>
 					<pre class="code">
-						this.loadExtensions({extensions:[new XernerxCommands(options)]})
+	this.loadExtensions({extensions:[new XernerxCommands(options)]})
 					</pre
 					>
 				</div>
+
 				<div class="component" id="3.2.1">
 					<h2>3.2.1</h2>
 					<p class="description">Fixed extension handler to be able to handle extensions.</p>
