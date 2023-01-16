@@ -35,6 +35,8 @@ export class MessageCommandEvents {
 				let command: string | undefined = undefined,
 					px: string | undefined = undefined;
 
+				if (this.client.handlerOptions.message?.handleTyping) message.channel.sendTyping();
+
 				(message.author as XernerxUser).isOwner = this.client.util.isOwner(
 					message.author.id
 				);
@@ -147,6 +149,8 @@ export class MessageCommandEvents {
 				if (!message.author?.bot) {
 					let command: string | undefined = undefined,
 						px: string | undefined = undefined;
+
+					if (this.client.handlerOptions.message?.handleTyping) message.channel.sendTyping();
 
 					if (message.author)
 						(message.author as XernerxUser).isOwner = this.client.util.isOwner(
@@ -268,6 +272,8 @@ export class MessageCommandEvents {
 				this.client.cache.messages.has(message.id) &&
 				this.client.handlerOptions.message?.handleDeletes
 			) {
+				if (this.client.handlerOptions.message?.handleTyping) message.channel.sendTyping();
+
 				try {
 					const msg: any = this.client.cache.messages.get(message.id);
 					const response = await message.channel.messages.fetch(msg?.response);

@@ -44,6 +44,7 @@ export class Handler {
 				clientPermissions: s.array(s.bigint).default([]),
 				handleEdits: s.boolean.default(false),
 				handleDeletes: s.boolean.default(false),
+				handleTyping: s.boolean.default(false),
 				logging: s.boolean.default(false),
 			})
 			.parse(options);

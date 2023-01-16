@@ -11,6 +11,7 @@ export interface MessageCommandOptions {
 	clientPermissions?: bigint[];
 	handleEdits?: boolean;
 	handleDeletes?: boolean;
+	handleTyping?: boolean,
 	util?: boolean;
 	logging?: boolean;
 }
