@@ -1,75 +1,54 @@
 import { Interaction, Message, User, PermissionsBitField } from "discord.js";
-import {
-	XernerxClient,
-	SlashCommand,
-	MessageCommand,
-	ContextCommand,
-} from "../main.js";
-import { CommandType } from "../types/Types.js";
-import { XernerxUser } from "../interfaces/HandlerInterfaces.js";
+import { ContextCommandBuilder, MessageCommandBuilder, SlashCommandBuilder, XernerxClient } from "../main.js";
+import { CommandType } from "../types/enums.js";
+import { XernerxMessage, XernerxUser } from "../types/types.js";
 
 function getUser(from: Message | Interaction): XernerxUser {
 	if (from instanceof Message) return from.author as XernerxUser;
 	else return from.user as XernerxUser;
 }
 
-export default function commandValidation(
-	action: Message | Interaction,
-	command: SlashCommand | MessageCommand | ContextCommand | any,
-	client: XernerxClient,
-	res: boolean = false
-) {
+export default function commandValidation(action: XernerxMessage | Interaction, command: SlashCommandBuilder | MessageCommandBuilder | ContextCommandBuilder | any, client: XernerxClient, res: boolean = false) {
 	let user = getUser(action);
 
-	if (
-		(command.ignoreOwner || client.settings.ignoreOwner) &&
-		client.util.isOwner(user.id)
-	)
-		return res;
+	if ((command.ignoreOwner || client.settings.ignoreOwner) && client.util.isOwner(user.id)) return res;
+
 	else if (inCooldown(user, client, command, action)) return true;
+
 	else if (command.owner && !client.util.isOwner(user.id)) {
 		res = true;
 
 		emit(client, action, command, "Not an owner", client.settings.ownerId);
-	} else if (command.channelType?.length > 0 || command.channelType) {
-		if (!Array.isArray(command.channelType))
-			command.channelType = [command.channelType];
+	}
+
+	else if (command.channelType?.length > 0 || command.channelType) {
+		if (!Array.isArray(command.channelType)) command.channelType = [command.channelType];
 
 		if (!command?.channelType?.includes(action.channel?.type)) {
 			res = true;
 
 			emit(client, action, command, "Not the correct channel", command.channelType);
 		}
-	} else if (
-		command.channels?.length > 0 &&
-		!command.channels.includes(action.channel?.id)
-	) {
+	}
+
+	else if (command.channels?.length > 0 && !command.channels.includes(action.channel?.id)) {
 		res = true;
 
 		emit(client, action, command, "Not a whitelisted channel", command.channels);
-	} else if (
-		command.guilds?.length > 0 &&
-		!command.guilds.includes(action.guild?.id)
-	) {
+	}
+
+	else if (command.guilds?.length > 0 && !command.guilds.includes(action.guild?.id)) {
 		res = true;
 
 		emit(client, action, command, "Not a whitelisted guild", command.guilds);
-	} else if (
-		action?.guild &&
-		(command.userPermissions || client.settings.userPermissions)
-	) {
-		const permissions =
-			command.userPermissions ||
-			client?.settings?.userPermissions?.push(
-				...handlerPermissions(client, command.commandType, "user")
-			),
-			missing: bigint[] = [];
+	}
+
+	else if (action?.guild && (command.userPermissions || client.settings.userPermissions)) {
+		const permissions = command.userPermissions || client?.settings?.userPermissions?.push(...handlerPermissions(client, command.commandType, "user")), missing: bigint[] = [];
 
 		if (Array.isArray(permissions))
 			permissions.map((permission: bigint) => {
-				if (
-					!(action.member?.permissions as PermissionsBitField).has(permission)
-				) {
+				if (!(action.member?.permissions as PermissionsBitField).has(permission)) {
 					missing.push(permission);
 				}
 			});
@@ -79,22 +58,14 @@ export default function commandValidation(
 
 			emit(client, action, command, "Missing User Permissions", missing);
 		}
-	} else if (
-		action?.guild &&
-		(command.clientPermissions || client.settings.clientPermissions)
-	) {
-		const permissions =
-			command.clientPermissions ||
-			client?.settings?.clientPermissions?.push(
-				...handlerPermissions(client, command.commandType, "client")
-			),
-			missing: bigint[] = [];
+	}
+
+	else if (action?.guild && (command.clientPermissions || client.settings.clientPermissions)) {
+		const permissions = command.clientPermissions || client?.settings?.clientPermissions?.push(...handlerPermissions(client, command.commandType, "client")), missing: bigint[] = [];
 
 		if (Array.isArray(permissions))
 			permissions.map((permission: bigint) => {
-				if (
-					!(action.member?.permissions as PermissionsBitField).has(permission)
-				) {
+				if (!(action.member?.permissions as PermissionsBitField).has(permission)) {
 					missing.push(permission);
 				}
 			});
@@ -109,22 +80,11 @@ export default function commandValidation(
 	return res;
 }
 
-function emit(
-	client: XernerxClient,
-	action: Message | Interaction,
-	command: MessageCommand | SlashCommand | ContextCommand,
-	reason: string,
-	extra?: string[] | number[] | number | string | object | object[]
-) {
+function emit(client: XernerxClient, action: Message | Interaction, command: MessageCommandBuilder | SlashCommandBuilder | ContextCommandBuilder, reason: string, extra?: string[] | number[] | number | string | object | object[]) {
 	return client.emit("commandBlock", action, command, reason, extra);
 }
 
-function inCooldown(
-	user: XernerxUser,
-	client: XernerxClient | any,
-	command: MessageCommand | SlashCommand | ContextCommand | any,
-	action: Message | Interaction
-) {
+function inCooldown(user: XernerxUser, client: XernerxClient | any, command: MessageCommandBuilder | SlashCommandBuilder | ContextCommandBuilder | any, action: Message | Interaction) {
 	let res = false,
 		downs: Record<string, number> = {};
 
@@ -136,10 +96,7 @@ function inCooldown(
 		commands,
 	} = client.cache;
 
-	if (
-		command.commandType === CommandType.MessageCommand &&
-		client.handlerOptions.message.cooldown
-	) {
+	if (command.commandType === CommandType.MessageCommand && client.handlerOptions.message.cooldown) {
 		if (messageCommands.has(user.id)) {
 			const usr = messageCommands.get(user.id);
 
@@ -287,7 +244,7 @@ function inCooldown(
 
 function toCooldown(
 	action: Message | Interaction,
-	command: MessageCommand | ContextCommand | SlashCommand | any,
+	command: MessageCommandBuilder | ContextCommandBuilder | SlashCommandBuilder | any,
 	cooldown: number,
 	name: string
 ) {

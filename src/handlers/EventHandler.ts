@@ -1,5 +1,5 @@
-import { EventLoadOptions } from "../interfaces/HandlerInterfaces.js";
 import XernerxClient from "../client/XernerxClient.js";
+import { EventHandlerOptions } from "../types/options.js";
 import { Handler } from "./Handler.js";
 
 export default class EventHandler {
@@ -16,7 +16,7 @@ export default class EventHandler {
 	 * @description - The event loader
 	 * @param {EventLoadOptions} options - message command options
 	 */
-	loadAllEvents(options: EventLoadOptions) {
+	loadAllEvents(options: EventHandlerOptions) {
 		return this.handler.loadAllEvents(options);
 	}
 }

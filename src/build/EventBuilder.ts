@@ -1,13 +1,13 @@
-import { EventOptions } from "../interfaces/HandlerInterfaces.js";
 import { s } from "@sapphire/shapeshift";
 import { XernerxClient } from "../main.js";
+import { EventOptions } from "../types/options.js";
 
 /**
- * @description - The event builder for any events.
+ * @description - The event builder for  events.
  * @param {String} id - The unique ID of the event.
  * @param {EventOptions} options - The event options.
  */
-export class Event {
+export default class EventBuilder {
 	id: string;
 	name: string;
 	emitter?: string;

@@ -9,8 +9,8 @@ import {
 	StringSelectMenuBuilder,
 } from "discord.js";
 import XernerxClient from "../client/XernerxClient.js";
-import { XernerxMessage } from "../interfaces/HandlerInterfaces.js";
 import XernerxError from "../tools/XernerxError.js";
+import { XernerxMessage } from "../types/types.js";
 interface SelectMenuOptions {
 	index?: EmbedBuilder;
 	row?: ActionRowBuilder;

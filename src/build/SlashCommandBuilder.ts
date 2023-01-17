@@ -1,30 +1,24 @@
-import {
-	SlashArg,
-	SlashCommandOptions,
-	SlashGroup,
-	SlashSubcommand,
-} from "../interfaces/CommandInterfaces.js";
-import {
+import Discord, {
 	ChannelType,
 	Interaction,
-	SlashCommandBuilder,
 	SlashCommandStringOption,
 	SlashCommandSubcommandBuilder,
 	SlashCommandSubcommandGroupBuilder,
 } from "discord.js";
 import { s } from "@sapphire/shapeshift";
-import { SlashCommandOption, SlashArgumentTypes } from "../types/Types.js";
+import { SlashCommandOption, SlashArgumentTypes } from "../types/enums.js";
 import { XernerxClient } from "../main.js";
 import XernerxError from "../tools/XernerxError.js";
+import { SlashArgOptions, SlashCommandOptions, SlashGroupOptions, SlashSubcommandOptions } from "../types/options.js";
 
 /**
  * @description - The command builder for slash commands.
  * @param {String} id - The unique ID of the command.
  * @param {SlashCommandOptions} options - The command options.
  */
-export class SlashCommand {
+export default class SlashCommandBuilder {
 	id: string;
-	data: SlashCommandBuilder;
+	data: Discord.SlashCommandBuilder;
 	info?: string;
 	category?: string;
 	owner?: boolean;
@@ -49,7 +43,7 @@ export class SlashCommand {
 	constructor(id: string, options: SlashCommandOptions) {
 		this.id = id;
 
-		this.data = new SlashCommandBuilder()
+		this.data = new Discord.SlashCommandBuilder()
 			.setName(options.name)
 			.setDescription(options.description);
 
@@ -120,8 +114,8 @@ export class SlashCommand {
 	async exec(interaction: Interaction) { }
 
 	#addArgs(
-		command: SlashCommandBuilder | SlashCommandSubcommandBuilder,
-		args: Array<SlashArg>
+		command: Discord.SlashCommandBuilder | SlashCommandSubcommandBuilder,
+		args: Array<SlashArgOptions>
 	) {
 		const types = [
 			"boolean",
@@ -157,8 +151,8 @@ export class SlashCommand {
 	}
 
 	#addSubcommands(
-		method: SlashCommandBuilder | SlashCommandSubcommandGroupBuilder,
-		subcommands: Array<SlashSubcommand>
+		method: Discord.SlashCommandBuilder | SlashCommandSubcommandGroupBuilder,
+		subcommands: Array<SlashSubcommandOptions>
 	) {
 		for (const subcommand of subcommands) {
 			let sub = new SlashCommandSubcommandBuilder()
@@ -171,7 +165,7 @@ export class SlashCommand {
 		}
 	}
 
-	#addSubcommandGroups(groups: Array<SlashGroup>) {
+	#addSubcommandGroups(groups: Array<SlashGroupOptions>) {
 		for (const group of groups) {
 			let subcommandGroup = new SlashCommandSubcommandGroupBuilder()
 				.setName(group.name)

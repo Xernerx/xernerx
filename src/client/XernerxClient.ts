@@ -6,18 +6,13 @@ import EventHandler from "../handlers/EventHandler.js";
 import InhibitorHandler from "../handlers/InhibitorHandler.js";
 
 import { ClientUtil } from "../utils/ClientUtil.js";
-import {
-	DiscordOptions,
-	ClientOptions,
-	Commands,
-	Cache,
-	Modules,
-	HandlerOptions,
-	ExtensionOptions,
-} from "../interfaces/ClientInterfaces.js";
 import { Style } from "dumfunctions";
-import WebhookHandler from "../handlers/WebhookHandler.js";
 import Extensions from "../models/Extensions.js";
+import { ClientOptions, DiscordOptions, ExtensionOptions, HandlerOptions } from "../types/options.js";
+import { ClientCache, ClientCommands, ClientModules } from "../types/interfaces.js";
+import EventBuilder from "../build/EventBuilder.js";
+import ExtensionBuilder from "../build/ExtensionBuilder.js";
+import InhibitorBuilder from "../build/InhibitorBuilder.js";
 
 /**
  * @description - The Client.
@@ -27,14 +22,14 @@ import Extensions from "../models/Extensions.js";
  */
 export default class XernerxClient extends Client {
 	settings: ClientOptions;
-	commands: Commands;
-	cache: Cache;
-	modules: Modules;
+	commands: ClientCommands;
+	cache: ClientCache;
+	modules: ClientModules;
 	util: ClientUtil;
 	handlerOptions: HandlerOptions;
-	events: Collection<string, object>;
-	extensions: Record<string, object>;
-	inhibitors: Collection<string, object>;
+	events: Collection<string, EventBuilder>;
+	extensions: Record<string, ExtensionBuilder>;
+	inhibitors: Collection<string, InhibitorBuilder>;
 	config: object;
 
 	constructor(
@@ -83,7 +78,6 @@ export default class XernerxClient extends Client {
 			commandHandler: new CommandHandler(this),
 			eventHandler: new EventHandler(this),
 			inhibitorHandler: new InhibitorHandler(this),
-			webhookHandler: new WebhookHandler(this),
 		};
 
 		this.extensions = {};

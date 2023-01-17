@@ -1,19 +1,18 @@
 import {
 	ChannelType,
 	ContextMenuCommandBuilder,
-	ContextMenuCommandType,
 	Interaction,
 } from "discord.js";
-import { ContextCommandOptions } from "../interfaces/CommandInterfaces.js";
 import { s } from "@sapphire/shapeshift";
 import { XernerxClient } from "../main.js";
+import { ContextCommandOptions } from "../types/options.js";
 
 /**
  * @description The command builder for context commands.
  * @param {String} id - The unique ID of the command.
  * @param {ContextCommandOptions} options - The command options.
  */
-export class ContextCommand {
+export default class ContextCommandBuilder {
 	id: string;
 	data: ContextMenuCommandBuilder;
 	description?: string;

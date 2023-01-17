@@ -1,8 +1,3 @@
-import {
-	ContextCommandOptions,
-	SlashCommandOptions,
-	MessageCommandOptions,
-} from "../interfaces/HandlerInterfaces.js";
 import XernerxClient from "../client/XernerxClient.js";
 import { Handler } from "./Handler.js";
 import {
@@ -11,6 +6,7 @@ import {
 	MessageCommandEvents,
 	SlashCommandEvents,
 } from "../models/Events.js";
+import { ContextCommandHandlerOptions, MessageCommandHandlerOptions, SlashCommandHandlerOptions } from "../types/options.js";
 
 /**
  * @description - The command handler.
@@ -32,7 +28,7 @@ export default class CommandHandler {
 	 * @description - The message command loader.
 	 * @param {MessageCommandOptions} options - message command loader options.
 	 */
-	loadAllMessageCommands(options: MessageCommandOptions) {
+	loadAllMessageCommands(options: MessageCommandHandlerOptions) {
 		this.handler.loadAllMessageCommands(options);
 
 		const events = new MessageCommandEvents(this.client);
@@ -48,7 +44,7 @@ export default class CommandHandler {
 	 * @description - The slash command loader.
 	 * @param {SlashCommandOptions} options - slash command loader options.
 	 */
-	loadAllSlashCommands(options: SlashCommandOptions) {
+	loadAllSlashCommands(options: SlashCommandHandlerOptions) {
 		this.handler.loadAllSlashCommands(options);
 
 		new SlashCommandEvents(this.client).slashCreate();
@@ -58,7 +54,7 @@ export default class CommandHandler {
 	 * @description - The context command loader.
 	 * @param {ContextCommandOptions} options - context command loader options.
 	 */
-	loadAllContextCommands(options: ContextCommandOptions) {
+	loadAllContextCommands(options: ContextCommandHandlerOptions) {
 		this.handler.loadAllContextCommands(options);
 
 		new ContextCommandEvents(this.client).contextCreate();

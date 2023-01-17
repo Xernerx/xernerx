@@ -1,23 +1,16 @@
 import { Interaction, Message } from "discord.js";
-import {
-	MessageCommandOptions,
-	SlashCommandOptions,
-	ContextCommandOptions,
-} from "../interfaces/CommandInterfaces.js";
-import { InhibitorType } from "../types/InhibitorTypes.js";
+
+import { InhibitorType } from "../types/enums.js";
 import XernerxClient from "../client/XernerxClient.js";
+import { XernerxInteraction, XernerxMessage } from "../types/types.js";
 
 export class InhibitorValidation {
 	client: XernerxClient;
-	action: Message | Interaction;
-	command: MessageCommandOptions | SlashCommandOptions | ContextCommandOptions;
-	inhibited: { [index: string]: any };
+	action: XernerxMessage | XernerxInteraction;
+	command: string;
+	inhibited: Record<string, string | void>;
 
-	constructor(
-		client: XernerxClient,
-		action: Message | Interaction,
-		command: any
-	) {
+	constructor(client: XernerxClient, action: XernerxMessage | XernerxInteraction, command: string) {
 		this.client = client;
 
 		this.action = action;
@@ -29,13 +22,9 @@ export class InhibitorValidation {
 
 	async inhibit() {
 		for (const inhibitor of this.client.inhibitors) {
-			const inhibit: any = inhibitor[1];
+			const inhibit = inhibitor[1];
 
-			if (inhibit)
-				this.inhibited[inhibit.name] = await inhibit.check(
-					this.action,
-					this.args(this.action, inhibit.type)
-				);
+			if (inhibit) this.inhibited[inhibit.name] = await inhibit.check(this.action, this.args(this.action, inhibit.type));
 		}
 
 		for (const inhibit of Object.values(this.inhibited)) {
@@ -43,7 +32,7 @@ export class InhibitorValidation {
 		}
 	}
 
-	args(action: any, type: InhibitorType) {
+	args(action: XernerxInteraction | XernerxMessage | any, type: InhibitorType) {
 		if (type === InhibitorType.Channel) return action.channel;
 		if (type === InhibitorType.User) return action.author || action.user;
 		if (type === InhibitorType.Guild) return action.guild;

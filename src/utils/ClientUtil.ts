@@ -65,19 +65,12 @@ export class ClientUtil {
 	}
 
 	getSubcommands(name: string) {
-		if (!name || typeof name !== "string")
-			throw new XernerxError(
-				`Expected name to be of type string, received ${typeof name} instead!`
-			);
+		if (!name || typeof name !== "string") throw new XernerxError(`Expected name to be of type string, received ${typeof name} instead!`);
 
 		const commands: object[] = [];
 
 		this.getAllCommands()
-			.filter(
-				(c: any) =>
-					(c.data?.name?.toLowerCase() || c.name?.toLowerCase()) ==
-					name?.toLowerCase()
-			)
+			.filter((c: any) => (c.data?.name?.toLowerCase() || c.name?.toLowerCase()) == name?.toLowerCase())
 			.map((c: any) => {
 				if (c?.data?.options?.length > 0) {
 					c?.data?.options?.map((option: any) => {

@@ -1,16 +1,10 @@
 import XernerxClient from "../client/XernerxClient.js";
 import fs from "node:fs";
 import * as path from "path";
-import { CommandType } from "../types/Types.js";
+import { CommandType } from "../types/enums.js";
 import { s } from "@sapphire/shapeshift";
-import {
-	ContextCommandOptions,
-	MessageCommandOptions,
-	SlashCommandOptions,
-	EventLoadOptions,
-	InhibitorLoadOptions,
-} from "../interfaces/HandlerInterfaces.js";
 import { Style } from 'dumfunctions';
+import { ContextCommandHandlerOptions, EventHandlerOptions, InhibitorHandlerOptions, MessageCommandHandlerOptions, SlashCommandHandlerOptions } from "../types/options.js";
 
 /**
  * @description - The Handler class.
@@ -33,7 +27,7 @@ export class Handler {
 	 * @description - The loader for the message commands.
 	 * @param {MessageCommandOptions} options - The options for the message command loader.
 	 */
-	loadAllMessageCommands(options: MessageCommandOptions) {
+	loadAllMessageCommands(options: MessageCommandHandlerOptions) {
 		this.client.handlerOptions.message = s
 			.object({
 				directory: s.string,
@@ -66,7 +60,7 @@ export class Handler {
 	 * @description - The loader for the slash commands.
 	 * @param {SlashCommandOptions} options - The options for the slash command loader.
 	 */
-	loadAllSlashCommands(options: SlashCommandOptions) {
+	loadAllSlashCommands(options: SlashCommandHandlerOptions) {
 		this.client.handlerOptions.slash = s
 			.object({
 				directory: s.string,
@@ -101,7 +95,7 @@ export class Handler {
 	 * @description - The loader for the context commands.
 	 * @param {ContextCommandOptions} options - The options for the context command loader.
 	 */
-	loadAllContextCommands(options: ContextCommandOptions) {
+	loadAllContextCommands(options: ContextCommandHandlerOptions) {
 		this.client.handlerOptions.context = s
 			.object({
 				directory: s.string,
@@ -136,7 +130,7 @@ export class Handler {
 	 * @description - The loader for the events.
 	 * @param {EventLoadOptions} options - The options for the event loader.
 	 */
-	loadAllEvents(options: EventLoadOptions) {
+	loadAllEvents(options: EventHandlerOptions) {
 		this.client.handlerOptions.events = s
 			.object({
 				directory: s.string,
@@ -183,7 +177,7 @@ export class Handler {
 	 * @description - The loader for the inhibitors.
 	 * @param {InhibitorLoadOptions} options - The options for the inhibitor loader.
 	 */
-	loadAllInhibitors(options: InhibitorLoadOptions) {
+	loadAllInhibitors(options: InhibitorHandlerOptions) {
 		this.client.handlerOptions.inhibitors = s
 			.object({
 				directory: s.string,

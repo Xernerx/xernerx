@@ -2,13 +2,13 @@ import Discord from "discord.js";
 import DumFunctions from "dumfunctions";
 
 import XernerxClient from "./client/XernerxClient.js";
-import { Event } from "./build/Event.js";
-import { Inhibitor } from "./build/Inhibitor.js";
-import { MessageCommand } from "./build/MessageCommand.js";
-import { ContextCommand } from "./build/ContextCommand.js";
-import { SlashCommand } from "./build/SlashCommand.js";
-import { CommandType, EventEmitterType, ContextCommandType } from "./types/Types.js";
-import { InhibitorType } from "./types/InhibitorTypes.js";
+import EventBuilder from "./build/EventBuilder.js";
+import InhibitorBuilder from "./build/InhibitorBuilder.js";
+import MessageCommandBuilder from "./build/MessageCommandBuilder.js";
+import ContextCommandBuilder from "./build/ContextCommandBuilder.js";
+import SlashCommandBuilder from "./build/SlashCommandBuilder.js";
+import { CommandType, EventEmitterType, ContextCommandType, InhibitorType } from "./types/enums.js";
+import ExtensionBuilder from "./build/ExtensionBuilder.js";
 import pkg from "../package.js";
 
 const version: string = pkg.version;
@@ -22,18 +22,19 @@ export default {
 	Client: XernerxClient,
 	XernerxClient,
 
-	// Types
+	// Enums
 	CommandType,
 	EventEmitterType,
 	InhibitorType,
 	ContextCommandType,
 
 	// Builds
-	Event,
-	MessageCommand,
-	ContextCommand,
-	SlashCommand,
-	Inhibitor,
+	EventBuilder,
+	MessageCommandBuilder,
+	ContextCommandBuilder,
+	SlashCommandBuilder,
+	InhibitorBuilder,
+	ExtensionBuilder,
 
 	// Constants
 	version,
@@ -47,18 +48,19 @@ export {
 	// Client
 	XernerxClient,
 
-	// Types
+	// Enums
 	CommandType,
 	EventEmitterType,
 	InhibitorType,
 	ContextCommandType,
 
 	// Builds
-	Event,
-	MessageCommand,
-	ContextCommand,
-	SlashCommand,
-	Inhibitor,
+	EventBuilder,
+	MessageCommandBuilder,
+	ContextCommandBuilder,
+	SlashCommandBuilder,
+	InhibitorBuilder,
+	ExtensionBuilder,
 
 	// Constants
 	version,

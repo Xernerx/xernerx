@@ -1,26 +1,17 @@
-import {
-	Collection,
-	GatewayVersion,
-	InteractionType,
-	REST,
-	Routes,
-	Message,
-	PartialMessage,
-} from "discord.js";
+import { Collection, GatewayVersion, InteractionType, REST, Routes, Message, PartialMessage, } from "discord.js";
 
 import XernerxClient from "../client/XernerxClient.js";
 import {
 	InteractionCommandUtil,
 	MessageCommandUtil,
 } from "../utils/CommandUtil.js";
-import { CommandArguments, messageArgs } from "./CommandArguments.js";
+import { InteractionArguments, messageArguments } from "./CommandArguments.js";
 import commandValidation from "./CommandValidations.js";
 import { Style } from "dumfunctions";
 import { InhibitorValidation } from "./InhibitorValidations.js";
-import {
-	XernerxMessage,
-	XernerxUser,
-} from "../interfaces/HandlerInterfaces.js";
+import { XernerxMessage, XernerxUser } from "../types/types.js";
+import { MessageCommandBuilder } from "../main.js";
+import { MessageArgOptions } from "../types/options.js";
 
 export class MessageCommandEvents {
 	client: XernerxClient;
@@ -46,18 +37,15 @@ export class MessageCommandEvents {
 					message
 				);
 
-				const commands: Collection<string, object> =
+				const commands: Collection<string, MessageCommandBuilder> =
 					this.client.commands.message;
 				commands
-					.filter((c: any) => !c.regex)
-					.map(async (cmd: any) => {
+					.filter(c => !c.regex)
+					.map(async (cmd) => {
 						if (cmd.prefix) {
-							cmd.prefix.map((prefix: string) => {
+							(cmd.prefix as Array<string>).map(prefix => {
 								if (message.content.startsWith(prefix)) {
-									command = message.content
-										.replace(prefix, "")
-										.split(/ +/)
-										.shift();
+									command = message.content.replace(prefix, "").split(/ +/).shift();
 
 									px = prefix;
 								}
@@ -65,18 +53,11 @@ export class MessageCommandEvents {
 						}
 
 						if (this.client.handlerOptions.message?.prefix) {
-							const prefix = Array.isArray(
-								this.client.handlerOptions.message.prefix
-							)
-								? this.client.handlerOptions.message.prefix
-								: [this.client.handlerOptions.message.prefix];
+							const prefix = Array.isArray(this.client.handlerOptions.message.prefix) ? this.client.handlerOptions.message.prefix : [this.client.handlerOptions.message.prefix];
 
 							prefix.map((prefix: string) => {
 								if (message.content.startsWith(prefix)) {
-									command = message.content
-										.replace(prefix, "")
-										.split(/ +/)
-										.shift();
+									command = message.content.replace(prefix, "").split(/ +/).shift();
 
 									px = prefix;
 								}
@@ -84,49 +65,26 @@ export class MessageCommandEvents {
 						}
 
 						if (this.client.handlerOptions.message?.allowMention) {
-							if (
-								message.mentions.users.has(this.client.user?.id || "") ||
-								message.mentions.repliedUser?.id === this.client.user?.id
-							) {
-								command = message.content
-									.replace(`<@${this.client.user?.id}>`, "")
-									.trim()
-									.split(/ +/)
-									.shift();
+							if (message.mentions.users.has(this.client.user?.id as string) || message.mentions.repliedUser?.id === this.client.user?.id) {
+								command = message.content.replace(`<@${this.client.user?.id}>`, "").trim().split(/ +/).shift();
 
 								px = "MentionPrefix";
 							}
 						}
 
-						const prefix = Array.isArray(
-							this.client.handlerOptions.message?.prefix
-						)
-							? this.client.handlerOptions.message?.prefix
-							: [this.client.handlerOptions.message?.prefix];
+						const prefix = Array.isArray(this.client.handlerOptions.message?.prefix) ? this.client.handlerOptions.message?.prefix : [this.client.handlerOptions.message?.prefix];
 
-						if (
-							(cmd.name.toLowerCase() == command?.toLowerCase() ||
-								cmd.aliases
-									?.map((c: string) => c.toLowerCase())
-									?.includes(command?.toLowerCase())) &&
-							(cmd.prefix.includes(px) ||
-								prefix?.includes(px) ||
-								px === "MentionPrefix")
-						) {
+						if ((cmd.name.toLowerCase() == command?.toLowerCase() || cmd.aliases?.map((c: string) => c.toLowerCase())?.includes((command as string)?.toLowerCase())) && ((cmd.prefix as Array<string>).includes((px as string)) || prefix?.includes(px) || px === "MentionPrefix")) {
 							try {
-								const inhibitor = new InhibitorValidation(
-									this.client,
-									message,
-									command
-								);
+								const inhibitor = new InhibitorValidation(this.client, message, (command as string));
 
 								if (commandValidation(message, cmd, this.client)) return;
 
 								if (await inhibitor.inhibit()) return;
 
-								if (cmd.conditions && (await cmd.conditions(message))) return;
+								if ((cmd.conditions as unknown) && (await cmd.conditions(message, await messageArguments(message, cmd) as unknown as MessageArgOptions) as unknown)) return;
 
-								await cmd.exec(message, await messageArgs(message, cmd));
+								await cmd.exec(message, await messageArguments(message, cmd) as unknown as MessageArgOptions);
 
 								this.client.emit("commandRun", message, cmd);
 							} catch (error) {
@@ -139,144 +97,91 @@ export class MessageCommandEvents {
 	}
 
 	messageUpdate() {
-		this.client.on(
-			"messageUpdate",
-			async (
-				old: Message | PartialMessage,
-				message: Message | PartialMessage
-			) => {
-				message = message as XernerxMessage; // could just do this
-				if (!message.author?.bot) {
-					let command: string | undefined = undefined,
-						px: string | undefined = undefined;
+		this.client.on("messageUpdate", async (old: Message | PartialMessage, message: Message | PartialMessage) => {
+			message = message as XernerxMessage;
 
-					if (this.client.handlerOptions.message?.handleTyping) message.channel.sendTyping();
+			if (!message.author?.bot) {
+				let command: string | undefined = undefined,
+					px: string | undefined = undefined;
 
-					if (message.author)
-						(message.author as XernerxUser).isOwner = this.client.util.isOwner(
-							message.author.id
-						);
+				if (this.client.handlerOptions.message?.handleTyping) message.channel.sendTyping();
 
-					(message as XernerxMessage).util = new MessageCommandUtil(
-						this.client,
-						message as XernerxMessage
-					);
+				if (message.author) (message.author as XernerxUser).isOwner = this.client.util.isOwner(message.author.id);
 
-					const commands: Collection<string, object> =
-						this.client.commands.message;
+				(message as XernerxMessage).util = new MessageCommandUtil(this.client, message as XernerxMessage);
 
-					commands
-						.filter((c: any) => !c.regex)
-						.map(async (cmd: any) => {
-							if (cmd.prefix) {
-								cmd.prefix.map((prefix: string) => {
-									if (message?.content?.startsWith(prefix)) {
-										command = message.content
-											.replace(prefix, "")
-											.split(/ +/)
-											.shift();
+				const commands: Collection<string, MessageCommandBuilder> = this.client.commands.message;
 
-										px = prefix;
-									}
-								});
-							}
+				commands
+					.filter((c) => !c.regex)
+					.map(async (cmd) => {
+						if (cmd.prefix) {
+							(cmd.prefix as Array<string>).map((prefix) => {
+								if (message?.content?.startsWith(prefix)) {
+									command = message.content.replace(prefix, "").split(/ +/).shift();
 
-							if (this.client.handlerOptions.message?.prefix) {
-								const prefix = Array.isArray(
-									this.client.handlerOptions.message.prefix
-								)
-									? this.client.handlerOptions.message.prefix
-									: [this.client.handlerOptions.message.prefix];
-
-								prefix.map((prefix: string) => {
-									if (message?.content?.startsWith(prefix)) {
-										command = message.content
-											.replace(prefix, "")
-											.split(/ +/)
-											.shift();
-
-										px = prefix;
-									}
-								});
-							}
-
-							if (this.client.handlerOptions.message?.allowMention) {
-								if (
-									message.mentions.users.has(this.client.user?.id || "") ||
-									message.mentions.repliedUser?.id === this.client.user?.id
-								) {
-									command = message?.content
-										?.replace(`<@${this.client.user?.id}>`, "")
-										.trim()
-										.split(/ +/)
-										.shift();
-
-									px = "MentionPrefix";
+									px = prefix;
 								}
-							}
+							});
+						}
 
-							const prefix = Array.isArray(
-								this.client.handlerOptions.message?.prefix
-							)
-								? this.client.handlerOptions.message?.prefix
-								: [this.client.handlerOptions.message?.prefix];
+						if (this.client.handlerOptions.message?.prefix) {
+							const prefix = Array.isArray(this.client.handlerOptions.message.prefix) ? this.client.handlerOptions.message.prefix : [this.client.handlerOptions.message.prefix];
 
-							if (
-								(cmd.name.toLowerCase() == command?.toLowerCase() ||
-									cmd.aliases
-										?.map((c: string) => c.toLowerCase())
-										?.includes(command?.toLowerCase())) &&
-								(cmd.prefix.includes(px) ||
-									prefix?.includes(px) ||
-									px === "MentionPrefix")
-							) {
-								try {
-									const inhibitor = new InhibitorValidation(
-										this.client,
-										message as Message,
-										command
-									);
+							prefix.map((prefix: string) => {
+								if (message?.content?.startsWith(prefix)) {
+									command = message.content.replace(prefix, "").split(/ +/).shift();
 
-									if (
-										commandValidation(
-											message as XernerxMessage,
-											cmd,
-											this.client
-										)
-									)
-										return;
-
-									if (await inhibitor.inhibit()) return;
-
-									if (cmd.conditions && (await cmd.conditions(message))) return;
-
-									await cmd.exec(
-										message as XernerxMessage,
-										await messageArgs(message, cmd)
-									);
-
-									this.client.emit("commandRun", message, cmd);
-								} catch (error) {
-									return this.client.emit("commandError", message, error, cmd);
+									px = prefix;
 								}
+							});
+						}
+
+						if (this.client.handlerOptions.message?.allowMention) {
+							if (message.mentions.users.has(this.client.user?.id || "") || message.mentions.repliedUser?.id === this.client.user?.id) {
+								command = message?.content?.replace(`<@${this.client.user?.id}>`, "").trim().split(/ +/).shift();
+
+								px = "MentionPrefix";
 							}
-						});
-				}
+						}
+
+						const prefix = Array.isArray(this.client.handlerOptions.message?.prefix) ? this.client.handlerOptions.message?.prefix : [this.client.handlerOptions.message?.prefix];
+
+						if ((cmd.name.toLowerCase() == command?.toLowerCase() || cmd.aliases?.map((c: string) => c.toLowerCase())?.includes((command as string)?.toLowerCase())) && ((cmd.prefix as Array<string>).includes((px as string)) || prefix?.includes(px) || px === "MentionPrefix")
+						) {
+							try {
+								message = message as XernerxMessage;
+
+								const inhibitor = new InhibitorValidation(this.client, message as Message, (command as string));
+
+								if (commandValidation(message, cmd, this.client)) return;
+
+								if (await inhibitor.inhibit()) return;
+
+								if ((cmd.conditions as unknown) && (await cmd.conditions(message, await messageArguments(message, cmd) as unknown as MessageArgOptions) as unknown)) return;
+
+								await cmd.exec(message, await messageArguments(message, cmd) as unknown as MessageArgOptions);
+
+								this.client.emit("commandRun", message, cmd);
+							} catch (error) {
+								return this.client.emit("commandError", message, error, cmd);
+							}
+						}
+					});
 			}
+		}
 		);
 	}
 
 	messageDelete() {
-		this.client.on("messageDelete", async (message: any) => {
-			if (
-				this.client.cache.messages.has(message.id) &&
-				this.client.handlerOptions.message?.handleDeletes
-			) {
-				if (this.client.handlerOptions.message?.handleTyping) message.channel.sendTyping();
+		this.client.on("messageDelete", async (message: unknown) => {
+			if (this.client.cache.messages.has((message as XernerxMessage).id) && this.client.handlerOptions.message?.handleDeletes) {
+				if (this.client.handlerOptions.message?.handleTyping) (message as XernerxMessage).channel.sendTyping();
 
 				try {
-					const msg: any = this.client.cache.messages.get(message.id);
-					const response = await message.channel.messages.fetch(msg?.response);
+					const msg: unknown = this.client.cache.messages.get((message as XernerxMessage).id);
+
+					const response = await (message as XernerxMessage).channel.messages.fetch((msg as Record<"response", string>)?.response);
 
 					await response.delete();
 				} catch { }
@@ -304,54 +209,22 @@ export class SlashCommandEvents {
 						interaction.commandName
 					);
 
-					const argumentsInfo = new CommandArguments(interaction);
+					const argumentsInfo = new InteractionArguments(interaction);
 
 					try {
-						const inhibitor = new InhibitorValidation(
-							this.client,
-							interaction,
-							command
-						);
+						const inhibitor = new InhibitorValidation(this.client, interaction, command);
 
 						if (await inhibitor.inhibit()) return;
 
 						if (commandValidation(interaction, command, this.client)) return;
 
-						if (
-							command.defer?.reply !== false &&
-							this.client.handlerOptions.slash?.defer?.reply
-						) {
-							await interaction.deferReply({
-								ephemeral: this.client.handlerOptions.slash?.defer?.ephemeral,
-								fetchReply: this.client.handlerOptions.slash?.defer?.fetchReply,
-							});
-						}
+						if (command.defer?.reply !== false && this.client.handlerOptions.slash?.defer?.reply) await interaction.deferReply({ ephemeral: this.client.handlerOptions.slash?.defer?.ephemeral, fetchReply: this.client.handlerOptions.slash?.defer?.fetchReply, });
 
-						if (
-							!(interaction.deferred || interaction.replied) &&
-							command.defer?.reply
-						) {
-							await interaction.deferReply({
-								ephemeral: command.defer?.ephemeral,
-								fetchReply: command.defer?.fetchReply,
-							});
-						}
+						if (!(interaction.deferred || interaction.replied) && command.defer?.reply) await interaction.deferReply({ ephemeral: command.defer?.ephemeral, fetchReply: command.defer?.fetchReply, });
 
-						if (
-							command.conditions &&
-							(await command.conditions(interaction, {
-								group: argumentsInfo.group(),
-								subcommand: argumentsInfo.subcommand(),
-								args: await argumentsInfo.arguments(),
-							}))
-						)
-							return;
+						if (command.conditions && (await command.conditions(interaction, { group: argumentsInfo.group(), subcommand: argumentsInfo.subcommand(), args: await argumentsInfo.arguments() }))) return;
 
-						await command.exec(interaction, {
-							group: argumentsInfo.group(),
-							subcommand: argumentsInfo.subcommand(),
-							args: await argumentsInfo.arguments(),
-						});
+						await command.exec(interaction, { group: argumentsInfo.group(), subcommand: argumentsInfo.subcommand(), args: await argumentsInfo.arguments(), });
 
 						this.client.emit("commandRun", interaction, command);
 					} catch (error) {
@@ -378,44 +251,20 @@ export class ContextCommandEvents {
 
 			if (interaction.type === InteractionType.ApplicationCommand) {
 				if (this.client.commands.context.has(interaction.commandName)) {
-					let command: any = this.client.commands.context.get(
-						interaction.commandName
-					);
+					let command: any = this.client.commands.context.get(interaction.commandName);
 
 					try {
-						const inhibitor = new InhibitorValidation(
-							this.client,
-							interaction,
-							command
-						);
+						const inhibitor = new InhibitorValidation(this.client, interaction, command);
 
 						if (commandValidation(interaction, command, this.client)) return;
 
 						if (await inhibitor.inhibit()) return;
 
-						if (command.conditions && (await command.conditions(interaction)))
-							return;
+						if (command.conditions && (await command.conditions(interaction))) return;
 
-						if (
-							command.defer?.reply !== false &&
-							this.client.handlerOptions.context?.defer?.reply
-						) {
-							await interaction.deferReply({
-								ephemeral: this.client.handlerOptions.context?.defer?.ephemeral,
-								fetchReply:
-									this.client.handlerOptions.context?.defer?.fetchReply,
-							});
-						}
+						if (command.defer?.reply !== false && this.client.handlerOptions.context?.defer?.reply) await interaction.deferReply({ ephemeral: this.client.handlerOptions.context?.defer?.ephemeral, fetchReply: this.client.handlerOptions.context?.defer?.fetchReply, });
 
-						if (
-							!(interaction.deferred || interaction.replied) &&
-							command.defer?.reply
-						) {
-							await interaction.deferReply({
-								ephemeral: command.defer?.ephemeral,
-								fetchReply: command.defer?.fetchReply,
-							});
-						}
+						if (!(interaction.deferred || interaction.replied) && command.defer?.reply) await interaction.deferReply({ ephemeral: command.defer?.ephemeral, fetchReply: command.defer?.fetchReply, });
 
 						await command.exec(interaction);
 
@@ -438,77 +287,48 @@ export class CommandsDeploy {
 
 	deploy() {
 		this.client.once("ready", async (client) => {
-			const rest = new REST({ version: GatewayVersion }).setToken(client.token);
+			const slashCommands: Array<object> = [], contextCommands: Array<object> = [];
 
-			const commands = [
-				...this.client.commands.context,
-				...this.client.commands.slash,
-			];
-
-			const deployableCommands: object[] = [];
-
-			commands.map((commands) =>
-				commands.map((command: any) => {
-					if (command?.data) {
-						deployableCommands.push(command.data.toJSON());
-					}
-				})
-			);
+			this.client.commands.context.map(command => command.data ? contextCommands.push(command.data.toJSON()) : null);
+			this.client.commands.slash.map(command => command.data ? slashCommands.push(command.data.toJSON()) : null);
 
 			try {
-				if (
-					this.client.handlerOptions.context?.global === true ||
-					this.client.handlerOptions.slash?.global === true
-				) {
-					rest.put(Routes.applicationCommands(client.user.id), {
-						body: deployableCommands,
-					});
+				const global = { slash: this.client.handlerOptions.slash?.global, context: this.client.handlerOptions.context?.global }
+				const guild = { slash: this.client.handlerOptions.slash?.guildId, context: this.client.handlerOptions.context?.guildId }
 
-					rest.put(
-						Routes.applicationGuildCommands(
-							client.user.id,
-							this.client.handlerOptions.slash?.guildId ||
-							this.client.handlerOptions.context?.guildId ||
-							""
-						),
-						{
-							body: [],
-						}
-					);
-				}
-				if (
-					this.client.handlerOptions.context?.global === false ||
-					this.client.handlerOptions.slash?.global === false
-				) {
-					rest.put(
-						Routes.applicationGuildCommands(
-							client.user.id,
-							this.client.handlerOptions.slash?.guildId ||
-							this.client.handlerOptions.context?.guildId ||
-							""
-						),
-						{
-							body: deployableCommands,
-						}
-					);
+				if (global.slash && global.context) {
+					if (guild.slash !== guild.context) console.info(Style.log(`Xernerx | Warning: slash and context commands are both set to global, but don't have a matching guildId, using ${(await this.client.guilds.fetch(this.client.handlerOptions.slash?.guildId as string)).name}!`, { color: Style.TextColor.Red }))
+
+					this.put("global", guild.slash as string, [...contextCommands, ...slashCommands]);
+
+					this.put("guild", guild.slash as string, []);
 				}
 
-				if (
-					this.client.handlerOptions.slash?.logging ||
-					this.client.handlerOptions?.context?.logging
-				)
-					console.info(Style.log(
-						`Xernerx | Deployed ${deployableCommands.length} of ${commands.length
-						} interaction commands ${this.client.handlerOptions.slash?.global ||
-							this.client.handlerOptions.context?.global
-							? `globally in ${(await this.client.guilds.fetch()).size
-							} server(s), deleted local commands.`
-							: "locally"
-						}.`, { color: Style.TextColor.Purple }
-					));
-			} catch (error) {
+				if (global.slash && !global.context) {
+					this.put("global", guild.slash as string, slashCommands);
+				}
+
+				if (!global.slash && global.context) {
+					this.put("global", guild.context as string, contextCommands);
+				}
+
+				if (!global.slash && !global.context) {
+					this.put("guild", guild.slash as string, [...contextCommands, ...slashCommands]);
+				}
+
+				console.log(Style.log(`Xernerx | Deployed ${slashCommands.length} slash commands ${global.slash ? "globally" : "locally"} and ${contextCommands.length} context commands ${global.context ? "globally" : "locally"}.`, { color: Style.TextColor.Purple }));
+			}
+			catch (error) {
 				console.error(Style.log(`Xernerx | Couldn't deploy interaction commands because <${error}>.`, { color: Style.BackgroundColor.Red }));
 			}
 		});
+	}
+
+	put(type: string, guild: string, body: Array<object>) {
+		const rest = new REST({ version: GatewayVersion }).setToken(this.client.token as string);
+
+		if (type === "guild") rest.put(Routes.applicationGuildCommands((this.client.user?.id as string), guild), { body });
+
+		else rest.put(Routes.applicationCommands(this.client.user?.id as string), { body });
 	}
 }

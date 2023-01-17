@@ -1,14 +1,14 @@
-import { MessageCommandOptions } from "../interfaces/CommandInterfaces.js";
 import { Message, ChannelType } from "discord.js";
 import { s } from "@sapphire/shapeshift";
 import { XernerxClient } from "../main.js";
+import { MessageArgOptions, MessageCommandOptions } from "../types/options.js";
 
 /**
  * @description - The command builder for message commands.
  * @param {String} id - The unique ID of the command.
  * @param {MessageCommandOptions} options - The command options.
  */
-export class MessageCommand {
+export default class MessageCommandBuilder {
 	id: string;
 	name: string;
 	aliases?: string[];
@@ -16,6 +16,7 @@ export class MessageCommand {
 	info?: string;
 	category?: string;
 	prefix?: string | string[];
+	regex?: string
 	owner?: boolean;
 	channelType?: ChannelType | ChannelType[];
 	separator?: string;
@@ -25,7 +26,7 @@ export class MessageCommand {
 	guilds?: string[];
 	userPermissions?: bigint[];
 	clientPermissions?: bigint[];
-	args: object;
+	args?: Array<MessageArgOptions>;
 	client: XernerxClient | object;
 
 	constructor(id: string, options: MessageCommandOptions) {
@@ -59,11 +60,9 @@ export class MessageCommand {
 
 		this.category = options.category;
 
-		this.prefix = options.prefix
-			? Array.isArray(options.prefix)
-				? options.prefix
-				: [options.prefix]
-			: [];
+		this.prefix = options.prefix ? Array.isArray(options.prefix) ? options.prefix : [options.prefix] : [];
+
+		this.regex = options.regex;
 
 		this.owner = options.owner || false;
 
@@ -97,12 +96,12 @@ export class MessageCommand {
 	 * @param {object} args - The arguments you created.
 	 * @description make any preconditions here.
 	 */
-	async conditions(message: Message, args: object) { }
+	async conditions(message: Message, args: MessageArgOptions) { }
 
 	/**
 	 * @param {Message} message - The Discord message event data.
 	 * @param {object} args - The arguments you created.
 	 * @description Make your custom command here.
 	 */
-	async exec(message: Message, args: object) { }
+	async exec(message: Message, args: MessageArgOptions) { }
 }

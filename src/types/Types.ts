@@ -1,58 +1,44 @@
-import {
-	SlashCommandStringOption,
-	SlashCommandNumberOption,
-	SlashCommandIntegerOption,
-	SlashCommandBooleanOption,
-	SlashCommandUserOption,
-	SlashCommandChannelOption,
-	SlashCommandRoleOption,
-	SlashCommandMentionableOption,
-} from "discord.js";
+import { TextChannel, Message, User, Guild, GuildMember, Channel, Role, InteractionResponse } from "discord.js";
+import { InteractionCommandUtil, MessageCommandUtil } from "../utils/CommandUtil.js";
 
-export enum CommandType {
-	Message = "MessageCommand",
-	Slash = "SlashCommand",
-	Context = "ContextCommand",
-	Event = "Event",
-	Inhibitor = "Inhibitor",
-	MessageCommand = "MessageCommand",
-	SlashCommand = "SlashCommand",
-	ContextCommand = "ContextCommand",
+export interface XernerxMessage extends Message {
+    util?: MessageCommandUtil;
+    response?: string;
 }
 
-export enum ContextCommandType {
-	Message = 3,
-	User = 2,
+export interface XernerxInteraction extends InteractionResponse {
+    util: InteractionCommandUtil;
+    options?: {
+        _group: string;
+        _subcommand: string;
+        _hoistedOptions: Array<{
+            name: string;
+            channel: Channel;
+            user: XernerxUser;
+            role: XernerxRole;
+            value: string;
+        }>
+    };
 }
 
-export enum EventEmitterType {
-	Client = "client",
-	Rest = "rest",
-	Process = "process",
+export interface XernerxUser extends User {
+    isOwner: boolean;
 }
-export type SlashCommandOptionChoices =
-	| SlashCommandStringOption
-	| SlashCommandNumberOption
-	| SlashCommandIntegerOption;
-export type SlashCommandOption =
-	| SlashCommandOptionChoices
-	| SlashCommandBooleanOption
-	| SlashCommandUserOption
-	| SlashCommandChannelOption
-	| SlashCommandRoleOption
-	| SlashCommandMentionableOption;
 
-export type SlashArgumentTypes =
-	| "String"
-	| "Number"
-	| "Boolean"
-	| "User"
-	| "Channel"
-	| "Role"
-	| "Mentionable"
-	| "Integer";
+export interface XernerxRole extends Role {
 
-export default {
-	CommandType,
-	EventEmitterType,
-};
+}
+
+export interface XernerxTextChannel extends TextChannel {
+
+}
+
+export interface XernerxGuild extends Guild {
+
+}
+
+export interface XernerxMember extends GuildMember {
+
+}
+
+export type MessageCommandArgsTypes = "flag" | "string" | "number" | "channel" | "user" | "member" | "boolean" | "role";
