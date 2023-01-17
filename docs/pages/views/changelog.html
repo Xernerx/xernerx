@@ -14,6 +14,21 @@
 		<div class="container">
 			<aside class="sidebar" id="sidebar"><h1>Versions</h1></aside>
 			<main class="content" id="page">
+				<div class="component" id="3.3.0">
+					<h2>3.3.0</h2>
+					<p class="description">Optimized code and renamed half the methods.</p>
+
+					Changes
+					<li>ContextCommand => ContextCommandBuilder</li>
+					<li>MessageCommand => MessageCommandBuilder</li>
+					<li>SlashCommand => SlashCommandBuilder</li>
+					<li>Inhibitor => InhibitorBuilder</li>
+					<li>Event => EventBuilder</li>
+					<li>Added ExtensionBuilder</li>
+					<li>Context and Slash commands are now loaded separately</li>
+					<li>Removed Webhook handler, get the XernerxPoster extension</li>
+					<li>Added message command argument types</li>
+				</div>
 				<div class="component" id="3.2.6">
 					<h2>3.2.6</h2>
 					<p class="description">Added handleTyping to the message commandHandler, this will trigger the sendTyping function on a message command run.</p>

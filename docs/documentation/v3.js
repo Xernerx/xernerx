@@ -3,6 +3,7 @@ export default {
         description: "The third version of Xernerx, coming in with TypeScript support and ESM.",
         deprecated: false,
         versions: [
+            "3.3.0",
             "3.2.6",
             "3.2.5",
             "3.2.2",

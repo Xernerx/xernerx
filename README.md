@@ -11,7 +11,7 @@ Xernerx is a class based discord.js framework. \[BETA\]
 > - Inhibitor handler
 > - Custom utilities
 > - Message command handles
-> - Webhook handler for Top.gg
+> - Extension support
 
 You can checkout the docs [here](https://thedummi.github.io/xernerx/home.html)
 
