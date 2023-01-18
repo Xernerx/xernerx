@@ -1,15 +1,10 @@
-import { ActivityType, ClientPresenceStatus } from "discord.js";
-import XernerxClient from "../client/XernerxClient.js";
-import XernerxError from "../tools/XernerxError.js";
+import { ActivityType, ClientPresenceStatus } from 'discord.js';
+import XernerxClient from '../client/XernerxClient.js';
+import XernerxError from '../tools/XernerxError.js';
 
 interface Presence {
 	text?: string;
-	type?:
-	| ActivityType.Playing
-	| ActivityType.Streaming
-	| ActivityType.Listening
-	| ActivityType.Watching
-	| ActivityType.Competing;
+	type?: ActivityType.Playing | ActivityType.Streaming | ActivityType.Listening | ActivityType.Watching | ActivityType.Competing;
 	link?: string;
 	status?: ClientPresenceStatus;
 	interval?: number;
@@ -37,7 +32,7 @@ export class ClientUtil {
 
 		this.setPresence = this.setPresence;
 
-		this.getCooldowns = this.getCooldowns
+		this.getCooldowns = this.getCooldowns;
 
 		this.getCooldownTimers = this.getCooldownTimers;
 
@@ -65,7 +60,7 @@ export class ClientUtil {
 	}
 
 	getSubcommands(name: string) {
-		if (!name || typeof name !== "string") throw new XernerxError(`Expected name to be of type string, received ${typeof name} instead!`);
+		if (!name || typeof name !== 'string') throw new XernerxError(`Expected name to be of type string, received ${typeof name} instead!`);
 
 		const commands: object[] = [];
 
@@ -129,13 +124,13 @@ export class ClientUtil {
 	}
 
 	isOwner(userId: string) {
-		if (!userId) throw new XernerxError("No ID specified");
+		if (!userId) throw new XernerxError('No ID specified');
 
 		let owners = this.client.settings.ownerId;
 
 		if (!owners) return false;
 
-		if (typeof owners === "string") owners = [owners];
+		if (typeof owners === 'string') owners = [owners];
 
 		return owners.includes(userId);
 	}
@@ -202,23 +197,14 @@ export class ClientUtil {
 		let cooldowns: any = [];
 
 		for (const [key, value] of Object.entries(this.client.cache)) {
-			if (
-				![
-					"cooldowns",
-					"messageCommands",
-					"slashCommands",
-					"contextCommands",
-					"commands",
-				].includes(key)
-			)
-				continue;
+			if (!['cooldowns', 'messageCommands', 'slashCommands', 'contextCommands', 'commands'].includes(key)) continue;
 
-			if (key === "commands") {
+			if (key === 'commands') {
 				if (command) {
 					value.map((x: any) => {
 						const name = x.name.split(/-/);
 						name.pop();
-						if (name.join("-") === id + "-" + command) {
+						if (name.join('-') === id + '-' + command) {
 							cooldowns.push(x);
 						}
 					});
@@ -245,23 +231,14 @@ export class ClientUtil {
 		let cooldowns: any = [];
 
 		for (const [key, value] of Object.entries(this.client.cache)) {
-			if (
-				![
-					"cooldowns",
-					"messageCommands",
-					"slashCommands",
-					"contextCommands",
-					"commands",
-				].includes(key)
-			)
-				continue;
+			if (!['cooldowns', 'messageCommands', 'slashCommands', 'contextCommands', 'commands'].includes(key)) continue;
 
-			if (key === "commands") {
+			if (key === 'commands') {
 				if (command) {
 					value.map((x: any) => {
 						const name = x.name.split(/-/);
 						name.pop();
-						if (name.join("-") === id + "-" + command) {
+						if (name.join('-') === id + '-' + command) {
 							cooldowns.push({ [x.commandName]: x.endsAt - Date.now() });
 						}
 					});
@@ -281,9 +258,7 @@ export class ClientUtil {
 			}
 		}
 
-		const sort = cooldowns
-			.map((x: any) => Object.entries(x).shift())
-			.sort((a: any, b: any) => b[1] - a[1]);
+		const sort = cooldowns.map((x: any) => Object.entries(x).shift()).sort((a: any, b: any) => b[1] - a[1]);
 
 		cooldowns = [];
 

@@ -1,18 +1,18 @@
-import { Client, Collection } from "discord.js";
-import { s } from "@sapphire/shapeshift";
+import { Client, Collection } from 'discord.js';
+import { s } from '@sapphire/shapeshift';
 
-import CommandHandler from "../handlers/CommandHandler.js";
-import EventHandler from "../handlers/EventHandler.js";
-import InhibitorHandler from "../handlers/InhibitorHandler.js";
+import CommandHandler from '../handlers/CommandHandler.js';
+import EventHandler from '../handlers/EventHandler.js';
+import InhibitorHandler from '../handlers/InhibitorHandler.js';
 
-import { ClientUtil } from "../utils/ClientUtil.js";
-import { Style } from "dumfunctions";
-import Extensions from "../models/Extensions.js";
-import { ClientOptions, DiscordOptions, ExtensionOptions, HandlerOptions } from "../types/options.js";
-import { ClientCache, ClientCommands, ClientModules } from "../types/interfaces.js";
-import EventBuilder from "../build/EventBuilder.js";
-import ExtensionBuilder from "../build/ExtensionBuilder.js";
-import InhibitorBuilder from "../build/InhibitorBuilder.js";
+import { ClientUtil } from '../utils/ClientUtil.js';
+import { Style } from 'dumfunctions';
+import Extensions from '../models/Extensions.js';
+import { ClientOptions, DiscordOptions, ExtensionOptions, HandlerOptions } from '../types/options.js';
+import { ClientCache, ClientCommands, ClientModules } from '../types/interfaces.js';
+import EventBuilder from '../build/EventBuilder.js';
+import ExtensionBuilder from '../build/ExtensionBuilder.js';
+import InhibitorBuilder from '../build/InhibitorBuilder.js';
 
 /**
  * @description - The Client.
@@ -32,11 +32,7 @@ export default class XernerxClient extends Client {
 	inhibitors: Collection<string, InhibitorBuilder>;
 	config: object;
 
-	constructor(
-		discordOptions: DiscordOptions,
-		clientOptions: ClientOptions,
-		config?: object
-	) {
+	constructor(discordOptions: DiscordOptions, clientOptions: ClientOptions, config?: object) {
 		super(discordOptions);
 
 		this.settings = s
@@ -87,10 +83,19 @@ export default class XernerxClient extends Client {
 		this.handlerOptions = {};
 
 		if (this.settings.logging) {
-			this.once("ready", async (client) => {
+			this.once('ready', async (client) => {
 				const size = (await client.guilds.fetch()).size;
 
-				console.info(Style.log(`Xernerx | ${client.user.tag} signed in watching ${size} server${size > 1 ? "s" : ""}. ${(this.handlerOptions.slash || this.handlerOptions.context)?.guildId ? `Using ${(await this.guilds.fetch((this.handlerOptions.slash || this.handlerOptions.context)?.guildId || "0")).name} as local guild.` : ""}`, { color: Style.TextColor.Purple }));
+				console.info(
+					Style.log(
+						`Xernerx | ${client.user.tag} signed in watching ${size} server${size > 1 ? 's' : ''}. ${
+							(this.handlerOptions.slash || this.handlerOptions.context)?.guildId
+								? `Using ${(await this.guilds.fetch((this.handlerOptions.slash || this.handlerOptions.context)?.guildId || '0')).name} as local guild.`
+								: ''
+						}`,
+						{ color: Style.TextColor.Purple }
+					)
+				);
 			});
 		}
 
@@ -107,5 +112,3 @@ export default class XernerxClient extends Client {
 		return extensions.load(options.extensions, options.logging || false);
 	}
 }
-
-

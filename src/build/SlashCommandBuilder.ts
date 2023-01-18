@@ -1,15 +1,9 @@
-import Discord, {
-	ChannelType,
-	Interaction,
-	SlashCommandStringOption,
-	SlashCommandSubcommandBuilder,
-	SlashCommandSubcommandGroupBuilder,
-} from "discord.js";
-import { s } from "@sapphire/shapeshift";
-import { SlashCommandOption, SlashArgumentTypes } from "../types/enums.js";
-import { XernerxClient } from "../main.js";
-import XernerxError from "../tools/XernerxError.js";
-import { SlashArgOptions, SlashCommandOptions, SlashGroupOptions, SlashSubcommandOptions } from "../types/options.js";
+import Discord, { ChannelType, Interaction, SlashCommandStringOption, SlashCommandSubcommandBuilder, SlashCommandSubcommandGroupBuilder } from 'discord.js';
+import { s } from '@sapphire/shapeshift';
+import { SlashCommandOption, SlashArgumentTypes } from '../types/enums.js';
+import { XernerxClient } from '../main.js';
+import XernerxError from '../tools/XernerxError.js';
+import { SlashArgOptions, SlashCommandOptions, SlashGroupOptions, SlashSubcommandOptions } from '../types/options.js';
 
 /**
  * @description - The command builder for slash commands.
@@ -43,9 +37,7 @@ export default class SlashCommandBuilder {
 	constructor(id: string, options: SlashCommandOptions) {
 		this.id = id;
 
-		this.data = new Discord.SlashCommandBuilder()
-			.setName(options.name)
-			.setDescription(options.description);
+		this.data = new Discord.SlashCommandBuilder().setName(options.name).setDescription(options.description);
 
 		if (options.args && options?.args?.length > 0) {
 			this.#addArgs(this.data, options.args);
@@ -109,55 +101,33 @@ export default class SlashCommandBuilder {
 		this.exec = this.exec;
 	}
 
-	async conditions(interaction: Interaction) { }
+	async conditions(interaction: Interaction) {}
 
-	async exec(interaction: Interaction) { }
+	async exec(interaction: Interaction) {}
 
-	#addArgs(
-		command: Discord.SlashCommandBuilder | SlashCommandSubcommandBuilder,
-		args: Array<SlashArgOptions>
-	) {
-		const types = [
-			"boolean",
-			"integer",
-			"number",
-			"string",
-			"user",
-			"role",
-			"channel",
-			"mentionable",
-		];
+	#addArgs(command: Discord.SlashCommandBuilder | SlashCommandSubcommandBuilder, args: Array<SlashArgOptions>) {
+		const types = ['boolean', 'integer', 'number', 'string', 'user', 'role', 'channel', 'mentionable'];
 
 		for (const argument of args) {
-			if (!types.includes(argument.type.toLowerCase())) throw new XernerxError(`Expected one of ${types.join(", ")}, received ${argument.type} instead.`);
+			if (!types.includes(argument.type.toLowerCase())) throw new XernerxError(`Expected one of ${types.join(', ')}, received ${argument.type} instead.`);
 
 			let slashArgumentType: SlashArgumentTypes | string = `${argument.type.slice(0, 1).toUpperCase()}${argument.type.slice(1).toLowerCase()}`;
 
-			(command[(`add${slashArgumentType as SlashArgumentTypes}Option`)] as Function)(
-				(option: SlashCommandOption) => {
-					option
-						.setName(argument.name)
-						.setDescription(argument.description)
-						.setRequired(argument.required || false);
-					if (argument.choices)
-						(option as SlashCommandStringOption).setChoices(
-							...argument?.choices
-						);
+			(command[`add${slashArgumentType as SlashArgumentTypes}Option`] as Function)((option: SlashCommandOption) => {
+				option
+					.setName(argument.name)
+					.setDescription(argument.description)
+					.setRequired(argument.required || false);
+				if (argument.choices) (option as SlashCommandStringOption).setChoices(...argument?.choices);
 
-					return option;
-				}
-			);
+				return option;
+			});
 		}
 	}
 
-	#addSubcommands(
-		method: Discord.SlashCommandBuilder | SlashCommandSubcommandGroupBuilder,
-		subcommands: Array<SlashSubcommandOptions>
-	) {
+	#addSubcommands(method: Discord.SlashCommandBuilder | SlashCommandSubcommandGroupBuilder, subcommands: Array<SlashSubcommandOptions>) {
 		for (const subcommand of subcommands) {
-			let sub = new SlashCommandSubcommandBuilder()
-				.setName(subcommand.name)
-				.setDescription(subcommand.description);
+			let sub = new SlashCommandSubcommandBuilder().setName(subcommand.name).setDescription(subcommand.description);
 
 			if (subcommand.args?.length > 0) this.#addArgs(sub, subcommand.args);
 
@@ -167,12 +137,9 @@ export default class SlashCommandBuilder {
 
 	#addSubcommandGroups(groups: Array<SlashGroupOptions>) {
 		for (const group of groups) {
-			let subcommandGroup = new SlashCommandSubcommandGroupBuilder()
-				.setName(group.name)
-				.setDescription(group.description);
+			let subcommandGroup = new SlashCommandSubcommandGroupBuilder().setName(group.name).setDescription(group.description);
 
-			if (group.subcommands?.length > 0)
-				this.#addSubcommands(subcommandGroup, group.subcommands);
+			if (group.subcommands?.length > 0) this.#addSubcommands(subcommandGroup, group.subcommands);
 
 			this.data.addSubcommandGroup(subcommandGroup);
 		}

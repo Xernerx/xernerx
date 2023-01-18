@@ -7,30 +7,30 @@ import {
 	SlashCommandChannelOption,
 	SlashCommandRoleOption,
 	SlashCommandMentionableOption,
-} from "discord.js";
+} from 'discord.js';
 
 export enum InhibitorType {
-	Member = "Member",
-	User = "User",
-	Guild = "Guild",
-	SlashCommand = "SlashCommand",
-	MessageCommand = "MessageCommand",
-	ContextCommand = "ContextCommand",
-	Command = "Command",
-	Message = "Message",
-	Interaction = "Interaction",
-	Channel = "Channel",
+	Member = 'Member',
+	User = 'User',
+	Guild = 'Guild',
+	SlashCommand = 'SlashCommand',
+	MessageCommand = 'MessageCommand',
+	ContextCommand = 'ContextCommand',
+	Command = 'Command',
+	Message = 'Message',
+	Interaction = 'Interaction',
+	Channel = 'Channel',
 }
 
 export enum CommandType {
-	Message = "MessageCommand",
-	Slash = "SlashCommand",
-	Context = "ContextCommand",
-	Event = "Event",
-	Inhibitor = "Inhibitor",
-	MessageCommand = "MessageCommand",
-	SlashCommand = "SlashCommand",
-	ContextCommand = "ContextCommand",
+	Message = 'MessageCommand',
+	Slash = 'SlashCommand',
+	Context = 'ContextCommand',
+	Event = 'Event',
+	Inhibitor = 'Inhibitor',
+	MessageCommand = 'MessageCommand',
+	SlashCommand = 'SlashCommand',
+	ContextCommand = 'ContextCommand',
 }
 
 export enum ContextCommandType {
@@ -39,30 +39,13 @@ export enum ContextCommandType {
 }
 
 export enum EventEmitterType {
-	Client = "client",
-	Rest = "rest",
-	Process = "process",
+	Client = 'client',
+	Rest = 'rest',
+	Process = 'process',
 }
 
-export type SlashCommandOptionChoices =
-	| SlashCommandStringOption
-	| SlashCommandNumberOption
-	| SlashCommandIntegerOption;
+export type SlashCommandOptionChoices = SlashCommandStringOption | SlashCommandNumberOption | SlashCommandIntegerOption;
 
-export type SlashCommandOption =
-	| SlashCommandOptionChoices
-	| SlashCommandBooleanOption
-	| SlashCommandUserOption
-	| SlashCommandChannelOption
-	| SlashCommandRoleOption
-	| SlashCommandMentionableOption;
+export type SlashCommandOption = SlashCommandOptionChoices | SlashCommandBooleanOption | SlashCommandUserOption | SlashCommandChannelOption | SlashCommandRoleOption | SlashCommandMentionableOption;
 
-export type SlashArgumentTypes =
-	| "String"
-	| "Number"
-	| "Boolean"
-	| "User"
-	| "Channel"
-	| "Role"
-	| "Mentionable"
-	| "Integer";
+export type SlashArgumentTypes = 'String' | 'Number' | 'Boolean' | 'User' | 'Channel' | 'Role' | 'Mentionable' | 'Integer';

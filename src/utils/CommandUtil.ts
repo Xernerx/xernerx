@@ -1,16 +1,7 @@
-import {
-	ActionRowBuilder,
-	ButtonBuilder,
-	ButtonStyle,
-	EmbedBuilder,
-	Interaction,
-	Message,
-	MessagePayload,
-	StringSelectMenuBuilder,
-} from "discord.js";
-import XernerxClient from "../client/XernerxClient.js";
-import XernerxError from "../tools/XernerxError.js";
-import { XernerxMessage } from "../types/types.js";
+import { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, Interaction, Message, MessagePayload, StringSelectMenuBuilder } from 'discord.js';
+import XernerxClient from '../client/XernerxClient.js';
+import XernerxError from '../tools/XernerxError.js';
+import { XernerxMessage } from '../types/types.js';
 interface SelectMenuOptions {
 	index?: EmbedBuilder;
 	row?: ActionRowBuilder;
@@ -47,20 +38,14 @@ export class MessageCommandUtil {
 	}
 
 	async reply(content: MessagePayload | string) {
-		if (this.client.cache.messages.has(this.message.id))
-			var existingMessage: any = this.client.cache.messages.get(
-				this.message.id
-			);
+		if (this.client.cache.messages.has(this.message.id)) var existingMessage: any = this.client.cache.messages.get(this.message.id);
 
 		if (!existingMessage) {
 			const msg = await this.message.reply(content);
 
 			this.message.response = msg.id;
 
-			if (
-				this.client.handlerOptions.message?.handleEdits ||
-				this.client.handlerOptions.message?.handleDeletes
-			) {
+			if (this.client.handlerOptions.message?.handleEdits || this.client.handlerOptions.message?.handleDeletes) {
 				this.client.cache.messages.set(this.message.id, this.message);
 
 				setInterval(() => {
@@ -73,9 +58,7 @@ export class MessageCommandUtil {
 
 		if (existingMessage && this.client.handlerOptions.message?.handleEdits) {
 			try {
-				const msg = await this.message.channel.messages.fetch(
-					existingMessage.response
-				);
+				const msg = await this.message.channel.messages.fetch(existingMessage.response);
 
 				msg.edit(content);
 
@@ -85,10 +68,7 @@ export class MessageCommandUtil {
 
 				this.message.response = msg.id;
 
-				if (
-					this.client.handlerOptions.message?.handleEdits ||
-					this.client.handlerOptions.message?.handleDeletes
-				) {
+				if (this.client.handlerOptions.message?.handleEdits || this.client.handlerOptions.message?.handleDeletes) {
 					this.client.cache.messages.set(this.message.id, this.message);
 
 					setInterval(() => {
@@ -100,20 +80,14 @@ export class MessageCommandUtil {
 	}
 
 	async send(content: MessagePayload | string) {
-		if (this.client.cache.messages.has(this.message.id))
-			var existingMessage: any = this.client.cache.messages.get(
-				this.message.id
-			);
+		if (this.client.cache.messages.has(this.message.id)) var existingMessage: any = this.client.cache.messages.get(this.message.id);
 
 		if (!existingMessage) {
 			const msg = await this.message.channel.send(content);
 
 			this.message.response = msg.id;
 
-			if (
-				this.client.handlerOptions.message?.handleEdits ||
-				this.client.handlerOptions.message?.handleDeletes
-			) {
+			if (this.client.handlerOptions.message?.handleEdits || this.client.handlerOptions.message?.handleDeletes) {
 				this.client.cache.messages.set(this.message.id, this.message);
 
 				setInterval(() => {
@@ -126,9 +100,7 @@ export class MessageCommandUtil {
 
 		if (existingMessage && this.client.handlerOptions.message?.handleEdits) {
 			try {
-				const msg = await this.message.channel.messages.fetch(
-					existingMessage.response
-				);
+				const msg = await this.message.channel.messages.fetch(existingMessage.response);
 
 				msg.edit(content);
 
@@ -138,10 +110,7 @@ export class MessageCommandUtil {
 
 				this.message.response = msg.id;
 
-				if (
-					this.client.handlerOptions.message?.handleEdits ||
-					this.client.handlerOptions.message?.handleDeletes
-				) {
+				if (this.client.handlerOptions.message?.handleEdits || this.client.handlerOptions.message?.handleDeletes) {
 					this.client.cache.messages.set(this.message.id, this.message);
 
 					setInterval(() => {
@@ -160,25 +129,19 @@ export class MessageCommandUtil {
 		return this.client.commands.message;
 	}
 
-	#getCommandName() { }
+	#getCommandName() {}
 
-	#selectMenuPaginator(
-		embeds: Array<EmbedBuilder>,
-		options?: SelectMenuOptions
-	) { }
+	#selectMenuPaginator(embeds: Array<EmbedBuilder>, options?: SelectMenuOptions) {}
 
-	#buttonPaginator(embeds: Array<EmbedBuilder>, options: ButtonOptions) { }
+	#buttonPaginator(embeds: Array<EmbedBuilder>, options: ButtonOptions) {}
 
-	#buttonMenuPaginator(
-		embeds: Array<EmbedBuilder>,
-		options: ButtonOptions & SelectMenuOptions
-	) { }
+	#buttonMenuPaginator(embeds: Array<EmbedBuilder>, options: ButtonOptions & SelectMenuOptions) {}
 
 	isOwner() {
 		return this.client.util.isOwner(this.message.author.id);
 	}
 
-	#createModal() { }
+	#createModal() {}
 }
 
 export class InteractionCommandUtil {
@@ -192,9 +155,7 @@ export class InteractionCommandUtil {
 	}
 
 	reply(content: MessagePayload | string) {
-		return this.interaction.replied || this.interaction.deferred
-			? this.interaction.editReply(content)
-			: this.interaction.reply(content);
+		return this.interaction.replied || this.interaction.deferred ? this.interaction.editReply(content) : this.interaction.reply(content);
 	}
 
 	async defer(time: number) {
@@ -206,31 +167,25 @@ export class InteractionCommandUtil {
 		else return this.client.commands.context;
 	}
 
-	#getCommandName() { }
+	#getCommandName() {}
 
-	selectMenuPaginator(
-		embeds: Array<EmbedBuilder>,
-		options?: SelectMenuOptions
-	) {
-		if (!Array.isArray(embeds))
-			throw new XernerxError(
-				`Expected embeds to be of type array, received ${typeof embeds} instead.`
-			);
+	selectMenuPaginator(embeds: Array<EmbedBuilder>, options?: SelectMenuOptions) {
+		if (!Array.isArray(embeds)) throw new XernerxError(`Expected embeds to be of type array, received ${typeof embeds} instead.`);
 
 		if (embeds.length > 25) throw new XernerxError(`Max select menu length is 25.`);
 
-		if (typeof options !== "object") options = {};
+		if (typeof options !== 'object') options = {};
 
 		if (!Array.isArray(options.components)) options.components = [];
 
 		if (!options.index) {
-			options.index = new EmbedBuilder().setTitle("Index").setColor("Random");
+			options.index = new EmbedBuilder().setTitle('Index').setColor('Random');
 
 			for (const embed of embeds) {
 				options.index.addFields([
 					{
-						name: embed.data.title || "No Name",
-						value: embed.data.description || "Page",
+						name: embed.data.title || 'No Name',
+						value: embed.data.description || 'Page',
 						inline: embeds.length > 25 / 2 ? true : false,
 					},
 				]);
@@ -242,16 +197,11 @@ export class InteractionCommandUtil {
 
 			if (!options.id) options.id = `${this.interaction.id}-menu`;
 
-			options.component = new StringSelectMenuBuilder()
-				.setCustomId(options.id)
-				.setMaxValues(1)
-				.setMinValues(1)
-				.setPlaceholder("Select a page.")
-				.addOptions({ label: "index", value: "0" });
+			options.component = new StringSelectMenuBuilder().setCustomId(options.id).setMaxValues(1).setMinValues(1).setPlaceholder('Select a page.').addOptions({ label: 'index', value: '0' });
 
 			embeds.map((embed, i = 0) => {
 				options?.component?.addOptions({
-					label: embed.data.title || "No Name",
+					label: embed.data.title || 'No Name',
 					description: embed.data.description || `Page ${i}`,
 					value: String(i + 1),
 				});
@@ -268,44 +218,33 @@ export class InteractionCommandUtil {
 			ephemeral: !!options.ephemeral,
 		};
 
-		(options.reply === undefined || options.reply === true
-			? this.interaction.util.reply(content)
-			: this.interaction.channel.send(content)
-		).then(() => {
+		(options.reply === undefined || options.reply === true ? this.interaction.util.reply(content) : this.interaction.channel.send(content)).then(() => {
 			const collector = this.interaction.channel
 				.createMessageComponentCollector({
 					filter: options?.filter,
 					time: options?.time || 60000,
 				})
 
-				.on("collect", (interaction: Record<string, string | Function>) => {
-					if (!(interaction.customId as string).startsWith(this.interaction.id))
-						return;
+				.on('collect', (interaction: Record<string, string | Function>) => {
+					if (!(interaction.customId as string).startsWith(this.interaction.id)) return;
 
 					(interaction.update as Function)({
-						embeds: [
-							embeds[
-							parseInt((interaction.values as unknown as Array<string>)[0])
-							],
-						],
+						embeds: [embeds[parseInt((interaction.values as unknown as Array<string>)[0])]],
 					});
 				})
 
-				.on("end", () => {
+				.on('end', () => {
 					this.interaction.editReply({ components: [] });
 				});
 		});
 	}
 
 	buttonPaginator(embeds: Array<EmbedBuilder>, options: ButtonOptions) {
-		if (!Array.isArray(embeds))
-			throw new XernerxError(
-				`Expected embeds to be of type array, received ${typeof embeds} instead.`
-			);
+		if (!Array.isArray(embeds)) throw new XernerxError(`Expected embeds to be of type array, received ${typeof embeds} instead.`);
 
 		if (embeds.length <= 0) throw new XernerxError(`The minimum embeds is 1.`);
 
-		if (typeof options !== "object") options = {};
+		if (typeof options !== 'object') options = {};
 
 		if (!Array.isArray(options.components)) options.components = [];
 
@@ -315,14 +254,12 @@ export class InteractionCommandUtil {
 			if (!options.id) options.id = `${this.interaction.id}-menu`;
 		}
 
-		if (!options.buttons) options.buttons = ["⏮️", "◀️", "⏹️", "▶️", "⏭️"];
+		if (!options.buttons) options.buttons = ['⏮️', '◀️', '⏹️', '▶️', '⏭️'];
 
 		for (const button of options.buttons) {
 			options.row.addComponents(
 				new ButtonBuilder()
-					.setCustomId(
-						`${this.interaction.id}-${options.buttons.indexOf(button)}`
-					)
+					.setCustomId(`${this.interaction.id}-${options.buttons.indexOf(button)}`)
 					.setEmoji(button)
 					.setStyle(ButtonStyle.Primary)
 			);
@@ -336,32 +273,24 @@ export class InteractionCommandUtil {
 			ephemeral: !!options.ephemeral,
 		};
 
-		(options.reply === undefined || options.reply === true
-			? this.interaction.util.reply(content)
-			: this.interaction.channel.send(content)
-		).then((message: XernerxMessage) => {
+		(options.reply === undefined || options.reply === true ? this.interaction.util.reply(content) : this.interaction.channel.send(content)).then((message: XernerxMessage) => {
 			const collector = message.channel
 				.createMessageComponentCollector({
 					filter: options.filter,
 					time: options?.time || 60000,
 				})
 
-				.on("collect", (interaction: Record<string, string | Function>) => {
+				.on('collect', (interaction: Record<string, string | Function>) => {
 					let stop: boolean = false;
 
-					if (
-						(interaction.customId as string).startsWith(this.interaction.id)
-					) {
+					if ((interaction.customId as string).startsWith(this.interaction.id)) {
 						switch (Number((interaction.customId as string).split(/-/).pop())) {
 							case 0: {
 								embed = embeds[0];
 								break;
 							}
 							case 1: {
-								embed =
-									embeds[
-									embeds.indexOf(embed) >= 1 ? embeds.indexOf(embed) - 1 : 0
-									];
+								embed = embeds[embeds.indexOf(embed) >= 1 ? embeds.indexOf(embed) - 1 : 0];
 								break;
 							}
 							case 2: {
@@ -370,12 +299,7 @@ export class InteractionCommandUtil {
 								break;
 							}
 							case 3: {
-								embed =
-									embeds[
-									embeds.indexOf(embed) < embeds.length - 1
-										? embeds.indexOf(embed) + 1
-										: embeds.length - 1
-									];
+								embed = embeds[embeds.indexOf(embed) < embeds.length - 1 ? embeds.indexOf(embed) + 1 : embeds.length - 1];
 								break;
 							}
 							case 4: {
@@ -386,29 +310,26 @@ export class InteractionCommandUtil {
 
 						stop
 							? (interaction as Record<string, Function>).update({
-								embeds: [embed],
-								components: [],
-							})
+									embeds: [embed],
+									components: [],
+							  })
 							: (interaction as Record<string, Function>).update({
-								embeds: [embed],
-							});
+									embeds: [embed],
+							  });
 					}
 				})
 
-				.on("end", () => {
+				.on('end', () => {
 					this.interaction.editReply({ components: [] });
 				});
 		});
 	}
 
-	#buttonMenuPaginator(
-		embeds: Array<EmbedBuilder>,
-		options: ButtonOptions & SelectMenuOptions
-	) { }
+	#buttonMenuPaginator(embeds: Array<EmbedBuilder>, options: ButtonOptions & SelectMenuOptions) {}
 
 	isOwner() {
 		return this.client.util.isOwner(this.interaction.user.id);
 	}
 
-	#createModal() { }
+	#createModal() {}
 }

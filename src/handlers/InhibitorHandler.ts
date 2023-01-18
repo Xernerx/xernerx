@@ -1,6 +1,6 @@
-import XernerxClient from "../client/XernerxClient.js";
-import { InhibitorHandlerOptions } from "../types/options.js";
-import { Handler } from "./Handler.js";
+import XernerxClient from '../client/XernerxClient.js';
+import { InhibitorHandlerOptions } from '../types/options.js';
+import { Handler } from './Handler.js';
 
 /**
  * @description - Inhibitor loader.
