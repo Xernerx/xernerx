@@ -9,7 +9,7 @@ import ContextCommandBuilder from './build/ContextCommandBuilder.js';
 import SlashCommandBuilder from './build/SlashCommandBuilder.js';
 import { CommandType, EventEmitterType, ContextCommandType, InhibitorType } from './types/enums.js';
 import XernerxError from './tools/XernerxError.js';
-import ExtensionBuilder from './build/ExtensionBuilder.js';
+import ExtensionBuilder from 'xernerx-extension-builder';
 import pkg from '../package.js';
 
 const version: string = pkg.version;
