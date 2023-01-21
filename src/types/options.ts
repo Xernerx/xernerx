@@ -160,18 +160,18 @@ export interface ContextCommandOptions {
 
 export interface MessageArgOptions {
 	type: MessageCommandArgsTypes;
-	content?: string;
+	content?: Array<string>;
+	match?: string;
 	name: string;
-	prompt: {
+	prompt?: {
 		reply: string;
 		send: string;
 	};
-	default: string | Function;
+	default?: string | Function;
 }
 
 export interface SlashArgOptions {
 	type: 'string' | 'number' | 'boolean' | 'user' | 'channel' | 'role' | 'mentionable' | 'integer';
-
 	name: string;
 	choices: Array<{ name: string; value: string }>;
 	required: boolean;

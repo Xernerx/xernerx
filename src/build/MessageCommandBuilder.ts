@@ -1,7 +1,7 @@
-import { Message, ChannelType } from "discord.js";
-import { s } from "@sapphire/shapeshift";
-import { XernerxClient } from "../main.js";
-import { MessageArgOptions, MessageCommandOptions } from "../types/options.js";
+import { Message, ChannelType } from 'discord.js';
+import { s } from '@sapphire/shapeshift';
+import { XernerxClient } from '../main.js';
+import { MessageArgOptions, MessageCommandOptions } from '../types/options.js';
 
 /**
  * @description - The command builder for message commands.
@@ -16,7 +16,7 @@ export default class MessageCommandBuilder {
 	info?: string;
 	category?: string;
 	prefix?: string | string[];
-	regex?: string
+	regex?: string;
 	owner?: boolean;
 	channelType?: ChannelType | ChannelType[];
 	separator?: string;
@@ -60,7 +60,7 @@ export default class MessageCommandBuilder {
 
 		this.category = options.category;
 
-		this.prefix = options.prefix ? Array.isArray(options.prefix) ? options.prefix : [options.prefix] : [];
+		this.prefix = options.prefix ? (Array.isArray(options.prefix) ? options.prefix : [options.prefix]) : [];
 
 		this.regex = options.regex;
 
@@ -68,7 +68,7 @@ export default class MessageCommandBuilder {
 
 		this.channelType = options.channelType;
 
-		this.separator = options.separator || " ";
+		this.separator = options.separator || ' ';
 
 		this.cooldown = options.cooldown || 0;
 
@@ -82,7 +82,7 @@ export default class MessageCommandBuilder {
 
 		this.clientPermissions = options.clientPermissions || [];
 
-		this.args = options.args;
+		this.args = options.args || [];
 
 		this.client = XernerxClient;
 
@@ -96,12 +96,12 @@ export default class MessageCommandBuilder {
 	 * @param {object} args - The arguments you created.
 	 * @description make any preconditions here.
 	 */
-	async conditions(message: Message, args: MessageArgOptions) { }
+	async conditions(message: Message, args: MessageArgOptions) {}
 
 	/**
 	 * @param {Message} message - The Discord message event data.
 	 * @param {object} args - The arguments you created.
 	 * @description Make your custom command here.
 	 */
-	async exec(message: Message, args: MessageArgOptions) { }
+	async exec(message: Message, args: MessageArgOptions) {}
 }

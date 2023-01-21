@@ -50,9 +50,9 @@ export async function messageArguments(message: XernerxMessage, command: Message
 		.map((flag) => {
 			args = args as Flag;
 
-			for (const flg of message.content.matchAll(flag.content as unknown as RegExp)) {
-				if ((flag.content as unknown as RegExpMatchArray) == flg) {
-					message.content = message.content.replace(flag.content as string, '');
+			for (const flg of message.content.matchAll(flag.match as unknown as RegExp)) {
+				if ((flag.match as unknown as RegExpMatchArray) == flg) {
+					message.content = message.content.replace(flag.match as string, '');
 
 					args.flags[flag.name] = true;
 				}
