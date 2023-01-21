@@ -11,7 +11,7 @@ import Extensions from '../models/Extensions.js';
 import { ClientOptions, DiscordOptions, ExtensionOptions, HandlerOptions } from '../types/options.js';
 import { ClientCache, ClientCommands, ClientModules } from '../types/interfaces.js';
 import EventBuilder from '../build/EventBuilder.js';
-import ExtensionBuilder from '../build/ExtensionBuilder.js';
+import ExtensionBuilder from 'xernerx-extension-builder';
 import InhibitorBuilder from '../build/InhibitorBuilder.js';
 
 /**
