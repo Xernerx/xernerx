@@ -1,17 +1,17 @@
 import { Client, Collection } from 'discord.js';
 import { s } from '@sapphire/shapeshift';
+import ExtensionBuilder from 'xernerx-extension-builder';
+import { Style } from 'dumfunctions';
+
+import { ClientUtil } from '../utils/ClientUtil.js';
+import { ClientOptions, DiscordOptions, ExtensionOptions, HandlerOptions } from '../types/options.js';
+import { ClientCache, ClientCommands, ClientModules } from '../types/interfaces.js';
 
 import CommandHandler from '../handlers/CommandHandler.js';
 import EventHandler from '../handlers/EventHandler.js';
 import InhibitorHandler from '../handlers/InhibitorHandler.js';
-
-import { ClientUtil } from '../utils/ClientUtil.js';
-import { Style } from 'dumfunctions';
 import Extensions from '../models/Extensions.js';
-import { ClientOptions, DiscordOptions, ExtensionOptions, HandlerOptions } from '../types/options.js';
-import { ClientCache, ClientCommands, ClientModules } from '../types/interfaces.js';
 import EventBuilder from '../build/EventBuilder.js';
-import ExtensionBuilder from 'xernerx-extension-builder';
 import InhibitorBuilder from '../build/InhibitorBuilder.js';
 
 /**
