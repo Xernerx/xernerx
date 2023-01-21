@@ -308,15 +308,15 @@ export class CommandsDeploy {
 					this.put('guild', guild.slash as string, []);
 				}
 
-				if (global.slash && !global.context) {
+				if (global.slash && global.context === false) {
 					this.put('global', guild.slash as string, slashCommands);
 				}
 
-				if (!global.slash && global.context) {
+				if (global.slash === false && global.context) {
 					this.put('global', guild.context as string, contextCommands);
 				}
 
-				if (!global.slash && !global.context) {
+				if (global.slash === false && global.context === false) {
 					this.put('guild', guild.slash as string, [...contextCommands, ...slashCommands]);
 				}
 
