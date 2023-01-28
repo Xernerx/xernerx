@@ -13,7 +13,7 @@ Xernerx is a class based discord.js framework. \[BETA\]
 > - Message command handles
 > - Extension support
 
-You can checkout the docs [here](https://thedummi.github.io/xernerx/home.html)
+You can checkout the docs [here](https://xernerx.github.io/xernerx/home.html)
 
 ## Notes
 

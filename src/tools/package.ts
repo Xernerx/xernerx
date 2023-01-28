@@ -1,4 +1,4 @@
-{
+export default {
 	"name": "xernerx",
 	"version": "3.3.6",
 	"type": "module",
