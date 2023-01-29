@@ -40,7 +40,7 @@ export default class MessageCommandBuilder {
 			category: s.string.optional,
 			prefix: s.union(s.array(s.string).unique, s.string).optional,
 			owner: s.boolean.optional,
-			// channelType: s.union(s.enum(ChannelType),s.array(s.enum(ChannelType)).unique).optional,
+			channelType: s.union(s.number, s.array(s.number)).optional,
 			separator: s.string.optional,
 			cooldown: s.number.optional,
 			ignoreOwner: s.boolean.optional,

@@ -1,7 +1,7 @@
-import { s } from "@sapphire/shapeshift";
-import { InhibitorType, XernerxClient } from "../main.js";
-import { InhibitorOptions, MessageArgOptions, SlashArgOptions } from "../types/options.js";
-import { XernerxInteraction, XernerxMessage } from "../types/types.js";
+import { s } from '@sapphire/shapeshift';
+import { InhibitorType, XernerxClient } from '../main.js';
+import { InhibitorOptions, MessageArgOptions, SlashArgOptions } from '../types/options.js';
+import { XernerxInteraction, XernerxMessage } from '../types/types.js';
 
 /**
  * @description - The inhibitor builder for inhibitors.
@@ -32,7 +32,7 @@ export default class InhibitorBuilder {
 	}
 
 	/**
-	 * 
+	 *
 	 */
-	async check(interaction: XernerxInteraction | XernerxMessage, args: SlashArgOptions | MessageArgOptions) { }
+	async check(interaction: XernerxInteraction | XernerxMessage, args: SlashArgOptions | MessageArgOptions) {}
 }

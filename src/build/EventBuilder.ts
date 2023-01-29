@@ -1,6 +1,6 @@
-import { s } from "@sapphire/shapeshift";
-import { XernerxClient } from "../main.js";
-import { EventOptions } from "../types/options.js";
+import { s } from '@sapphire/shapeshift';
+import { XernerxClient } from '../main.js';
+import { EventOptions } from '../types/options.js';
 
 /**
  * @description - The event builder for  events.
@@ -27,9 +27,9 @@ export default class EventBuilder {
 
 		this.name = options.name;
 
-		this.emitter = options.emitter || "client";
+		this.emitter = options.emitter || 'client';
 
-		this.type = options.type || "discord";
+		this.type = options.type || 'discord';
 
 		this.once = options.once || false;
 

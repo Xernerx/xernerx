@@ -16,7 +16,7 @@ export default class SlashCommandBuilder {
 	info?: string;
 	category?: string;
 	owner?: boolean;
-	channelType?: ChannelType;
+	channelType?: ChannelType | ChannelType[];
 	separator?: string;
 	cooldown?: number;
 	ignoreOwner?: boolean;
@@ -55,7 +55,7 @@ export default class SlashCommandBuilder {
 			info: s.string.optional,
 			category: s.string.optional,
 			owner: s.boolean.optional,
-			// channelType: s.ChannelType.optional,
+			channelType: s.union(s.number, s.array(s.number)).optional,
 			separator: s.string.optional,
 			cooldown: s.number.optional,
 			ignoreOwner: s.boolean.optional,

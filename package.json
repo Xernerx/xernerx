@@ -19,8 +19,8 @@
 		"minor": "git add . && npm run commit && npm version minor && npm publish && git push",
 		"major": "git add . && npm run commit && npm version major && npm publish && git push",
 		"site": "git add docs && npm run commit && git push",
-		"commit": "node ../scripts/commit.js",
-		"package": "node ../scripts/rewritePackage.js"
+		"commit": "node ../.scripts/commit.js",
+		"package": "node ../.scripts/rewritePackage.js"
 	},
 	"repository": {
 		"type": "git",

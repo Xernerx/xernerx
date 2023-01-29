@@ -171,15 +171,17 @@ export class MessageCommandEvents {
 	messageDelete() {
 		this.client.on('messageDelete', async (message: unknown) => {
 			if (this.client.cache.messages.has((message as XernerxMessage).id) && this.client.handlerOptions.message?.handleDeletes) {
-				if (this.client.handlerOptions.message?.handleTyping) (message as XernerxMessage).channel.sendTyping();
-
 				try {
+					if (this.client.handlerOptions.message?.handleTyping) (message as XernerxMessage).channel.sendTyping();
+
 					const msg: unknown = this.client.cache.messages.get((message as XernerxMessage).id);
 
 					const response = await (message as XernerxMessage).channel.messages.fetch((msg as Record<'response', string>)?.response);
 
 					await response.delete();
-				} catch {}
+				} catch (error) {
+					this.client.emit('commandError', message, error, null);
+				}
 			}
 		});
 	}

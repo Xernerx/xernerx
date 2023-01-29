@@ -1,11 +1,7 @@
-import {
-	ChannelType,
-	ContextMenuCommandBuilder,
-	Interaction,
-} from "discord.js";
-import { s } from "@sapphire/shapeshift";
-import { XernerxClient } from "../main.js";
-import { ContextCommandOptions } from "../types/options.js";
+import { ChannelType, ContextMenuCommandBuilder, Interaction } from 'discord.js';
+import { s } from '@sapphire/shapeshift';
+import { XernerxClient } from '../main.js';
+import { ContextCommandOptions } from '../types/options.js';
 
 /**
  * @description The command builder for context commands.
@@ -19,7 +15,7 @@ export default class ContextCommandBuilder {
 	info?: string;
 	category?: string;
 	owner?: boolean;
-	channelType?: ChannelType;
+	channelType?: ChannelType | ChannelType[];
 	cooldown?: number;
 	ignoreOwner?: boolean;
 	channels?: string[];
@@ -42,26 +38,20 @@ export default class ContextCommandBuilder {
 
 		if (options.type) this.data.setType(options.type);
 
-		if (options.defaultMemberPermissions)
-			this.data.setDefaultMemberPermissions(options.defaultMemberPermissions);
+		if (options.defaultMemberPermissions) this.data.setDefaultMemberPermissions(options.defaultMemberPermissions);
 
 		if (options.DMPermission) this.data.setDMPermission(options.DMPermission);
 
-		if (options.nameLocalization)
-			this.data.setNameLocalization(
-				options.nameLocalization.locale,
-				options.nameLocalization.localizedName
-			);
+		if (options.nameLocalization) this.data.setNameLocalization(options.nameLocalization.locale, options.nameLocalization.localizedName);
 
-		if (options.nameLocalizations)
-			this.data.setNameLocalizations(options.nameLocalizations);
+		if (options.nameLocalizations) this.data.setNameLocalizations(options.nameLocalizations);
 
 		s.object({
 			description: s.string.optional,
 			info: s.string.optional,
 			category: s.string.optional,
 			owner: s.boolean.optional,
-			// channelType?: ChannelType,
+			channelType: s.union(s.number, s.array(s.number)).optional,
 			cooldown: s.number.optional,
 			ignoreOwner: s.boolean.optional,
 			channels: s.array(s.string).optional,
@@ -110,11 +100,11 @@ export default class ContextCommandBuilder {
 	 * @param {Interaction} interaction - The Discord interaction event data.
 	 * @description make any preconditions here.
 	 */
-	async conditions(interaction: Interaction) { }
+	async conditions(interaction: Interaction) {}
 
 	/**
 	 * @param {Interaction} interaction - The Discord interaction event data.
 	 * @description Make your custom command here.
 	 */
-	async exec(interaction: Interaction) { }
+	async exec(interaction: Interaction) {}
 }

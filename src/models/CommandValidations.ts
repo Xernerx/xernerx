@@ -1,50 +1,50 @@
-import { Interaction, Message, User, PermissionsBitField } from "discord.js";
-import { ContextCommandBuilder, MessageCommandBuilder, SlashCommandBuilder, XernerxClient } from "../main.js";
-import { CommandType } from "../types/enums.js";
-import { XernerxMessage, XernerxUser } from "../types/types.js";
+import { Interaction, Message, User, PermissionsBitField } from 'discord.js';
+import { ContextCommandBuilder, MessageCommandBuilder, SlashCommandBuilder, XernerxClient } from '../main.js';
+import { CommandType } from '../types/enums.js';
+import { XernerxMessage, XernerxUser } from '../types/types.js';
 
 function getUser(from: Message | Interaction): XernerxUser {
 	if (from instanceof Message) return from.author as XernerxUser;
 	else return from.user as XernerxUser;
 }
 
-export default function commandValidation(action: XernerxMessage | Interaction, command: SlashCommandBuilder | MessageCommandBuilder | ContextCommandBuilder | any, client: XernerxClient, res: boolean = false) {
+export default function commandValidation(
+	action: XernerxMessage | Interaction,
+	command: SlashCommandBuilder | MessageCommandBuilder | ContextCommandBuilder | any,
+	client: XernerxClient,
+	res: boolean = false
+) {
 	let user = getUser(action);
 
 	if ((command.ignoreOwner || client.settings.ignoreOwner) && client.util.isOwner(user.id)) return res;
-
 	else if (inCooldown(user, client, command, action)) return true;
-
 	else if (command.owner && !client.util.isOwner(user.id)) {
 		res = true;
 
-		emit(client, action, command, "Not an owner", client.settings.ownerId);
-	}
-
-	else if (command.channelType?.length > 0 || command.channelType) {
+		emit(client, action, command, 'Not an owner', client.settings.ownerId);
+	} else if (command.channelType?.length > 0 || command.channelType) {
 		if (!Array.isArray(command.channelType)) command.channelType = [command.channelType];
 
 		if (!command?.channelType?.includes(action.channel?.type)) {
 			res = true;
 
-			emit(client, action, command, "Not the correct channel", command.channelType);
+			emit(client, action, command, 'Not the correct channel', command.channelType);
 		}
-	}
-
-	else if (command.channels?.length > 0 && !command.channels.includes(action.channel?.id)) {
+	} else if (command.channels?.length > 0 && !command.channels.includes(action.channel?.id)) {
 		res = true;
 
-		emit(client, action, command, "Not a whitelisted channel", command.channels);
-	}
-
-	else if (command.guilds?.length > 0 && !command.guilds.includes(action.guild?.id)) {
+		emit(client, action, command, 'Not a whitelisted channel', command.channels);
+	} else if (command.guilds?.length > 0 && !command.guilds.includes(action.guild?.id)) {
 		res = true;
 
-		emit(client, action, command, "Not a whitelisted guild", command.guilds);
-	}
+		emit(client, action, command, 'Not a whitelisted guild', command.guilds);
+	} else if (command.channelType && command.channelType !== action.channel?.type) {
+		res = true;
 
-	else if (action?.guild && (command.userPermissions || client.settings.userPermissions)) {
-		const permissions = command.userPermissions || client?.settings?.userPermissions?.push(...handlerPermissions(client, command.commandType, "user")), missing: bigint[] = [];
+		emit(client, action, command, 'Not the correct type of channel', command.channelType);
+	} else if (action?.guild && (command.userPermissions || client.settings.userPermissions)) {
+		const permissions = command.userPermissions || client?.settings?.userPermissions?.push(...handlerPermissions(client, command.commandType, 'user')),
+			missing: bigint[] = [];
 
 		if (Array.isArray(permissions))
 			permissions.map((permission: bigint) => {
@@ -56,12 +56,11 @@ export default function commandValidation(action: XernerxMessage | Interaction, 
 		if (missing.length > 0) {
 			res = true;
 
-			emit(client, action, command, "Missing User Permissions", missing);
+			emit(client, action, command, 'Missing User Permissions', missing);
 		}
-	}
-
-	else if (action?.guild && (command.clientPermissions || client.settings.clientPermissions)) {
-		const permissions = command.clientPermissions || client?.settings?.clientPermissions?.push(...handlerPermissions(client, command.commandType, "client")), missing: bigint[] = [];
+	} else if (action?.guild && (command.clientPermissions || client.settings.clientPermissions)) {
+		const permissions = command.clientPermissions || client?.settings?.clientPermissions?.push(...handlerPermissions(client, command.commandType, 'client')),
+			missing: bigint[] = [];
 
 		if (Array.isArray(permissions))
 			permissions.map((permission: bigint) => {
@@ -73,28 +72,28 @@ export default function commandValidation(action: XernerxMessage | Interaction, 
 		if (missing.length > 0) {
 			res = true;
 
-			emit(client, action, command, "Missing Client Permissions", missing);
+			emit(client, action, command, 'Missing Client Permissions', missing);
 		}
 	}
 
 	return res;
 }
 
-function emit(client: XernerxClient, action: Message | Interaction, command: MessageCommandBuilder | SlashCommandBuilder | ContextCommandBuilder, reason: string, extra?: string[] | number[] | number | string | object | object[]) {
-	return client.emit("commandBlock", action, command, reason, extra);
+function emit(
+	client: XernerxClient,
+	action: Message | Interaction,
+	command: MessageCommandBuilder | SlashCommandBuilder | ContextCommandBuilder,
+	reason: string,
+	extra?: string[] | number[] | number | string | object | object[]
+) {
+	return client.emit('commandBlock', action, command, reason, extra);
 }
 
 function inCooldown(user: XernerxUser, client: XernerxClient | any, command: MessageCommandBuilder | SlashCommandBuilder | ContextCommandBuilder | any, action: Message | Interaction) {
 	let res = false,
 		downs: Record<string, number> = {};
 
-	const {
-		cooldowns,
-		messageCommands,
-		slashCommands,
-		contextCommands,
-		commands,
-	} = client.cache;
+	const { cooldowns, messageCommands, slashCommands, contextCommands, commands } = client.cache;
 
 	if (command.commandType === CommandType.MessageCommand && client.handlerOptions.message.cooldown) {
 		if (messageCommands.has(user.id)) {
@@ -108,15 +107,7 @@ function inCooldown(user: XernerxUser, client: XernerxClient | any, command: Mes
 		}
 
 		if (!messageCommands.has(user.id)) {
-			messageCommands.set(
-				user.id,
-				toCooldown(
-					action,
-					command,
-					client.handlerOptions.message.cooldown,
-					user.id
-				)
-			);
+			messageCommands.set(user.id, toCooldown(action, command, client.handlerOptions.message.cooldown, user.id));
 
 			setInterval(() => {
 				messageCommands.delete(user.id);
@@ -124,10 +115,7 @@ function inCooldown(user: XernerxUser, client: XernerxClient | any, command: Mes
 		}
 	}
 
-	if (
-		command.commandType === CommandType.SlashCommand &&
-		client.handlerOptions.slash.cooldown
-	) {
+	if (command.commandType === CommandType.SlashCommand && client.handlerOptions.slash.cooldown) {
 		if (slashCommands.has(user.id)) {
 			const usr = slashCommands.get(user.id);
 
@@ -139,15 +127,7 @@ function inCooldown(user: XernerxUser, client: XernerxClient | any, command: Mes
 		}
 
 		if (!slashCommands.has(user.id)) {
-			slashCommands.set(
-				user.id,
-				toCooldown(
-					action,
-					command,
-					client.handlerOptions.slash.cooldown,
-					user.id
-				)
-			);
+			slashCommands.set(user.id, toCooldown(action, command, client.handlerOptions.slash.cooldown, user.id));
 
 			setInterval(() => {
 				slashCommands.delete(user.id);
@@ -155,10 +135,7 @@ function inCooldown(user: XernerxUser, client: XernerxClient | any, command: Mes
 		}
 	}
 
-	if (
-		command.commandType === CommandType.ContextCommand &&
-		client.handlerOptions.context.cooldown
-	) {
+	if (command.commandType === CommandType.ContextCommand && client.handlerOptions.context.cooldown) {
 		if (contextCommands.has(user.id)) {
 			const usr = contextCommands.get(user.id);
 
@@ -170,15 +147,7 @@ function inCooldown(user: XernerxUser, client: XernerxClient | any, command: Mes
 		}
 
 		if (!contextCommands.has(user.id)) {
-			contextCommands.set(
-				user.id,
-				toCooldown(
-					action,
-					command,
-					client.handlerOptions.context.cooldown,
-					user.id
-				)
-			);
+			contextCommands.set(user.id, toCooldown(action, command, client.handlerOptions.context.cooldown, user.id));
 
 			setInterval(() => {
 				contextCommands.delete(user.id);
@@ -198,10 +167,7 @@ function inCooldown(user: XernerxUser, client: XernerxClient | any, command: Mes
 		}
 
 		if (!cooldowns.has(user.id)) {
-			cooldowns.set(
-				user.id,
-				toCooldown(action, command, client.settings.cooldown.default, user.id)
-			);
+			cooldowns.set(user.id, toCooldown(action, command, client.settings.cooldown.default, user.id));
 
 			setInterval(() => {
 				cooldowns.delete(user.id);
@@ -210,12 +176,7 @@ function inCooldown(user: XernerxUser, client: XernerxClient | any, command: Mes
 	}
 
 	if (command.cooldown) {
-		const name =
-			user.id +
-			"-" +
-			(command.data?.name || command?.name) +
-			"-" +
-			command.commandType;
+		const name = user.id + '-' + (command.data?.name || command?.name) + '-' + command.commandType;
 
 		if (commands.has(name)) {
 			const usr = commands.get(name);
@@ -236,18 +197,12 @@ function inCooldown(user: XernerxUser, client: XernerxClient | any, command: Mes
 		}
 	}
 
-	if (Object.keys(downs).length > 0)
-		client.emit("commandCooldown", action, command, downs);
+	if (Object.keys(downs).length > 0) client.emit('commandCooldown', action, command, downs);
 
 	return res;
 }
 
-function toCooldown(
-	action: Message | Interaction,
-	command: MessageCommandBuilder | ContextCommandBuilder | SlashCommandBuilder | any,
-	cooldown: number,
-	name: string
-) {
+function toCooldown(action: Message | Interaction, command: MessageCommandBuilder | ContextCommandBuilder | SlashCommandBuilder | any, cooldown: number, name: string) {
 	let user = getUser(action);
 	return {
 		name,
@@ -262,28 +217,18 @@ function toCooldown(
 	};
 }
 
-function handlerPermissions(
-	client: XernerxClient,
-	commandType: CommandType,
-	type: string
-) {
+function handlerPermissions(client: XernerxClient, commandType: CommandType, type: string) {
 	let permissions: bigint[] = [];
 
 	if (commandType === CommandType.MessageCommand) {
-		if (type === "user")
-			permissions = client.handlerOptions.message?.userPermissions || [];
-		else if (type === "client")
-			permissions = client.handlerOptions.message?.clientPermissions || [];
+		if (type === 'user') permissions = client.handlerOptions.message?.userPermissions || [];
+		else if (type === 'client') permissions = client.handlerOptions.message?.clientPermissions || [];
 	} else if (commandType === CommandType.SlashCommand) {
-		if (type === "user")
-			permissions = client.handlerOptions.slash?.userPermissions || [];
-		else if (type === "client")
-			permissions = client.handlerOptions.slash?.clientPermissions || [];
+		if (type === 'user') permissions = client.handlerOptions.slash?.userPermissions || [];
+		else if (type === 'client') permissions = client.handlerOptions.slash?.clientPermissions || [];
 	} else if (commandType === CommandType.ContextCommand) {
-		if (type === "user")
-			permissions = client.handlerOptions.context?.userPermissions || [];
-		else if (type === "client")
-			permissions = client.handlerOptions.context?.clientPermissions || [];
+		if (type === 'user') permissions = client.handlerOptions.context?.userPermissions || [];
+		else if (type === 'client') permissions = client.handlerOptions.context?.clientPermissions || [];
 	}
 
 	return permissions;
