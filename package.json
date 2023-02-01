@@ -15,9 +15,9 @@
 	"packageManager": "npm@8.5.5",
 	"scripts": {
 		"start": "npm i && npm fund && npm audit fix --force && npm link && tsc -w",
-		"patch": "npm run build && git add . && npm run commit && npm version patch && npm publish && git push",
-		"minor": "npm run build && git add . && npm run commit && npm version minor && npm publish && git push",
-		"major": "npm run build && git add . && npm run commit && npm version major && npm publish && git push",
+		"patch": "npm run build && tsc && git add . && npm run commit && npm version patch && npm publish && git push",
+		"minor": "npm run build && tsc && git add . && npm run commit && npm version minor && npm publish && git push",
+		"major": "npm run build && tsc && git add . && npm run commit && npm version major && npm publish && git push",
 		"site": "git add docs && npm run commit && git push",
 		"commit": "node ../.scripts/commit.js",
 		"build": "node ../.scripts/rewritePackage.js"
