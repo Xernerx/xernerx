@@ -14,13 +14,13 @@
 	"homepage": "https://xernerx.github.io/xernerx/home.html",
 	"packageManager": "npm@8.5.5",
 	"scripts": {
-		"start": "npm i && npm fund && npm audit fix --force &&  npm link && npm run package && tsc -w",
-		"patch": "git add . && npm run commit && npm version patch && npm publish && git push",
-		"minor": "git add . && npm run commit && npm version minor && npm publish && git push",
-		"major": "git add . && npm run commit && npm version major && npm publish && git push",
+		"start": "npm i && npm fund && npm audit fix --force && npm link && tsc -w",
+		"patch": "npm run build && git add . && npm run commit && npm version patch && npm publish && git push",
+		"minor": "npm run build && git add . && npm run commit && npm version minor && npm publish && git push",
+		"major": "npm run build && git add . && npm run commit && npm version major && npm publish && git push",
 		"site": "git add docs && npm run commit && git push",
 		"commit": "node ../.scripts/commit.js",
-		"package": "node ../.scripts/rewritePackage.js"
+		"build": "node ../.scripts/rewritePackage.js"
 	},
 	"repository": {
 		"type": "git",
