@@ -1,10 +1,10 @@
-import XernerxClient from "../client/XernerxClient.js";
-import { EventHandlerOptions } from "../types/options.js";
-import { Handler } from "./Handler.js";
+import XernerxClient from '../client/XernerxClient.js';
+import { EventHandlerOptions } from '../types/options.js';
+import { Handler } from './Handler.js';
 
 export default class EventHandler {
-	client: XernerxClient;
-	handler: Handler;
+	private client: XernerxClient;
+	private handler: Handler;
 
 	constructor(client: XernerxClient) {
 		this.client = client;
@@ -16,7 +16,7 @@ export default class EventHandler {
 	 * @description - The event loader
 	 * @param {EventLoadOptions} options - message command options
 	 */
-	loadAllEvents(options: EventHandlerOptions) {
+	public loadAllEvents(options: EventHandlerOptions) {
 		return this.handler.loadAllEvents(options);
 	}
 }

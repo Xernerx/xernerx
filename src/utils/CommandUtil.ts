@@ -1,4 +1,13 @@
-import { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, Interaction, Message, MessagePayload, StringSelectMenuBuilder } from 'discord.js';
+import {
+	ActionRowBuilder,
+	ButtonBuilder,
+	ButtonStyle,
+	EmbedBuilder,
+	Interaction,
+	Message,
+	MessagePayload,
+	StringSelectMenuBuilder,
+} from 'discord.js';
 import XernerxClient from '../client/XernerxClient.js';
 import XernerxError from '../tools/XernerxError.js';
 import { XernerxMessage } from '../types/types.js';
@@ -28,8 +37,8 @@ interface ButtonOptions {
 }
 
 export class MessageCommandUtil {
-	client: XernerxClient;
-	message: XernerxMessage;
+	private client: XernerxClient;
+	private message: XernerxMessage;
 
 	constructor(client: XernerxClient, message: Message & XernerxMessage) {
 		this.client = client;
@@ -37,8 +46,9 @@ export class MessageCommandUtil {
 		this.message = message;
 	}
 
-	async reply(content: MessagePayload | string) {
-		if (this.client.cache.messages.has(this.message.id)) var existingMessage: any = this.client.cache.messages.get(this.message.id);
+	public async reply(content: MessagePayload | string) {
+		if (this.client.cache.messages.has(this.message.id))
+			var existingMessage: any = this.client.cache.messages.get(this.message.id);
 
 		if (!existingMessage) {
 			const msg = await this.message.reply(content);
@@ -79,8 +89,9 @@ export class MessageCommandUtil {
 		}
 	}
 
-	async send(content: MessagePayload | string) {
-		if (this.client.cache.messages.has(this.message.id)) var existingMessage: any = this.client.cache.messages.get(this.message.id);
+	public async send(content: MessagePayload | string) {
+		if (this.client.cache.messages.has(this.message.id))
+			var existingMessage: any = this.client.cache.messages.get(this.message.id);
 
 		if (!existingMessage) {
 			const msg = await this.message.channel.send(content);
@@ -121,32 +132,32 @@ export class MessageCommandUtil {
 		}
 	}
 
-	async defer(time: number) {
+	public async defer(time: number) {
 		return new Promise((resolve: Function) => setTimeout(resolve, time));
 	}
 
-	getCommands() {
+	public getCommands() {
 		return this.client.commands.message;
 	}
 
-	#getCommandName() {}
+	public getCommandName() {}
 
-	#selectMenuPaginator(embeds: Array<EmbedBuilder>, options?: SelectMenuOptions) {}
+	public selectMenuPaginator(embeds: Array<EmbedBuilder>, options?: SelectMenuOptions) {}
 
-	#buttonPaginator(embeds: Array<EmbedBuilder>, options: ButtonOptions) {}
+	public buttonPaginator(embeds: Array<EmbedBuilder>, options: ButtonOptions) {}
 
-	#buttonMenuPaginator(embeds: Array<EmbedBuilder>, options: ButtonOptions & SelectMenuOptions) {}
+	public buttonMenuPaginator(embeds: Array<EmbedBuilder>, options: ButtonOptions & SelectMenuOptions) {}
 
-	isOwner() {
+	public isOwner() {
 		return this.client.util.isOwner(this.message.author.id);
 	}
 
-	#createModal() {}
+	public createModal() {}
 }
 
 export class InteractionCommandUtil {
-	client: XernerxClient;
-	interaction: any;
+	private client: XernerxClient;
+	private interaction: any;
 
 	constructor(client: XernerxClient, interaction: Interaction) {
 		this.client = client;
@@ -154,23 +165,26 @@ export class InteractionCommandUtil {
 		this.interaction = interaction;
 	}
 
-	reply(content: MessagePayload | string) {
-		return this.interaction.replied || this.interaction.deferred ? this.interaction.editReply(content) : this.interaction.reply(content);
+	public reply(content: MessagePayload | string) {
+		return this.interaction.replied || this.interaction.deferred
+			? this.interaction.editReply(content)
+			: this.interaction.reply(content);
 	}
 
 	async defer(time: number) {
 		return new Promise((resolve: Function) => setTimeout(resolve, time));
 	}
 
-	getCommands() {
+	public getCommands() {
 		if (this.interaction.commandType === 1) return this.client.commands.slash;
 		else return this.client.commands.context;
 	}
 
-	#getCommandName() {}
+	public getCommandName() {}
 
-	selectMenuPaginator(embeds: Array<EmbedBuilder>, options?: SelectMenuOptions) {
-		if (!Array.isArray(embeds)) throw new XernerxError(`Expected embeds to be of type array, received ${typeof embeds} instead.`);
+	public selectMenuPaginator(embeds: Array<EmbedBuilder>, options?: SelectMenuOptions) {
+		if (!Array.isArray(embeds))
+			throw new XernerxError(`Expected embeds to be of type array, received ${typeof embeds} instead.`);
 
 		if (embeds.length > 25) throw new XernerxError(`Max select menu length is 25.`);
 
@@ -197,7 +211,12 @@ export class InteractionCommandUtil {
 
 			if (!options.id) options.id = `${this.interaction.id}-menu`;
 
-			options.component = new StringSelectMenuBuilder().setCustomId(options.id).setMaxValues(1).setMinValues(1).setPlaceholder('Select a page.').addOptions({ label: 'index', value: '0' });
+			options.component = new StringSelectMenuBuilder()
+				.setCustomId(options.id)
+				.setMaxValues(1)
+				.setMinValues(1)
+				.setPlaceholder('Select a page.')
+				.addOptions({ label: 'index', value: '0' });
 
 			embeds.map((embed, i = 0) => {
 				options?.component?.addOptions({
@@ -218,7 +237,10 @@ export class InteractionCommandUtil {
 			ephemeral: !!options.ephemeral,
 		};
 
-		(options.reply === undefined || options.reply === true ? this.interaction.util.reply(content) : this.interaction.channel.send(content)).then(() => {
+		(options.reply === undefined || options.reply === true
+			? this.interaction.util.reply(content)
+			: this.interaction.channel.send(content)
+		).then(() => {
 			const collector = this.interaction.channel
 				.createMessageComponentCollector({
 					filter: options?.filter,
@@ -239,8 +261,9 @@ export class InteractionCommandUtil {
 		});
 	}
 
-	buttonPaginator(embeds: Array<EmbedBuilder>, options: ButtonOptions) {
-		if (!Array.isArray(embeds)) throw new XernerxError(`Expected embeds to be of type array, received ${typeof embeds} instead.`);
+	public buttonPaginator(embeds: Array<EmbedBuilder>, options: ButtonOptions) {
+		if (!Array.isArray(embeds))
+			throw new XernerxError(`Expected embeds to be of type array, received ${typeof embeds} instead.`);
 
 		if (embeds.length <= 0) throw new XernerxError(`The minimum embeds is 1.`);
 
@@ -273,7 +296,10 @@ export class InteractionCommandUtil {
 			ephemeral: !!options.ephemeral,
 		};
 
-		(options.reply === undefined || options.reply === true ? this.interaction.util.reply(content) : this.interaction.channel.send(content)).then((message: XernerxMessage) => {
+		(options.reply === undefined || options.reply === true
+			? this.interaction.util.reply(content)
+			: this.interaction.channel.send(content)
+		).then((message: XernerxMessage) => {
 			const collector = message.channel
 				.createMessageComponentCollector({
 					filter: options.filter,
@@ -299,7 +325,8 @@ export class InteractionCommandUtil {
 								break;
 							}
 							case 3: {
-								embed = embeds[embeds.indexOf(embed) < embeds.length - 1 ? embeds.indexOf(embed) + 1 : embeds.length - 1];
+								embed =
+									embeds[embeds.indexOf(embed) < embeds.length - 1 ? embeds.indexOf(embed) + 1 : embeds.length - 1];
 								break;
 							}
 							case 4: {
@@ -325,11 +352,11 @@ export class InteractionCommandUtil {
 		});
 	}
 
-	#buttonMenuPaginator(embeds: Array<EmbedBuilder>, options: ButtonOptions & SelectMenuOptions) {}
+	public buttonMenuPaginator(embeds: Array<EmbedBuilder>, options: ButtonOptions & SelectMenuOptions) {}
 
 	isOwner() {
 		return this.client.util.isOwner(this.interaction.user.id);
 	}
 
-	#createModal() {}
+	public createModal() {}
 }

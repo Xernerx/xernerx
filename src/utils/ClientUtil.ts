@@ -4,42 +4,25 @@ import XernerxError from '../tools/XernerxError.js';
 
 interface Presence {
 	text?: string;
-	type?: ActivityType.Playing | ActivityType.Streaming | ActivityType.Listening | ActivityType.Watching | ActivityType.Competing;
+	type?:
+		| ActivityType.Playing
+		| ActivityType.Streaming
+		| ActivityType.Listening
+		| ActivityType.Watching
+		| ActivityType.Competing;
 	link?: string;
 	status?: ClientPresenceStatus;
 	interval?: number;
 }
 
 export class ClientUtil {
-	client: XernerxClient;
+	private client: XernerxClient;
 
 	constructor(client: XernerxClient) {
 		this.client = client;
-
-		this.uptime = this.uptime;
-
-		this.getSubcommands = this.getSubcommands;
-
-		this.isOwner = this.isOwner;
-
-		this.getAllCommands = this.getAllCommands;
-
-		this.getAllMessageCommands = this.getAllMessageCommands;
-
-		this.getAllSlashCommands = this.getAllSlashCommands;
-
-		this.getAllContextCommands = this.getAllContextCommands;
-
-		this.setPresence = this.setPresence;
-
-		this.getCooldowns = this.getCooldowns;
-
-		this.getCooldownTimers = this.getCooldownTimers;
-
-		this.defer = this.defer;
 	}
 
-	uptime(timestamp: number | null) {
+	public uptime(timestamp: number | null) {
 		if (!timestamp) timestamp = this.client.uptime || 0;
 
 		let totalSeconds = timestamp / 1000;
@@ -59,8 +42,9 @@ export class ClientUtil {
 		else return `${seconds}s`;
 	}
 
-	getSubcommands(name: string) {
-		if (!name || typeof name !== 'string') throw new XernerxError(`Expected name to be of type string, received ${typeof name} instead!`);
+	public getSubcommands(name: string) {
+		if (!name || typeof name !== 'string')
+			throw new XernerxError(`Expected name to be of type string, received ${typeof name} instead!`);
 
 		const commands: object[] = [];
 
@@ -123,7 +107,7 @@ export class ClientUtil {
 		return commands;
 	}
 
-	isOwner(userId: string) {
+	public isOwner(userId: string) {
 		if (!userId) throw new XernerxError('No ID specified');
 
 		let owners = this.client.settings.ownerId;
@@ -135,7 +119,7 @@ export class ClientUtil {
 		return owners.includes(userId);
 	}
 
-	getAllCommands() {
+	public getAllCommands() {
 		const cmds: object[] = [];
 
 		for (const commands of Object.values(this.client.commands)) {
@@ -145,7 +129,7 @@ export class ClientUtil {
 		return cmds;
 	}
 
-	getAllMessageCommands() {
+	public getAllMessageCommands() {
 		const cmds: object[] = [];
 
 		this.client.commands.message.map((cmd: object) => cmds.push(cmd));
@@ -153,7 +137,7 @@ export class ClientUtil {
 		return cmds;
 	}
 
-	getAllSlashCommands() {
+	public getAllSlashCommands() {
 		const cmds: object[] = [];
 
 		this.client.commands.slash.map((cmd: object) => cmds.push(cmd));
@@ -161,7 +145,7 @@ export class ClientUtil {
 		return cmds;
 	}
 
-	getAllContextCommands() {
+	public getAllContextCommands() {
 		const cmds: object[] = [];
 
 		this.client.commands.context.map((cmd: object) => cmds.push(cmd));
@@ -169,7 +153,7 @@ export class ClientUtil {
 		return cmds;
 	}
 
-	setPresence(options: Presence) {
+	public setPresence(options: Presence) {
 		const client = this.client;
 
 		function pres() {
@@ -193,7 +177,7 @@ export class ClientUtil {
 		}
 	}
 
-	getCooldowns(id: string, command?: string) {
+	public getCooldowns(id: string, command?: string) {
 		let cooldowns: any = [];
 
 		for (const [key, value] of Object.entries(this.client.cache)) {
@@ -227,7 +211,7 @@ export class ClientUtil {
 		return cooldowns;
 	}
 
-	getCooldownTimers(id: string, command?: string) {
+	public getCooldownTimers(id: string, command?: string) {
 		let cooldowns: any = [];
 
 		for (const [key, value] of Object.entries(this.client.cache)) {
@@ -267,7 +251,7 @@ export class ClientUtil {
 		return cooldowns;
 	}
 
-	async defer(time: number) {
+	public async defer(time: number) {
 		return new Promise((resolve: any) => setTimeout(resolve, time || 0));
 	}
 }

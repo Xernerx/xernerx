@@ -1,5 +1,6 @@
-import Discord from 'discord.js';
-import DumFunctions from 'dumfunctions';
+export * from 'discord.js';
+export * from 'dumfunctions';
+import ExtensionBuilder from 'xernerx-extension-builder';
 
 import XernerxClient from './client/XernerxClient.js';
 import EventBuilder from './build/EventBuilder.js';
@@ -9,16 +10,11 @@ import ContextCommandBuilder from './build/ContextCommandBuilder.js';
 import SlashCommandBuilder from './build/SlashCommandBuilder.js';
 import { CommandType, EventEmitterType, ContextCommandType, InhibitorType } from './types/enums.js';
 import XernerxError from './tools/XernerxError.js';
-import ExtensionBuilder from 'xernerx-extension-builder';
 import pkg from './tools/package.js';
 
-const version: string = pkg.version;
+const xernerxVersion: string = pkg.version;
 
 export default {
-	// Imported methods
-	Discord,
-	DumFunctions,
-
 	// Client
 	Client: XernerxClient,
 	XernerxClient,
@@ -39,14 +35,10 @@ export default {
 	XernerxError,
 
 	// Constants
-	version,
+	version: xernerxVersion,
 };
 
 export {
-	// Imported methods
-	Discord,
-	DumFunctions,
-
 	// Client
 	XernerxClient,
 
@@ -66,5 +58,5 @@ export {
 	XernerxError,
 
 	// Constants
-	version,
+	xernerxVersion,
 };

@@ -1,14 +1,14 @@
-import { Interaction, Message } from "discord.js";
+import { Interaction, Message } from 'discord.js';
 
-import { InhibitorType } from "../types/enums.js";
-import XernerxClient from "../client/XernerxClient.js";
-import { XernerxInteraction, XernerxMessage } from "../types/types.js";
+import { InhibitorType } from '../types/enums.js';
+import XernerxClient from '../client/XernerxClient.js';
+import { XernerxInteraction, XernerxMessage } from '../types/types.js';
 
 export class InhibitorValidation {
-	client: XernerxClient;
-	action: XernerxMessage | XernerxInteraction;
-	command: string;
-	inhibited: Record<string, string | void>;
+	private client: XernerxClient;
+	private action: XernerxMessage | XernerxInteraction;
+	private command: string;
+	private inhibited: Record<string, string | void>;
 
 	constructor(client: XernerxClient, action: XernerxMessage | XernerxInteraction, command: string) {
 		this.client = client;
@@ -20,11 +20,12 @@ export class InhibitorValidation {
 		this.inhibited = {};
 	}
 
-	async inhibit() {
+	public async inhibit() {
 		for (const inhibitor of this.client.inhibitors) {
 			const inhibit = inhibitor[1];
 
-			if (inhibit) this.inhibited[inhibit.name] = await inhibit.check(this.action, this.args(this.action, inhibit.type));
+			if (inhibit)
+				this.inhibited[inhibit.name] = await inhibit.check(this.action, this.args(this.action, inhibit.type));
 		}
 
 		for (const inhibit of Object.values(this.inhibited)) {
@@ -32,7 +33,7 @@ export class InhibitorValidation {
 		}
 	}
 
-	args(action: XernerxInteraction | XernerxMessage | any, type: InhibitorType) {
+	private args(action: XernerxInteraction | XernerxMessage | any, type: InhibitorType) {
 		if (type === InhibitorType.Channel) return action.channel;
 		if (type === InhibitorType.User) return action.author || action.user;
 		if (type === InhibitorType.Guild) return action.guild;

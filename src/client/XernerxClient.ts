@@ -21,16 +21,16 @@ import InhibitorBuilder from '../build/InhibitorBuilder.js';
  * @extends {Client}
  */
 export default class XernerxClient extends Client {
-	settings: ClientOptions;
-	commands: ClientCommands;
-	cache: ClientCache;
-	modules: ClientModules;
-	util: ClientUtil;
-	handlerOptions: HandlerOptions;
-	events: Collection<string, EventBuilder>;
-	extensions: Record<string, ExtensionBuilder>;
-	inhibitors: Collection<string, InhibitorBuilder>;
-	config: object;
+	public settings: ClientOptions;
+	public commands: ClientCommands;
+	public cache: ClientCache;
+	public modules: ClientModules;
+	public util: ClientUtil;
+	public handlerOptions: HandlerOptions;
+	public events: Collection<string, EventBuilder>;
+	public extensions: Record<string, ExtensionBuilder>;
+	public inhibitors: Collection<string, InhibitorBuilder>;
+	public config: object;
 
 	constructor(discordOptions: DiscordOptions, clientOptions: ClientOptions, config?: object) {
 		super(discordOptions);
@@ -90,7 +90,13 @@ export default class XernerxClient extends Client {
 					Style.log(
 						`Xernerx | ${client.user.tag} signed in watching ${size} server${size > 1 ? 's' : ''}. ${
 							(this.handlerOptions.slash || this.handlerOptions.context)?.guildId
-								? `Using ${(await this.guilds.fetch((this.handlerOptions.slash || this.handlerOptions.context)?.guildId || '0')).name} as local guild.`
+								? `Using ${
+										(
+											await this.guilds.fetch(
+												(this.handlerOptions.slash || this.handlerOptions.context)?.guildId || '0'
+											)
+										).name
+								  } as local guild.`
 								: ''
 						}`,
 						{ color: Style.TextColor.Purple }
@@ -98,15 +104,13 @@ export default class XernerxClient extends Client {
 				);
 			});
 		}
-
-		this.register = this.register;
 	}
 
-	register(token: string) {
+	public register(token: string) {
 		this.login(token);
 	}
 
-	loadExtensions(options: ExtensionOptions) {
+	public loadAllExtensions(options: ExtensionOptions) {
 		const extensions = new Extensions(this);
 
 		return extensions.load(options.extensions, options.logging || false);

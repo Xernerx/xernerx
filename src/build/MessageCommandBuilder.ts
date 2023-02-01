@@ -1,7 +1,8 @@
 import { Message, ChannelType } from 'discord.js';
 import { s } from '@sapphire/shapeshift';
-import { XernerxClient } from '../main.js';
+
 import { MessageArgOptions, MessageCommandOptions } from '../types/options.js';
+import XernerxClient from '../client/XernerxClient.js';
 
 /**
  * @description - The command builder for message commands.

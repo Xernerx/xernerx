@@ -3,21 +3,21 @@ import { Collection, GatewayVersion, InteractionType, REST, Routes, Message, Par
 import XernerxClient from '../client/XernerxClient.js';
 import { InteractionCommandUtil, MessageCommandUtil } from '../utils/CommandUtil.js';
 import { InteractionArguments, messageArguments } from './CommandArguments.js';
-import commandValidation from './CommandValidations.js';
+import commandValidation from '../validators/CommandValidations.js';
 import { Style } from 'dumfunctions';
-import { InhibitorValidation } from './InhibitorValidations.js';
+import { InhibitorValidation } from '../validators/InhibitorValidations.js';
 import { XernerxMessage, XernerxUser } from '../types/types.js';
-import { MessageCommandBuilder } from '../main.js';
 import { MessageArgOptions } from '../types/options.js';
+import MessageCommandBuilder from '../build/MessageCommandBuilder.js';
 
 export class MessageCommandEvents {
-	client: XernerxClient;
+	private client: XernerxClient;
 
 	constructor(client: XernerxClient) {
 		this.client = client;
 	}
 
-	messageCreate() {
+	public messageCreate() {
 		this.client.on('messageCreate', async (message: Message) => {
 			if (!message.author.bot) {
 				let command: string | undefined = undefined,
@@ -42,7 +42,9 @@ export class MessageCommandEvents {
 						}
 
 						if (this.client.handlerOptions.message?.prefix) {
-							const prefix = Array.isArray(this.client.handlerOptions.message.prefix) ? this.client.handlerOptions.message.prefix : [this.client.handlerOptions.message.prefix];
+							const prefix = Array.isArray(this.client.handlerOptions.message.prefix)
+								? this.client.handlerOptions.message.prefix
+								: [this.client.handlerOptions.message.prefix];
 
 							prefix.map((prefix: string) => {
 								if (message.content.startsWith(prefix)) {
@@ -54,17 +56,23 @@ export class MessageCommandEvents {
 						}
 
 						if (this.client.handlerOptions.message?.allowMention) {
-							if (message.mentions.users.has(this.client.user?.id as string) || message.mentions.repliedUser?.id === this.client.user?.id) {
+							if (
+								message.mentions.users.has(this.client.user?.id as string) ||
+								message.mentions.repliedUser?.id === this.client.user?.id
+							) {
 								command = message.content.replace(`<@${this.client.user?.id}>`, '').trim().split(/ +/).shift();
 
 								px = 'MentionPrefix';
 							}
 						}
 
-						const prefix = Array.isArray(this.client.handlerOptions.message?.prefix) ? this.client.handlerOptions.message?.prefix : [this.client.handlerOptions.message?.prefix];
+						const prefix = Array.isArray(this.client.handlerOptions.message?.prefix)
+							? this.client.handlerOptions.message?.prefix
+							: [this.client.handlerOptions.message?.prefix];
 
 						if (
-							(cmd.name.toLowerCase() == command?.toLowerCase() || cmd.aliases?.map((c: string) => c.toLowerCase())?.includes((command as string)?.toLowerCase())) &&
+							(cmd.name.toLowerCase() == command?.toLowerCase() ||
+								cmd.aliases?.map((c: string) => c.toLowerCase())?.includes((command as string)?.toLowerCase())) &&
 							((cmd.prefix as Array<string>).includes(px as string) || prefix?.includes(px) || px === 'MentionPrefix')
 						) {
 							try {
@@ -76,7 +84,14 @@ export class MessageCommandEvents {
 
 								if (await inhibitor.inhibit()) return;
 
-								if ((cmd.conditions as unknown) && ((await cmd.conditions(message, (await messageArguments(message, cmd)) as unknown as MessageArgOptions)) as unknown)) return;
+								if (
+									(cmd.conditions as unknown) &&
+									((await cmd.conditions(
+										message,
+										(await messageArguments(message, cmd)) as unknown as MessageArgOptions
+									)) as unknown)
+								)
+									return;
 
 								await cmd.exec(message, (await messageArguments(message, cmd)) as unknown as MessageArgOptions);
 
@@ -90,7 +105,7 @@ export class MessageCommandEvents {
 		});
 	}
 
-	messageUpdate() {
+	public messageUpdate() {
 		this.client.on('messageUpdate', async (old: Message | PartialMessage, message: Message | PartialMessage) => {
 			message = message as XernerxMessage;
 
@@ -118,7 +133,9 @@ export class MessageCommandEvents {
 						}
 
 						if (this.client.handlerOptions.message?.prefix) {
-							const prefix = Array.isArray(this.client.handlerOptions.message.prefix) ? this.client.handlerOptions.message.prefix : [this.client.handlerOptions.message.prefix];
+							const prefix = Array.isArray(this.client.handlerOptions.message.prefix)
+								? this.client.handlerOptions.message.prefix
+								: [this.client.handlerOptions.message.prefix];
 
 							prefix.map((prefix: string) => {
 								if (message?.content?.startsWith(prefix)) {
@@ -130,17 +147,23 @@ export class MessageCommandEvents {
 						}
 
 						if (this.client.handlerOptions.message?.allowMention) {
-							if (message.mentions.users.has(this.client.user?.id || '') || message.mentions.repliedUser?.id === this.client.user?.id) {
+							if (
+								message.mentions.users.has(this.client.user?.id || '') ||
+								message.mentions.repliedUser?.id === this.client.user?.id
+							) {
 								command = message?.content?.replace(`<@${this.client.user?.id}>`, '').trim().split(/ +/).shift();
 
 								px = 'MentionPrefix';
 							}
 						}
 
-						const prefix = Array.isArray(this.client.handlerOptions.message?.prefix) ? this.client.handlerOptions.message?.prefix : [this.client.handlerOptions.message?.prefix];
+						const prefix = Array.isArray(this.client.handlerOptions.message?.prefix)
+							? this.client.handlerOptions.message?.prefix
+							: [this.client.handlerOptions.message?.prefix];
 
 						if (
-							(cmd.name.toLowerCase() == command?.toLowerCase() || cmd.aliases?.map((c: string) => c.toLowerCase())?.includes((command as string)?.toLowerCase())) &&
+							(cmd.name.toLowerCase() == command?.toLowerCase() ||
+								cmd.aliases?.map((c: string) => c.toLowerCase())?.includes((command as string)?.toLowerCase())) &&
 							((cmd.prefix as Array<string>).includes(px as string) || prefix?.includes(px) || px === 'MentionPrefix')
 						) {
 							try {
@@ -154,7 +177,14 @@ export class MessageCommandEvents {
 
 								if (await inhibitor.inhibit()) return;
 
-								if ((cmd.conditions as unknown) && ((await cmd.conditions(message, (await messageArguments(message, cmd)) as unknown as MessageArgOptions)) as unknown)) return;
+								if (
+									(cmd.conditions as unknown) &&
+									((await cmd.conditions(
+										message,
+										(await messageArguments(message, cmd)) as unknown as MessageArgOptions
+									)) as unknown)
+								)
+									return;
 
 								await cmd.exec(message, (await messageArguments(message, cmd)) as unknown as MessageArgOptions);
 
@@ -168,15 +198,20 @@ export class MessageCommandEvents {
 		});
 	}
 
-	messageDelete() {
+	public messageDelete() {
 		this.client.on('messageDelete', async (message: unknown) => {
-			if (this.client.cache.messages.has((message as XernerxMessage).id) && this.client.handlerOptions.message?.handleDeletes) {
+			if (
+				this.client.cache.messages.has((message as XernerxMessage).id) &&
+				this.client.handlerOptions.message?.handleDeletes
+			) {
 				try {
 					if (this.client.handlerOptions.message?.handleTyping) (message as XernerxMessage).channel.sendTyping();
 
 					const msg: unknown = this.client.cache.messages.get((message as XernerxMessage).id);
 
-					const response = await (message as XernerxMessage).channel.messages.fetch((msg as Record<'response', string>)?.response);
+					const response = await (message as XernerxMessage).channel.messages.fetch(
+						(msg as Record<'response', string>)?.response
+					);
 
 					await response.delete();
 				} catch (error) {
@@ -188,13 +223,13 @@ export class MessageCommandEvents {
 }
 
 export class SlashCommandEvents {
-	client: XernerxClient;
+	private client: XernerxClient;
 
 	constructor(client: XernerxClient) {
 		this.client = client;
 	}
 
-	slashCreate() {
+	public slashCreate() {
 		this.client.on('interactionCreate', async (interaction: any) => {
 			interaction.util = new InteractionCommandUtil(this.client, interaction);
 
@@ -214,13 +249,32 @@ export class SlashCommandEvents {
 						if (commandValidation(interaction, command, this.client)) return;
 
 						if (command.defer?.reply !== false && this.client.handlerOptions.slash?.defer?.reply)
-							await interaction.deferReply({ ephemeral: this.client.handlerOptions.slash?.defer?.ephemeral, fetchReply: this.client.handlerOptions.slash?.defer?.fetchReply });
+							await interaction.deferReply({
+								ephemeral: this.client.handlerOptions.slash?.defer?.ephemeral,
+								fetchReply: this.client.handlerOptions.slash?.defer?.fetchReply,
+							});
 
-						if (!(interaction.deferred || interaction.replied) && command.defer?.reply) await interaction.deferReply({ ephemeral: command.defer?.ephemeral, fetchReply: command.defer?.fetchReply });
+						if (!(interaction.deferred || interaction.replied) && command.defer?.reply)
+							await interaction.deferReply({
+								ephemeral: command.defer?.ephemeral,
+								fetchReply: command.defer?.fetchReply,
+							});
 
-						if (command.conditions && (await command.conditions(interaction, { group: argumentsInfo.group(), subcommand: argumentsInfo.subcommand(), args: await argumentsInfo.arguments() }))) return;
+						if (
+							command.conditions &&
+							(await command.conditions(interaction, {
+								group: argumentsInfo.group(),
+								subcommand: argumentsInfo.subcommand(),
+								args: await argumentsInfo.arguments(),
+							}))
+						)
+							return;
 
-						await command.exec(interaction, { group: argumentsInfo.group(), subcommand: argumentsInfo.subcommand(), args: await argumentsInfo.arguments() });
+						await command.exec(interaction, {
+							group: argumentsInfo.group(),
+							subcommand: argumentsInfo.subcommand(),
+							args: await argumentsInfo.arguments(),
+						});
 
 						this.client.emit('commandRun', interaction, command);
 					} catch (error) {
@@ -233,13 +287,13 @@ export class SlashCommandEvents {
 }
 
 export class ContextCommandEvents {
-	client: XernerxClient;
+	private client: XernerxClient;
 
 	constructor(client: XernerxClient) {
 		this.client = client;
 	}
 
-	contextCreate() {
+	public contextCreate() {
 		this.client.on('interactionCreate', async (interaction: any) => {
 			interaction.util = new InteractionCommandUtil(this.client, interaction);
 
@@ -259,9 +313,16 @@ export class ContextCommandEvents {
 						if (command.conditions && (await command.conditions(interaction))) return;
 
 						if (command.defer?.reply !== false && this.client.handlerOptions.context?.defer?.reply)
-							await interaction.deferReply({ ephemeral: this.client.handlerOptions.context?.defer?.ephemeral, fetchReply: this.client.handlerOptions.context?.defer?.fetchReply });
+							await interaction.deferReply({
+								ephemeral: this.client.handlerOptions.context?.defer?.ephemeral,
+								fetchReply: this.client.handlerOptions.context?.defer?.fetchReply,
+							});
 
-						if (!(interaction.deferred || interaction.replied) && command.defer?.reply) await interaction.deferReply({ ephemeral: command.defer?.ephemeral, fetchReply: command.defer?.fetchReply });
+						if (!(interaction.deferred || interaction.replied) && command.defer?.reply)
+							await interaction.deferReply({
+								ephemeral: command.defer?.ephemeral,
+								fetchReply: command.defer?.fetchReply,
+							});
 
 						await command.exec(interaction);
 
@@ -276,23 +337,31 @@ export class ContextCommandEvents {
 }
 
 export class CommandsDeploy {
-	client: XernerxClient;
+	private client: XernerxClient;
 
 	constructor(client: XernerxClient) {
 		this.client = client;
 	}
 
-	deploy() {
+	public deploy() {
 		this.client.once('ready', async (client) => {
 			const slashCommands: Array<object> = [],
 				contextCommands: Array<object> = [];
 
-			this.client.commands.context.map((command) => (command.data ? contextCommands.push(command.data.toJSON()) : null));
+			this.client.commands.context.map((command) =>
+				command.data ? contextCommands.push(command.data.toJSON()) : null
+			);
 			this.client.commands.slash.map((command) => (command.data ? slashCommands.push(command.data.toJSON()) : null));
 
 			try {
-				const global = { slash: this.client.handlerOptions.slash?.global, context: this.client.handlerOptions.context?.global };
-				const guild = { slash: this.client.handlerOptions.slash?.guildId, context: this.client.handlerOptions.context?.guildId };
+				const global = {
+					slash: this.client.handlerOptions.slash?.global,
+					context: this.client.handlerOptions.context?.global,
+				};
+				const guild = {
+					slash: this.client.handlerOptions.slash?.guildId,
+					context: this.client.handlerOptions.context?.guildId,
+				};
 
 				if (global.slash && global.context) {
 					if (guild.slash !== guild.context)
@@ -322,21 +391,26 @@ export class CommandsDeploy {
 					this.put('guild', guild.slash as string, [...contextCommands, ...slashCommands]);
 				}
 
-				console.log(
-					Style.log(
-						`Xernerx | Deployed ${slashCommands.length} slash commands ${global.slash ? 'globally' : 'locally'} and ${contextCommands.length} context commands ${
-							global.context ? 'globally' : 'locally'
-						}.`,
-						{ color: Style.TextColor.Purple }
-					)
-				);
+				if (this.client.handlerOptions.context?.logging || this.client.handlerOptions.slash?.logging)
+					console.info(
+						Style.log(
+							`Xernerx | Deployed ${slashCommands.length} slash commands ${global.slash ? 'globally' : 'locally'} and ${
+								contextCommands.length
+							} context commands ${global.context ? 'globally' : 'locally'}.`,
+							{ color: Style.TextColor.Purple }
+						)
+					);
 			} catch (error) {
-				console.error(Style.log(`Xernerx | Couldn't deploy interaction commands because <${error}>.`, { color: Style.BackgroundColor.Red }));
+				console.error(
+					Style.log(`Xernerx | Couldn't deploy interaction commands because <${error}>.`, {
+						color: Style.BackgroundColor.Red,
+					})
+				);
 			}
 		});
 	}
 
-	put(type: string, guild: string, body: Array<object>) {
+	private put(type: string, guild: string, body: Array<object>) {
 		const rest = new REST({ version: GatewayVersion }).setToken(this.client.token as string);
 
 		if (type === 'guild') rest.put(Routes.applicationGuildCommands(this.client.user?.id as string, guild), { body });

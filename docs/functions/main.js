@@ -1,12 +1,10 @@
-import loadExtensions from "./models/extensions.js";
-import formatCode from "./models/formatCode.js";
-import loadGuide from "./models/guides.js";
-import createHeader from "./models/header.js";
-import loadLinks from "./models/links.js";
-import createSidebar from "./models/sidebar.js";
-import { loadVersion, loadChanges } from "./models/versions.js";
-
-console.log(pageType())
+import loadExtensions from './models/extensions.js';
+import formatCode from './models/formatCode.js';
+import loadGuide from './models/guides.js';
+import createHeader from './models/header.js';
+import loadLinks from './models/links.js';
+import createSidebar from './models/sidebar.js';
+import { loadVersion, loadChanges } from './models/versions.js';
 
 /**
  * Create the global header.
@@ -36,18 +34,17 @@ loadLinks(pageType());
  * @returns the type of page the user is viewing
  */
 function pageType() {
-    const types = ["Documentation", "Guide", "Extensions", "Changelog", "Sitemap", "Extension", "Home"], url = document.URL;
+	const types = ['Documentation', 'Guide', 'Extensions', 'Changelog', 'Sitemap', 'Extension', 'Home'],
+		url = document.URL;
 
-    if (url.includes('guide')) return types[1];
-    else if (url.includes('pages/extensions')) return types[5];
-    else if (url.includes('extensions')) return types[2];
-    else if (url.includes('changelog')) return types[3]
-    else if (url.includes('sitemap')) return types[4]
-    else if (url.includes('pages')) return types[0];
-    else return types[6];
+	if (url.includes('guide')) return types[1];
+	else if (url.includes('pages/extensions')) return types[5];
+	else if (url.includes('extensions')) return types[2];
+	else if (url.includes('changelog')) return types[3];
+	else if (url.includes('sitemap')) return types[4];
+	else if (url.includes('pages')) return types[0];
+	else return types[6];
 }
-
-
 
 const install = document.getElementById('install');
 
@@ -56,11 +53,10 @@ if (install) install.innerHTML = formatCode(install.innerText);
 const lightMode = document.querySelector('[dark-mode]');
 
 lightMode.addEventListener('click', async (event) => {
-    const body = document.getElementsByTagName('body')[0];
+	const body = document.getElementsByTagName('body')[0];
 
-    if (Object.values(body.classList).includes('light')) body.classList.remove('light');
+	if (Object.values(body.classList).includes('light')) body.classList.remove('light');
+	else body.classList.add('light');
 
-    else body.classList.add('light');
-
-    const silentLinks = document.getElementsByClassName('silent-link')
-})
+	const silentLinks = document.getElementsByClassName('silent-link');
+});

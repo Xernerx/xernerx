@@ -1,23 +1,24 @@
 import { GuildMember, Role, User } from 'discord.js';
-import { MessageCommandBuilder } from '../main.js';
+import MessageCommandBuilder from '../build/MessageCommandBuilder.js';
+
 import { XernerxInteraction, XernerxMessage } from '../types/types.js';
 
 export class InteractionArguments {
-	interaction: XernerxInteraction;
+	private interaction: XernerxInteraction;
 
 	constructor(interaction: XernerxInteraction) {
 		this.interaction = interaction;
 	}
 
-	group() {
+	public group() {
 		return this.interaction?.options?._group;
 	}
 
-	subcommand() {
+	public subcommand() {
 		return this.interaction?.options?._subcommand;
 	}
 
-	arguments() {
+	public arguments() {
 		const options: Record<string, object> = {};
 
 		if (this.interaction?.options?._hoistedOptions) {
@@ -80,11 +81,13 @@ export async function messageArguments(message: XernerxMessage, command: Message
 			} else if (argument.type == 'number') {
 				args[argument.name] = parseInt(content[0] as string);
 			} else if (argument.type == 'boolean') {
-				if ((content[0] as string)?.toLowerCase() != 'true' && (content[0] as string)?.toLowerCase() != 'false') content[0] = null;
+				if ((content[0] as string)?.toLowerCase() != 'true' && (content[0] as string)?.toLowerCase() != 'false')
+					content[0] = null;
 
 				args[argument.name] = content[0];
 			} else if (argument.type == 'user') {
-				let user: User | null = message.client.users.cache.find((u) => u?.username?.toLowerCase()?.includes(content[0] as string)) || null;
+				let user: User | null =
+					message.client.users.cache.find((u) => u?.username?.toLowerCase()?.includes(content[0] as string)) || null;
 
 				try {
 					user = (await message.client.users.fetch(user?.id || (content[0] as string).replace(/<@!?|>/g, ''))) || null;
@@ -94,7 +97,8 @@ export async function messageArguments(message: XernerxMessage, command: Message
 
 				(args as unknown as Record<string, User | null>)[argument.name] = user;
 			} else if (argument.type == 'role') {
-				let role: Role | null = message.guild?.roles.cache.find((r) => r?.name?.toLowerCase()?.includes(content[0] as string)) || null;
+				let role: Role | null =
+					message.guild?.roles.cache.find((r) => r?.name?.toLowerCase()?.includes(content[0] as string)) || null;
 
 				try {
 					role = (await message.guild?.roles.fetch(role?.id || (content[0] as string).replace(/<@&?|>/g, ''))) || null;
@@ -105,17 +109,24 @@ export async function messageArguments(message: XernerxMessage, command: Message
 				(args as unknown as Record<string, Role | null>)[argument.name] = role;
 			} else if (argument.type == 'member') {
 				let member: GuildMember | null =
-					message.guild?.members.cache.find((m) => m?.nickname?.toLowerCase()?.includes(content[0] as string) || m?.user?.username?.toLowerCase()?.includes(content[0] as string)) || null;
+					message.guild?.members.cache.find(
+						(m) =>
+							m?.nickname?.toLowerCase()?.includes(content[0] as string) ||
+							m?.user?.username?.toLowerCase()?.includes(content[0] as string)
+					) || null;
 
 				try {
-					member = (await message.guild?.members.fetch(member?.id || (content[0] as string).replace(/<@!?|>/g, ''))) || null;
+					member =
+						(await message.guild?.members.fetch(member?.id || (content[0] as string).replace(/<@!?|>/g, ''))) || null;
 				} catch (e) {
 					member = null;
 				}
 
 				(args as unknown as Record<string, GuildMember | null>)[argument.name] = member;
 			} else if (argument.type == 'channel') {
-				let channel: any = message.guild?.channels.cache.find((c: { name: string }) => c?.name?.toLowerCase()?.includes(content[0] as string));
+				let channel: any = message.guild?.channels.cache.find((c: { name: string }) =>
+					c?.name?.toLowerCase()?.includes(content[0] as string)
+				);
 
 				try {
 					channel = await message.client.channels.fetch(channel?.id || (content[0] as string).replace(/<#|>/g, ''));

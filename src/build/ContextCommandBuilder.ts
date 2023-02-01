@@ -1,7 +1,8 @@
 import { ChannelType, ContextMenuCommandBuilder, Interaction } from 'discord.js';
 import { s } from '@sapphire/shapeshift';
-import { XernerxClient } from '../main.js';
+
 import { ContextCommandOptions } from '../types/options.js';
+import XernerxClient from '../client/XernerxClient.js';
 
 /**
  * @description The command builder for context commands.
@@ -11,6 +12,8 @@ import { ContextCommandOptions } from '../types/options.js';
 export default class ContextCommandBuilder {
 	id: string;
 	data: ContextMenuCommandBuilder;
+	name: string;
+	type: number;
 	description?: string;
 	info?: string;
 	category?: string;
@@ -42,7 +45,8 @@ export default class ContextCommandBuilder {
 
 		if (options.DMPermission) this.data.setDMPermission(options.DMPermission);
 
-		if (options.nameLocalization) this.data.setNameLocalization(options.nameLocalization.locale, options.nameLocalization.localizedName);
+		if (options.nameLocalization)
+			this.data.setNameLocalization(options.nameLocalization.locale, options.nameLocalization.localizedName);
 
 		if (options.nameLocalizations) this.data.setNameLocalizations(options.nameLocalizations);
 
@@ -64,6 +68,10 @@ export default class ContextCommandBuilder {
 				fetchReply: s.boolean.optional,
 			}).optional,
 		}).parse(options);
+
+		this.name = options.name;
+
+		this.type = options.type;
 
 		this.description = options.description;
 

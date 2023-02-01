@@ -1,9 +1,16 @@
-import Discord, { ChannelType, Interaction, SlashCommandStringOption, SlashCommandSubcommandBuilder, SlashCommandSubcommandGroupBuilder } from 'discord.js';
+import Discord, {
+	ChannelType,
+	Interaction,
+	SlashCommandStringOption,
+	SlashCommandSubcommandBuilder,
+	SlashCommandSubcommandGroupBuilder,
+} from 'discord.js';
 import { s } from '@sapphire/shapeshift';
 import { SlashCommandOption, SlashArgumentTypes } from '../types/enums.js';
-import { XernerxClient } from '../main.js';
+
 import XernerxError from '../tools/XernerxError.js';
 import { SlashArgOptions, SlashCommandOptions, SlashGroupOptions, SlashSubcommandOptions } from '../types/options.js';
+import XernerxClient from '../client/XernerxClient.js';
 
 /**
  * @description - The command builder for slash commands.
@@ -11,28 +18,30 @@ import { SlashArgOptions, SlashCommandOptions, SlashGroupOptions, SlashSubcomman
  * @param {SlashCommandOptions} options - The command options.
  */
 export default class SlashCommandBuilder {
-	id: string;
-	data: Discord.SlashCommandBuilder;
-	info?: string;
-	category?: string;
-	owner?: boolean;
-	channelType?: ChannelType | ChannelType[];
-	separator?: string;
-	cooldown?: number;
-	ignoreOwner?: boolean;
-	channels?: string[];
-	guilds?: string[];
-	userPermissions?: bigint[];
-	clientPermissions?: bigint[];
-	args?: object[];
-	subcommands?: object[];
-	groups?: object[];
-	defer?: {
+	public id: string;
+	public data: Discord.SlashCommandBuilder;
+	public name: string;
+	public description: string;
+	public info?: string;
+	public category?: string;
+	public owner?: boolean;
+	public channelType?: ChannelType | ChannelType[];
+	public separator?: string;
+	public cooldown?: number;
+	public ignoreOwner?: boolean;
+	public channels?: string[];
+	public guilds?: string[];
+	public userPermissions?: bigint[];
+	public clientPermissions?: bigint[];
+	public args?: object[];
+	public subcommands?: object[];
+	public groups?: object[];
+	public defer?: {
 		reply?: boolean;
 		ephemeral?: boolean;
 		fetchReply?: boolean;
 	};
-	client: XernerxClient | object;
+	public client: XernerxClient | object;
 
 	constructor(id: string, options: SlashCommandOptions) {
 		this.id = id;
@@ -40,15 +49,15 @@ export default class SlashCommandBuilder {
 		this.data = new Discord.SlashCommandBuilder().setName(options.name).setDescription(options.description);
 
 		if (options.args && options?.args?.length > 0) {
-			this.#addArgs(this.data, options.args);
+			this.addArgs(this.data, options.args);
 		}
 
 		if (options.subcommands && options?.subcommands?.length > 0) {
-			this.#addSubcommands(this.data, options.subcommands);
+			this.addSubcommands(this.data, options.subcommands);
 		}
 
 		if (options.groups && options?.groups?.length > 0) {
-			this.#addSubcommandGroups(options.groups);
+			this.addSubcommandGroups(options.groups);
 		}
 
 		s.object({
@@ -69,6 +78,10 @@ export default class SlashCommandBuilder {
 				fetchReply: s.boolean.optional,
 			}).optional,
 		});
+
+		this.name = options.name;
+
+		this.description = options.description;
 
 		this.info = options.info;
 
@@ -105,13 +118,16 @@ export default class SlashCommandBuilder {
 
 	async exec(interaction: Interaction) {}
 
-	#addArgs(command: Discord.SlashCommandBuilder | SlashCommandSubcommandBuilder, args: Array<SlashArgOptions>) {
+	private addArgs(command: Discord.SlashCommandBuilder | SlashCommandSubcommandBuilder, args: Array<SlashArgOptions>) {
 		const types = ['boolean', 'integer', 'number', 'string', 'user', 'role', 'channel', 'mentionable'];
 
 		for (const argument of args) {
-			if (!types.includes(argument.type.toLowerCase())) throw new XernerxError(`Expected one of ${types.join(', ')}, received ${argument.type} instead.`);
+			if (!types.includes(argument.type.toLowerCase()))
+				throw new XernerxError(`Expected one of ${types.join(', ')}, received ${argument.type} instead.`);
 
-			let slashArgumentType: SlashArgumentTypes | string = `${argument.type.slice(0, 1).toUpperCase()}${argument.type.slice(1).toLowerCase()}`;
+			let slashArgumentType: SlashArgumentTypes | string = `${argument.type.slice(0, 1).toUpperCase()}${argument.type
+				.slice(1)
+				.toLowerCase()}`;
 
 			(command[`add${slashArgumentType as SlashArgumentTypes}Option`] as Function)((option: SlashCommandOption) => {
 				option
@@ -125,21 +141,26 @@ export default class SlashCommandBuilder {
 		}
 	}
 
-	#addSubcommands(method: Discord.SlashCommandBuilder | SlashCommandSubcommandGroupBuilder, subcommands: Array<SlashSubcommandOptions>) {
+	private addSubcommands(
+		method: Discord.SlashCommandBuilder | SlashCommandSubcommandGroupBuilder,
+		subcommands: Array<SlashSubcommandOptions>
+	) {
 		for (const subcommand of subcommands) {
 			let sub = new SlashCommandSubcommandBuilder().setName(subcommand.name).setDescription(subcommand.description);
 
-			if (subcommand.args?.length > 0) this.#addArgs(sub, subcommand.args);
+			if (subcommand.args?.length > 0) this.addArgs(sub, subcommand.args);
 
 			method.addSubcommand(sub);
 		}
 	}
 
-	#addSubcommandGroups(groups: Array<SlashGroupOptions>) {
+	private addSubcommandGroups(groups: Array<SlashGroupOptions>) {
 		for (const group of groups) {
-			let subcommandGroup = new SlashCommandSubcommandGroupBuilder().setName(group.name).setDescription(group.description);
+			let subcommandGroup = new SlashCommandSubcommandGroupBuilder()
+				.setName(group.name)
+				.setDescription(group.description);
 
-			if (group.subcommands?.length > 0) this.#addSubcommands(subcommandGroup, group.subcommands);
+			if (group.subcommands?.length > 0) this.addSubcommands(subcommandGroup, group.subcommands);
 
 			this.data.addSubcommandGroup(subcommandGroup);
 		}

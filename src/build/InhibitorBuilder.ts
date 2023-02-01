@@ -1,5 +1,6 @@
 import { s } from '@sapphire/shapeshift';
-import { InhibitorType, XernerxClient } from '../main.js';
+import XernerxClient from '../client/XernerxClient.js';
+import { InhibitorType } from '../main.js';
 import { InhibitorOptions, MessageArgOptions, SlashArgOptions } from '../types/options.js';
 import { XernerxInteraction, XernerxMessage } from '../types/types.js';
 

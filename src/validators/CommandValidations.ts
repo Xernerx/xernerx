@@ -1,5 +1,9 @@
 import { Interaction, Message, User, PermissionsBitField } from 'discord.js';
-import { ContextCommandBuilder, MessageCommandBuilder, SlashCommandBuilder, XernerxClient } from '../main.js';
+import ContextCommandBuilder from '../build/ContextCommandBuilder.js';
+import MessageCommandBuilder from '../build/MessageCommandBuilder.js';
+import SlashCommandBuilder from '../build/SlashCommandBuilder.js';
+import XernerxClient from '../client/XernerxClient.js';
+
 import { CommandType } from '../types/enums.js';
 import { XernerxMessage, XernerxUser } from '../types/types.js';
 
@@ -43,7 +47,9 @@ export default function commandValidation(
 
 		emit(client, action, command, 'Not the correct type of channel', command.channelType);
 	} else if (action?.guild && (command.userPermissions || client.settings.userPermissions)) {
-		const permissions = command.userPermissions || client?.settings?.userPermissions?.push(...handlerPermissions(client, command.commandType, 'user')),
+		const permissions =
+				command.userPermissions ||
+				client?.settings?.userPermissions?.push(...handlerPermissions(client, command.commandType, 'user')),
 			missing: bigint[] = [];
 
 		if (Array.isArray(permissions))
@@ -59,7 +65,9 @@ export default function commandValidation(
 			emit(client, action, command, 'Missing User Permissions', missing);
 		}
 	} else if (action?.guild && (command.clientPermissions || client.settings.clientPermissions)) {
-		const permissions = command.clientPermissions || client?.settings?.clientPermissions?.push(...handlerPermissions(client, command.commandType, 'client')),
+		const permissions =
+				command.clientPermissions ||
+				client?.settings?.clientPermissions?.push(...handlerPermissions(client, command.commandType, 'client')),
 			missing: bigint[] = [];
 
 		if (Array.isArray(permissions))
@@ -89,7 +97,12 @@ function emit(
 	return client.emit('commandBlock', action, command, reason, extra);
 }
 
-function inCooldown(user: XernerxUser, client: XernerxClient | any, command: MessageCommandBuilder | SlashCommandBuilder | ContextCommandBuilder | any, action: Message | Interaction) {
+function inCooldown(
+	user: XernerxUser,
+	client: XernerxClient | any,
+	command: MessageCommandBuilder | SlashCommandBuilder | ContextCommandBuilder | any,
+	action: Message | Interaction
+) {
 	let res = false,
 		downs: Record<string, number> = {};
 
@@ -202,7 +215,12 @@ function inCooldown(user: XernerxUser, client: XernerxClient | any, command: Mes
 	return res;
 }
 
-function toCooldown(action: Message | Interaction, command: MessageCommandBuilder | ContextCommandBuilder | SlashCommandBuilder | any, cooldown: number, name: string) {
+function toCooldown(
+	action: Message | Interaction,
+	command: MessageCommandBuilder | ContextCommandBuilder | SlashCommandBuilder | any,
+	cooldown: number,
+	name: string
+) {
 	let user = getUser(action);
 	return {
 		name,

@@ -33,4 +33,14 @@ export interface XernerxGuild extends Guild {}
 
 export interface XernerxMember extends GuildMember {}
 
-export type MessageCommandArgsTypes = 'rest' | 'option' | 'flag' | 'string' | 'number' | 'channel' | 'user' | 'member' | 'boolean' | 'role';
+export type MessageCommandArgsTypes =
+	| 'rest'
+	| 'option'
+	| 'flag'
+	| 'string'
+	| 'number'
+	| 'channel'
+	| 'user'
+	| 'member'
+	| 'boolean'
+	| 'role';

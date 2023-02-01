@@ -1,5 +1,6 @@
 import { s } from '@sapphire/shapeshift';
-import { XernerxClient } from '../main.js';
+import XernerxClient from '../client/XernerxClient.js';
+
 import { EventOptions } from '../types/options.js';
 
 /**

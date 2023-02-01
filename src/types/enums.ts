@@ -46,6 +46,20 @@ export enum EventEmitterType {
 
 export type SlashCommandOptionChoices = SlashCommandStringOption | SlashCommandNumberOption | SlashCommandIntegerOption;
 
-export type SlashCommandOption = SlashCommandOptionChoices | SlashCommandBooleanOption | SlashCommandUserOption | SlashCommandChannelOption | SlashCommandRoleOption | SlashCommandMentionableOption;
+export type SlashCommandOption =
+	| SlashCommandOptionChoices
+	| SlashCommandBooleanOption
+	| SlashCommandUserOption
+	| SlashCommandChannelOption
+	| SlashCommandRoleOption
+	| SlashCommandMentionableOption;
 
-export type SlashArgumentTypes = 'String' | 'Number' | 'Boolean' | 'User' | 'Channel' | 'Role' | 'Mentionable' | 'Integer';
+export type SlashArgumentTypes =
+	| 'String'
+	| 'Number'
+	| 'Boolean'
+	| 'User'
+	| 'Channel'
+	| 'Role'
+	| 'Mentionable'
+	| 'Integer';

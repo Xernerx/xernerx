@@ -1,20 +1,19 @@
-import XernerxClient from "../client/XernerxClient.js";
-import { Handler } from "./Handler.js";
+import XernerxClient from '../client/XernerxClient.js';
+import { Handler } from './Handler.js';
+import { CommandsDeploy, ContextCommandEvents, MessageCommandEvents, SlashCommandEvents } from '../models/Events.js';
 import {
-	CommandsDeploy,
-	ContextCommandEvents,
-	MessageCommandEvents,
-	SlashCommandEvents,
-} from "../models/Events.js";
-import { ContextCommandHandlerOptions, MessageCommandHandlerOptions, SlashCommandHandlerOptions } from "../types/options.js";
+	ContextCommandHandlerOptions,
+	MessageCommandHandlerOptions,
+	SlashCommandHandlerOptions,
+} from '../types/options.js';
 
 /**
  * @description - The command handler.
  * @param {XernerxClient} client - The XernerxClient.
  */
 export default class CommandHandler {
-	client: XernerxClient;
-	handler: Handler;
+	private client: XernerxClient;
+	private handler: Handler;
 
 	constructor(client: XernerxClient) {
 		this.client = client;
@@ -28,7 +27,7 @@ export default class CommandHandler {
 	 * @description - The message command loader.
 	 * @param {MessageCommandOptions} options - message command loader options.
 	 */
-	loadAllMessageCommands(options: MessageCommandHandlerOptions) {
+	public loadAllMessageCommands(options: MessageCommandHandlerOptions) {
 		this.handler.loadAllMessageCommands(options);
 
 		const events = new MessageCommandEvents(this.client);
@@ -44,7 +43,7 @@ export default class CommandHandler {
 	 * @description - The slash command loader.
 	 * @param {SlashCommandOptions} options - slash command loader options.
 	 */
-	loadAllSlashCommands(options: SlashCommandHandlerOptions) {
+	public loadAllSlashCommands(options: SlashCommandHandlerOptions) {
 		this.handler.loadAllSlashCommands(options);
 
 		new SlashCommandEvents(this.client).slashCreate();
@@ -54,7 +53,7 @@ export default class CommandHandler {
 	 * @description - The context command loader.
 	 * @param {ContextCommandOptions} options - context command loader options.
 	 */
-	loadAllContextCommands(options: ContextCommandHandlerOptions) {
+	public loadAllContextCommands(options: ContextCommandHandlerOptions) {
 		this.handler.loadAllContextCommands(options);
 
 		new ContextCommandEvents(this.client).contextCreate();

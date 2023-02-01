@@ -1,5 +1,16 @@
-import { CacheFactory, ChannelType, ContextMenuCommandType, MessageMentionOptions, Partials, PresenceData, RESTOptions, SweeperOptions, WebSocketOptions } from 'discord.js';
-import { ContextCommandType, EventEmitterType, ExtensionBuilder, InhibitorType } from '../main.js';
+import {
+	CacheFactory,
+	ChannelType,
+	ContextMenuCommandType,
+	MessageMentionOptions,
+	Partials,
+	PresenceData,
+	RESTOptions,
+	SweeperOptions,
+	WebSocketOptions,
+} from 'discord.js';
+import XernerxExtensionBuilder from 'xernerx-extension-builder';
+import { ContextCommandType, EventEmitterType, InhibitorType } from './enums.js';
 import { MessageCommandArgsTypes } from './types.js';
 
 export interface DiscordOptions {
@@ -40,7 +51,7 @@ export interface HandlerOptions {
 }
 
 export interface ExtensionOptions {
-	extensions: Array<ExtensionBuilder>;
+	extensions: Array<XernerxExtensionBuilder>;
 	logging?: boolean;
 }
 

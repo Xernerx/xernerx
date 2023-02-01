@@ -1,19 +1,25 @@
-import XernerxClient from "../client/XernerxClient.js";
-import fs from "node:fs";
-import * as path from "path";
-import { CommandType } from "../types/enums.js";
-import { s } from "@sapphire/shapeshift";
+import XernerxClient from '../client/XernerxClient.js';
+import fs from 'node:fs';
+import * as path from 'path';
+import { CommandType } from '../types/enums.js';
+import { s } from '@sapphire/shapeshift';
 import { Style } from 'dumfunctions';
-import { ContextCommandHandlerOptions, EventHandlerOptions, InhibitorHandlerOptions, MessageCommandHandlerOptions, SlashCommandHandlerOptions } from "../types/options.js";
+import {
+	ContextCommandHandlerOptions,
+	EventHandlerOptions,
+	InhibitorHandlerOptions,
+	MessageCommandHandlerOptions,
+	SlashCommandHandlerOptions,
+} from '../types/options.js';
 
 /**
  * @description - The Handler class.
  * @param {XernerxClient} client - The XernerxClient.
  */
 export class Handler {
-	client: XernerxClient;
-	commands: object[];
-	readyTimestamp: number;
+	private client: XernerxClient;
+	private commands: object[];
+	private readyTimestamp: number;
 
 	constructor(client: XernerxClient) {
 		this.client = client;
@@ -27,7 +33,7 @@ export class Handler {
 	 * @description - The loader for the message commands.
 	 * @param {MessageCommandOptions} options - The options for the message command loader.
 	 */
-	loadAllMessageCommands(options: MessageCommandHandlerOptions) {
+	public loadAllMessageCommands(options: MessageCommandHandlerOptions) {
 		this.client.handlerOptions.message = s
 			.object({
 				directory: s.string,
@@ -43,24 +49,28 @@ export class Handler {
 			})
 			.parse(options);
 
-		const files = this.#readdir(options.directory),
+		const files = this.readdir(options.directory),
 			loaded = [];
 
 		for (const file of files) {
-			this.#load(options.directory, file, CommandType.MessageCommand);
+			this.load(options.directory, file, CommandType.MessageCommand);
 
-			loaded.push(file.replace(".js", ""));
+			loaded.push(file.replace('.js', ''));
 		}
 
 		if (this.client.handlerOptions.message?.logging)
-			console.info(Style.log(`Xernerx | Loaded ${loaded.length} message commands: ${loaded.join(", ")}.`, { color: Style.TextColor.Cyan }));
+			console.info(
+				Style.log(`Xernerx | Loaded ${loaded.length} message commands: ${loaded.join(', ')}.`, {
+					color: Style.TextColor.Cyan,
+				})
+			);
 	}
 
 	/**
 	 * @description - The loader for the slash commands.
 	 * @param {SlashCommandOptions} options - The options for the slash command loader.
 	 */
-	loadAllSlashCommands(options: SlashCommandHandlerOptions) {
+	public loadAllSlashCommands(options: SlashCommandHandlerOptions) {
 		this.client.handlerOptions.slash = s
 			.object({
 				directory: s.string,
@@ -78,24 +88,28 @@ export class Handler {
 			})
 			.parse(options);
 
-		const files = this.#readdir(options.directory),
+		const files = this.readdir(options.directory),
 			loaded = [];
 
 		for (const file of files) {
-			this.#load(options.directory, file, CommandType.SlashCommand);
+			this.load(options.directory, file, CommandType.SlashCommand);
 
-			loaded.push(file.replace(".js", ""));
+			loaded.push(file.replace('.js', ''));
 		}
 
 		if (this.client.handlerOptions.slash?.logging)
-			console.info(Style.log(`Xernerx | Loaded ${loaded.length} slash commands: ${loaded.join(", ")}.`, { color: Style.TextColor.Cyan }));
+			console.info(
+				Style.log(`Xernerx | Loaded ${loaded.length} slash commands: ${loaded.join(', ')}.`, {
+					color: Style.TextColor.Cyan,
+				})
+			);
 	}
 
 	/**
 	 * @description - The loader for the context commands.
 	 * @param {ContextCommandOptions} options - The options for the context command loader.
 	 */
-	loadAllContextCommands(options: ContextCommandHandlerOptions) {
+	public loadAllContextCommands(options: ContextCommandHandlerOptions) {
 		this.client.handlerOptions.context = s
 			.object({
 				directory: s.string,
@@ -113,24 +127,28 @@ export class Handler {
 			})
 			.parse(options);
 
-		const files = this.#readdir(options.directory),
+		const files = this.readdir(options.directory),
 			loaded = [];
 
 		for (const file of files) {
-			this.#load(options.directory, file, CommandType.ContextCommand);
+			this.load(options.directory, file, CommandType.ContextCommand);
 
-			loaded.push(file.replace(".js", ""));
+			loaded.push(file.replace('.js', ''));
 		}
 
 		if (this.client.handlerOptions.context?.logging)
-			console.info(Style.log(`Xernerx | Loaded ${loaded.length} context commands: ${loaded.join(", ")}.`, { color: Style.TextColor.Cyan }));
+			console.info(
+				Style.log(`Xernerx | Loaded ${loaded.length} context commands: ${loaded.join(', ')}.`, {
+					color: Style.TextColor.Cyan,
+				})
+			);
 	}
 
 	/**
 	 * @description - The loader for the events.
 	 * @param {EventLoadOptions} options - The options for the event loader.
 	 */
-	loadAllEvents(options: EventHandlerOptions) {
+	public loadAllEvents(options: EventHandlerOptions) {
 		this.client.handlerOptions.events = s
 			.object({
 				directory: s.string,
@@ -138,7 +156,7 @@ export class Handler {
 			})
 			.parse(options);
 
-		const files = this.#readdir(options.directory),
+		const files = this.readdir(options.directory),
 			loaded = [];
 
 		(async () => {
@@ -146,11 +164,7 @@ export class Handler {
 				try {
 					options.directory.split(/\//).shift();
 
-					let event = (
-						await import(
-							"file://" + `${path.resolve(options.directory)}/${file}`
-						)
-					).default;
+					let event = (await import('file://' + `${path.resolve(options.directory)}/${file}`)).default;
 
 					event = new event();
 
@@ -160,16 +174,20 @@ export class Handler {
 
 					this.client.events.set(event.name, event);
 
-					this.#emitter(event);
+					this.emitter(event);
 				} catch (error) {
-					console.error(Style.log(`Xernerx | Couldn't load ${file} because <${error}>`, { color: Style.BackgroundColor.Red }));
+					console.error(
+						Style.log(`Xernerx | Couldn't load ${file} because <${error}>`, { color: Style.BackgroundColor.Red })
+					);
 				}
 
-				loaded.push(file.replace(".js", ""));
+				loaded.push(file.replace('.js', ''));
 			}
 
 			if (this.client.handlerOptions.events?.logging)
-				console.info(Style.log(`Xernerx | Loaded ${loaded.length} events: ${loaded.join(", ")}.`, { color: Style.TextColor.Cyan }));
+				console.info(
+					Style.log(`Xernerx | Loaded ${loaded.length} events: ${loaded.join(', ')}.`, { color: Style.TextColor.Cyan })
+				);
 		})();
 	}
 
@@ -177,7 +195,7 @@ export class Handler {
 	 * @description - The loader for the inhibitors.
 	 * @param {InhibitorLoadOptions} options - The options for the inhibitor loader.
 	 */
-	loadAllInhibitors(options: InhibitorHandlerOptions) {
+	public loadAllInhibitors(options: InhibitorHandlerOptions) {
 		this.client.handlerOptions.inhibitors = s
 			.object({
 				directory: s.string,
@@ -185,17 +203,21 @@ export class Handler {
 			})
 			.parse(options);
 
-		const files = this.#readdir(options.directory),
+		const files = this.readdir(options.directory),
 			loaded = [];
 
 		for (const file of files) {
-			this.#load(options.directory, file, CommandType.Inhibitor);
+			this.load(options.directory, file, CommandType.Inhibitor);
 
-			loaded.push(file.replace(".js", ""));
+			loaded.push(file.replace('.js', ''));
 		}
 
 		if (this.client.handlerOptions.inhibitors?.logging)
-			console.info(Style.log(`Xernerx | Loaded ${loaded.length} inhibitors: ${loaded.join(", ")}.`, { color: Style.TextColor.Cyan }));
+			console.info(
+				Style.log(`Xernerx | Loaded ${loaded.length} inhibitors: ${loaded.join(', ')}.`, {
+					color: Style.TextColor.Cyan,
+				})
+			);
 	}
 
 	/**
@@ -203,13 +225,13 @@ export class Handler {
 	 * @param {string} dir - the directory to look for.
 	 * @returns array of files.
 	 */
-	#readdir(dir: string) {
+	private readdir(dir: string) {
 		try {
-			return fs
-				.readdirSync(path.resolve(dir))
-				.filter((file) => file.endsWith(".js"));
+			return fs.readdirSync(path.resolve(dir)).filter((file) => file.endsWith('.js'));
 		} catch (error) {
-			console.error(Style.log(`Xernerx | Couldn't read ${dir} because <${error}>.`, { color: Style.BackgroundColor.Red }));
+			console.error(
+				Style.log(`Xernerx | Couldn't read ${dir} because <${error}>.`, { color: Style.BackgroundColor.Red })
+			);
 		}
 		return [];
 	}
@@ -221,12 +243,11 @@ export class Handler {
 	 * @param {string} type - the type of file.
 	 * @returns undefined
 	 */
-	async #load(dir: string, file: string, type: string) {
+	private async load(dir: string, file: string, type: string) {
 		try {
 			dir.split(/\//).shift();
 
-			let command = (await import("file://" + `${path.resolve(dir)}/${file}`))
-				.default;
+			let command = (await import('file://' + `${path.resolve(dir)}/${file}`)).default;
 
 			command = new command();
 
@@ -239,23 +260,14 @@ export class Handler {
 			command.file = file;
 
 			if (type === CommandType.MessageCommand)
-				this.client.commands.message.set(
-					command?.name || command?.name,
-					command
-				);
+				this.client.commands.message.set(command?.name || command?.name, command);
 
 			if (type === CommandType.SlashCommand) {
-				this.client.commands.slash.set(
-					command?.data?.name || command?.name,
-					command
-				);
+				this.client.commands.slash.set(command?.data?.name || command?.name, command);
 			}
 
 			if (type === CommandType.ContextCommand) {
-				this.client.commands.context.set(
-					command?.data?.name || command?.name,
-					command
-				);
+				this.client.commands.context.set(command?.data?.name || command?.name, command);
 			}
 
 			if (type === CommandType.Event) {
@@ -266,8 +278,9 @@ export class Handler {
 				this.client.inhibitors.set(command.name, command);
 			}
 		} catch (error) {
-			console.error(Style.log(`Xernerx | Couldn't load ${file} because <${error}>`, { color: Style.BackgroundColor.Red }));
-
+			console.error(
+				Style.log(`Xernerx | Couldn't load ${file} because <${error}>`, { color: Style.BackgroundColor.Red })
+			);
 		}
 	}
 
@@ -276,15 +289,10 @@ export class Handler {
 	 * @param {object} event - the event to be emitted.
 	 * @returns void
 	 */
-	#emitter(event: {
-		name: string;
-		emitter: string;
-		once: boolean;
-		run: Function;
-	}) {
+	private emitter(event: { name: string; emitter: string; once: boolean; run: Function }) {
 		const client = this.client;
 
-		if (event.emitter === "client") {
+		if (event.emitter === 'client') {
 			if (event.once)
 				client.once(event.name, (...args: object[]) => {
 					event.run(...args);
@@ -293,7 +301,7 @@ export class Handler {
 				client.on(event.name, (...args: object[]) => {
 					event.run(...args);
 				});
-		} else if (event.emitter === "rest") {
+		} else if (event.emitter === 'rest') {
 			if (event.once)
 				client.once(event.name, (...args: object[]) => {
 					event.run(...args);
@@ -302,7 +310,7 @@ export class Handler {
 				client.on(event.name, (...args: object[]) => {
 					event.run(...args);
 				});
-		} else if (event.emitter === "process") {
+		} else if (event.emitter === 'process') {
 			if (event.once)
 				process.once(event.name, (...args: object[]) => {
 					event.run(...args);
