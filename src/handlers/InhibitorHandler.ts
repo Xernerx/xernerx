@@ -7,8 +7,8 @@ import { Handler } from './Handler.js';
  * @param {XernerxClient} client - The XernerxClient.
  */
 export default class InhibitorHandler {
-	private client: XernerxClient;
-	private handler: Handler;
+	client: XernerxClient;
+	handler: Handler;
 
 	constructor(client: XernerxClient) {
 		this.client = client;

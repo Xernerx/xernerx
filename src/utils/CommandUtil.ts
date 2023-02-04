@@ -37,8 +37,8 @@ interface ButtonOptions {
 }
 
 export class MessageCommandUtil {
-	private client: XernerxClient;
-	private message: XernerxMessage;
+	client: XernerxClient;
+	message: XernerxMessage;
 
 	constructor(client: XernerxClient, message: Message & XernerxMessage) {
 		this.client = client;
@@ -46,7 +46,7 @@ export class MessageCommandUtil {
 		this.message = message;
 	}
 
-	public async reply(content: MessagePayload | string) {
+	async reply(content: MessagePayload | string) {
 		if (this.client.cache.messages.has(this.message.id))
 			var existingMessage: any = this.client.cache.messages.get(this.message.id);
 
@@ -89,7 +89,7 @@ export class MessageCommandUtil {
 		}
 	}
 
-	public async send(content: MessagePayload | string) {
+	async send(content: MessagePayload | string) {
 		if (this.client.cache.messages.has(this.message.id))
 			var existingMessage: any = this.client.cache.messages.get(this.message.id);
 
@@ -132,32 +132,32 @@ export class MessageCommandUtil {
 		}
 	}
 
-	public async defer(time: number) {
+	async defer(time: number) {
 		return new Promise((resolve: Function) => setTimeout(resolve, time));
 	}
 
-	public getCommands() {
+	getCommands() {
 		return this.client.commands.message;
 	}
 
-	public getCommandName() {}
+	getCommandName() {}
 
-	public selectMenuPaginator(embeds: Array<EmbedBuilder>, options?: SelectMenuOptions) {}
+	selectMenuPaginator(embeds: Array<EmbedBuilder>, options?: SelectMenuOptions) {}
 
-	public buttonPaginator(embeds: Array<EmbedBuilder>, options: ButtonOptions) {}
+	buttonPaginator(embeds: Array<EmbedBuilder>, options: ButtonOptions) {}
 
-	public buttonMenuPaginator(embeds: Array<EmbedBuilder>, options: ButtonOptions & SelectMenuOptions) {}
+	buttonMenuPaginator(embeds: Array<EmbedBuilder>, options: ButtonOptions & SelectMenuOptions) {}
 
-	public isOwner() {
+	isOwner() {
 		return this.client.util.isOwner(this.message.author.id);
 	}
 
-	public createModal() {}
+	createModal() {}
 }
 
 export class InteractionCommandUtil {
-	private client: XernerxClient;
-	private interaction: any;
+	client: XernerxClient;
+	interaction: any;
 
 	constructor(client: XernerxClient, interaction: Interaction) {
 		this.client = client;
@@ -165,7 +165,7 @@ export class InteractionCommandUtil {
 		this.interaction = interaction;
 	}
 
-	public reply(content: MessagePayload | string) {
+	reply(content: MessagePayload | string) {
 		return this.interaction.replied || this.interaction.deferred
 			? this.interaction.editReply(content)
 			: this.interaction.reply(content);
@@ -175,14 +175,14 @@ export class InteractionCommandUtil {
 		return new Promise((resolve: Function) => setTimeout(resolve, time));
 	}
 
-	public getCommands() {
+	getCommands() {
 		if (this.interaction.commandType === 1) return this.client.commands.slash;
 		else return this.client.commands.context;
 	}
 
-	public getCommandName() {}
+	getCommandName() {}
 
-	public selectMenuPaginator(embeds: Array<EmbedBuilder>, options?: SelectMenuOptions) {
+	selectMenuPaginator(embeds: Array<EmbedBuilder>, options?: SelectMenuOptions) {
 		if (!Array.isArray(embeds))
 			throw new XernerxError(`Expected embeds to be of type array, received ${typeof embeds} instead.`);
 
@@ -261,7 +261,7 @@ export class InteractionCommandUtil {
 		});
 	}
 
-	public buttonPaginator(embeds: Array<EmbedBuilder>, options: ButtonOptions) {
+	buttonPaginator(embeds: Array<EmbedBuilder>, options: ButtonOptions) {
 		if (!Array.isArray(embeds))
 			throw new XernerxError(`Expected embeds to be of type array, received ${typeof embeds} instead.`);
 
@@ -352,11 +352,11 @@ export class InteractionCommandUtil {
 		});
 	}
 
-	public buttonMenuPaginator(embeds: Array<EmbedBuilder>, options: ButtonOptions & SelectMenuOptions) {}
+	buttonMenuPaginator(embeds: Array<EmbedBuilder>, options: ButtonOptions & SelectMenuOptions) {}
 
 	isOwner() {
 		return this.client.util.isOwner(this.interaction.user.id);
 	}
 
-	public createModal() {}
+	createModal() {}
 }

@@ -18,30 +18,30 @@ import XernerxClient from '../client/XernerxClient.js';
  * @param {SlashCommandOptions} options - The command options.
  */
 export default class SlashCommandBuilder {
-	public id: string;
-	public data: Discord.SlashCommandBuilder;
-	public name: string;
-	public description: string;
-	public info?: string;
-	public category?: string;
-	public owner?: boolean;
-	public channelType?: ChannelType | ChannelType[];
-	public separator?: string;
-	public cooldown?: number;
-	public ignoreOwner?: boolean;
-	public channels?: string[];
-	public guilds?: string[];
-	public userPermissions?: bigint[];
-	public clientPermissions?: bigint[];
-	public args?: object[];
-	public subcommands?: object[];
-	public groups?: object[];
-	public defer?: {
+	id: string;
+	data: Discord.SlashCommandBuilder;
+	name: string;
+	description: string;
+	info?: string;
+	category?: string;
+	owner?: boolean;
+	channelType?: ChannelType | ChannelType[];
+	separator?: string;
+	cooldown?: number;
+	ignoreOwner?: boolean;
+	channels?: string[];
+	guilds?: string[];
+	userPermissions?: bigint[];
+	clientPermissions?: bigint[];
+	args?: object[];
+	subcommands?: object[];
+	groups?: object[];
+	defer?: {
 		reply?: boolean;
 		ephemeral?: boolean;
 		fetchReply?: boolean;
 	};
-	public client: XernerxClient | object;
+	client: XernerxClient | object;
 
 	constructor(id: string, options: SlashCommandOptions) {
 		this.id = id;

@@ -16,13 +16,13 @@ interface Presence {
 }
 
 export class ClientUtil {
-	private client: XernerxClient;
+	client: XernerxClient;
 
 	constructor(client: XernerxClient) {
 		this.client = client;
 	}
 
-	public uptime(timestamp: number | null) {
+	uptime(timestamp: number | null) {
 		if (!timestamp) timestamp = this.client.uptime || 0;
 
 		let totalSeconds = timestamp / 1000;
@@ -42,7 +42,7 @@ export class ClientUtil {
 		else return `${seconds}s`;
 	}
 
-	public getSubcommands(name: string) {
+	getSubcommands(name: string) {
 		if (!name || typeof name !== 'string')
 			throw new XernerxError(`Expected name to be of type string, received ${typeof name} instead!`);
 
@@ -107,7 +107,7 @@ export class ClientUtil {
 		return commands;
 	}
 
-	public isOwner(userId: string) {
+	isOwner(userId: string) {
 		if (!userId) throw new XernerxError('No ID specified');
 
 		let owners = this.client.settings.ownerId;
@@ -119,7 +119,7 @@ export class ClientUtil {
 		return owners.includes(userId);
 	}
 
-	public getAllCommands() {
+	getAllCommands() {
 		const cmds: object[] = [];
 
 		for (const commands of Object.values(this.client.commands)) {
@@ -129,7 +129,7 @@ export class ClientUtil {
 		return cmds;
 	}
 
-	public getAllMessageCommands() {
+	getAllMessageCommands() {
 		const cmds: object[] = [];
 
 		this.client.commands.message.map((cmd: object) => cmds.push(cmd));
@@ -137,7 +137,7 @@ export class ClientUtil {
 		return cmds;
 	}
 
-	public getAllSlashCommands() {
+	getAllSlashCommands() {
 		const cmds: object[] = [];
 
 		this.client.commands.slash.map((cmd: object) => cmds.push(cmd));
@@ -145,7 +145,7 @@ export class ClientUtil {
 		return cmds;
 	}
 
-	public getAllContextCommands() {
+	getAllContextCommands() {
 		const cmds: object[] = [];
 
 		this.client.commands.context.map((cmd: object) => cmds.push(cmd));
@@ -153,7 +153,7 @@ export class ClientUtil {
 		return cmds;
 	}
 
-	public setPresence(options: Presence) {
+	setPresence(options: Presence) {
 		const client = this.client;
 
 		function pres() {
@@ -177,7 +177,7 @@ export class ClientUtil {
 		}
 	}
 
-	public getCooldowns(id: string, command?: string) {
+	getCooldowns(id: string, command?: string) {
 		let cooldowns: any = [];
 
 		for (const [key, value] of Object.entries(this.client.cache)) {
@@ -211,7 +211,7 @@ export class ClientUtil {
 		return cooldowns;
 	}
 
-	public getCooldownTimers(id: string, command?: string) {
+	getCooldownTimers(id: string, command?: string) {
 		let cooldowns: any = [];
 
 		for (const [key, value] of Object.entries(this.client.cache)) {
@@ -251,7 +251,7 @@ export class ClientUtil {
 		return cooldowns;
 	}
 
-	public async defer(time: number) {
+	async defer(time: number) {
 		return new Promise((resolve: any) => setTimeout(resolve, time || 0));
 	}
 }

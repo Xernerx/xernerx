@@ -3,13 +3,13 @@ import XernerxExtensionBuilder from 'xernerx-extension-builder';
 import XernerxClient from '../client/XernerxClient.js';
 
 export default class Extensions {
-	private client: XernerxClient;
+	client: XernerxClient;
 
 	constructor(client: XernerxClient) {
 		this.client = client;
 	}
 
-	public async load(extensions: Array<XernerxExtensionBuilder>, logging: boolean = false) {
+	async load(extensions: Array<XernerxExtensionBuilder>, logging: boolean = false) {
 		const exts: Array<string> = [];
 
 		extensions.map((extension) => {

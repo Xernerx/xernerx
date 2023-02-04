@@ -1,14 +1,12 @@
-import { Interaction, Message } from 'discord.js';
-
 import { InhibitorType } from '../types/enums.js';
 import XernerxClient from '../client/XernerxClient.js';
 import { XernerxInteraction, XernerxMessage } from '../types/types.js';
 
 export class InhibitorValidation {
-	private client: XernerxClient;
-	private action: XernerxMessage | XernerxInteraction;
-	private command: string;
-	private inhibited: Record<string, string | void>;
+	public client: XernerxClient;
+	public action: XernerxMessage | XernerxInteraction;
+	public command: string;
+	public inhibited: Record<string, string | void>;
 
 	constructor(client: XernerxClient, action: XernerxMessage | XernerxInteraction, command: string) {
 		this.client = client;

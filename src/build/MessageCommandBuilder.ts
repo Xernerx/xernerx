@@ -86,10 +86,6 @@ export default class MessageCommandBuilder {
 		this.args = options.args || [];
 
 		this.client = XernerxClient;
-
-		this.conditions = this.conditions;
-
-		this.exec = this.exec;
 	}
 
 	/**
@@ -97,12 +93,12 @@ export default class MessageCommandBuilder {
 	 * @param {object} args - The arguments you created.
 	 * @description make any preconditions here.
 	 */
-	async conditions(message: Message, args: MessageArgOptions) {}
+	public async conditions(message: Message, args: MessageArgOptions) {}
 
 	/**
 	 * @param {Message} message - The Discord message event data.
 	 * @param {object} args - The arguments you created.
 	 * @description Make your custom command here.
 	 */
-	async exec(message: Message, args: MessageArgOptions) {}
+	public async exec(message: Message, args: MessageArgOptions) {}
 }

@@ -3,8 +3,8 @@ import { EventHandlerOptions } from '../types/options.js';
 import { Handler } from './Handler.js';
 
 export default class EventHandler {
-	private client: XernerxClient;
-	private handler: Handler;
+	client: XernerxClient;
+	handler: Handler;
 
 	constructor(client: XernerxClient) {
 		this.client = client;

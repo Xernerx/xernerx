@@ -1,5 +1,5 @@
 import XernerxClient from '../client/XernerxClient.js';
-import fs from 'node:fs';
+import fs from 'fs';
 import * as path from 'path';
 import { CommandType } from '../types/enums.js';
 import { s } from '@sapphire/shapeshift';
@@ -18,8 +18,8 @@ import {
  */
 export class Handler {
 	private client: XernerxClient;
-	private commands: object[];
-	private readyTimestamp: number;
+	public commands: object[];
+	public readyTimestamp: number;
 
 	constructor(client: XernerxClient) {
 		this.client = client;

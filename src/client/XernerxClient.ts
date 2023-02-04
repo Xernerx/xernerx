@@ -14,6 +14,9 @@ import Extensions from '../models/Extensions.js';
 import EventBuilder from '../build/EventBuilder.js';
 import InhibitorBuilder from '../build/InhibitorBuilder.js';
 
+// TODO - Add logOnError as a setting to the client.
+// TODO - Add commandNotFound as an event to the client.
+
 /**
  * @description - The Client.
  * @param {DiscordOptions} discordOptions - The options for discord.js.

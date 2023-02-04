@@ -1,6 +1,6 @@
 export default class XernerxError {
-	public name: string;
-	public message: string;
+	name: string;
+	message: string;
 
 	constructor(message?: string) {
 		this.name = 'XernerxError';

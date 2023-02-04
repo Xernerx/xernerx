@@ -4,7 +4,7 @@ import MessageCommandBuilder from '../build/MessageCommandBuilder.js';
 import { XernerxInteraction, XernerxMessage } from '../types/types.js';
 
 export class InteractionArguments {
-	private interaction: XernerxInteraction;
+	interaction: XernerxInteraction;
 
 	constructor(interaction: XernerxInteraction) {
 		this.interaction = interaction;

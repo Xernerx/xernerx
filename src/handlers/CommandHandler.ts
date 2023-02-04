@@ -12,8 +12,8 @@ import {
  * @param {XernerxClient} client - The XernerxClient.
  */
 export default class CommandHandler {
-	private client: XernerxClient;
-	private handler: Handler;
+	client: XernerxClient;
+	handler: Handler;
 
 	constructor(client: XernerxClient) {
 		this.client = client;

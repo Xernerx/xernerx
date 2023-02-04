@@ -28,12 +28,10 @@ export default class InhibitorBuilder {
 		this.type = options.type;
 
 		this.client = XernerxClient;
-
-		this.check = this.check;
 	}
 
 	/**
 	 *
 	 */
-	async check(interaction: XernerxInteraction | XernerxMessage, args: SlashArgOptions | MessageArgOptions) {}
+	public async check(interaction: XernerxInteraction | XernerxMessage, args: SlashArgOptions | MessageArgOptions) {}
 }

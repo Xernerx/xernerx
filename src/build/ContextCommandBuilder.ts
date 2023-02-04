@@ -98,21 +98,17 @@ export default class ContextCommandBuilder {
 		this.defer = options.defer;
 
 		this.client = XernerxClient;
-
-		this.conditions = this.conditions;
-
-		this.exec = this.exec;
 	}
 
 	/**
 	 * @param {Interaction} interaction - The Discord interaction event data.
 	 * @description make any preconditions here.
 	 */
-	async conditions(interaction: Interaction) {}
+	public async conditions(interaction: Interaction) {}
 
 	/**
 	 * @param {Interaction} interaction - The Discord interaction event data.
 	 * @description Make your custom command here.
 	 */
-	async exec(interaction: Interaction) {}
+	public async exec(interaction: Interaction) {}
 }

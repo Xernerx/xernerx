@@ -39,7 +39,7 @@ export default class EventBuilder {
 		this.run = this.run;
 	}
 
-	async run() {
+	public async run() {
 		/**
 		 * @description run your custom event here.
 		 */

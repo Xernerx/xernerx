@@ -11,7 +11,7 @@ import { MessageArgOptions } from '../types/options.js';
 import MessageCommandBuilder from '../build/MessageCommandBuilder.js';
 
 export class MessageCommandEvents {
-	private client: XernerxClient;
+	client: XernerxClient;
 
 	constructor(client: XernerxClient) {
 		this.client = client;
@@ -223,7 +223,7 @@ export class MessageCommandEvents {
 }
 
 export class SlashCommandEvents {
-	private client: XernerxClient;
+	client: XernerxClient;
 
 	constructor(client: XernerxClient) {
 		this.client = client;
@@ -287,13 +287,13 @@ export class SlashCommandEvents {
 }
 
 export class ContextCommandEvents {
-	private client: XernerxClient;
+	client: XernerxClient;
 
 	constructor(client: XernerxClient) {
 		this.client = client;
 	}
 
-	public contextCreate() {
+	contextCreate() {
 		this.client.on('interactionCreate', async (interaction: any) => {
 			interaction.util = new InteractionCommandUtil(this.client, interaction);
 
@@ -337,7 +337,7 @@ export class ContextCommandEvents {
 }
 
 export class CommandsDeploy {
-	private client: XernerxClient;
+	private client;
 
 	constructor(client: XernerxClient) {
 		this.client = client;
