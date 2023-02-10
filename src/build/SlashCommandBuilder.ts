@@ -1,15 +1,9 @@
-import Discord, {
-	ChannelType,
-	Interaction,
-	SlashCommandStringOption,
-	SlashCommandSubcommandBuilder,
-	SlashCommandSubcommandGroupBuilder,
-} from 'discord.js';
-import { s } from '@sapphire/shapeshift';
+import Discord, { Interaction, SlashCommandStringOption, SlashCommandSubcommandBuilder, SlashCommandSubcommandGroupBuilder } from 'discord.js';
+import { z } from 'zod';
 import { SlashCommandOption, SlashArgumentTypes } from '../types/enums.js';
 
 import XernerxError from '../tools/XernerxError.js';
-import { SlashArgOptions, SlashCommandOptions, SlashGroupOptions, SlashSubcommandOptions } from '../types/options.js';
+import { SlashArgumentOptions, SlashCommandOptions, SlashGroupOptions, SlashSubcommandOptions } from '../types/options.js';
 import XernerxClient from '../client/XernerxClient.js';
 
 /**
@@ -18,151 +12,144 @@ import XernerxClient from '../client/XernerxClient.js';
  * @param {SlashCommandOptions} options - The command options.
  */
 export default class SlashCommandBuilder {
-	id: string;
-	data: Discord.SlashCommandBuilder;
-	name: string;
-	description: string;
-	info?: string;
-	category?: string;
-	owner?: boolean;
-	channelType?: ChannelType | ChannelType[];
-	separator?: string;
-	cooldown?: number;
-	ignoreOwner?: boolean;
-	channels?: string[];
-	guilds?: string[];
-	userPermissions?: bigint[];
-	clientPermissions?: bigint[];
-	args?: object[];
-	subcommands?: object[];
-	groups?: object[];
-	defer?: {
-		reply?: boolean;
-		ephemeral?: boolean;
-		fetchReply?: boolean;
-	};
-	client: XernerxClient | object;
+    public id;
+    public data;
+    public name;
+    public description;
+    public info;
+    public category;
+    public channelType;
+    public cooldown;
+    public ignore;
+    public strict;
+    public permissions;
+    public args?: object[];
+    public subcommands?: object[];
+    public groups?: object[];
+    public defer;
+    public client;
 
-	constructor(id: string, options: SlashCommandOptions) {
-		this.id = id;
+    constructor(id: string, options: SlashCommandOptions) {
+        this.id = id;
 
-		this.data = new Discord.SlashCommandBuilder().setName(options.name).setDescription(options.description);
+        this.data = new Discord.SlashCommandBuilder().setName(options.name).setDescription(options.description);
 
-		if (options.args && options?.args?.length > 0) {
-			this.addArgs(this.data, options.args);
-		}
+        if (options.args && options?.args?.length > 0) {
+            this.addArgs(this.data, options.args);
+        }
 
-		if (options.subcommands && options?.subcommands?.length > 0) {
-			this.addSubcommands(this.data, options.subcommands);
-		}
+        if (options.subcommands && options?.subcommands?.length > 0) {
+            this.addSubcommands(this.data, options.subcommands);
+        }
 
-		if (options.groups && options?.groups?.length > 0) {
-			this.addSubcommandGroups(options.groups);
-		}
+        if (options.groups && options?.groups?.length > 0) {
+            this.addSubcommandGroups(options.groups);
+        }
 
-		s.object({
-			info: s.string.optional,
-			category: s.string.optional,
-			owner: s.boolean.optional,
-			channelType: s.union(s.number, s.array(s.number)).optional,
-			separator: s.string.optional,
-			cooldown: s.number.optional,
-			ignoreOwner: s.boolean.optional,
-			channels: s.array(s.string).optional,
-			guilds: s.array(s.string).optional,
-			userPermissions: s.array(s.bigint).optional,
-			clientPermissions: s.array(s.bigint).optional,
-			defer: s.object({
-				reply: s.boolean.optional,
-				ephemeral: s.boolean.optional,
-				fetchReply: s.boolean.optional,
-			}).optional,
-		});
+        z.object({
+            description: z.string(),
+            info: z.string(),
+            category: z.string(),
+            channelType: z.array(z.number()).or(z.number()),
+            cooldown: z.number(),
+            ignore: z.object({
+                owner: z.boolean(),
+                users: z.array(z.string()),
+                channels: z.array(z.string()),
+                guilds: z.array(z.string()),
+            }),
+            strict: z.object({
+                owner: z.boolean(),
+                users: z.array(z.string()),
+                channels: z.array(z.string()),
+                guilds: z.array(z.string()),
+            }),
+            permissions: z.object({
+                client: z.array(z.string()),
+                users: z.array(z.string()),
+                dm: z.boolean(),
+            }),
+            defer: z.object({
+                reply: z.boolean(),
+                ephemeral: z.boolean(),
+                fetch: z.boolean(),
+            }),
+        })
+            .deepPartial()
+            .parse(options);
 
-		this.name = options.name;
+        this.name = options.name;
 
-		this.description = options.description;
+        this.description = options.description;
 
-		this.info = options.info;
+        this.info = options.info;
 
-		this.category = options.category;
+        this.category = options.category;
 
-		this.owner = options.owner;
+        this.channelType = options.channelType;
 
-		this.channelType = options.channelType;
+        this.cooldown = options.cooldown;
 
-		this.separator = options.separator;
+        this.ignore = options.ignore;
 
-		this.cooldown = options.cooldown;
+        this.strict = options.strict;
 
-		this.ignoreOwner = options.ignoreOwner;
+        this.permissions = options.permissions;
 
-		this.channels = options.channels;
+        this.defer = options.defer;
 
-		this.guilds = options.guilds;
+        this.client = XernerxClient;
+    }
 
-		this.userPermissions = options.userPermissions;
+    /**
+     * TODO - update description
+     * @param interaction
+     */
+    public async conditions(interaction: Interaction) {}
 
-		this.clientPermissions = options.clientPermissions;
+    /**
+     * TODO - update description
+     * @param interaction
+     */
+    public async exec(interaction: Interaction) {}
 
-		this.defer = options.defer;
+    private addArgs(command: Discord.SlashCommandBuilder | SlashCommandSubcommandBuilder, args: Array<SlashArgumentOptions>) {
+        const types = ['boolean', 'integer', 'number', 'string', 'user', 'role', 'channel', 'mentionable'];
 
-		this.client = XernerxClient;
+        for (const argument of args) {
+            if (!types.includes(argument.type.toLowerCase())) throw new XernerxError(`Expected one of ${types.join(', ')}, received ${argument.type} instead.`);
 
-		this.conditions = this.conditions;
+            let slashArgumentType: SlashArgumentTypes | string = `${argument.type.slice(0, 1).toUpperCase()}${argument.type.slice(1).toLowerCase()}`;
 
-		this.exec = this.exec;
-	}
+            (command[`add${slashArgumentType as SlashArgumentTypes}Option`] as Function)((option: SlashCommandOption) => {
+                option
+                    .setName(argument.name)
+                    .setDescription(argument.description)
+                    .setRequired(argument.required || false);
+                if (argument.choices) (option as SlashCommandStringOption).setChoices(...argument?.choices);
 
-	async conditions(interaction: Interaction) {}
+                return option;
+            });
+        }
+    }
 
-	async exec(interaction: Interaction) {}
+    private addSubcommands(method: Discord.SlashCommandBuilder | SlashCommandSubcommandGroupBuilder, subcommands: Array<SlashSubcommandOptions>) {
+        for (const subcommand of subcommands) {
+            let sub = new SlashCommandSubcommandBuilder().setName(subcommand.name).setDescription(subcommand.description);
 
-	private addArgs(command: Discord.SlashCommandBuilder | SlashCommandSubcommandBuilder, args: Array<SlashArgOptions>) {
-		const types = ['boolean', 'integer', 'number', 'string', 'user', 'role', 'channel', 'mentionable'];
+            if (subcommand.args?.length > 0) this.addArgs(sub, subcommand.args);
 
-		for (const argument of args) {
-			if (!types.includes(argument.type.toLowerCase()))
-				throw new XernerxError(`Expected one of ${types.join(', ')}, received ${argument.type} instead.`);
+            method.addSubcommand(sub);
+        }
+    }
 
-			let slashArgumentType: SlashArgumentTypes | string = `${argument.type.slice(0, 1).toUpperCase()}${argument.type
-				.slice(1)
-				.toLowerCase()}`;
+    private addSubcommandGroups(groups: Array<SlashGroupOptions>) {
+        for (const group of groups) {
+            let subcommandGroup = new SlashCommandSubcommandGroupBuilder().setName(group.name).setDescription(group.description);
 
-			(command[`add${slashArgumentType as SlashArgumentTypes}Option`] as Function)((option: SlashCommandOption) => {
-				option
-					.setName(argument.name)
-					.setDescription(argument.description)
-					.setRequired(argument.required || false);
-				if (argument.choices) (option as SlashCommandStringOption).setChoices(...argument?.choices);
+            if (group.subcommands?.length > 0) this.addSubcommands(subcommandGroup, group.subcommands);
 
-				return option;
-			});
-		}
-	}
-
-	private addSubcommands(
-		method: Discord.SlashCommandBuilder | SlashCommandSubcommandGroupBuilder,
-		subcommands: Array<SlashSubcommandOptions>
-	) {
-		for (const subcommand of subcommands) {
-			let sub = new SlashCommandSubcommandBuilder().setName(subcommand.name).setDescription(subcommand.description);
-
-			if (subcommand.args?.length > 0) this.addArgs(sub, subcommand.args);
-
-			method.addSubcommand(sub);
-		}
-	}
-
-	private addSubcommandGroups(groups: Array<SlashGroupOptions>) {
-		for (const group of groups) {
-			let subcommandGroup = new SlashCommandSubcommandGroupBuilder()
-				.setName(group.name)
-				.setDescription(group.description);
-
-			if (group.subcommands?.length > 0) this.addSubcommands(subcommandGroup, group.subcommands);
-
-			this.data.addSubcommandGroup(subcommandGroup);
-		}
-	}
+            this.data.addSubcommandGroup(subcommandGroup);
+        }
+    }
 }

@@ -1,6 +1,5 @@
-import { ChannelType, ContextMenuCommandBuilder, Interaction } from 'discord.js';
-import { s } from '@sapphire/shapeshift';
-
+import { ContextMenuCommandBuilder, Interaction } from 'discord.js';
+import { z } from 'zod';
 import { ContextCommandOptions } from '../types/options.js';
 import XernerxClient from '../client/XernerxClient.js';
 
@@ -10,105 +9,104 @@ import XernerxClient from '../client/XernerxClient.js';
  * @param {ContextCommandOptions} options - The command options.
  */
 export default class ContextCommandBuilder {
-	id: string;
-	data: ContextMenuCommandBuilder;
-	name: string;
-	type: number;
-	description?: string;
-	info?: string;
-	category?: string;
-	owner?: boolean;
-	channelType?: ChannelType | ChannelType[];
-	cooldown?: number;
-	ignoreOwner?: boolean;
-	channels?: string[];
-	guilds?: string[];
-	userPermissions?: bigint[];
-	clientPermissions?: bigint[];
-	defer?: {
-		reply?: boolean;
-		ephemeral?: boolean;
-		fetchReply?: boolean;
-	};
-	client: XernerxClient | object;
+    public id;
+    public data;
+    public name;
+    public type;
+    public description;
+    public info;
+    public category;
+    public channelType;
+    public cooldown;
+    public ignore;
+    public strict;
+    public permissions;
+    public defer;
+    public client;
 
-	constructor(id: string, options: ContextCommandOptions) {
-		this.id = id;
+    constructor(id: string, options: ContextCommandOptions) {
+        this.id = id;
 
-		this.data = new ContextMenuCommandBuilder();
+        this.data = new ContextMenuCommandBuilder();
 
-		if (options.name) this.data.setName(options.name);
+        if (options.name) this.data.setName(options.name);
 
-		if (options.type) this.data.setType(options.type);
+        if (options.type) this.data.setType(options.type);
 
-		if (options.defaultMemberPermissions) this.data.setDefaultMemberPermissions(options.defaultMemberPermissions);
+        if (options.permissions?.users) this.data.setDefaultMemberPermissions(options.permissions?.users as unknown as number);
 
-		if (options.DMPermission) this.data.setDMPermission(options.DMPermission);
+        if (options.permissions?.dm === false) this.data.setDMPermission(options.permissions?.dm);
 
-		if (options.nameLocalization)
-			this.data.setNameLocalization(options.nameLocalization.locale, options.nameLocalization.localizedName);
+        if (options.nameLocalizations) this.data.setNameLocalizations(options.nameLocalizations);
 
-		if (options.nameLocalizations) this.data.setNameLocalizations(options.nameLocalizations);
+        z.object({
+            description: z.string(),
+            info: z.string(),
+            category: z.string(),
+            channelType: z.array(z.number()).or(z.number()),
+            cooldown: z.number(),
+            ignore: z.object({
+                owner: z.boolean(),
+                users: z.array(z.string()),
+                channels: z.array(z.string()),
+                guilds: z.array(z.string()),
+            }),
+            strict: z.object({
+                owner: z.boolean(),
+                users: z.array(z.string()),
+                channels: z.array(z.string()),
+                guilds: z.array(z.string()),
+            }),
+            permissions: z.object({
+                client: z.array(z.string()),
+                users: z.array(z.string()),
+                dm: z.boolean(),
+            }),
+            defer: z.object({
+                reply: z.boolean(),
+                ephemeral: z.boolean(),
+                fetch: z.boolean(),
+            }),
+        })
+            .deepPartial()
+            .parse(options);
 
-		s.object({
-			description: s.string.optional,
-			info: s.string.optional,
-			category: s.string.optional,
-			owner: s.boolean.optional,
-			channelType: s.union(s.number, s.array(s.number)).optional,
-			cooldown: s.number.optional,
-			ignoreOwner: s.boolean.optional,
-			channels: s.array(s.string).optional,
-			guilds: s.array(s.string).optional,
-			userPermissions: s.array(s.bigint).optional,
-			clientPermissions: s.array(s.bigint).optional,
-			defer: s.object({
-				reply: s.boolean.optional,
-				ephemeral: s.boolean.optional,
-				fetchReply: s.boolean.optional,
-			}).optional,
-		}).parse(options);
+        this.name = options.name;
 
-		this.name = options.name;
+        this.type = options.type;
 
-		this.type = options.type;
+        this.description = options.description;
 
-		this.description = options.description;
+        this.info = options.info;
 
-		this.info = options.info;
+        this.category = options.category;
 
-		this.category = options.category;
+        this.channelType = options.channelType;
 
-		this.owner = options.owner;
+        this.cooldown = options.cooldown;
 
-		this.channelType = options.channelType;
+        this.ignore = options.ignore;
 
-		this.cooldown = options.cooldown;
+        this.strict = options.strict;
 
-		this.ignoreOwner = options.ignoreOwner;
+        this.permissions = options.permissions;
 
-		this.channels = options.channels;
+        this.defer = options.defer;
 
-		this.guilds = options.guilds;
+        this.client = XernerxClient;
+    }
 
-		this.userPermissions = options.userPermissions;
+    /**
+     * @param {Interaction} interaction - The Discord interaction event data.
+     * @description make any preconditions here.
+     * TODO - update description
+     */
+    public async conditions(interaction: Interaction, args: any) {}
 
-		this.clientPermissions = options.clientPermissions;
-
-		this.defer = options.defer;
-
-		this.client = XernerxClient;
-	}
-
-	/**
-	 * @param {Interaction} interaction - The Discord interaction event data.
-	 * @description make any preconditions here.
-	 */
-	public async conditions(interaction: Interaction) {}
-
-	/**
-	 * @param {Interaction} interaction - The Discord interaction event data.
-	 * @description Make your custom command here.
-	 */
-	public async exec(interaction: Interaction) {}
+    /**
+     * @param {Interaction} interaction - The Discord interaction event data.
+     * @description Make your custom command here.
+     * TODO - update description
+     */
+    public async exec(interaction: Interaction, args: any) {}
 }

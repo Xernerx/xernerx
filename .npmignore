@@ -1,10 +1,17 @@
+# Sources
 src
+docs
+.github
+*.md
+
+# Packages
 node_modules
 package-lock.json
-docs
+
+# Ignores
 .gitignore
 .gitattributes
+
+# configs
 tsconfig.json
-.github
-commit.js
-*.md
+.prettierrc

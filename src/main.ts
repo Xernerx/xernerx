@@ -15,48 +15,48 @@ import pkg from './tools/package.js';
 const xernerxVersion: string = pkg.version;
 
 export default {
-	// Client
-	Client: XernerxClient,
-	XernerxClient,
+    // Client
+    Client: XernerxClient,
+    XernerxClient,
 
-	// Enums
-	CommandType,
-	EventEmitterType,
-	InhibitorType,
-	ContextCommandType,
+    // Enums
+    CommandType,
+    EventEmitterType,
+    InhibitorType,
+    ContextCommandType,
 
-	// Builds
-	EventBuilder,
-	MessageCommandBuilder,
-	ContextCommandBuilder,
-	SlashCommandBuilder,
-	InhibitorBuilder,
-	ExtensionBuilder,
-	XernerxError,
+    // Builds
+    EventBuilder,
+    MessageCommandBuilder,
+    ContextCommandBuilder,
+    SlashCommandBuilder,
+    InhibitorBuilder,
+    ExtensionBuilder,
+    XernerxError,
 
-	// Constants
-	version: xernerxVersion,
+    // Constants
+    version: xernerxVersion,
 };
 
 export {
-	// Client
-	XernerxClient,
+    // Client
+    XernerxClient,
 
-	// Enums
-	CommandType,
-	EventEmitterType,
-	InhibitorType,
-	ContextCommandType,
+    // Enums
+    CommandType,
+    EventEmitterType,
+    InhibitorType,
+    ContextCommandType,
 
-	// Builds
-	EventBuilder,
-	MessageCommandBuilder,
-	ContextCommandBuilder,
-	SlashCommandBuilder,
-	InhibitorBuilder,
-	ExtensionBuilder,
-	XernerxError,
+    // Builds
+    EventBuilder,
+    MessageCommandBuilder,
+    ContextCommandBuilder,
+    SlashCommandBuilder,
+    InhibitorBuilder,
+    ExtensionBuilder,
+    XernerxError,
 
-	// Constants
-	xernerxVersion,
+    // Constants
+    xernerxVersion,
 };

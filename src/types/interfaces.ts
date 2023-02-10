@@ -7,22 +7,22 @@ import ContextCommandBuilder from '../build/ContextCommandBuilder.js';
 import SlashCommandBuilder from '../build/SlashCommandBuilder.js';
 
 export interface ClientCommands {
-	message: Collection<string, MessageCommandBuilder>;
-	slash: Collection<string, SlashCommandBuilder>;
-	context: Collection<string, ContextCommandBuilder>;
+    message: Collection<string, MessageCommandBuilder>;
+    slash: Collection<string, SlashCommandBuilder>;
+    context: Collection<string, ContextCommandBuilder>;
 }
 
 export interface ClientCache {
-	messages: Collection<string, object>;
-	cooldowns: Collection<string, object>;
-	messageCommands: Collection<string, object>;
-	slashCommands: Collection<string, object>;
-	contextCommands: Collection<string, object>;
-	commands: Collection<string, object>;
+    messages: Collection<string, object>;
+    cooldowns: Collection<string, object>;
+    messageCommands: Collection<string, object>;
+    slashCommands: Collection<string, object>;
+    contextCommands: Collection<string, object>;
+    commands: Collection<string, object>;
 }
 
 export interface ClientModules {
-	commandHandler: CommandHandler;
-	eventHandler: EventHandler;
-	inhibitorHandler: InhibitorHandler;
+    commandHandler: CommandHandler;
+    eventHandler: EventHandler;
+    inhibitorHandler: InhibitorHandler;
 }

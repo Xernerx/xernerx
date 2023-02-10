@@ -1,8 +1,8 @@
-import { Message, ChannelType } from 'discord.js';
-import { s } from '@sapphire/shapeshift';
+import { z } from 'zod';
 
-import { MessageArgOptions, MessageCommandOptions } from '../types/options.js';
+import { MessageArgumentOptions, MessageCommandOptions } from '../types/options.js';
 import XernerxClient from '../client/XernerxClient.js';
+import { XernerxMessage } from '../types/types.js';
 
 /**
  * @description - The command builder for message commands.
@@ -10,95 +10,104 @@ import XernerxClient from '../client/XernerxClient.js';
  * @param {MessageCommandOptions} options - The command options.
  */
 export default class MessageCommandBuilder {
-	id: string;
-	name: string;
-	aliases?: string[];
-	description?: string;
-	info?: string;
-	category?: string;
-	prefix?: string | string[];
-	regex?: string;
-	owner?: boolean;
-	channelType?: ChannelType | ChannelType[];
-	separator?: string;
-	cooldown?: number;
-	ignoreOwner?: boolean;
-	channels?: string[];
-	guilds?: string[];
-	userPermissions?: bigint[];
-	clientPermissions?: bigint[];
-	args?: Array<MessageArgOptions>;
-	client: XernerxClient | object;
+    public id;
+    public name;
+    public aliases;
+    public separator;
+    public description;
+    public info;
+    public category;
+    public prefix;
+    public regex;
+    public channelType;
+    public ignore;
+    public strict;
+    public permissions;
+    public cooldown;
+    public args;
+    public client;
 
-	constructor(id: string, options: MessageCommandOptions) {
-		this.id = id;
+    constructor(id: string, options: MessageCommandOptions) {
+        this.id = id;
 
-		s.object({
-			name: s.string,
-			aliases: s.union(s.array(s.string).unique, s.string).optional,
-			description: s.string.optional,
-			info: s.string.optional,
-			category: s.string.optional,
-			prefix: s.union(s.array(s.string).unique, s.string).optional,
-			owner: s.boolean.optional,
-			channelType: s.union(s.number, s.array(s.number)).optional,
-			separator: s.string.optional,
-			cooldown: s.number.optional,
-			ignoreOwner: s.boolean.optional,
-			channels: s.array(s.string).unique.optional,
-			guilds: s.array(s.string).unique.optional,
-			userPermissions: s.array(s.bigint).unique.optional,
-			clientPermissions: s.array(s.bigint).unique.optional,
-		}).parse(options);
+        z.object({
+            name: z.string(),
+            aliases: z.array(z.string()).optional(),
+            separator: z.string().min(1).max(1).optional(),
+            description: z.string().optional(),
+            info: z.string().optional(),
+            category: z.string().optional(),
+            prefix: z.array(z.string()).or(z.string()).optional(),
+            regex: z.unknown(),
+            channelType: z.array(z.number()).or(z.number()).optional(),
+            cooldown: z.number().optional(),
+            ignore: z
+                .object({
+                    owners: z.boolean().optional(),
+                    users: z.array(z.string()).or(z.string()).optional(),
+                    channels: z.array(z.string()).or(z.string()).optional(),
+                    guilds: z.array(z.string()).or(z.string()).optional(),
+                })
+                .optional(),
+            strict: z
+                .object({
+                    owners: z.boolean().optional(),
+                    users: z.array(z.string()).or(z.string()).optional(),
+                    channels: z.array(z.string()).or(z.string()).optional(),
+                    guilds: z.array(z.string()).or(z.string()).optional(),
+                })
+                .optional(),
+            permissions: z
+                .object({
+                    client: z.array(z.string()).optional(),
+                    users: z.array(z.string()).optional(),
+                    dm: z.boolean().optional(),
+                })
+                .optional(),
+        }).parse(options);
 
-		this.name = options.name;
+        this.name = options.name;
 
-		this.aliases = options.aliases;
+        this.aliases = options.aliases;
 
-		this.description = options.description;
+        this.separator = options.separator || ' ';
 
-		this.info = options.info;
+        this.description = options.description;
 
-		this.category = options.category;
+        this.info = options.info;
 
-		this.prefix = options.prefix ? (Array.isArray(options.prefix) ? options.prefix : [options.prefix]) : [];
+        this.category = options.category;
 
-		this.regex = options.regex;
+        this.prefix = options.prefix ? (Array.isArray(options.prefix) ? options.prefix : [options.prefix]) : [];
 
-		this.owner = options.owner || false;
+        this.regex = options.regex;
 
-		this.channelType = options.channelType;
+        this.channelType = options.channelType;
 
-		this.separator = options.separator || ' ';
+        this.ignore = options.ignore;
 
-		this.cooldown = options.cooldown || 0;
+        this.strict = options.strict;
 
-		this.ignoreOwner = options.ignoreOwner || false;
+        this.permissions = options.permissions;
 
-		this.channels = options.channels || [];
+        this.cooldown = options.cooldown || 0;
 
-		this.guilds = options.guilds || [];
+        this.args = options.args || [];
 
-		this.userPermissions = options.userPermissions || [];
+        this.client = XernerxClient;
+    }
 
-		this.clientPermissions = options.clientPermissions || [];
+    /**
+     * @param {Message} message - The Discord message event data.
+     * @param {object} args - The arguments you created.
+     * @description make any preconditions here.
+     */
+    public async conditions(message: XernerxMessage, args: MessageArgumentOptions) {}
 
-		this.args = options.args || [];
-
-		this.client = XernerxClient;
-	}
-
-	/**
-	 * @param {Message} message - The Discord message event data.
-	 * @param {object} args - The arguments you created.
-	 * @description make any preconditions here.
-	 */
-	public async conditions(message: Message, args: MessageArgOptions) {}
-
-	/**
-	 * @param {Message} message - The Discord message event data.
-	 * @param {object} args - The arguments you created.
-	 * @description Make your custom command here.
-	 */
-	public async exec(message: Message, args: MessageArgOptions) {}
+    /**
+     * @param {Message} message - The Discord message event data.
+     * @param {object} args - The arguments you created.
+     * @description Make your custom command here.
+     */
+    public async exec(message: XernerxMessage, args: MessageArgumentOptions) {}
 }

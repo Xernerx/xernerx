@@ -1,7 +1,7 @@
-import { s } from '@sapphire/shapeshift';
+import { z } from 'zod';
+
 import XernerxClient from '../client/XernerxClient.js';
-import { InhibitorType } from '../main.js';
-import { InhibitorOptions, MessageArgOptions, SlashArgOptions } from '../types/options.js';
+import { InhibitorOptions, MessageArgumentOptions, SlashArgumentOptions } from '../types/options.js';
 import { XernerxInteraction, XernerxMessage } from '../types/types.js';
 
 /**
@@ -10,28 +10,28 @@ import { XernerxInteraction, XernerxMessage } from '../types/types.js';
  * @param {InhibitorOptions} options - The inhibitor options.
  */
 export default class InhibitorBuilder {
-	id: string;
-	name: string;
-	type: InhibitorType;
-	client: XernerxClient | object;
+    public id;
+    public name;
+    public type;
+    public client;
 
-	constructor(id: string, options: InhibitorOptions) {
-		this.id = id;
+    constructor(id: string, options: InhibitorOptions) {
+        this.id = id;
 
-		s.object({
-			name: s.string,
-			type: s.string,
-		}).parse(options);
+        z.object({
+            name: z.string(),
+            type: z.string(),
+        }).parse(options);
 
-		this.name = options.name;
+        this.name = options.name;
 
-		this.type = options.type;
+        this.type = options.type;
 
-		this.client = XernerxClient;
-	}
+        this.client = XernerxClient;
+    }
 
-	/**
-	 *
-	 */
-	public async check(interaction: XernerxInteraction | XernerxMessage, args: SlashArgOptions | MessageArgOptions) {}
+    /**
+     * TODO - update description
+     */
+    public async check(interaction: XernerxInteraction | XernerxMessage, args: SlashArgumentOptions | MessageArgumentOptions) {}
 }

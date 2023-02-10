@@ -1,6 +1,6 @@
-import { s } from '@sapphire/shapeshift';
-import XernerxClient from '../client/XernerxClient.js';
+import { z } from 'zod';
 
+import XernerxClient from '../client/XernerxClient.js';
 import { EventOptions } from '../types/options.js';
 
 /**
@@ -9,39 +9,36 @@ import { EventOptions } from '../types/options.js';
  * @param {EventOptions} options - The event options.
  */
 export default class EventBuilder {
-	id: string;
-	name: string;
-	emitter?: string;
-	type?: string;
-	once?: boolean;
-	client: XernerxClient | object;
+    public id;
+    public name;
+    public emitter;
+    public type;
+    public once;
+    public client;
 
-	constructor(id: string, options: EventOptions) {
-		this.id = id;
+    constructor(id: string, options: EventOptions) {
+        this.id = id;
 
-		s.object({
-			name: s.string,
-			emitter: s.string.optional,
-			type: s.string.optional,
-			once: s.boolean.optional,
-		}).parse(options);
+        z.object({
+            name: z.string(),
+            emitter: z.string().optional(),
+            type: z.string().optional(),
+            once: z.boolean().optional(),
+        }).parse(options);
 
-		this.name = options.name;
+        this.name = options.name;
 
-		this.emitter = options.emitter || 'client';
+        this.emitter = options.emitter || 'client';
 
-		this.type = options.type || 'discord';
+        this.type = options.type || 'discord';
 
-		this.once = options.once || false;
+        this.once = options.once || false;
 
-		this.client = XernerxClient;
-
-		this.run = this.run;
-	}
-
-	public async run() {
-		/**
-		 * @description run your custom event here.
-		 */
-	}
+        this.client = XernerxClient;
+    }
+    /**
+     * @description run your custom event here.
+     * TODO - update description
+     */
+    public async run() {}
 }
