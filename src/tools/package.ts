@@ -1,6 +1,6 @@
 export default {
     "name": "xernerx",
-    "version": "3.5.0",
+    "version": "3.5.1",
     "type": "module",
     "description": "A bot framework for discord.js.",
     "main": "dist/main.js",
@@ -32,7 +32,7 @@ export default {
         "site": "git add docs && npm run commit && git push",
         "commit": "node ../.scripts/commit.js",
         "write": "npm run build && node ../.scripts/rewritePackage.js ",
-        "build": "tsc && npx tsup src/main.ts && npx prettier --write src types"
+        "build": "tsc && npx tsup src/main.ts && npx prettier --write src"
     },
     "repository": {
         "type": "git",
@@ -43,9 +43,9 @@ export default {
     },
     "dependencies": {
         "@sapphire/shapeshift": "^3.8.1",
-        "discord.js": "^14.7.0",
-        "dumfunctions": "^2.0.0",
-        "xernerx-extension-builder": "^0.0.2",
+        "discord.js": "^14.7.1",
+        "dumfunctions": "^2.1.1",
+        "xernerx-extension-builder": "^0.0.5",
         "zod": "^3.20.6"
     },
     "devDependencies": {
