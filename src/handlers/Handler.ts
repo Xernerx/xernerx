@@ -6,6 +6,10 @@ import { s } from '@sapphire/shapeshift';
 import { Style } from 'dumfunctions';
 import { ContextCommandHandlerOptions, EventHandlerOptions, InhibitorHandlerOptions, MessageCommandHandlerOptions, SlashCommandHandlerOptions } from '../types/options.js';
 
+// TODO - Add reload<handlerFunction>
+// TODO - Add unload<handlerFunction>
+// TODO - Rename load<handlerFunction>
+
 /**
  * @description - The Handler class.
  * @param {XernerxClient} client - The XernerxClient.
