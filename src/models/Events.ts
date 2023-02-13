@@ -330,6 +330,8 @@ export class CommandsDeploy {
                     context: this.client.handlerOptions.context?.guildId,
                 };
 
+				if (!guild.slash && !guild.context) return;
+
                 if (global.slash && global.context) {
                     if (guild.slash !== guild.context)
                         console.info(
