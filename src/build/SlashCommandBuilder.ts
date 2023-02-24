@@ -1,4 +1,5 @@
-import Discord, { Interaction, SlashCommandStringOption, SlashCommandSubcommandBuilder, SlashCommandSubcommandGroupBuilder } from 'discord.js';
+import * as Discord from 'discord.js';
+import { Interaction, SlashCommandStringOption, SlashCommandSubcommandBuilder, SlashCommandSubcommandGroupBuilder } from 'discord.js';
 import { z } from 'zod';
 import { SlashCommandOption, SlashArgumentTypes } from '../types/enums.js';
 
