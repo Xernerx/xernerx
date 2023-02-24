@@ -18,9 +18,9 @@
     "homepage": "https://xernerx.github.io/xernerx/home.html",
     "packageManager": "npm@8.5.5",
     "exports": {
-        "import": "./dist/main.js",
-        "require": "./dist/main.cjs",
-        "types": "./types",
+        "import": "./dist/mjs/main.js",
+        "require": "./dist/cjs/main.js",
+        "types": null,
         "node": null,
         "default": null
     },
@@ -31,8 +31,11 @@
         "major": "npm run write && git add . && npm run commit && npm version major && npm publish && git push",
         "site": "git add docs && npm run commit && git push",
         "commit": "node ../.scripts/commit.js",
-        "write": "npm run build && node ../.scripts/rewritePackage.js ",
-        "build": "tsc && npx tsup src/main.ts && npx prettier --write src"
+        "write": "npm run build && npm run format && node ../.scripts/rewritePackage.js ",
+        "format": "npx prettier --write src dist",
+        "build": "npm run build:esm && npm run build:cjs",
+        "build:esm": "tsc",
+        "build:cjs": "tsc --module CommonJS --outDir dist/cjs"
     },
     "repository": {
         "type": "git",

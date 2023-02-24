@@ -1,5 +1,5 @@
 {
-    "include": ["src/**/*", "src/*"],
+    "include": ["src"],
     "exclude": ["node_modules", ".github", "docs"],
     "compilerOptions": {
         "target": "ES2022",
@@ -7,7 +7,7 @@
         "rootDir": "./src",
         "moduleResolution": "NodeNext",
         "declaration": true,
-        "outDir": "./dist",
+        "outDir": "./dist/mjs",
         "newLine": "lf",
         "esModuleInterop": true,
         "forceConsistentCasingInFileNames": true,

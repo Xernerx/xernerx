@@ -9,6 +9,7 @@ import { ContextCommandHandlerOptions, EventHandlerOptions, InhibitorHandlerOpti
 // TODO - Add reload<handlerFunction>
 // TODO - Add unload<handlerFunction>
 // TODO - Rename load<handlerFunction>
+// TODO - Update validator to zod
 
 /**
  * @description - The Handler class.
