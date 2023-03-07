@@ -11,7 +11,8 @@ interface Presence {
 }
 
 export class ClientUtil {
-    client: XernerxClient;
+    public client;
+    [index: string]: Function | XernerxClient;
 
     constructor(client: XernerxClient) {
         this.client = client;
@@ -248,7 +249,6 @@ export class ClientUtil {
 
         return cooldowns;
     }
-
     async defer(time: number) {
         return new Promise((resolve: any) => setTimeout(resolve, time || 0));
     }

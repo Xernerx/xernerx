@@ -20,7 +20,7 @@ export default function commandValidation(
 ) {
     let user = getUser(action);
 
-    if ((command.ignoreOwner || client.settings.ignore?.owner) && client.util.isOwner(user.id)) return res;
+    if (client.settings.ignore?.owner && client.util.isOwner(user.id)) return res;
     else if (inCooldown(user, client, command, action)) return true;
     else if (command.owner && !client.util.isOwner(user.id)) {
         res = true;

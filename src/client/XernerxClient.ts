@@ -13,6 +13,7 @@ import InhibitorHandler from '../handlers/InhibitorHandler.js';
 import Extensions from '../models/Extensions.js';
 import EventBuilder from '../build/EventBuilder.js';
 import InhibitorBuilder from '../build/InhibitorBuilder.js';
+import WebhookHandler from '../handlers/WebhookHandler.js';
 
 // TODO - Add commandNotFound as an event to the client.
 
@@ -30,6 +31,7 @@ export default class XernerxClient extends Client {
     public util: ClientUtil;
     public handlerOptions: HandlerOptions;
     public events: Collection<string, EventBuilder>;
+    public stats: object;
     public extensions: Record<string, ExtensionBuilder>;
     public inhibitors: Collection<string, InhibitorBuilder>;
     public config: object;
@@ -95,7 +97,10 @@ export default class XernerxClient extends Client {
             commandHandler: new CommandHandler(this),
             eventHandler: new EventHandler(this),
             inhibitorHandler: new InhibitorHandler(this),
+            webhookHandler: new WebhookHandler(this),
         };
+
+        this.stats = {};
 
         this.extensions = {};
 

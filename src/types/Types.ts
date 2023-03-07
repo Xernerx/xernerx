@@ -22,7 +22,8 @@ export interface XernerxInteraction extends InteractionResponse {
 }
 
 export interface XernerxUser extends User {
-    isOwner: boolean;
+    owner: boolean;
+    voter?: boolean;
 }
 
 export interface XernerxRole extends Role {}

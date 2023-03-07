@@ -49,6 +49,7 @@ export interface HandlerOptions {
     context?: ContextCommandHandlerOptions;
     events?: EventHandlerOptions;
     inhibitors?: InhibitorHandlerOptions;
+    webhook?: WebhookOptions;
 }
 
 export interface ExtensionOptions {
@@ -254,4 +255,10 @@ export interface InhibitorHandlerOptions {
 export interface InhibitorOptions {
     name: string;
     type: InhibitorType;
+}
+
+export interface WebhookOptions {
+    topgg: { token: string };
+    dbl: { token: string };
+    config: { emits: boolean; logs: boolean };
 }

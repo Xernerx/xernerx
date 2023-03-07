@@ -5,6 +5,7 @@ import InhibitorHandler from '../handlers/InhibitorHandler.js';
 import MessageCommandBuilder from '../build/MessageCommandBuilder.js';
 import ContextCommandBuilder from '../build/ContextCommandBuilder.js';
 import SlashCommandBuilder from '../build/SlashCommandBuilder.js';
+import WebhookHandler from '../handlers/WebhookHandler.js';
 
 export interface ClientCommands {
     message: Collection<string, MessageCommandBuilder>;
@@ -25,4 +26,5 @@ export interface ClientModules {
     commandHandler: CommandHandler;
     eventHandler: EventHandler;
     inhibitorHandler: InhibitorHandler;
+    webhookHandler: WebhookHandler;
 }

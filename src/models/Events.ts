@@ -9,6 +9,7 @@ import { InhibitorValidation } from '../validators/InhibitorValidations.js';
 import { XernerxMessage, XernerxUser } from '../types/types.js';
 import { MessageArgumentOptions } from '../types/options.js';
 import MessageCommandBuilder from '../build/MessageCommandBuilder.js';
+import User from './XernerxUser.js';
 
 export class MessageCommandEvents {
     client: XernerxClient;
@@ -23,7 +24,8 @@ export class MessageCommandEvents {
                 let command: string | undefined = undefined,
                     px: string | undefined = undefined;
 
-                (message.author as XernerxUser).isOwner = this.client.util.isOwner(message.author.id);
+                message.author = await User(message);
+
                 (message as XernerxMessage).util = new MessageCommandUtil(this.client, message);
 
                 const commands: Collection<string, MessageCommandBuilder> = this.client.commands.message;
@@ -97,7 +99,8 @@ export class MessageCommandEvents {
                 let command: string | undefined = undefined,
                     px: string | undefined = undefined;
 
-                if (message.author) (message.author as XernerxUser).isOwner = this.client.util.isOwner(message.author.id);
+                message.author = await User(message);
+
                 (message as XernerxMessage).util = new MessageCommandUtil(this.client, message as XernerxMessage);
 
                 const commands: Collection<string, MessageCommandBuilder> = this.client.commands.message;
@@ -172,6 +175,8 @@ export class MessageCommandEvents {
                 try {
                     if (this.client.handlerOptions.message?.handleTyping) (message as XernerxMessage).channel.sendTyping();
 
+                    (message as XernerxMessage).author = await User(message);
+
                     const msg: unknown = this.client.cache.messages.get((message as XernerxMessage).id);
 
                     const response = await (message as XernerxMessage).channel.messages.fetch((msg as Record<'response', string>)?.response);
@@ -196,7 +201,7 @@ export class SlashCommandEvents {
         this.client.on('interactionCreate', async (interaction: any) => {
             interaction.util = new InteractionCommandUtil(this.client, interaction);
 
-            interaction.user.isOwner = this.client.util.isOwner(interaction.user.id);
+            interaction.author = await User(interaction);
 
             if (interaction.type === InteractionType.ApplicationCommand) {
                 if (this.client.commands.slash.has(interaction.commandName)) {
@@ -260,7 +265,7 @@ export class ContextCommandEvents {
         this.client.on('interactionCreate', async (interaction: any) => {
             interaction.util = new InteractionCommandUtil(this.client, interaction);
 
-            interaction.user.isOwner = this.client.util.isOwner(interaction.user.id);
+            interaction.author = await User(interaction);
 
             if (interaction.type === InteractionType.ApplicationCommand) {
                 if (this.client.commands.context.has(interaction.commandName)) {
