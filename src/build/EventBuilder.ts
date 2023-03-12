@@ -1,7 +1,8 @@
 import { z } from 'zod';
 
 import XernerxClient from '../client/XernerxClient.js';
-import { EventOptions } from '../types/options.js';
+import { EventType } from '../types/types.js';
+// import { EventOptions } from '../types/options.js';
 
 /**
  * @description - The event builder for  events.
@@ -9,14 +10,14 @@ import { EventOptions } from '../types/options.js';
  * @param {EventOptions} options - The event options.
  */
 export default class EventBuilder {
-    public id;
-    public name;
-    public emitter;
-    public type;
-    public once;
+    public id: string;
+    public name: EventType;
+    public emitter: 'client' | 'process' | string;
+    public type: 'discord' | string;
+    public once: boolean;
     public client;
 
-    constructor(id: string, options: EventOptions) {
+    constructor(id: string, options: any) {
         this.id = id;
 
         z.object({
@@ -40,5 +41,5 @@ export default class EventBuilder {
      * @description run your custom event here.
      * TODO - update description
      */
-    public async run() {}
+    public async run<T extends Array<T>>(...args: T) {}
 }

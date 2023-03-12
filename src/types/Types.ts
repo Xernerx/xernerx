@@ -1,72 +1,129 @@
-import { TextChannel, Message, User, Guild, GuildMember, Channel, Role, InteractionResponse } from 'discord.js';
-import { InteractionCommandUtil, MessageCommandUtil } from '../utils/CommandUtil.js';
+import {
+    SlashCommandBooleanOption,
+    SlashCommandChannelOption,
+    SlashCommandIntegerOption,
+    SlashCommandMentionableOption,
+    SlashCommandNumberOption,
+    SlashCommandRoleOption,
+    SlashCommandStringOption,
+    SlashCommandUserOption,
+} from 'discord.js';
 
-export interface XernerxMessage extends Message {
-    util?: MessageCommandUtil;
-    response?: string;
-}
+export type FileType = 'MessageCommand' | 'SlashCommand' | 'ContextCommand' | 'Event' | 'Inhibitor';
 
-export interface XernerxInteraction extends InteractionResponse {
-    util: InteractionCommandUtil;
-    options?: {
-        _group: string;
-        _subcommand: string;
-        _hoistedOptions: Array<{
-            name: string;
-            channel: Channel;
-            user: XernerxUser;
-            role: XernerxRole;
-            value: string;
-        }>;
-    };
-}
-
-export interface XernerxUser extends User {
-    owner: boolean;
-    voter?: boolean;
-}
-
-export interface XernerxRole extends Role {}
-
-export interface XernerxTextChannel extends TextChannel {}
-
-export interface XernerxGuild extends Guild {}
-
-export interface XernerxMember extends GuildMember {}
-
-export type MessageCommandArgsTypes = 'rest' | 'option' | 'flag' | 'string' | 'number' | 'channel' | 'user' | 'member' | 'boolean' | 'role';
-
-export type Localizations =
-    | 'id'
-    | 'da'
-    | 'de'
-    | 'en-GB'
+export type Locales =
     | 'en-US'
-    | 'es-ES'
-    | 'fr'
+    | 'en-GB'
+    | 'bg'
+    | 'zh-CN'
+    | 'zh-TW'
     | 'hr'
-    | 'it'
-    | 'lt'
-    | 'hu'
+    | 'cs'
+    | 'da'
     | 'nl'
+    | 'fi'
+    | 'fr'
+    | 'de'
+    | 'el'
+    | 'hi'
+    | 'hu'
+    | 'it'
+    | 'ja'
+    | 'ko'
+    | 'lt'
     | 'no'
     | 'pl'
     | 'pt-BR'
     | 'ro'
-    | 'fi'
-    | 'sv-SE'
-    | 'vi'
-    | 'tr'
-    | 'cs'
-    | 'el'
-    | 'bg'
     | 'ru'
-    | 'uk'
-    | 'hi'
+    | 'es-ES'
+    | 'sv-SE'
     | 'th'
-    | 'zh-CN'
-    | 'ja'
-    | 'zh-TW'
-    | 'ko';
+    | 'tr'
+    | 'uk'
+    | 'vi';
 
-export type EventEmitterType = 'client' | 'process';
+export type SlashCommandArgumentType = 'attachment' | 'boolean' | 'channel' | 'integer' | 'mentionable' | 'number' | 'role' | 'string' | 'user';
+
+export type SlashCommandOptionChoices = SlashCommandStringOption | SlashCommandNumberOption | SlashCommandIntegerOption;
+
+export type SlashCommandOption = SlashCommandOptionChoices | SlashCommandBooleanOption | SlashCommandUserOption | SlashCommandChannelOption | SlashCommandRoleOption | SlashCommandMentionableOption;
+
+export type MessageCommandArgumentType = 'string' | 'number' | 'boolean' | 'channel' | 'guild' | 'integer' | 'mentionable' | 'role' | 'user' | 'member' | 'list' | 'option' | 'rest' | 'flag';
+
+export type DiscordEventType =
+    | 'applicationCommandPermissionsUpdate'
+    | 'autoModerationActionExecution'
+    | 'autoModerationRuleCreate'
+    | 'autoModerationRuleDelete'
+    | 'autoModerationRuleUpdate'
+    | 'ready'
+    | 'guildCreate'
+    | 'guildDelete'
+    | 'guildUpdate'
+    | 'guildUnavailable'
+    | 'guildMemberAdd'
+    | 'guildMemberRemove'
+    | 'guildMemberUpdate'
+    | 'guildMemberAvailable'
+    | 'guildMembersChunk'
+    | 'guildIntegrationsUpdate'
+    | 'roleCreate'
+    | 'roleDelete'
+    | 'inviteCreate'
+    | 'inviteDelete'
+    | 'roleUpdate'
+    | 'emojiCreate'
+    | 'emojiDelete'
+    | 'emojiUpdate'
+    | 'guildBanAdd'
+    | 'guildBanRemove'
+    | 'channelCreate'
+    | 'channelDelete'
+    | 'channelUpdate'
+    | 'channelPinsUpdate'
+    | 'messageCreate'
+    | 'messageDelete'
+    | 'messageUpdate'
+    | 'messageDeleteBulk'
+    | 'messageReactionAdd'
+    | 'messageReactionRemove'
+    | 'messageReactionRemoveAll'
+    | 'messageReactionRemoveEmoji'
+    | 'threadCreate'
+    | 'threadDelete'
+    | 'threadUpdate'
+    | 'threadListSync'
+    | 'threadMemberUpdate'
+    | 'threadMembersUpdate'
+    | 'userUpdate'
+    | 'presenceUpdate'
+    | 'voiceServerUpdate'
+    | 'voiceStateUpdate'
+    | 'typingStart'
+    | 'webhookUpdate'
+    | 'interactionCreate'
+    | 'error'
+    | 'warn'
+    | 'debug'
+    | 'cacheSweep'
+    | 'shardDisconnect'
+    | 'shardError'
+    | 'shardReconnecting'
+    | 'shardReady'
+    | 'shardResume'
+    | 'invalidated'
+    | 'raw'
+    | 'stageInstanceCreate'
+    | 'stageInstanceUpdate'
+    | 'stageInstanceDelete'
+    | 'stickerCreate'
+    | 'stickerDelete'
+    | 'stickerUpdate'
+    | 'guildScheduledEventCreate'
+    | 'guildScheduledEventUpdate'
+    | 'guildScheduledEventDelete'
+    | 'guildScheduledEventUserAdd'
+    | 'guildScheduledEventUserRemove';
+
+export type EventType = DiscordEventType;

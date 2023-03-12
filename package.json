@@ -2,8 +2,8 @@
     "name": "xernerx",
     "version": "3.6.0",
     "description": "A bot framework for discord.js.",
-    "main": "dist/cjs/main.js",
-    "module": "dist/mjs/main.js",
+    "main": "dist/main.js",
+    "type": "module",
     "keywords": [
         "discord.js",
         "discord",
@@ -26,9 +26,7 @@
         "commit": "node ../.scripts/commit.js",
         "write": "npm run build && npm run format && node ../.scripts/rewritePackage.js ",
         "format": "npx prettier --write src dist",
-        "build": "npm run build:esm && npm run build:cjs && npm run format",
-        "build:esm": "tsc",
-        "build:cjs": "tsc --module CommonJS --outDir dist/cjs"
+        "build": "tsc && npm run format"
     },
     "repository": {
         "type": "git",
@@ -42,7 +40,7 @@
         "dbl-sdk": "^1.2.0",
         "discord.js": "^14.7.1",
         "dumfunctions": "^2.1.2",
-        "xernerx-extension-builder": "^0.0.8",
+        "xernerx-extension-builder": "^0.0.9",
         "zod": "^3.20.6"
     },
     "devDependencies": {

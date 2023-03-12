@@ -1,42 +1,22 @@
-import { Client, Collection } from 'discord.js';
-import ExtensionBuilder from 'xernerx-extension-builder';
+import { Client, ClientOptions, Collection } from 'discord.js';
 import { z } from 'zod';
-import { Style } from 'dumfunctions';
-
-import { ClientUtil } from '../utils/ClientUtil.js';
-import { ClientOptions, DiscordOptions, ExtensionOptions, HandlerOptions } from '../types/options.js';
-import { ClientCache, ClientCommands, ClientModules } from '../types/interfaces.js';
 
 import CommandHandler from '../handlers/CommandHandler.js';
 import EventHandler from '../handlers/EventHandler.js';
 import InhibitorHandler from '../handlers/InhibitorHandler.js';
-import Extensions from '../models/Extensions.js';
-import EventBuilder from '../build/EventBuilder.js';
-import InhibitorBuilder from '../build/InhibitorBuilder.js';
 import WebhookHandler from '../handlers/WebhookHandler.js';
-
-// TODO - Add commandNotFound as an event to the client.
-
-/**
- * @description - The Client.
- * @param {DiscordOptions} discordOptions - The options for discord.js.
- * @param {ClientOptions} clientOptions - The options for the Xernerx Client.
- * @extends {Client}
- */
+import { XernerxOptions, ModuleOptions, XernerxCommands, XernerxCache } from '../types/interfaces.js';
 export default class XernerxClient extends Client {
-    public settings: ClientOptions;
-    public commands: ClientCommands;
-    public cache: ClientCache;
-    public modules: ClientModules;
-    public util: ClientUtil;
-    public handlerOptions: HandlerOptions;
-    public events: Collection<string, EventBuilder>;
-    public stats: object;
-    public extensions: Record<string, ExtensionBuilder>;
-    public inhibitors: Collection<string, InhibitorBuilder>;
-    public config: object;
+    public settings;
+    public config;
+    public commands: XernerxCommands;
+    public events;
+    public inhibitors;
+    public modules: ModuleOptions;
+    public util;
+    public cache: XernerxCache;
 
-    constructor(discordOptions: DiscordOptions, clientOptions: ClientOptions, config?: object) {
+    constructor(discordOptions: ClientOptions, xernerxOptions: XernerxOptions, config: unknown) {
         super(discordOptions);
 
         this.settings = z
@@ -70,9 +50,9 @@ export default class XernerxClient extends Client {
                     })
                     .optional(),
             })
-            .parse(clientOptions);
+            .parse(xernerxOptions);
 
-        this.config = config || {};
+        this.config = config;
 
         this.commands = {
             message: new Collection(),
@@ -84,55 +64,31 @@ export default class XernerxClient extends Client {
 
         this.inhibitors = new Collection();
 
-        this.cache = {
-            messages: new Collection(),
-            cooldowns: new Collection(),
-            messageCommands: new Collection(),
-            slashCommands: new Collection(),
-            contextCommands: new Collection(),
-            commands: new Collection(),
-        };
-
         this.modules = {
+            options: {},
             commandHandler: new CommandHandler(this),
             eventHandler: new EventHandler(this),
             inhibitorHandler: new InhibitorHandler(this),
             webhookHandler: new WebhookHandler(this),
+            // extensionHandler: 'e',
         };
 
-        this.stats = {};
+        this.util = 'e';
 
-        this.extensions = {};
+        this.cache = {
+            messages: new Collection(),
+        };
 
-        this.util = new ClientUtil(this);
-
-        this.handlerOptions = {};
-
-        if (this.settings?.log?.ready) {
-            this.once('ready', async (client) => {
-                const size = (await client.guilds.fetch()).size;
-
-                console.info(
-                    Style.log(
-                        `Xernerx | ${client.user.tag} signed in watching ${size} server${size > 1 ? 's' : ''}. ${
-                            (this.handlerOptions.slash || this.handlerOptions.context)?.guildId
-                                ? `Using ${(await this.guilds.fetch((this.handlerOptions.slash || this.handlerOptions.context)?.guildId || '0')).name} as local guild.`
-                                : ''
-                        }`,
-                        { color: Style.TextColor.Purple }
-                    )
-                );
-            });
-        }
+        return this;
     }
 
     public register(token: string) {
         this.login(token);
     }
 
-    public loadAllExtensions(options: ExtensionOptions) {
-        const extensions = new Extensions(this);
+    // public loadAllExtensions(options: ExtensionOptions) {
+    //     const extensions = new Extensions(this);
 
-        return extensions.load(options.extensions, options.logging || false);
-    }
+    //     return extensions.load(options.extensions, options.logging || false);
+    // }
 }
