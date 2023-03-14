@@ -1,3 +1,4 @@
+import delay from '../functions/delay.js';
 import XernerxClient, { MessagePayload } from '../main.js';
 import { XernerxMessage } from '../types/extenders.js';
 import Util from './Util.js';
@@ -29,5 +30,9 @@ export default class MessageUtil extends Util {
         this.client.cache.messages.set(this.message.id, msg.id);
 
         return msg;
+    }
+
+    public async delay(time: number) {
+        return await delay(time);
     }
 }

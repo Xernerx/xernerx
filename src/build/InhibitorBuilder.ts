@@ -12,6 +12,7 @@ import XernerxClient from '../client/XernerxClient.js';
 export default class InhibitorBuilder {
     public id;
     public name;
+    public filePath?: string;
     public type;
     public client;
 

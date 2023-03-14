@@ -8,6 +8,7 @@ import {
     SlashCommandStringOption,
     SlashCommandUserOption,
 } from 'discord.js';
+import { XernerxMessageContextInteraction, XernerxSlashInteraction, XernerxUserContextInteraction } from './extenders.js';
 
 export type FileType = 'MessageCommand' | 'SlashCommand' | 'ContextCommand' | 'Event' | 'Inhibitor';
 
@@ -127,3 +128,5 @@ export type DiscordEventType =
     | 'guildScheduledEventUserRemove';
 
 export type EventType = DiscordEventType;
+
+export type XernerxInteraction = XernerxSlashInteraction | XernerxUserContextInteraction | XernerxMessageContextInteraction;

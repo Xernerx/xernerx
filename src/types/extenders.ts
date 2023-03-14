@@ -1,4 +1,15 @@
-import { DMChannel, Guild, GuildChannel, GuildMember, InteractionResponse, Message, User } from 'discord.js';
+import {
+    ChatInputCommandInteraction,
+    DMChannel,
+    Guild,
+    GuildChannel,
+    GuildMember,
+    InteractionResponse,
+    Message,
+    MessageContextMenuCommandInteraction,
+    User,
+    UserContextMenuCommandInteraction,
+} from 'discord.js';
 
 export interface XernerxUser extends User {
     owner: boolean;
@@ -15,8 +26,16 @@ export interface XernerxGuildChannel extends GuildChannel {}
 
 export interface XernerxDMChannel extends DMChannel {}
 
-export interface XernerxMessage extends Message {
+interface XernerxCommand {
     util: any;
 }
 
-export interface XernerxInteraction extends InteractionResponse {}
+export interface XernerxMessage extends Message, XernerxCommand {
+    user: XernerxUser;
+}
+
+export interface XernerxSlashInteraction extends ChatInputCommandInteraction, XernerxCommand {}
+
+export interface XernerxUserContextInteraction extends UserContextMenuCommandInteraction, XernerxCommand {}
+
+export interface XernerxMessageContextInteraction extends MessageContextMenuCommandInteraction, XernerxCommand {}

@@ -1,6 +1,7 @@
 import Discord, { SlashCommandStringOption, SlashCommandSubcommandBuilder, SlashCommandSubcommandGroupBuilder } from 'discord.js';
 import { z } from 'zod';
 import XernerxClient from '../main.js';
+import { XernerxSlashInteraction } from '../types/extenders.js';
 
 import { SlashCommandArgumentOptions, SlashCommandGroupOptions, SlashCommandOptions, SlashCommandSubcommandOptions } from '../types/interfaces.js';
 import { SlashCommandArgumentType, SlashCommandOption } from '../types/types.js';
@@ -9,6 +10,7 @@ export default class SlashCommandBuilder {
     public id;
     public data;
     public name;
+    public filePath?: string;
     public client;
 
     constructor(id: string, options: SlashCommandOptions) {
@@ -88,7 +90,7 @@ export default class SlashCommandBuilder {
 
     public async conditions() {}
 
-    public async exec() {}
+    public async exec(interaction: XernerxSlashInteraction) {}
 
     private addArguments(command: Discord.SlashCommandBuilder | SlashCommandSubcommandBuilder, args: Array<SlashCommandArgumentOptions>) {
         for (const argument of args) {

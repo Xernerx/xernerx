@@ -6,6 +6,7 @@ import { MessageCommandOptions } from '../types/interfaces.js';
 export default class MessageCommandBuilder {
     public id;
     public name;
+    public filePath?: string;
     public prefix;
     public regex;
     public separator;
