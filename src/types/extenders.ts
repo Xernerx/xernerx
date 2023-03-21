@@ -13,7 +13,7 @@ import {
 
 export interface XernerxUser extends User {
     owner: boolean;
-    voted: boolean;
+    voted: boolean | null;
 }
 
 export interface XernerxMember extends GuildMember {

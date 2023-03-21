@@ -5,6 +5,7 @@ import CommandHandler from '../handlers/CommandHandler.js';
 import EventHandler from '../handlers/EventHandler.js';
 import InhibitorHandler from '../handlers/InhibitorHandler.js';
 import WebhookHandler from '../handlers/WebhookHandler.js';
+import XernerxLog from '../tools/XernerxLog.js';
 import { XernerxOptions, ModuleOptions, XernerxCommands, XernerxCache } from '../types/interfaces.js';
 export default class XernerxClient extends Client {
     public settings;
@@ -13,7 +14,8 @@ export default class XernerxClient extends Client {
     public events;
     public inhibitors;
     public modules: ModuleOptions;
-    public util;
+    public util: Record<string, Function>;
+    public stats;
     public cache: XernerxCache;
 
     constructor(discordOptions: ClientOptions, xernerxOptions: XernerxOptions, config: unknown) {
@@ -73,7 +75,9 @@ export default class XernerxClient extends Client {
             // extensionHandler: 'e',
         };
 
-        this.util = 'e';
+        this.util = {};
+
+        this.stats = {};
 
         this.cache = {
             messages: new Collection(),
@@ -82,8 +86,10 @@ export default class XernerxClient extends Client {
         return this;
     }
 
-    public register(token: string) {
+    public connect(token: string) {
         this.login(token);
+
+        new XernerxLog().ready(this);
     }
 
     // public loadAllExtensions(options: ExtensionOptions) {

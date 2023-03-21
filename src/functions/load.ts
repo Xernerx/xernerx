@@ -7,11 +7,11 @@ export default async function load(client: XernerxClient, path: string, type: Fi
     try {
         let file = new (await import(`file://${path}`)).default();
 
-        file.client = client;
-
         file.fileType = type;
 
         file.filePath = path;
+
+        file.client = client;
 
         fileSave(client, file, type);
 

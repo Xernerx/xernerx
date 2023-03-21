@@ -1,16 +1,16 @@
 import { z } from 'zod';
-import XernerxClient from '../main.js';
+import XernerxClient, { PermissionFlagsBits, PermissionsBitField } from '../main.js';
 import { XernerxMessage } from '../types/extenders.js';
 import { MessageCommandOptions } from '../types/interfaces.js';
 
 export default class MessageCommandBuilder {
     public id;
     public name;
-    public filePath?: string;
     public prefix;
     public regex;
     public separator;
     public args;
+    public permissions;
     public client;
 
     constructor(id: string, options: MessageCommandOptions) {
@@ -59,6 +59,8 @@ export default class MessageCommandBuilder {
         this.separator = options.separator;
 
         this.args = options.args;
+
+        this.permissions = options.permissions;
 
         this.client = XernerxClient;
     }

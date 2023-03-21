@@ -12,7 +12,6 @@ import { EventType } from '../types/types.js';
 export default class EventBuilder {
     public id: string;
     public name: EventType;
-    public filePath?: string;
     public emitter: 'client' | 'process' | string;
     public type: 'discord' | string;
     public once: boolean;

@@ -20,6 +20,9 @@ import SlashCommandBuilder from '../build/SlashCommandBuilder.js';
 import { FileType } from '../types/types.js';
 import { xernerxUser } from '../functions/xernerxUser.js';
 import InteractionUtil from '../utils/InteractionUtil.js';
+import reload from '../functions/reload.js';
+import commandValidation from '../validators/commandValidation.js';
+import XernerxLog from '../tools/XernerxLog.js';
 
 export default class CommandHandler extends Handler {
     constructor(client: XernerxClient) {
@@ -56,7 +59,7 @@ export default class CommandHandler extends Handler {
 
             this.load(filePath, 'MessageCommand');
         }
-        console.count('x');
+
         this.emit({
             name: 'messageCreate',
             fileType: 'MessageCommand',
@@ -74,6 +77,10 @@ export default class CommandHandler extends Handler {
             fileType: 'MessageCommand',
             run: (message: XernerxMessage) => this.messageCommandRun(message, 'delete'),
         });
+    }
+
+    public reloadMessageCommands() {
+        return reload(this.client, 'message');
     }
 
     public loadSlashCommands(options: SlashHandlerOptions) {
@@ -267,12 +274,15 @@ export default class CommandHandler extends Handler {
         type: FileType
     ) {
         try {
+            if (!(await commandValidation(event, cmd))) return;
+
             cmd.exec(event as never, args);
 
             this.client.emit('commandExecute', event, type);
         } catch (error) {
-            console.error(error);
-            this.client.emit('commandError', event, type);
+            new XernerxLog().error(`An error occurred executing ${cmd.name}`, error);
+
+            this.client.emit('commandError', event, error, type);
         }
     }
 }

@@ -10,7 +10,7 @@ export default class SlashCommandBuilder {
     public id;
     public data;
     public name;
-    public filePath?: string;
+    public permissions;
     public client;
 
     constructor(id: string, options: SlashCommandOptions) {
@@ -69,8 +69,6 @@ export default class SlashCommandBuilder {
 
         this.data.setDMPermission(options.permissions?.dm || null);
 
-        // TODO - this.data.setDefaultMemberPermissions(options.permissions?.user || null)
-
         if (options.args && options?.args?.length > 0) {
             this.addArguments(this.data, options.args);
         }
@@ -84,6 +82,8 @@ export default class SlashCommandBuilder {
         }
 
         this.name = options.name;
+
+        this.permissions = options.permissions;
 
         this.client = XernerxClient;
     }

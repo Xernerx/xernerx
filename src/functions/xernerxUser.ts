@@ -7,8 +7,10 @@ export async function xernerxUser(event: XernerxMessage | XernerxSlashInteractio
 
     const user: Partial<XernerxUser> = author;
 
+    // console.log(await client.util.hasVoted(user.id));
+
     'owner' in user ? null : (user.owner = isOwner(user as XernerxUser, client));
-    'voted' in user ? null : (user.voted = true);
+    'voted' in user ? null : (user.voted = null);
 
     return user as XernerxUser;
 }

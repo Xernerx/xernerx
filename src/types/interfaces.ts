@@ -4,7 +4,7 @@ import EventHandler from '../handlers/EventHandler.js';
 import InhibitorHandler from '../handlers/InhibitorHandler.js';
 import WebhookHandler from '../handlers/WebhookHandler.js';
 import { ContextCommandBuilder, MessageCommandBuilder } from '../main.js';
-import { Locales, MessageCommandArgumentType, SlashCommandArgumentType } from './types.js';
+import { Locales, MessageCommandArgumentType, PermissionNames, SlashCommandArgumentType } from './types.js';
 
 export interface XernerxOptions {
     ownerId: string;
@@ -46,6 +46,19 @@ export interface XernerxCommands {
     message: Collection<string, MessageCommandBuilder>;
     slash: Collection<string, SlashCommandBuilder>;
     context: Collection<string, ContextCommandBuilder>;
+}
+
+export interface DBLOptions {
+    topgg: {
+        token: string;
+    };
+    dbl: {
+        token: string;
+    };
+    config: {
+        emits: boolean;
+        logs: boolean;
+    };
 }
 
 export interface XernerxCache {
@@ -112,8 +125,8 @@ interface CommandOptions {
         guilds?: Array<string>;
     };
     permissions?: {
-        user?: Array<string>;
-        client?: Array<string>;
+        user?: Array<PermissionNames> | Array<string>;
+        client?: Array<PermissionNames> | Array<string>;
         dm?: boolean;
     };
 }

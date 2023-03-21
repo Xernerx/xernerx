@@ -1,0 +1,65 @@
+:root {
+    --background-color: rgb(49, 51, 56);
+    --embed-color: rgb(43, 45, 49);
+    --font-family: 'arial';
+    --xernerx-purple: rgb(137, 121, 240);
+    --link-color: rgb(44, 126, 240);
+    --hover: rgba(255, 255, 255, 0.1);
+}
+
+body {
+    background-color: var(--background-color);
+    font-family: var(--font-family);
+    color: white;
+}
+
+a {
+    text-decoration: none;
+    color: var(--link-color);
+    cursor: pointer;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+.banner {
+    width: 70vw;
+}
+
+.horizontal {
+    display: flex;
+    flex-direction: row;
+}
+
+.main-page {
+    height: 30vh;
+}
+
+.embed {
+    border-radius: 0.25rem;
+    background-color: var(--embed-color);
+    width: 25vw;
+    margin: 10px;
+    padding: 5px;
+    border-left: 3px solid var(--xernerx-purple);
+}
+
+.avatar {
+    height: 25px;
+    width: 25px;
+}
+
+.button,
+.link {
+    background: none;
+    border: none;
+    padding: 10px;
+    font: inherit;
+    cursor: pointer;
+    color: inherit;
+    border-radius: 0.25rem;
+}
+
+.link:hover {
+    background-color: var(--hover);
+}

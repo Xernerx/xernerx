@@ -1,14 +1,16 @@
 import { ContextMenuCommandBuilder } from 'discord.js';
 import { z } from 'zod';
+
 import XernerxClient from '../main.js';
 import { XernerxMessageContextInteraction, XernerxUserContextInteraction } from '../types/extenders.js';
 import { ContextCommandOptions } from '../types/interfaces.js';
+import { PermissionNames } from '../types/types.js';
 
 export default class ContextCommandBuilder {
     public id;
     public data;
     public name;
-    public filePath?: string;
+    public permissions;
     public client;
 
     constructor(id: string, options: ContextCommandOptions) {
@@ -66,9 +68,9 @@ export default class ContextCommandBuilder {
 
         this.data.setDMPermission(options.permissions?.dm || null);
 
-        // TODO - this.data.setDefaultMemberPermissions(options.permissions?.user || null);
-
         this.name = options.name;
+
+        this.permissions = options.permissions;
 
         this.client = XernerxClient;
     }
