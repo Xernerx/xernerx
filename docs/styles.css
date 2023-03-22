@@ -11,6 +11,7 @@ body {
     background-color: var(--background-color);
     font-family: var(--font-family);
     color: white;
+    margin: 0;
 }
 
 a {
@@ -18,6 +19,7 @@ a {
     color: var(--link-color);
     cursor: pointer;
 }
+
 a:hover {
     text-decoration: underline;
 }
@@ -35,6 +37,15 @@ a:hover {
     height: 30vh;
 }
 
+.header {
+    background-color: var(--xernerx-purple);
+}
+
+.logo {
+    height: 50px;
+    width: 60px;
+}
+
 .embed {
     border-radius: 0.25rem;
     background-color: var(--embed-color);
@@ -50,7 +61,8 @@ a:hover {
 }
 
 .button,
-.link {
+.link,
+.header-button {
     background: none;
     border: none;
     padding: 10px;
@@ -60,6 +72,11 @@ a:hover {
     border-radius: 0.25rem;
 }
 
-.link:hover {
+.header-button {
+    height: inherit;
+}
+
+.link:hover,
+.header-button:hover {
     background-color: var(--hover);
 }
