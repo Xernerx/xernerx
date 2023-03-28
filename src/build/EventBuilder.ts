@@ -1,6 +1,7 @@
 import { z } from 'zod';
 
 import XernerxClient from '../client/XernerxClient.js';
+import { EventBuilderOptions } from '../types/interfaces.js';
 import { EventType } from '../types/types.js';
 // import { EventOptions } from '../types/options.js';
 
@@ -11,13 +12,13 @@ import { EventType } from '../types/types.js';
  */
 export default class EventBuilder {
     public id: string;
-    public name: EventType;
+    public name;
     public emitter: 'client' | 'process' | string;
     public type: 'discord' | string;
     public once: boolean;
     public client;
 
-    constructor(id: string, options: any) {
+    constructor(id: string, options: EventBuilderOptions) {
         this.id = id;
 
         z.object({

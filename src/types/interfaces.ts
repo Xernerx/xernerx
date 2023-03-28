@@ -1,4 +1,4 @@
-import { ChannelType, Collection, SlashCommandBuilder } from 'discord.js';
+import { APIApplicationCommandOptionChoice, ChannelType, Collection, SlashCommandBuilder } from 'discord.js';
 import CommandHandler from '../handlers/CommandHandler.js';
 import EventHandler from '../handlers/EventHandler.js';
 import InhibitorHandler from '../handlers/InhibitorHandler.js';
@@ -84,8 +84,6 @@ export interface MessageHandlerOptions extends CommandHandlerOptions {
     handleTyping?: boolean;
 }
 export interface SlashHandlerOptions extends CommandHandlerOptions {
-    guildId: string;
-    global: boolean;
     defer?: {
         reply?: boolean;
         ephemeral?: boolean;
@@ -93,8 +91,6 @@ export interface SlashHandlerOptions extends CommandHandlerOptions {
     };
 }
 export interface ContextHandlerOptions extends CommandHandlerOptions {
-    guildId: string;
-    global: boolean;
     defer?: {
         reply?: boolean;
         ephemeral?: boolean;
@@ -138,6 +134,7 @@ export interface MessageCommandOptions extends CommandOptions {
     regex?: RegExp;
     channelType?: Array<ChannelType>;
     args?: Array<MessageCommandArgumentOptions>;
+    flags?: Array<MessageCommandFlagOptions>;
 }
 
 export interface MessageCommandArgumentOptions {
@@ -146,11 +143,22 @@ export interface MessageCommandArgumentOptions {
     content?: Array<string>;
     match?: string;
     description?: string;
-    default?: string;
+    default?: string | Function;
+    separator?: string | RegExp;
     prompt?: {
         reply?: string;
         send?: string;
     };
+}
+
+export interface MessageCommandFlagOptions {
+    name: string;
+    match: string;
+}
+
+export interface MessageCommandArguments {
+    args: Record<string, unknown> | null;
+    flags: Record<string, boolean> | null;
 }
 
 export interface SlashCommandOptions extends CommandOptions {
@@ -182,7 +190,7 @@ export interface SlashCommandArgumentOptions {
     description: string;
     required?: boolean;
     autocomplete?: boolean;
-    choices?: Record<string, string>;
+    choices?: Array<{ name: string; value: string }>;
 }
 
 export interface SlashCommandSubcommandOptions {
@@ -195,4 +203,22 @@ export interface SlashCommandGroupOptions {
     name: string;
     description: string;
     subcommands: Array<SlashCommandSubcommandOptions>;
+}
+
+export interface SlashCommandArguments {
+    args: Record<string, string>;
+    subcommand: Record<string, string>;
+    group: Record<string, string>;
+}
+
+export interface EventBuilderOptions {
+    name: string;
+    emitter: string;
+    type: string;
+    once: boolean;
+}
+
+export interface InhibitorBuilderOptions {
+    name: string;
+    type: string;
 }

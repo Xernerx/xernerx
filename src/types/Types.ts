@@ -50,7 +50,22 @@ export type SlashCommandOptionChoices = SlashCommandStringOption | SlashCommandN
 
 export type SlashCommandOption = SlashCommandOptionChoices | SlashCommandBooleanOption | SlashCommandUserOption | SlashCommandChannelOption | SlashCommandRoleOption | SlashCommandMentionableOption;
 
-export type MessageCommandArgumentType = 'string' | 'number' | 'boolean' | 'channel' | 'guild' | 'integer' | 'mentionable' | 'role' | 'user' | 'member' | 'list' | 'option' | 'rest' | 'flag';
+export type MessageCommandArgumentType =
+    | 'string'
+    | 'number'
+    | 'boolean'
+    | 'confirm'
+    | 'channel'
+    | 'guild'
+    | 'integer'
+    | 'mentionable'
+    | 'role'
+    | 'user'
+    | 'message'
+    | 'member'
+    | 'list'
+    | 'option'
+    | 'rest';
 
 export type DiscordEventType =
     | 'applicationCommandPermissionsUpdate'

@@ -10,21 +10,21 @@ function createHeader() {
         <a href=".">
             <img class="logo" src="${subfolder ? '../' : ''}icons/Xernerx - Icon - Black.png" />
         </a>
-        
-        <a class="header-button" href="https://discord.js.org">
-            <button class="button">Discord.js</button>
-        </a>
 
-        <a class="header-button" href="/docs/v4.html">
+        <a class="header-button" href="/docs">
             <button class="button">Documentation</button>
         </a>
 
-        <a class="header-button" href="/guides/v4.html">
+        <a class="header-button" href="/guides">
             <button class="button">Guide</button>
         </a>
 
-        <a class="header-button" href="https://github.com/xernerx/xernerx#readme">
+        <a class="header-button" href="https://github.com/xernerx/xernerx#readme" target="_blank">
             <button class="button">Github</button>
+        </a>
+        
+        <a class="header-button" href="https://discord.js.org" target="_blank">
+            <button class="button">Discord.js</button>
         </a>
     </div>
         `;

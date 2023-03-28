@@ -5,8 +5,10 @@ import XernerxClient from '../client/XernerxClient.js';
 import {
     ContextHandlerOptions,
     MessageCommandArgumentOptions,
+    MessageCommandArguments,
     MessageHandlerOptions,
     SlashCommandArgumentOptions,
+    SlashCommandArguments,
     SlashCommandGroupOptions,
     SlashCommandSubcommandOptions,
     SlashHandlerOptions,
@@ -23,6 +25,8 @@ import InteractionUtil from '../utils/InteractionUtil.js';
 import reload from '../functions/reload.js';
 import commandValidation from '../validators/commandValidation.js';
 import XernerxLog from '../tools/XernerxLog.js';
+import { interactionArguments, messageArguments } from '../models/Arguments.js';
+import deploy from '../functions/deploy.js';
 
 export default class CommandHandler extends Handler {
     constructor(client: XernerxClient) {
@@ -87,8 +91,6 @@ export default class CommandHandler extends Handler {
         options = z
             .object({
                 directory: z.string(),
-                guildId: z.string(),
-                global: z.boolean(),
                 cooldown: z.number().default(0),
                 permissions: z
                     .object({
@@ -118,6 +120,8 @@ export default class CommandHandler extends Handler {
             this.load(filePath, 'SlashCommand');
         }
 
+        deploy(this.client, 'slash');
+
         this.emit({
             name: 'interactionCreate',
             fileType: 'SlashCommand',
@@ -128,8 +132,6 @@ export default class CommandHandler extends Handler {
         options = z
             .object({
                 directory: z.string(),
-                guildId: z.string(),
-                global: z.boolean(),
                 cooldown: z.number().default(0),
                 permissions: z
                     .object({
@@ -158,6 +160,8 @@ export default class CommandHandler extends Handler {
 
             this.load(filePath, 'ContextCommand');
         }
+
+        deploy(this.client, 'context');
 
         this.emit({
             name: 'interactionCreate',
@@ -235,7 +239,7 @@ export default class CommandHandler extends Handler {
 
             if (!cmd) return this.client.emit('commandNotFound');
 
-            this.exec(cmd, message, {}, 'MessageCommand');
+            this.exec(cmd, message, await messageArguments(message, cmd), 'MessageCommand');
         }
     }
 
@@ -250,7 +254,7 @@ export default class CommandHandler extends Handler {
 
         if (!cmd) return this.client.emit('commandNotFound', interaction);
 
-        this.exec(cmd as unknown as SlashCommandBuilder, interaction, {}, 'SlashCommand');
+        this.exec(cmd as unknown as SlashCommandBuilder, interaction, await interactionArguments(interaction, cmd), 'SlashCommand');
     }
 
     private async contextCommandRun(interaction: XernerxUserContextInteraction | XernerxMessageContextInteraction) {
@@ -264,23 +268,25 @@ export default class CommandHandler extends Handler {
 
         if (!cmd) return this.client.emit('commandNotFound', interaction);
 
-        this.exec(cmd as unknown as SlashCommandBuilder, interaction, {}, 'ContextCommand');
+        this.exec(cmd as unknown as SlashCommandBuilder, interaction, await interactionArguments(interaction, cmd), 'ContextCommand');
     }
 
     private async exec(
         cmd: MessageCommandBuilder | SlashCommandBuilder | ContextCommandBuilder,
         event: XernerxMessage | XernerxSlashInteraction | XernerxMessageContextInteraction | XernerxUserContextInteraction,
-        args: MessageCommandArgumentOptions | Record<string, SlashCommandArgumentOptions | SlashCommandSubcommandOptions | SlashCommandGroupOptions>,
+        args: any,
         type: FileType
     ) {
         try {
             if (!(await commandValidation(event, cmd))) return;
 
+            if (((cmd as MessageCommandBuilder).conditions as unknown) && (await ((cmd as MessageCommandBuilder).conditions(event as never, args) as unknown))) return;
+
             cmd.exec(event as never, args);
 
             this.client.emit('commandExecute', event, type);
         } catch (error) {
-            new XernerxLog().error(`An error occurred executing ${cmd.name}`, error);
+            new XernerxLog(this.client).error(`An error occurred executing ${cmd.name}`, error);
 
             this.client.emit('commandError', event, error, type);
         }

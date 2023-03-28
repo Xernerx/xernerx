@@ -1,20 +1,44 @@
-import Discord, { SlashCommandStringOption, SlashCommandSubcommandBuilder, SlashCommandSubcommandGroupBuilder } from 'discord.js';
+import Discord, { APIApplicationCommandOptionChoice, SlashCommandStringOption, SlashCommandSubcommandBuilder, SlashCommandSubcommandGroupBuilder } from 'discord.js';
 import { z } from 'zod';
 import XernerxClient from '../main.js';
 import { XernerxSlashInteraction } from '../types/extenders.js';
 
-import { SlashCommandArgumentOptions, SlashCommandGroupOptions, SlashCommandOptions, SlashCommandSubcommandOptions } from '../types/interfaces.js';
+import { SlashCommandArgumentOptions, SlashCommandArguments, SlashCommandGroupOptions, SlashCommandOptions, SlashCommandSubcommandOptions } from '../types/interfaces.js';
 import { SlashCommandArgumentType, SlashCommandOption } from '../types/types.js';
 
 export default class SlashCommandBuilder {
     public id;
-    public data;
+    public data: Discord.SlashCommandBuilder;
     public name;
     public permissions;
     public client;
 
     constructor(id: string, options: SlashCommandOptions) {
         this.id = id;
+
+        this.data = new Discord.SlashCommandBuilder();
+
+        this.data.setName(options.name);
+
+        this.data.setNameLocalizations(options.nameLocalizations || null);
+
+        this.data.setDescription(options.description);
+
+        this.data.setDescriptionLocalizations(options.descriptionLocalizations || null);
+
+        this.data.setDMPermission(options.permissions?.dm || null);
+
+        if (options.args && options?.args?.length > 0) {
+            this.addArguments(this.data, options.args);
+        }
+
+        if (options.subcommands && options?.subcommands?.length > 0) {
+            this.addSubcommands(this.data, options.subcommands);
+        }
+
+        if (options.groups && options?.groups?.length > 0) {
+            this.addSubcommandGroups(options.groups);
+        }
 
         options = z
             .object({
@@ -57,30 +81,6 @@ export default class SlashCommandBuilder {
             })
             .parse(options);
 
-        this.data = new Discord.SlashCommandBuilder();
-
-        this.data.setName(options.name);
-
-        this.data.setNameLocalizations(options.nameLocalizations || null);
-
-        this.data.setDescription(options.description);
-
-        this.data.setDescriptionLocalizations(options.descriptionLocalizations || null);
-
-        this.data.setDMPermission(options.permissions?.dm || null);
-
-        if (options.args && options?.args?.length > 0) {
-            this.addArguments(this.data, options.args);
-        }
-
-        if (options.subcommands && options?.subcommands?.length > 0) {
-            this.addSubcommands(this.data, options.subcommands);
-        }
-
-        if (options.groups && options?.groups?.length > 0) {
-            this.addSubcommandGroups(options.groups);
-        }
-
         this.name = options.name;
 
         this.permissions = options.permissions;
@@ -88,9 +88,9 @@ export default class SlashCommandBuilder {
         this.client = XernerxClient;
     }
 
-    public async conditions() {}
+    public async conditions(interaction: XernerxSlashInteraction, args: SlashCommandArguments) {}
 
-    public async exec(interaction: XernerxSlashInteraction) {}
+    public async exec(interaction: XernerxSlashInteraction, args: SlashCommandArguments) {}
 
     private addArguments(command: Discord.SlashCommandBuilder | SlashCommandSubcommandBuilder, args: Array<SlashCommandArgumentOptions>) {
         for (const argument of args) {
@@ -102,14 +102,16 @@ export default class SlashCommandBuilder {
                     .setDescription(argument.description)
                     .setRequired(argument.required || false);
 
-                if (argument.choices)
-                    (option as SlashCommandStringOption).setChoices(
-                        Object.entries(argument.choices).map(([name, value]) => {
-                            return { name, value };
-                        }) as unknown as { name: string; value: string }
-                    );
+                if (slashCommandArgumentType === 'String') {
+                    if (argument.choices)
+                        (option as SlashCommandStringOption).setChoices(
+                            ...(argument.choices.map((choices) => {
+                                return { name: Object.keys(choices).at(0), value: Object.values(choices).at(0) };
+                            }) as Array<any>)
+                        );
 
-                (option as SlashCommandStringOption).setAutocomplete(argument.autocomplete || false);
+                    (option as SlashCommandStringOption).setAutocomplete(argument.autocomplete || false);
+                }
 
                 return option;
             });

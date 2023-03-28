@@ -5,6 +5,7 @@
     --xernerx-purple: rgb(137, 121, 240);
     --link-color: rgb(44, 126, 240);
     --hover: rgba(255, 255, 255, 0.1);
+    --sidebar-color: rgba(0, 0, 0, 0.1);
 }
 
 body {
@@ -25,12 +26,17 @@ a:hover {
 }
 
 .banner {
-    width: 70vw;
+    width: 50vw;
 }
 
 .horizontal {
     display: flex;
     flex-direction: row;
+}
+
+.vertical {
+    display: flex;
+    flex-direction: column;
 }
 
 .main-page {
@@ -79,4 +85,52 @@ a:hover {
 .link:hover,
 .header-button:hover {
     background-color: var(--hover);
+}
+
+.visible {
+    visibility: visible;
+    position: absolute;
+}
+
+.invisible {
+    position: absolute;
+    visibility: hidden;
+}
+
+.sidebar {
+    width: 15vw;
+    height: 100vh;
+    background-color: var(--sidebar-color);
+    padding: 10px;
+}
+
+.content {
+    padding: 10px;
+}
+
+.component {
+    border: 1px solid black;
+    border-radius: 0.25rem;
+    background-color: var(--sidebar-color);
+    width: 79.7vw;
+    padding: 10px;
+    margin: 10px;
+}
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    visibility: hidden;
+    position: absolute;
+    left: 0;
+    top: calc(100% + 0.25rem);
+    background-color: var(--background-color);
+    border-radius: 0.25rem;
+    border: 1px solid black;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+}
+
+.dropdown > .link:focus + .dropdown-content {
+    visibility: visible;
 }

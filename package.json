@@ -15,7 +15,7 @@
     ],
     "author": "Dummi",
     "license": "MIT",
-    "homepage": "https://xernerx.github.io/xernerx/home.html",
+    "homepage": "https://xernerx.github.io/xernerx",
     "packageManager": "npm@8.5.5",
     "scripts": {
         "start": "npm i && npm fund && npm audit fix --force && npm link && tsc -w",
@@ -43,7 +43,7 @@
         "zod": "^3.21.4"
     },
     "devDependencies": {
-        "prettier": "^2.8.4",
+        "prettier": "^2.8.7",
         "typescript": "^5.0.2"
     }
 }

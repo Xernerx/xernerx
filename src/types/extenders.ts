@@ -10,6 +10,8 @@ import {
     User,
     UserContextMenuCommandInteraction,
 } from 'discord.js';
+import InteractionUtil from '../utils/InteractionUtil.js';
+import MessageUtil from '../utils/MessageUtil.js';
 
 export interface XernerxUser extends User {
     owner: boolean;
@@ -27,7 +29,7 @@ export interface XernerxGuildChannel extends GuildChannel {}
 export interface XernerxDMChannel extends DMChannel {}
 
 interface XernerxCommand {
-    util: any;
+    util: InteractionUtil | MessageUtil;
 }
 
 export interface XernerxMessage extends Message, XernerxCommand {

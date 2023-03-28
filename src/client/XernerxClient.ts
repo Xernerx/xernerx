@@ -23,6 +23,8 @@ export default class XernerxClient extends Client {
 
         this.settings = z
             .object({
+                local: z.string(),
+                global: z.boolean().default(false),
                 ownerId: z.string().or(z.array(z.string())).default([]),
                 permissions: z
                     .object({
@@ -42,6 +44,7 @@ export default class XernerxClient extends Client {
                 log: z
                     .object({
                         ready: z.boolean().default(false),
+                        info: z.boolean().default(false),
                         error: z.boolean().default(false),
                     })
                     .optional(),
@@ -89,7 +92,7 @@ export default class XernerxClient extends Client {
     public connect(token: string) {
         this.login(token);
 
-        new XernerxLog().ready(this);
+        new XernerxLog(this).ready();
     }
 
     // public loadAllExtensions(options: ExtensionOptions) {

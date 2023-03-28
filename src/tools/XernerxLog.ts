@@ -2,24 +2,36 @@ import XernerxError from './XernerxError.js';
 import { Style } from 'dumfunctions';
 import XernerxClient from '../main.js';
 export default class XernerxLog {
-    public info(message: string) {
-        return console.info(`${Style.log('Xernerx', { color: Style.TextColor.Purple })} | ${message}`);
+    private client;
+    private errorLog;
+    private infoLog;
+    private readyLog;
+
+    constructor(client: XernerxClient) {
+        this.client = client;
+
+        this.errorLog = client.settings.log?.error;
+        this.infoLog = client.settings.log?.info;
+        this.readyLog = client.settings.log?.ready;
+    }
+
+    public info(message: string, force: boolean = false) {
+        return this.infoLog || force ? console.info(`${Style.log('Xernerx', { color: Style.TextColor.Purple })} | ${message}`) : null;
     }
 
     public warn(message: string) {
-        return console.warn(`${Style.log('Xernerx', { color: Style.TextColor.Yellow })} | ${message}`);
+        return this.infoLog ? console.warn(`${Style.log('Xernerx', { color: Style.TextColor.Yellow })} | ${message}`) : null;
     }
 
     public error(message: string, error?: XernerxError | unknown) {
-        return console.error(`${Style.log('Xernerx', { color: Style.TextColor.Red })} | ${message}${error ? ` | ${(error as Record<string, string>).stack}` : ''}`);
+        return this.errorLog ? console.error(`${Style.log('Xernerx', { color: Style.TextColor.Red })} | ${message}${error ? ` | ${(error as Record<string, string>).stack}` : ''}`) : null;
     }
 
-    public ready(client: XernerxClient) {
-        client.once('ready', async (synced) =>
+    public ready() {
+        this.client.prependOnceListener('ready', async (synced) =>
             this.info(
-                `${synced.user.tag} is now watching ${(await client.guilds.fetch()).size} guilds, ${
-                    client.modules.options.slash?.guildId ? `using ${await client.guilds.fetch(client.modules.options.slash?.guildId)} as local guild.` : ''
-                }`
+                `${synced.user.tag} is now watching ${(await this.client.guilds.fetch()).size} guilds, using ${await this.client.guilds.fetch(this.client.settings.local)} as local guild.`,
+                this.readyLog
             )
         );
     }
