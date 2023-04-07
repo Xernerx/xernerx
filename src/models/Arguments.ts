@@ -1,5 +1,6 @@
-import { ChatInputApplicationCommandData, SlashCommandBuilder } from 'discord.js';
-import { ContextCommandBuilder, MessageCommandBuilder } from '../main.js';
+import SlashCommandBuilder from '../build/SlashCommandBuilder.js';
+import ContextCommandBuilder from '../build/ContextCommandBuilder.js';
+import MessageCommandBuilder from '../build/MessageCommandBuilder.js';
 import { XernerxMessage } from '../types/extenders.js';
 import { MessageCommandArguments } from '../types/interfaces.js';
 import { XernerxInteraction } from '../types/types.js';

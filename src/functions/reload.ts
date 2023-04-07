@@ -1,4 +1,4 @@
-import XernerxClient from '../main.js';
+import XernerxClient from '../client/XernerxClient.js';
 
 enum FileTypes {
     'message' = 'MessageCommand',

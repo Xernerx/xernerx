@@ -1,4 +1,8 @@
-import XernerxClient, { ContextCommandBuilder, GatewayVersion, REST, Routes, SlashCommandBuilder } from '../main.js';
+import { GatewayVersion, REST, Routes } from 'discord.js';
+
+import ContextCommandBuilder from '../build/ContextCommandBuilder.js';
+import SlashCommandBuilder from '../build/SlashCommandBuilder.js';
+import XernerxClient from '../client/XernerxClient.js';
 import XernerxLog from '../tools/XernerxLog.js';
 
 const commands = { slash: [], context: [], retries: 0 };
@@ -17,7 +21,9 @@ export default function deploy(client: XernerxClient, type: 'slash' | 'context')
                     put(client, client.settings.global, []);
                 }
             } catch (error) {
-                new XernerxLog(client).error(`An error occurred while deploying the interaction commands`, error);
+                new XernerxLog(client).error(`An error occurred while deploying the interaction commands!`, error);
+            } finally {
+                new XernerxLog(client).info(`Deployed All Commands ${client.settings.global ? 'globally' : 'locally'}.`);
             }
         }
 

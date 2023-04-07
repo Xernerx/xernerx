@@ -1,7 +1,11 @@
-import { SlashCommandBuilder } from 'discord.js';
 import InhibitorBuilder from '../build/InhibitorBuilder.js';
-import XernerxClient, { ContextCommandBuilder, EventBuilder, MessageCommandBuilder } from '../main.js';
+import SlashCommandBuilder from '../build/SlashCommandBuilder.js';
+import ContextCommandBuilder from '../build/ContextCommandBuilder.js';
+import MessageCommandBuilder from '../build/MessageCommandBuilder.js';
+import EventBuilder from '../build/EventBuilder.js';
+import XernerxClient from '../client/XernerxClient.js';
 import { FileType } from '../types/types.js';
+import XernerxLog from '../tools/XernerxLog.js';
 
 export default async function load(client: XernerxClient, path: string, type: FileType) {
     try {
@@ -17,7 +21,7 @@ export default async function load(client: XernerxClient, path: string, type: Fi
 
         return file;
     } catch (error) {
-        console.error(error);
+        new XernerxLog(client).error(`Couldn't load ${type} ${path.match(/\w*\.js$/gim)?.at(0) || path}`, error);
     }
 }
 

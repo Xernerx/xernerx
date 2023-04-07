@@ -142,7 +142,7 @@ export type DiscordEventType =
     | 'guildScheduledEventUserAdd'
     | 'guildScheduledEventUserRemove';
 
-export type EventType = DiscordEventType;
+export type EventType = DiscordEventType | 'webhookInit' | 'webhookPost' | 'webhookError';
 
 export type XernerxInteraction = XernerxSlashInteraction | XernerxUserContextInteraction | XernerxMessageContextInteraction;
 
@@ -188,3 +188,5 @@ export type PermissionNames =
     | 'send messages in threads'
     | 'start embedded activities'
     | 'moderate members';
+
+export type InhibitorType = 'message' | 'interaction' | 'command' | 'channel' | 'user' | 'member' | 'guild' | 'contextCommand' | 'messageCommand' | 'slashCommand';

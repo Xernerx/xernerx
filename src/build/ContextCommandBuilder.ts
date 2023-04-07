@@ -1,29 +1,45 @@
-import { ContextMenuCommandBuilder } from 'discord.js';
+import { ContextMenuCommandBuilder, ContextMenuCommandType } from 'discord.js';
 import { z } from 'zod';
 
-import XernerxClient from '../main.js';
+import XernerxClient from '../client/XernerxClient.js';
 import { XernerxMessageContextInteraction, XernerxUserContextInteraction } from '../types/extenders.js';
 import { ContextCommandOptions } from '../types/interfaces.js';
-import { PermissionNames } from '../types/types.js';
 
 export default class ContextCommandBuilder {
     public id;
     public data;
     public name;
+    public type;
+    public description;
+    public info;
+    public category;
+    public cooldown;
+    public ignore;
+    public strict;
     public permissions;
+    public defer;
     public client;
 
     constructor(id: string, options: ContextCommandOptions) {
         this.id = id;
 
+        this.data = new ContextMenuCommandBuilder();
+
+        this.data.setName(options.name);
+
+        this.data.setNameLocalizations(options.nameLocalizations || null);
+
+        this.data.setType(options.type === 'user' ? 2 : 3);
+
+        this.data.setDMPermission(options.permissions?.dm || null);
+
         options = z
             .object({
-                type: z.enum(['user', 'message']),
                 name: z.string(),
+                type: z.enum(['user', 'message']),
                 description: z.string().or(z.null()).default(null),
                 info: z.string().or(z.null()).default(null),
                 category: z.string().or(z.null()).default(null),
-                channelType: z.array(z.number()).or(z.null()).default(null),
                 cooldown: z.number().or(z.null()).default(null),
                 ignore: z
                     .object({
@@ -58,19 +74,25 @@ export default class ContextCommandBuilder {
             })
             .parse(options);
 
-        this.data = new ContextMenuCommandBuilder();
-
-        this.data.setName(options.name);
-
-        this.data.setNameLocalizations(options.nameLocalizations || null);
-
-        this.data.setType(options.type === 'user' ? 2 : 3);
-
-        this.data.setDMPermission(options.permissions?.dm || null);
-
         this.name = options.name;
 
+        this.type = options.type;
+
+        this.description = options.description;
+
+        this.info = options.info;
+
+        this.category = options.category;
+
+        this.cooldown = options.cooldown;
+
+        this.ignore = options.ignore;
+
+        this.strict = options.strict;
+
         this.permissions = options.permissions;
+
+        this.defer = options.defer;
 
         this.client = XernerxClient;
     }

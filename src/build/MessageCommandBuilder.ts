@@ -1,21 +1,29 @@
 import { z } from 'zod';
-import XernerxClient, { PermissionFlagsBits, PermissionsBitField } from '../main.js';
+import XernerxClient from '../client/XernerxClient.js';
 import { XernerxMessage } from '../types/extenders.js';
-import { MessageCommandArgumentOptions, MessageCommandArguments, MessageCommandOptions } from '../types/interfaces.js';
+import { MessageCommandArguments, MessageCommandOptions } from '../types/interfaces.js';
 
 export default class MessageCommandBuilder {
     public id;
     public name;
-    public prefix;
     public regex;
+    public prefix;
+    public description;
+    public info;
     public separator;
     public args;
     public flags;
+    public category;
+    public cooldown;
+    public ignore;
+    public strict;
     public permissions;
     public client;
 
     constructor(id: string, options: MessageCommandOptions) {
         this.id = id;
+
+        this.regex = options.regex;
 
         this.args = options.args;
 
@@ -59,7 +67,17 @@ export default class MessageCommandBuilder {
 
         this.prefix = options.prefix;
 
-        this.regex = options.regex;
+        this.description = options.description;
+
+        this.info = options.info;
+
+        this.category = options.category;
+
+        this.cooldown = options.cooldown;
+
+        this.ignore = options.ignore;
+
+        this.strict = options.strict;
 
         this.separator = options.separator;
 

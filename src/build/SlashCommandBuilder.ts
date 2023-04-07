@@ -1,6 +1,6 @@
-import Discord, { APIApplicationCommandOptionChoice, SlashCommandStringOption, SlashCommandSubcommandBuilder, SlashCommandSubcommandGroupBuilder } from 'discord.js';
+import Discord, { SlashCommandStringOption, SlashCommandSubcommandBuilder, SlashCommandSubcommandGroupBuilder } from 'discord.js';
 import { z } from 'zod';
-import XernerxClient from '../main.js';
+import XernerxClient from '../client/XernerxClient.js';
 import { XernerxSlashInteraction } from '../types/extenders.js';
 
 import { SlashCommandArgumentOptions, SlashCommandArguments, SlashCommandGroupOptions, SlashCommandOptions, SlashCommandSubcommandOptions } from '../types/interfaces.js';
@@ -8,9 +8,16 @@ import { SlashCommandArgumentType, SlashCommandOption } from '../types/types.js'
 
 export default class SlashCommandBuilder {
     public id;
-    public data: Discord.SlashCommandBuilder;
+    public data;
     public name;
+    public description;
+    public info;
+    public category;
+    public cooldown;
+    public ignore;
+    public strict;
     public permissions;
+    public defer;
     public client;
 
     constructor(id: string, options: SlashCommandOptions) {
@@ -83,7 +90,21 @@ export default class SlashCommandBuilder {
 
         this.name = options.name;
 
+        this.description = options.description;
+
+        this.info = options.info;
+
+        this.category = options.category;
+
+        this.cooldown = options.cooldown;
+
+        this.ignore = options.ignore;
+
+        this.strict = options.strict;
+
         this.permissions = options.permissions;
+
+        this.defer = options.defer;
 
         this.client = XernerxClient;
     }

@@ -1,6 +1,6 @@
-{
+export default {
     "name": "xernerx",
-    "version": "3.6.0",
+    "version": "4.0.0",
     "description": "A bot framework for discord.js.",
     "main": "dist/main.js",
     "type": "module",

@@ -9,9 +9,9 @@ import ContextCommandBuilder from '../build/ContextCommandBuilder.js';
 import { FileType } from '../types/types.js';
 
 export default class Handler {
-    public client;
-    public files: Array<MessageCommandBuilder | SlashCommandBuilder | ContextCommandBuilder>;
-    public readyTimestamp;
+    public readonly client;
+    public readonly files: Array<MessageCommandBuilder | SlashCommandBuilder | ContextCommandBuilder>;
+    public readonly readyTimestamp;
 
     constructor(client: XernerxClient) {
         this.client = client;
@@ -39,6 +39,8 @@ export default class Handler {
     }
 
     public async emit<T extends Record<string, string | boolean | Function | void>>(event: T) {
+        if (!event?.fileType) return;
+
         if (event.fileType === 'Event') {
             if (event.emitter === 'client')
                 event.once

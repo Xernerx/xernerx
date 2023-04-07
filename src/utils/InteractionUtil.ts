@@ -1,5 +1,7 @@
+import { MessagePayload } from 'discord.js';
+
 import delay from '../functions/delay.js';
-import XernerxClient, { MessagePayload } from '../main.js';
+import XernerxClient from '../client/XernerxClient.js';
 import { XernerxInteraction } from '../types/types.js';
 import Util from './Util.js';
 

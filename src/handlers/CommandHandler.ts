@@ -1,18 +1,9 @@
 import { z } from 'zod';
 import * as path from 'path';
+import { GatewayIntentBits } from 'discord.js';
 
 import XernerxClient from '../client/XernerxClient.js';
-import {
-    ContextHandlerOptions,
-    MessageCommandArgumentOptions,
-    MessageCommandArguments,
-    MessageHandlerOptions,
-    SlashCommandArgumentOptions,
-    SlashCommandArguments,
-    SlashCommandGroupOptions,
-    SlashCommandSubcommandOptions,
-    SlashHandlerOptions,
-} from '../types/interfaces.js';
+import { ContextHandlerOptions, MessageHandlerOptions, SlashHandlerOptions } from '../types/interfaces.js';
 import Handler from './Handler.js';
 import { XernerxMessage, XernerxMessageContextInteraction, XernerxSlashInteraction, XernerxUserContextInteraction } from '../types/extenders.js';
 import MessageUtil from '../utils/MessageUtil.js';
@@ -27,6 +18,7 @@ import commandValidation from '../validators/commandValidation.js';
 import XernerxLog from '../tools/XernerxLog.js';
 import { interactionArguments, messageArguments } from '../models/Arguments.js';
 import deploy from '../functions/deploy.js';
+import { inhibitorValidation } from '../validators/inhibitorValidations.js';
 
 export default class CommandHandler extends Handler {
     constructor(client: XernerxClient) {
@@ -34,6 +26,9 @@ export default class CommandHandler extends Handler {
     }
 
     public loadMessageCommands(options: MessageHandlerOptions) {
+        if (!this.client.options.intents.has(GatewayIntentBits.MessageContent)) new XernerxLog(this.client).warn(`Message commands might not work as you're missing the intent MessageContent!`);
+        if (!this.client.options.intents.has(GatewayIntentBits.GuildMessages)) new XernerxLog(this.client).warn(`Message commands might not work as you're missing the intent GuildMessages!`);
+
         options = z
             .object({
                 directory: z.string(),
@@ -64,6 +59,8 @@ export default class CommandHandler extends Handler {
             this.load(filePath, 'MessageCommand');
         }
 
+        new XernerxLog(this.client).info(`Loaded Message Commands.`);
+
         this.emit({
             name: 'messageCreate',
             fileType: 'MessageCommand',
@@ -83,9 +80,9 @@ export default class CommandHandler extends Handler {
         });
     }
 
-    public reloadMessageCommands() {
-        return reload(this.client, 'message');
-    }
+    // public reloadMessageCommands() {
+    //     return reload(this.client, 'message');
+    // }
 
     public loadSlashCommands(options: SlashHandlerOptions) {
         options = z
@@ -119,6 +116,8 @@ export default class CommandHandler extends Handler {
 
             this.load(filePath, 'SlashCommand');
         }
+
+        new XernerxLog(this.client).info(`Loaded Slash Commands.`);
 
         deploy(this.client, 'slash');
 
@@ -161,6 +160,8 @@ export default class CommandHandler extends Handler {
             this.load(filePath, 'ContextCommand');
         }
 
+        new XernerxLog(this.client).info(`Loaded Context Commands.`);
+
         deploy(this.client, 'context');
 
         this.emit({
@@ -202,10 +203,16 @@ export default class CommandHandler extends Handler {
 
             const prefixes = Array.isArray(this.client.modules.options.message.prefix) ? this.client.modules.options.message.prefix : [this.client.modules.options.message.prefix];
 
-            let commandName, cmd;
+            let commandName: string | undefined, cmd;
 
             commands.map((command) => {
                 let prefix: string | null = null;
+
+                if (command.regex && message.content.match(command.regex)) {
+                    const [match] = message.content.match(command.regex) || [null];
+
+                    if (match) commandName = command.name;
+                }
 
                 const cp = Array.isArray(command.prefix) ? command.prefix : [command.prefix as string];
 
@@ -219,12 +226,13 @@ export default class CommandHandler extends Handler {
 
                 if (!prefix) return;
 
-                commandName = message.content
-                    .replace(prefix, '')
-                    .split(command.separator || / +/)
-                    .shift()
-                    ?.trim()
-                    ?.toLowerCase();
+                if (!commandName)
+                    commandName = message.content
+                        .replace(prefix, '')
+                        .split(command.separator || / +/)
+                        .shift()
+                        ?.trim()
+                        ?.toLowerCase();
             });
 
             if (!cmd && this.client.modules.options.message.allowMention) {
@@ -233,9 +241,11 @@ export default class CommandHandler extends Handler {
                 }
             }
 
-            if (!commandName) return;
+            if (!commandName) commandName = '';
 
             if (this.client.commands.message.has(commandName)) cmd = this.client.commands.message.get(commandName);
+
+            if (await inhibitorValidation(message, cmd)) return;
 
             if (!cmd) return this.client.emit('commandNotFound');
 
@@ -252,6 +262,8 @@ export default class CommandHandler extends Handler {
 
         if (this.client.commands.slash.has(interaction.commandName)) cmd = this.client.commands.slash.get(interaction.commandName);
 
+        if (await inhibitorValidation(interaction, cmd)) return;
+
         if (!cmd) return this.client.emit('commandNotFound', interaction);
 
         this.exec(cmd as unknown as SlashCommandBuilder, interaction, await interactionArguments(interaction, cmd), 'SlashCommand');
@@ -266,6 +278,8 @@ export default class CommandHandler extends Handler {
 
         if (this.client.commands.context.has(interaction.commandName)) cmd = this.client.commands.context.get(interaction.commandName);
 
+        if (await inhibitorValidation(interaction, cmd)) return;
+
         if (!cmd) return this.client.emit('commandNotFound', interaction);
 
         this.exec(cmd as unknown as SlashCommandBuilder, interaction, await interactionArguments(interaction, cmd), 'ContextCommand');
@@ -278,7 +292,7 @@ export default class CommandHandler extends Handler {
         type: FileType
     ) {
         try {
-            if (!(await commandValidation(event, cmd))) return;
+            if (await commandValidation(event, cmd)) return;
 
             if (((cmd as MessageCommandBuilder).conditions as unknown) && (await ((cmd as MessageCommandBuilder).conditions(event as never, args) as unknown))) return;
 

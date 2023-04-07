@@ -1,10 +1,14 @@
-import { APIApplicationCommandOptionChoice, ChannelType, Collection, SlashCommandBuilder } from 'discord.js';
+import { ChannelType, Collection } from 'discord.js';
+
 import CommandHandler from '../handlers/CommandHandler.js';
 import EventHandler from '../handlers/EventHandler.js';
 import InhibitorHandler from '../handlers/InhibitorHandler.js';
 import WebhookHandler from '../handlers/WebhookHandler.js';
-import { ContextCommandBuilder, MessageCommandBuilder } from '../main.js';
-import { Locales, MessageCommandArgumentType, PermissionNames, SlashCommandArgumentType } from './types.js';
+import ContextCommandBuilder from '../build/ContextCommandBuilder.js';
+import MessageCommandBuilder from '../build/MessageCommandBuilder.js';
+import SlashCommandBuilder from '../build/SlashCommandBuilder.js';
+import { Locales, MessageCommandArgumentType, PermissionNames, SlashCommandArgumentType, EventType, InhibitorType } from './types.js';
+import ExtensionHandler from '../handlers/ExtensionHandler.js';
 
 export interface XernerxOptions {
     ownerId: string;
@@ -35,11 +39,13 @@ export interface ModuleOptions {
         slash?: SlashHandlerOptions;
         context?: ContextHandlerOptions;
         events?: EventHandlerOptions;
+        inhibitors?: InhibitorHandlerOptions;
     };
     commandHandler: CommandHandler;
     eventHandler: EventHandler;
     inhibitorHandler: InhibitorHandler;
     webhookHandler: WebhookHandler;
+    extensionHandler: ExtensionHandler;
 }
 
 export interface XernerxCommands {
@@ -63,6 +69,14 @@ export interface DBLOptions {
 
 export interface XernerxCache {
     messages: Collection<string, string>;
+    cooldowns: Collection<
+        string,
+        {
+            id: string;
+            command: string;
+            createdTimestamp: number;
+        }
+    >;
 }
 
 interface CommandHandlerOptions {
@@ -99,6 +113,10 @@ export interface ContextHandlerOptions extends CommandHandlerOptions {
 }
 
 export interface EventHandlerOptions {
+    directory: string;
+}
+
+export interface InhibitorHandlerOptions {
     directory: string;
 }
 
@@ -212,13 +230,13 @@ export interface SlashCommandArguments {
 }
 
 export interface EventBuilderOptions {
-    name: string;
-    emitter: string;
+    name: EventType;
+    emitter: 'discord' | 'process';
     type: string;
     once: boolean;
 }
 
 export interface InhibitorBuilderOptions {
     name: string;
-    type: string;
+    type: InhibitorType;
 }

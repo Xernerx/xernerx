@@ -7,16 +7,19 @@ import InhibitorHandler from '../handlers/InhibitorHandler.js';
 import WebhookHandler from '../handlers/WebhookHandler.js';
 import XernerxLog from '../tools/XernerxLog.js';
 import { XernerxOptions, ModuleOptions, XernerxCommands, XernerxCache } from '../types/interfaces.js';
+import ClientUtil from '../utils/ClientUtil.js';
+import { InhibitorBuilder } from '../main.js';
+import ExtensionHandler from '../handlers/ExtensionHandler.js';
 export default class XernerxClient extends Client {
-    public settings;
-    public config;
-    public commands: XernerxCommands;
-    public events;
-    public inhibitors;
-    public modules: ModuleOptions;
-    public util: Record<string, Function>;
-    public stats;
-    public cache: XernerxCache;
+    public readonly settings;
+    public readonly config;
+    public readonly commands: XernerxCommands;
+    public readonly events;
+    public readonly inhibitors: Collection<string, InhibitorBuilder>;
+    public readonly modules: ModuleOptions;
+    public readonly util: ClientUtil;
+    public readonly stats;
+    public readonly cache: XernerxCache;
 
     constructor(discordOptions: ClientOptions, xernerxOptions: XernerxOptions, config: unknown) {
         super(discordOptions);
@@ -75,15 +78,21 @@ export default class XernerxClient extends Client {
             eventHandler: new EventHandler(this),
             inhibitorHandler: new InhibitorHandler(this),
             webhookHandler: new WebhookHandler(this),
-            // extensionHandler: 'e',
+            extensionHandler: new ExtensionHandler(this),
         };
 
-        this.util = {};
+        this.util = new ClientUtil(this);
 
-        this.stats = {};
+        this.stats = {
+            guildCount: 0,
+            userCount: 0,
+            shardId: 0,
+            shardCount: 1,
+        };
 
         this.cache = {
             messages: new Collection(),
+            cooldowns: new Collection(),
         };
 
         return this;

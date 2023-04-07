@@ -5,6 +5,7 @@ import * as path from 'path';
 import XernerxClient from '../client/XernerxClient.js';
 import { EventHandlerOptions } from '../types/interfaces.js';
 import Handler from './Handler.js';
+import XernerxLog from '../tools/XernerxLog.js';
 
 export default class EventHandler extends Handler {
     constructor(client: XernerxClient) {
@@ -12,9 +13,11 @@ export default class EventHandler extends Handler {
     }
 
     public async loadEvents(options: EventHandlerOptions) {
-        // options = z.object({
-        //     directory: z.string(),
-        // });
+        options = z
+            .object({
+                directory: z.string(),
+            })
+            .parse(options);
 
         this.client.modules.options.events = options;
 
@@ -27,5 +30,7 @@ export default class EventHandler extends Handler {
 
             this.emit(data);
         }
+
+        new XernerxLog(this.client).info(`Loaded Events.`);
     }
 }

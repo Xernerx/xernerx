@@ -3,19 +3,19 @@ function createHeader() {
 
     header.classList.add('header');
 
-    if (document.URL.includes('docs') || document.URL.includes('guides')) var subfolder = true;
+    if (document.URL.includes('docs') || document.URL.includes('guide')) var subfolder = true;
 
     header.innerHTML = `
     <div class="horizontal">
-        <a href=".">
+        <a href="${subfolder ? '../' : ''}.">
             <img class="logo" src="${subfolder ? '../' : ''}icons/Xernerx - Icon - Black.png" />
         </a>
 
-        <a class="header-button" href="/docs">
+        <a class="header-button" href="${subfolder ? '../' : ''}docs#v4">
             <button class="button">Documentation</button>
         </a>
 
-        <a class="header-button" href="/guides">
+        <a class="header-button" href="${subfolder ? '../' : ''}guide#v4">
             <button class="button">Guide</button>
         </a>
 
