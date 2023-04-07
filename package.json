@@ -36,9 +36,10 @@
         "url": "https://github.com/xernerx/xernerx/issues"
     },
     "dependencies": {
+        "dbl-sdk": "^1.2.0",
         "discord.js": "^14.9.0",
         "dumfunctions": "^2.1.2",
-        "xernerx-extension-builder": "^0.0.9",
+        "xernerx-extension-builder": "^0.0.12",
         "zod": "^3.21.4"
     },
     "devDependencies": {

@@ -1,8 +1,7 @@
 import XernerxExtensionBuilder from 'xernerx-extension-builder';
-import XernerxClient from '../main.js';
+import XernerxClient from '../client/XernerxClient.js';
 import Handler from './Handler.js';
 import XernerxLog from '../tools/XernerxLog.js';
-import { z } from 'zod';
 
 export default class ExtensionHandler extends Handler {
     constructor(client: XernerxClient) {
@@ -12,9 +11,9 @@ export default class ExtensionHandler extends Handler {
     loadExtensions(...extensions: Array<XernerxExtensionBuilder>) {
         const active = extensions.map((extension) => {
             try {
-                // extension.main(client);
+                extension.main(this.client);
 
-                // extension.await(client);
+                extension.await(this.client);
 
                 return extension.name;
             } catch (error) {
