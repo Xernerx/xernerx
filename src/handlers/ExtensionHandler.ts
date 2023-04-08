@@ -11,13 +11,13 @@ export default class ExtensionHandler extends Handler {
     loadExtensions(...extensions: Array<XernerxExtensionBuilder>) {
         const active = extensions.map((extension) => {
             try {
-                extension.main(this.client);
+                if (extension.main) extension.main(this.client);
 
-                extension.await(this.client);
+                if (extension.await) extension.await(this.client);
 
                 return extension.name;
             } catch (error) {
-                new XernerxLog(this.client).error(`An error occurred while loading ${extension.name}`);
+                new XernerxLog(this.client).error(`An error occurred while loading ${extension.name}`, error);
             }
         });
 

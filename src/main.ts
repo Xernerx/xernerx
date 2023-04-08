@@ -10,4 +10,9 @@ export default XernerxClient;
 export * from 'discord.js';
 export * from 'dumfunctions';
 import ExtensionBuilder from 'xernerx-extension-builder';
-export { XernerxClient, MessageCommandBuilder, SlashCommandBuilder, ContextCommandBuilder, EventBuilder, InhibitorBuilder, ExtensionBuilder };
+
+import Discord from 'discord.js';
+
+const version = '4.0.2';
+
+export { XernerxClient, MessageCommandBuilder, SlashCommandBuilder, ContextCommandBuilder, EventBuilder, InhibitorBuilder, ExtensionBuilder, Discord, version };

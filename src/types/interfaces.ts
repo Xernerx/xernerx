@@ -1,4 +1,4 @@
-import { ChannelType, Collection } from 'discord.js';
+import { ActivityType, ChannelType, Collection, PresenceStatusData } from 'discord.js';
 
 import CommandHandler from '../handlers/CommandHandler.js';
 import EventHandler from '../handlers/EventHandler.js';
@@ -239,4 +239,12 @@ export interface EventBuilderOptions {
 export interface InhibitorBuilderOptions {
     name: string;
     type: InhibitorType;
+}
+
+export interface PresenceOptions {
+    text: string;
+    type?: ActivityType.Playing | ActivityType.Streaming | ActivityType.Listening | ActivityType.Watching | ActivityType.Competing;
+    url: string;
+    status?: PresenceStatusData;
+    interval?: number;
 }
