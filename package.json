@@ -24,7 +24,7 @@
         "major": "npm run write && git add . && npm run commit && npm version major && npm publish && git push",
         "site": "git add docs && npm run commit && git push",
         "commit": "node ../.scripts/commit.js",
-        "write": "npm run build && npm run format && node ../.scripts/rewritePackage.js ",
+        "write": "npm run build && npm run format",
         "format": "npx prettier --write src dist",
         "build": "tsc && npm run format"
     },

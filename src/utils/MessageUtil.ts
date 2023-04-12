@@ -8,12 +8,16 @@ import sendWebhook from '../functions/sendWebhook.js';
 import XernerxError from '../tools/XernerxError.js';
 
 export default class MessageUtil extends Util {
-    private message;
+    private readonly message;
+
+    public alias: string | null;
 
     constructor(client: XernerxClient, message: XernerxMessage) {
         super(client);
 
         this.message = message;
+
+        this.alias = null;
     }
 
     public async reply(content: MessagePayload) {

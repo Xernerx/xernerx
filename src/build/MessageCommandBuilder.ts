@@ -4,21 +4,22 @@ import { XernerxMessage } from '../types/extenders.js';
 import { MessageCommandArguments, MessageCommandOptions } from '../types/interfaces.js';
 
 export default class MessageCommandBuilder {
-    public id;
-    public name;
-    public regex;
-    public prefix;
-    public description;
-    public info;
-    public separator;
-    public args;
-    public flags;
-    public category;
-    public cooldown;
-    public ignore;
-    public strict;
-    public permissions;
-    public client;
+    public readonly id;
+    public readonly name;
+    public readonly aliases;
+    public readonly regex;
+    public readonly prefix;
+    public readonly description;
+    public readonly info;
+    public readonly separator;
+    public readonly args;
+    public readonly flags;
+    public readonly category;
+    public readonly cooldown;
+    public readonly ignore;
+    public readonly strict;
+    public readonly permissions;
+    public readonly client;
 
     constructor(id: string, options: MessageCommandOptions) {
         this.id = id;
@@ -32,6 +33,7 @@ export default class MessageCommandBuilder {
         options = z
             .object({
                 name: z.string(),
+                aliases: z.array(z.string()).default([]),
                 description: z.string().or(z.null()).default(null),
                 info: z.string().or(z.null()).default(null),
                 category: z.string().or(z.null()).default(null),
@@ -64,6 +66,8 @@ export default class MessageCommandBuilder {
             .parse(options);
 
         this.name = options.name;
+
+        this.aliases = options.aliases;
 
         this.prefix = options.prefix;
 

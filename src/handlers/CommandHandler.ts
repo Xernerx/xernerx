@@ -203,7 +203,9 @@ export default class CommandHandler extends Handler {
 
             const prefixes = Array.isArray(this.client.modules.options.message.prefix) ? this.client.modules.options.message.prefix : [this.client.modules.options.message.prefix];
 
-            let commandName: string | undefined, cmd;
+            let commandName: string | undefined,
+                cmd,
+                alias: string | null = null;
 
             commands.map((command) => {
                 let prefix: string | null = null;
@@ -227,12 +229,19 @@ export default class CommandHandler extends Handler {
                 if (!prefix) return;
 
                 if (!commandName)
-                    commandName = message.content
-                        .replace(prefix, '')
-                        .split(command.separator || / +/)
-                        .shift()
-                        ?.trim()
-                        ?.toLowerCase();
+                    commandName =
+                        message.content
+                            .replace(prefix, '')
+                            .split(command.separator || / +/)
+                            .shift()
+                            ?.trim()
+                            ?.toLowerCase() || '';
+
+                if (!this.client.commands.message.has(commandName) && command.aliases?.includes(commandName)) {
+                    alias = commandName;
+
+                    commandName = command.name;
+                }
             });
 
             if (!cmd && this.client.modules.options.message.allowMention) {
@@ -248,6 +257,8 @@ export default class CommandHandler extends Handler {
             if (await inhibitorValidation(message, cmd)) return;
 
             if (!cmd) return this.client.emit('commandNotFound');
+
+            (message.util as MessageUtil).alias = alias === commandName ? null : alias;
 
             this.exec(cmd, message, await messageArguments(message, cmd), 'MessageCommand');
         }
