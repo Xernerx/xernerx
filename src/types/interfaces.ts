@@ -159,7 +159,7 @@ export interface MessageCommandArgumentOptions {
     type: MessageCommandArgumentType;
     name: string;
     content?: Array<string>;
-    match?: string | string[];
+    match?: string | Array<string>;
     description?: string;
     default?: string | Function;
     separator?: string | RegExp;

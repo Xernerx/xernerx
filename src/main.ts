@@ -13,6 +13,6 @@ import ExtensionBuilder from 'xernerx-extension-builder';
 
 import Discord from 'discord.js';
 
-const version = '4.0.4';
+const version = '4.0.5';
 
 export { XernerxClient, MessageCommandBuilder, SlashCommandBuilder, ContextCommandBuilder, EventBuilder, InhibitorBuilder, ExtensionBuilder, Discord, version };

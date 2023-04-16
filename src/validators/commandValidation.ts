@@ -54,7 +54,8 @@ export default async function commandValidation(event: XernerxInteraction | Xern
 }
 
 async function emit(event: XernerxInteraction | XernerxMessage, reason: string) {
-    return await event.client.emit('commandBlock', event, reason);
+    event.client.emit('commandBlock', event, reason);
+    return true;
 }
 
 function toBigInt(permissions: Array<PermissionNames> | Array<string>) {
