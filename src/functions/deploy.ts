@@ -23,7 +23,11 @@ export default function deploy(client: XernerxClient, type: 'slash' | 'context')
             } catch (error) {
                 new XernerxLog(client).error(`An error occurred while deploying the interaction commands!`, error);
             } finally {
-                new XernerxLog(client).info(`Deployed All Commands ${client.settings.global ? 'globally' : 'locally'}.`);
+                new XernerxLog(client).info(
+                    `Deployed ${[client.commands.message.size, client.commands.slash.size, client.commands.context.size].reduce((a, b) => (a += b))} Commands ${
+                        client.settings.global ? 'globally' : 'locally'
+                    }.`
+                );
             }
         }
 

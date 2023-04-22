@@ -21,6 +21,6 @@ export default class ExtensionHandler extends Handler {
             }
         });
 
-        new XernerxLog(this.client).info(`Loaded Extensions: ${active.filter((e) => e).join(', ')}`);
+        new XernerxLog(this.client).info(`Loaded ${extensions.length} Extensions: ${active.filter((e) => e).join(', ')}`);
     }
 }

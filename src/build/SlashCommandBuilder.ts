@@ -109,6 +109,8 @@ export default class SlashCommandBuilder {
         this.client = XernerxClient;
     }
 
+    public async autocomplete<T>(interaction: XernerxSlashInteraction, focused: T, options: Array<T>) {}
+
     public async conditions(interaction: XernerxSlashInteraction, args: SlashCommandArguments) {}
 
     public async exec(interaction: XernerxSlashInteraction, args: SlashCommandArguments) {}

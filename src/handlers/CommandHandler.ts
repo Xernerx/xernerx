@@ -59,7 +59,7 @@ export default class CommandHandler extends Handler {
             this.load(filePath, 'MessageCommand');
         }
 
-        new XernerxLog(this.client).info(`Loaded Message Commands.`);
+        new XernerxLog(this.client).info(`Loaded ${files.length} Message Commands.`);
 
         this.emit({
             name: 'messageCreate',
@@ -117,7 +117,7 @@ export default class CommandHandler extends Handler {
             this.load(filePath, 'SlashCommand');
         }
 
-        new XernerxLog(this.client).info(`Loaded Slash Commands.`);
+        new XernerxLog(this.client).info(`Loaded ${files.length} Slash Commands.`);
 
         deploy(this.client, 'slash');
 
@@ -160,7 +160,7 @@ export default class CommandHandler extends Handler {
             this.load(filePath, 'ContextCommand');
         }
 
-        new XernerxLog(this.client).info(`Loaded Context Commands.`);
+        new XernerxLog(this.client).info(`Loaded ${files.length} Context Commands.`);
 
         deploy(this.client, 'context');
 
@@ -264,20 +264,29 @@ export default class CommandHandler extends Handler {
         }
     }
 
-    private async slashCommandRun(interaction: XernerxSlashInteraction) {
+    private async slashCommandRun<T extends Record<string, any>>(interaction: XernerxSlashInteraction) {
         interaction.util = new InteractionUtil(this.client, interaction);
 
         interaction.user = await xernerxUser(interaction, this.client);
 
-        let cmd;
+        let cmd: SlashCommandBuilder | null | undefined = null;
 
         if (this.client.commands.slash.has(interaction.commandName)) cmd = this.client.commands.slash.get(interaction.commandName);
 
-        if (await inhibitorValidation(interaction, cmd)) return;
+        if (await inhibitorValidation(interaction, cmd as SlashCommandBuilder)) return;
 
         if (!cmd) return this.client.emit('commandNotFound', interaction);
 
-        this.exec(cmd as unknown as SlashCommandBuilder, interaction, await interactionArguments(interaction, cmd), 'SlashCommand');
+        new Promise(async (resolve) => {
+            if (interaction.isAutocomplete()) {
+                const focused = (interaction as T).options.getFocused(true);
+                const options = (interaction as T).options;
+
+                await (cmd as SlashCommandBuilder).autocomplete(interaction, focused, options);
+            } else resolve(true);
+        })
+            .then(async () => await this.exec(cmd as SlashCommandBuilder, interaction, await interactionArguments(interaction, cmd as SlashCommandBuilder), 'SlashCommand'))
+            .catch((error) => this.client.emit('commandError', interaction, error, (cmd as unknown as Record<string, FileType>).filetype));
     }
 
     private async contextCommandRun(interaction: XernerxUserContextInteraction | XernerxMessageContextInteraction) {

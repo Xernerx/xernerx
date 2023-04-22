@@ -31,6 +31,6 @@ export default class EventHandler extends Handler {
             this.emit(data);
         }
 
-        new XernerxLog(this.client).info(`Loaded Events.`);
+        new XernerxLog(this.client).info(`Loaded ${this.client.events.size} Events.`);
     }
 }

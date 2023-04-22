@@ -4,6 +4,7 @@ import SlashCommandBuilder from './build/SlashCommandBuilder.js';
 import ContextCommandBuilder from './build/ContextCommandBuilder.js';
 import EventBuilder from './build/EventBuilder.js';
 import InhibitorBuilder from './build/InhibitorBuilder.js';
+import XernerxLog from './tools/XernerxLog.js';
 
 export default XernerxClient;
 
@@ -13,6 +14,6 @@ import ExtensionBuilder from 'xernerx-extension-builder';
 
 import Discord from 'discord.js';
 
-const version = '4.0.5';
+const version = '4.1.0';
 
-export { XernerxClient, MessageCommandBuilder, SlashCommandBuilder, ContextCommandBuilder, EventBuilder, InhibitorBuilder, ExtensionBuilder, Discord, version };
+export { XernerxClient, MessageCommandBuilder, SlashCommandBuilder, ContextCommandBuilder, EventBuilder, InhibitorBuilder, ExtensionBuilder, Discord, version, XernerxLog };

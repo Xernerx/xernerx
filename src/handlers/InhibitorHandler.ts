@@ -31,6 +31,6 @@ export default class InhibitorHandler extends Handler {
             this.emit(data);
         }
 
-        new XernerxLog(this.client).info(`Loaded Inhibitors.`);
+        new XernerxLog(this.client).info(`Loaded ${this.client.inhibitors.size} Inhibitors.`);
     }
 }
