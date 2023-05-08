@@ -4,7 +4,7 @@ import { PresenceOptions } from '../types/interfaces.js';
 import Util from './Util.js';
 
 export default class ClientUtil extends Util {
-    public hasVoted?: Function;
+    public declare hasVoted?: Function;
 
     constructor(client: XernerxClient) {
         super(client);

@@ -28,16 +28,21 @@ export interface XernerxGuildChannel extends GuildChannel {}
 
 export interface XernerxDMChannel extends DMChannel {}
 
-interface XernerxCommand {
-    util: InteractionUtil | MessageUtil;
-}
+interface XernerxCommand {}
 
 export interface XernerxMessage extends Message, XernerxCommand {
     user: XernerxUser;
+    util: MessageUtil;
 }
 
-export interface XernerxSlashInteraction extends ChatInputCommandInteraction, XernerxCommand {}
+export interface XernerxSlashInteraction extends ChatInputCommandInteraction, XernerxCommand {
+    util: InteractionUtil;
+}
 
-export interface XernerxUserContextInteraction extends UserContextMenuCommandInteraction, XernerxCommand {}
+export interface XernerxUserContextInteraction extends UserContextMenuCommandInteraction, XernerxCommand {
+    util: InteractionUtil;
+}
 
-export interface XernerxMessageContextInteraction extends MessageContextMenuCommandInteraction, XernerxCommand {}
+export interface XernerxMessageContextInteraction extends MessageContextMenuCommandInteraction, XernerxCommand {
+    util: InteractionUtil;
+}

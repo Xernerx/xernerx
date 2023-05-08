@@ -203,9 +203,10 @@ export default class CommandHandler extends Handler {
 
             const prefixes = Array.isArray(this.client.modules.options.message.prefix) ? this.client.modules.options.message.prefix : [this.client.modules.options.message.prefix];
 
-            let commandName: string | undefined,
+            let commandName: string | null = null,
                 cmd,
-                alias: string | null = null;
+                commandAlias: string | null = null,
+                commandPrefix: string | null = null;
 
             commands.map((command) => {
                 let prefix: string | null = null;
@@ -238,15 +239,19 @@ export default class CommandHandler extends Handler {
                             ?.toLowerCase() || '';
 
                 if (!this.client.commands.message.has(commandName) && command.aliases?.includes(commandName)) {
-                    alias = commandName;
+                    commandAlias = commandName;
 
                     commandName = command.name;
                 }
+
+                commandAlias = commandAlias ? commandAlias : commandName;
+
+                commandPrefix = prefix;
             });
 
             if (!cmd && this.client.modules.options.message.allowMention) {
                 if (message.mentions.users.has(this.client.user?.id as string) || message.mentions.repliedUser?.id === this.client.user?.id) {
-                    commandName = message.content.replace(`<@${this.client.user?.id}>`, '').trim().split(/ +/).shift()?.toLowerCase();
+                    commandName = message.content.replace(`<@${this.client.user?.id}>`, '').trim().split(/ +/).shift()?.toLowerCase() || null;
                 }
             }
 
@@ -258,7 +263,10 @@ export default class CommandHandler extends Handler {
 
             if (!cmd) return this.client.emit('commandNotFound');
 
-            (message.util as MessageUtil).alias = alias === commandName ? null : alias;
+            message.util.parsed = {
+                alias: commandAlias,
+                prefix: commandPrefix,
+            };
 
             this.exec(cmd, message, await messageArguments(message, cmd), 'MessageCommand');
         }

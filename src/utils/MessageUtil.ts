@@ -10,14 +10,20 @@ import XernerxError from '../tools/XernerxError.js';
 export default class MessageUtil extends Util {
     private readonly message;
 
-    public alias: string | null;
+    public declare parsed: {
+        alias: null | string;
+        prefix: null | string;
+    };
 
     constructor(client: XernerxClient, message: XernerxMessage) {
         super(client);
 
         this.message = message;
 
-        this.alias = null;
+        this.parsed = {
+            alias: null,
+            prefix: null,
+        };
     }
 
     public async reply(content: MessagePayload) {
