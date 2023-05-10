@@ -12,6 +12,8 @@ export default function deploy(client: XernerxClient, type: 'slash' | 'context')
     client.prependOnceListener('ready', (client) => {
         commands[type] = client.commands[type].map((command: SlashCommandBuilder | ContextCommandBuilder) => command.data.toJSON());
 
+        if (!(!!client.modules.options.slash && !!client.modules.options.context && commands.slash.length > 0 && commands.context.length > 0)) return;
+
         try {
             if (client.settings.global) {
                 put(client, client.settings.global, [...commands.slash, ...commands.context]);

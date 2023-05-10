@@ -15,16 +15,17 @@ export default class ClientUtil extends Util {
     }
 
     public async resolveChannel(query: string | Record<string, string>) {
-        let channelId = null;
-
-        if (typeof query === 'object') channelId = query.id;
-
-        if (typeof query === 'string') channelId = parseInt(query.replace(/<#|>/gim, '')) ? query.replace(/<#|>/gim, '') : query;
-
-        if (!channelId) return null;
+        if (typeof query == 'object') query = query.id;
 
         try {
-            return await this.client.channels.fetch(channelId);
+            let channel =
+                this.client.channels.cache.find(<T>(channel: T) =>
+                    (channel as Record<string, string>).name == (query as string).toLowerCase() || (channel as Record<string, string>).id == (query as string).toLowerCase() ? channel : null
+                ) || null;
+
+            if (!channel) channel = (await this.client.channels.fetch(query)) || null;
+
+            return channel;
         } catch {
             return null;
         }
