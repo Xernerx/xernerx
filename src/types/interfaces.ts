@@ -11,25 +11,29 @@ import { Locales, MessageCommandArgumentType, PermissionNames, SlashCommandArgum
 import ExtensionHandler from '../handlers/ExtensionHandler.js';
 
 export interface XernerxOptions {
-    ownerId: string;
-    permissions: {
-        client: Array<string>;
-        user: Array<string>;
-        dm: boolean;
+    local?: string;
+    global?: boolean;
+    ownerId?: string | Array<string>;
+    permissions?: {
+        client?: Array<string>;
+        user?: Array<string>;
+        dm?: boolean;
     };
-    ignore: {
-        owner: boolean;
-        users: Array<string>;
-        channels: Array<string>;
-        guilds: Array<string>;
+    ignore?: {
+        owner?: boolean;
+        users?: Array<string>;
+        channels?: Array<string>;
+        guilds?: Array<string>;
     };
-    log: {
-        ready: boolean;
-        error: boolean;
+    log?: {
+        ready?: boolean;
+        info?: boolean;
+        error?: boolean;
+        table?: Array<'name' | 'aliases' | 'description' | 'fileType' | 'category'>;
     };
-    cooldown: {
-        command: number;
-        cache: number;
+    cooldown?: {
+        command?: number;
+        cache?: number;
     };
 }
 

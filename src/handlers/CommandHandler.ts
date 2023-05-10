@@ -85,6 +85,8 @@ export default class CommandHandler extends Handler {
     // }
 
     public loadSlashCommands(options: SlashHandlerOptions) {
+        if (!this.client.settings.local) new XernerxLog(this.client).warn(`Slash commands might not work as you haven't specified a local guild ID.`);
+
         options = z
             .object({
                 directory: z.string(),
@@ -128,6 +130,8 @@ export default class CommandHandler extends Handler {
         });
     }
     public loadContextCommands(options: ContextHandlerOptions) {
+        if (!this.client.settings.local) new XernerxLog(this.client).warn(`Context commands might not work as you haven't specified a local guild ID.`);
+
         options = z
             .object({
                 directory: z.string(),

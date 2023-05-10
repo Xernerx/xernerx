@@ -8,25 +8,26 @@ import WebhookHandler from '../handlers/WebhookHandler.js';
 import XernerxLog from '../tools/XernerxLog.js';
 import { XernerxOptions, ModuleOptions, XernerxCommands, XernerxCache } from '../types/interfaces.js';
 import ClientUtil from '../utils/ClientUtil.js';
-import { InhibitorBuilder } from '../main.js';
+import { InhibitorBuilder, EventBuilder } from '../main.js';
 import ExtensionHandler from '../handlers/ExtensionHandler.js';
-export default class XernerxClient extends Client {
-    public readonly settings;
-    public readonly config;
-    public readonly commands: XernerxCommands;
-    public readonly events;
-    public readonly inhibitors: Collection<string, InhibitorBuilder>;
-    public readonly modules: ModuleOptions;
-    public readonly util: ClientUtil;
-    public readonly stats;
-    public readonly cache: XernerxCache;
 
-    constructor(discordOptions: ClientOptions, xernerxOptions: XernerxOptions, config: unknown) {
+export default class XernerxClient extends Client {
+    public declare readonly settings;
+    public declare readonly config;
+    public declare readonly commands: XernerxCommands;
+    public declare readonly events: Collection<string, EventBuilder>;
+    public declare readonly inhibitors: Collection<string, InhibitorBuilder>;
+    public declare readonly modules: ModuleOptions;
+    public declare readonly util: ClientUtil;
+    public declare readonly stats;
+    public declare readonly cache: XernerxCache;
+
+    constructor(discordOptions: ClientOptions, xernerxOptions: XernerxOptions, config?: unknown) {
         super(discordOptions);
 
         this.settings = z
             .object({
-                local: z.string(),
+                local: z.string().optional(),
                 global: z.boolean().default(false),
                 ownerId: z.string().or(z.array(z.string())).default([]),
                 permissions: z
@@ -49,6 +50,7 @@ export default class XernerxClient extends Client {
                         ready: z.boolean().default(false),
                         info: z.boolean().default(false),
                         error: z.boolean().default(false),
+                        table: z.array(z.string()).or(z.null()).default(null),
                     })
                     .optional(),
                 cooldown: z
