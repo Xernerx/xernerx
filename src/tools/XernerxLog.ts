@@ -35,7 +35,7 @@ export default class XernerxLog {
     public ready() {
         this.client.prependOnceListener('ready', async (synced) => {
             this.info(
-                `${synced.user.tag} is now online, watching ${(await this.client.guilds.fetch()).size} guilds, using ${
+                `${synced.user.tag} is now online, watching ${this.client.guilds.cache.size} guilds, using ${
                     this.client.settings.local ? await this.client.guilds.fetch(this.client.settings.local) : 'none'
                 } as local guild.`,
                 this.readyLog
