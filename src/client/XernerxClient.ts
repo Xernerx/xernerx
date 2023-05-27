@@ -22,7 +22,7 @@ export default class XernerxClient extends Client {
     public declare readonly stats;
     public declare readonly cache: XernerxCache;
 
-    constructor(discordOptions: ClientOptions, xernerxOptions: XernerxOptions, config?: unknown) {
+    public constructor(discordOptions: ClientOptions, xernerxOptions: XernerxOptions, config?: unknown) {
         super(discordOptions);
 
         this.settings = z
@@ -81,7 +81,7 @@ export default class XernerxClient extends Client {
             inhibitorHandler: new InhibitorHandler(this),
             webhookHandler: new WebhookHandler(this),
             extensionHandler: new ExtensionHandler(this),
-        };
+        } as const;
 
         this.util = new ClientUtil(this);
 
@@ -97,6 +97,8 @@ export default class XernerxClient extends Client {
             cooldowns: new Collection(),
         };
 
+        this.connect = this.connect;
+
         return this;
     }
 
@@ -105,10 +107,4 @@ export default class XernerxClient extends Client {
 
         new XernerxLog(this).ready();
     }
-
-    // public loadAllExtensions(options: ExtensionOptions) {
-    //     const extensions = new Extensions(this);
-
-    //     return extensions.load(options.extensions, options.logging || false);
-    // }
 }

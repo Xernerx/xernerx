@@ -30,7 +30,7 @@ export default class WebhookHandler extends Handler {
     private async post(token: string) {
         const guilds = await this.client.guilds.fetch();
 
-        this.client.stats.guildCount = guilds.size;
+        this.client.stats.guildCount = this.client.guilds.cache.size;
 
         this.client.stats.userCount = (await Promise.all(guilds.map(async (guild) => (await this.client.guilds.fetch(guild.id)).memberCount))).reduce((a, b) => (a += b));
 

@@ -30,4 +30,18 @@ export default class ClientUtil extends Util {
             return null;
         }
     }
+
+    public async resolveGuild(query: string | Record<string, string>) {
+        if (typeof query == 'object') query = query.id;
+
+        try {
+            let guild = this.client.guilds.cache.find((guild) => guild.name.toLowerCase() == (query as string).toLowerCase()) || null;
+
+            if (!guild) guild = (await this.client.guilds.fetch(query)) || null;
+
+            return guild;
+        } catch {
+            return null;
+        }
+    }
 }
