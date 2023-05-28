@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 import XernerxClient from '../client/XernerxClient.js';
-import { InhibitorBuilderOptions } from '../types/interfaces.js';
+import { InhibitorBuilderOptions, MessageCommandArguments, SlashCommandArguments } from '../types/interfaces.js';
 import { InhibitorType, XernerxInteraction } from '../types/types.js';
 import { XernerxMessage } from '../types/extenders.js';
 // import { InhibitorOptions, MessageArgumentOptions, SlashArgumentOptions } from '../types/options.js';
@@ -13,12 +13,12 @@ import { XernerxMessage } from '../types/extenders.js';
  * @param {InhibitorOptions} options - The inhibitor options.
  */
 export default class InhibitorBuilder {
-    public id;
-    public name;
-    public type: InhibitorType;
-    public client;
+    public declare readonly id;
+    public declare readonly name;
+    public declare readonly type: InhibitorType;
+    public declare readonly client;
 
-    constructor(id: string, options: InhibitorBuilderOptions) {
+    public constructor(id: string, options: InhibitorBuilderOptions) {
         this.id = id;
 
         z.object({
@@ -33,5 +33,5 @@ export default class InhibitorBuilder {
         this.client = XernerxClient;
     }
 
-    public async check(action: XernerxInteraction | XernerxMessage, args: any) {}
+    public async check<T>(action: XernerxInteraction | XernerxMessage, args: T) {}
 }

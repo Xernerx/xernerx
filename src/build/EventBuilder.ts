@@ -11,14 +11,14 @@ import { EventType } from '../types/types.js';
  * @param {EventOptions} options - The event options.
  */
 export default class EventBuilder {
-    public id: string;
-    public name;
-    public emitter: 'client' | 'process' | string;
-    public type: 'discord' | string;
-    public once: boolean;
-    public client;
+    public declare readonly id: string;
+    public declare readonly name;
+    public declare readonly emitter?: 'client' | 'process' | string;
+    public declare readonly type?: 'discord' | string;
+    public declare readonly once?: boolean;
+    public declare readonly client;
 
-    constructor(id: string, options: EventBuilderOptions) {
+    public constructor(id: string, options: EventBuilderOptions) {
         this.id = id;
 
         z.object({
@@ -42,5 +42,5 @@ export default class EventBuilder {
      * @description run your custom event here.
      * TODO - update description
      */
-    public async run<T extends Array<T>>(...args: T) {}
+    public async run<T>(...args: T[]) {}
 }

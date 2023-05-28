@@ -1,4 +1,4 @@
-import { Client, ClientOptions, Collection } from 'discord.js';
+import { Client, ClientOptions, Collection, Options } from 'discord.js';
 import { z } from 'zod';
 
 import CommandHandler from '../handlers/CommandHandler.js';
@@ -22,7 +22,7 @@ export default class XernerxClient extends Client {
     public declare readonly stats;
     public declare readonly cache: XernerxCache;
 
-    public constructor(discordOptions: ClientOptions, xernerxOptions: XernerxOptions, config?: unknown) {
+    public constructor(discordOptions: ClientOptions, xernerxOptions: XernerxOptions, config?: Record<string, unknown>) {
         super(discordOptions);
 
         this.settings = z
@@ -62,7 +62,7 @@ export default class XernerxClient extends Client {
             })
             .parse(xernerxOptions);
 
-        this.config = config;
+        this.config = config || null;
 
         this.commands = {
             message: new Collection(),
@@ -86,7 +86,7 @@ export default class XernerxClient extends Client {
         this.util = new ClientUtil(this);
 
         this.stats = {
-            guildCount: 0,
+            guildCount: this.guilds.cache.size,
             userCount: 0,
             shardId: 0,
             shardCount: 1,
@@ -96,8 +96,6 @@ export default class XernerxClient extends Client {
             messages: new Collection(),
             cooldowns: new Collection(),
         };
-
-        this.connect = this.connect;
 
         return this;
     }

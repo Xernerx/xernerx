@@ -127,6 +127,7 @@ export interface InhibitorHandlerOptions {
 interface CommandOptions {
     name: string;
     description?: string | null;
+    usage?: string | null;
     info?: string | null;
     category?: string | null;
     cooldown?: number | null;
@@ -235,8 +236,8 @@ export interface SlashCommandArguments {
 
 export interface EventBuilderOptions {
     name: EventType;
-    emitter: 'discord' | 'process';
-    type: string;
+    emitter: 'client' | 'process';
+    type: 'discord';
     once: boolean;
 }
 

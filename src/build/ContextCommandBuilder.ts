@@ -6,21 +6,22 @@ import { XernerxMessageContextInteraction, XernerxUserContextInteraction } from 
 import { ContextCommandOptions } from '../types/interfaces.js';
 
 export default class ContextCommandBuilder {
-    public id;
-    public data;
-    public name;
-    public type;
-    public description;
-    public info;
-    public category;
-    public cooldown;
-    public ignore;
-    public strict;
-    public permissions;
-    public defer;
-    public client;
+    public declare readonly id;
+    public declare readonly data;
+    public declare readonly name;
+    public declare readonly type;
+    public declare readonly description;
+    public declare readonly usage;
+    public declare readonly info;
+    public declare readonly category;
+    public declare readonly cooldown;
+    public declare readonly ignore;
+    public declare readonly strict;
+    public declare readonly permissions;
+    public declare readonly defer;
+    public declare readonly client;
 
-    constructor(id: string, options: ContextCommandOptions) {
+    public constructor(id: string, options: ContextCommandOptions) {
         this.id = id;
 
         this.data = new ContextMenuCommandBuilder();
@@ -38,6 +39,7 @@ export default class ContextCommandBuilder {
                 name: z.string(),
                 type: z.enum(['user', 'message']),
                 description: z.string().or(z.null()).default(null),
+                usage: z.string().or(z.null()).default(null),
                 info: z.string().or(z.null()).default(null),
                 category: z.string().or(z.null()).default(null),
                 cooldown: z.number().or(z.null()).default(null),
@@ -79,6 +81,8 @@ export default class ContextCommandBuilder {
         this.type = options.type;
 
         this.description = options.description;
+
+        this.usage = options.usage;
 
         this.info = options.info;
 

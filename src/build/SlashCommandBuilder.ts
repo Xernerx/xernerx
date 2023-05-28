@@ -7,18 +7,19 @@ import { SlashCommandArgumentOptions, SlashCommandArguments, SlashCommandGroupOp
 import { SlashCommandArgumentType, SlashCommandOption } from '../types/types.js';
 
 export default class SlashCommandBuilder {
-    public id;
-    public data;
-    public name;
-    public description;
-    public info;
-    public category;
-    public cooldown;
-    public ignore;
-    public strict;
-    public permissions;
-    public defer;
-    public client;
+    public declare readonly id;
+    public declare readonly data;
+    public declare readonly name;
+    public declare readonly description;
+    public declare readonly usage;
+    public declare readonly info;
+    public declare readonly category;
+    public declare readonly cooldown;
+    public declare readonly ignore;
+    public declare readonly strict;
+    public declare readonly permissions;
+    public declare readonly defer;
+    public declare readonly client;
 
     constructor(id: string, options: SlashCommandOptions) {
         this.id = id;
@@ -51,6 +52,7 @@ export default class SlashCommandBuilder {
             .object({
                 name: z.string(),
                 description: z.string(),
+                usage: z.string().or(z.null()).default(null),
                 info: z.string().or(z.null()).default(null),
                 category: z.string().or(z.null()).default(null),
                 number: z.number().or(z.null()).default(null),
@@ -91,6 +93,8 @@ export default class SlashCommandBuilder {
         this.name = options.name;
 
         this.description = options.description;
+
+        this.usage = options.usage;
 
         this.info = options.info;
 

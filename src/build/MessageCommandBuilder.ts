@@ -4,24 +4,25 @@ import { XernerxMessage } from '../types/extenders.js';
 import { MessageCommandArguments, MessageCommandOptions } from '../types/interfaces.js';
 
 export default class MessageCommandBuilder {
-    public readonly id;
-    public readonly name;
-    public readonly aliases;
-    public readonly regex;
-    public readonly prefix;
-    public readonly description;
-    public readonly info;
-    public readonly separator;
-    public readonly args;
-    public readonly flags;
-    public readonly category;
-    public readonly cooldown;
-    public readonly ignore;
-    public readonly strict;
-    public readonly permissions;
-    public readonly client;
+    public declare readonly id;
+    public declare readonly name;
+    public declare readonly aliases;
+    public declare readonly regex;
+    public declare readonly prefix;
+    public declare readonly description;
+    public declare readonly usage;
+    public declare readonly info;
+    public declare readonly separator;
+    public declare readonly args;
+    public declare readonly flags;
+    public declare readonly category;
+    public declare readonly cooldown;
+    public declare readonly ignore;
+    public declare readonly strict;
+    public declare readonly permissions;
+    public declare readonly client;
 
-    constructor(id: string, options: MessageCommandOptions) {
+    public constructor(id: string, options: MessageCommandOptions) {
         this.id = id;
 
         this.regex = options.regex;
@@ -35,6 +36,7 @@ export default class MessageCommandBuilder {
                 name: z.string(),
                 aliases: z.array(z.string()).default([]),
                 description: z.string().or(z.null()).default(null),
+                usage: z.string().or(z.null()).default(null),
                 info: z.string().or(z.null()).default(null),
                 category: z.string().or(z.null()).default(null),
                 cooldown: z.number().or(z.null()).default(null),
@@ -72,6 +74,8 @@ export default class MessageCommandBuilder {
         this.prefix = options.prefix;
 
         this.description = options.description;
+
+        this.usage = options.usage;
 
         this.info = options.info;
 

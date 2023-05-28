@@ -13,7 +13,9 @@ export default class ExtensionHandler extends Handler {
             try {
                 if (extension.main) extension.main(this.client);
 
-                if (extension.await) extension.await(this.client);
+                if (extension.defer) {
+                    this.client.on('ready', (client) => extension.defer(client));
+                }
 
                 return extension.name;
             } catch (error) {
