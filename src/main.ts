@@ -1,6 +1,7 @@
 import * as fs from 'fs';
 
 import XernerxClient from './client/XernerxClient.js';
+import XernerxShardClient from './client/XernerxShardClient.js';
 import MessageCommandBuilder from './build/MessageCommandBuilder.js';
 import SlashCommandBuilder from './build/SlashCommandBuilder.js';
 import ContextCommandBuilder from './build/ContextCommandBuilder.js';
@@ -18,4 +19,34 @@ const version = JSON.parse(fs.readFileSync('node_modules/xernerx/package.json', 
 
 export default XernerxClient;
 
-export { XernerxClient, MessageCommandBuilder, SlashCommandBuilder, ContextCommandBuilder, EventBuilder, InhibitorBuilder, ExtensionBuilder, Discord, version, XernerxLog };
+export {
+    /**
+     ** Clients
+     */
+    XernerxClient,
+    XernerxShardClient,
+
+    /**
+     ** Builders
+     */
+    MessageCommandBuilder,
+    SlashCommandBuilder,
+    ContextCommandBuilder,
+    EventBuilder,
+    InhibitorBuilder,
+    ExtensionBuilder,
+
+    /**
+     ** Imported exports
+     */
+    Discord,
+    /**
+     ** Properties
+     */
+    version,
+
+    /**
+     ** Tools
+     */
+    XernerxLog,
+};
