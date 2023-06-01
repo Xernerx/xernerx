@@ -1,19 +1,22 @@
-import { ShardingManager, ShardingManagerOptions, Guild } from 'discord.js';
+import { ShardingManager, ShardingManagerOptions, Guild, ClientUser } from 'discord.js';
 import XernerxLog from '../tools/XernerxLog.js';
 
 interface XernerxOptions {
     log?: {
-        ready: boolean;
+        ready?: boolean;
     };
 }
 
 export default class XernerxShardClient extends ShardingManager {
     public declare readonly stats;
+    public declare user: ClientUser | null;
 
     constructor(file: string, discordOptions: ShardingManagerOptions, xernerxOptions?: XernerxOptions) {
         super(file, discordOptions);
 
         this.stats = { guildCount: 0, userCount: 0, shardCount: 0 };
+
+        this.user = null;
 
         this.on('shardCreate', async (shard) => {
             new XernerxLog({ settings: xernerxOptions } as never).info(`Launching shard ${shard.id}`);
@@ -28,6 +31,8 @@ export default class XernerxShardClient extends ShardingManager {
                 this.stats.userCount += Number(userCount);
 
                 this.stats.shardCount++;
+
+                this.user = (await shard.fetchClientValue('user')) as ClientUser;
             });
         });
 
@@ -37,7 +42,7 @@ export default class XernerxShardClient extends ShardingManager {
 
                 if (shards.get(index)?.ready) {
                     new XernerxLog({ settings: xernerxOptions } as never).info(
-                        `Launched all ${this.stats.shardCount} shards, watching ${this.stats.guildCount} guilds, and ${this.stats.userCount} users!`
+                        `Launched all ${this.stats.shardCount} shards for ${this.user?.tag}, watching ${this.stats.guildCount} guilds, and ${this.stats.userCount} users!`
                     );
 
                     clearInterval(collector);
