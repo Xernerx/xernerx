@@ -219,7 +219,7 @@ export interface SlashCommandArgumentOptions {
 export interface SlashCommandSubcommandOptions {
     name: string;
     description: string;
-    args: Array<SlashCommandArgumentOptions>;
+    args?: Array<SlashCommandArgumentOptions>;
 }
 
 export interface SlashCommandGroupOptions {
