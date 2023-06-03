@@ -149,7 +149,7 @@ export default class SlashCommandBuilder {
         for (const subcommand of subcommands) {
             let sub = new SlashCommandSubcommandBuilder().setName(subcommand.name).setDescription(subcommand.description);
 
-            if (subcommand.args?.length > 0) this.addArguments(sub, subcommand.args);
+            if (subcommand.args && subcommand?.args?.length > 0) this.addArguments(sub, subcommand.args);
 
             method.addSubcommand(sub);
         }
