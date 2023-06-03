@@ -19,8 +19,6 @@ export default class XernerxShardClient extends ShardingManager {
         this.user = null;
 
         this.on('shardCreate', async (shard) => {
-            new XernerxLog({ settings: xernerxOptions } as never).info(`Launching shard ${shard.id}`);
-
             shard.on('ready', async () => {
                 const guilds = (await shard.fetchClientValue('guilds.cache')) as Array<Guild>;
                 const guildCount = guilds.length;
@@ -34,6 +32,8 @@ export default class XernerxShardClient extends ShardingManager {
 
                 this.user = (await shard.fetchClientValue('user')) as ClientUser;
             });
+
+            new XernerxLog({ settings: xernerxOptions } as never).info(`Launching shard ${shard.id} for ${this.user?.tag}!`);
         });
 
         this.spawn().then(async (shards) => {
