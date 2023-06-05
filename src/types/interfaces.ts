@@ -213,7 +213,7 @@ export interface SlashCommandArgumentOptions {
     description: string;
     required?: boolean;
     autocomplete?: boolean;
-    choices?: Array<{ name: string; value: string }>;
+    choices?: Array<Record<string, string>>;
 }
 
 export interface SlashCommandSubcommandOptions {
