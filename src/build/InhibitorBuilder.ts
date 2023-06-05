@@ -3,7 +3,7 @@ import { z } from 'zod';
 import XernerxClient from '../client/XernerxClient.js';
 import { InhibitorBuilderOptions, MessageCommandArguments, SlashCommandArguments } from '../types/interfaces.js';
 import { InhibitorType, XernerxInteraction } from '../types/types.js';
-import { XernerxMessage } from '../types/extenders.js';
+import { XernerxMessage, XernerxMessageContextInteraction, XernerxSlashInteraction, XernerxUserContextInteraction } from '../types/extenders.js';
 // import { InhibitorOptions, MessageArgumentOptions, SlashArgumentOptions } from '../types/options.js';
 // import { XernerxInteraction, XernerxMessage } from '../types/types.js';
 
@@ -16,6 +16,8 @@ export default class InhibitorBuilder {
     public declare readonly id;
     public declare readonly name;
     public declare readonly type: InhibitorType;
+    public declare readonly fileType: 'Inhibitor';
+    public declare readonly filePath: string;
     public declare readonly client;
 
     public constructor(id: string, options: InhibitorBuilderOptions) {
@@ -33,5 +35,5 @@ export default class InhibitorBuilder {
         this.client = XernerxClient;
     }
 
-    public async check<T>(action: XernerxInteraction | XernerxMessage, args: T) {}
+    public async check(interaction: XernerxMessage | XernerxSlashInteraction | XernerxUserContextInteraction | XernerxMessageContextInteraction, args: any) {}
 }

@@ -4,7 +4,7 @@ import XernerxClient from '../client/XernerxClient.js';
 import { XernerxSlashInteraction } from '../types/extenders.js';
 
 import { SlashCommandArgumentOptions, SlashCommandArguments, SlashCommandGroupOptions, SlashCommandOptions, SlashCommandSubcommandOptions } from '../types/interfaces.js';
-import { SlashCommandArgumentType, SlashCommandOption } from '../types/types.js';
+import { SlashCommandArgumentType, SlashCommandOption, XernerxInteraction } from '../types/types.js';
 
 export default class SlashCommandBuilder {
     public declare readonly id;
@@ -19,6 +19,8 @@ export default class SlashCommandBuilder {
     public declare readonly strict;
     public declare readonly permissions;
     public declare readonly defer;
+    public declare readonly fileType: 'SlashCommand';
+    public declare readonly filePath: string;
     public declare readonly client;
 
     constructor(id: string, options: SlashCommandOptions) {
@@ -113,11 +115,11 @@ export default class SlashCommandBuilder {
         this.client = XernerxClient;
     }
 
-    public async autocomplete<T>(interaction: XernerxSlashInteraction, focused: T, options: Array<T>) {}
+    public async autocomplete<T>(interaction: XernerxInteraction, focused: T, options: T[]) {}
 
-    public async conditions(interaction: XernerxSlashInteraction, args: SlashCommandArguments) {}
+    public async conditions(interaction: XernerxSlashInteraction, { args, subcommand, group }: any) {}
 
-    public async exec(interaction: XernerxSlashInteraction, args: SlashCommandArguments) {}
+    public async exec(interaction: XernerxSlashInteraction, { args, subcommand, group }: any) {}
 
     private addArguments(command: Discord.SlashCommandBuilder | SlashCommandSubcommandBuilder, args: Array<SlashCommandArgumentOptions>) {
         for (const argument of args) {

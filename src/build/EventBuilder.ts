@@ -16,6 +16,8 @@ export default class EventBuilder {
     public declare readonly emitter?: 'client' | 'process' | string;
     public declare readonly type?: 'discord' | string;
     public declare readonly once?: boolean;
+    public declare readonly fileType: 'Event';
+    public declare readonly filePath: string;
     public declare readonly client;
 
     public constructor(id: string, options: EventBuilderOptions) {
@@ -42,5 +44,5 @@ export default class EventBuilder {
      * @description run your custom event here.
      * TODO - update description
      */
-    public async run<T>(...args: T[]) {}
+    public async run() {}
 }

@@ -20,6 +20,8 @@ export default class MessageCommandBuilder {
     public declare readonly ignore;
     public declare readonly strict;
     public declare readonly permissions;
+    public declare readonly fileType: 'MessageCommand';
+    public declare readonly filePath: string;
     public declare readonly client;
 
     public constructor(id: string, options: MessageCommandOptions) {
@@ -94,7 +96,7 @@ export default class MessageCommandBuilder {
         this.client = XernerxClient;
     }
 
-    public async conditions(message: XernerxMessage, args: MessageCommandArguments) {}
+    public async conditions(message: XernerxMessage, { args, flags }: any) {}
 
-    public async exec(message: XernerxMessage, args: MessageCommandArguments) {}
+    public async exec(message: XernerxMessage, { args, flags }: any) {}
 }

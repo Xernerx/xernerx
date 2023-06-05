@@ -9,7 +9,7 @@ export default class ContextCommandBuilder {
     public declare readonly id;
     public declare readonly data;
     public declare readonly name;
-    public declare readonly type;
+    public declare readonly type: 'user' | 'message';
     public declare readonly description;
     public declare readonly usage;
     public declare readonly info;
@@ -19,6 +19,8 @@ export default class ContextCommandBuilder {
     public declare readonly strict;
     public declare readonly permissions;
     public declare readonly defer;
+    public declare readonly fileType: 'ContextCommand';
+    public declare readonly filePath: string;
     public declare readonly client;
 
     public constructor(id: string, options: ContextCommandOptions) {
@@ -101,5 +103,5 @@ export default class ContextCommandBuilder {
         this.client = XernerxClient;
     }
 
-    public async exec(interaction: XernerxUserContextInteraction | XernerxMessageContextInteraction) {}
+    public async exec() {}
 }

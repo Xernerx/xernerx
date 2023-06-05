@@ -154,19 +154,26 @@ export async function messageArguments(message: XernerxMessage, command: Message
 }
 
 export async function interactionArguments(interaction: XernerxInteraction | any, command: ContextCommandBuilder | SlashCommandBuilder) {
-    const options: Record<string, string> = {};
+    if (command.fileType === 'SlashCommand') {
+        const options: Record<string, string> = {};
 
-    let args = interaction?.options?._hoistedOptions,
-        group = interaction?.options?._group,
-        subcommand = interaction?.options?._subcommand;
+        let args = interaction?.options?._hoistedOptions,
+            group = interaction?.options?._group,
+            subcommand = interaction?.options?._subcommand;
 
-    if (interaction.options._hoistedOptions) {
-        for (const option of interaction.options._hoistedOptions) {
-            options[option.name] = option.member || option.channel || option.user || option.role || option.value;
+        if (interaction.options._hoistedOptions) {
+            for (const option of interaction.options._hoistedOptions) {
+                options[option.name] = option.member || option.channel || option.user || option.role || option.value;
+            }
+
+            args = options;
         }
 
-        args = options;
+        return { args, group, subcommand };
     }
 
-    return { args, group, subcommand };
+    if (command.fileType === 'ContextCommand') {
+        if (command.type === 'user') return await interaction.client.users.fetch(interaction.targetId);
+        if (command.type === 'message') return await interaction.channel.messages.fetch(interaction.targetId);
+    }
 }
