@@ -33,7 +33,6 @@
         "module": "NodeNext",
         "rootDir": "./src",
         "moduleResolution": "NodeNext",
-        "declarationDir": "./types",
         "skipLibCheck": true
     }
 }

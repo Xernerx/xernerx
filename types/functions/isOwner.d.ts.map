@@ -1,1 +1,0 @@
-{"version":3,"file":"isOwner.d.ts","sourceRoot":"","sources":["../../src/functions/isOwner.ts"],"names":[],"mappings":"AAAA,OAAO,aAAa,MAAM,4BAA4B,CAAC;AACvD,OAAO,EAAE,WAAW,EAAE,MAAM,uBAAuB,CAAC;AAEpD,MAAM,CAAC,OAAO,UAAU,OAAO,CAAC,IAAI,EAAE,IAAI,CAAC,WAAW,EAAE,IAAI,CAAC,EAAE,MAAM,EAAE,aAAa,WAEnF"}

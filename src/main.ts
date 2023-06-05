@@ -13,6 +13,10 @@ export * from 'discord.js';
 export * from 'dumfunctions';
 import ExtensionBuilder from 'xernerx-extension-builder';
 
+export * from './types/types.js';
+export * from './types/extenders.js';
+export * from './types/interfaces.js';
+
 import Discord from 'discord.js';
 
 const version = JSON.parse(fs.readFileSync('node_modules/xernerx/package.json', 'utf-8')).version;

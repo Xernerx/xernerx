@@ -1,1 +1,0 @@
-{"version":3,"file":"InhibitorHandler.d.ts","sourceRoot":"","sources":["../../src/handlers/InhibitorHandler.ts"],"names":[],"mappings":"AAIA,OAAO,aAAa,MAAM,4BAA4B,CAAC;AACvD,OAAO,OAAO,MAAM,cAAc,CAAC;AACnC,OAAO,EAAE,uBAAuB,EAAE,MAAM,wBAAwB,CAAC;AAGjE,MAAM,CAAC,OAAO,OAAO,gBAAiB,SAAQ,OAAO;gBACrC,MAAM,EAAE,aAAa;IAIpB,cAAc,CAAC,OAAO,EAAE,uBAAuB;CAqB/D"}
