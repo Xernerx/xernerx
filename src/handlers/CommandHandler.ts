@@ -13,7 +13,6 @@ import SlashCommandBuilder from '../build/SlashCommandBuilder.js';
 import { FileType } from '../types/types.js';
 import { xernerxUser } from '../functions/xernerxUser.js';
 import InteractionUtil from '../utils/InteractionUtil.js';
-import reload from '../functions/reload.js';
 import commandValidation from '../validators/commandValidation.js';
 import XernerxLog from '../tools/XernerxLog.js';
 import { interactionArguments, messageArguments } from '../models/Arguments.js';
@@ -326,7 +325,7 @@ export default class CommandHandler extends Handler {
 
         this.client.emit('commandStart', interaction, filetype);
 
-        this.exec(cmd as unknown as SlashCommandBuilder, interaction, await interactionArguments(interaction, cmd), filetype);
+        return this.exec(cmd as unknown as SlashCommandBuilder, interaction, await interactionArguments(interaction, cmd), filetype);
     }
 
     private async exec(

@@ -45,22 +45,27 @@ export default class XernerxLog {
 
             for (const [id, data] of this.client.commands.message) {
                 files.push(data);
+                id;
             }
 
             for (const [id, data] of this.client.commands.slash) {
                 files.push(data);
+                id;
             }
 
             for (const [id, data] of this.client.commands.context) {
                 files.push(data);
+                id;
             }
 
             for (const [id, data] of this.client.events) {
                 files.push(data);
+                id;
             }
 
             for (const [id, data] of this.client.inhibitors) {
                 files.push(data);
+                id;
             }
 
             if (this.tableLog) {

@@ -3,7 +3,7 @@ import { z } from 'zod';
 import XernerxClient from '../client/XernerxClient.js';
 import { XernerxSlashInteraction } from '../types/extenders.js';
 
-import { SlashCommandArgumentOptions, SlashCommandArguments, SlashCommandGroupOptions, SlashCommandOptions, SlashCommandSubcommandOptions } from '../types/interfaces.js';
+import { SlashCommandArgumentOptions, SlashCommandGroupOptions, SlashCommandOptions, SlashCommandSubcommandOptions } from '../types/interfaces.js';
 import { SlashCommandArgumentType, SlashCommandOption, XernerxInteraction } from '../types/types.js';
 
 export default class SlashCommandBuilder {

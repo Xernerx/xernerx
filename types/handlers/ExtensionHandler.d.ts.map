@@ -1,0 +1,1 @@
+{"version":3,"file":"ExtensionHandler.d.ts","sourceRoot":"","sources":["../../src/handlers/ExtensionHandler.ts"],"names":[],"mappings":"AAAA,OAAO,uBAAuB,MAAM,2BAA2B,CAAC;AAChE,OAAO,aAAa,MAAM,4BAA4B,CAAC;AACvD,OAAO,OAAO,MAAM,cAAc,CAAC;AAGnC,MAAM,CAAC,OAAO,OAAO,gBAAiB,SAAQ,OAAO;gBACrC,MAAM,EAAE,aAAa;IAIjC,cAAc,CAAC,GAAG,UAAU,EAAE,KAAK,CAAC,uBAAuB,CAAC;CAiB/D"}

@@ -1,0 +1,1 @@
+{"version":3,"file":"setPresence.d.ts","sourceRoot":"","sources":["../../src/functions/setPresence.ts"],"names":[],"mappings":"AAAA,OAAO,aAAa,MAAM,YAAY,CAAC;AACvC,OAAO,EAAE,eAAe,EAAE,MAAM,wBAAwB,CAAC;AAEzD,MAAM,CAAC,OAAO,UAAU,WAAW,CAAC,MAAM,EAAE,aAAa,EAAE,OAAO,EAAE,eAAe,mDAqBlF"}

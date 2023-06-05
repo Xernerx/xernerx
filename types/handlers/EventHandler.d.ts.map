@@ -1,0 +1,1 @@
+{"version":3,"file":"EventHandler.d.ts","sourceRoot":"","sources":["../../src/handlers/EventHandler.ts"],"names":[],"mappings":"AAIA,OAAO,aAAa,MAAM,4BAA4B,CAAC;AACvD,OAAO,EAAE,mBAAmB,EAAE,MAAM,wBAAwB,CAAC;AAC7D,OAAO,OAAO,MAAM,cAAc,CAAC;AAGnC,MAAM,CAAC,OAAO,OAAO,YAAa,SAAQ,OAAO;gBACjC,MAAM,EAAE,aAAa;IAIpB,UAAU,CAAC,OAAO,EAAE,mBAAmB;CAqBvD"}

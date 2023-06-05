@@ -1,4 +1,4 @@
-import { ContextMenuCommandBuilder, ContextMenuCommandType } from 'discord.js';
+import { ContextMenuCommandBuilder } from 'discord.js';
 import { z } from 'zod';
 
 import XernerxClient from '../client/XernerxClient.js';

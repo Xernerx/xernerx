@@ -81,7 +81,7 @@ export async function messageArguments(message: XernerxMessage, command: Message
                 ).map((mentionable) => {
                     if (!args) args = {};
                     if (mentionable) return (args[argument.name] = mentionable);
-                    else args[argument.name] = null;
+                    else return (args[argument.name] = null);
                 });
             }
             if (argument.type === 'role') {

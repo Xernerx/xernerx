@@ -1,4 +1,4 @@
-import { Client, ClientOptions, Collection, Options } from 'discord.js';
+import { Client, ClientOptions, Collection } from 'discord.js';
 import { z } from 'zod';
 
 import CommandHandler from '../handlers/CommandHandler.js';
@@ -19,7 +19,7 @@ export default class XernerxClient extends Client {
     public declare readonly inhibitors: Collection<string, InhibitorBuilder>;
     public declare readonly modules: ModuleOptions;
     public declare readonly util: ClientUtil;
-    public declare readonly stats;
+    public declare readonly stats: Record<string, number>;
     public declare readonly cache: XernerxCache;
 
     public constructor(discordOptions: ClientOptions, xernerxOptions: XernerxOptions, config?: Record<string, unknown>) {
@@ -27,8 +27,8 @@ export default class XernerxClient extends Client {
 
         this.settings = z
             .object({
-                local: z.string().optional(),
-                global: z.boolean().default(false),
+                local: z.string().or(z.undefined()).optional(),
+                global: z.boolean().default(false).optional(),
                 ownerId: z.string().or(z.array(z.string())).default([]),
                 permissions: z
                     .object({
@@ -40,9 +40,9 @@ export default class XernerxClient extends Client {
                 ignore: z
                     .object({
                         owner: z.boolean().default(false),
-                        users: z.array(z.string()),
-                        channels: z.array(z.string()),
-                        guilds: z.array(z.string()),
+                        users: z.array(z.string()).default([]),
+                        channels: z.array(z.string()).default([]),
+                        guilds: z.array(z.string()).default([]),
                     })
                     .optional(),
                 log: z

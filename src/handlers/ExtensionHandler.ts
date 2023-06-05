@@ -19,7 +19,7 @@ export default class ExtensionHandler extends Handler {
 
                 return extension.name;
             } catch (error) {
-                new XernerxLog(this.client).error(`An error occurred while loading ${extension.name}`, error);
+                return new XernerxLog(this.client).error(`An error occurred while loading ${extension.name}`, error);
             }
         });
 
