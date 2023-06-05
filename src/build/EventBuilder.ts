@@ -12,7 +12,7 @@ import { EventType } from '../types/types.js';
  */
 export default class EventBuilder {
     public declare readonly id: string;
-    public declare readonly name;
+    public declare readonly name: EventType | string;
     public declare readonly emitter?: 'client' | 'process' | string;
     public declare readonly type?: 'discord' | string;
     public declare readonly once?: boolean;
