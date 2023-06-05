@@ -35,5 +35,5 @@ export default class InhibitorBuilder {
         this.client = XernerxClient;
     }
 
-    public async check(interaction: XernerxMessage | XernerxSlashInteraction | XernerxUserContextInteraction | XernerxMessageContextInteraction, args: any) {}
+    public async check<T>(interaction: XernerxMessage | XernerxSlashInteraction | XernerxUserContextInteraction | XernerxMessageContextInteraction, args: T): Promise<void | undefined | T> {}
 }

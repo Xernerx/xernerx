@@ -115,11 +115,11 @@ export default class SlashCommandBuilder {
         this.client = XernerxClient;
     }
 
-    public async autocomplete<T>(interaction: XernerxInteraction, focused: T, options: T[]) {}
+    public async autocomplete<T>(interaction: XernerxInteraction, focused: T, options: T[]): Promise<void | undefined | T> {}
 
-    public async conditions(interaction: XernerxSlashInteraction, { args, subcommand, group }: any) {}
+    public async conditions<T>(interaction: XernerxSlashInteraction, { args, subcommand, group }: any): Promise<void | undefined | T> {}
 
-    public async exec(interaction: XernerxSlashInteraction, { args, subcommand, group }: any) {}
+    public async exec<T>(interaction: XernerxSlashInteraction, { args, subcommand, group }: any): Promise<void | undefined | T> {}
 
     private addArguments(command: Discord.SlashCommandBuilder | SlashCommandSubcommandBuilder, args: Array<SlashCommandArgumentOptions>) {
         for (const argument of args) {

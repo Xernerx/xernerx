@@ -96,7 +96,7 @@ export default class MessageCommandBuilder {
         this.client = XernerxClient;
     }
 
-    public async conditions(message: XernerxMessage, { args, flags }: any) {}
+    public async conditions<T>(message: XernerxMessage, { args, flags }: any): Promise<void | undefined | T> {}
 
-    public async exec(message: XernerxMessage, { args, flags }: any) {}
+    public async exec<T>(message: XernerxMessage, { args, flags }: any): Promise<void | undefined | T> {}
 }

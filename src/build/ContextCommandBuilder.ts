@@ -2,7 +2,7 @@ import { ContextMenuCommandBuilder, ContextMenuCommandType } from 'discord.js';
 import { z } from 'zod';
 
 import XernerxClient from '../client/XernerxClient.js';
-import { XernerxMessageContextInteraction, XernerxUserContextInteraction } from '../types/extenders.js';
+import { XernerxMessage, XernerxMessageContextInteraction, XernerxUser, XernerxUserContextInteraction } from '../types/extenders.js';
 import { ContextCommandOptions } from '../types/interfaces.js';
 
 export default class ContextCommandBuilder {
@@ -103,5 +103,5 @@ export default class ContextCommandBuilder {
         this.client = XernerxClient;
     }
 
-    public async exec() {}
+    public async exec<T>(interaction: XernerxUserContextInteraction | XernerxMessageContextInteraction, args: XernerxUser | XernerxMessage): Promise<void | T | undefined> {}
 }
