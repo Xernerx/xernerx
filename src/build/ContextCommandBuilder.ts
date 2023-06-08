@@ -103,5 +103,5 @@ export default class ContextCommandBuilder {
         this.client = XernerxClient;
     }
 
-    public async exec<T>(interaction: XernerxUserContextInteraction | XernerxMessageContextInteraction, args: XernerxUser | XernerxMessage): Promise<void | T | undefined> {}
+    public async exec<T>(interaction: XernerxUserContextInteraction | XernerxMessageContextInteraction, args: XernerxUser | XernerxMessage): Promise<void | any | T> {}
 }

@@ -1,4 +1,4 @@
-import { ChannelType, ForumChannel, MessagePayload, NewsChannel, TextChannel, User } from 'discord.js';
+import { ChannelType, ForumChannel, MessageEditOptions, MessagePayload, MessageReplyOptions, NewsChannel, TextChannel, User } from 'discord.js';
 
 import delay from '../functions/delay.js';
 import XernerxClient from '../client/XernerxClient.js';
@@ -26,20 +26,20 @@ export default class MessageUtil extends Util {
         };
     }
 
-    public async reply(content: MessagePayload) {
+    public async reply(content: string | MessagePayload | MessageReplyOptions | MessageEditOptions) {
         if (this.client.cache.messages.has(this.message.id)) {
             const id = this.client.cache.messages.get(this.message.id);
 
-            if (!id) return;
+            if (!id) return null;
 
             const msg = await this.message.channel.messages.fetch(id);
 
-            msg.edit(content);
+            msg.edit(content as MessageEditOptions);
 
             return msg;
         }
 
-        const msg = await this.message.reply(content);
+        const msg = await this.message.reply(content as MessageReplyOptions);
 
         this.client.cache.messages.set(this.message.id, msg.id);
 

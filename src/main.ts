@@ -44,6 +44,7 @@ export {
      ** Imported exports
      */
     Discord,
+
     /**
      ** Properties
      */

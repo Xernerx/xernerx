@@ -1,4 +1,4 @@
-import { MessagePayload } from 'discord.js';
+import { InteractionEditReplyOptions, InteractionReplyOptions, MessagePayload } from 'discord.js';
 
 import delay from '../functions/delay.js';
 import XernerxClient from '../client/XernerxClient.js';
@@ -14,8 +14,8 @@ export default class InteractionUtil extends Util {
         this.interaction = interaction;
     }
 
-    public async reply(content: MessagePayload) {
-        return await (this.interaction.replied || this.interaction.deferred ? this.interaction.editReply(content) : this.interaction.reply(content));
+    public async reply(content: string | MessagePayload | InteractionReplyOptions | InteractionEditReplyOptions) {
+        return await (this.interaction.replied || this.interaction.deferred ? this.interaction.editReply(content) : this.interaction.reply(content as InteractionReplyOptions));
     }
 
     public async delay(time: number) {

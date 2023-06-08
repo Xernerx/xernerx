@@ -3,7 +3,7 @@ import XernerxLog from '../tools/XernerxLog.js';
 
 interface XernerxOptions {
     log?: {
-        ready?: boolean;
+        info?: boolean;
     };
 }
 
@@ -31,9 +31,9 @@ export default class XernerxShardClient extends ShardingManager {
                 this.stats.shardCount++;
 
                 this.user = (await shard.fetchClientValue('user')) as ClientUser;
-            });
 
-            new XernerxLog({ settings: xernerxOptions } as never).info(`Launching shard ${shard.id} for ${this.user?.tag}!`);
+                await new XernerxLog({ settings: xernerxOptions } as never).info(`Launched shard ${shard.id} for ${this.user?.tag}!`);
+            });
         });
 
         this.spawn().then(async (shards) => {
