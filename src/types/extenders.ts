@@ -25,13 +25,16 @@ export interface XernerxMessage extends Message, XernerxCommand {
 }
 
 export interface XernerxSlashInteraction extends ChatInputCommandInteraction, XernerxCommand {
+    user: XernerxUser;
     util: InteractionUtil;
 }
 
 export interface XernerxUserContextInteraction extends UserContextMenuCommandInteraction, XernerxCommand {
+    user: XernerxUser;
     util: InteractionUtil;
 }
 
 export interface XernerxMessageContextInteraction extends MessageContextMenuCommandInteraction, XernerxCommand {
+    user: XernerxUser;
     util: InteractionUtil;
 }

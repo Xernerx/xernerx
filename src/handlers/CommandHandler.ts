@@ -335,7 +335,7 @@ export default class CommandHandler extends Handler {
         type: FileType
     ) {
         try {
-            if (await commandValidation(event, cmd)) return;
+            if (await commandValidation(event as XernerxMessage, cmd)) return;
 
             if (((cmd as MessageCommandBuilder).conditions as unknown) && (await ((cmd as MessageCommandBuilder).conditions(event as never, args) as unknown))) return;
 

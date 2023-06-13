@@ -4,10 +4,13 @@ import ContextCommandBuilder from '../build/ContextCommandBuilder.js';
 import MessageCommandBuilder from '../build/MessageCommandBuilder.js';
 import SlashCommandBuilder from '../build/SlashCommandBuilder.js';
 import XernerxClient from '../client/XernerxClient.js';
-import { XernerxMessage } from '../types/extenders.js';
+import { XernerxMessage, XernerxSlashInteraction, XernerxUserContextInteraction } from '../types/extenders.js';
 import { PermissionNames, XernerxInteraction } from '../types/types.js';
 
-export default async function commandValidation(event: XernerxInteraction | XernerxMessage, command: MessageCommandBuilder | SlashCommandBuilder | ContextCommandBuilder) {
+export default async function commandValidation(
+    event: XernerxInteraction<XernerxSlashInteraction | XernerxUserContextInteraction | XernerxUserContextInteraction> | XernerxMessage,
+    command: MessageCommandBuilder | SlashCommandBuilder | ContextCommandBuilder
+) {
     const client = event.client as XernerxClient;
 
     if (command.ignore?.owner && client.settings.ownerId.includes(event.user.id)) return false;
@@ -53,7 +56,7 @@ export default async function commandValidation(event: XernerxInteraction | Xern
     return false;
 }
 
-async function emit(event: XernerxInteraction | XernerxMessage, reason: string) {
+async function emit(event: XernerxInteraction<XernerxSlashInteraction | XernerxUserContextInteraction | XernerxUserContextInteraction> | XernerxMessage, reason: string) {
     event.client.emit('commandBlock', event, reason);
     return true;
 }

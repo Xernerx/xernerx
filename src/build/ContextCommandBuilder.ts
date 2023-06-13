@@ -2,8 +2,8 @@ import { ContextMenuCommandBuilder } from 'discord.js';
 import { z } from 'zod';
 
 import XernerxClient from '../client/XernerxClient.js';
-import { XernerxMessage, XernerxMessageContextInteraction, XernerxUser, XernerxUserContextInteraction } from '../types/extenders.js';
-import { ContextCommandOptions } from '../types/interfaces.js';
+import { XernerxMessageContextInteraction, XernerxUserContextInteraction } from '../types/extenders.js';
+import { ContextCommandArguments, ContextCommandOptions } from '../types/interfaces.js';
 
 export default class ContextCommandBuilder {
     public declare readonly id;
@@ -103,5 +103,5 @@ export default class ContextCommandBuilder {
         this.client = XernerxClient;
     }
 
-    public async exec<T>(interaction: XernerxUserContextInteraction | XernerxMessageContextInteraction, args: XernerxUser | XernerxMessage): Promise<void | any | T> {}
+    public async exec<T>(interaction: XernerxUserContextInteraction | XernerxMessageContextInteraction, args: ContextCommandArguments<'user' | 'message'>): Promise<void | any | T> {}
 }

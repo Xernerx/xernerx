@@ -144,7 +144,11 @@ export type DiscordEventType =
 
 export type EventType = DiscordEventType | 'webhookCreate' | 'webhookError' | 'commandBlock' | 'commandError' | 'commandStart' | 'commandFinish' | 'commandCooldown';
 
-export type XernerxInteraction = XernerxSlashInteraction | XernerxUserContextInteraction | XernerxMessageContextInteraction;
+export type XernerxInteraction<T extends XernerxSlashInteraction | XernerxUserContextInteraction | XernerxMessageContextInteraction> = T extends XernerxSlashInteraction
+    ? XernerxSlashInteraction
+    : T extends XernerxUserContextInteraction
+    ? XernerxUserContextInteraction
+    : XernerxMessageContextInteraction;
 
 export type PermissionNames =
     | 'create instant invite'
