@@ -237,9 +237,9 @@ export interface SlashCommandArguments {
 
 export interface EventBuilderOptions {
     name: EventType;
-    emitter: 'client' | 'process';
-    type: 'discord';
-    once: boolean;
+    emitter?: 'client' | 'process';
+    type?: 'discord' | 'node';
+    once?: boolean;
 }
 
 export interface InhibitorBuilderOptions {

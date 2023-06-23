@@ -10,6 +10,7 @@ import { XernerxOptions, ModuleOptions, XernerxCommands, XernerxCache } from '..
 import ClientUtil from '../utils/ClientUtil.js';
 import { InhibitorBuilder, EventBuilder } from '../main.js';
 import ExtensionHandler from '../handlers/ExtensionHandler.js';
+import deploy from '../functions/deploy.js';
 
 export default class XernerxClient extends Client {
     public declare readonly settings;
@@ -102,6 +103,8 @@ export default class XernerxClient extends Client {
 
     public connect(token: string) {
         this.login(token);
+
+        deploy(this);
 
         new XernerxLog(this).ready();
     }

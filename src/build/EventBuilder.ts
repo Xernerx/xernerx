@@ -44,5 +44,5 @@ export default class EventBuilder {
      * @description run your custom event here.
      * TODO - update description
      */
-    public async run(): Promise<void | any> {}
+    public async run(...args: any) {}
 }

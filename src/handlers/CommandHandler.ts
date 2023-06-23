@@ -16,7 +16,6 @@ import InteractionUtil from '../utils/InteractionUtil.js';
 import commandValidation from '../validators/commandValidation.js';
 import XernerxLog from '../tools/XernerxLog.js';
 import { interactionArguments, messageArguments } from '../models/Arguments.js';
-import deploy from '../functions/deploy.js';
 import { inhibitorValidation } from '../validators/inhibitorValidations.js';
 
 export default class CommandHandler extends Handler {
@@ -120,8 +119,6 @@ export default class CommandHandler extends Handler {
 
         new XernerxLog(this.client).info(`Loaded ${files.length} Slash Commands.`);
 
-        deploy(this.client, 'slash');
-
         this.emit({
             name: 'interactionCreate',
             fileType: 'SlashCommand',
@@ -164,8 +161,6 @@ export default class CommandHandler extends Handler {
         }
 
         new XernerxLog(this.client).info(`Loaded ${files.length} Context Commands.`);
-
-        deploy(this.client, 'context');
 
         this.emit({
             name: 'interactionCreate',
