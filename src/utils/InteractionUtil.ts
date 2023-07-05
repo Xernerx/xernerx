@@ -4,11 +4,12 @@ import delay from '../functions/delay.js';
 import XernerxClient from '../client/XernerxClient.js';
 import { XernerxInteraction } from '../types/types.js';
 import Util from './Util.js';
+import { XernerxMessageContextInteraction, XernerxSlashInteraction, XernerxUserContextInteraction } from '../main.js';
 
 export default class InteractionUtil extends Util {
     private interaction;
 
-    constructor(client: XernerxClient, interaction: XernerxInteraction) {
+    constructor(client: XernerxClient, interaction: XernerxInteraction<XernerxSlashInteraction | XernerxUserContextInteraction | XernerxMessageContextInteraction>) {
         super(client);
 
         this.interaction = interaction;

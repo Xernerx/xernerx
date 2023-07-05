@@ -6,20 +6,21 @@ import XernerxClient from '../client/XernerxClient.js';
 import XernerxLog from '../tools/XernerxLog.js';
 import XernerxError from '../tools/XernerxError.js';
 
-const commands = { slash: [], context: [] };
+const commands: Array<SlashCommandBuilder | ContextCommandBuilder | any> = [];
 
-export default function deploy(client: XernerxClient, type: 'slash' | 'context') {
+export default function deploy(client: XernerxClient) {
     client.prependOnceListener('ready', (client) => {
-        commands[type] = client.commands[type].map((command: SlashCommandBuilder | ContextCommandBuilder) => command.data.toJSON());
+        if (client.commands.slash.size) client.commands.slash.map((command: SlashCommandBuilder | ContextCommandBuilder) => commands.push(command.data.toJSON()));
+        if (client.commands.context.size) client.commands.context.map((command: SlashCommandBuilder | ContextCommandBuilder) => commands.push(command.data.toJSON()));
 
-        if (!(!!client.modules.options.slash && !!client.modules.options.context && commands.slash.length > 0 && commands.context.length > 0)) return;
+        if (commands.length <= 0) return;
 
         try {
             if (client.settings.global) {
-                put(client, client.settings.global, [...commands.slash, ...commands.context]);
+                put(client, client.settings.global, commands);
                 put(client, !client.settings.global, []);
             } else {
-                put(client, !client.settings.global, [...commands.slash, ...commands.context]);
+                put(client, !client.settings.global, commands);
                 put(client, client.settings.global, []);
             }
         } catch (error) {
@@ -27,7 +28,7 @@ export default function deploy(client: XernerxClient, type: 'slash' | 'context')
         } finally {
             new XernerxLog(client).info(
                 `Deployed ${[client.commands.message.size, client.commands.slash.size, client.commands.context.size].reduce((a, b) => (a += b))} Commands ${
-                    client.settings.global ? 'globally' : 'locally'
+                    client.settings.global ? 'globally' : `locally in ${client.guilds.cache.get(client.settings.local).name}`
                 }.`
             );
         }

@@ -9,6 +9,7 @@ import MessageCommandBuilder from '../build/MessageCommandBuilder.js';
 import SlashCommandBuilder from '../build/SlashCommandBuilder.js';
 import { Locales, MessageCommandArgumentType, PermissionNames, SlashCommandArgumentType, EventType, InhibitorType } from './types.js';
 import ExtensionHandler from '../handlers/ExtensionHandler.js';
+import { XernerxMessage, XernerxUser } from './extenders.js';
 
 export interface XernerxOptions {
     local?: string;
@@ -230,15 +231,15 @@ export interface SlashCommandGroupOptions {
 
 export interface SlashCommandArguments {
     args: Record<string, string>;
-    subcommand: Record<string, string>;
-    group: Record<string, string>;
+    subcommand: string;
+    group: string;
 }
 
 export interface EventBuilderOptions {
     name: EventType;
-    emitter: 'client' | 'process';
-    type: 'discord';
-    once: boolean;
+    emitter?: 'client' | 'process';
+    type?: 'discord' | 'node';
+    once?: boolean;
 }
 
 export interface InhibitorBuilderOptions {
@@ -253,3 +254,5 @@ export interface PresenceOptions {
     status?: PresenceStatusData;
     interval?: number;
 }
+
+export type ContextCommandArguments<T extends 'user' | 'message'> = T extends 'user' ? XernerxUser : XernerxMessage;

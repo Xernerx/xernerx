@@ -1,9 +1,9 @@
 import Discord, { SlashCommandStringOption, SlashCommandSubcommandBuilder, SlashCommandSubcommandGroupBuilder } from 'discord.js';
 import { z } from 'zod';
 import XernerxClient from '../client/XernerxClient.js';
-import { XernerxSlashInteraction } from '../types/extenders.js';
+import { XernerxMessageContextInteraction, XernerxSlashInteraction, XernerxUserContextInteraction } from '../types/extenders.js';
 
-import { SlashCommandArgumentOptions, SlashCommandGroupOptions, SlashCommandOptions, SlashCommandSubcommandOptions } from '../types/interfaces.js';
+import { SlashCommandArgumentOptions, SlashCommandArguments, SlashCommandGroupOptions, SlashCommandOptions, SlashCommandSubcommandOptions } from '../types/interfaces.js';
 import { SlashCommandArgumentType, SlashCommandOption, XernerxInteraction } from '../types/types.js';
 
 export default class SlashCommandBuilder {
@@ -115,11 +115,21 @@ export default class SlashCommandBuilder {
         this.client = XernerxClient;
     }
 
-    public async autocomplete<T>(interaction: XernerxInteraction, focused: T, options: T[]): Promise<void | any | T> {}
+    public async autocomplete<T>(
+        interaction: XernerxInteraction<XernerxSlashInteraction | XernerxUserContextInteraction | XernerxMessageContextInteraction>,
+        focused: T,
+        options: T[]
+    ): Promise<void | any | T> {}
 
-    public async conditions<T>(interaction: XernerxSlashInteraction, { args, subcommand, group }: any): Promise<void | any | T> {}
+    public async conditions<T>(
+        interaction: XernerxInteraction<XernerxSlashInteraction | XernerxUserContextInteraction | XernerxMessageContextInteraction>,
+        { args, subcommand, group }: SlashCommandArguments
+    ): Promise<void | any | T> {}
 
-    public async exec<T>(interaction: XernerxSlashInteraction, { args, subcommand, group }: any): Promise<void | any | T> {}
+    public async exec<T>(
+        interaction: XernerxInteraction<XernerxSlashInteraction | XernerxUserContextInteraction | XernerxMessageContextInteraction>,
+        { args, subcommand, group }: SlashCommandArguments
+    ): Promise<void | any | T> {}
 
     private addArguments(command: Discord.SlashCommandBuilder | SlashCommandSubcommandBuilder, args: Array<SlashCommandArgumentOptions>) {
         for (const argument of args) {

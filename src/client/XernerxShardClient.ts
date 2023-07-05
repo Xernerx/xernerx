@@ -40,7 +40,9 @@ export default class XernerxShardClient extends ShardingManager {
                 });
         });
 
-        this.spawn().then(async (shards) => {
+        const spawn = this.spawn();
+
+        spawn.then(async (shards) => {
             const collector = setInterval(() => {
                 const index = shards.size - 1;
 
@@ -53,5 +55,10 @@ export default class XernerxShardClient extends ShardingManager {
                 }
             }, 1000);
         });
+
+        return {
+            shards: spawn,
+            stats: this.stats,
+        } as never;
     }
 }

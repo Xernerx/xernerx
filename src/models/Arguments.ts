@@ -1,7 +1,7 @@
 import SlashCommandBuilder from '../build/SlashCommandBuilder.js';
 import ContextCommandBuilder from '../build/ContextCommandBuilder.js';
 import MessageCommandBuilder from '../build/MessageCommandBuilder.js';
-import { XernerxMessage } from '../types/extenders.js';
+import { XernerxMessage, XernerxMessageContextInteraction, XernerxSlashInteraction, XernerxUserContextInteraction } from '../types/extenders.js';
 import { MessageCommandArguments } from '../types/interfaces.js';
 import { XernerxInteraction } from '../types/types.js';
 
@@ -153,7 +153,10 @@ export async function messageArguments(message: XernerxMessage, command: Message
     return { args, flags };
 }
 
-export async function interactionArguments(interaction: XernerxInteraction | any, command: ContextCommandBuilder | SlashCommandBuilder) {
+export async function interactionArguments(
+    interaction: XernerxInteraction<XernerxSlashInteraction | XernerxUserContextInteraction | XernerxMessageContextInteraction> | any,
+    command: ContextCommandBuilder | SlashCommandBuilder
+) {
     if (command.fileType === 'SlashCommand') {
         const options: Record<string, string> = {};
 

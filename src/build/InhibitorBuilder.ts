@@ -1,8 +1,8 @@
 import { z } from 'zod';
 
 import XernerxClient from '../client/XernerxClient.js';
-import { InhibitorBuilderOptions } from '../types/interfaces.js';
-import { InhibitorType } from '../types/types.js';
+import { InhibitorBuilderOptions, MessageCommandArguments, SlashCommandArguments } from '../types/interfaces.js';
+import { InhibitorType, XernerxInteraction } from '../types/types.js';
 import { XernerxMessage, XernerxMessageContextInteraction, XernerxSlashInteraction, XernerxUserContextInteraction } from '../types/extenders.js';
 
 /**
@@ -33,5 +33,14 @@ export default class InhibitorBuilder {
         this.client = XernerxClient;
     }
 
-    public async check<T>(interaction: XernerxMessage | XernerxSlashInteraction | XernerxUserContextInteraction | XernerxMessageContextInteraction, args: T): Promise<void | any | T> {}
+    public async check<T extends XernerxMessage | XernerxInteraction<XernerxSlashInteraction | XernerxUserContextInteraction | XernerxMessageContextInteraction>>(
+        interaction: XernerxMessage | XernerxInteraction<XernerxSlashInteraction | XernerxUserContextInteraction | XernerxMessageContextInteraction>,
+        args: T extends XernerxMessage
+            ? MessageCommandArguments
+            : T extends XernerxSlashInteraction
+            ? SlashCommandArguments
+            : T extends XernerxUserContextInteraction
+            ? XernerxUserContextInteraction
+            : XernerxMessageContextInteraction | null
+    ): Promise<void | any | T> {}
 }

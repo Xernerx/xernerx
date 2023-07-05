@@ -1,7 +1,7 @@
 import { z } from 'zod';
 import XernerxClient from '../client/XernerxClient.js';
 import { XernerxMessage } from '../types/extenders.js';
-import { MessageCommandOptions } from '../types/interfaces.js';
+import { MessageCommandArguments, MessageCommandOptions } from '../types/interfaces.js';
 
 export default class MessageCommandBuilder {
     public declare readonly id;
@@ -96,7 +96,7 @@ export default class MessageCommandBuilder {
         this.client = XernerxClient;
     }
 
-    public async conditions<T>(message: XernerxMessage, { args, flags }: any): Promise<void | any | T> {}
+    public async conditions<T>(message: XernerxMessage, { args, flags }: MessageCommandArguments): Promise<void | any | T> {}
 
-    public async exec<T>(message: XernerxMessage, { args, flags }: any): Promise<void | any | T> {}
+    public async exec<T>(message: XernerxMessage, { args, flags }: MessageCommandArguments): Promise<void | any | T> {}
 }
