@@ -334,7 +334,7 @@ export default class CommandHandler extends Handler {
 
             if (((cmd as MessageCommandBuilder).conditions as unknown) && (await ((cmd as MessageCommandBuilder).conditions(event as never, args) as unknown))) return;
 
-            cmd.exec(event as never, args);
+            await cmd.exec(event as never, args);
 
             return await this.client.emit('commandFinish', event, type);
         } catch (error) {
