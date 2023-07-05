@@ -273,7 +273,7 @@ export default class CommandHandler extends Handler {
 
             this.client.emit('commandStart', message, filetype);
 
-            this.exec(cmd, message, await messageArguments(message, cmd), filetype);
+            return await this.exec(cmd, message, await messageArguments(message, cmd), filetype);
         }
     }
 
@@ -303,7 +303,7 @@ export default class CommandHandler extends Handler {
             .then(async () => {
                 this.client.emit('commandStart', interaction, filetype);
 
-                await this.exec(cmd as SlashCommandBuilder, interaction, await interactionArguments(interaction, cmd as SlashCommandBuilder), filetype);
+                return await this.exec(cmd as SlashCommandBuilder, interaction, await interactionArguments(interaction, cmd as SlashCommandBuilder), filetype);
             })
             .catch((error) => this.client.emit('commandError', interaction, error, filetype));
     }
@@ -325,7 +325,7 @@ export default class CommandHandler extends Handler {
 
         this.client.emit('commandStart', interaction, filetype);
 
-        return this.exec(cmd as unknown as SlashCommandBuilder, interaction, await interactionArguments(interaction, cmd), filetype);
+        return await this.exec(cmd as unknown as SlashCommandBuilder, interaction, await interactionArguments(interaction, cmd), filetype);
     }
 
     private async exec(
@@ -341,11 +341,11 @@ export default class CommandHandler extends Handler {
 
             cmd.exec(event as never, args);
 
-            this.client.emit('commandFinish', event, type);
+            return await this.client.emit('commandFinish', event, type);
         } catch (error) {
             new XernerxLog(this.client).error(`An error occurred executing ${cmd.name}`, error);
 
-            this.client.emit('commandError', event, error, type);
+            return await this.client.emit('commandError', event, error, type);
         }
     }
 }
