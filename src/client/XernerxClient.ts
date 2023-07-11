@@ -8,27 +8,27 @@ import WebhookHandler from '../handlers/WebhookHandler.js';
 import XernerxLog from '../tools/XernerxLog.js';
 import { XernerxOptions, ModuleOptions, XernerxCommands, XernerxCache } from '../types/interfaces.js';
 import ClientUtil from '../utils/ClientUtil.js';
-import { InhibitorBuilder, EventBuilder } from '../main.js';
+import { XernerxInhibitor, XernerxEvent } from '../main.js';
 import ExtensionHandler from '../handlers/ExtensionHandler.js';
 import deploy from '../functions/deploy.js';
 
-export default class XernerxClient extends Client {
+export default class XernerxClient<T = unknown> extends Client {
     public declare readonly settings;
     public declare readonly config;
     public declare readonly commands: XernerxCommands;
-    public declare readonly events: Collection<string, EventBuilder>;
-    public declare readonly inhibitors: Collection<string, InhibitorBuilder>;
+    public declare readonly events: Collection<string, XernerxEvent>;
+    public declare readonly inhibitors: Collection<string, XernerxInhibitor>;
     public declare readonly modules: ModuleOptions;
     public declare readonly util: ClientUtil;
     public declare readonly stats: Record<string, number>;
     public declare readonly cache: XernerxCache;
 
-    public constructor(discordOptions: ClientOptions, xernerxOptions: XernerxOptions, config?: Record<string, unknown>) {
+    public constructor(discordOptions: ClientOptions, xernerxOptions: XernerxOptions, config?: T) {
         super(discordOptions);
 
         this.settings = z
             .object({
-                local: z.string().or(z.undefined()).optional(),
+                local: z.string(),
                 global: z.boolean().default(false).optional(),
                 ownerId: z.string().or(z.array(z.string())).default([]),
                 permissions: z

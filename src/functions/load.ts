@@ -1,8 +1,8 @@
-import InhibitorBuilder from '../build/InhibitorBuilder.js';
-import SlashCommandBuilder from '../build/SlashCommandBuilder.js';
-import ContextCommandBuilder from '../build/ContextCommandBuilder.js';
-import MessageCommandBuilder from '../build/MessageCommandBuilder.js';
-import EventBuilder from '../build/EventBuilder.js';
+import InhibitorBuilder from '../build/XernerxInhibitor.js';
+import SlashCommandBuilder from '../build/XernerxSlashCommand.js';
+import ContextCommandBuilder from '../build/XernerxContextCommand.js';
+import MessageCommandBuilder from '../build/XernerxMessageCommand.js';
+import EventBuilder from '../build/XernerxEvent.js';
 import XernerxClient from '../client/XernerxClient.js';
 import { FileType } from '../types/types.js';
 import XernerxLog from '../tools/XernerxLog.js';

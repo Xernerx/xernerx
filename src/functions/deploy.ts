@@ -1,7 +1,7 @@
 import { GatewayVersion, REST, Routes } from 'discord.js';
 
-import ContextCommandBuilder from '../build/ContextCommandBuilder.js';
-import SlashCommandBuilder from '../build/SlashCommandBuilder.js';
+import ContextCommandBuilder from '../build/XernerxContextCommand.js';
+import SlashCommandBuilder from '../build/XernerxSlashCommand.js';
 import XernerxClient from '../client/XernerxClient.js';
 import XernerxLog from '../tools/XernerxLog.js';
 import XernerxError from '../tools/XernerxError.js';

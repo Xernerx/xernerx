@@ -6,7 +6,7 @@ import { XernerxMessageContextInteraction, XernerxSlashInteraction, XernerxUserC
 import { SlashCommandArgumentOptions, SlashCommandArguments, SlashCommandGroupOptions, SlashCommandOptions, SlashCommandSubcommandOptions } from '../types/interfaces.js';
 import { SlashCommandArgumentType, SlashCommandOption, XernerxInteraction } from '../types/types.js';
 
-export default class SlashCommandBuilder {
+export default class XernerxSlashCommand {
     public declare readonly id;
     public declare readonly data;
     public declare readonly name;
@@ -23,7 +23,7 @@ export default class SlashCommandBuilder {
     public declare readonly filePath: string;
     public declare readonly client;
 
-    constructor(id: string, options: SlashCommandOptions) {
+    public constructor(id: string, options: SlashCommandOptions) {
         this.id = id;
 
         this.data = new Discord.SlashCommandBuilder();

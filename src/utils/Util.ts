@@ -6,4 +6,8 @@ export default class Util {
     constructor(client: XernerxClient) {
         this.client = client;
     }
+
+    public async delay(time: number) {
+        return await new Promise((resolve) => setTimeout(resolve, time));
+    }
 }

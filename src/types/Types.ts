@@ -142,7 +142,7 @@ export type DiscordEventType =
     | 'guildScheduledEventUserAdd'
     | 'guildScheduledEventUserRemove';
 
-export type EventType = DiscordEventType | 'webhookCreate' | 'webhookError' | 'commandBlock' | 'commandError' | 'commandStart' | 'commandFinish' | 'commandCooldown';
+export type XernerxEventType = DiscordEventType | 'webhookCreate' | 'webhookError' | 'commandBlock' | 'commandError' | 'commandStart' | 'commandFinish' | 'commandCooldown';
 
 export type XernerxInteraction<T extends XernerxSlashInteraction | XernerxUserContextInteraction | XernerxMessageContextInteraction> = T extends XernerxSlashInteraction
     ? XernerxSlashInteraction

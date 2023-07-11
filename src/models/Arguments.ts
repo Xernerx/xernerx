@@ -1,6 +1,6 @@
-import SlashCommandBuilder from '../build/SlashCommandBuilder.js';
-import ContextCommandBuilder from '../build/ContextCommandBuilder.js';
-import MessageCommandBuilder from '../build/MessageCommandBuilder.js';
+import SlashCommandBuilder from '../build/XernerxSlashCommand.js';
+import ContextCommandBuilder from '../build/XernerxContextCommand.js';
+import MessageCommandBuilder from '../build/XernerxMessageCommand.js';
 import { XernerxMessage, XernerxMessageContextInteraction, XernerxSlashInteraction, XernerxUserContextInteraction } from '../types/extenders.js';
 import { MessageCommandArguments } from '../types/interfaces.js';
 import { XernerxInteraction } from '../types/types.js';

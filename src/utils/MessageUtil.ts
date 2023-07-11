@@ -1,6 +1,5 @@
 import { ChannelType, ForumChannel, MessageEditOptions, MessagePayload, MessageReplyOptions, NewsChannel, TextChannel, User } from 'discord.js';
 
-import delay from '../functions/delay.js';
 import XernerxClient from '../client/XernerxClient.js';
 import { XernerxMessage } from '../types/extenders.js';
 import Util from './Util.js';
@@ -67,9 +66,5 @@ export default class MessageUtil extends Util {
         if (!url) (webhook as Record<'delete', Function>).delete();
 
         return;
-    }
-
-    public async delay(time: number) {
-        return await delay(time);
     }
 }

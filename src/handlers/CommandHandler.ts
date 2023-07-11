@@ -7,9 +7,9 @@ import { ContextHandlerOptions, MessageHandlerOptions, SlashHandlerOptions } fro
 import Handler from './Handler.js';
 import { XernerxMessage, XernerxMessageContextInteraction, XernerxSlashInteraction, XernerxUserContextInteraction } from '../types/extenders.js';
 import MessageUtil from '../utils/MessageUtil.js';
-import ContextCommandBuilder from '../build/ContextCommandBuilder.js';
-import MessageCommandBuilder from '../build/MessageCommandBuilder.js';
-import SlashCommandBuilder from '../build/SlashCommandBuilder.js';
+import ContextCommandBuilder from '../build/XernerxContextCommand.js';
+import MessageCommandBuilder from '../build/XernerxMessageCommand.js';
+import SlashCommandBuilder from '../build/XernerxSlashCommand.js';
 import { FileType } from '../types/types.js';
 import { xernerxUser } from '../functions/xernerxUser.js';
 import InteractionUtil from '../utils/InteractionUtil.js';
@@ -300,7 +300,7 @@ export default class CommandHandler extends Handler {
 
                 return await this.exec(cmd as SlashCommandBuilder, interaction, await interactionArguments(interaction, cmd as SlashCommandBuilder), filetype);
             })
-            .catch((error) => this.client.emit('commandError', interaction, error, filetype));
+            .catch((error) => this.client.emit('commandError', interaction, error, cmd, filetype));
     }
 
     private async contextCommandRun(interaction: XernerxUserContextInteraction | XernerxMessageContextInteraction) {
@@ -340,7 +340,7 @@ export default class CommandHandler extends Handler {
         } catch (error) {
             new XernerxLog(this.client).error(`An error occurred executing ${cmd.name}`, error);
 
-            return await this.client.emit('commandError', event, error, type);
+            return await this.client.emit('commandError', event, error, cmd, type);
         }
     }
 }

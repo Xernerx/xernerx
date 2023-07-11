@@ -3,7 +3,7 @@ import XernerxClient from '../client/XernerxClient.js';
 import { XernerxMessage } from '../types/extenders.js';
 import { MessageCommandArguments, MessageCommandOptions } from '../types/interfaces.js';
 
-export default class MessageCommandBuilder {
+export default class XernerxMessageCommand {
     public declare readonly id;
     public declare readonly name;
     public declare readonly aliases;

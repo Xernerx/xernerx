@@ -1,10 +1,10 @@
-import XernerxClient, { ContextCommandBuilder, MessageCommandBuilder, SlashCommandBuilder } from '../main.js';
+import XernerxClient, { XernerxContextCommand, XernerxMessageCommand, XernerxSlashCommand } from '../main.js';
 import { XernerxMessage, XernerxMessageContextInteraction, XernerxSlashInteraction, XernerxUserContextInteraction } from '../types/extenders.js';
 import { InhibitorType, XernerxInteraction } from '../types/types.js';
 
 export async function inhibitorValidation(
     event: XernerxMessage | XernerxInteraction<XernerxSlashInteraction | XernerxUserContextInteraction | XernerxMessageContextInteraction>,
-    cmd?: ContextCommandBuilder | MessageCommandBuilder | SlashCommandBuilder
+    cmd?: XernerxContextCommand | XernerxMessageCommand | XernerxSlashCommand
 ) {
     const client = event.client as XernerxClient;
 
@@ -21,7 +21,7 @@ export async function inhibitorValidation(
 
 export function inhibitorArguments(
     event: XernerxMessage | XernerxInteraction<XernerxSlashInteraction | XernerxUserContextInteraction | XernerxMessageContextInteraction>,
-    cmd: ContextCommandBuilder | MessageCommandBuilder | SlashCommandBuilder | null,
+    cmd: XernerxContextCommand | XernerxMessageCommand | XernerxSlashCommand | null,
     type: InhibitorType
 ) {
     switch (type) {

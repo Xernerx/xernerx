@@ -3,9 +3,9 @@ import * as path from 'path';
 
 import XernerxClient from '../client/XernerxClient.js';
 import load from '../functions/load.js';
-import MessageCommandBuilder from '../build/MessageCommandBuilder.js';
-import SlashCommandBuilder from '../build/SlashCommandBuilder.js';
-import ContextCommandBuilder from '../build/ContextCommandBuilder.js';
+import MessageCommandBuilder from '../build/XernerxMessageCommand.js';
+import SlashCommandBuilder from '../build/XernerxSlashCommand.js';
+import ContextCommandBuilder from '../build/XernerxContextCommand.js';
 import { FileType } from '../types/types.js';
 
 export default class Handler {

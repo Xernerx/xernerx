@@ -4,15 +4,15 @@ import CommandHandler from '../handlers/CommandHandler.js';
 import EventHandler from '../handlers/EventHandler.js';
 import InhibitorHandler from '../handlers/InhibitorHandler.js';
 import WebhookHandler from '../handlers/WebhookHandler.js';
-import ContextCommandBuilder from '../build/ContextCommandBuilder.js';
-import MessageCommandBuilder from '../build/MessageCommandBuilder.js';
-import SlashCommandBuilder from '../build/SlashCommandBuilder.js';
-import { Locales, MessageCommandArgumentType, PermissionNames, SlashCommandArgumentType, EventType, InhibitorType } from './types.js';
+import ContextCommandBuilder from '../build/XernerxContextCommand.js';
+import MessageCommandBuilder from '../build/XernerxMessageCommand.js';
+import SlashCommandBuilder from '../build/XernerxSlashCommand.js';
+import { Locales, MessageCommandArgumentType, PermissionNames, SlashCommandArgumentType, XernerxEventType, InhibitorType } from './types.js';
 import ExtensionHandler from '../handlers/ExtensionHandler.js';
 import { XernerxMessage, XernerxUser } from './extenders.js';
 
 export interface XernerxOptions {
-    local?: string;
+    local: string;
     global?: boolean;
     ownerId?: string | Array<string>;
     permissions?: {
@@ -229,14 +229,14 @@ export interface SlashCommandGroupOptions {
     subcommands: Array<SlashCommandSubcommandOptions>;
 }
 
-export interface SlashCommandArguments {
-    args: Record<string, string>;
+export interface SlashCommandArguments<T = SlashCommandArgumentType> {
+    args: Record<string, any>;
     subcommand: string;
     group: string;
 }
 
 export interface EventBuilderOptions {
-    name: EventType;
+    name: XernerxEventType;
     emitter?: 'client' | 'process';
     type?: 'discord' | 'node';
     once?: boolean;

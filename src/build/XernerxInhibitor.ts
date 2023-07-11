@@ -10,7 +10,7 @@ import { XernerxMessage, XernerxMessageContextInteraction, XernerxSlashInteracti
  * @param {String} id - The unique ID of the inhibitor.
  * @param {InhibitorOptions} options - The inhibitor options.
  */
-export default class InhibitorBuilder {
+export default class XernerxInhibitor {
     public declare readonly id;
     public declare readonly name;
     public declare readonly type: InhibitorType;

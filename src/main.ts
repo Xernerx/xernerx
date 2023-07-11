@@ -2,16 +2,16 @@ import * as fs from 'fs';
 
 import XernerxClient from './client/XernerxClient.js';
 import XernerxShardClient from './client/XernerxShardClient.js';
-import MessageCommandBuilder from './build/MessageCommandBuilder.js';
-import SlashCommandBuilder from './build/SlashCommandBuilder.js';
-import ContextCommandBuilder from './build/ContextCommandBuilder.js';
-import EventBuilder from './build/EventBuilder.js';
-import InhibitorBuilder from './build/InhibitorBuilder.js';
+import XernerxMessageCommand from './build/XernerxMessageCommand.js';
+import XernerxSlashCommand from './build/XernerxSlashCommand.js';
+import XernerxContextCommand from './build/XernerxContextCommand.js';
+import XernerxEvent from './build/XernerxEvent.js';
+import XernerxInhibitor from './build/XernerxInhibitor.js';
 import XernerxLog from './tools/XernerxLog.js';
 
 export * from 'discord.js';
 export * from 'dumfunctions';
-import ExtensionBuilder from 'xernerx-extension-builder';
+import XernerxExtension from 'xernerx-extension-builder';
 
 export * from './types/types.js';
 export * from './types/extenders.js';
@@ -33,12 +33,12 @@ export {
     /**
      ** Builders
      */
-    MessageCommandBuilder,
-    SlashCommandBuilder,
-    ContextCommandBuilder,
-    EventBuilder,
-    InhibitorBuilder,
-    ExtensionBuilder,
+    XernerxMessageCommand,
+    XernerxSlashCommand,
+    XernerxContextCommand,
+    XernerxEvent,
+    XernerxInhibitor,
+    XernerxExtension,
 
     /**
      ** Imported exports

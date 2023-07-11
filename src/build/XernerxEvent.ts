@@ -2,17 +2,16 @@ import { z } from 'zod';
 
 import XernerxClient from '../client/XernerxClient.js';
 import { EventBuilderOptions } from '../types/interfaces.js';
-import { EventType } from '../types/types.js';
-// import { EventOptions } from '../types/options.js';
+import { XernerxEventType } from '../types/types.js';
 
 /**
  * @description - The event builder for  events.
  * @param {String} id - The unique ID of the event.
  * @param {EventOptions} options - The event options.
  */
-export default class EventBuilder {
+export default class XernerxEvent {
     public declare readonly id: string;
-    public declare readonly name: EventType | string;
+    public declare readonly name: XernerxEventType | string;
     public declare readonly emitter?: 'client' | 'process' | string;
     public declare readonly type?: 'discord' | string;
     public declare readonly once?: boolean;

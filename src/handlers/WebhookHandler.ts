@@ -22,7 +22,7 @@ export default class WebhookHandler extends Handler {
                             headers: { Authorization: options.token, 'Content-Type': 'application/json' },
                         })
                     ).json()
-                ).voted;
+                ).voted as boolean;
             };
         });
     }

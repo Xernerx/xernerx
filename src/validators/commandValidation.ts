@@ -1,8 +1,8 @@
 import { ChannelType, PermissionFlagsBits, PermissionsString } from 'discord.js';
 
-import ContextCommandBuilder from '../build/ContextCommandBuilder.js';
-import MessageCommandBuilder from '../build/MessageCommandBuilder.js';
-import SlashCommandBuilder from '../build/SlashCommandBuilder.js';
+import ContextCommandBuilder from '../build/XernerxContextCommand.js';
+import MessageCommandBuilder from '../build/XernerxMessageCommand.js';
+import SlashCommandBuilder from '../build/XernerxSlashCommand.js';
 import XernerxClient from '../client/XernerxClient.js';
 import { XernerxMessage, XernerxSlashInteraction, XernerxUserContextInteraction } from '../types/extenders.js';
 import { PermissionNames, XernerxInteraction } from '../types/types.js';

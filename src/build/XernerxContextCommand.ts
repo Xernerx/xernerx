@@ -5,7 +5,7 @@ import XernerxClient from '../client/XernerxClient.js';
 import { XernerxMessageContextInteraction, XernerxUserContextInteraction } from '../types/extenders.js';
 import { ContextCommandArguments, ContextCommandOptions } from '../types/interfaces.js';
 
-export default class ContextCommandBuilder {
+export default class XernerxContextCommand {
     public declare readonly id;
     public declare readonly data;
     public declare readonly name;
