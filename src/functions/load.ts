@@ -1,8 +1,8 @@
-import InhibitorBuilder from '../build/XernerxInhibitor.js';
-import SlashCommandBuilder from '../build/XernerxSlashCommand.js';
-import ContextCommandBuilder from '../build/XernerxContextCommand.js';
+import XernerxInhibitor from '../build/XernerxInhibitor.js';
+import XernerxSlashCommand from '../build/XernerxSlashCommand.js';
+import XernerxContextCommand from '../build/XernerxContextCommand.js';
 import MessageCommandBuilder from '../build/XernerxMessageCommand.js';
-import EventBuilder from '../build/XernerxEvent.js';
+import XernerxEvent from '../build/XernerxEvent.js';
 import XernerxClient from '../client/XernerxClient.js';
 import { FileType } from '../types/types.js';
 import XernerxLog from '../tools/XernerxLog.js';
@@ -25,22 +25,22 @@ export default async function load(client: XernerxClient, path: string, type: Fi
     }
 }
 
-function fileSave(client: XernerxClient, file: MessageCommandBuilder | SlashCommandBuilder | ContextCommandBuilder | EventBuilder | InhibitorBuilder, type: FileType) {
+function fileSave(client: XernerxClient, file: MessageCommandBuilder | XernerxSlashCommand | XernerxContextCommand | XernerxEvent | XernerxInhibitor, type: FileType) {
     switch (type) {
         case 'MessageCommand':
             client.commands.message.set(file.name, file as MessageCommandBuilder);
             break;
         case 'SlashCommand':
-            client.commands.slash.set(file.name, file as SlashCommandBuilder);
+            client.commands.slash.set(file.name, file as XernerxSlashCommand);
             break;
         case 'ContextCommand':
-            client.commands.context.set(file.name, file as ContextCommandBuilder);
+            client.commands.context.set(file.name, file as XernerxContextCommand);
             break;
         case 'Inhibitor':
-            client.inhibitors.set(file.name, file as InhibitorBuilder);
+            client.inhibitors.set(file.name, file as XernerxInhibitor);
             break;
         case 'Event':
-            client.events.set(file.name, file as EventBuilder);
+            client.events.set(file.name, file as XernerxEvent);
             break;
     }
 }

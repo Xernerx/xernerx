@@ -1,5 +1,5 @@
 export default {
-    Builders: [{ name: 'MessageCommandBuilder' }, { name: 'SlashCommandBuilder' }, { name: 'ContextCommandBuilder' }, { name: 'EventBuilder' }, { name: 'InhibitorBuilder' }],
+    Builders: [{ name: 'MessageCommandBuilder' }, { name: 'XernerxSlashCommand' }, { name: 'XernerxContextCommand' }, { name: 'XernerxEvent' }, { name: 'XernerxInhibitor' }],
     Client: [
         {
             name: 'XernerxClient',

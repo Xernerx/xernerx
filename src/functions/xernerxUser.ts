@@ -8,7 +8,7 @@ export async function xernerxUser(event: XernerxMessage | XernerxSlashInteractio
     const user = {
         ...author,
         owner: isOwner(client, author),
-        voted: (await client.util.hasVoted(author.id)) || null,
+        voted: client.util.hasVoted ? await client.util.hasVoted(author.id) : null,
     };
 
     return user as XernerxUser;

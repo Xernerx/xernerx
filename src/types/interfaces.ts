@@ -4,9 +4,9 @@ import CommandHandler from '../handlers/CommandHandler.js';
 import EventHandler from '../handlers/EventHandler.js';
 import InhibitorHandler from '../handlers/InhibitorHandler.js';
 import WebhookHandler from '../handlers/WebhookHandler.js';
-import ContextCommandBuilder from '../build/XernerxContextCommand.js';
+import XernerxContextCommand from '../build/XernerxContextCommand.js';
 import MessageCommandBuilder from '../build/XernerxMessageCommand.js';
-import SlashCommandBuilder from '../build/XernerxSlashCommand.js';
+import XernerxSlashCommand from '../build/XernerxSlashCommand.js';
 import { Locales, MessageCommandArgumentType, PermissionNames, SlashCommandArgumentType, XernerxEventType, InhibitorType } from './types.js';
 import ExtensionHandler from '../handlers/ExtensionHandler.js';
 import { XernerxMessage, XernerxUser } from './extenders.js';
@@ -55,8 +55,8 @@ export interface ModuleOptions {
 
 export interface XernerxCommands {
     message: Collection<string, MessageCommandBuilder>;
-    slash: Collection<string, SlashCommandBuilder>;
-    context: Collection<string, ContextCommandBuilder>;
+    slash: Collection<string, XernerxSlashCommand>;
+    context: Collection<string, XernerxContextCommand>;
 }
 
 export interface DBLOptions {
@@ -235,14 +235,14 @@ export interface SlashCommandArguments<T = SlashCommandArgumentType> {
     group: string;
 }
 
-export interface EventBuilderOptions {
+export interface XernerxEventOptions {
     name: XernerxEventType;
     emitter?: 'client' | 'process';
     type?: 'discord' | 'node';
     once?: boolean;
 }
 
-export interface InhibitorBuilderOptions {
+export interface XernerxInhibitorOptions {
     name: string;
     type: InhibitorType;
 }

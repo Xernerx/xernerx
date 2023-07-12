@@ -7,9 +7,9 @@ import { ContextHandlerOptions, MessageHandlerOptions, SlashHandlerOptions } fro
 import Handler from './Handler.js';
 import { XernerxMessage, XernerxMessageContextInteraction, XernerxSlashInteraction, XernerxUserContextInteraction } from '../types/extenders.js';
 import MessageUtil from '../utils/MessageUtil.js';
-import ContextCommandBuilder from '../build/XernerxContextCommand.js';
+import XernerxContextCommand from '../build/XernerxContextCommand.js';
 import MessageCommandBuilder from '../build/XernerxMessageCommand.js';
-import SlashCommandBuilder from '../build/XernerxSlashCommand.js';
+import XernerxSlashCommand from '../build/XernerxSlashCommand.js';
 import { FileType } from '../types/types.js';
 import { xernerxUser } from '../functions/xernerxUser.js';
 import InteractionUtil from '../utils/InteractionUtil.js';
@@ -279,11 +279,11 @@ export default class CommandHandler extends Handler {
 
         interaction.user = await xernerxUser(interaction, this.client);
 
-        let cmd: SlashCommandBuilder | null | undefined = null;
+        let cmd: XernerxSlashCommand | null | undefined = null;
 
         if (this.client.commands.slash.has(interaction.commandName)) cmd = this.client.commands.slash.get(interaction.commandName);
 
-        if (await inhibitorValidation(interaction, cmd as SlashCommandBuilder)) return;
+        if (await inhibitorValidation(interaction, cmd as XernerxSlashCommand)) return;
 
         if (!cmd) return this.client.emit('commandNotFound', interaction);
 
@@ -292,13 +292,13 @@ export default class CommandHandler extends Handler {
                 const focused = (interaction as T).options.getFocused(true);
                 const options = (interaction as T).options;
 
-                await (cmd as SlashCommandBuilder).autocomplete(interaction, focused, options);
+                await (cmd as XernerxSlashCommand).autocomplete(interaction, focused, options);
             } else resolve(true);
         })
             .then(async () => {
                 this.client.emit('commandStart', interaction, filetype);
 
-                return await this.exec(cmd as SlashCommandBuilder, interaction, await interactionArguments(interaction, cmd as SlashCommandBuilder), filetype);
+                return await this.exec(cmd as XernerxSlashCommand, interaction, await interactionArguments(interaction, cmd as XernerxSlashCommand), filetype);
             })
             .catch((error) => this.client.emit('commandError', interaction, error, cmd, filetype));
     }
@@ -320,11 +320,11 @@ export default class CommandHandler extends Handler {
 
         this.client.emit('commandStart', interaction, filetype);
 
-        return await this.exec(cmd as unknown as SlashCommandBuilder, interaction, await interactionArguments(interaction, cmd), filetype);
+        return await this.exec(cmd as unknown as XernerxSlashCommand, interaction, await interactionArguments(interaction, cmd), filetype);
     }
 
     private async exec(
-        cmd: MessageCommandBuilder | SlashCommandBuilder | ContextCommandBuilder,
+        cmd: MessageCommandBuilder | XernerxSlashCommand | XernerxContextCommand,
         event: XernerxMessage | XernerxSlashInteraction | XernerxMessageContextInteraction | XernerxUserContextInteraction,
         args: any,
         type: FileType

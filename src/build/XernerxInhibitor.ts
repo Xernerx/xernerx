@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 import XernerxClient from '../client/XernerxClient.js';
-import { InhibitorBuilderOptions, MessageCommandArguments, SlashCommandArguments } from '../types/interfaces.js';
+import { XernerxInhibitorOptions, MessageCommandArguments, SlashCommandArguments } from '../types/interfaces.js';
 import { InhibitorType, XernerxInteraction } from '../types/types.js';
 import { XernerxMessage, XernerxMessageContextInteraction, XernerxSlashInteraction, XernerxUserContextInteraction } from '../types/extenders.js';
 
@@ -18,7 +18,7 @@ export default class XernerxInhibitor {
     public declare readonly filePath: string;
     public declare readonly client;
 
-    public constructor(id: string, options: InhibitorBuilderOptions) {
+    public constructor(id: string, options: XernerxInhibitorOptions) {
         this.id = id;
 
         z.object({

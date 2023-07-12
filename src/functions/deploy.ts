@@ -1,17 +1,17 @@
 import { GatewayVersion, REST, Routes } from 'discord.js';
 
-import ContextCommandBuilder from '../build/XernerxContextCommand.js';
-import SlashCommandBuilder from '../build/XernerxSlashCommand.js';
+import XernerxContextCommand from '../build/XernerxContextCommand.js';
+import XernerxSlashCommand from '../build/XernerxSlashCommand.js';
 import XernerxClient from '../client/XernerxClient.js';
 import XernerxLog from '../tools/XernerxLog.js';
 import XernerxError from '../tools/XernerxError.js';
 
-const commands: Array<SlashCommandBuilder | ContextCommandBuilder | any> = [];
+const commands: Array<XernerxSlashCommand | XernerxContextCommand | any> = [];
 
 export default function deploy(client: XernerxClient) {
     client.prependOnceListener('ready', (client) => {
-        if (client.commands.slash.size) client.commands.slash.map((command: SlashCommandBuilder | ContextCommandBuilder) => commands.push(command.data.toJSON()));
-        if (client.commands.context.size) client.commands.context.map((command: SlashCommandBuilder | ContextCommandBuilder) => commands.push(command.data.toJSON()));
+        if (client.commands.slash.size) client.commands.slash.map((command: XernerxSlashCommand | XernerxContextCommand) => commands.push(command.data.toJSON()));
+        if (client.commands.context.size) client.commands.context.map((command: XernerxSlashCommand | XernerxContextCommand) => commands.push(command.data.toJSON()));
 
         if (commands.length <= 0) return;
 

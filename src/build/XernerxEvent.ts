@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 import XernerxClient from '../client/XernerxClient.js';
-import { EventBuilderOptions } from '../types/interfaces.js';
+import { XernerxEventOptions } from '../types/interfaces.js';
 import { XernerxEventType } from '../types/types.js';
 
 /**
@@ -19,7 +19,7 @@ export default class XernerxEvent {
     public declare readonly filePath: string;
     public declare readonly client;
 
-    public constructor(id: string, options: EventBuilderOptions) {
+    public constructor(id: string, options: XernerxEventOptions) {
         this.id = id;
 
         z.object({

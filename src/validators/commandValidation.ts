@@ -1,15 +1,15 @@
 import { ChannelType, PermissionFlagsBits, PermissionsString } from 'discord.js';
 
-import ContextCommandBuilder from '../build/XernerxContextCommand.js';
+import XernerxContextCommand from '../build/XernerxContextCommand.js';
 import MessageCommandBuilder from '../build/XernerxMessageCommand.js';
-import SlashCommandBuilder from '../build/XernerxSlashCommand.js';
+import XernerxSlashCommand from '../build/XernerxSlashCommand.js';
 import XernerxClient from '../client/XernerxClient.js';
 import { XernerxMessage, XernerxSlashInteraction, XernerxUserContextInteraction } from '../types/extenders.js';
 import { PermissionNames, XernerxInteraction } from '../types/types.js';
 
 export default async function commandValidation(
     event: XernerxInteraction<XernerxSlashInteraction | XernerxUserContextInteraction | XernerxUserContextInteraction> | XernerxMessage,
-    command: MessageCommandBuilder | SlashCommandBuilder | ContextCommandBuilder
+    command: MessageCommandBuilder | XernerxSlashCommand | XernerxContextCommand
 ) {
     const client = event.client as XernerxClient;
 
