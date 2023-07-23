@@ -6,6 +6,7 @@ import XernerxClient from '../client/XernerxClient.js';
 import Handler from './Handler.js';
 import { InhibitorHandlerOptions } from '../types/interfaces.js';
 import XernerxLog from '../tools/XernerxLog.js';
+import { Style } from 'dumfunctions';
 
 export default class InhibitorHandler extends Handler {
     constructor(client: XernerxClient) {
@@ -31,6 +32,6 @@ export default class InhibitorHandler extends Handler {
             this.emit(data);
         }
 
-        new XernerxLog(this.client).info(`Loaded ${this.client.inhibitors.size} Inhibitors.`);
+        new XernerxLog(this.client).info(`Loaded ${Style.log(String(this.client.inhibitors.size), { color: Style.TextColor.Cyan })} Inhibitors.`);
     }
 }

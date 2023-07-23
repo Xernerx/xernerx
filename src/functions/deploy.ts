@@ -5,6 +5,7 @@ import XernerxSlashCommand from '../build/XernerxSlashCommand.js';
 import XernerxClient from '../client/XernerxClient.js';
 import XernerxLog from '../tools/XernerxLog.js';
 import XernerxError from '../tools/XernerxError.js';
+import { Style } from 'dumfunctions';
 
 const commands: Array<XernerxSlashCommand | XernerxContextCommand | any> = [];
 
@@ -27,8 +28,12 @@ export default function deploy(client: XernerxClient) {
             new XernerxLog(client).error(`An error occurred while deploying the interaction commands!`, error);
         } finally {
             new XernerxLog(client).info(
-                `Deployed ${[client.commands.message.size, client.commands.slash.size, client.commands.context.size].reduce((a, b) => (a += b))} Commands ${
-                    client.settings.global ? 'globally' : `locally in ${client.guilds.cache.get(client.settings.local).name}`
+                `Deployed ${Style.log(String([client.commands.message.size, client.commands.slash.size, client.commands.context.size].reduce((a, b) => (a += b))), {
+                    color: Style.TextColor.Cyan,
+                })} Commands ${
+                    client.settings.global
+                        ? Style.log('globally', { color: Style.TextColor.Green })
+                        : `${Style.log('locally', { color: Style.TextColor.Red })} in ${Style.log(client.guilds.cache.get(client.settings.local).name, { color: Style.TextColor.Blue })}`
                 }.`
             );
         }

@@ -2,6 +2,7 @@ import XernerxExtensionBuilder from 'xernerx-extension-builder';
 import XernerxClient from '../client/XernerxClient.js';
 import Handler from './Handler.js';
 import XernerxLog from '../tools/XernerxLog.js';
+import { Style } from 'dumfunctions';
 
 export default class ExtensionHandler extends Handler {
     constructor(client: XernerxClient) {
@@ -19,10 +20,10 @@ export default class ExtensionHandler extends Handler {
 
                 return extension.name;
             } catch (error) {
-                return new XernerxLog(this.client).error(`An error occurred while loading ${extension.name}`, error);
+                return new XernerxLog(this.client).error(`An error occurred while loading ${Style.log(extension.name, { color: Style.TextColor.Blue })}`, error);
             }
         });
 
-        new XernerxLog(this.client).info(`Loaded ${extensions.length} Extensions: ${active.filter((e) => e).join(', ')}`);
+        new XernerxLog(this.client).info(`Loaded ${Style.log(String(extensions.length), { color: Style.TextColor.Cyan })} Extensions: ${active.filter((e) => e).join(', ')}`);
     }
 }

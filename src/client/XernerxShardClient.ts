@@ -1,5 +1,6 @@
 import { ShardingManager, ShardingManagerOptions, Guild, ClientUser } from 'discord.js';
 import XernerxLog from '../tools/XernerxLog.js';
+import { Style } from 'dumfunctions';
 
 interface XernerxOptions {
     log?: {
@@ -25,18 +26,22 @@ export default class XernerxShardClient extends ShardingManager {
                     const guildCount = guilds.length;
                     const userCount = guilds.map((guild) => guild.memberCount).length ? guilds.map((guild) => guild.memberCount).reduce((a, b) => (a += b)) : 0;
 
+                    this.user = (await shard.fetchClientValue('user')) as ClientUser;
+
                     this.stats.guildCount += Number(guildCount);
 
                     this.stats.userCount += Number(userCount);
 
                     this.stats.shardCount++;
 
-                    this.user = (await shard.fetchClientValue('user')) as ClientUser;
-
-                    await new XernerxLog({ settings: xernerxOptions } as never).info(`Launched shard ${shard.id} for ${this.user?.tag}!`);
+                    await new XernerxLog({ settings: xernerxOptions } as never).info(
+                        `Launched shard ${Style.log(String(shard.id), { color: Style.TextColor.Cyan })} for ${Style.log(this.user?.tag, { color: Style.TextColor.Blue })}!`
+                    );
                 })
                 .on('error', (error) => {
-                    new XernerxLog({ settings: xernerxOptions } as never).info(`An error occurred in ${shard.id} for ${this.user?.tag}! ${error}`);
+                    new XernerxLog({ settings: xernerxOptions } as never).info(
+                        `An error occurred in ${Style.log(String(shard.id), { color: Style.TextColor.Cyan })} for ${Style.log(String(this.user?.tag), { color: Style.TextColor.Blue })}! ${error}`
+                    );
                 });
         });
 
@@ -48,7 +53,14 @@ export default class XernerxShardClient extends ShardingManager {
 
                 if (shards.get(index)?.ready) {
                     new XernerxLog({ settings: xernerxOptions } as never).info(
-                        `Launched all ${this.stats.shardCount} shards for ${this.user?.tag}, watching ${this.stats.guildCount} guilds, and ${this.stats.userCount} users!`
+                        `All Shards launched for ${Style.log(String(this.user?.tag), {
+                            color: Style.TextColor.Blue,
+                        })} with a total of ${Style.log(String(this.stats.shardCount), { color: Style.TextColor.Cyan })} shard${this.stats.shardCount > 1 ? 's' : ''}, watching ${Style.log(
+                            String(this.stats.guildCount),
+                            {
+                                color: Style.TextColor.Cyan,
+                            }
+                        )} guild${this.stats.guildCount > 1 ? 's' : ''}, and ${Style.log(String(this.stats.userCount), { color: Style.TextColor.Cyan })} user${this.stats.userCount > 1 ? 's' : ''}!`
                     );
 
                     clearInterval(collector);

@@ -6,6 +6,7 @@ import XernerxClient from '../client/XernerxClient.js';
 import { EventHandlerOptions } from '../types/interfaces.js';
 import Handler from './Handler.js';
 import XernerxLog from '../tools/XernerxLog.js';
+import { Style } from 'dumfunctions';
 
 export default class EventHandler extends Handler {
     constructor(client: XernerxClient) {
@@ -31,6 +32,6 @@ export default class EventHandler extends Handler {
             this.emit(data);
         }
 
-        new XernerxLog(this.client).info(`Loaded ${this.client.events.size} Events.`);
+        new XernerxLog(this.client).info(`Loaded ${Style.log(String(this.client.events.size), { color: Style.TextColor.Cyan })} Events.`);
     }
 }

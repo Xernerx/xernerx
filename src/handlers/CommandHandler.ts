@@ -17,6 +17,7 @@ import commandValidation from '../validators/commandValidation.js';
 import XernerxLog from '../tools/XernerxLog.js';
 import { interactionArguments, messageArguments } from '../models/Arguments.js';
 import { inhibitorValidation } from '../validators/inhibitorValidations.js';
+import { Style } from 'dumfunctions';
 
 export default class CommandHandler extends Handler {
     constructor(client: XernerxClient) {
@@ -57,7 +58,7 @@ export default class CommandHandler extends Handler {
             this.load(filePath, 'MessageCommand');
         }
 
-        new XernerxLog(this.client).info(`Loaded ${files.length} Message Commands.`);
+        new XernerxLog(this.client).info(`Loaded ${Style.log(String(files.length), { color: Style.TextColor.Cyan })} Message Commands.`);
 
         this.emit({
             name: 'messageCreate',
@@ -117,7 +118,7 @@ export default class CommandHandler extends Handler {
             this.load(filePath, 'SlashCommand');
         }
 
-        new XernerxLog(this.client).info(`Loaded ${files.length} Slash Commands.`);
+        new XernerxLog(this.client).info(`Loaded ${Style.log(String(files.length), { color: Style.TextColor.Cyan })} Slash Commands.`);
 
         this.emit({
             name: 'interactionCreate',
@@ -160,7 +161,7 @@ export default class CommandHandler extends Handler {
             this.load(filePath, 'ContextCommand');
         }
 
-        new XernerxLog(this.client).info(`Loaded ${files.length} Context Commands.`);
+        new XernerxLog(this.client).info(`Loaded ${Style.log(String(files.length), { color: Style.TextColor.Cyan })} Context Commands.`);
 
         this.emit({
             name: 'interactionCreate',
@@ -338,7 +339,7 @@ export default class CommandHandler extends Handler {
 
             return await this.client.emit('commandFinish', event, type);
         } catch (error) {
-            new XernerxLog(this.client).error(`An error occurred executing ${cmd.name}`, error);
+            new XernerxLog(this.client).error(`An error occurred executing ${Style.log(cmd.name, { color: Style.TextColor.Blue })}`, error);
 
             return await this.client.emit('commandError', event, error, cmd, type);
         }
