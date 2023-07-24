@@ -44,12 +44,12 @@ export default class XernerxLog {
         const pkg = await fetch(url)
             .then(async (res) => await res.json())
             .catch((pkg) => {
-                pkg.version, pkg.name;
+                pkg.version || version, pkg.name;
             });
 
         if (version != pkg.version)
             new XernerxLog(true).warn(
-                `A new version is available, you're using version ${Style.log(version, { color: Style.TextColor.Cyan })}, new version is ${Style.log(pkg.version, {
+                `A new version for ${pkg.name} is available, you're using version ${Style.log(version, { color: Style.TextColor.Cyan })}, new version is ${Style.log(pkg.version, {
                     color: Style.TextColor.Cyan,
                 })}, run ${Style.log(`npm i ${pkg.name}@${pkg.version}`, { color: Style.BackgroundColor.Grey })} to update to the latest version.`
             );
