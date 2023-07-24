@@ -12,8 +12,6 @@ export async function messageArguments(message: XernerxMessage, command: Message
             .split(separator)
             .slice(1);
 
-    console.log(content);
-
     let args: Record<string, unknown> | null = {},
         flags: Record<string, boolean> | null = {};
 
@@ -154,8 +152,6 @@ export async function messageArguments(message: XernerxMessage, command: Message
 
     if (!command.flags) flags = null;
     if (!command.args) args = null;
-
-    console.log(args);
 
     return { args, flags };
 }
