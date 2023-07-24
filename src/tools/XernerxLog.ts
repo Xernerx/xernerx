@@ -1,7 +1,6 @@
 import XernerxError from './XernerxError.js';
 import { Style } from 'dumfunctions';
 import XernerxClient from '../client/XernerxClient.js';
-// import { version } from '../main.js';
 
 export default class XernerxLog {
     private declare readonly client;
@@ -39,6 +38,21 @@ export default class XernerxLog {
 
     public warn(message: string) {
         return this.infoLog ? console.warn(`⚠️  | ${Style.log('Xernerx', { color: Style.TextColor.Yellow })} | ${Style.log(this.time(), { color: Style.TextColor.Cyan })} | ${message}`) : null;
+    }
+
+    public async update(version: string, url: string) {
+        const pkg = await fetch(url)
+            .then(async (res) => await res.json())
+            .catch((pkg) => {
+                pkg.version, pkg.name;
+            });
+
+        if (version != pkg.version)
+            new XernerxLog(true).warn(
+                `A new version is available, you're using version ${Style.log(version, { color: Style.TextColor.Cyan })}, new version is ${Style.log(pkg.version, {
+                    color: Style.TextColor.Cyan,
+                })}, run ${Style.log(`npm i ${pkg.name}@${pkg.version}`, { color: Style.BackgroundColor.Grey })} to update to the latest version.`
+            );
     }
 
     public error(message: string, error?: XernerxError | unknown) {

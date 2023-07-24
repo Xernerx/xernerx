@@ -101,11 +101,13 @@ export default class XernerxClient<T = unknown> extends Client {
         return this;
     }
 
-    public connect(token: string) {
-        this.login(token);
+    public async connect(token: string) {
+        const login = this.login(token);
 
         deploy(this);
 
         new XernerxLog(this).ready();
+
+        return login;
     }
 }
