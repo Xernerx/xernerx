@@ -5,9 +5,14 @@ import { XernerxMessage, XernerxMessageContextInteraction, XernerxSlashInteracti
 import { MessageCommandArguments } from '../types/interfaces.js';
 import { XernerxInteraction } from '../types/types.js';
 
-export async function messageArguments(message: XernerxMessage, command: MessageCommandBuilder): Promise<MessageCommandArguments> {
+export async function messageArguments(message: XernerxMessage, command: MessageCommandBuilder, prefix: string): Promise<MessageCommandArguments> {
     const separator = command.separator || ' ',
-        content = message.content.split(separator).slice(1);
+        content = message.content
+            .replace(new RegExp(`${prefix} +?`), '')
+            .split(separator)
+            .slice(1);
+
+    console.log(content);
 
     let args: Record<string, unknown> | null = {},
         flags: Record<string, boolean> | null = {};
@@ -149,6 +154,8 @@ export async function messageArguments(message: XernerxMessage, command: Message
 
     if (!command.flags) flags = null;
     if (!command.args) args = null;
+
+    console.log(args);
 
     return { args, flags };
 }

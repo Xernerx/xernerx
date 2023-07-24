@@ -253,23 +253,29 @@ export default class CommandHandler extends Handler {
             if (!cmd && this.client.modules.options.message.allowMention) {
                 if (message.mentions.users.has(this.client.user?.id as string) || message.mentions.repliedUser?.id === this.client.user?.id) {
                     commandName = message.content.replace(`<@${this.client.user?.id}>`, '').trim().split(/ +/).shift()?.toLowerCase() || null;
+
+                    commandPrefix = `<@${this.client.user?.id}>`;
                 }
             }
 
-            if (this.client.commands.message.has(commandName as string)) cmd = this.client.commands.message.get(commandName as string);
+            if (this.client.commands.message.has(commandName as string)) {
+                if (this.client.modules.options.message?.handleTyping) message.channel.sendTyping();
 
-            if (await inhibitorValidation(message, cmd)) return;
+                cmd = this.client.commands.message.get(commandName as string);
+            }
 
             if (!cmd) return this.client.emit('commandNotFound', message, filetype);
+
+            if (await inhibitorValidation(message, cmd)) return;
 
             message.util.parsed = {
                 alias: commandAlias,
                 prefix: commandPrefix,
             };
 
-            this.client.emit('commandStart', message, filetype);
+            this.client.emit('commandStart', message, cmd, filetype);
 
-            return await this.exec(cmd, message, await messageArguments(message, cmd), filetype);
+            return await this.exec(cmd, message, await messageArguments(message, cmd, commandPrefix as string), filetype);
         }
     }
 
