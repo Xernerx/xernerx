@@ -94,7 +94,6 @@ interface CommandHandlerOptions {
 		client?: Array<string>;
 		dm?: boolean;
 	};
-	logging?: boolean;
 }
 
 export interface MessageHandlerOptions extends CommandHandlerOptions {
@@ -268,4 +267,9 @@ export interface PaginatorOptions {
 	send?: boolean;
 	filter?: Function;
 	time?: number;
+}
+
+export interface ResolveCommandOptions {
+	type?: 'MessageCommand' | 'SlashCommand' | 'ContextCommand' | 'Interaction';
+	name?: string;
 }

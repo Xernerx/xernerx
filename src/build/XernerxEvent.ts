@@ -2,9 +2,9 @@
 
 import { z } from 'zod';
 
-import XernerxClient from '../client/XernerxClient.js';
 import { XernerxEventOptions } from '../types/interfaces.js';
 import { XernerxEventType } from '../types/types.js';
+import { XernerxClientType } from '../main.js';
 
 /**
  * @description - The event builder for  events.
@@ -19,7 +19,7 @@ export default class XernerxEvent {
 	public declare readonly once?: boolean;
 	public declare readonly fileType: 'Event';
 	public declare readonly filePath: string;
-	public declare readonly client;
+	public declare readonly client: XernerxClientType;
 
 	public constructor(id: string, options: XernerxEventOptions) {
 		this.id = id;
@@ -39,7 +39,7 @@ export default class XernerxEvent {
 
 		this.once = options.once || false;
 
-		this.client = XernerxClient;
+		this.client = this.client;
 	}
 	/**
 	 * @description run your custom event here.

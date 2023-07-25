@@ -5,15 +5,12 @@ import XernerxClient from '../client/XernerxClient.js';
 import { XernerxMessage, XernerxSlashInteraction, XernerxUser, XernerxUserContextInteraction } from '../types/extenders.js';
 
 export async function xernerxUser(event: XernerxMessage | XernerxSlashInteraction | XernerxUserContextInteraction | XernerxUserContextInteraction, client: XernerxClient) {
-	const author: User = (event as XernerxMessage).author || event.user;
+	const author: Partial<XernerxUser | User> = (event as XernerxMessage).author || event.user;
 
-	const user = {
-		...author,
-		owner: isOwner(client, author),
-		voted: client.util.hasVoted ? await client.util.hasVoted(author.id) : null,
-	};
+	(author as XernerxUser).owner = isOwner(client, author as User);
+	(author as XernerxUser).voted = client.util.hasVoted ? await client.util.hasVoted(author.id) : null;
 
-	return user as XernerxUser;
+	return author as XernerxUser;
 }
 
 function isOwner(client: XernerxClient, user: User) {

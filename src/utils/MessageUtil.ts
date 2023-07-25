@@ -43,7 +43,7 @@ export default class MessageUtil extends Util {
 	}
 
 	public async send(content: any) {
-		if (this.client.cache.messages.has(this.message.id)) {
+		if (this.client.cache.messages.has(this.message.id) && this.client.modules.options.message?.handleEdits) {
 			const id = this.client.cache.messages.get(this.message.id);
 
 			if (!id) return null;
@@ -63,7 +63,7 @@ export default class MessageUtil extends Util {
 	}
 
 	public async reply(content: string | MessagePayload | MessageReplyOptions | MessageEditOptions) {
-		if (this.client.cache.messages.has(this.message.id)) {
+		if (this.client.cache.messages.has(this.message.id) && this.client.modules.options.message?.handleEdits) {
 			const id = this.client.cache.messages.get(this.message.id);
 
 			if (!id) return null;

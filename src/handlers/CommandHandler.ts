@@ -183,7 +183,7 @@ export default class CommandHandler extends Handler {
 
 		if (typeof message2 === 'object') message = message2;
 
-		if (message2 === 'delete') {
+		if (message2 === 'delete' && this.client.modules.options.message?.handleDeletes) {
 			if (!this.client.cache.messages.has(message.id)) return;
 
 			const id = this.client.cache.messages.get(message.id);

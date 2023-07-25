@@ -1,8 +1,22 @@
 /** @format */
 
-import { ChatInputCommandInteraction, DMChannel, Guild, GuildChannel, GuildMember, Message, MessageContextMenuCommandInteraction, User, UserContextMenuCommandInteraction } from 'discord.js';
+import {
+	ChatInputCommandInteraction,
+	Client,
+	Collection,
+	DMChannel,
+	Guild,
+	GuildChannel,
+	GuildMember,
+	Message,
+	MessageContextMenuCommandInteraction,
+	User,
+	UserContextMenuCommandInteraction,
+} from 'discord.js';
 import InteractionUtil from '../utils/InteractionUtil.js';
 import MessageUtil from '../utils/MessageUtil.js';
+import { ModuleOptions, XernerxCache, XernerxCommands, XernerxEvent, XernerxInhibitor } from '../main.js';
+import ClientUtil from '../utils/ClientUtil.js';
 
 export interface XernerxUser extends User {
 	owner: boolean;
@@ -39,4 +53,29 @@ export interface XernerxUserContextInteraction extends UserContextMenuCommandInt
 export interface XernerxMessageContextInteraction extends MessageContextMenuCommandInteraction, XernerxCommand {
 	user: XernerxUser;
 	util: InteractionUtil;
+}
+
+export interface XernerxClientType extends Client {
+	config: unknown | null;
+
+	commands: XernerxCommands;
+
+	events: Collection<string, XernerxEvent>;
+
+	inhibitors: Collection<string, XernerxInhibitor>;
+
+	modules: ModuleOptions;
+
+	util: ClientUtil;
+
+	stats: {
+		guildCount: number;
+		userCount: number;
+		shardId: number;
+		shardCount: number;
+	};
+
+	cache: XernerxCache;
+
+	connect: () => Promise<string>;
 }

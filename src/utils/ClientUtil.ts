@@ -2,8 +2,10 @@
 
 import setPresence from '../functions/setPresence.js';
 import XernerxClient from '../client/XernerxClient.js';
-import { PresenceOptions } from '../types/interfaces.js';
+import { PresenceOptions, ResolveCommandOptions } from '../types/interfaces.js';
 import Util from './Util.js';
+import { Collection } from 'discord.js';
+import { XernerxContextCommand, XernerxMessageCommand, XernerxSlashCommand } from '../main.js';
 
 export default class ClientUtil extends Util {
 	public declare hasVoted: Function;
@@ -14,6 +16,23 @@ export default class ClientUtil extends Util {
 
 	public setPresence(options: PresenceOptions) {
 		return setPresence(this.client, options);
+	}
+
+	public resolveCommand(options: ResolveCommandOptions) {
+		const commands = [],
+			collection = new Collection();
+
+		if (options?.type == 'MessageCommand' || !options?.type) commands.push(...this.client.commands.message);
+
+		if (options?.type == 'Interaction' || options?.type == 'SlashCommand' || !options?.type) commands.push(...this.client.commands.slash);
+
+		if (options?.type == 'Interaction' || options?.type == 'ContextCommand' || !options?.type) commands.push(...this.client.commands.context);
+
+		commands.map(([name, command]) => collection.set(name, command));
+
+		if (options?.name) {
+			return (collection.get(options.name) as XernerxMessageCommand | XernerxSlashCommand | XernerxContextCommand) || null;
+		} else return collection as Collection<string, XernerxMessageCommand | XernerxSlashCommand | XernerxContextCommand>;
 	}
 
 	public async resolveChannel(query: string | Record<string, string>) {

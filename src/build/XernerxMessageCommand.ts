@@ -1,8 +1,7 @@
 /** @format */
 
 import { z } from 'zod';
-import XernerxClient from '../client/XernerxClient.js';
-import { XernerxMessage } from '../types/extenders.js';
+import { XernerxClientType, XernerxMessage } from '../types/extenders.js';
 import { MessageCommandArguments, MessageCommandOptions } from '../types/interfaces.js';
 
 export default class XernerxMessageCommand {
@@ -24,7 +23,7 @@ export default class XernerxMessageCommand {
 	public declare readonly permissions;
 	public declare readonly fileType: 'MessageCommand';
 	public declare readonly filePath: string;
-	public declare readonly client;
+	public declare readonly client: XernerxClientType;
 
 	public constructor(id: string, options: MessageCommandOptions) {
 		this.id = id;
@@ -95,7 +94,7 @@ export default class XernerxMessageCommand {
 
 		this.permissions = options.permissions;
 
-		this.client = XernerxClient;
+		this.client = this.client;
 	}
 
 	public async conditions<T>(message: XernerxMessage, { args, flags }: MessageCommandArguments): Promise<void | any | T> {}

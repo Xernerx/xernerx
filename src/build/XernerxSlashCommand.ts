@@ -2,9 +2,7 @@
 
 import Discord, { SlashCommandStringOption, SlashCommandSubcommandBuilder, SlashCommandSubcommandGroupBuilder } from 'discord.js';
 import { z } from 'zod';
-import XernerxClient from '../client/XernerxClient.js';
-import { XernerxMessageContextInteraction, XernerxSlashInteraction, XernerxUserContextInteraction } from '../types/extenders.js';
-
+import { XernerxClientType, XernerxMessageContextInteraction, XernerxSlashInteraction, XernerxUserContextInteraction } from '../types/extenders.js';
 import { SlashCommandArgumentOptions, SlashCommandArguments, SlashCommandGroupOptions, SlashCommandOptions, SlashCommandSubcommandOptions } from '../types/interfaces.js';
 import { SlashCommandArgumentType, SlashCommandOption, XernerxInteraction } from '../types/types.js';
 
@@ -23,7 +21,7 @@ export default class XernerxSlashCommand {
 	public declare readonly defer;
 	public declare readonly fileType: 'SlashCommand';
 	public declare readonly filePath: string;
-	public declare readonly client;
+	public declare readonly client: XernerxClientType;
 
 	public constructor(id: string, options: SlashCommandOptions) {
 		this.id = id;
@@ -114,7 +112,7 @@ export default class XernerxSlashCommand {
 
 		this.defer = options.defer;
 
-		this.client = XernerxClient;
+		this.client = this.client;
 	}
 
 	public async autocomplete<T>(
