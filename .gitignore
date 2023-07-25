@@ -1,3 +1,8 @@
+# . Environment
+
+# * Node
 node_modules
-dist
 package-lock.json
+
+# ? Typescript
+dist

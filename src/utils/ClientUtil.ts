@@ -18,6 +18,9 @@ export default class ClientUtil extends Util {
 		return setPresence(this.client, options);
 	}
 
+	// @ts-ignore
+	private resolveCooldown() {}
+
 	public resolveCommand(options: ResolveCommandOptions) {
 		const commands = [],
 			collection = new Collection();

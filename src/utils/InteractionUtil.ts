@@ -30,7 +30,8 @@ export default class InteractionUtil extends Util {
 		return await (this.interaction.replied || this.interaction.deferred ? this.interaction.editReply(content) : this.interaction.reply(content as InteractionReplyOptions));
 	}
 
-	public commandName() {}
+	// @ts-ignore
+	private commandName() {}
 
 	public async paginator(embeds: Array<EmbedBuilder>, options: PaginatorOptions = {}) {
 		let buttonRow, menuRow;

@@ -1,17 +1,17 @@
-# Sources
-src
+# . Environment
 docs
-.github
 *.md
 
-# Packages
+# * Node
 node_modules
 package-lock.json
 
-# Ignores
+# ! Config
 .gitignore
 .gitattributes
-
-# configs
-tsconfig.json
+.github
 .prettierrc
+
+# ? TypeScript
+tsconfig.json
+src
