@@ -8,6 +8,7 @@ interface XernerxOptions {
 	log?: {
 		info?: boolean;
 	};
+	timeout?: number;
 }
 
 export default class XernerxShardClient extends ShardingManager {
@@ -45,6 +46,8 @@ export default class XernerxShardClient extends ShardingManager {
 						`An error occurred in ${Style.log(String(shard.id), { color: Style.TextColor.Cyan })} for ${Style.log(String(this.user?.tag), { color: Style.TextColor.Blue })}! ${error}`
 					);
 				});
+
+			if (xernerxOptions?.timeout) setTimeout(() => shard.kill(), xernerxOptions.timeout);
 		});
 
 		const spawn = this.spawn();
