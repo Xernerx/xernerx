@@ -1,14 +1,16 @@
+/** @format */
+
 import { ChatInputCommandInteraction, DMChannel, Guild, GuildChannel, GuildMember, Message, MessageContextMenuCommandInteraction, User, UserContextMenuCommandInteraction } from 'discord.js';
 import InteractionUtil from '../utils/InteractionUtil.js';
 import MessageUtil from '../utils/MessageUtil.js';
 
 export interface XernerxUser extends User {
-    owner: boolean;
-    voted: boolean | null;
+	owner: boolean;
+	voted: boolean | null;
 }
 
 export interface XernerxMember extends GuildMember {
-    username: string;
+	username: string;
 }
 
 export interface XernerxGuild extends Guild {}
@@ -20,21 +22,21 @@ export interface XernerxDMChannel extends DMChannel {}
 interface XernerxCommand {}
 
 export interface XernerxMessage extends Message, XernerxCommand {
-    user: XernerxUser;
-    util: MessageUtil;
+	user: XernerxUser;
+	util: MessageUtil;
 }
 
 export interface XernerxSlashInteraction extends ChatInputCommandInteraction, XernerxCommand {
-    user: XernerxUser;
-    util: InteractionUtil;
+	user: XernerxUser;
+	util: InteractionUtil;
 }
 
 export interface XernerxUserContextInteraction extends UserContextMenuCommandInteraction, XernerxCommand {
-    user: XernerxUser;
-    util: InteractionUtil;
+	user: XernerxUser;
+	util: InteractionUtil;
 }
 
 export interface XernerxMessageContextInteraction extends MessageContextMenuCommandInteraction, XernerxCommand {
-    user: XernerxUser;
-    util: InteractionUtil;
+	user: XernerxUser;
+	util: InteractionUtil;
 }

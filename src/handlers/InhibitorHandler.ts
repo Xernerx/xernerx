@@ -1,3 +1,5 @@
+/** @format */
+
 import { z } from 'zod';
 
 import * as path from 'path';
@@ -9,29 +11,29 @@ import XernerxLog from '../tools/XernerxLog.js';
 import { Style } from 'dumfunctions';
 
 export default class InhibitorHandler extends Handler {
-    constructor(client: XernerxClient) {
-        super(client);
-    }
+	constructor(client: XernerxClient) {
+		super(client);
+	}
 
-    public async loadInhibitors(options: InhibitorHandlerOptions) {
-        options = z
-            .object({
-                directory: z.string(),
-            })
-            .parse(options);
+	public async loadInhibitors(options: InhibitorHandlerOptions) {
+		options = z
+			.object({
+				directory: z.string(),
+			})
+			.parse(options);
 
-        this.client.modules.options.inhibitors = options;
+		this.client.modules.options.inhibitors = options;
 
-        const files = this.readdir(options.directory);
+		const files = this.readdir(options.directory);
 
-        for (const file of files) {
-            const filePath = `${path.resolve(options.directory)}\\${file}`;
+		for (const file of files) {
+			const filePath = `${path.resolve(options.directory)}\\${file}`;
 
-            const data = await this.load(filePath, 'Inhibitor');
+			const data = await this.load(filePath, 'Inhibitor');
 
-            this.emit(data);
-        }
+			this.emit(data);
+		}
 
-        new XernerxLog(this.client).info(`Loaded ${Style.log(String(this.client.inhibitors.size), { color: Style.TextColor.Cyan })} Inhibitors.`);
-    }
+		new XernerxLog(this.client).info(`Loaded ${Style.log(String(this.client.inhibitors.size), { color: Style.TextColor.Cyan })} Inhibitors.`);
+	}
 }

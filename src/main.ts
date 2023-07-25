@@ -1,3 +1,5 @@
+/** @format */
+
 import * as fs from 'fs';
 
 const version = JSON.parse(fs.readFileSync('node_modules/xernerx/package.json', 'utf-8')).version;
@@ -26,34 +28,34 @@ import Discord from 'discord.js';
 export default XernerxClient;
 
 export {
-    /**
-     ** Clients
-     */
-    XernerxClient,
-    XernerxShardClient,
+	/**
+	 ** Clients
+	 */
+	XernerxClient,
+	XernerxShardClient,
 
-    /**
-     ** Builders
-     */
-    XernerxMessageCommand,
-    XernerxSlashCommand,
-    XernerxContextCommand,
-    XernerxEvent,
-    XernerxInhibitor,
-    XernerxExtension,
+	/**
+	 ** Builders
+	 */
+	XernerxMessageCommand,
+	XernerxSlashCommand,
+	XernerxContextCommand,
+	XernerxEvent,
+	XernerxInhibitor,
+	XernerxExtension,
 
-    /**
-     ** Imported exports
-     */
-    Discord,
+	/**
+	 ** Imported exports
+	 */
+	Discord,
 
-    /**
-     ** Properties
-     */
-    version,
+	/**
+	 ** Properties
+	 */
+	version,
 
-    /**
-     ** Tools
-     */
-    XernerxLog,
+	/**
+	 ** Tools
+	 */
+	XernerxLog,
 };

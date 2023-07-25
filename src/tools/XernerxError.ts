@@ -1,13 +1,15 @@
+/** @format */
+
 export default class XernerxError {
-    public name;
-    public message;
-    public stack;
+	public name;
+	public message;
+	public stack;
 
-    constructor(message?: string, error?: Error | unknown) {
-        this.name = 'XernerxError';
+	constructor(message?: string, error?: Error | unknown) {
+		this.name = 'XernerxError';
 
-        this.message = message || null;
+		this.message = message || null;
 
-        this.stack = error || new Error().stack;
-    }
+		this.stack = error || new Error().stack;
+	}
 }
