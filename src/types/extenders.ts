@@ -15,7 +15,7 @@ import {
 } from 'discord.js';
 import InteractionUtil from '../utils/InteractionUtil.js';
 import MessageUtil from '../utils/MessageUtil.js';
-import { ModuleOptions, XernerxCache, XernerxCommands, XernerxEvent, XernerxInhibitor } from '../main.js';
+import { ModuleOptions, XernerxCache, XernerxCommands, XernerxEvent, XernerxInhibitor, XernerxOptions } from '../main.js';
 import ClientUtil from '../utils/ClientUtil.js';
 
 export interface XernerxUser extends User {
@@ -67,6 +67,8 @@ export interface XernerxClientType extends Client {
 	modules: ModuleOptions;
 
 	util: ClientUtil;
+
+	settings: XernerxOptions;
 
 	stats: {
 		guildCount: number;

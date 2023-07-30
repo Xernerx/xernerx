@@ -4,7 +4,7 @@ import { z } from 'zod';
 
 import { XernerxEventOptions } from '../types/interfaces.js';
 import { XernerxEventType } from '../types/types.js';
-import { XernerxClientType } from '../main.js';
+import { XernerxClientType, XernerxLog } from '../main.js';
 
 /**
  * @description - The event builder for  events.
@@ -17,8 +17,8 @@ export default class XernerxEvent {
 	public declare readonly emitter?: 'client' | 'process' | string;
 	public declare readonly type?: 'discord' | string;
 	public declare readonly once?: boolean;
-	public declare readonly fileType: 'Event';
-	public declare readonly filePath: string;
+	public declare readonly filetype: 'Event';
+	public declare readonly filepath: string;
 	public declare readonly client: XernerxClientType;
 
 	public constructor(id: string, options: XernerxEventOptions) {
@@ -43,7 +43,9 @@ export default class XernerxEvent {
 	}
 	/**
 	 * @description run your custom event here.
-	 * TODO - update description
+	 * @param any - there can be all kinds of parameters on events.
 	 */
-	public async run(...args: any) {}
+	public async run(...args: any): Promise<any> {
+		return new XernerxLog(this.client).error(`${this.id} doesn't have a run rule.`);
+	}
 }

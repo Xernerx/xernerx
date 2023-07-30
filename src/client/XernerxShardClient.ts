@@ -73,9 +73,6 @@ export default class XernerxShardClient extends ShardingManager {
 			}, 1000);
 		});
 
-		return {
-			shards: spawn,
-			stats: this.stats,
-		} as never;
+		return this;
 	}
 }

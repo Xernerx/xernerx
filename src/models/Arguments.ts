@@ -162,7 +162,7 @@ export async function interactionArguments(
 	interaction: XernerxInteraction<XernerxSlashInteraction | XernerxUserContextInteraction | XernerxMessageContextInteraction> | any,
 	command: XernerxContextCommand | XernerxSlashCommand
 ) {
-	if (command.fileType === 'SlashCommand') {
+	if (command.filetype === 'SlashCommand') {
 		const options: Record<string, string> = {};
 
 		let args = interaction?.options?._hoistedOptions,
@@ -180,7 +180,7 @@ export async function interactionArguments(
 		return { args, group, subcommand };
 	}
 
-	if (command.fileType === 'ContextCommand') {
+	if (command.filetype === 'ContextCommand') {
 		if (command.type === 'user') return await interaction.client.users.fetch(interaction.targetId);
 		if (command.type === 'message') return await interaction.channel.messages.fetch(interaction.targetId);
 	}

@@ -43,6 +43,9 @@ export default class XernerxClient<T = unknown> extends Client {
 				ignore: z
 					.object({
 						owner: z.boolean().default(false),
+						self: z.boolean().default(true),
+						bots: z.boolean().default(true),
+						system: z.boolean().default(true),
 						users: z.array(z.string()).default([]),
 						channels: z.array(z.string()).default([]),
 						guilds: z.array(z.string()).default([]),

@@ -27,9 +27,9 @@ export default class InhibitorHandler extends Handler {
 		const files = this.readdir(options.directory);
 
 		for (const file of files) {
-			const filePath = `${path.resolve(options.directory)}\\${file}`;
+			const filepath = `${path.resolve(options.directory)}\\${file}`;
 
-			const data = await this.load(filePath, 'Inhibitor');
+			const data = await this.load(filepath, 'Inhibitor');
 
 			this.emit(data);
 		}

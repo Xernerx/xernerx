@@ -1,21 +1,77 @@
+<!-- @format -->
+
+<style>
+    body {
+        background: rgba(0,0,0, 0.2);
+        border-radius: 0.5rem;
+        margin: 10px;
+    }
+    
+    :hover {
+        color: #8979f0;
+    }
+
+</style>
+
+[![](./docs/icons/Xernerx%20-%20Logo%20-%20Purple.png)](https://xernerx.github.io/xernerx)
+
 # xernerx
 
 Xernerx is a class based discord.js framework. \[BETA\]
 
-## Includes
+It can be customized to be a lightweight handler or a heavy customizable framework that does all the hard work for you
 
-> -   Slash command handler
-> -   Message command handler
-> -   Context command handler
-> -   Event handler (with custom Events)
-> -   Inhibitor handler
-> -   Custom utilities
-> -   Message command handles
-> -   Extension support
+## Features
 
-You can checkout the docs [here](https://xernerx.github.io/xernerx/home.html)
+> - [x] Slash command handler
+> - [x] Message command handler
+> - [x] Context command handler
+> - [x] Event handler (with custom Events)
+> - [x] Inhibitor handler
+> - [x] Extension handler
+> - [x] Client Utilities
+> - [x] Message Utilities
+> - [x] Interaction Utilities
+> - [x] Message command handles
+> - [x] Extension support
+> - [x] ShardClient
+
+## Links
+
+> - [Documentation](https://xernerx.github.io/xernerx/docs/#v4)
+> - [Guide](https://xernerx.github.io/xernerx/guide/#v4)
+
+## Setup
+
+### Settings
+
+```js
+import XernerxClient from 'xernerx';
+
+new (class Client extends XernerxClient {
+	constructor() {
+		super([discordOptions], [xernerxOptions]);
+
+		this.connect('token');
+	}
+})();
+```
+
+### Handlers
+
+There are 5 handlers total
+
+> - Command handler, handles message, slash and context commands
+> - Event handler, has all the Discord.js events and more
+> - Inhibitor handler, handles conditions before commands are ran globally
+> - Extension handler, more info [here](#Extensions)
+> - Webhook handler, will allow for top.gg to get your stats (needs a rework)
+
+## Extensions
+
+Xernerx supports the ability to use extensions, features not initially included into your code. You can use any extension based on the [xernerx-extension-builder](https://npmjs.com/xernerx-extension-builder) package, or make your own with it!
 
 ## Notes
 
--   Only compatible with ESM
--   TypeScript and JavaScript support
+- Only compatible with ESM
+- TypeScript and JavaScript support

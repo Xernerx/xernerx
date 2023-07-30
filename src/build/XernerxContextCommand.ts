@@ -5,6 +5,7 @@ import { z } from 'zod';
 
 import { XernerxMessageContextInteraction, XernerxUserContextInteraction, XernerxClientType } from '../types/extenders.js';
 import { ContextCommandArguments, ContextCommandOptions } from '../types/interfaces.js';
+import { XernerxLog } from '../main.js';
 
 export default class XernerxContextCommand {
 	public declare readonly id;
@@ -20,8 +21,8 @@ export default class XernerxContextCommand {
 	public declare readonly strict;
 	public declare readonly permissions;
 	public declare readonly defer;
-	public declare readonly fileType: 'ContextCommand';
-	public declare readonly filePath: string;
+	public declare readonly filetype: 'ContextCommand';
+	public declare readonly filepath: string;
 	public declare readonly client: XernerxClientType;
 
 	public constructor(id: string, options: ContextCommandOptions) {
@@ -104,5 +105,14 @@ export default class XernerxContextCommand {
 		this.client = this.client;
 	}
 
-	public async exec<T>(interaction: XernerxUserContextInteraction | XernerxMessageContextInteraction, args: ContextCommandArguments<'user' | 'message'>): Promise<void | any | T> {}
+	/**
+	 * @description the execution of the command
+	 * @param interaction - Interaction event emitted on command
+	 * @param args - The arguments parsed with the command, if any
+	 */
+	public async exec(interaction: XernerxUserContextInteraction | XernerxMessageContextInteraction, args: ContextCommandArguments<'user' | 'message'>): Promise<any> {
+		new XernerxLog(this.client).error(`${this.id} doesn't have an execution rule.`);
+
+		return await this.client.emit('commandError', interaction, `${this.id} doesn't have an execution rule.`, this, this.filetype);
+	}
 }

@@ -12,7 +12,7 @@ import MessageUtil from '../utils/MessageUtil.js';
 import XernerxContextCommand from '../build/XernerxContextCommand.js';
 import MessageCommandBuilder from '../build/XernerxMessageCommand.js';
 import XernerxSlashCommand from '../build/XernerxSlashCommand.js';
-import { FileType } from '../types/types.js';
+import { filetype } from '../types/types.js';
 import { xernerxUser } from '../functions/xernerxUser.js';
 import InteractionUtil from '../utils/InteractionUtil.js';
 import commandValidation from '../validators/commandValidation.js';
@@ -55,28 +55,28 @@ export default class CommandHandler extends Handler {
 		const files = this.readdir(options.directory);
 
 		for (const file of files) {
-			const filePath = `${path.resolve(options.directory)}\\${file}`;
+			const filepath = `${path.resolve(options.directory)}\\${file}`;
 
-			this.load(filePath, 'MessageCommand');
+			this.load(filepath, 'MessageCommand');
 		}
 
 		new XernerxLog(this.client).info(`Loaded ${Style.log(String(files.length), { color: Style.TextColor.Cyan })} Message Commands.`);
 
 		this.emit({
 			name: 'messageCreate',
-			fileType: 'MessageCommand',
+			filetype: 'MessageCommand',
 			run: (message: XernerxMessage) => this.messageCommandRun(message),
 		});
 
 		this.emit({
 			name: 'messageUpdate',
-			fileType: 'MessageCommand',
+			filetype: 'MessageCommand',
 			run: (message: XernerxMessage, message2: XernerxMessage) => this.messageCommandRun(message, message2),
 		});
 
 		this.emit({
 			name: 'messageDelete',
-			fileType: 'MessageCommand',
+			filetype: 'MessageCommand',
 			run: (message: XernerxMessage) => this.messageCommandRun(message, 'delete'),
 		});
 	}
@@ -115,19 +115,20 @@ export default class CommandHandler extends Handler {
 		const files = this.readdir(options.directory);
 
 		for (const file of files) {
-			const filePath = `${path.resolve(options.directory)}\\${file}`;
+			const filepath = `${path.resolve(options.directory)}\\${file}`;
 
-			this.load(filePath, 'SlashCommand');
+			this.load(filepath, 'SlashCommand');
 		}
 
 		new XernerxLog(this.client).info(`Loaded ${Style.log(String(files.length), { color: Style.TextColor.Cyan })} Slash Commands.`);
 
 		this.emit({
 			name: 'interactionCreate',
-			fileType: 'SlashCommand',
+			filetype: 'SlashCommand',
 			run: (interaction: XernerxSlashInteraction) => this.slashCommandRun(interaction),
 		});
 	}
+
 	public loadContextCommands(options: ContextHandlerOptions) {
 		if (!this.client.settings.local) new XernerxLog(this.client).warn(`Context commands might not work as you haven't specified a local guild ID.`);
 
@@ -158,16 +159,16 @@ export default class CommandHandler extends Handler {
 		const files = this.readdir(options.directory);
 
 		for (const file of files) {
-			const filePath = `${path.resolve(options.directory)}\\${file}`;
+			const filepath = `${path.resolve(options.directory)}\\${file}`;
 
-			this.load(filePath, 'ContextCommand');
+			this.load(filepath, 'ContextCommand');
 		}
 
 		new XernerxLog(this.client).info(`Loaded ${Style.log(String(files.length), { color: Style.TextColor.Cyan })} Context Commands.`);
 
 		this.emit({
 			name: 'interactionCreate',
-			fileType: 'ContextCommand',
+			filetype: 'ContextCommand',
 			run: (interaction: XernerxMessageContextInteraction | XernerxUserContextInteraction) => this.contextCommandRun(interaction),
 		});
 	}
@@ -175,10 +176,12 @@ export default class CommandHandler extends Handler {
 	private async messageCommandRun<T extends XernerxMessage>(message: T, message2?: T | 'delete') {
 		const filetype = 'MessageCommand';
 
-		if (message.author.bot) return;
+		if (message.author.id === this.client.user?.id && this.client.settings.ignore?.self) return;
+		else if (message.author.bot && this.client.settings.ignore?.bots) return;
+
+		if (message.system && this.client.settings.ignore?.system) return;
 
 		message.util = new MessageUtil(this.client, message);
-
 		message.user = await xernerxUser(message, this.client);
 
 		if (typeof message2 === 'object') message = message2;
@@ -266,7 +269,9 @@ export default class CommandHandler extends Handler {
 				cmd = this.client.commands.message.get(commandName as string);
 			}
 
-			if (!cmd) return this.client.emit('commandNotFound', message, filetype);
+			if (!commandPrefix) return;
+
+			if (!cmd) return await this.client.emit('commandNotFound', message, commandName, filetype);
 
 			if (await inhibitorValidation(message, cmd)) return;
 
@@ -336,7 +341,7 @@ export default class CommandHandler extends Handler {
 		cmd: MessageCommandBuilder | XernerxSlashCommand | XernerxContextCommand,
 		event: XernerxMessage | XernerxSlashInteraction | XernerxMessageContextInteraction | XernerxUserContextInteraction,
 		args: any,
-		type: FileType
+		type: filetype
 	) {
 		try {
 			if (await commandValidation(event as XernerxMessage, cmd)) return;

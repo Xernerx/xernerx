@@ -24,6 +24,9 @@ export interface XernerxOptions {
 	};
 	ignore?: {
 		owner?: boolean;
+		self?: boolean;
+		bots?: boolean;
+		system?: boolean;
 		users?: Array<string>;
 		channels?: Array<string>;
 		guilds?: Array<string>;
@@ -32,7 +35,7 @@ export interface XernerxOptions {
 		ready?: boolean;
 		info?: boolean;
 		error?: boolean;
-		table?: Array<'name' | 'aliases' | 'description' | 'fileType' | 'category'>;
+		table?: Array<'name' | 'aliases' | 'description' | 'filetype' | 'category'>;
 	};
 	cooldown?: {
 		command?: number;

@@ -2,7 +2,7 @@
 
 import XernerxClient from '../client/XernerxClient.js';
 
-enum FileTypes {
+enum filetypes {
 	'message' = 'MessageCommand',
 	'slash' = 'SlashCommand',
 	'context' = 'ContextCommand',
@@ -15,7 +15,7 @@ export default function reload(client: XernerxClient, type: 'message' | 'slash' 
 
 	if (type === 'message' || type === 'slash' || type === 'context') {
 		for (const [name] of client.commands[type]) {
-			files.push((client.commands[type].get(name) as unknown as Record<string, string>).filePath);
+			files.push((client.commands[type].get(name) as unknown as Record<string, string>).filepath);
 		}
 
 		(client.commands[type].sweep as Function)(() => true);
@@ -23,7 +23,7 @@ export default function reload(client: XernerxClient, type: 'message' | 'slash' 
 
 	if (type === 'event') {
 		for (const [name] of client.events) {
-			files.push((client.events.get(name) as unknown as Record<string, string>).filePath);
+			files.push((client.events.get(name) as unknown as Record<string, string>).filepath);
 		}
 
 		(client.events.sweep as Function)(() => true);
@@ -31,7 +31,7 @@ export default function reload(client: XernerxClient, type: 'message' | 'slash' 
 
 	if (type === 'inhibitor') {
 		for (const [name] of client.inhibitors) {
-			files.push((client.inhibitors.get(name) as unknown as Record<string, string>).filePath);
+			files.push((client.inhibitors.get(name) as unknown as Record<string, string>).filepath);
 		}
 
 		(client.inhibitors.sweep as Function)(() => true);
@@ -40,9 +40,9 @@ export default function reload(client: XernerxClient, type: 'message' | 'slash' 
 	return files.map(async (file) => {
 		let filedata = new (await import(`file://${file}`)).default();
 
-		filedata.fileType = FileTypes[type];
+		filedata.filetype = filetypes[type];
 
-		filedata.filePath = file;
+		filedata.filepath = file;
 
 		filedata.client = client;
 

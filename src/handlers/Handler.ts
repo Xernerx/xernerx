@@ -8,7 +8,7 @@ import load from '../functions/load.js';
 import MessageCommandBuilder from '../build/XernerxMessageCommand.js';
 import XernerxSlashCommand from '../build/XernerxSlashCommand.js';
 import XernerxContextCommand from '../build/XernerxContextCommand.js';
-import { FileType } from '../types/types.js';
+import { filetype } from '../types/types.js';
 
 export default class Handler {
 	public readonly client;
@@ -32,8 +32,8 @@ export default class Handler {
 		return [];
 	}
 
-	public async load(filePath: string, type: FileType) {
-		const file = await load(this.client, filePath, type);
+	public async load(filepath: string, type: filetype) {
+		const file = await load(this.client, filepath, type);
 
 		this.files.push(file);
 
@@ -41,9 +41,9 @@ export default class Handler {
 	}
 
 	public async emit<T extends Record<string, string | boolean | Function | void>>(event: T) {
-		if (!event?.fileType) return;
+		if (!event?.filetype) return;
 
-		if (event.fileType === 'Event') {
+		if (event.filetype === 'Event') {
 			if (event.emitter === 'client')
 				event.once
 					? this.client.once(event.name as string, <T extends Array<T>>(...args: T) => (event.run as Function)(...args))
@@ -54,7 +54,7 @@ export default class Handler {
 					: process.on(event.name as string, <T extends Array<T>>(...args: T) => (event.run as Function)(...args));
 		}
 
-		if (['MessageCommand', 'SlashCommand', 'ContextCommand'].includes(event.fileType as string)) {
+		if (['MessageCommand', 'SlashCommand', 'ContextCommand'].includes(event.filetype as string)) {
 			event.once
 				? this.client.once(event.name as string, <T extends Array<T>>(...args: T) => (event.run as Function)(...args))
 				: this.client.on(event.name as string, <T extends Array<T>>(...args: T) => (event.run as Function)(...args));

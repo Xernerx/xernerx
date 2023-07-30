@@ -3,6 +3,7 @@
 import XernerxError from './XernerxError.js';
 import { Style } from 'dumfunctions';
 import XernerxClient from '../client/XernerxClient.js';
+import { XernerxClientType } from '../main.js';
 
 export default class XernerxLog {
 	private declare readonly client;
@@ -12,7 +13,7 @@ export default class XernerxLog {
 	private declare readonly tableLog;
 	private declare readonly time;
 
-	constructor(client: XernerxClient | true) {
+	constructor(client: XernerxClient | XernerxClientType | true) {
 		this.client = client;
 
 		if (client == true) {
@@ -43,11 +44,9 @@ export default class XernerxLog {
 	public async update(version: string, url: string) {
 		const pkg = await fetch(url)
 			.then(async (res) => await res.json())
-			.catch((pkg) => {
-				pkg.version || version, pkg.name;
-			});
+			.catch(() => ({ version }));
 
-		if (version != pkg.version)
+		if (version !== pkg.version)
 			new XernerxLog(true).warn(
 				`A new version for ${pkg.name} is available, you're using version ${Style.log(version, { color: Style.TextColor.Cyan })}, new version is ${Style.log(pkg.version, {
 					color: Style.TextColor.Cyan,

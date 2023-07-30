@@ -6,16 +6,16 @@ import XernerxContextCommand from '../build/XernerxContextCommand.js';
 import MessageCommandBuilder from '../build/XernerxMessageCommand.js';
 import XernerxEvent from '../build/XernerxEvent.js';
 import XernerxClient from '../client/XernerxClient.js';
-import { FileType } from '../types/types.js';
+import { filetype } from '../types/types.js';
 import XernerxLog from '../tools/XernerxLog.js';
 
-export default async function load(client: XernerxClient, path: string, type: FileType) {
+export default async function load(client: XernerxClient, path: string, type: filetype) {
 	try {
 		let file = new (await import(`file://${path}`)).default();
 
-		file.fileType = type;
+		file.filetype = type;
 
-		file.filePath = path;
+		file.filepath = path;
 
 		file.client = client;
 
@@ -27,7 +27,7 @@ export default async function load(client: XernerxClient, path: string, type: Fi
 	}
 }
 
-function fileSave(client: XernerxClient, file: MessageCommandBuilder | XernerxSlashCommand | XernerxContextCommand | XernerxEvent | XernerxInhibitor, type: FileType) {
+function fileSave(client: XernerxClient, file: MessageCommandBuilder | XernerxSlashCommand | XernerxContextCommand | XernerxEvent | XernerxInhibitor, type: filetype) {
 	switch (type) {
 		case 'MessageCommand':
 			client.commands.message.set(file.name, file as MessageCommandBuilder);

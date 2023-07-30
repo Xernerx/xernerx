@@ -12,7 +12,7 @@ import {
 } from 'discord.js';
 import { XernerxMessageContextInteraction, XernerxSlashInteraction, XernerxUserContextInteraction } from './extenders.js';
 
-export type FileType = 'MessageCommand' | 'SlashCommand' | 'ContextCommand' | 'Event' | 'Inhibitor';
+export type filetype = 'MessageCommand' | 'SlashCommand' | 'ContextCommand' | 'Event' | 'Inhibitor';
 
 export type Locales =
 	| 'en-US'

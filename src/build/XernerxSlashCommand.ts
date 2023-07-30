@@ -5,6 +5,7 @@ import { z } from 'zod';
 import { XernerxClientType, XernerxMessageContextInteraction, XernerxSlashInteraction, XernerxUserContextInteraction } from '../types/extenders.js';
 import { SlashCommandArgumentOptions, SlashCommandArguments, SlashCommandGroupOptions, SlashCommandOptions, SlashCommandSubcommandOptions } from '../types/interfaces.js';
 import { SlashCommandArgumentType, SlashCommandOption, XernerxInteraction } from '../types/types.js';
+import { XernerxLog } from '../main.js';
 
 export default class XernerxSlashCommand {
 	public declare readonly id;
@@ -19,8 +20,8 @@ export default class XernerxSlashCommand {
 	public declare readonly strict;
 	public declare readonly permissions;
 	public declare readonly defer;
-	public declare readonly fileType: 'SlashCommand';
-	public declare readonly filePath: string;
+	public declare readonly filetype: 'SlashCommand';
+	public declare readonly filepath: string;
 	public declare readonly client: XernerxClientType;
 
 	public constructor(id: string, options: SlashCommandOptions) {
@@ -115,21 +116,41 @@ export default class XernerxSlashCommand {
 		this.client = this.client;
 	}
 
+	/**
+	 * @description autocomplete let's you add choices to string option arguments
+	 * @param interaction - The interaction event emitted on this command
+	 * @param focused - The command option that is in focus
+	 * @param options - The full list of options on the command
+	 */
 	public async autocomplete<T>(
 		interaction: XernerxInteraction<XernerxSlashInteraction | XernerxUserContextInteraction | XernerxMessageContextInteraction>,
 		focused: T,
 		options: T[]
 	): Promise<void | any | T> {}
 
+	/**
+	 * @description Checks for conditions before running the command
+	 * @param interaction - The interaction event emitted on this command
+	 * @param options - The args, group and subcommand parsed on this command
+	 */
 	public async conditions<T>(
 		interaction: XernerxInteraction<XernerxSlashInteraction | XernerxUserContextInteraction | XernerxMessageContextInteraction>,
 		{ args, subcommand, group }: SlashCommandArguments
 	): Promise<void | any | T> {}
 
+	/**
+	 * @description Runs the execution rule
+	 * @param interaction - The interaction event emitted on this command
+	 * @param options - The args, group and subcommand parsed on this command
+	 */
 	public async exec<T>(
 		interaction: XernerxInteraction<XernerxSlashInteraction | XernerxUserContextInteraction | XernerxMessageContextInteraction>,
 		{ args, subcommand, group }: SlashCommandArguments
-	): Promise<void | any | T> {}
+	): Promise<void | any | T> {
+		new XernerxLog(this.client).error(`${this.id} doesn't have an execution rule.`);
+
+		return await this.client.emit('commandError', interaction, `${this.id} doesn't have an execution rule.`, this, this.filetype);
+	}
 
 	private addArguments(command: Discord.SlashCommandBuilder | SlashCommandSubcommandBuilder, args: Array<SlashCommandArgumentOptions>) {
 		for (const argument of args) {
