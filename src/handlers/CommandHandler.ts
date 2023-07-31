@@ -259,6 +259,13 @@ export default class CommandHandler extends Handler {
 				if (message.mentions.users.has(this.client.user?.id as string) || message.mentions.repliedUser?.id === this.client.user?.id) {
 					commandName = message.content.replace(`<@${this.client.user?.id}>`, '').trim().split(/ +/).shift()?.toLowerCase() || null;
 
+					commands.map((command) => {
+						if (command.aliases?.includes(commandName as string)) {
+							commandName = command.name;
+							return (commandAlias = commandName);
+						}
+					});
+
 					commandPrefix = `<@${this.client.user?.id}>`;
 				}
 			}
@@ -269,7 +276,7 @@ export default class CommandHandler extends Handler {
 				cmd = this.client.commands.message.get(commandName as string);
 			}
 
-			if (!commandPrefix) return;
+			if (!commandPrefix || !commandName) return;
 
 			if (!cmd) return await this.client.emit('commandNotFound', message, commandName, filetype);
 
@@ -299,7 +306,7 @@ export default class CommandHandler extends Handler {
 
 		if (await inhibitorValidation(interaction, cmd as XernerxSlashCommand)) return;
 
-		if (!cmd) return this.client.emit('commandNotFound', interaction);
+		if (!cmd) return this.client.emit('commandNotFound', interaction, interaction.commandName, filetype);
 
 		new Promise(async (resolve) => {
 			if (interaction.isAutocomplete()) {
@@ -330,7 +337,7 @@ export default class CommandHandler extends Handler {
 
 		if (await inhibitorValidation(interaction, cmd)) return;
 
-		if (!cmd) return this.client.emit('commandNotFound', interaction, filetype);
+		if (!cmd) return this.client.emit('commandNotFound', interaction, interaction.commandName, filetype);
 
 		this.client.emit('commandStart', interaction, filetype);
 
