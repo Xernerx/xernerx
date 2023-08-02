@@ -21,9 +21,6 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install TypeScript
-        run: npm i typescript
-
       - name: Install Dependencies
         run: npm i
 
