@@ -1,21 +1,15 @@
 <!-- @format -->
 
-<style>
-    body {
-        background: rgba(0,0,0, 0.2);
-        border-radius: 0.5rem;
-        margin: 10px;
-    }
-    
-    :hover {
-        color: #8979f0;
-    }
-
-</style>
-
 [![](./docs/icons/Xernerx%20-%20Logo%20-%20Purple.png)](https://xernerx.github.io/xernerx)
 
-# xernerx
+[![Discord](https://img.shields.io/discord/784094726432489522?logo=discord)](https://discord.gg/teNWyb69dq)
+![npm](https://img.shields.io/npm/dw/xernerx)
+![npm](https://img.shields.io/npm/dt/xernerx)
+![Read the Docs](https://img.shields.io/readthedocs/node)
+![npm type definitions](https://img.shields.io/npm/types/xernerx)
+![node-current](https://img.shields.io/npm/v/discord.js)
+
+# About
 
 Xernerx is a class based discord.js framework. \[BETA\]
 

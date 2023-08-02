@@ -1,20 +1,20 @@
+# @format
+
 name: Publish
 
 on:
-    push:
-        branches:
-            - master
+  push:
+    branches:
+      - master
+    tags:
+      - 'v*'
 
 jobs:
-    publish-gpr:
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v2
-            - uses: actions/setup-node@v1
-              with:
-                  node-version: 16
-                  registry-url: https://npm.pkg.github.com/
-            - run: npm install
-            - run: npm fund
-              env:
-                  NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+  release:
+    name: "Release",
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+            repo_token: "${{ secrets.GITHUB_TOKEN }}"
+            prerelease: false
