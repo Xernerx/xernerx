@@ -2,8 +2,9 @@
 
 name: Publish Release
 on:
-  release:
-    types: [released]
+  push:
+    branches:
+      - 'master'
 jobs:
   npm-publish:
     name: npm publish
