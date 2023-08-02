@@ -1,23 +1,38 @@
 # @format
 
-name: 'tagged-release'
-
+name: Publish Release
 on:
-  push:
-    branches:
-      - 'master'
-
+  release:
+    types: [released]
 jobs:
-  tagged-release:
-    name: 'Tagged Release'
-    runs-on: 'ubuntu-latest'
-
+  npm-publish:
+    name: npm publish
+    runs-on: ubuntu-latest
+    env:
+      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+      TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+    if: github.repository_owner == 'xernerx'
     steps:
-      - name: 'Build & test'
-        run: |
-          echo "done!"
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-      - uses: 'marvinpinto/action-automatic-releases@latest'
+      - name: Install node.js v18
+        uses: actions/setup-node@v3
         with:
-          repo_token: '${{ secrets.GITHUB_TOKEN }}'
-          automatic_release_tag: 'latest'
+          node-version: 18
+          registry-url: https://registry.npmjs.org/
+
+      - name: Install dependencies
+        uses: ./packages/actions/src/yarnCache
+
+      - name: Extract package and semver from tag
+        id: extract-tag
+        uses: ./packages/actions/src/formatTag
+        with:
+          tag: ${{ github.ref_name }}
+
+      # - name: Publish package
+      #   run: |
+      #     yarn workspace ${{ steps.extract-tag.outputs.subpackage == 'true' && '@discordjs/' || '' }}${{ steps.extract-tag.outputs.package }} npm publish
+      #   env:
+      #     YARN_NPM_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
