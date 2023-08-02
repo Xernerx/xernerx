@@ -9,6 +9,9 @@
 ![Read the Docs](https://img.shields.io/readthedocs/node)
 ![npm type definitions](https://img.shields.io/npm/types/xernerx)
 ![node-current](https://img.shields.io/npm/v/discord.js)
+[![wakatime](https://wakatime.com/badge/user/0eeef1b5-98a7-4ec0-ab4c-db00536d5ed1/project/23ab34b7-623b-45e8-b8db-e9f1910589f7.svg)](https://wakatime.com/badge/user/0eeef1b5-98a7-4ec0-ab4c-db00536d5ed1/project/23ab34b7-623b-45e8-b8db-e9f1910589f7)
+![node-current](https://img.shields.io/node/v/xernerx)
+![GitHub commit activity (branch)](https://img.shields.io/github/commit-activity/t/xernerx/xernerx)
 
 </center>
 # About

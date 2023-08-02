@@ -257,7 +257,13 @@ export default class CommandHandler extends Handler {
 
 			if (!cmd && this.client.modules.options.message.allowMention) {
 				if (message.mentions.users.has(this.client.user?.id as string) || message.mentions.repliedUser?.id === this.client.user?.id) {
-					commandName = message.content.replace(`<@${this.client.user?.id}>`, '').trim().split(/ +/).shift()?.toLowerCase() || null;
+					commandName =
+						message.content
+							.replace(`<@${this.client.user?.id}>`, '')
+							.trim()
+							.split(/ +/)
+							.shift()
+							?.toLowerCase() || null;
 
 					commands.map((command) => {
 						if (command.aliases?.includes(commandName as string)) {
