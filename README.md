@@ -1,4 +1,5 @@
 <!-- @format -->
+<center>
 
 [![](./docs/icons/Xernerx%20-%20Logo%20-%20Purple.png)](https://xernerx.github.io/xernerx)
 
@@ -9,6 +10,7 @@
 ![npm type definitions](https://img.shields.io/npm/types/xernerx)
 ![node-current](https://img.shields.io/npm/v/discord.js)
 
+</center>
 # About
 
 Xernerx is a class based discord.js framework. \[BETA\]
