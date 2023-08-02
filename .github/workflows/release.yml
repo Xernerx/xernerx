@@ -26,3 +26,6 @@ jobs:
 
       - name: Build Package
         run: npm run build
+
+      - name: Publish
+        run: npm publish
