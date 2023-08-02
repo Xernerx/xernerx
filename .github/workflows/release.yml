@@ -1,39 +1,17 @@
 # @format
 
-name: Publish Release
+name: Testing
+
 on:
   push:
     branches:
       - 'master'
+
 jobs:
-  npm-publish:
-    name: npm publish
+  main:
+    name: NPM Release
     runs-on: ubuntu-latest
-    env:
-      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-      TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
-    if: github.repository_owner == 'xernerx'
+
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Install node.js v18
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          registry-url: https://registry.npmjs.org/
-
-      - name: Install dependencies
-        uses: ./packages/actions/src/yarnCache
-
-      - name: Extract package and semver from tag
-        id: extract-tag
-        uses: ./packages/actions/src/formatTag
-        with:
-          tag: ${{ github.ref_name }}
-
-      # - name: Publish package
-      #   run: |
-      #     yarn workspace ${{ steps.extract-tag.outputs.subpackage == 'true' && '@discordjs/' || '' }}${{ steps.extract-tag.outputs.package }} npm publish
-      #   env:
-      #     YARN_NPM_AUTH_TOKEN: ${{ secrets.NPM_PUBLISH_TOKEN }}
+      - name: Checkout
+        uses: actions/checkout@latest
