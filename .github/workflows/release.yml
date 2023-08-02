@@ -22,7 +22,7 @@ jobs:
           node-version: 20
 
       - name: Install Dependencies
-        run: npm i
+        run: npm i --dev
 
       - name: Build Package
         run: npm run build
