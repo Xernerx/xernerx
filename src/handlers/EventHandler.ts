@@ -5,7 +5,7 @@ import { z } from 'zod';
 import * as path from 'path';
 
 import XernerxClient from '../client/XernerxClient.js';
-import { EventHandlerOptions } from '../types/interfaces.js';
+import { EventHandlerOptions } from '../dhkdkhmfg/interfaces.js';
 import Handler from './Handler.js';
 import XernerxLog from '../tools/XernerxLog.js';
 import { Style } from 'dumfunctions';

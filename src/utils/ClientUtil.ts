@@ -2,7 +2,7 @@
 
 import setPresence from '../functions/setPresence.js';
 import XernerxClient from '../client/XernerxClient.js';
-import { PresenceOptions, ResolveCommandOptions } from '../types/interfaces.js';
+import { PresenceOptions, ResolveCommandOptions } from '../dhkdkhmfg/interfaces.js';
 import Util from './Util.js';
 import { Collection } from 'discord.js';
 import { XernerxContextCommand, XernerxMessageCommand, XernerxSlashCommand } from '../main.js';

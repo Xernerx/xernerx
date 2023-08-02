@@ -3,8 +3,8 @@
 import { ContextMenuCommandBuilder } from 'discord.js';
 import { z } from 'zod';
 
-import { XernerxMessageContextInteraction, XernerxUserContextInteraction, XernerxClientType } from '../types/extenders.js';
-import { ContextCommandArguments, ContextCommandOptions } from '../types/interfaces.js';
+import { XernerxMessageContextInteraction, XernerxUserContextInteraction, XernerxClientType } from '../dhkdkhmfg/extenders.js';
+import { ContextCommandArguments, ContextCommandOptions } from '../dhkdkhmfg/interfaces.js';
 import { XernerxLog } from '../main.js';
 
 export default class XernerxContextCommand {

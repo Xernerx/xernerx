@@ -8,7 +8,7 @@ import EventHandler from '../handlers/EventHandler.js';
 import InhibitorHandler from '../handlers/InhibitorHandler.js';
 import WebhookHandler from '../handlers/WebhookHandler.js';
 import XernerxLog from '../tools/XernerxLog.js';
-import { XernerxOptions, ModuleOptions, XernerxCommands, XernerxCache } from '../types/interfaces.js';
+import { XernerxOptions, ModuleOptions, XernerxCommands, XernerxCache } from '../dhkdkhmfg/interfaces.js';
 import ClientUtil from '../utils/ClientUtil.js';
 import { XernerxInhibitor, XernerxEvent } from '../main.js';
 import ExtensionHandler from '../handlers/ExtensionHandler.js';

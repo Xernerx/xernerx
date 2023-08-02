@@ -8,7 +8,7 @@ import load from '../functions/load.js';
 import MessageCommandBuilder from '../build/XernerxMessageCommand.js';
 import XernerxSlashCommand from '../build/XernerxSlashCommand.js';
 import XernerxContextCommand from '../build/XernerxContextCommand.js';
-import { filetype } from '../types/types.js';
+import { filetype } from '../dhkdkhmfg/types.js';
 
 export default class Handler {
 	public readonly client;

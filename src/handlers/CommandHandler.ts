@@ -5,14 +5,14 @@ import * as path from 'path';
 import { GatewayIntentBits } from 'discord.js';
 
 import XernerxClient from '../client/XernerxClient.js';
-import { ContextHandlerOptions, MessageHandlerOptions, SlashHandlerOptions } from '../types/interfaces.js';
+import { ContextHandlerOptions, MessageHandlerOptions, SlashHandlerOptions } from '../dhkdkhmfg/interfaces.js';
 import Handler from './Handler.js';
-import { XernerxMessage, XernerxMessageContextInteraction, XernerxSlashInteraction, XernerxUserContextInteraction } from '../types/extenders.js';
+import { XernerxMessage, XernerxMessageContextInteraction, XernerxSlashInteraction, XernerxUserContextInteraction } from '../dhkdkhmfg/extenders.js';
 import MessageUtil from '../utils/MessageUtil.js';
 import XernerxContextCommand from '../build/XernerxContextCommand.js';
 import MessageCommandBuilder from '../build/XernerxMessageCommand.js';
 import XernerxSlashCommand from '../build/XernerxSlashCommand.js';
-import { filetype } from '../types/types.js';
+import { filetype } from '../dhkdkhmfg/types.js';
 import { xernerxUser } from '../functions/xernerxUser.js';
 import InteractionUtil from '../utils/InteractionUtil.js';
 import commandValidation from '../validators/commandValidation.js';

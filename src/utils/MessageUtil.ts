@@ -17,7 +17,7 @@ import {
 } from 'discord.js';
 
 import XernerxClient from '../client/XernerxClient.js';
-import { XernerxMessage } from '../types/extenders.js';
+import { XernerxMessage } from '../dhkdkhmfg/extenders.js';
 import Util from './Util.js';
 import sendWebhook from '../functions/sendWebhook.js';
 import XernerxError from '../tools/XernerxError.js';

@@ -2,8 +2,8 @@
 
 import { z } from 'zod';
 
-import { XernerxEventOptions } from '../types/interfaces.js';
-import { XernerxEventType } from '../types/types.js';
+import { XernerxEventOptions } from '../dhkdkhmfg/interfaces.js';
+import { XernerxEventType } from '../dhkdkhmfg/types.js';
 import { XernerxClientType, XernerxLog } from '../main.js';
 
 /**

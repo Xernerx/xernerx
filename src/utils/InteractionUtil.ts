@@ -3,11 +3,11 @@
 import { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, InteractionEditReplyOptions, InteractionReplyOptions, MessagePayload, StringSelectMenuBuilder } from 'discord.js';
 
 import XernerxClient from '../client/XernerxClient.js';
-import { PaginatorOptions } from '../types/interfaces.js';
-import { XernerxInteraction } from '../types/types.js';
+import { PaginatorOptions } from '../dhkdkhmfg/interfaces.js';
+import { XernerxInteraction } from '../dhkdkhmfg/types.js';
 import Util from './Util.js';
 import XernerxError from '../tools/XernerxError.js';
-import { XernerxMessageContextInteraction, XernerxSlashInteraction, XernerxUserContextInteraction } from '../types/extenders.js';
+import { XernerxMessageContextInteraction, XernerxSlashInteraction, XernerxUserContextInteraction } from '../dhkdkhmfg/extenders.js';
 
 export default class InteractionUtil extends Util {
 	private interaction;

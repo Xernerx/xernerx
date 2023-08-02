@@ -2,9 +2,9 @@
 
 import Discord, { SlashCommandStringOption, SlashCommandSubcommandBuilder, SlashCommandSubcommandGroupBuilder } from 'discord.js';
 import { z } from 'zod';
-import { XernerxClientType, XernerxMessageContextInteraction, XernerxSlashInteraction, XernerxUserContextInteraction } from '../types/extenders.js';
-import { SlashCommandArgumentOptions, SlashCommandArguments, SlashCommandGroupOptions, SlashCommandOptions, SlashCommandSubcommandOptions } from '../types/interfaces.js';
-import { SlashCommandArgumentType, SlashCommandOption, XernerxInteraction } from '../types/types.js';
+import { XernerxClientType, XernerxMessageContextInteraction, XernerxSlashInteraction, XernerxUserContextInteraction } from '../dhkdkhmfg/extenders.js';
+import { SlashCommandArgumentOptions, SlashCommandArguments, SlashCommandGroupOptions, SlashCommandOptions, SlashCommandSubcommandOptions } from '../dhkdkhmfg/interfaces.js';
+import { SlashCommandArgumentType, SlashCommandOption, XernerxInteraction } from '../dhkdkhmfg/types.js';
 import { XernerxLog } from '../main.js';
 
 export default class XernerxSlashCommand {
