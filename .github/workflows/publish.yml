@@ -1,6 +1,4 @@
-# @format
-
-name: Publish
+name: Release
 
 on:
   push:
@@ -16,5 +14,5 @@ jobs:
     steps:
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
-            repo_token: "${{ secrets.GITHUB_TOKEN }}"
-            prerelease: false
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          prerelease: false
