@@ -2,9 +2,9 @@
 
 import { z } from 'zod';
 
-import { XernerxInhibitorOptions, MessageCommandArguments, SlashCommandArguments } from '../dhkdkhmfg/interfaces.js';
-import { InhibitorType, XernerxInteraction } from '../dhkdkhmfg/types.js';
-import { XernerxClientType, XernerxMessage, XernerxMessageContextInteraction, XernerxSlashInteraction, XernerxUserContextInteraction } from '../dhkdkhmfg/extenders.js';
+import { XernerxInhibitorOptions, MessageCommandArguments, SlashCommandArguments } from '../types/interfaces.js';
+import { InhibitorType, XernerxInteraction } from '../types/types.js';
+import { XernerxClientType, XernerxMessage, XernerxMessageContextInteraction, XernerxSlashInteraction, XernerxUserContextInteraction } from '../types/extenders.js';
 import { XernerxLog } from '../main.js';
 
 /**

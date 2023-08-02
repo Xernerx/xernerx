@@ -6,7 +6,7 @@ import XernerxContextCommand from '../build/XernerxContextCommand.js';
 import MessageCommandBuilder from '../build/XernerxMessageCommand.js';
 import XernerxEvent from '../build/XernerxEvent.js';
 import XernerxClient from '../client/XernerxClient.js';
-import { filetype } from '../dhkdkhmfg/types.js';
+import { filetype } from '../types/types.js';
 import XernerxLog from '../tools/XernerxLog.js';
 
 export default async function load(client: XernerxClient, path: string, type: filetype) {

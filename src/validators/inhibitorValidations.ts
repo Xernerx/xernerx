@@ -1,8 +1,8 @@
 /** @format */
 
 import XernerxClient, { XernerxContextCommand, XernerxMessageCommand, XernerxSlashCommand } from '../main.js';
-import { XernerxMessage, XernerxMessageContextInteraction, XernerxSlashInteraction, XernerxUserContextInteraction } from '../dhkdkhmfg/extenders.js';
-import { InhibitorType, XernerxInteraction } from '../dhkdkhmfg/types.js';
+import { XernerxMessage, XernerxMessageContextInteraction, XernerxSlashInteraction, XernerxUserContextInteraction } from '../types/extenders.js';
+import { InhibitorType, XernerxInteraction } from '../types/types.js';
 
 export async function inhibitorValidation(
 	event: XernerxMessage | XernerxInteraction<XernerxSlashInteraction | XernerxUserContextInteraction | XernerxMessageContextInteraction>,

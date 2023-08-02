@@ -19,9 +19,9 @@ export * from 'discord.js';
 export * from 'dumfunctions';
 import XernerxExtension from 'xernerx-extension-builder';
 
-export * from './dhkdkhmfg/types.js';
-export * from './dhkdkhmfg/extenders.js';
-export * from './dhkdkhmfg/interfaces.js';
+export * from './types/types.js';
+export * from './types/extenders.js';
+export * from './types/interfaces.js';
 
 import Discord from 'discord.js';
 

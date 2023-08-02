@@ -6,7 +6,7 @@ import * as path from 'path';
 
 import XernerxClient from '../client/XernerxClient.js';
 import Handler from './Handler.js';
-import { InhibitorHandlerOptions } from '../dhkdkhmfg/interfaces.js';
+import { InhibitorHandlerOptions } from '../types/interfaces.js';
 import XernerxLog from '../tools/XernerxLog.js';
 import { Style } from 'dumfunctions';
 

@@ -6,8 +6,8 @@ import XernerxContextCommand from '../build/XernerxContextCommand.js';
 import MessageCommandBuilder from '../build/XernerxMessageCommand.js';
 import XernerxSlashCommand from '../build/XernerxSlashCommand.js';
 import XernerxClient from '../client/XernerxClient.js';
-import { XernerxMessage, XernerxSlashInteraction, XernerxUserContextInteraction } from '../dhkdkhmfg/extenders.js';
-import { PermissionNames, XernerxInteraction } from '../dhkdkhmfg/types.js';
+import { XernerxMessage, XernerxSlashInteraction, XernerxUserContextInteraction } from '../types/extenders.js';
+import { PermissionNames, XernerxInteraction } from '../types/types.js';
 
 export default async function commandValidation(
 	event: XernerxInteraction<XernerxSlashInteraction | XernerxUserContextInteraction | XernerxUserContextInteraction> | XernerxMessage,

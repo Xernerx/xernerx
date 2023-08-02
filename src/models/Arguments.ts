@@ -3,9 +3,9 @@
 import XernerxSlashCommand from '../build/XernerxSlashCommand.js';
 import XernerxContextCommand from '../build/XernerxContextCommand.js';
 import MessageCommandBuilder from '../build/XernerxMessageCommand.js';
-import { XernerxMessage, XernerxMessageContextInteraction, XernerxSlashInteraction, XernerxUserContextInteraction } from '../dhkdkhmfg/extenders.js';
-import { MessageCommandArguments } from '../dhkdkhmfg/interfaces.js';
-import { XernerxInteraction } from '../dhkdkhmfg/types.js';
+import { XernerxMessage, XernerxMessageContextInteraction, XernerxSlashInteraction, XernerxUserContextInteraction } from '../types/extenders.js';
+import { MessageCommandArguments } from '../types/interfaces.js';
+import { XernerxInteraction } from '../types/types.js';
 
 export async function messageArguments(message: XernerxMessage, command: MessageCommandBuilder, prefix: string): Promise<MessageCommandArguments> {
 	const separator = command.separator || ' ',
