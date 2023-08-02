@@ -18,14 +18,6 @@
 	"homepage": "https://xernerx.github.io/xernerx",
 	"packageManager": "npm@8.5.5",
 	"scripts": {
-		"start": "npm i && npm fund && npm audit fix --force && npm link && tsc -w",
-		"commit": "npm run write && git add . && node ./.github/scripts/message.js",
-		"tag": "node ./.github/scripts/tag.js",
-		"patch": "npm run commit && npm version patch && npm run tag && git push",
-		"minor": "npm run commit && npm version minor && npm run tag && git push",
-		"major": "npm run commit && npm version major && npm run tag && git push",
-		"site": "git add docs && npm run commit && git push",
-		"write": "npm run build && npm run format",
 		"format": "npx prettier --write src dist",
 		"build": "tsc && npm run format"
 	},
