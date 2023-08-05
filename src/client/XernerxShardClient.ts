@@ -14,6 +14,7 @@ interface XernerxOptions {
 export default class XernerxShardClient extends ShardingManager {
 	public declare readonly stats;
 	public declare user: ClientUser | null;
+	public declare spawner;
 
 	constructor(file: string, discordOptions: ShardingManagerOptions, xernerxOptions?: XernerxOptions) {
 		super(file, discordOptions);
@@ -51,6 +52,8 @@ export default class XernerxShardClient extends ShardingManager {
 		});
 
 		const spawn = this.spawn();
+
+		this.spawner = spawn;
 
 		spawn.then(async (shards) => {
 			const collector = setInterval(() => {
