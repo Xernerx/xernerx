@@ -2,10 +2,10 @@
 
 import { z } from 'zod';
 
-import { XernerxInhibitorOptions, MessageCommandArguments, SlashCommandArguments } from '../types/interfaces.js';
+import { XernerxInhibitorOptions, MessageCommandArguments, SlashCommandArguments, ContextCommandArguments } from '../types/interfaces.js';
 import { InhibitorType, XernerxInteraction } from '../types/types.js';
 import { XernerxClientType, XernerxMessage, XernerxMessageContextInteraction, XernerxSlashInteraction, XernerxUserContextInteraction } from '../types/extenders.js';
-import { XernerxLog } from '../main.js';
+import { XernerxContextCommand, XernerxLog, XernerxMessageCommand, XernerxSlashCommand } from '../main.js';
 
 /**
  * @description - The inhibitor builder for inhibitors.
@@ -48,9 +48,10 @@ export default class XernerxInhibitor {
 					: T extends XernerxSlashInteraction
 					? SlashCommandArguments
 					: T extends XernerxUserContextInteraction
-					? XernerxUserContextInteraction
-					: XernerxMessageContextInteraction)
-			| null
+					? ContextCommandArguments<'user' | 'message'>
+					: never)
+			| null,
+		command: XernerxSlashCommand | XernerxMessageCommand | XernerxContextCommand
 	): Promise<any> {
 		new XernerxLog(this.client).error(`${this.id} doesn't have a check rule.`);
 

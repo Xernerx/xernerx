@@ -286,8 +286,6 @@ export default class CommandHandler extends Handler {
 
 			if (!cmd) return await this.client.emit('commandNotFound', message, commandName, filetype);
 
-			if (await inhibitorValidation(message, cmd)) return;
-
 			message.util.parsed = {
 				alias: commandAlias,
 				prefix: commandPrefix,
@@ -309,8 +307,6 @@ export default class CommandHandler extends Handler {
 		let cmd: XernerxSlashCommand | null | undefined = null;
 
 		if (this.client.commands.slash.has(interaction.commandName)) cmd = this.client.commands.slash.get(interaction.commandName);
-
-		if (await inhibitorValidation(interaction, cmd as XernerxSlashCommand)) return;
 
 		if (!cmd) return this.client.emit('commandNotFound', interaction, interaction.commandName, filetype);
 
@@ -341,8 +337,6 @@ export default class CommandHandler extends Handler {
 
 		if (this.client.commands.context.has(interaction.commandName)) cmd = this.client.commands.context.get(interaction.commandName);
 
-		if (await inhibitorValidation(interaction, cmd)) return;
-
 		if (!cmd) return this.client.emit('commandNotFound', interaction, interaction.commandName, filetype);
 
 		this.client.emit('commandStart', interaction, filetype);
@@ -358,6 +352,8 @@ export default class CommandHandler extends Handler {
 	) {
 		try {
 			if (await commandValidation(event as XernerxMessage, cmd)) return;
+
+			if (await inhibitorValidation(event, args, cmd)) return;
 
 			if (((cmd as MessageCommandBuilder).conditions as unknown) && (await ((cmd as MessageCommandBuilder).conditions(event as never, args) as unknown))) return;
 

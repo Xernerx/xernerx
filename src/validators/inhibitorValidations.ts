@@ -1,11 +1,12 @@
 /** @format */
 
-import XernerxClient, { XernerxContextCommand, XernerxMessageCommand, XernerxSlashCommand } from '../main.js';
+import XernerxClient, { ContextCommandArguments, MessageCommandArguments, SlashCommandArguments, XernerxContextCommand, XernerxMessageCommand, XernerxSlashCommand } from '../main.js';
 import { XernerxMessage, XernerxMessageContextInteraction, XernerxSlashInteraction, XernerxUserContextInteraction } from '../types/extenders.js';
 import { InhibitorType, XernerxInteraction } from '../types/types.js';
 
 export async function inhibitorValidation(
 	event: XernerxMessage | XernerxInteraction<XernerxSlashInteraction | XernerxUserContextInteraction | XernerxMessageContextInteraction>,
+	args: SlashCommandArguments | MessageCommandArguments | ContextCommandArguments<'user' | 'message'> | null,
 	cmd?: XernerxContextCommand | XernerxMessageCommand | XernerxSlashCommand
 ) {
 	const client = event.client as XernerxClient;
@@ -13,7 +14,7 @@ export async function inhibitorValidation(
 	const inhibits = [];
 
 	for (const [name, inhibitor] of client.inhibitors) {
-		if (Boolean(await inhibitor.check(event, (await inhibitorArguments(event, cmd || null, inhibitor.type)) as never))) {
+		if (Boolean(await inhibitor.check(event, args, (await inhibitorArguments(event, cmd || null, inhibitor.type)) as never))) {
 			inhibits.push(name);
 		}
 	}
