@@ -34,6 +34,7 @@ export interface XernerxOptions {
 	log?: {
 		ready?: boolean;
 		info?: boolean;
+		warn?: boolean;
 		error?: boolean;
 		table?: Array<'name' | 'aliases' | 'description' | 'filetype' | 'category'>;
 	};
@@ -136,17 +137,21 @@ interface CommandOptions {
 	info?: string | null;
 	category?: string | null;
 	cooldown?: number | null;
+	global?: boolean;
+	channel?: Array<keyof typeof ChannelType> | keyof typeof ChannelType | null;
 	ignore?: {
 		owner?: boolean;
 		users?: Array<string>;
 		channels?: Array<string>;
 		guilds?: Array<string>;
+		voice?: boolean;
 	};
 	strict?: {
 		owner?: boolean;
 		users?: Array<string>;
 		channels?: Array<string>;
 		guilds?: Array<string>;
+		voice?: boolean;
 	};
 	permissions?: {
 		user?: Array<PermissionNames> | Array<string>;

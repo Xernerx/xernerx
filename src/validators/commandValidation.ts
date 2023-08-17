@@ -35,11 +35,17 @@ export default async function commandValidation(
 		return emit(event, `Command on cooldown, ${time}`);
 	}
 
+	if (command.channel && event.channel?.type !== undefined && event.channel?.type >= 0) {
+		if (!command.channel.includes(ChannelType[event.channel?.type] as keyof typeof ChannelType)) return await emit(event, `Command can only be used in ${command.channel.join(', ')} channels`);
+	}
+
 	if ((command.ignore?.channels?.length || 0) > 0 && command.ignore?.channels?.includes(event.channel?.id as string)) return true;
 
 	if ((command.ignore?.guilds?.length || 0) > 0 && command.ignore?.guilds?.includes(event.guild?.id as string)) return true;
 
 	if ((command.ignore?.users?.length || 0) > 0 && command.ignore?.users?.includes(event.user.id as string)) return true;
+
+	if (command.ignore?.voice && (event.member as any)?.voice?.channel) return await emit(event, 'Command cannot be ran while in voice chat');
 
 	if (command.strict?.owner && !client.settings.ownerId.includes(event.user.id)) return await emit(event, 'Command is a developer command');
 
@@ -49,11 +55,15 @@ export default async function commandValidation(
 
 	if ((command.strict?.users?.length || 0) > 0 && !command.strict?.users?.includes(event.user.id)) return await emit(event, 'Command cannot be ran by you');
 
+	if (command.strict?.voice && !(event.member as any)?.voice?.channel) return await emit(event, 'Command cannot be ran while not in voice chat');
+
 	if (command.permissions?.dm == false && event.channel?.type === ChannelType.DM) return await emit(event, "Can't use in a DM Channel");
 
 	if (command.permissions?.user) {
 		if (!(event.member?.permissions as Record<'has', Function>).has(toBigInt(command.permissions.user))) return await emit(event, 'Missing User Permissions');
 	}
+
+	if ((!command.global || !client.settings.global) && client.settings.local !== event.guild?.id) return await emit(event, 'Command is not globally deployed');
 
 	return false;
 }

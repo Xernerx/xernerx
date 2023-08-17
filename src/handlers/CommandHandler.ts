@@ -10,7 +10,7 @@ import Handler from './Handler.js';
 import { XernerxMessage, XernerxMessageContextInteraction, XernerxSlashInteraction, XernerxUserContextInteraction } from '../types/extenders.js';
 import MessageUtil from '../utils/MessageUtil.js';
 import XernerxContextCommand from '../build/XernerxContextCommand.js';
-import MessageCommandBuilder from '../build/XernerxMessageCommand.js';
+import XernerxMessageCommand from '../build/XernerxMessageCommand.js';
 import XernerxSlashCommand from '../build/XernerxSlashCommand.js';
 import { filetype } from '../types/types.js';
 import { xernerxUser } from '../functions/xernerxUser.js';
@@ -26,7 +26,7 @@ export default class CommandHandler extends Handler {
 		super(client);
 	}
 
-	public loadMessageCommands(options: MessageHandlerOptions) {
+	public async loadMessageCommands(options: MessageHandlerOptions) {
 		if (!this.client.options.intents.has(GatewayIntentBits.MessageContent)) new XernerxLog(this.client).warn(`Message commands might not work as you're missing the intent MessageContent!`);
 		if (!this.client.options.intents.has(GatewayIntentBits.GuildMessages)) new XernerxLog(this.client).warn(`Message commands might not work as you're missing the intent GuildMessages!`);
 
@@ -57,7 +57,9 @@ export default class CommandHandler extends Handler {
 		for (const file of files) {
 			const filepath = `${path.resolve(options.directory)}\\${file}`;
 
-			this.load(filepath, 'MessageCommand');
+			const command = await this.load(filepath, 'MessageCommand');
+
+			this._checks(command);
 		}
 
 		new XernerxLog(this.client).info(`Loaded ${Style.log(String(files.length), { color: Style.TextColor.Cyan })} Message Commands.`);
@@ -345,7 +347,7 @@ export default class CommandHandler extends Handler {
 	}
 
 	private async exec(
-		cmd: MessageCommandBuilder | XernerxSlashCommand | XernerxContextCommand,
+		cmd: XernerxMessageCommand | XernerxSlashCommand | XernerxContextCommand,
 		event: XernerxMessage | XernerxSlashInteraction | XernerxMessageContextInteraction | XernerxUserContextInteraction,
 		args: any,
 		type: filetype
@@ -355,7 +357,7 @@ export default class CommandHandler extends Handler {
 
 			if (await inhibitorValidation(event, args, cmd)) return;
 
-			if (((cmd as MessageCommandBuilder).conditions as unknown) && (await ((cmd as MessageCommandBuilder).conditions(event as never, args) as unknown))) return;
+			if (((cmd as XernerxMessageCommand).conditions as unknown) && (await ((cmd as XernerxMessageCommand).conditions(event as never, args) as unknown))) return;
 
 			await cmd.exec(event as never, args);
 
@@ -365,5 +367,16 @@ export default class CommandHandler extends Handler {
 
 			return await this.client.emit('commandError', event, error, cmd, type);
 		}
+	}
+
+	private _checks(command: XernerxMessageCommand | XernerxSlashCommand | XernerxContextCommand) {
+		if ((command.strict?.voice || command.ignore?.voice) && !this.client.options.intents.has('GuildVoiceStates'))
+			new XernerxLog(this.client).warn(
+				`${Style.log(command.id, { color: Style.TextColor.Blue })} options ${Style.log(`Xernerx${command.filetype}#strict#voice`, {
+					color: Style.BackgroundColor.Grey,
+				})} or ${Style.log(`Xernerx${command.filetype}#ignore#voice`, {
+					color: Style.BackgroundColor.Grey,
+				})} will misbehave due to missing the ${Style.log('GuildVoiceStates', { color: Style.TextColor.Yellow })} intent.`
+			);
 	}
 }

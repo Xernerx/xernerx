@@ -55,9 +55,11 @@ export default class XernerxClient<T = unknown> extends Client {
 					.object({
 						ready: z.boolean().default(false),
 						info: z.boolean().default(false),
+						warn: z.boolean().default(false),
 						error: z.boolean().default(false),
 						table: z.array(z.string()).or(z.null()).default(null),
 					})
+					.or(z.boolean())
 					.optional(),
 				cooldown: z
 					.object({

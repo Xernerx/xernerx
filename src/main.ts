@@ -25,6 +25,31 @@ export * from './types/interfaces.js';
 
 import Discord from 'discord.js';
 
+const XernerxIntents = {
+	Default: [
+		'Guilds',
+		'GuildModeration',
+		'GuildBans',
+		'GuildEmojisAndStickers',
+		'GuildIntegrations',
+		'GuildWebhooks',
+		'GuildInvites',
+		'GuildVoiceStates',
+		'GuildMessages',
+		'GuildMessageReactions',
+		'GuildMessageTyping',
+		'DirectMessages',
+		'DirectMessageReactions',
+		'DirectMessageTyping',
+		'GuildScheduledEvents',
+		'AutoModerationConfiguration',
+		'AutoModerationExecution',
+	],
+	All: [''],
+};
+
+XernerxIntents.All = [...XernerxIntents.Default, 'GuildMembers', 'GuildPresences', 'MessageContent'];
+
 export default XernerxClient;
 
 export {
@@ -58,4 +83,5 @@ export {
 	 ** Tools
 	 */
 	XernerxLog,
+	XernerxIntents,
 };

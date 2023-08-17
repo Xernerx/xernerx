@@ -9,6 +9,7 @@ export default class XernerxLog {
 	private declare readonly client;
 	private declare readonly errorLog;
 	private declare readonly infoLog;
+	private declare readonly warnLog;
 	private declare readonly readyLog;
 	private declare readonly tableLog;
 	private declare readonly time;
@@ -16,14 +17,20 @@ export default class XernerxLog {
 	constructor(client: XernerxClient | XernerxClientType | true) {
 		this.client = client;
 
-		if (client == true) {
+		if (client == true || (typeof client.settings.log == 'boolean' && client.settings.log)) {
 			this.errorLog = true;
 
 			this.infoLog = true;
+
+			this.warnLog = true;
 		} else {
+			client.settings.log = client.settings.log as unknown as Record<string, boolean | Array<string>>;
+
 			this.errorLog = client.settings.log?.error;
 
 			this.infoLog = client.settings.log?.info;
+
+			this.warnLog = client.settings.log?.warn;
 
 			this.readyLog = client.settings.log?.ready;
 
@@ -38,7 +45,7 @@ export default class XernerxLog {
 	}
 
 	public warn(message: string) {
-		return this.infoLog ? console.warn(`⚠️  | ${Style.log('Xernerx', { color: Style.TextColor.Yellow })} | ${Style.log(this.time(), { color: Style.TextColor.Cyan })} | ${message}`) : null;
+		return this.warnLog ? console.warn(`⚠️  | ${Style.log('Xernerx', { color: Style.TextColor.Yellow })} | ${Style.log(this.time(), { color: Style.TextColor.Cyan })} | ${message}`) : null;
 	}
 
 	public async update(version: string, url: string) {
@@ -74,7 +81,7 @@ export default class XernerxLog {
 				`${Style.log(synced.user.tag, { color: Style.TextColor.Blue })} is now ${Style.log('online', { color: Style.TextColor.Green })}, watching ${Style.log(String(client.guilds.cache.size), {
 					color: Style.TextColor.Cyan,
 				})} guild${client.guilds.cache.size > 1 ? 's' : ''}, using ${
-					client.settings.local ? Style.log((await client.guilds.fetch(client.settings.local)).name, { color: Style.TextColor.Blue }) : 'none'
+					client.settings.local ? Style.log((await client.guilds.fetch(client.settings.local))?.name, { color: Style.TextColor.Blue }) : 'none'
 				} as local guild.`,
 				this.readyLog
 			);

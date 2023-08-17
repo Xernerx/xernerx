@@ -16,6 +16,8 @@ export default class XernerxSlashCommand {
 	public declare readonly info;
 	public declare readonly category;
 	public declare readonly cooldown;
+	public declare readonly channel;
+	public declare readonly global;
 	public declare readonly ignore;
 	public declare readonly strict;
 	public declare readonly permissions;
@@ -59,13 +61,57 @@ export default class XernerxSlashCommand {
 				info: z.string().or(z.null()).default(null),
 				category: z.string().or(z.null()).default(null),
 				number: z.number().or(z.null()).default(null),
-				channelType: z.array(z.number()).or(z.null()).default(null),
+				global: z.boolean().default(true),
+				channel: z
+					.array(
+						z.enum([
+							'GuildText',
+							'DM',
+							'GuildVoice',
+							'GroupDM',
+							'GuildCategory',
+							'GuildAnnouncement',
+							'AnnouncementThread',
+							'PublicThread',
+							'PrivateThread',
+							'GuildStageVoice',
+							'GuildDirectory',
+							'GuildForum',
+							'GuildNews',
+							'GuildNewsThread',
+							'GuildPublicThread',
+							'GuildPrivateThread',
+						])
+					)
+					.or(
+						z.enum([
+							'GuildText',
+							'DM',
+							'GuildVoice',
+							'GroupDM',
+							'GuildCategory',
+							'GuildAnnouncement',
+							'AnnouncementThread',
+							'PublicThread',
+							'PrivateThread',
+							'GuildStageVoice',
+							'GuildDirectory',
+							'GuildForum',
+							'GuildNews',
+							'GuildNewsThread',
+							'GuildPublicThread',
+							'GuildPrivateThread',
+						])
+					)
+					.or(z.null())
+					.default(null),
 				ignore: z
 					.object({
 						owner: z.boolean().default(false),
 						users: z.array(z.string()).default([]),
 						channels: z.array(z.string()).default([]),
 						guilds: z.array(z.string()).default([]),
+						voice: z.boolean().default(false),
 					})
 					.default({}),
 				strict: z
@@ -74,6 +120,7 @@ export default class XernerxSlashCommand {
 						users: z.array(z.string()).default([]),
 						channels: z.array(z.string()).default([]),
 						guilds: z.array(z.string()).default([]),
+						voice: z.boolean().default(false),
 					})
 					.default({}),
 				permissions: z
@@ -104,6 +151,10 @@ export default class XernerxSlashCommand {
 		this.category = options.category;
 
 		this.cooldown = options.cooldown;
+
+		this.channel = options.channel ? (Array.isArray(options.channel) ? options.channel : [options.channel]) : null;
+
+		this.global = options.global;
 
 		this.ignore = options.ignore;
 
