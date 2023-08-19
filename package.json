@@ -41,7 +41,7 @@
 	},
 	"dependencies": {
 		"dbl-sdk": "1.2.0",
-		"discord.js": "14.12.1",
+		"discord.js": "14.13.0",
 		"dumfunctions": "2.1.2",
 		"xernerx-extension-builder": "0.0.16",
 		"zod": "3.22.0"
