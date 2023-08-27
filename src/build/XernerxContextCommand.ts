@@ -120,9 +120,9 @@ export default class XernerxContextCommand {
 					.default({}),
 				defer: z
 					.object({
-						reply: z.boolean().default(false),
-						ephemeral: z.boolean().default(false),
-						fetch: z.boolean().default(false),
+						reply: z.boolean().optional(),
+						ephemeral: z.boolean().optional(),
+						fetch: z.boolean().optional(),
 					})
 					.default({}),
 			})

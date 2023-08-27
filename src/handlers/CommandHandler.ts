@@ -353,6 +353,12 @@ export default class CommandHandler extends Handler {
 		type: filetype
 	) {
 		try {
+			if (cmd.filetype !== 'MessageCommand' && ((cmd as XernerxSlashCommand | XernerxContextCommand)?.defer?.reply ?? this.client.modules.options.slash?.defer?.reply)) {
+				await (event as XernerxSlashInteraction | XernerxMessageContextInteraction | XernerxUserContextInteraction).deferReply({
+					ephemeral: cmd.defer?.ephemeral || this.client.modules.options.slash?.defer?.ephemeral || false,
+				});
+			}
+
 			if (await commandValidation(event as XernerxMessage, cmd)) return;
 
 			if (await inhibitorValidation(event, args, cmd)) return;
