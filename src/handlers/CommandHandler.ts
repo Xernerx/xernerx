@@ -353,9 +353,15 @@ export default class CommandHandler extends Handler {
 		type: filetype
 	) {
 		try {
-			if (cmd.filetype !== 'MessageCommand' && ((cmd as XernerxSlashCommand | XernerxContextCommand)?.defer?.reply ?? this.client.modules.options.slash?.defer?.reply)) {
-				await (event as XernerxSlashInteraction | XernerxMessageContextInteraction | XernerxUserContextInteraction).deferReply({
+			if (cmd.filetype == 'SlashCommand' && ((cmd as XernerxSlashCommand)?.defer?.reply ?? this.client.modules.options.slash?.defer?.reply)) {
+				await (event as XernerxSlashInteraction).deferReply({
 					ephemeral: cmd.defer?.ephemeral || this.client.modules.options.slash?.defer?.ephemeral || false,
+				});
+			}
+
+			if (cmd.filetype == 'ContextCommand' && ((cmd as XernerxContextCommand)?.defer?.reply ?? this.client.modules.options.context?.defer?.reply)) {
+				await (event as XernerxMessageContextInteraction | XernerxUserContextInteraction).deferReply({
+					ephemeral: cmd.defer?.ephemeral || this.client.modules.options.context?.defer?.ephemeral || false,
 				});
 			}
 
