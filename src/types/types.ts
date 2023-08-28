@@ -195,4 +195,4 @@ export type PermissionNames =
 	| 'start embedded activities'
 	| 'moderate members';
 
-export type InhibitorType = 'message' | 'interaction' | 'command' | 'channel' | 'user' | 'member' | 'guild' | 'contextCommand' | 'messageCommand' | 'slashCommand';
+export type InhibitorType = '*' | 'message' | 'interaction' | 'command' | 'channel' | 'user' | 'member' | 'guild' | 'contextCommand' | 'messageCommand' | 'slashCommand';

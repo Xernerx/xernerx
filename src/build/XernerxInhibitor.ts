@@ -5,7 +5,7 @@ import { z } from 'zod';
 import { XernerxInhibitorOptions, MessageCommandArguments, SlashCommandArguments, ContextCommandArguments } from '../types/interfaces.js';
 import { InhibitorType, XernerxInteraction } from '../types/types.js';
 import { XernerxClientType, XernerxMessage, XernerxMessageContextInteraction, XernerxSlashInteraction, XernerxUserContextInteraction } from '../types/extenders.js';
-import { XernerxContextCommand, XernerxLog, XernerxMessageCommand, XernerxSlashCommand } from '../main.js';
+import { XernerxContextCommand, XernerxMessageCommand, XernerxSlashCommand } from '../main.js';
 
 /**
  * @description - The inhibitor builder for inhibitors.
@@ -35,6 +35,8 @@ export default class XernerxInhibitor {
 		this.client = this.client;
 	}
 
+	public pre(interaction: XernerxMessage | XernerxInteraction<XernerxSlashInteraction | XernerxUserContextInteraction | XernerxMessageContextInteraction>, args: any) {}
+
 	/**
 	 * @description The check rule
 	 * @param interaction - The interaction with the inhibitor, can be message and interaction
@@ -52,9 +54,19 @@ export default class XernerxInhibitor {
 					: never)
 			| null,
 		command: XernerxSlashCommand | XernerxMessageCommand | XernerxContextCommand
-	): Promise<any> {
-		new XernerxLog(this.client).error(`${this.id} doesn't have a check rule.`);
+	): Promise<any> {}
 
-		return await this.client.emit('commandError', interaction, `${this.name} doesn't have a check rule.`, this, this.filetype);
-	}
+	public async post<T extends XernerxMessage | XernerxInteraction<XernerxSlashInteraction | XernerxUserContextInteraction | XernerxMessageContextInteraction>>(
+		interaction: XernerxMessage | XernerxInteraction<XernerxSlashInteraction | XernerxUserContextInteraction | XernerxMessageContextInteraction>,
+		args:
+			| (T extends XernerxMessage
+					? MessageCommandArguments
+					: T extends XernerxSlashInteraction
+					? SlashCommandArguments
+					: T extends XernerxUserContextInteraction
+					? ContextCommandArguments<'user' | 'message'>
+					: never)
+			| null,
+		command: XernerxSlashCommand | XernerxMessageCommand | XernerxContextCommand
+	): Promise<any> {}
 }

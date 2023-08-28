@@ -186,6 +186,8 @@ export default class CommandHandler extends Handler {
 		message.util = new MessageUtil(this.client, message);
 		message.user = await xernerxUser(message, this.client);
 
+		if (await inhibitorValidation(message, undefined, undefined, 'pre')) return;
+
 		if (typeof message2 === 'object') message = message2;
 
 		if (message2 === 'delete' && this.client.modules.options.message?.handleDeletes) {
@@ -306,6 +308,8 @@ export default class CommandHandler extends Handler {
 
 		interaction.user = await xernerxUser(interaction, this.client);
 
+		if (await inhibitorValidation(interaction, undefined, undefined, 'pre')) return;
+
 		let cmd: XernerxSlashCommand | null | undefined = null;
 
 		if (this.client.commands.slash.has(interaction.commandName)) cmd = this.client.commands.slash.get(interaction.commandName);
@@ -334,6 +338,8 @@ export default class CommandHandler extends Handler {
 		interaction.util = new InteractionUtil(this.client, interaction);
 
 		interaction.user = await xernerxUser(interaction as XernerxUserContextInteraction, this.client);
+
+		if (await inhibitorValidation(interaction, undefined, undefined, 'pre')) return;
 
 		let cmd;
 
@@ -367,11 +373,13 @@ export default class CommandHandler extends Handler {
 
 			if (await commandValidation(event as XernerxMessage, cmd)) return;
 
-			if (await inhibitorValidation(event, args, cmd)) return;
+			if (await inhibitorValidation(event, args, cmd, 'check')) return;
 
 			if (((cmd as XernerxMessageCommand).conditions as unknown) && (await ((cmd as XernerxMessageCommand).conditions(event as never, args) as unknown))) return;
 
 			await cmd.exec(event as never, args);
+
+			await inhibitorValidation(event, args, cmd, 'post');
 
 			return await this.client.emit('commandFinish', event, type);
 		} catch (error) {

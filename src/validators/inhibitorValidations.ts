@@ -6,17 +6,29 @@ import { InhibitorType, XernerxInteraction } from '../types/types.js';
 
 export async function inhibitorValidation(
 	event: XernerxMessage | XernerxInteraction<XernerxSlashInteraction | XernerxUserContextInteraction | XernerxMessageContextInteraction>,
-	args: SlashCommandArguments | MessageCommandArguments | ContextCommandArguments<'user' | 'message'> | null,
-	cmd?: XernerxContextCommand | XernerxMessageCommand | XernerxSlashCommand
+	args?: SlashCommandArguments | MessageCommandArguments | ContextCommandArguments<'user' | 'message'> | null,
+	cmd?: XernerxContextCommand | XernerxMessageCommand | XernerxSlashCommand,
+	type?: 'pre' | 'check' | 'post'
 ) {
 	const client = event.client as XernerxClient;
 
 	const inhibits = [];
 
 	for (const [name, inhibitor] of client.inhibitors) {
-		if (Boolean(await inhibitor.check(event, args, (await inhibitorArguments(event, cmd || null, inhibitor.type)) as never))) {
-			inhibits.push(name);
-		}
+		if (type == 'pre')
+			if (Boolean(await inhibitor.pre(event, (await inhibitorArguments(event, cmd || null, inhibitor.type)) as never))) {
+				inhibits.push(name);
+			}
+
+		if (type == 'check')
+			if (Boolean(await inhibitor.check(event, args || null, (await inhibitorArguments(event, cmd || null, inhibitor.type)) as never))) {
+				inhibits.push(name);
+			}
+
+		if (type == 'post')
+			if (Boolean(await inhibitor.post(event, args || null, (await inhibitorArguments(event, cmd || null, inhibitor.type)) as never))) {
+				inhibits.push(name);
+			}
 	}
 
 	return !!inhibits.length;
@@ -31,9 +43,9 @@ export function inhibitorArguments(
 		case 'channel':
 			return event.channel || null;
 		case 'command':
-			return cmd;
+			return cmd || null;
 		case 'contextCommand':
-			return cmd;
+			return cmd || null;
 		case 'guild':
 			return event.guild || null;
 		case 'interaction':
@@ -43,10 +55,10 @@ export function inhibitorArguments(
 		case 'message':
 			return null;
 		case 'messageCommand':
-			return cmd;
+			return cmd || null;
 		case 'slashCommand':
-			return cmd;
+			return cmd || null;
 		case 'user':
-			return event.user;
+			return event.user || null;
 	}
 }
