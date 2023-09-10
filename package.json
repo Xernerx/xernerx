@@ -44,7 +44,7 @@
 		"discord.js": "14.13.0",
 		"dumfunctions": "2.1.2",
 		"xernerx-extension-builder": "0.0.16",
-		"zod": "3.22.0"
+		"zod": "3.22.2"
 	},
 	"devDependencies": {
 		"prettier": "3.0.0",

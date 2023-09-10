@@ -24,17 +24,15 @@ export default class XernerxLog {
 
 			this.warnLog = true;
 		} else {
-			client.settings.log = client.settings.log as unknown as Record<string, boolean | Array<string>>;
+			this.errorLog = (client.settings.log as unknown as Record<string, boolean>)?.error;
 
-			this.errorLog = client.settings.log?.error;
+			this.infoLog = (client.settings.log as unknown as Record<string, boolean>)?.info;
 
-			this.infoLog = client.settings.log?.info;
+			this.warnLog = (client.settings.log as unknown as Record<string, boolean>)?.warn;
 
-			this.warnLog = client.settings.log?.warn;
+			this.readyLog = (client.settings.log as unknown as Record<string, boolean>)?.ready;
 
-			this.readyLog = client.settings.log?.ready;
-
-			this.tableLog = client.settings.log?.table;
+			this.tableLog = (client.settings.log as unknown as Record<string, Array<string>>)?.table;
 		}
 
 		this.time = () => String(new Date()).split(/ +/)[4];

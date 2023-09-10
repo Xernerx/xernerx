@@ -18,8 +18,8 @@ export interface XernerxOptions {
 	global?: boolean;
 	ownerId?: string | Array<string>;
 	permissions?: {
-		client?: Array<string>;
-		user?: Array<string>;
+		user?: Array<PermissionNames> | Array<string> | null;
+		client?: Array<PermissionNames> | Array<string> | null;
 		dm?: boolean;
 	};
 	ignore?: {
@@ -41,6 +41,7 @@ export interface XernerxOptions {
 	cooldown?: {
 		command?: number;
 		cache?: number;
+		collections?: Array<string>;
 	};
 }
 
@@ -94,8 +95,8 @@ interface CommandHandlerOptions {
 	directory: string;
 	cooldown?: number;
 	permissions?: {
-		user?: Array<string>;
-		client?: Array<string>;
+		user?: Array<PermissionNames> | Array<string> | null;
+		client?: Array<PermissionNames> | Array<string> | null;
 		dm?: boolean;
 	};
 }
@@ -154,8 +155,8 @@ interface CommandOptions {
 		voice?: boolean;
 	};
 	permissions?: {
-		user?: Array<PermissionNames> | Array<string>;
-		client?: Array<PermissionNames> | Array<string>;
+		user?: Array<PermissionNames> | Array<string> | null;
+		client?: Array<PermissionNames> | Array<string> | null;
 		dm?: boolean;
 	};
 }

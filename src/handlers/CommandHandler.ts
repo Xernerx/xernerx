@@ -38,8 +38,8 @@ export default class CommandHandler extends Handler {
 				cooldown: z.number().default(0),
 				permissions: z
 					.object({
-						user: z.array(z.string()).default([]),
-						client: z.array(z.string()).default([]),
+						user: z.array(z.string()).or(z.null()).default(null),
+						client: z.array(z.string()).or(z.null()).default(null),
 						dm: z.boolean().default(true),
 					})
 					.default({}),
@@ -96,8 +96,8 @@ export default class CommandHandler extends Handler {
 				cooldown: z.number().default(0),
 				permissions: z
 					.object({
-						user: z.array(z.string()).default([]),
-						client: z.array(z.string()).default([]),
+						user: z.array(z.string()).or(z.null()).default(null),
+						client: z.array(z.string()).or(z.null()).default(null),
 						dm: z.boolean().default(true),
 					})
 					.default({}),
@@ -140,8 +140,8 @@ export default class CommandHandler extends Handler {
 				cooldown: z.number().default(0),
 				permissions: z
 					.object({
-						user: z.array(z.string()).default([]),
-						client: z.array(z.string()).default([]),
+						user: z.array(z.string()).or(z.null()).default(null),
+						client: z.array(z.string()).or(z.null()).default(null),
 						dm: z.boolean().default(true),
 					})
 					.default({}),

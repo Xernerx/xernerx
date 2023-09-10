@@ -113,8 +113,8 @@ export default class XernerxContextCommand {
 					.default({}),
 				permissions: z
 					.object({
-						user: z.array(z.string()).default([]),
-						client: z.array(z.string()).default([]),
+						user: z.array(z.string()).or(z.null()).default(null),
+						client: z.array(z.string()).or(z.null()).default(null),
 						dm: z.boolean().default(true),
 					})
 					.default({}),

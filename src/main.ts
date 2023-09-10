@@ -14,6 +14,7 @@ import XernerxContextCommand from './build/XernerxContextCommand.js';
 import XernerxEvent from './build/XernerxEvent.js';
 import XernerxInhibitor from './build/XernerxInhibitor.js';
 import XernerxLog from './tools/XernerxLog.js';
+export { XernerxIntents as XernerxIntents } from './tools/XernerxIntents.js';
 
 export * from 'discord.js';
 export * from 'dumfunctions';
@@ -24,31 +25,6 @@ export * from './types/extenders.js';
 export * from './types/interfaces.js';
 
 import Discord from 'discord.js';
-
-const XernerxIntents = {
-	Default: [
-		'Guilds',
-		'GuildModeration',
-		'GuildBans',
-		'GuildEmojisAndStickers',
-		'GuildIntegrations',
-		'GuildWebhooks',
-		'GuildInvites',
-		'GuildVoiceStates',
-		'GuildMessages',
-		'GuildMessageReactions',
-		'GuildMessageTyping',
-		'DirectMessages',
-		'DirectMessageReactions',
-		'DirectMessageTyping',
-		'GuildScheduledEvents',
-		'AutoModerationConfiguration',
-		'AutoModerationExecution',
-	],
-	All: [''],
-};
-
-XernerxIntents.All = [...XernerxIntents.Default, 'GuildMembers', 'GuildPresences', 'MessageContent'];
 
 export default XernerxClient;
 
@@ -83,5 +59,4 @@ export {
 	 ** Tools
 	 */
 	XernerxLog,
-	XernerxIntents,
 };

@@ -2,7 +2,6 @@
 
 import {
 	ChatInputCommandInteraction,
-	Client,
 	Collection,
 	DMChannel,
 	Guild,
@@ -15,7 +14,7 @@ import {
 } from 'discord.js';
 import InteractionUtil from '../utils/InteractionUtil.js';
 import MessageUtil from '../utils/MessageUtil.js';
-import { ModuleOptions, XernerxCache, XernerxCommands, XernerxEvent, XernerxInhibitor, XernerxOptions } from '../main.js';
+import { ModuleOptions, XernerxCache, XernerxCommands, XernerxEvent, XernerxInhibitor, XernerxClient } from '../main.js';
 import ClientUtil from '../utils/ClientUtil.js';
 
 export interface XernerxUser extends User {
@@ -55,9 +54,7 @@ export interface XernerxMessageContextInteraction extends MessageContextMenuComm
 	util: InteractionUtil;
 }
 
-export interface XernerxClientType extends Client {
-	config: unknown | null;
-
+export interface XernerxClientType extends XernerxClient {
 	commands: XernerxCommands;
 
 	events: Collection<string, XernerxEvent>;
@@ -68,13 +65,17 @@ export interface XernerxClientType extends Client {
 
 	util: ClientUtil;
 
-	settings: XernerxOptions;
-
 	stats: {
 		guildCount: number;
 		userCount: number;
 		shardId: number;
 		shardCount: number;
+	};
+
+	cooldown: {
+		default: number;
+		cache: number;
+		collections: Array<string>;
 	};
 
 	cache: XernerxCache;

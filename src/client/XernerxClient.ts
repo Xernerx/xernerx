@@ -13,8 +13,9 @@ import ClientUtil from '../utils/ClientUtil.js';
 import { XernerxInhibitor, XernerxEvent } from '../main.js';
 import ExtensionHandler from '../handlers/ExtensionHandler.js';
 import deploy from '../functions/deploy.js';
+import Cooldowns from '../models/Cooldowns.js';
 
-export default class XernerxClient<T = unknown> extends Client {
+export default class XernerxClient extends Client {
 	public declare readonly settings;
 	public declare readonly config;
 	public declare readonly commands: XernerxCommands;
@@ -24,8 +25,9 @@ export default class XernerxClient<T = unknown> extends Client {
 	public declare readonly util: ClientUtil;
 	public declare readonly stats: Record<string, number>;
 	public declare readonly cache: XernerxCache;
+	public declare readonly cooldowns: Cooldowns;
 
-	public constructor(discordOptions: ClientOptions, xernerxOptions: XernerxOptions, config?: T) {
+	public constructor(discordOptions: ClientOptions, xernerxOptions: XernerxOptions, config?: unknown) {
 		super(discordOptions);
 
 		this.settings = z
@@ -35,8 +37,8 @@ export default class XernerxClient<T = unknown> extends Client {
 				ownerId: z.string().or(z.array(z.string())).default([]),
 				permissions: z
 					.object({
-						client: z.array(z.string()).default([]),
-						user: z.array(z.string()).default([]),
+						client: z.array(z.string()).or(z.null()).default(null),
+						user: z.array(z.string()).or(z.null()).default(null),
 						dm: z.boolean().default(false),
 					})
 					.optional(),
@@ -65,6 +67,7 @@ export default class XernerxClient<T = unknown> extends Client {
 					.object({
 						command: z.number().default(0),
 						cache: z.number().default(0),
+						collections: z.array(z.string()).default(['commands']),
 					})
 					.optional(),
 			})
@@ -104,6 +107,8 @@ export default class XernerxClient<T = unknown> extends Client {
 			messages: new Collection(),
 			cooldowns: new Collection(),
 		};
+
+		this.cooldowns = new Cooldowns(this, xernerxOptions.cooldown?.collections);
 
 		return this;
 	}
