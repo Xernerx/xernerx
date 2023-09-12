@@ -3,19 +3,25 @@
 import { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, InteractionEditReplyOptions, InteractionReplyOptions, MessagePayload, StringSelectMenuBuilder } from 'discord.js';
 
 import XernerxClient from '../client/XernerxClient.js';
-import { PaginatorOptions } from '../types/interfaces.js';
+import { ContextCommandArguments, PaginatorOptions, SlashCommandArguments } from '../types/interfaces.js';
 import { XernerxInteraction } from '../types/types.js';
 import Util from './Util.js';
 import XernerxError from '../tools/XernerxError.js';
 import { XernerxMessageContextInteraction, XernerxSlashInteraction, XernerxUserContextInteraction } from '../types/extenders.js';
 
 export default class InteractionUtil extends Util {
-	private interaction;
+	private declare readonly interaction;
+	public declare parsed: { alias: string | null; args: (SlashCommandArguments | ContextCommandArguments<'message' | 'user'>) | null };
 
 	constructor(client: XernerxClient, interaction: XernerxInteraction<XernerxSlashInteraction | XernerxUserContextInteraction | XernerxMessageContextInteraction>) {
 		super(client);
 
 		this.interaction = interaction;
+
+		this.parsed = {
+			alias: null,
+			args: null,
+		};
 	}
 
 	public async send(content: any) {

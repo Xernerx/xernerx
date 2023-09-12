@@ -24,11 +24,11 @@ import XernerxError from '../tools/XernerxError.js';
 import { PaginatorOptions } from '../main.js';
 
 export default class MessageUtil extends Util {
-	private readonly message;
-
+	private declare readonly message;
 	public declare parsed: {
-		alias: null | string;
-		prefix: null | string;
+		alias: string | null;
+		prefix: string | null;
+		args: Record<string, unknown> | null;
 	};
 
 	constructor(client: XernerxClient, message: XernerxMessage) {
@@ -39,6 +39,7 @@ export default class MessageUtil extends Util {
 		this.parsed = {
 			alias: null,
 			prefix: null,
+			args: null,
 		};
 	}
 

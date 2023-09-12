@@ -4,6 +4,7 @@ import { z } from 'zod';
 import { XernerxClientType, XernerxMessage } from '../types/extenders.js';
 import { MessageCommandArguments, MessageCommandOptions } from '../types/interfaces.js';
 import { XernerxLog } from '../main.js';
+import MessageUtil from '../utils/MessageUtil.js';
 
 export default class XernerxMessageCommand {
 	public declare readonly id;
@@ -27,6 +28,7 @@ export default class XernerxMessageCommand {
 	public declare readonly filetype: 'MessageCommand';
 	public declare readonly filepath: string;
 	public declare readonly client: XernerxClientType;
+	public declare util: MessageUtil;
 
 	public constructor(id: string, options: MessageCommandOptions) {
 		this.id = id;
@@ -148,6 +150,8 @@ export default class XernerxMessageCommand {
 		this.permissions = options.permissions;
 
 		this.client = this.client;
+
+		this.util = this.util;
 	}
 
 	/**

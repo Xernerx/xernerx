@@ -7,8 +7,12 @@ import XernerxLog from '../tools/XernerxLog.js';
 import { Style } from 'dumfunctions';
 
 export default class ExtensionHandler extends Handler {
+	public declare readonly readyTimestamp;
+
 	constructor(client: XernerxClient) {
 		super(client);
+
+		this.readyTimestamp = Number(Date.now());
 	}
 
 	loadExtensions(...extensions: Array<XernerxExtensionBuilder>) {
@@ -22,10 +26,15 @@ export default class ExtensionHandler extends Handler {
 
 				return extension.name;
 			} catch (error) {
-				return new XernerxLog(this.client).error(`An error occurred while loading ${Style.log(extension.name, { color: Style.TextColor.Blue })}`, error);
+				return new XernerxLog(this.client).error(`An error occurred while loading ${Style.log(extension.name, { color: Style.TextColor.Red })}`, error);
 			}
 		});
 
-		new XernerxLog(this.client).info(`Loaded ${Style.log(String(extensions.length), { color: Style.TextColor.Cyan })} Extensions: ${active.filter((e) => e).join(', ')}`);
+		new XernerxLog(this.client).info(
+			`Loaded ${Style.log(String(extensions.length), { color: Style.TextColor.Cyan })} Extensions: ${active
+				.filter((e) => e)
+				.map((event) => Style.log(event as string, { color: Style.TextColor.LightYellow }))
+				.join(', ')}`
+		);
 	}
 }

@@ -13,14 +13,11 @@ import { filetype } from '../types/types.js';
 export default class Handler {
 	public readonly client;
 	public readonly files: Array<MessageCommandBuilder | XernerxSlashCommand | XernerxContextCommand>;
-	public readonly readyTimestamp;
 
 	constructor(client: XernerxClient) {
 		this.client = client;
 
 		this.files = [];
-
-		this.readyTimestamp = Number(Date.now());
 	}
 
 	public readdir(dir: string) {

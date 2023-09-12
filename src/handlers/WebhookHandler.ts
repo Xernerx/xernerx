@@ -5,8 +5,12 @@ import XernerxLog from '../tools/XernerxLog.js';
 import Handler from './Handler.js';
 
 export default class WebhookHandler extends Handler {
+	public declare readonly readyTimestamp;
+
 	constructor(client: XernerxClient) {
 		super(client);
+
+		this.readyTimestamp = Number(Date.now());
 	}
 
 	public async loadWebhooks(options: { token: string }) {

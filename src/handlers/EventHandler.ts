@@ -11,11 +11,17 @@ import XernerxLog from '../tools/XernerxLog.js';
 import { Style } from 'dumfunctions';
 
 export default class EventHandler extends Handler {
+	public declare readonly readyTimestamp;
+
 	constructor(client: XernerxClient) {
 		super(client);
+
+		this.readyTimestamp = Number(Date.now());
 	}
 
 	public async loadEvents(options: EventHandlerOptions) {
+		const events = [];
+
 		options = z
 			.object({
 				directory: z.string(),
@@ -29,11 +35,15 @@ export default class EventHandler extends Handler {
 		for (const file of files) {
 			const filepath = `${path.resolve(options.directory)}\\${file}`;
 
-			const data = await this.load(filepath, 'Event');
+			const event = await this.load(filepath, 'Event');
 
-			this.emit(data);
+			this.emit(event);
+
+			events.push(event.id);
 		}
 
-		new XernerxLog(this.client).info(`Loaded ${Style.log(String(this.client.events.size), { color: Style.TextColor.Cyan })} Events.`);
+		new XernerxLog(this.client).info(
+			`Loaded ${Style.log(String(this.client.events.size), { color: Style.TextColor.Cyan })} Events: ${events.map((event) => Style.log(event, { color: Style.TextColor.LightYellow })).join(', ')}`
+		);
 	}
 }

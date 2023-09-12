@@ -22,11 +22,17 @@ import { inhibitorValidation } from '../validators/inhibitorValidations.js';
 import { Style } from 'dumfunctions';
 
 export default class CommandHandler extends Handler {
+	public declare readonly readyTimestamp;
+
 	constructor(client: XernerxClient) {
 		super(client);
+
+		this.readyTimestamp = Number(Date.now());
 	}
 
 	public async loadMessageCommands(options: MessageHandlerOptions) {
+		const commands = [];
+
 		if (!this.client.options.intents.has(GatewayIntentBits.MessageContent)) new XernerxLog(this.client).warn(`Message commands might not work as you're missing the intent MessageContent!`);
 		if (!this.client.options.intents.has(GatewayIntentBits.GuildMessages)) new XernerxLog(this.client).warn(`Message commands might not work as you're missing the intent GuildMessages!`);
 
@@ -60,9 +66,13 @@ export default class CommandHandler extends Handler {
 			const command = await this.load(filepath, 'MessageCommand');
 
 			this._checks(command);
+
+			commands.push(command.id);
 		}
 
-		new XernerxLog(this.client).info(`Loaded ${Style.log(String(files.length), { color: Style.TextColor.Cyan })} Message Commands.`);
+		new XernerxLog(this.client).info(
+			`Loaded ${Style.log(String(files.length), { color: Style.TextColor.Cyan })} Message Commands: ${commands.map((command) => Style.log(command, { color: Style.TextColor.LightYellow })).join(', ')}`
+		);
 
 		this.emit({
 			name: 'messageCreate',
@@ -84,10 +94,12 @@ export default class CommandHandler extends Handler {
 	}
 
 	// public reloadMessageCommands() {
-	//     return reload(this.client, 'message');
+	// 	return reload(this.client, 'message');
 	// }
 
-	public loadSlashCommands(options: SlashHandlerOptions) {
+	public async loadSlashCommands(options: SlashHandlerOptions) {
+		const commands = [];
+
 		if (!this.client.settings.local) new XernerxLog(this.client).warn(`Slash commands might not work as you haven't specified a local guild ID.`);
 
 		options = z
@@ -119,10 +131,14 @@ export default class CommandHandler extends Handler {
 		for (const file of files) {
 			const filepath = `${path.resolve(options.directory)}\\${file}`;
 
-			this.load(filepath, 'SlashCommand');
+			const command = await this.load(filepath, 'SlashCommand');
+
+			commands.push(command.id);
 		}
 
-		new XernerxLog(this.client).info(`Loaded ${Style.log(String(files.length), { color: Style.TextColor.Cyan })} Slash Commands.`);
+		new XernerxLog(this.client).info(
+			`Loaded ${Style.log(String(files.length), { color: Style.TextColor.Cyan })} Slash Commands: ${commands.map((command) => Style.log(command, { color: Style.TextColor.LightYellow })).join(', ')}`
+		);
 
 		this.emit({
 			name: 'interactionCreate',
@@ -131,7 +147,9 @@ export default class CommandHandler extends Handler {
 		});
 	}
 
-	public loadContextCommands(options: ContextHandlerOptions) {
+	public async loadContextCommands(options: ContextHandlerOptions) {
+		const commands = [];
+
 		if (!this.client.settings.local) new XernerxLog(this.client).warn(`Context commands might not work as you haven't specified a local guild ID.`);
 
 		options = z
@@ -163,10 +181,14 @@ export default class CommandHandler extends Handler {
 		for (const file of files) {
 			const filepath = `${path.resolve(options.directory)}\\${file}`;
 
-			this.load(filepath, 'ContextCommand');
+			const command = await this.load(filepath, 'ContextCommand');
+
+			commands.push(command.id);
 		}
 
-		new XernerxLog(this.client).info(`Loaded ${Style.log(String(files.length), { color: Style.TextColor.Cyan })} Context Commands.`);
+		new XernerxLog(this.client).info(
+			`Loaded ${Style.log(String(files.length), { color: Style.TextColor.Cyan })} Context Commands: ${commands.map((command) => Style.log(command, { color: Style.TextColor.LightYellow })).join(', ')}`
+		);
 
 		this.emit({
 			name: 'interactionCreate',
@@ -290,14 +312,19 @@ export default class CommandHandler extends Handler {
 
 			if (!cmd) return await this.client.emit('commandNotFound', message, commandName, filetype);
 
+			await this.client.emit('commandStart', message, cmd, filetype);
+
+			const args = await messageArguments(message, cmd, commandPrefix as string);
+
 			message.util.parsed = {
 				alias: commandAlias,
 				prefix: commandPrefix,
-			};
+				args: args.args,
+			} as const;
 
-			this.client.emit('commandStart', message, cmd, filetype);
+			cmd.util = message.util;
 
-			return await this.exec(cmd, message, await messageArguments(message, cmd, commandPrefix as string), filetype);
+			return await this.exec(cmd, message, args, filetype);
 		}
 	}
 
@@ -325,9 +352,18 @@ export default class CommandHandler extends Handler {
 			} else resolve(true);
 		})
 			.then(async () => {
-				this.client.emit('commandStart', interaction, filetype);
+				await this.client.emit('commandStart', interaction, filetype);
 
-				return await this.exec(cmd as XernerxSlashCommand, interaction, await interactionArguments(interaction, cmd as XernerxSlashCommand), filetype);
+				const args = await interactionArguments(interaction, cmd as XernerxSlashCommand);
+
+				interaction.util.parsed = {
+					alias: interaction.commandName + (args.group || '') + (args.subcommand || ''),
+					args: args.args,
+				} as const;
+
+				(cmd as XernerxSlashCommand).util = interaction.util;
+
+				return await this.exec(cmd as XernerxSlashCommand, interaction, args, filetype);
 			})
 			.catch((error) => this.client.emit('commandError', interaction, error, cmd, filetype));
 	}
@@ -347,9 +383,18 @@ export default class CommandHandler extends Handler {
 
 		if (!cmd) return this.client.emit('commandNotFound', interaction, interaction.commandName, filetype);
 
-		this.client.emit('commandStart', interaction, filetype);
+		await this.client.emit('commandStart', interaction, filetype);
 
-		return await this.exec(cmd as unknown as XernerxSlashCommand, interaction, await interactionArguments(interaction, cmd), filetype);
+		const args = await interactionArguments(interaction, cmd);
+
+		interaction.util.parsed = {
+			alias: interaction.commandName,
+			args: args,
+		} as const;
+
+		(cmd as XernerxContextCommand).util = interaction.util;
+
+		return await this.exec(cmd as XernerxContextCommand, interaction, args, filetype);
 	}
 
 	private async exec(

@@ -6,6 +6,7 @@ import { z } from 'zod';
 import { XernerxMessageContextInteraction, XernerxUserContextInteraction, XernerxClientType } from '../types/extenders.js';
 import { ContextCommandArguments, ContextCommandOptions } from '../types/interfaces.js';
 import { XernerxLog } from '../main.js';
+import InteractionUtil from '../utils/InteractionUtil.js';
 
 export default class XernerxContextCommand {
 	public declare readonly id;
@@ -26,6 +27,7 @@ export default class XernerxContextCommand {
 	public declare readonly filetype: 'ContextCommand';
 	public declare readonly filepath: string;
 	public declare readonly client: XernerxClientType;
+	public declare util: InteractionUtil;
 
 	public constructor(id: string, options: ContextCommandOptions) {
 		this.id = id;
@@ -155,6 +157,8 @@ export default class XernerxContextCommand {
 		this.defer = options.defer;
 
 		this.client = this.client;
+
+		this.util = this.util;
 	}
 
 	/**

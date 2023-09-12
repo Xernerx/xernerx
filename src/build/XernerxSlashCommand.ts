@@ -6,6 +6,7 @@ import { XernerxClientType, XernerxMessageContextInteraction, XernerxSlashIntera
 import { SlashCommandArgumentOptions, SlashCommandArguments, SlashCommandGroupOptions, SlashCommandOptions, SlashCommandSubcommandOptions } from '../types/interfaces.js';
 import { SlashCommandArgumentType, SlashCommandOption, XernerxInteraction } from '../types/types.js';
 import { XernerxLog } from '../main.js';
+import InteractionUtil from '../utils/InteractionUtil.js';
 
 export default class XernerxSlashCommand {
 	public declare readonly id;
@@ -25,6 +26,7 @@ export default class XernerxSlashCommand {
 	public declare readonly filetype: 'SlashCommand';
 	public declare readonly filepath: string;
 	public declare readonly client: XernerxClientType;
+	public declare util: InteractionUtil;
 
 	public constructor(id: string, options: SlashCommandOptions) {
 		this.id = id;
@@ -165,6 +167,8 @@ export default class XernerxSlashCommand {
 		this.defer = options.defer;
 
 		this.client = this.client;
+
+		this.util = this.util;
 	}
 
 	/**

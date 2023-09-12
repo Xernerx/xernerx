@@ -19,6 +19,8 @@ export default async function load(client: XernerxClient, path: string, type: fi
 
 		file.client = client;
 
+		file.util = {};
+
 		fileSave(client, file, type);
 
 		return file;
