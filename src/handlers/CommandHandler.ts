@@ -312,7 +312,7 @@ export default class CommandHandler extends Handler {
 
 			if (!cmd) return await this.client.emit('commandNotFound', message, commandName, filetype);
 
-			await this.client.emit('commandStart', message, cmd, filetype);
+			await this.client.emit('commandStart', message, cmd);
 
 			const args = await messageArguments(message, cmd, commandPrefix as string);
 
@@ -352,12 +352,12 @@ export default class CommandHandler extends Handler {
 			} else resolve(true);
 		})
 			.then(async () => {
-				await this.client.emit('commandStart', interaction, filetype);
+				await this.client.emit('commandStart', interaction);
 
 				const args = await interactionArguments(interaction, cmd as XernerxSlashCommand);
 
 				interaction.util.parsed = {
-					alias: interaction.commandName + (args.group || '') + (args.subcommand || ''),
+					alias: [interaction.commandName, args.group || '', args.subcommand || ''].join(' '),
 					args: args.args,
 				} as const;
 
@@ -383,7 +383,7 @@ export default class CommandHandler extends Handler {
 
 		if (!cmd) return this.client.emit('commandNotFound', interaction, interaction.commandName, filetype);
 
-		await this.client.emit('commandStart', interaction, filetype);
+		await this.client.emit('commandStart', interaction);
 
 		const args = await interactionArguments(interaction, cmd);
 
@@ -426,7 +426,7 @@ export default class CommandHandler extends Handler {
 
 			await inhibitorValidation(event, args, cmd, 'post');
 
-			return await this.client.emit('commandFinish', event, type);
+			return await this.client.emit('commandFinish', event, cmd);
 		} catch (error) {
 			new XernerxLog(this.client).error(`An error occurred executing ${Style.log(cmd.name, { color: Style.TextColor.Blue })}`, error);
 
