@@ -39,11 +39,23 @@ export default class XernerxLog {
 	}
 
 	public info(message: string, force: boolean = false) {
-		return this.infoLog || force ? console.info(`✔️  | ${Style.log('Xernerx', { color: Style.TextColor.Purple })} | ${Style.log(this.time(), { color: Style.TextColor.Cyan })} | ${message}`) : null;
+		return this.infoLog || force
+			? console.info(
+					`✔️  | ${Style.log('Xernerx', { color: Style.TextColor.Purple })} | ${Style.log(this.time(), {
+						color: Style.TextColor.Cyan,
+					})} | ${Math.round((process.memoryUsage().rss as unknown as number) / 1000000)}mb | ${message}`
+			  )
+			: null;
 	}
 
 	public warn(message: string) {
-		return this.warnLog ? console.warn(`⚠️  | ${Style.log('Xernerx', { color: Style.TextColor.Yellow })} | ${Style.log(this.time(), { color: Style.TextColor.Cyan })} | ${message}`) : null;
+		return this.warnLog
+			? console.warn(
+					`⚠️  | ${Style.log('Xernerx', { color: Style.TextColor.Yellow })} | ${Style.log(this.time(), { color: Style.TextColor.Cyan })} | ${Math.round(
+						(process.memoryUsage().rss as unknown as number) / 1000000
+					)}mb | ${message}`
+			  )
+			: null;
 	}
 
 	public async update(version: string, url: string) {
@@ -62,9 +74,9 @@ export default class XernerxLog {
 	public error(message: string, error?: XernerxError | unknown) {
 		return this.errorLog
 			? console.error(
-					`❗ | ${Style.log('Xernerx', { color: Style.TextColor.Red })} | ${Style.log(this.time(), { color: Style.TextColor.Cyan })} | ${message}${
-						error ? ` | ${(error as Record<string, string>).stack}` : ''
-					}`
+					`❗ | ${Style.log('Xernerx', { color: Style.TextColor.Red })} | ${Style.log(this.time(), { color: Style.TextColor.Cyan })} | ${Math.round(
+						(process.memoryUsage().rss as unknown as number) / 1000000
+					)}mb | ${message}${error ? ` | ${(error as Record<string, string>).stack}` : ''}`
 			  )
 			: null;
 	}
