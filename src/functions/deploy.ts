@@ -45,7 +45,7 @@ export default function deploy(client: XernerxClient) {
 				})} Commands ${
 					client.settings.global
 						? Style.log('globally', { color: Style.TextColor.Green })
-						: `${Style.log('locally', { color: Style.TextColor.Red })} in ${Style.log(client.guilds.cache.get(client.settings.local).name, { color: Style.TextColor.Blue })}`
+						: `${Style.log('locally', { color: Style.TextColor.Red })} in ${Style.log(client.guilds.cache.get(client.settings.local)?.name, { color: Style.TextColor.Blue })}`
 				}.`
 			);
 		}

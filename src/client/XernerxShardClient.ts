@@ -3,6 +3,7 @@
 import { ShardingManager, ShardingManagerOptions, Guild, ClientUser } from 'discord.js';
 import XernerxLog from '../tools/XernerxLog.js';
 import { Style } from 'dumfunctions';
+import XernerxClient from './XernerxClient.js';
 
 interface XernerxOptions {
 	log?: {
@@ -39,7 +40,9 @@ export default class XernerxShardClient extends ShardingManager {
 					this.stats.shardCount++;
 
 					await new XernerxLog({ settings: xernerxOptions } as never).info(
-						`Launched shard ${Style.log(String(shard.id), { color: Style.TextColor.Cyan })} for ${Style.log(this.user?.tag, { color: Style.TextColor.Blue })}!`
+						`Launched shard ${Style.log(String(shard.id), { color: Style.TextColor.Cyan })} for ${Style.log(this.user?.tag, { color: Style.TextColor.Blue })}! ${
+							xernerxOptions?.timeout ? `Automatically killing in ${Style.log(String(xernerxOptions.timeout), { color: Style.TextColor.Cyan })}ms.` : ''
+						}`
 					);
 				})
 				.on('error', (error) => {
@@ -48,7 +51,16 @@ export default class XernerxShardClient extends ShardingManager {
 					);
 				});
 
-			if (xernerxOptions?.timeout) setTimeout(() => shard.kill(), xernerxOptions.timeout);
+			if (xernerxOptions?.timeout)
+				setTimeout(() => {
+					new XernerxLog({ settings: xernerxOptions } as never).warn(
+						`Automatically killing shard ${Style.log(String(shard.id), { color: Style.TextColor.Cyan })} on ${Style.log(String((shard.manager as XernerxClient & ShardingManager).user?.tag), {
+							color: Style.TextColor.Blue,
+						})}!`
+					);
+
+					shard.kill();
+				}, xernerxOptions.timeout);
 		});
 
 		const spawn = this.spawn();
