@@ -18,11 +18,15 @@ function createHeader() {
         <a class="header-button" href="${subfolder ? '../' : ''}guide#v4">
             <button class="button">Guide</button>
         </a>
+        
+        <a class="header-button" href="${subfolder ? '../' : ''}changelog">
+            <button class="button">Changelog</button>
+        </a>
 
         <a class="header-button" href="https://github.com/xernerx/xernerx#readme" target="_blank">
             <button class="button">Github</button>
         </a>
-        
+
         <a class="header-button" href="https://discord.js.org" target="_blank">
             <button class="button">Discord.js</button>
         </a>
