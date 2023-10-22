@@ -17,6 +17,7 @@ export interface XernerxOptions {
 	local: string;
 	global?: boolean;
 	ownerId?: string | Array<string>;
+	ceaseless?: boolean;
 	permissions?: {
 		user?: Array<PermissionNames> | Array<string> | null;
 		client?: Array<PermissionNames> | Array<string> | null;

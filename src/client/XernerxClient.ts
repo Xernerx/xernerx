@@ -35,6 +35,7 @@ export default class XernerxClient extends Client {
 				local: z.string(),
 				global: z.boolean().default(false).optional(),
 				ownerId: z.string().or(z.array(z.string())).default([]),
+				ceaseless: z.boolean().default(false),
 				permissions: z
 					.object({
 						client: z.array(z.string()).or(z.null()).default(null),
@@ -117,6 +118,12 @@ export default class XernerxClient extends Client {
 		const login = this.login(token);
 
 		deploy(this);
+
+		if (this.settings.ceaseless) {
+			process.on('unhandledRejection', (error) => {
+				new XernerxLog(this).error('An uncaught error happpened, this is triggered from the ceaseless setting.', error);
+			});
+		}
 
 		new XernerxLog(this).ready();
 
