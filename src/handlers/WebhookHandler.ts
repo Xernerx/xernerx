@@ -24,9 +24,9 @@ export default class WebhookHandler extends Handler {
 			this.client.util.hasVoted = async (userId: string) => {
 				return !!(
 					await (
-						await fetch(`https://top.gg/api/bots/${this.client.user?.id}/check?userId=${userId}`, {
+						(await fetch(`https://top.gg/api/bots/${this.client.user?.id}/check?userId=${userId}`, {
 							headers: { 'Authorization': options.token, 'Content-Type': 'application/json' },
-						})
+						})) as Record<'json', Function>
 					).json()
 				).voted as boolean;
 			};

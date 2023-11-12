@@ -1,6 +1,12 @@
 /** @format */
 
 export default {
+	Client: [
+		{
+			name: 'XernerxClient',
+			description: `soon™️`,
+		},
+	],
 	Builders: [
 		{
 			name: 'EventBuilder',
@@ -24,12 +30,6 @@ export default {
 		},
 		{
 			name: 'ExtensionBuilder',
-			description: `soon™️`,
-		},
-	],
-	Client: [
-		{
-			name: 'XernerxClient',
 			description: `soon™️`,
 		},
 	],

@@ -59,7 +59,7 @@ export default class XernerxLog {
 	}
 
 	public async update(version: string, url: string) {
-		const pkg = await fetch(url)
+		const pkg: any = await fetch(url)
 			.then(async (res) => await res.json())
 			.catch(() => ({ version }));
 
