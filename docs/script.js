@@ -67,6 +67,8 @@ title.innerHTML = `Xernerx v${version}`;
 
                     <p>${subcategory.description}</p>
 
+					${subcategory.parameters ? `<div><h4>Parameters</h4><div>${subcategory.parameters.map((param) => `<p>${param.name}</p>`).join('')}</div></div>` : ''}
+
                     <div class="flex">
                         ${subcategory.properties ? `<div class="attach"><h4>Properties</h4>${subcategory.properties.map((prop) => `<li>${prop.name}</li>`).join('')}</div>` : ''}
                         ${subcategory.methods ? `<div class="attach"><h4>Methods</h4>${subcategory.methods.map((prop) => `<li>${prop.name}</li>`).join('')}</div>` : ''}

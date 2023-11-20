@@ -317,6 +317,13 @@ export default class CommandInhibitor extends XernerxInhibitor {
 		{
 			name: 'XernerxClient',
 			description: 'The client used to initiate the process.',
+			parameters: [
+				{
+					name: 'DiscordOptions',
+				},
+				{ name: 'XernerxOptions' },
+				{ name: 'config' },
+			],
 			example: `import XernerxClient from 'xernerx'
 
 new class Client extends XernerxClient {
@@ -379,8 +386,12 @@ new class Client extends XernerxClient {
 		},
 		{
 			name: 'XernerxShardClient',
-			description: `soon™️`,
-			example: '',
+			description: `A sharding client for managing multiple shards.`,
+			options: [],
+			example: `import { XernerxShardClient } from 'xernerx';
+import config from './data/config/config.js';
+
+new XernerxShardClient('./main.js', { token: config.token }, { log: { info: true } });`,
 			methods: [],
 			properties: [],
 		},

@@ -1,5 +1,7 @@
 /** @format */
 
+import { ActivityType } from 'discord.js';
+import { Style } from 'dumfunctions';
 import XernerxClient from '../main.js';
 import { PresenceOptions } from '../types/interfaces.js';
 
@@ -9,7 +11,7 @@ export default function setPresence(client: XernerxClient, options: PresenceOpti
 			activities: [
 				{
 					name: options.text,
-					type: options.type,
+					type: ActivityType[Style.titleCase(options.type || 'Custom') as keyof typeof ActivityType],
 					url: options.url,
 				},
 			],

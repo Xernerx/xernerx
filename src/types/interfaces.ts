@@ -260,7 +260,7 @@ export interface XernerxInhibitorOptions {
 
 export interface PresenceOptions {
 	text: string;
-	type?: ActivityType.Playing | ActivityType.Streaming | ActivityType.Listening | ActivityType.Watching | ActivityType.Competing;
+	type?: keyof typeof ActivityType;
 	url: string;
 	status?: PresenceStatusData;
 	interval?: number;
