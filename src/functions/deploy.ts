@@ -1,6 +1,6 @@
 /** @format */
 
-import { GatewayVersion, REST, Routes } from 'discord.js';
+import { GatewayVersion, Guild, REST, Routes } from 'discord.js';
 
 import XernerxContextCommand from '../build/XernerxContextCommand.js';
 import XernerxSlashCommand from '../build/XernerxSlashCommand.js';
@@ -16,7 +16,17 @@ const localCommands: Array<XernerxSlashCommand | XernerxContextCommand | any> = 
 export default function deploy(client: XernerxClient) {
 	const commands: Array<XernerxMessageCommand | XernerxSlashCommand | XernerxContextCommand> = [];
 
+	function stats() {
+		client.stats.guildCount = client.guilds.cache.size;
+		client.stats.userCount = client.guilds.cache.map((g: Guild) => g.memberCount || g.approximateMemberCount || 0).reduce((a: number, b: number) => (a += b));
+	}
+
+	client.on('messageCreate', stats);
+	client.on('interactionCreate', stats);
+
 	client.prependOnceListener('ready', (client) => {
+		stats();
+
 		client.commands.slash.map((command: XernerxSlashCommand) => commands.push(command));
 		client.commands.context.map((command: XernerxContextCommand) => commands.push(command));
 		client.commands.slash.map((command: XernerxMessageCommand) => commands.push(command));
@@ -57,6 +67,6 @@ function put(client: XernerxClient, global: boolean, body: Array<object>) {
 
 	if (!global && !client.settings?.local) throw new XernerxError(`No guild ID provided as local guild!`);
 
-	if (!global && client.settings?.local) rest.put(Routes.applicationGuildCommands(client.user?.id as string, client.settings.local), { body });
-	else rest.put(Routes.applicationCommands(client.user?.id as string), { body });
+	if (!global && client.settings?.local) return rest.put(Routes.applicationGuildCommands(client.user?.id as string, client.settings.local), { body });
+	else return rest.put(Routes.applicationCommands(client.user?.id as string), { body });
 }

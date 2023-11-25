@@ -5,7 +5,7 @@ import { ActivityType, ChannelType, Collection, PresenceStatusData } from 'disco
 import CommandHandler from '../handlers/CommandHandler.js';
 import EventHandler from '../handlers/EventHandler.js';
 import InhibitorHandler from '../handlers/InhibitorHandler.js';
-import WebhookHandler from '../handlers/WebhookHandler.js';
+import IntegrationHandler from '../handlers/IntegrationHandler.js';
 import XernerxContextCommand from '../build/XernerxContextCommand.js';
 import MessageCommandBuilder from '../build/XernerxMessageCommand.js';
 import XernerxSlashCommand from '../build/XernerxSlashCommand.js';
@@ -57,7 +57,7 @@ export interface ModuleOptions {
 	commandHandler: CommandHandler;
 	eventHandler: EventHandler;
 	inhibitorHandler: InhibitorHandler;
-	webhookHandler: WebhookHandler;
+	integrationHandler: IntegrationHandler;
 	extensionHandler: ExtensionHandler;
 }
 

@@ -1,6 +1,6 @@
 /** @format */
 
-import { ShardingManager, ShardingManagerOptions, Guild, ClientUser } from 'discord.js';
+import { ShardingManager, ShardingManagerOptions, ClientUser } from 'discord.js';
 import XernerxLog from '../tools/XernerxLog.js';
 import { Style } from 'dumfunctions';
 import XernerxClient from './XernerxClient.js';
@@ -20,24 +20,28 @@ export default class XernerxShardClient extends ShardingManager {
 	constructor(file: string, discordOptions: ShardingManagerOptions, xernerxOptions?: XernerxOptions) {
 		super(file, discordOptions);
 
-		this.stats = { guildCount: 0, userCount: 0, shardCount: 0 };
+		this.stats = { guildCount: 0, userCount: 0, shardCount: 0, voteCount: 0, shards: {} };
 
 		this.user = null;
 
 		this.on('shardCreate', async (shard) => {
 			shard
 				.on('ready', async () => {
-					const guilds = (await shard.fetchClientValue('guilds.cache')) as Array<Guild>;
-					const guildCount = guilds.length;
-					const userCount = guilds.map((guild) => guild.memberCount).length ? guilds.map((guild) => guild.memberCount).reduce((a, b) => (a += b)) : 0;
+					await new Promise((resolve) => setTimeout(resolve, 250));
+
+					const stats = (await shard.fetchClientValue('stats')) as Record<string, number>;
+
+					(this.stats.shards as any)[String(shard.id)] = stats;
 
 					this.user = (await shard.fetchClientValue('user')) as ClientUser;
 
-					this.stats.guildCount += Number(guildCount);
+					this.stats.guildCount += stats.guildCount;
 
-					this.stats.userCount += Number(userCount);
+					this.stats.userCount += stats.userCount;
 
 					this.stats.shardCount++;
+
+					this.stats.voteCount = stats.voteCount;
 
 					await new XernerxLog({ settings: xernerxOptions } as never).info(
 						`Launched shard ${Style.log(String(shard.id), { color: Style.TextColor.Cyan })} for ${Style.log(this.user?.tag, { color: Style.TextColor.Blue })}! ${

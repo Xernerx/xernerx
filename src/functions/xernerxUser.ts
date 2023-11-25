@@ -8,7 +8,7 @@ export async function xernerxUser(event: XernerxMessage | XernerxSlashInteractio
 	const author: Partial<XernerxUser | User> = (event as XernerxMessage).author || event.user;
 
 	(author as XernerxUser).owner = isOwner(client, author as User);
-	(author as XernerxUser).voted = client.util.hasVoted ? await client.util.hasVoted(author.id) : null;
+	if (client.dbl.validate) (author as XernerxUser).voted = await client?.dbl?.validate(author);
 
 	return author as XernerxUser;
 }

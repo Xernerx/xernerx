@@ -6,7 +6,7 @@ import { z } from 'zod';
 import CommandHandler from '../handlers/CommandHandler.js';
 import EventHandler from '../handlers/EventHandler.js';
 import InhibitorHandler from '../handlers/InhibitorHandler.js';
-import WebhookHandler from '../handlers/WebhookHandler.js';
+import IntegrationHandler from '../handlers/IntegrationHandler.js';
 import XernerxLog from '../tools/XernerxLog.js';
 import { XernerxOptions, ModuleOptions, XernerxCommands, XernerxCache } from '../types/interfaces.js';
 import ClientUtil from '../utils/ClientUtil.js';
@@ -26,6 +26,7 @@ export default class XernerxClient extends Client {
 	public declare readonly stats: Record<string, number>;
 	public declare readonly cache: XernerxCache;
 	public declare readonly cooldowns: Cooldowns;
+	public declare readonly dbl: any;
 
 	public constructor(discordOptions: ClientOptions, xernerxOptions: XernerxOptions, config?: unknown) {
 		super(discordOptions);
@@ -86,23 +87,17 @@ export default class XernerxClient extends Client {
 
 		this.inhibitors = new Collection();
 
-		this.modules = {
-			options: {},
-			commandHandler: new CommandHandler(this),
-			eventHandler: new EventHandler(this),
-			inhibitorHandler: new InhibitorHandler(this),
-			webhookHandler: new WebhookHandler(this),
-			extensionHandler: new ExtensionHandler(this),
-		} as const;
-
 		this.util = new ClientUtil(this);
 
 		this.stats = {
 			guildCount: this.guilds.cache.size,
 			userCount: 0,
 			shardId: 0,
-			shardCount: 1,
+			shardCount: this.options.shardCount || 1,
+			voteCount: 0,
 		};
+
+		this.dbl = {};
 
 		this.cache = {
 			messages: new Collection(),
@@ -110,6 +105,15 @@ export default class XernerxClient extends Client {
 		};
 
 		this.cooldowns = new Cooldowns(this, xernerxOptions.cooldown?.collections);
+
+		this.modules = {
+			options: {},
+			commandHandler: new CommandHandler(this),
+			eventHandler: new EventHandler(this),
+			inhibitorHandler: new InhibitorHandler(this),
+			integrationHandler: new IntegrationHandler(this),
+			extensionHandler: new ExtensionHandler(this),
+		} as const;
 
 		return this;
 	}
