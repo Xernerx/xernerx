@@ -5,7 +5,9 @@ import { z } from 'zod';
 import { XernerxInhibitorOptions, MessageCommandArguments, SlashCommandArguments, ContextCommandArguments } from '../types/interfaces.js';
 import { InhibitorType, XernerxInteraction } from '../types/types.js';
 import { XernerxClientType, XernerxMessage, XernerxMessageContextInteraction, XernerxSlashInteraction, XernerxUserContextInteraction } from '../types/extenders.js';
-import { XernerxContextCommand, XernerxMessageCommand, XernerxSlashCommand } from '../main.js';
+import XernerxContextCommand from '../build/XernerxContextCommand.js';
+import XernerxSlashCommand from '../build/XernerxSlashCommand.js';
+import XernerxMessageCommand from '../build/XernerxMessageCommand.js';
 
 /**
  * @description - The inhibitor builder for inhibitors.

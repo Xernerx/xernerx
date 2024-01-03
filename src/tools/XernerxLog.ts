@@ -1,9 +1,10 @@
 /** @format */
 
-import XernerxError from './XernerxError.js';
 import { Style } from 'dumfunctions';
+
+import XernerxError from './XernerxError.js';
 import XernerxClient from '../client/XernerxClient.js';
-import { XernerxClientType } from '../main.js';
+import { XernerxClientType } from '../types/extenders.js';
 
 export default class XernerxLog {
 	private declare readonly client;

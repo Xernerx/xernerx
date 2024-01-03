@@ -12,9 +12,13 @@ import {
 	User,
 	UserContextMenuCommandInteraction,
 } from 'discord.js';
+
 import InteractionUtil from '../utils/InteractionUtil.js';
 import MessageUtil from '../utils/MessageUtil.js';
-import { ModuleOptions, XernerxCache, XernerxCommands, XernerxEvent, XernerxInhibitor, XernerxClient } from '../main.js';
+import { ModuleOptions, XernerxCache, XernerxCommands } from '../types/interfaces.js';
+import XernerxEvent from '../build/XernerxEvent.js';
+import XernerxInhibitor from '../build/XernerxInhibitor.js';
+import XernerxClient from '../client/XernerxClient.js';
 import ClientUtil from '../utils/ClientUtil.js';
 
 export interface XernerxUser extends User {

@@ -1,10 +1,11 @@
 /** @format */
 
+import { Style } from 'dumfunctions';
+
 import XernerxExtensionBuilder from 'xernerx-extension-builder';
 import XernerxClient from '../client/XernerxClient.js';
 import Handler from './Handler.js';
 import XernerxLog from '../tools/XernerxLog.js';
-import { Style } from 'dumfunctions';
 
 export default class ExtensionHandler extends Handler {
 	public declare readonly readyTimestamp;

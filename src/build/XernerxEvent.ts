@@ -4,7 +4,8 @@ import { z } from 'zod';
 
 import { XernerxEventOptions } from '../types/interfaces.js';
 import { XernerxEventType } from '../types/types.js';
-import { XernerxClientType, XernerxLog } from '../main.js';
+import { XernerxClientType } from '../types/extenders.js';
+import XernerxLog from '../tools/XernerxLog.js';
 
 /**
  * @description - The event builder for  events.

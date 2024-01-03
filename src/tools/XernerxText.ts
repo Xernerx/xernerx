@@ -1,6 +1,8 @@
 /** @format */
 
-import { Emoji, Role, XernerxGuildChannel, XernerxMember, XernerxUser } from '../main.js';
+import { Emoji, Role } from 'discord.js';
+
+import { XernerxGuildChannel, XernerxMember, XernerxUser } from '../types/extenders.js';
 
 export default class XernerxText {
 	public user(user: string | XernerxUser) {

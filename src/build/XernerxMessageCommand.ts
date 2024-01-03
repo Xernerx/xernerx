@@ -1,9 +1,10 @@
 /** @format */
 
 import { z } from 'zod';
+
 import { XernerxClientType, XernerxMessage } from '../types/extenders.js';
 import { MessageCommandArguments, MessageCommandOptions } from '../types/interfaces.js';
-import { XernerxLog } from '../main.js';
+import XernerxLog from '../tools/XernerxLog.js';
 import MessageUtil from '../utils/MessageUtil.js';
 
 export default class XernerxMessageCommand {

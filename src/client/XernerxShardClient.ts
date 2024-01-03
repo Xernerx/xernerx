@@ -1,8 +1,9 @@
 /** @format */
 
 import { ShardingManager, ShardingManagerOptions, ClientUser } from 'discord.js';
-import XernerxLog from '../tools/XernerxLog.js';
 import { Style } from 'dumfunctions';
+
+import XernerxLog from '../tools/XernerxLog.js';
 import XernerxClient from './XernerxClient.js';
 
 interface XernerxOptions {
@@ -76,6 +77,8 @@ export default class XernerxShardClient extends ShardingManager {
 				const index = shards.size - 1;
 
 				if (shards.get(index)?.ready) {
+					clearInterval(collector);
+
 					new XernerxLog({ settings: xernerxOptions } as never).info(
 						`All Shards launched for ${Style.log(String(this.user?.tag), {
 							color: Style.TextColor.Blue,
@@ -86,8 +89,6 @@ export default class XernerxShardClient extends ShardingManager {
 							}
 						)} guild${this.stats.guildCount > 1 ? 's' : ''}, and ${Style.log(String(this.stats.userCount), { color: Style.TextColor.Cyan })} user${this.stats.userCount > 1 ? 's' : ''}!`
 					);
-
-					clearInterval(collector);
 				}
 			}, 1000);
 		});

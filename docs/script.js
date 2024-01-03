@@ -65,6 +65,8 @@ title.innerHTML = `Xernerx v${version}`;
                 <div class="embed">
                     <h2  id="${subcategory.name}">${subcategory.name}</h2>
 
+					${subcategory.note ? `<p class="note"> 🛈 ${subcategory.note}</p>` : ''}
+
                     <p>${subcategory.description}</p>
 
 					${subcategory.parameters ? `<div><h4>Parameters</h4><div>${subcategory.parameters.map((param) => `<p>${param.name}</p>`).join('')}</div></div>` : ''}

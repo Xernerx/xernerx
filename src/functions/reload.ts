@@ -3,7 +3,7 @@
 import * as path from 'path';
 import * as fs from 'fs';
 
-import { XernerxClient } from '../main.js';
+import XernerxClient from '../client/XernerxClient.js';
 import load from './load.js';
 
 export default async function reload(client: XernerxClient, type: 'commands' | 'context' | 'message' | 'slash' | 'events' | 'inhibitors') {

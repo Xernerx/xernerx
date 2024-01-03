@@ -1,14 +1,13 @@
 /** @format */
 
 import { z } from 'zod';
-
 import * as path from 'path';
+import { Style } from 'dumfunctions';
 
 import XernerxClient from '../client/XernerxClient.js';
 import Handler from './Handler.js';
 import { InhibitorHandlerOptions } from '../types/interfaces.js';
 import XernerxLog from '../tools/XernerxLog.js';
-import { Style } from 'dumfunctions';
 
 export default class InhibitorHandler extends Handler {
 	public declare readonly readyTimestamp;

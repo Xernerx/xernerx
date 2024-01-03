@@ -1,14 +1,13 @@
 /** @format */
 
 import { z } from 'zod';
-
+import { Style } from 'dumfunctions';
 import * as path from 'path';
 
 import XernerxClient from '../client/XernerxClient.js';
 import { EventHandlerOptions } from '../types/interfaces.js';
 import Handler from './Handler.js';
 import XernerxLog from '../tools/XernerxLog.js';
-import { Style } from 'dumfunctions';
 
 export default class EventHandler extends Handler {
 	public declare readonly readyTimestamp;

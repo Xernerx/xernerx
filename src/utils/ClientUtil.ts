@@ -1,11 +1,14 @@
 /** @format */
 
+import { Collection } from 'discord.js';
+
 import setPresence from '../functions/setPresence.js';
 import XernerxClient from '../client/XernerxClient.js';
 import { PresenceOptions, ResolveCommandOptions } from '../types/interfaces.js';
 import Util from './Util.js';
-import { Collection } from 'discord.js';
-import { XernerxContextCommand, XernerxMessageCommand, XernerxSlashCommand } from '../main.js';
+import XernerxContextCommand from '../build/XernerxContextCommand.js';
+import XernerxMessageCommand from '../build/XernerxMessageCommand.js';
+import XernerxSlashCommand from '../build/XernerxSlashCommand.js';
 
 export default class ClientUtil extends Util {
 	public declare hasVoted: Function;

@@ -1,6 +1,7 @@
 /** @format */
 
 import { User } from 'discord.js';
+
 import XernerxClient from '../client/XernerxClient.js';
 import { XernerxMessage, XernerxSlashInteraction, XernerxUser, XernerxUserContextInteraction } from '../types/extenders.js';
 

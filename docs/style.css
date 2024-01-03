@@ -23,6 +23,16 @@ img {
 	margin-top: 10px;
 }
 
+.note {
+	background-color: rgba(100, 80, 0, 0.4);
+	color: yellow;
+	border: 2px solid rgba(100, 80, 0, 0.4);
+	border-radius: 0.5rem;
+	padding: 15px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
 .servers {
 	position: relative;
 	display: flex;
@@ -372,6 +382,7 @@ img {
 	border-radius: 0.35rem;
 	background-color: var(--embed-background);
 	padding: 15px;
+	min-width: 40vw;
 }
 
 .message {

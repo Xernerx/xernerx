@@ -1,7 +1,8 @@
 /** @format */
 
 import { Collection } from 'discord.js';
-import XernerxClient from '../main.js';
+
+import XernerxClient from '../client/XernerxClient.js';
 
 export default class Cooldowns {
 	private declare readonly _client;

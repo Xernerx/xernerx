@@ -10,6 +10,7 @@ import {
 	SlashCommandStringOption,
 	SlashCommandUserOption,
 } from 'discord.js';
+
 import { XernerxMessageContextInteraction, XernerxSlashInteraction, XernerxUserContextInteraction } from './extenders.js';
 
 export type filetype = 'MessageCommand' | 'SlashCommand' | 'ContextCommand' | 'Event' | 'Inhibitor';

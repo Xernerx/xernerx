@@ -1,10 +1,11 @@
 /** @format */
 
-import XernerxClient from '../client/XernerxClient.js';
-import { XernerxUser } from '../main.js';
-// import XernerxLog from '../tools/XernerxLog.js';
-import Handler from './Handler.js';
 import dbl from 'dbl-sdk';
+
+import XernerxClient from '../client/XernerxClient.js';
+import { XernerxUser } from '../types/extenders.js';
+import XernerxLog from '../tools/XernerxLog.js';
+import Handler from './Handler.js';
 
 export default class IntegrationHandler extends Handler {
 	public declare readonly readyTimestamp;
@@ -33,6 +34,8 @@ export default class IntegrationHandler extends Handler {
 				});
 			}
 		});
+
+		new XernerxLog(this.client).info(`Successfully syncing with top.gg.`);
 	}
 }
 

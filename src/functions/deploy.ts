@@ -1,14 +1,14 @@
 /** @format */
 
 import { GatewayVersion, Guild, REST, Routes } from 'discord.js';
+import { Style } from 'dumfunctions';
 
 import XernerxContextCommand from '../build/XernerxContextCommand.js';
 import XernerxSlashCommand from '../build/XernerxSlashCommand.js';
 import XernerxClient from '../client/XernerxClient.js';
 import XernerxLog from '../tools/XernerxLog.js';
 import XernerxError from '../tools/XernerxError.js';
-import { Style } from 'dumfunctions';
-import { XernerxMessageCommand } from '../main.js';
+import XernerxMessageCommand from '../build/XernerxMessageCommand.js';
 
 const globalCommands: Array<XernerxSlashCommand | XernerxContextCommand | any> = [];
 const localCommands: Array<XernerxSlashCommand | XernerxContextCommand | any> = [];

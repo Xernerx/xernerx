@@ -14,17 +14,17 @@ import XernerxContextCommand from './build/XernerxContextCommand.js';
 import XernerxEvent from './build/XernerxEvent.js';
 import XernerxInhibitor from './build/XernerxInhibitor.js';
 import XernerxLog from './tools/XernerxLog.js';
-export { XernerxIntents as XernerxIntents } from './tools/XernerxIntents.js';
+export { XernerxIntents } from './tools/XernerxIntents.js';
 
 export * from 'discord.js';
 export * from 'dumfunctions';
+
+import Discord from 'discord.js';
 import XernerxExtension from 'xernerx-extension-builder';
 
 export * from './types/types.js';
 export * from './types/extenders.js';
 export * from './types/interfaces.js';
-
-import Discord from 'discord.js';
 
 export default XernerxClient;
 

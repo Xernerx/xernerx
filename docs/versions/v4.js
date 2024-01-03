@@ -230,7 +230,7 @@ export default class ReadyEvent extends XernerxEvent {
 		async run(client) {
 			return await this.client.util.setPresence({
 				text: 'examples',
-				type: ActivityType.Watching,
+				type: 'Custom',
 				status: 'idle',
 				interval: 360000
 			})
@@ -310,7 +310,23 @@ export default class CommandInhibitor extends XernerxInhibitor {
 		{
 			name: 'XernerxExtension',
 			description: `The builder used to build extensions, this can be imported from the framework or seperetaly installed with npm i xernerx-extension-builder.`,
-			example: ``,
+			note: "This can be installed in a standalone package in case you'd like to make an npm package. This example is not the same as the package!",
+			methods: [
+				{ name: 'main', description: 'A function ran on bot start.', parameters: [{ name: 'client', type: 'XernerxClient' }] },
+				{ name: 'pre', description: 'A function ran after bot start.', parameters: [{ name: 'client', type: 'XernerxClient' }] },
+			],
+			example: `import { XernerxExtensionBuilder } from 'xernerx'
+			
+export default class YourExtensionName extends XernerxExtensionBuilder {
+	constructor(/* any */) {
+		super('YourExtensionName', {options});
+
+		/* any */
+
+	}
+
+/* any */
+}`,
 		},
 	],
 	Clients: [

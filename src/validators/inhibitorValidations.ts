@@ -1,6 +1,10 @@
 /** @format */
 
-import XernerxClient, { ContextCommandArguments, MessageCommandArguments, SlashCommandArguments, XernerxContextCommand, XernerxMessageCommand, XernerxSlashCommand } from '../main.js';
+import XernerxClient from '../client/XernerxClient.js';
+import { ContextCommandArguments, MessageCommandArguments, SlashCommandArguments } from '../types/interfaces.js';
+import XernerxContextCommand from '../build/XernerxContextCommand.js';
+import XernerxMessageCommand from '../build/XernerxMessageCommand.js';
+import XernerxSlashCommand from '../build/XernerxSlashCommand.js';
 import { XernerxMessage, XernerxMessageContextInteraction, XernerxSlashInteraction, XernerxUserContextInteraction } from '../types/extenders.js';
 import { InhibitorType, XernerxInteraction } from '../types/types.js';
 

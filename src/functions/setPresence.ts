@@ -2,7 +2,8 @@
 
 import { ActivityType } from 'discord.js';
 import { Style } from 'dumfunctions';
-import XernerxClient from '../main.js';
+
+import XernerxClient from '../client/XernerxClient.js';
 import { PresenceOptions } from '../types/interfaces.js';
 
 export default function setPresence(client: XernerxClient, options: PresenceOptions) {

@@ -4,24 +4,22 @@ import {
 	ActionRowBuilder,
 	ButtonBuilder,
 	ButtonStyle,
-	ChannelType,
 	EmbedBuilder,
-	ForumChannel,
+	MessageCreateOptions,
 	MessageEditOptions,
 	MessagePayload,
 	MessageReplyOptions,
-	NewsChannel,
 	StringSelectMenuBuilder,
 	TextChannel,
-	User,
 } from 'discord.js';
 
 import XernerxClient from '../client/XernerxClient.js';
-import { XernerxMessage } from '../types/extenders.js';
+import { XernerxMessage, XernerxUser } from '../types/extenders.js';
 import Util from './Util.js';
-import sendWebhook from '../functions/sendWebhook.js';
 import XernerxError from '../tools/XernerxError.js';
-import { PaginatorOptions } from '../main.js';
+import { PaginatorOptions } from '../types/interfaces.js';
+
+type MimicOptions = { url: string; timeout: number };
 
 export default class MessageUtil extends Util {
 	private declare readonly message;
@@ -83,27 +81,27 @@ export default class MessageUtil extends Util {
 		return msg;
 	}
 
-	public async webhookReply(content: MessagePayload, url?: URL, user?: User) {
-		if (this.message.channel.type === ChannelType.DM) throw new XernerxError(`Can't use this method in DM Channels`);
+	public async mimic(user: XernerxUser | string, message: MessageCreateOptions, options: MimicOptions) {
+		user = (typeof user == 'string' ? ((await this.client.users.fetch(user)) as XernerxUser) : user) as XernerxUser;
 
-		const channel = this.message.channel as TextChannel | NewsChannel | ForumChannel;
+		const webhooks = await (this.message.channel as TextChannel).fetchWebhooks();
 
-		let webhook;
+		const webhook =
+			webhooks.find((wh) => wh.token) ||
+			(await (this.message.channel as TextChannel).createWebhook({
+				name: `${this.client.user?.username}'s mimic webhook.`,
+				avatar: user.displayAvatarURL() || this.client.user?.displayAvatarURL(),
+			}));
 
-		if (!url) {
-			webhook = await channel.createWebhook({
-				name: user?.username || (this.client.user?.username as string),
-				avatar: user?.avatarURL() || this.client.user?.avatarURL(),
-			});
-		}
+		await webhook.send({
+			content: message.content as string,
+			username: user.username,
+			avatarURL: user.displayAvatarURL(),
+		});
 
-		if (!webhook) webhook = { url };
-
-		await sendWebhook(webhook.url as URL, content);
-
-		if (!url) (webhook as Record<'delete', Function>).delete();
-
-		return;
+		setTimeout(() => {
+			webhook.delete().catch(() => true);
+		}, options.timeout);
 	}
 
 	public async paginator(embeds: Array<EmbedBuilder>, options: PaginatorOptions = {}) {

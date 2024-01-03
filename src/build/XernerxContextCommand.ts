@@ -5,7 +5,7 @@ import { z } from 'zod';
 
 import { XernerxMessageContextInteraction, XernerxUserContextInteraction, XernerxClientType } from '../types/extenders.js';
 import { ContextCommandArguments, ContextCommandOptions } from '../types/interfaces.js';
-import { XernerxLog } from '../main.js';
+import XernerxLog from '../tools/XernerxLog.js';
 import InteractionUtil from '../utils/InteractionUtil.js';
 
 export default class XernerxContextCommand {
