@@ -19,7 +19,7 @@ import Util from './Util.js';
 import XernerxError from '../tools/XernerxError.js';
 import { PaginatorOptions } from '../types/interfaces.js';
 
-type MimicOptions = { url: string; timeout: number };
+type MimicOptions = { timeout: number };
 
 export default class MessageUtil extends Util {
 	private declare readonly message;

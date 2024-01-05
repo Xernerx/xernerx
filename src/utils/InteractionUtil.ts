@@ -1,14 +1,26 @@
 /** @format */
 
-import { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, InteractionEditReplyOptions, InteractionReplyOptions, MessagePayload, StringSelectMenuBuilder } from 'discord.js';
+import {
+	ActionRowBuilder,
+	ButtonBuilder,
+	ButtonStyle,
+	EmbedBuilder,
+	InteractionEditReplyOptions,
+	InteractionReplyOptions,
+	MessageCreateOptions,
+	MessagePayload,
+	StringSelectMenuBuilder,
+	TextChannel,
+} from 'discord.js';
 
 import XernerxClient from '../client/XernerxClient.js';
 import { ContextCommandArguments, PaginatorOptions, SlashCommandArguments } from '../types/interfaces.js';
 import { XernerxInteraction } from '../types/types.js';
 import Util from './Util.js';
 import XernerxError from '../tools/XernerxError.js';
-import { XernerxMessageContextInteraction, XernerxSlashInteraction, XernerxUserContextInteraction } from '../types/extenders.js';
+import { XernerxMessageContextInteraction, XernerxSlashInteraction, XernerxUser, XernerxUserContextInteraction } from '../types/extenders.js';
 
+type MimicOptions = { timeout: number };
 export default class InteractionUtil extends Util {
 	private declare readonly interaction;
 	public declare parsed: { alias: string | null; args: (SlashCommandArguments | ContextCommandArguments<'message' | 'user'>) | null };
@@ -34,6 +46,29 @@ export default class InteractionUtil extends Util {
 		if (!content) throw new XernerxError(`Can't send a message without content.`);
 
 		return await (this.interaction.replied || this.interaction.deferred ? this.interaction.editReply(content) : this.interaction.reply(content as InteractionReplyOptions));
+	}
+
+	public async mimic(user: XernerxUser | string, interaction: MessageCreateOptions, options: MimicOptions) {
+		user = (typeof user == 'string' ? ((await this.client.users.fetch(user)) as XernerxUser) : user) as XernerxUser;
+
+		const webhooks = await (this.interaction.channel as TextChannel).fetchWebhooks();
+
+		const webhook =
+			webhooks.find((wh) => wh.token) ||
+			(await (this.interaction.channel as TextChannel).createWebhook({
+				name: `${this.client.user?.username}'s mimic webhook.`,
+				avatar: user.displayAvatarURL() || this.client.user?.displayAvatarURL(),
+			}));
+
+		await webhook.send({
+			content: interaction.content as string,
+			username: user.username,
+			avatarURL: user.displayAvatarURL(),
+		});
+
+		setTimeout(() => {
+			webhook.delete().catch(() => true);
+		}, options.timeout);
 	}
 
 	// @ts-ignore
