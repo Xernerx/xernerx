@@ -18,7 +18,7 @@ export default class XernerxShardClient extends ShardingManager {
 	public declare user: ClientUser | null;
 	public declare spawner;
 
-	constructor(file: string, discordOptions: ShardingManagerOptions, xernerxOptions?: XernerxOptions) {
+	constructor(file: string, discordOptions: ShardingManagerOptions, xernerxOptions?: XernerxOptions, data: unknown = {}) {
 		super(file, discordOptions);
 
 		this.stats = { guildCount: 0, userCount: 0, shardCount: 0, voteCount: 0, shards: {} };
@@ -43,6 +43,10 @@ export default class XernerxShardClient extends ShardingManager {
 					this.stats.shardCount++;
 
 					this.stats.voteCount = stats.voteCount;
+
+					shard.send({ type: 'xernerx', data: { shardId: shard.id, sharded: true } });
+
+					shard.send({ type: 'client', data });
 
 					await new XernerxLog({ settings: xernerxOptions } as never).info(
 						`Launched shard ${Style.log(String(shard.id), { color: Style.TextColor.Cyan })} for ${Style.log(this.user?.tag, { color: Style.TextColor.Blue })}! ${

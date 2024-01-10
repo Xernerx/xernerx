@@ -14,6 +14,9 @@ export default class XernerxLog {
 	private declare readonly readyLog;
 	private declare readonly tableLog;
 	private declare readonly time;
+	private declare readonly ram;
+	private declare shard;
+	private declare readonly base;
 
 	constructor(client: XernerxClient | XernerxClientType | true) {
 		this.client = client;
@@ -37,26 +40,29 @@ export default class XernerxLog {
 		}
 
 		this.time = () => String(new Date()).split(/ +/)[4];
+
+		this.ram = () => Math.round(process.memoryUsage().rss / 1000000);
+
+		this.shard = '';
+
+		process.on('message', (message) => {
+			if ((message as any).type == 'xernerx') this.shard = (message as any)?.data?.sharded ? `| ${(message as any)?.data?.shardId} |` : '';
+		});
+
+		this.base = (type: 'info' | 'update' | 'error' | 'warn', message: string) =>
+			`${
+				type == 'info' ? `✔️  | ${this.purple('Xernerx')}` : type == `error` ? `❗ | ${this.red('Xernerx')}` : type == `update` ? `⬆️  | ${this.blue('Xernerx')}` : `⚠️  | ${this.yellow('Xernerx')}`
+			} | ${this.cyan(this.time())} | ${this.cyan(this.ram())}mb | ${
+				(this.client as XernerxClient).stats?.shardCount > 1 ? `${this.cyan((this.client as XernerxClient).stats.shardId)} | ` : ''
+			}${message}`;
 	}
 
 	public info(message: string, force: boolean = false) {
-		return this.infoLog || force
-			? console.info(
-					`✔️  | ${Style.log('Xernerx', { color: Style.TextColor.Purple })} | ${Style.log(this.time(), {
-						color: Style.TextColor.Cyan,
-					})} | ${Math.round((process.memoryUsage().rss as unknown as number) / 1000000)}mb | ${message}`
-			  )
-			: null;
+		return this.infoLog || force ? console.info(this.base('info', message)) : null;
 	}
 
 	public warn(message: string) {
-		return this.warnLog
-			? console.warn(
-					`⚠️  | ${Style.log('Xernerx', { color: Style.TextColor.Yellow })} | ${Style.log(this.time(), { color: Style.TextColor.Cyan })} | ${Math.round(
-						(process.memoryUsage().rss as unknown as number) / 1000000
-					)}mb | ${message}`
-			  )
-			: null;
+		return this.warnLog ? console.warn(this.base('warn', message)) : null;
 	}
 
 	public async update(version: string, url: string) {
@@ -65,21 +71,18 @@ export default class XernerxLog {
 			.catch(() => ({ version }));
 
 		if (version !== pkg.version)
-			new XernerxLog(true).warn(
-				`A new version for ${pkg.name} is available, you're using version ${Style.log(version, { color: Style.TextColor.Cyan })}, new version is ${Style.log(pkg.version, {
-					color: Style.TextColor.Cyan,
-				})}, run ${Style.log(`npm i ${pkg.name}@${pkg.version}`, { color: Style.BackgroundColor.Grey })} to update to the latest version.`
+			console.info(
+				this.base(
+					'update',
+					`A new version for ${pkg.name} is available, you're using version ${this.cyan(version)}, new version is ${this.cyan(pkg.version)}, run ${Style.log(`npm i ${pkg.name}@${pkg.version}`, {
+						color: Style.BackgroundColor.Grey,
+					})} to update to the latest version.`
+				)
 			);
 	}
 
 	public error(message: string, error?: XernerxError | unknown) {
-		return this.errorLog
-			? console.error(
-					`❗ | ${Style.log('Xernerx', { color: Style.TextColor.Red })} | ${Style.log(this.time(), { color: Style.TextColor.Cyan })} | ${Math.round(
-						(process.memoryUsage().rss as unknown as number) / 1000000
-					)}mb | ${message}${error ? ` | ${(error as Record<string, string>).stack}` : ''}`
-			  )
-			: null;
+		return this.errorLog ? console.error(this.base('error', message), error) : null;
 	}
 
 	public ready() {
@@ -89,11 +92,9 @@ export default class XernerxLog {
 
 		this.client.prependOnceListener('ready', async (synced) => {
 			this.info(
-				`${Style.log(synced.user.tag, { color: Style.TextColor.Blue })} is now ${Style.log('online', { color: Style.TextColor.Green })}, watching ${Style.log(String(client.guilds.cache.size), {
-					color: Style.TextColor.Cyan,
-				})} guild${client.guilds.cache.size > 1 ? 's' : ''}, using ${
-					client.settings.local ? Style.log((await client.guilds.fetch(client.settings.local))?.name, { color: Style.TextColor.Blue }) : 'none'
-				} as local guild.`,
+				`${Style.log(synced.user.tag, { color: Style.TextColor.Blue })} is now ${this.green('online')}, watching ${this.cyan(String(client.guilds.cache.size))} guild${
+					client.guilds.cache.size > 1 ? 's' : ''
+				}, using ${client.settings.local ? this.blue((await client.guilds.fetch(client.settings.local))?.name) : 'none'} as local guild.`,
 				this.readyLog
 			);
 
@@ -128,5 +129,29 @@ export default class XernerxLog {
 				console.table(files, this.tableLog);
 			}
 		});
+	}
+
+	private cyan(string: string | number) {
+		return Style.log(String(string), { color: Style.TextColor.Cyan });
+	}
+
+	private blue(string: string | number) {
+		return Style.log(String(string), { color: Style.TextColor.Blue });
+	}
+
+	private yellow(string: string | number) {
+		return Style.log(String(string), { color: Style.TextColor.Yellow });
+	}
+
+	private purple(string: string | number) {
+		return Style.log(String(string), { color: Style.TextColor.Purple });
+	}
+
+	private red(string: string | number) {
+		return Style.log(String(string), { color: Style.TextColor.Red });
+	}
+
+	private green(string: string | number) {
+		return Style.log(String(string), { color: Style.TextColor.Green });
 	}
 }

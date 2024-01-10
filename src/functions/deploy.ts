@@ -18,8 +18,14 @@ export default function deploy(client: XernerxClient) {
 
 	function stats() {
 		client.stats.guildCount = client.guilds.cache.size;
-		client.stats.userCount = client.guilds.cache.map((g: Guild) => g.memberCount || g.approximateMemberCount || 0).reduce((a: number, b: number) => (a += b));
+		client.stats.userCount = client.guilds.cache.map((g: Guild) => g.memberCount || g.approximateMemberCount || 0).reduce((a: number, b: number) => (a += b), 0);
 	}
+
+	process.on('message', (message) => {
+		if ((message as any).type == 'xernerx') client.stats.shardId = (message as any)?.data?.shardId;
+
+		if ((message as any).type == 'client') (client as any).data = (message as any).data;
+	});
 
 	client.on('messageCreate', stats);
 	client.on('interactionCreate', stats);
