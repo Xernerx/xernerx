@@ -196,4 +196,8 @@ export default class MessageUtil extends Util {
 							});
 					});
 	}
+
+	public commands() {
+		return this.client.commands.message;
+	}
 }

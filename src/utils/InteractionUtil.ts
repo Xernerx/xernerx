@@ -7,6 +7,7 @@ import {
 	EmbedBuilder,
 	InteractionEditReplyOptions,
 	InteractionReplyOptions,
+	InteractionType,
 	MessageCreateOptions,
 	MessagePayload,
 	StringSelectMenuBuilder,
@@ -70,9 +71,6 @@ export default class InteractionUtil extends Util {
 			webhook.delete().catch(() => true);
 		}, options.timeout);
 	}
-
-	// @ts-ignore
-	private commandName() {}
 
 	public async paginator(embeds: Array<EmbedBuilder>, options: PaginatorOptions = {}) {
 		let buttonRow, menuRow;
@@ -165,5 +163,10 @@ export default class InteractionUtil extends Util {
 								this.interaction.editReply({ components: [] });
 							});
 					});
+	}
+
+	public commands() {
+		if (this.interaction.type == InteractionType.ApplicationCommand) return this.client.commands.slash;
+		else return this.client.commands.context;
 	}
 }

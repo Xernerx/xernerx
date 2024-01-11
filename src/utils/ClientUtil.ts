@@ -90,4 +90,8 @@ export default class ClientUtil extends Util {
 		else if (minutes >= 1) return `${minutes}m ${seconds}s`;
 		else return `${seconds}s`;
 	}
+
+	public commands() {
+		return [...this.client.commands.context, ...this.client.commands.slash, ...this.client.commands.message];
+	}
 }

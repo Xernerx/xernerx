@@ -357,7 +357,7 @@ export default class CommandHandler extends Handler {
 				const args = await interactionArguments(interaction, cmd as XernerxSlashCommand);
 
 				interaction.util.parsed = {
-					alias: [interaction.commandName, args.group || '', args.subcommand || ''].join(' '),
+					alias: [interaction.commandName, args.group || null, args.subcommand || null].filter((x) => x).join(' '),
 					args: args.args,
 				} as const;
 
