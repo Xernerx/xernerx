@@ -2,8 +2,7 @@
 	"name": "xernerx",
 	"version": "4.15.0",
 	"description": "A bot framework for discord.js.",
-	"main": "dist/cjs/main.js",
-	"module": "dist/mjs/main.js",
+	"main": "dist/main.js",
 	"type": "module",
 	"keywords": [
 		"discord.js",
@@ -31,7 +30,7 @@
 		"site": "git add docs && npm run commit && git push",
 		"write": "npm i && npm run build && npm run format",
 		"format": "npx prettier --write src dist",
-		"build": "npm run build:esm && npm run build:cjs && npm run format",
+		"build": "npm run build:esm && npm run format",
 		"build:esm": "tsc",
 		"build:cjs": "tsc --module CommonJS --outDir dist/cjs"
 	},

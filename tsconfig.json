@@ -17,7 +17,7 @@
 		"importHelpers": true,
 		"newLine": "lf",
 		"noEmitHelpers": true,
-		"outDir": "./dist/mjs",
+		"outDir": "./dist",
 		"removeComments": false,
 		"esModuleInterop": true,
 		"forceConsistentCasingInFileNames": true,
