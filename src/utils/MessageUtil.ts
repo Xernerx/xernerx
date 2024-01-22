@@ -9,6 +9,7 @@ import {
 	MessageEditOptions,
 	MessagePayload,
 	MessageReplyOptions,
+	PermissionResolvable,
 	StringSelectMenuBuilder,
 	TextChannel,
 } from 'discord.js';
@@ -18,6 +19,8 @@ import { XernerxMessage, XernerxUser } from '../types/extenders.js';
 import Util from './Util.js';
 import XernerxError from '../tools/XernerxError.js';
 import { PaginatorOptions } from '../types/interfaces.js';
+import { PermissionNames } from '../main.js';
+import { Style } from 'dumfunctions';
 
 type MimicOptions = { timeout: number };
 
@@ -199,5 +202,38 @@ export default class MessageUtil extends Util {
 
 	public commands() {
 		return this.client.commands.message;
+	}
+
+	public permissionCheck(type: 'user' | 'client', permissions: Array<PermissionNames>) {
+		console.log(type);
+		const missing = [];
+		for (const permission of permissions) {
+			if (type == 'user') {
+				this.message.member?.permissionsIn(this.message.channel.id).has(Style.pascalCase(permission, true) as PermissionResolvable) ? null : missing.push(permission);
+			}
+			if (type == 'client') {
+				this.message.guild?.members.me?.permissionsIn(this.message.channel.id).has(Style.pascalCase(permission, true) as PermissionResolvable) ? null : missing.push(permission);
+			}
+		}
+
+		const command = this.commands().find((cmd) => cmd.name == this.parsed.alias || cmd.aliases?.includes(this.parsed.alias as string));
+
+		console.log(type);
+
+		if (missing.length) {
+			this.client.emit(
+				`commandBlock`,
+				this.message,
+				{
+					reason: `missing${Style.pascalCase(type)}Permissions`,
+					message: `${type == 'user' ? 'You are' : 'I am'} missing the following permissions to run \`${command?.name}\`:\n${missing.map((permission) => `> - ${permission}`).join('\n')}`,
+					required: permissions,
+					missing,
+				},
+				command || null
+			);
+
+			return false;
+		} else return true;
 	}
 }

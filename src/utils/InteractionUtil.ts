@@ -10,16 +10,18 @@ import {
 	InteractionType,
 	MessageCreateOptions,
 	MessagePayload,
+	PermissionResolvable,
 	StringSelectMenuBuilder,
 	TextChannel,
 } from 'discord.js';
 
 import XernerxClient from '../client/XernerxClient.js';
 import { ContextCommandArguments, PaginatorOptions, SlashCommandArguments } from '../types/interfaces.js';
-import { XernerxInteraction } from '../types/types.js';
+import { PermissionNames, XernerxInteraction } from '../types/types.js';
 import Util from './Util.js';
 import XernerxError from '../tools/XernerxError.js';
 import { XernerxMessageContextInteraction, XernerxSlashInteraction, XernerxUser, XernerxUserContextInteraction } from '../types/extenders.js';
+import { Style } from 'dumfunctions';
 
 type MimicOptions = { timeout: number };
 export default class InteractionUtil extends Util {
@@ -168,5 +170,38 @@ export default class InteractionUtil extends Util {
 	public commands() {
 		if (this.interaction.type == InteractionType.ApplicationCommand) return this.client.commands.slash;
 		else return this.client.commands.context;
+	}
+
+	public permissionCheck(type: 'user' | 'client', permissions: Array<PermissionNames>) {
+		console.log(type);
+		const missing = [];
+		for (const permission of permissions) {
+			if (type == 'user') {
+				this.interaction.memberPermissions?.has(Style.pascalCase(permission, true) as PermissionResolvable) ? null : missing.push(permission);
+			}
+			if (type == 'client') {
+				this.interaction.guild?.members.me?.permissionsIn(this.interaction.channel?.id as string).has(Style.pascalCase(permission, true) as PermissionResolvable) ? null : missing.push(permission);
+			}
+		}
+
+		const command = (this.commands().toJSON() as any).find((cmd: any) => cmd.name == this.parsed.alias?.split(/ +/)[0]);
+
+		console.log(type);
+
+		if (missing.length) {
+			this.client.emit(
+				`commandBlock`,
+				this.interaction,
+				{
+					reason: `missing${Style.pascalCase(type)}Permissions`,
+					message: `${type == 'user' ? 'You are' : 'I am'} missing the following permissions to run \`${command?.name}\`:\n${missing.map((permission) => `> - ${permission}`).join('\n')}`,
+					required: permissions,
+					missing,
+				},
+				command || null
+			);
+
+			return false;
+		} else return true;
 	}
 }

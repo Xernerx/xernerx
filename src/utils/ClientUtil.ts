@@ -92,6 +92,6 @@ export default class ClientUtil extends Util {
 	}
 
 	public commands() {
-		return [...this.client.commands.context, ...this.client.commands.slash, ...this.client.commands.message];
+		return [...this.client.commands.context.toJSON(), ...this.client.commands.slash.toJSON(), ...this.client.commands.message.toJSON()];
 	}
 }

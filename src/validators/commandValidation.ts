@@ -1,14 +1,15 @@
 /** @format */
 
-import { ChannelType, PermissionFlagsBits, PermissionsString } from 'discord.js';
+import { ChannelType, PermissionResolvable } from 'discord.js';
 
 import XernerxContextCommand from '../build/XernerxContextCommand.js';
 import MessageCommandBuilder from '../build/XernerxMessageCommand.js';
 import XernerxSlashCommand from '../build/XernerxSlashCommand.js';
 
 import { XernerxClientType, XernerxMessage, XernerxSlashInteraction, XernerxUserContextInteraction } from '../types/extenders.js';
-import { PermissionNames, XernerxInteraction } from '../types/types.js';
+import { XernerxInteraction } from '../types/types.js';
 import XernerxMessageCommand from '../build/XernerxMessageCommand.js';
+import { Style } from 'dumfunctions';
 
 enum CommandTypes {
 	SlashCommand = 'slash',
@@ -152,11 +153,14 @@ export default async function commandValidation(
 			command
 		);
 
-	if (userPermissions) {
-		const missing = userPermissions.map((permission) => ((event.member?.permissions as Record<'has', Function>).has(toBigInt([permission])) ? null : permission)).filter((x) => x);
-		const desired = (event.member?.permissions as Record<'has', Function>).has(toBigInt(userPermissions));
+	if (userPermissions.length) {
+		const missing: Array<string> = [];
 
-		if (!desired)
+		userPermissions.map((permission) =>
+			event.guild?.members.me?.permissionsIn(event.channel?.id as string).has(Style.pascalCase(permission, true) as PermissionResolvable) ? null : missing.push(permission)
+		);
+
+		if (missing.length)
 			return await emit(
 				event,
 				{
@@ -169,11 +173,14 @@ export default async function commandValidation(
 			);
 	}
 
-	if (clientPermissions) {
-		const missing = clientPermissions.map((permission) => (event.guild?.members.me?.permissions.has(toBigInt([permission])) ? null : permission)).filter((x) => x);
-		const desired = event.guild?.members.me?.permissions?.has(toBigInt(clientPermissions));
+	if (clientPermissions.length) {
+		const missing: Array<string> = [];
 
-		if (!desired)
+		clientPermissions.map((permission) =>
+			event.guild?.members.me?.permissionsIn(event.channel?.id as string).has(Style.pascalCase(permission, true) as PermissionResolvable) ? null : missing.push(permission)
+		);
+
+		if (missing.length)
 			return await emit(
 				event,
 				{
@@ -206,22 +213,4 @@ async function emit(
 ) {
 	event.client.emit('commandBlock', event, info, command);
 	return true;
-}
-
-function toBigInt(permissions: Array<PermissionNames> | Array<string>) {
-	let bigIntPermissions = 0n;
-
-	permissions.map((permission: string | bigint) => {
-		permission =
-			PermissionFlagsBits[
-				(permission as string)
-					.split(/ +/)
-					.map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
-					.join('') as PermissionsString
-			];
-
-		if (typeof permission === 'bigint') bigIntPermissions += permission;
-	});
-
-	return bigIntPermissions;
 }
