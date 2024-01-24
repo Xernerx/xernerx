@@ -35,7 +35,7 @@ export default class MessageUtil extends Util {
 	constructor(client: XernerxClient, message: XernerxMessage) {
 		super(client);
 
-		this.message = message;
+		this.message = ((message as any)?.message as XernerxMessage) || message;
 
 		this.parsed = {
 			alias: null,
