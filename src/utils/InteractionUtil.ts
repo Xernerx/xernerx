@@ -172,7 +172,7 @@ export default class InteractionUtil extends Util {
 		else return this.client.commands.context;
 	}
 
-	public permissionCheck(type: 'user' | 'client', permissions: Array<PermissionNames>) {
+	public permissionCheck(type: 'user' | 'client', permissions: Array<PermissionNames>, emit: boolean = true) {
 		console.log(type);
 		const missing = [];
 		for (const permission of permissions) {
@@ -186,9 +186,7 @@ export default class InteractionUtil extends Util {
 
 		const command = (this.commands().toJSON() as any).find((cmd: any) => cmd.name == this.parsed.alias?.split(/ +/)[0]);
 
-		console.log(type);
-
-		if (missing.length) {
+		if (missing.length && emit) {
 			this.client.emit(
 				`commandBlock`,
 				this.interaction,
@@ -202,6 +200,7 @@ export default class InteractionUtil extends Util {
 			);
 
 			return false;
-		} else return true;
+		} else if (missing.length && !emit) return missing;
+		else return true;
 	}
 }

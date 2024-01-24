@@ -204,7 +204,7 @@ export default class MessageUtil extends Util {
 		return this.client.commands.message;
 	}
 
-	public permissionCheck(type: 'user' | 'client', permissions: Array<PermissionNames>) {
+	public permissionCheck(type: 'user' | 'client', permissions: Array<PermissionNames>, emit: boolean = true) {
 		console.log(type);
 		const missing = [];
 		for (const permission of permissions) {
@@ -218,9 +218,7 @@ export default class MessageUtil extends Util {
 
 		const command = this.commands().find((cmd) => cmd.name == this.parsed.alias || cmd.aliases?.includes(this.parsed.alias as string));
 
-		console.log(type);
-
-		if (missing.length) {
+		if (missing.length && emit) {
 			this.client.emit(
 				`commandBlock`,
 				this.message,
@@ -234,6 +232,7 @@ export default class MessageUtil extends Util {
 			);
 
 			return false;
-		} else return true;
+		} else if (missing.length && !emit) return missing;
+		else return true;
 	}
 }
