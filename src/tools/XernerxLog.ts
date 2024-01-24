@@ -1,10 +1,17 @@
 /** @format */
 
 import { Style } from 'dumfunctions';
+import * as fs from 'fs';
+import Discord from 'discord.js';
 
 import XernerxError from './XernerxError.js';
 import XernerxClient from '../client/XernerxClient.js';
 import { XernerxClientType } from '../types/extenders.js';
+import { version } from '../main.js';
+
+const pkg = JSON.parse(fs.readFileSync('./package.json', 'utf-8'));
+
+let i = 0;
 
 export default class XernerxLog {
 	private declare readonly client;
@@ -13,6 +20,7 @@ export default class XernerxLog {
 	private declare readonly warnLog;
 	private declare readonly readyLog;
 	private declare readonly tableLog;
+	private declare readonly config;
 	private declare readonly time;
 	private declare readonly ram;
 	private declare shard;
@@ -37,24 +45,41 @@ export default class XernerxLog {
 			this.readyLog = (client.settings.log as unknown as Record<string, boolean>)?.ready;
 
 			this.tableLog = (client.settings.log as unknown as Record<string, Array<string>>)?.table;
+
+			this.config = (client.settings.log as unknown as Record<string, Array<string> | null>)?.config || ['ram', 'time'];
 		}
 
-		this.time = () => String(new Date()).split(/ +/)[4];
+		const config: Record<string, string | Function> = {
+			name: this.blue(pkg.name),
+			node: this.green(process.version),
+			xernerx: this.cyan(version),
+			discordjs: this.cyan(Discord.version),
+			platform: this.green(process.platform),
+			time: () => this.cyan(new Date().toLocaleTimeString()),
+			date: () => this.cyan(new Date().toLocaleDateString()),
+			ram: () => `${this.cyan(Math.round(process.memoryUsage().rss / 1000000))}mb`,
+			version: this.cyan(pkg.version),
+			author: this.blue(pkg.author),
+			shard: this.cyan(''),
+			index: () => {
+				i++;
+				return i;
+			},
+		};
 
-		this.ram = () => Math.round(process.memoryUsage().rss / 1000000);
-
-		this.shard = '';
+		this.config;
 
 		process.on('message', (message) => {
-			if ((message as any).type == 'xernerx') this.shard = (message as any)?.data?.sharded ? `| ${(message as any)?.data?.shardId} |` : '';
+			if ((message as any).type == 'xernerx') config.shard = (message as any)?.data?.sharded ? `| ${(message as any)?.data?.shardId} |` : '';
 		});
 
 		this.base = (type: 'info' | 'update' | 'error' | 'warn', message: string) =>
 			`${
 				type == 'info' ? `✔️  | ${this.purple('Xernerx')}` : type == `error` ? `❗ | ${this.red('Xernerx')}` : type == `update` ? `⬆️  | ${this.blue('Xernerx')}` : `⚠️  | ${this.yellow('Xernerx')}`
-			} | ${this.cyan(this.time())} | ${this.cyan(this.ram())}mb | ${
-				(this.client as XernerxClient).stats?.shardCount > 1 ? `${this.cyan((this.client as XernerxClient).stats.shardId)} | ` : ''
-			}${message}`;
+			} | ${this.config
+				?.map((c) => (typeof config[c] == 'function' ? (config[c] as Function)() : config[c]) || null)
+				.filter((x) => x)
+				.join(' | ')} | ${message}`;
 	}
 
 	public info(message: string, force: boolean = false) {

@@ -38,6 +38,7 @@ export interface XernerxOptions {
 		warn?: boolean;
 		error?: boolean;
 		table?: Array<'name' | 'aliases' | 'description' | 'filetype' | 'category'>;
+		config?: Array<'name' | 'node' | 'xernerx' | 'discordjs' | 'platform' | 'time' | 'date' | 'ram' | 'version' | 'author' | 'shard' | 'index'>;
 	};
 	cooldown?: {
 		command?: number;
