@@ -91,6 +91,22 @@ export default class CommandHandler extends Handler {
 			filetype: 'MessageCommand',
 			run: (message: XernerxMessage) => this.messageCommandRun(message, 'delete'),
 		});
+
+		this.client.on('messageReactionAdd', (message) => {
+			(message as any).util = new MessageUtil(this.client, message as unknown as XernerxMessage);
+		});
+
+		this.client.on('messageReactionRemove', (message) => {
+			(message as any).util = new MessageUtil(this.client, message as unknown as XernerxMessage);
+		});
+
+		this.client.on('messageReactionRemoveAll', (message) => {
+			(message as any).util = new MessageUtil(this.client, message as unknown as XernerxMessage);
+		});
+
+		this.client.on('messageReactionRemoveEmoji', (message) => {
+			(message as any).util = new MessageUtil(this.client, message as unknown as XernerxMessage);
+		});
 	}
 
 	// public reloadMessageCommands() {

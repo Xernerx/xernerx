@@ -205,7 +205,6 @@ export default class MessageUtil extends Util {
 	}
 
 	public permissionCheck(type: 'user' | 'client', permissions: Array<PermissionNames>, emit: boolean = true) {
-		console.log(type);
 		const missing = [];
 		for (const permission of permissions) {
 			if (type == 'user') {
