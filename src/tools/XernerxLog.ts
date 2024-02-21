@@ -20,7 +20,7 @@ export default class XernerxLog {
 	private declare readonly warnLog;
 	private declare readonly readyLog;
 	private declare readonly tableLog;
-	private declare readonly config;
+	private declare readonly format;
 	private declare readonly time;
 	private declare readonly ram;
 	private declare shard;
@@ -35,6 +35,8 @@ export default class XernerxLog {
 			this.infoLog = true;
 
 			this.warnLog = true;
+
+			this.format = ['ram', 'time'];
 		} else {
 			this.errorLog = (client.settings.log as unknown as Record<string, boolean>)?.error;
 
@@ -46,10 +48,10 @@ export default class XernerxLog {
 
 			this.tableLog = (client.settings.log as unknown as Record<string, Array<string>>)?.table;
 
-			this.config = (client.settings.log as unknown as Record<string, Array<string> | null>)?.config || ['ram', 'time'];
+			this.format = (client.settings.log as unknown as Record<string, Array<string> | null>)?.format || ['ram', 'time'];
 		}
 
-		const config: Record<string, string | Function> = {
+		const format: Record<string, string | Function> = {
 			name: this.blue(pkg.name),
 			node: this.green(process.version),
 			xernerx: this.cyan(version),
@@ -67,17 +69,15 @@ export default class XernerxLog {
 			},
 		};
 
-		this.config;
-
 		process.on('message', (message) => {
-			if ((message as any).type == 'xernerx') config.shard = (message as any)?.data?.sharded ? `| ${(message as any)?.data?.shardId} |` : '';
+			if ((message as any).type == 'xernerx') format.shard = (message as any)?.data?.sharded ? `| ${(message as any)?.data?.shardId} |` : '';
 		});
 
 		this.base = (type: 'info' | 'update' | 'error' | 'warn', message: string) =>
 			`${
 				type == 'info' ? `✔️  | ${this.purple('Xernerx')}` : type == `error` ? `❗ | ${this.red('Xernerx')}` : type == `update` ? `⬆️  | ${this.blue('Xernerx')}` : `⚠️  | ${this.yellow('Xernerx')}`
-			} | ${this.config
-				?.map((c) => (typeof config[c] == 'function' ? (config[c] as Function)() : config[c]) || null)
+			} | ${this.format
+				?.map((c) => (typeof format[c] == 'function' ? (format[c] as Function)() : format[c]) || null)
 				.filter((x) => x)
 				.join(' | ')} | ${message}`;
 	}

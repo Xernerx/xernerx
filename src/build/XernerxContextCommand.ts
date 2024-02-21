@@ -28,6 +28,7 @@ export default class XernerxContextCommand {
 	public declare readonly filepath: string;
 	public declare readonly client: XernerxClientType;
 	public declare util: InteractionUtil;
+	public declare snowflake: string | null;
 
 	public constructor(id: string, options: ContextCommandOptions) {
 		this.id = id;

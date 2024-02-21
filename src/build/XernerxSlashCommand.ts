@@ -27,6 +27,7 @@ export default class XernerxSlashCommand {
 	public declare readonly filetype: 'SlashCommand';
 	public declare readonly filepath: string;
 	public declare readonly client: XernerxClientType;
+	public declare snowflake: string | null;
 	public declare util: InteractionUtil;
 
 	public constructor(id: string, options: SlashCommandOptions) {

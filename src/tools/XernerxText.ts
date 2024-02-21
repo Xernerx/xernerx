@@ -30,6 +30,11 @@ export default class XernerxText {
 		return `<@!${member}>`;
 	}
 
+	public command(id: string, name: string) {
+		if (typeof id !== 'string') return null;
+		return `</${name}:${id}>`;
+	}
+
 	public timestamp(timestamp: number | Date = Date.now(), format: 't' | 'T' | 'd' | 'D' | 'f' | 'F' | 'R' = 'R') {
 		if (typeof timestamp == 'string') timestamp = Number(timestamp);
 		if (isNaN(timestamp as number)) return 'Invalid Date';

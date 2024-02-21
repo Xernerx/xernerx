@@ -29,6 +29,7 @@ export default class XernerxMessageCommand {
 	public declare readonly filetype: 'MessageCommand';
 	public declare readonly filepath: string;
 	public declare readonly client: XernerxClientType;
+	public declare snowflake: string | null;
 	public declare util: MessageUtil;
 
 	public constructor(id: string, options: MessageCommandOptions) {

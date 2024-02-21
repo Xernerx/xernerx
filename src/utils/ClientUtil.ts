@@ -24,7 +24,9 @@ export default class ClientUtil extends Util {
 	// @ts-ignore
 	private resolveCooldown() {}
 
-	public resolveCommand(options: ResolveCommandOptions) {
+	public async resolveCommand(options: ResolveCommandOptions) {
+		const interCommands = await this.client.application?.commands.fetch();
+
 		const commands = [],
 			collection = new Collection();
 
@@ -34,7 +36,11 @@ export default class ClientUtil extends Util {
 
 		if (options?.type == 'Interaction' || options?.type == 'ContextCommand' || !options?.type) commands.push(...this.client.commands.context);
 
-		commands.map(([name, command]) => collection.set(name, command));
+		commands.map(([name, command]) => {
+			command.snowflake = interCommands?.find((cmd) => command.name === cmd.name)?.id || null;
+
+			collection.set(name, command);
+		});
 
 		if (options?.name) {
 			return (collection.get(options.name) as XernerxMessageCommand | XernerxSlashCommand | XernerxContextCommand) || null;
