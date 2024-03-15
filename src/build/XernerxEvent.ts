@@ -3,20 +3,21 @@
 import { z } from 'zod';
 
 import { XernerxEventOptions } from '../types/interfaces.js';
-import { XernerxEventType } from '../types/types.js';
-import { XernerxClientType } from '../types/extenders.js';
+
+import { XernerxClientEvents, XernerxClientType } from '../types/extenders.js';
 import XernerxLog from '../tools/XernerxLog.js';
+import { Awaitable, RestEvents } from 'discord.js';
 
 /**
  * @description - The event builder for  events.
  * @param {String} id - The unique ID of the event.
  * @param {EventOptions} options - The event options.
  */
-export default class XernerxEvent {
+export default class XernerxEvent<Event extends keyof XernerxClientEvents> {
 	public declare readonly id: string;
-	public declare readonly name: XernerxEventType | string;
-	public declare readonly emitter?: 'client' | 'process' | string;
-	public declare readonly type?: 'discord' | string;
+	public declare readonly name: Event | keyof RestEvents | string;
+	public declare readonly emitter?: 'client' | 'process' | 'rest' | string;
+	public declare readonly type?: 'discord' | 'node' | string;
 	public declare readonly once?: boolean;
 	public declare readonly filetype: 'Event';
 	public declare readonly filepath: string;
@@ -42,11 +43,8 @@ export default class XernerxEvent {
 
 		this.client = this.client;
 	}
-	/**
-	 * @description run your custom event here.
-	 * @param any - there can be all kinds of parameters on events.
-	 */
-	public async run(...args: any): Promise<any> {
+
+	public async run(...args: XernerxClientEvents[Event]): Promise<Awaitable<any>> {
 		return new XernerxLog(this.client).error(`${this.id} doesn't have a run rule.`);
 	}
 }

@@ -9,6 +9,7 @@ import MessageCommandBuilder from '../build/XernerxMessageCommand.js';
 import XernerxSlashCommand from '../build/XernerxSlashCommand.js';
 import XernerxContextCommand from '../build/XernerxContextCommand.js';
 import { filetype } from '../types/types.js';
+import { RestEvents, XernerxClientEvents, XernerxEvent, XernerxInhibitor } from '../main.js';
 
 export default class Handler {
 	public readonly client;
@@ -37,24 +38,30 @@ export default class Handler {
 		return file;
 	}
 
-	public async emit<T extends Record<string, string | boolean | Function | void>>(event: T) {
-		if (!event?.filetype) return;
+	/**
+	 * Emits a file that has been loaded into the handler.
+	 * @param file - The file to emit.
+	 */
+	public async emit<File extends { name: string; filetype: 'MessageCommand' | 'SlashCommand' | 'ContextCommand'; run: Function } | XernerxInhibitor | XernerxEvent<keyof XernerxClientEvents>>(
+		file: File
+	): Promise<void> {
+		if (!file?.filetype) return;
 
-		if (event.filetype === 'Event') {
-			if (event.emitter === 'client')
-				event.once
-					? this.client.once(event.name as string, <T extends Array<T>>(...args: T) => (event.run as Function)(...args))
-					: this.client.on(event.name as string, <T extends Array<T>>(...args: T) => (event.run as Function)(...args));
-			else if (event.emitter === 'process')
-				event.once
-					? process.once(event.name as string, <T extends Array<T>>(...args: T) => (event.run as Function)(...args))
-					: process.on(event.name as string, <T extends Array<T>>(...args: T) => (event.run as Function)(...args));
-		}
+		if (file.filetype === 'Inhibitor') return;
 
-		if (['MessageCommand', 'SlashCommand', 'ContextCommand'].includes(event.filetype as string)) {
-			event.once
-				? this.client.once(event.name as string, <T extends Array<T>>(...args: T) => (event.run as Function)(...args))
-				: this.client.on(event.name as string, <T extends Array<T>>(...args: T) => (event.run as Function)(...args));
+		if (file.filetype === 'Event' && file.emitter) {
+			if (file.emitter === 'client') {
+				this.client[file.once ? 'once' : 'on'](file.name, <T extends keyof XernerxClientEvents>(...args: XernerxClientEvents[T][]) => file.run(...(args as XernerxClientEvents[T])));
+			} else if (file.emitter === 'process') {
+				process[file.once ? 'once' : 'on'](file.name, (...args) => file.run(...(args as never)));
+			} else if (file.emitter === 'rest') {
+				this.client.rest[file.once ? 'once' : 'on'](file.name as keyof RestEvents, (...args) => file.run(...(args as never)));
+			} else {
+				// @ts-expect-error
+				this.client[file.emitter as string][file.once ? 'once' : 'on'](file.name, (...args) => file.run(...(args as never)));
+			}
+		} else {
+			this.client.on(file.name, (...args) => file.run(...(args as never)));
 		}
 	}
 }

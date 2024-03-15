@@ -9,6 +9,7 @@ import InhibitorHandler from '../handlers/InhibitorHandler.js';
 import IntegrationHandler from '../handlers/IntegrationHandler.js';
 import XernerxLog from '../tools/XernerxLog.js';
 import { XernerxOptions, ModuleOptions, XernerxCommands, XernerxCache } from '../types/interfaces.js';
+import { XernerxClientEvents } from '../types/extenders.js';
 import ClientUtil from '../utils/ClientUtil.js';
 import XernerxInhibitor from '../build/XernerxInhibitor.js';
 import XernerxEvent from '../build/XernerxEvent.js';
@@ -20,7 +21,7 @@ export default class XernerxClient extends Client {
 	public declare readonly settings;
 	public declare readonly config;
 	public declare readonly commands: XernerxCommands;
-	public declare readonly events: Collection<string, XernerxEvent>;
+	public declare readonly events: Collection<string, XernerxEvent<keyof XernerxClientEvents>>;
 	public declare readonly inhibitors: Collection<string, XernerxInhibitor>;
 	public declare readonly modules: ModuleOptions;
 	public declare readonly util: ClientUtil;
@@ -116,8 +117,6 @@ export default class XernerxClient extends Client {
 			integrationHandler: new IntegrationHandler(this),
 			extensionHandler: new ExtensionHandler(this),
 		} as const;
-
-		return this;
 	}
 
 	public async connect(token: string) {

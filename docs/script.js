@@ -69,17 +69,43 @@ title.innerHTML = `Xernerx v${version}`;
 
                     <p>${subcategory.description}</p>
 
-					${subcategory.parameters ? `<div><h4>Parameters</h4><div>${subcategory.parameters.map((param) => `<p>${param.name}</p>`).join('')}</div></div>` : ''}
+					${
+						subcategory.parameters
+							? `<div><h4>Parameters</h4>
+							<div>${subcategory.parameters
+								.map(
+									(param) =>
+										`<details><summary>${param.name}</summary>${param.description ? `<p>${param.description}</p>` : ''}${
+											param.options ? toTable(param.options, ['name', 'required', 'type', 'default', 'description']) : ''
+										}</details>`
+								)
+								.join('')}</div></div>`
+							: ''
+					}
 
                     <div class="flex">
-                        ${subcategory.properties ? `<div class="attach"><h4>Properties</h4>${subcategory.properties.map((prop) => `<li>${prop.name}</li>`).join('')}</div>` : ''}
-                        ${subcategory.methods ? `<div class="attach"><h4>Methods</h4>${subcategory.methods.map((prop) => `<li>${prop.name}</li>`).join('')}</div>` : ''}
-                        ${subcategory.events ? `<div class="attach"><h4>Events</h4>${subcategory.events.map((prop) => `<li>${prop.name}</li>`).join('')}</div>` : ''}
+                        ${
+													subcategory.properties
+														? `<div class="attach"><h4>Properties</h4>${subcategory.properties.map((prop) => `<details><summary>${prop.name}</summary></details>`).join('')}</div>`
+														: ''
+												}
+                        ${subcategory.methods ? `<div class="attach"><h4>Methods</h4>${subcategory.methods.map((prop) => `<details><summary>${prop.name}</summary></details>`).join('')}</div>` : ''}
+                        ${subcategory.events ? `<div class="attach"><h4>Events</h4>${subcategory.events.map((prop) => `<details><summary>${prop.name}</summary></details>`).join('')}</div>` : ''}
                     </div>
+
+					<div class="space">
+						${subcategory.options ? `<details><summary>Options</summary>` : ''}
+						${subcategory.options ? `${toTable(subcategory.options, ['name', 'required', 'type', 'default', 'description'])}</details>` : ''}
+						
+					</div>
 
                     ${
 											subcategory.example
-												? `<h4>Example code</h4><code class="language-javascript"><pre>${Prism.highlight(subcategory.example, Prism.languages.javascript, 'javascript')}</pre></code>`
+												? `<details><summary>Example code</summary><code class="language-javascript"><pre>${Prism.highlight(
+														subcategory.example,
+														Prism.languages.javascript,
+														'javascript'
+												  )}</pre></code></details>`
 												: ''
 										}
                 </div>
@@ -87,3 +113,10 @@ title.innerHTML = `Xernerx v${version}`;
 		}
 	}
 })();
+
+function toTable(options, header) {
+	options = `${options?.map((d) => `<tr>${header.map((h) => `<td>${d[h]}</td>`).join('')}</tr>`).join('')}`;
+	header = `<tr>${header.map((h) => `<th>${h}<th>`).join('')}</tr>`;
+
+	return `<table>${header}${options}</table>`;
+}

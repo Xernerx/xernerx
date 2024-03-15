@@ -11,6 +11,7 @@ import {
 	MessageContextMenuCommandInteraction,
 	User,
 	UserContextMenuCommandInteraction,
+	ClientEvents,
 } from 'discord.js';
 
 import InteractionUtil from '../utils/InteractionUtil.js';
@@ -20,6 +21,8 @@ import XernerxEvent from '../build/XernerxEvent.js';
 import XernerxInhibitor from '../build/XernerxInhibitor.js';
 import XernerxClient from '../client/XernerxClient.js';
 import ClientUtil from '../utils/ClientUtil.js';
+import { XernerxContextCommand, XernerxMessageCommand, XernerxSlashCommand } from '../main.js';
+import XernerxError from '../tools/XernerxError.js';
 
 export interface XernerxUser extends User {
 	owner: boolean;
@@ -61,7 +64,7 @@ export interface XernerxMessageContextInteraction extends MessageContextMenuComm
 export interface XernerxClientType extends XernerxClient {
 	commands: XernerxCommands;
 
-	events: Collection<string, XernerxEvent>;
+	events: Collection<string, XernerxEvent<keyof XernerxClientEvents>>;
 
 	inhibitors: Collection<string, XernerxInhibitor>;
 
@@ -85,4 +88,19 @@ export interface XernerxClientType extends XernerxClient {
 	cache: XernerxCache;
 
 	connect: () => Promise<string>;
+}
+
+interface CommandBlockInfo {
+	reason: string;
+	message: string;
+	required: Array<string> | string;
+	missing: Array<string> | string;
+}
+
+export interface XernerxClientEvents extends ClientEvents {
+	commandBlock: [event: XernerxMessage | XernerxSlashInteraction, info: CommandBlockInfo, command: XernerxSlashCommand | XernerxMessageCommand | XernerxContextCommand];
+	commandError: [event: XernerxMessage | XernerxSlashInteraction, error: XernerxError, command: XernerxSlashCommand | XernerxMessageCommand | XernerxContextCommand];
+	commandStart: [event: XernerxMessage | XernerxSlashInteraction, command: XernerxSlashCommand | XernerxMessageCommand | XernerxContextCommand];
+	commandFinish: [event: XernerxMessage | XernerxSlashInteraction, command: XernerxSlashCommand | XernerxMessageCommand | XernerxContextCommand];
+	commandNotFound: [event: XernerxMessage | XernerxSlashInteraction, commandName: string, filetype: 'MessageCommand' | 'SlashCommand' | 'ContextCommand'];
 }

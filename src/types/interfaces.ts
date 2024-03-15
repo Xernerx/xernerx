@@ -9,9 +9,9 @@ import IntegrationHandler from '../handlers/IntegrationHandler.js';
 import XernerxContextCommand from '../build/XernerxContextCommand.js';
 import MessageCommandBuilder from '../build/XernerxMessageCommand.js';
 import XernerxSlashCommand from '../build/XernerxSlashCommand.js';
-import { Locales, MessageCommandArgumentType, PermissionNames, SlashCommandArgumentType, XernerxEventType, InhibitorType } from './types.js';
+import { Locales, MessageCommandArgumentType, PermissionNames, SlashCommandArgumentType, InhibitorType } from './types.js';
 import ExtensionHandler from '../handlers/ExtensionHandler.js';
-import { XernerxMessage, XernerxUser } from './extenders.js';
+import { XernerxClientEvents, XernerxMessage, XernerxUser } from './extenders.js';
 
 export interface XernerxOptions {
 	local: string;
@@ -248,7 +248,7 @@ export interface SlashCommandArguments<T = SlashCommandArgumentType> {
 }
 
 export interface XernerxEventOptions {
-	name: XernerxEventType;
+	name: keyof XernerxClientEvents;
 	emitter?: 'client' | 'process';
 	type?: 'discord' | 'node';
 	once?: boolean;

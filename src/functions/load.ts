@@ -8,6 +8,7 @@ import XernerxEvent from '../build/XernerxEvent.js';
 import XernerxClient from '../client/XernerxClient.js';
 import { filetype } from '../types/types.js';
 import XernerxLog from '../tools/XernerxLog.js';
+import { XernerxClientEvents } from '../main.js';
 
 export default async function load(client: XernerxClient, path: string, type: filetype) {
 	try {
@@ -29,7 +30,7 @@ export default async function load(client: XernerxClient, path: string, type: fi
 	}
 }
 
-function fileSave(client: XernerxClient, file: MessageCommandBuilder | XernerxSlashCommand | XernerxContextCommand | XernerxEvent | XernerxInhibitor, type: filetype) {
+function fileSave(client: XernerxClient, file: MessageCommandBuilder | XernerxSlashCommand | XernerxContextCommand | XernerxEvent<keyof XernerxClientEvents> | XernerxInhibitor, type: filetype) {
 	switch (type) {
 		case 'MessageCommand':
 			client.commands.message.set(file.name, file as MessageCommandBuilder);
@@ -44,7 +45,7 @@ function fileSave(client: XernerxClient, file: MessageCommandBuilder | XernerxSl
 			client.inhibitors.set(file.name, file as XernerxInhibitor);
 			break;
 		case 'Event':
-			client.events.set(file.name, file as XernerxEvent);
+			client.events.set(file.name, file as XernerxEvent<keyof XernerxClientEvents>);
 			break;
 	}
 }

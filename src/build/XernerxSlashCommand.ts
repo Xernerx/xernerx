@@ -64,6 +64,7 @@ export default class XernerxSlashCommand {
 				usage: z.string().or(z.null()).default(null),
 				info: z.string().or(z.null()).default(null),
 				category: z.string().or(z.null()).default(null),
+				cooldown: z.number().or(z.null()).default(null),
 				number: z.number().or(z.null()).default(null),
 				global: z.boolean().default(true),
 				channel: z
@@ -206,7 +207,7 @@ export default class XernerxSlashCommand {
 	): Promise<void | any | T> {
 		new XernerxLog(this.client).error(`${this.id} doesn't have an execution rule.`);
 
-		return await this.client.emit('commandError', interaction, `${this.id} doesn't have an execution rule.`, this, this.filetype);
+		return await this.client.emit('commandError', interaction, `${this.id} doesn't have an execution rule.`, this);
 	}
 
 	private addArguments(command: Discord.SlashCommandBuilder | SlashCommandSubcommandBuilder, args: Array<SlashCommandArgumentOptions>) {

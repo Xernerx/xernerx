@@ -8,6 +8,7 @@
 :root {
 	--message-hover: #2e3035;
 	--embed-background: #2b2d31;
+	--xernerx-purple: #8879f0;
 }
 
 body {
@@ -378,7 +379,7 @@ img {
 }
 
 .embed {
-	border-left: #8879f0 solid 3px;
+	border-left: var(--xernerx-purple) solid 3px;
 	border-radius: 0.35rem;
 	background-color: var(--embed-background);
 	padding: 15px;
@@ -423,6 +424,34 @@ h4:hover {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+}
+
+table {
+	z-index: 2;
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+	border-radius: 12px 12px 0 0;
+	overflow: hidden;
+	box-shadow: 0 2px 12px rgba(32 0.3);
+	background-color: var(--message-hover);
+	text-align: left;
+}
+
+th,
+td {
+	padding: 12px 15px;
+}
+
+th {
+	background: var(--xernerx-purple);
+	color: #fafafa;
+	text-transform: uppercase;
+}
+
+.space {
+	padding-top: 2vh;
+	padding-bottom: 2vh;
 }
 
 @media (max-width: 840px) {

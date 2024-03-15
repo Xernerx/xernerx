@@ -381,7 +381,7 @@ export default class CommandHandler extends Handler {
 
 				return await this.exec(cmd as XernerxSlashCommand, interaction, args, filetype);
 			})
-			.catch((error) => this.client.emit('commandError', interaction, error, cmd, filetype));
+			.catch((error) => this.client.emit('commandError', interaction, error, cmd));
 	}
 
 	private async contextCommandRun(interaction: XernerxUserContextInteraction | XernerxMessageContextInteraction) {
@@ -446,7 +446,7 @@ export default class CommandHandler extends Handler {
 		} catch (error) {
 			new XernerxLog(this.client).error(`An error occurred executing ${Style.log(cmd.name, { color: Style.TextColor.Blue })}`, error);
 
-			return await this.client.emit('commandError', event, error, cmd, type);
+			return await this.client.emit('commandError', event, error, cmd);
 		}
 	}
 

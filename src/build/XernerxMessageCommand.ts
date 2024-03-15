@@ -171,6 +171,6 @@ export default class XernerxMessageCommand {
 	public async exec(message: XernerxMessage, { args, flags }: MessageCommandArguments): Promise<any> {
 		new XernerxLog(this.client).error(`${this.id} doesn't have an execution rule.`);
 
-		return await this.client.emit('commandError', message, `${this.id} doesn't have an execution rule.`, this, this.filetype);
+		return await this.client.emit('commandError', message, `${this.id} doesn't have an execution rule.`, this);
 	}
 }

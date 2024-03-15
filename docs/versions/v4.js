@@ -5,7 +5,25 @@ export default {
 		{
 			name: 'XernerxMessageCommand',
 			description: `The builder used to render message commands.`,
-			options: [],
+			options: [
+				{ name: 'name', description: 'The name of the command', required: true, type: 'String', default: 'null' },
+				{ name: 'aliases', description: 'An array of aliases', required: false, type: 'Array<string>', default: '[]' },
+				{ name: 'description', description: 'The short description of the command', required: false, type: 'String', default: 'null' },
+				{ name: 'usage', description: 'A string of the command use (example)', required: false, type: 'String', default: 'null' },
+				{ name: 'separator', description: 'The string used to split message arguments', required: false, type: 'String', default: "' '" },
+				{ name: 'info', description: 'The long descriptiopn of the command', required: false, type: 'String', default: 'null' },
+				{ name: 'category', description: 'The category of the command', required: false, type: 'String', default: 'null' },
+				{ name: 'cooldown', description: 'The cooldown that is set between running this command again', required: false, type: 'Number', default: 'null' },
+				{ name: 'global', description: 'Whether this command should be deployed globally or not (only overwrites when bot is set to global)', required: false, type: 'Boolean', default: 'true' },
+				{ name: 'channel', description: 'An array of channel types to exclusively work in', required: false, type: 'Array<string | ChannelType>', default: 'null' },
+				{ name: 'prefix', description: 'An a string or array of prefixes', required: false, type: 'Array<string> | String', default: '[]' },
+				{ name: 'ignore', description: 'The settings to ignore validations of the client', required: false, type: 'Object', default: '{}' },
+				{ name: 'strict', description: 'The settings to strictly follow validations of the client', required: false, type: 'Object', default: '{}' },
+				{ name: 'permissions', description: 'The client, user and dm permission settings', required: false, type: 'Object', default: '{}' },
+				{ name: 'regex', description: 'A regex string to use as command trigger (from root, no prefix)', required: false, type: 'RegExp', default: 'null' },
+				{ name: 'args', description: 'An array of arguement builders', required: false, type: 'Array<Object>', default: 'null' },
+				{ name: 'flags', description: 'An array of flag builders', required: false, type: 'Array<Object>', default: 'null' },
+			],
 			methods: [
 				{
 					name: 'conditions',
@@ -63,7 +81,26 @@ export default class PingCommand extends XernerxMessageCommand {
 		{
 			name: 'XernerxSlashCommand',
 			description: `The builder used to render slash commands.`,
-			options: [],
+			options: [
+				{ name: 'name', description: 'The name of the command', required: true, type: 'String', default: 'null' },
+				{ name: 'description', description: 'The short description of the command', required: false, type: 'String', default: 'null' },
+				{ name: 'usage', description: 'A string of the command use (example)', required: false, type: 'String', default: 'null' },
+				{ name: 'separator', description: 'The string used to split message arguments', required: false, type: 'String', default: "' '" },
+				{ name: 'info', description: 'The long descriptiopn of the command', required: false, type: 'String', default: 'null' },
+				{ name: 'category', description: 'The category of the command', required: false, type: 'String', default: 'null' },
+				{ name: 'number', description: 'I have no idea what this but I did put it in', required: false, type: 'Number', default: 'null' },
+				{ name: 'cooldown', description: 'The cooldown that is set between running this command again', required: false, type: 'Number', default: 'null' },
+				{ name: 'global', description: 'Whether this command should be deployed globally or not (only overwrites when bot is set to global)', required: false, type: 'Boolean', default: 'true' },
+				{ name: 'channel', description: 'An array of channel types to exclusively work in', required: false, type: 'Array<string | ChannelType>', default: 'null' },
+				{ name: 'prefix', description: 'An a string or array of prefixes', required: false, type: 'Array<string> | String', default: '[]' },
+				{ name: 'ignore', description: 'The settings to ignore validations of the client', required: false, type: 'Object', default: '{}' },
+				{ name: 'strict', description: 'The settings to strictly follow validations of the client', required: false, type: 'Object', default: '{}' },
+				{ name: 'permissions', description: 'The client, user and dm permission settings', required: false, type: 'Object', default: '{}' },
+				{ name: 'defer', description: 'Settings to set reply, ephemeral and fetchReply', required: false, type: 'Object', default: 'null' },
+				{ name: 'args', description: 'An array of arguement builders', required: false, type: 'Array<Object>', default: '{}' },
+				{ name: 'subcommands', description: 'An array of subcommand builders', required: false, type: 'Array<Object>', default: 'null' },
+				{ name: 'groups', description: 'An array of group builders', required: false, type: 'Array<Object>', default: 'null' },
+			],
 			methods: [
 				{
 					name: 'conditions',
@@ -336,9 +373,22 @@ export default class YourExtensionName extends XernerxExtensionBuilder {
 			parameters: [
 				{
 					name: 'DiscordOptions',
+					description: 'Go to the discord.js docs to find these options!',
 				},
-				{ name: 'XernerxOptions' },
-				{ name: 'config' },
+				{
+					name: 'XernerxOptions',
+					options: [
+						{ name: 'local', description: 'The local guild ID that is used for development', required: true, type: 'String', default: 'null' },
+						{ name: 'global', description: 'Whether the bot should deploy globally or locally', required: false, type: 'Boolean', default: 'false' },
+						{ name: 'ownerId', description: 'A string or array of user IDs that are considered owner of the bot', required: false, type: 'Array<String> | String', default: '[]' },
+						{ name: 'ceaseless', description: 'Whether the client should handle all uncaught errors', required: false, type: 'Boolean', default: 'false' },
+						{ name: 'log', description: 'Whether to use internal logging and if so what type of logging and the format', required: false, type: 'Boolean | Object', default: 'null' },
+						{ name: 'cooldown', description: 'The global cooldown settings', required: false, type: 'Object', default: 'undefined' },
+						{ name: 'ignore', description: 'The global settings to ignore validations of the client', required: false, type: 'Object', default: '{}' },
+						{ name: 'permissions', description: 'The global client, user and dm permission settings', required: false, type: 'Object', default: '{}' },
+					],
+				},
+				{ name: 'config', description: 'Any kind of thing you want to attach to the bot can be done in here, usually an object will get passed but it can be literally anything.' },
 			],
 			example: `import XernerxClient from 'xernerx'
 
