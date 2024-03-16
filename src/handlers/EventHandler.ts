@@ -29,7 +29,7 @@ export default class EventHandler extends Handler {
 
 		this.client.modules.options.events = options;
 
-		const files = this.readdir(options.directory);
+		const files = this.readdir(options.directory, 'Events');
 
 		for (const file of files) {
 			const filepath = `${path.resolve(options.directory)}\\${file}`;

@@ -29,7 +29,7 @@ export default class InhibitorHandler extends Handler {
 
 		this.client.modules.options.inhibitors = options;
 
-		const files = this.readdir(options.directory);
+		const files = this.readdir(options.directory, 'Inhibitors');
 
 		for (const file of files) {
 			const filepath = `${path.resolve(options.directory)}\\${file}`;

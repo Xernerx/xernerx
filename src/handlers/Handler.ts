@@ -9,7 +9,8 @@ import MessageCommandBuilder from '../build/XernerxMessageCommand.js';
 import XernerxSlashCommand from '../build/XernerxSlashCommand.js';
 import XernerxContextCommand from '../build/XernerxContextCommand.js';
 import { filetype } from '../types/types.js';
-import { RestEvents, XernerxClientEvents, XernerxEvent, XernerxInhibitor } from '../main.js';
+import { RestEvents, Style, XernerxClientEvents, XernerxEvent, XernerxInhibitor } from '../main.js';
+import XernerxLog from '../tools/XernerxLog.js';
 
 export default class Handler {
 	public readonly client;
@@ -21,11 +22,11 @@ export default class Handler {
 		this.files = [];
 	}
 
-	public readdir(dir: string) {
+	public readdir(dir: string, type: string) {
 		try {
 			return fs.readdirSync(path.resolve(dir)).filter((file) => file.endsWith('.js'));
 		} catch (error) {
-			console.error(error);
+			new XernerxLog(this.client).error(`Cannot load ${type.toLowerCase()}, there is no such directory ${Style.log(dir, { color: Style.BackgroundColor.Grey })}.`);
 		}
 		return [];
 	}

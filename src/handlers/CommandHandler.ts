@@ -58,7 +58,7 @@ export default class CommandHandler extends Handler {
 
 		this.client.modules.options.message = options;
 
-		const files = this.readdir(options.directory);
+		const files = this.readdir(options.directory, 'MessageCommands');
 
 		for (const file of files) {
 			const filepath = `${path.resolve(options.directory)}\\${file}`;
@@ -142,7 +142,7 @@ export default class CommandHandler extends Handler {
 
 		this.client.modules.options.slash = options;
 
-		const files = this.readdir(options.directory);
+		const files = this.readdir(options.directory, 'SlashCommands');
 
 		for (const file of files) {
 			const filepath = `${path.resolve(options.directory)}\\${file}`;
@@ -192,7 +192,7 @@ export default class CommandHandler extends Handler {
 
 		this.client.modules.options.context = options;
 
-		const files = this.readdir(options.directory);
+		const files = this.readdir(options.directory, 'ContextCommands');
 
 		for (const file of files) {
 			const filepath = `${path.resolve(options.directory)}\\${file}`;
