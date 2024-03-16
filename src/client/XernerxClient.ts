@@ -17,9 +17,9 @@ import ExtensionHandler from '../handlers/ExtensionHandler.js';
 import deploy from '../functions/deploy.js';
 import Cooldowns from '../models/Cooldowns.js';
 
-export default class XernerxClient extends Client {
+export default class XernerxClient<T = unknown> extends Client {
 	public declare readonly settings;
-	public declare readonly config;
+	public declare readonly config: T;
 	public declare readonly commands: XernerxCommands;
 	public declare readonly events: Collection<string, XernerxEvent<keyof XernerxClientEvents>>;
 	public declare readonly inhibitors: Collection<string, XernerxInhibitor>;
@@ -30,7 +30,7 @@ export default class XernerxClient extends Client {
 	public declare readonly cooldowns: Cooldowns;
 	public declare readonly dbl: any;
 
-	public constructor(discordOptions: ClientOptions, xernerxOptions: XernerxOptions, config?: unknown) {
+	public constructor(discordOptions: ClientOptions, xernerxOptions: XernerxOptions, config?: T) {
 		super(discordOptions);
 
 		this.settings = z
@@ -78,7 +78,7 @@ export default class XernerxClient extends Client {
 			})
 			.parse(xernerxOptions);
 
-		this.config = config || null;
+		this.config = config as T;
 
 		this.commands = {
 			message: new Collection(),
