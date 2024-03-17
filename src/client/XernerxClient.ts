@@ -29,6 +29,7 @@ export default class XernerxClient<T = unknown> extends Client {
 	public declare readonly cache: XernerxCache;
 	public declare readonly cooldowns: Cooldowns;
 	public declare readonly dbl: any;
+	readonly [index: string]: unknown;
 
 	public constructor(discordOptions: ClientOptions, xernerxOptions: XernerxOptions, config?: T) {
 		super(discordOptions);

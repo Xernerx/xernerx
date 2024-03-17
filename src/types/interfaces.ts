@@ -262,7 +262,7 @@ export interface XernerxInhibitorOptions {
 export interface PresenceOptions {
 	text: string;
 	type?: keyof typeof ActivityType;
-	url: string;
+	url?: string;
 	status?: PresenceStatusData;
 	interval?: number;
 }
