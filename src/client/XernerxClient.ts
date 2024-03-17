@@ -64,7 +64,7 @@ export default class XernerxClient<T = unknown> extends Client {
 						warn: z.boolean().default(false),
 						error: z.boolean().default(false),
 						table: z.array(z.string()).or(z.null()).default(null),
-						config: z.array(z.string()).or(z.null()).default(null),
+						format: z.array(z.string()).or(z.null()).default(null),
 					})
 					.or(z.boolean())
 					.optional(),
@@ -120,7 +120,7 @@ export default class XernerxClient<T = unknown> extends Client {
 	}
 
 	public async connect(token: string) {
-		const login = this.login(token);
+		const login = this.login(token); // TODO add thing to catch and have better error message
 
 		deploy(this);
 

@@ -107,7 +107,7 @@ export default class XernerxLog {
 	}
 
 	public error(message: string, error?: XernerxError | unknown) {
-		return this.errorLog ? console.error(this.base('error', message), error) : null;
+		return this.errorLog ? console.error(this.base('error', message), error || '') : null;
 	}
 
 	public ready() {

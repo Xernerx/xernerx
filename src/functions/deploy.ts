@@ -35,14 +35,14 @@ export default function deploy(client: XernerxClient) {
 
 		client.commands.slash.map((command: XernerxSlashCommand) => commands.push(command));
 		client.commands.context.map((command: XernerxContextCommand) => commands.push(command));
-		client.commands.slash.map((command: XernerxMessageCommand) => commands.push(command));
+		client.commands.message.map((command: XernerxMessageCommand) => commands.push(command));
 
 		if (client.commands.slash.size)
 			client.commands.slash.map((command: XernerxSlashCommand | XernerxContextCommand) => (command.global ? globalCommands.push(command.data.toJSON()) : localCommands.push(command.data.toJSON())));
 		if (client.commands.context.size)
 			client.commands.context.map((command: XernerxSlashCommand | XernerxContextCommand) => (command.global ? globalCommands.push(command.data.toJSON()) : localCommands.push(command.data.toJSON())));
 
-		if (globalCommands.length <= 0 && localCommands.length <= 0) return;
+		if (!globalCommands.length && !localCommands.length && !client.commands.message.size) return;
 
 		try {
 			if (client.settings.global) {
