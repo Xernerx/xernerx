@@ -1,57 +1,27 @@
 /** @format */
-
 import { Style } from 'dumfunctions';
 import * as fs from 'fs';
 import Discord from 'discord.js';
-
-import XernerxError from './XernerxError.js';
-import XernerxClient from '../client/XernerxClient.js';
-import { XernerxClientType } from '../types/extenders.js';
 import { version } from '../main.js';
-
 const pkg = JSON.parse(fs.readFileSync('./package.json', 'utf-8'));
-
 let i = 0;
-
 export default class XernerxLog {
-	private declare readonly client;
-	private declare readonly errorLog;
-	private declare readonly infoLog;
-	private declare readonly warnLog;
-	private declare readonly readyLog;
-	private declare readonly tableLog;
-	private declare readonly format;
-	private declare readonly time;
-	private declare readonly ram;
-	private declare shard;
-	private declare readonly base;
-
-	constructor(client: XernerxClient | XernerxClientType | true) {
+	constructor(client) {
 		this.client = client;
-
 		if (client == true || (typeof client.settings.log == 'boolean' && client.settings.log)) {
 			this.errorLog = true;
-
 			this.infoLog = true;
-
 			this.warnLog = true;
-
 			this.format = ['ram', 'time'];
 		} else {
-			this.errorLog = (client.settings.log as unknown as Record<string, boolean>)?.error;
-
-			this.infoLog = (client.settings.log as unknown as Record<string, boolean>)?.info;
-
-			this.warnLog = (client.settings.log as unknown as Record<string, boolean>)?.warn;
-
-			this.readyLog = (client.settings.log as unknown as Record<string, boolean>)?.ready;
-
-			this.tableLog = (client.settings.log as unknown as Record<string, Array<string>>)?.table;
-
-			this.format = (client.settings.log as unknown as Record<string, Array<string> | null>)?.format || ['ram', 'time'];
+			this.errorLog = client.settings.log?.error;
+			this.infoLog = client.settings.log?.info;
+			this.warnLog = client.settings.log?.warn;
+			this.readyLog = client.settings.log?.ready;
+			this.tableLog = client.settings.log?.table;
+			this.format = client.settings.log?.format || ['ram', 'time'];
 		}
-
-		const format: Record<string, string | Function> = {
+		const format = {
 			name: this.blue(pkg.name),
 			node: this.green(process.version),
 			xernerx: this.cyan(version),
@@ -68,34 +38,28 @@ export default class XernerxLog {
 				return i;
 			},
 		};
-
 		process.on('message', (message) => {
-			if ((message as any).type == 'xernerx') format.shard = (message as any)?.data?.sharded ? `| ${(message as any)?.data?.shardId} |` : '';
+			if (message.type == 'xernerx') format.shard = message?.data?.sharded ? `| ${message?.data?.shardId} |` : '';
 		});
-
-		this.base = (type: 'info' | 'update' | 'error' | 'warn', message: string) =>
+		this.base = (type, message) =>
 			`${
 				type == 'info' ? `✔️  | ${this.purple('Xernerx')}` : type == `error` ? `❗ | ${this.red('Xernerx')}` : type == `update` ? `⬆️  | ${this.blue('Xernerx')}` : `⚠️  | ${this.yellow('Xernerx')}`
 			} | ${this.format
-				?.map((c) => (typeof format[c] == 'function' ? (format[c] as Function)() : format[c]) || null)
+				?.map((c) => (typeof format[c] == 'function' ? format[c]() : format[c]) || null)
 				.filter((x) => x)
 				.join(' | ')} | ${message}`;
 	}
-
-	public info(message: string, force: boolean = false) {
+	info(message, force = false) {
 		return this.infoLog || force ? console.info(this.base('info', message)) : null;
 	}
-
-	public warn(message: string) {
+	warn(message) {
 		return this.warnLog ? console.warn(this.base('warn', message)) : null;
 	}
-
-	public async update(version: string, url: string) {
+	async update(version, url) {
 		try {
-			const pkg: any = await fetch(url)
+			const pkg = await fetch(url)
 				.then(async (res) => await res.json())
 				.catch(() => ({ version }));
-
 			if (version !== pkg.version)
 				console.info(
 					this.base(
@@ -109,79 +73,62 @@ export default class XernerxLog {
 			console.warn(this.base('error', `An error occured while trying to check for a new version for ${pkg.name}, please try again later.`));
 		}
 	}
-
-	public error(message: string, error?: XernerxError | unknown) {
+	error(message, error) {
 		return this.errorLog ? console.error(this.base('error', message), error || '') : null;
 	}
-
-	public ready() {
+	ready() {
 		if (typeof this.client == 'boolean') return;
-
-		const client = this.client as XernerxClient;
-
+		const client = this.client;
 		// @ts-ignore
-		this.client.prependOnceListener('ready', async (synced: any) => {
+		this.client.prependOnceListener('ready', async (synced) => {
 			this.info(
 				`${Style.log(synced.user.tag, { color: Style.TextColor.Blue })} is now ${this.green('online')}, watching ${this.cyan(String(client.guilds.cache.size))} guild${
 					client.guilds.cache.size > 1 ? 's' : ''
 				}, using ${client.settings.local ? this.blue((await client.guilds.fetch(client.settings.local))?.name) : 'none'} as local guild.`,
 				this.readyLog
 			);
-
-			const files: Array<object> = [];
-
+			const files = [];
 			for (const [id, data] of client.commands.message) {
 				files.push(data);
 				id;
 			}
-
 			for (const [id, data] of client.commands.slash) {
 				files.push(data);
 				id;
 			}
-
 			for (const [id, data] of client.commands.context) {
 				files.push(data);
 				id;
 			}
-
 			for (const [id, data] of client.events) {
 				files.push(data);
 				id;
 			}
-
 			for (const [id, data] of client.inhibitors) {
 				files.push(data);
 				id;
 			}
-
 			if (this.tableLog) {
 				console.table(files, this.tableLog);
 			}
 		});
 	}
-
-	private cyan(string: string | number) {
+	cyan(string) {
 		return Style.log(String(string), { color: Style.TextColor.Cyan });
 	}
-
-	private blue(string: string | number) {
+	blue(string) {
 		return Style.log(String(string), { color: Style.TextColor.Blue });
 	}
-
-	private yellow(string: string | number) {
+	yellow(string) {
 		return Style.log(String(string), { color: Style.TextColor.Yellow });
 	}
-
-	private purple(string: string | number) {
+	purple(string) {
 		return Style.log(String(string), { color: Style.TextColor.Purple });
 	}
-
-	private red(string: string | number) {
+	red(string) {
 		return Style.log(String(string), { color: Style.TextColor.Red });
 	}
-
-	private green(string: string | number) {
+	green(string) {
 		return Style.log(String(string), { color: Style.TextColor.Green });
 	}
 }

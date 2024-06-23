@@ -2,6 +2,7 @@
 
 import * as fs from 'fs';
 import * as path from 'path';
+// import * as clack from '@clack/prompts';
 
 import XernerxClient from '../client/XernerxClient.js';
 import load from '../functions/load.js';
@@ -9,8 +10,7 @@ import MessageCommandBuilder from '../build/XernerxMessageCommand.js';
 import XernerxSlashCommand from '../build/XernerxSlashCommand.js';
 import XernerxContextCommand from '../build/XernerxContextCommand.js';
 import { filetype } from '../types/types.js';
-import { RestEvents, Style, XernerxClientEvents, XernerxEvent, XernerxInhibitor } from '../main.js';
-import XernerxLog from '../tools/XernerxLog.js';
+import { RestEvents, Style, XernerxClientEvents, XernerxEvent, XernerxInhibitor, XernerxLog } from '../main.js';
 
 export default class Handler {
 	public readonly client;
@@ -22,11 +22,16 @@ export default class Handler {
 		this.files = [];
 	}
 
-	public readdir(dir: string, type: string) {
+	public async readdir(dir: string, type: string) {
 		try {
 			return fs.readdirSync(path.resolve(dir)).filter((file) => file.endsWith('.js'));
 		} catch (error) {
+			// const spinner = clack.spinner();
+			// spinner.start();
+
 			new XernerxLog(this.client).error(`Cannot load ${type.toLowerCase()}, there is no such directory ${Style.log(dir, { color: Style.BackgroundColor.Grey })}.`);
+			// spinner.stop();
+			// console.log(c);
 		}
 		return [];
 	}

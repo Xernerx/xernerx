@@ -1,39 +1,18 @@
 /** @format */
-
-import { Client, ClientOptions, Collection } from 'discord.js';
+import { Client, Collection } from 'discord.js';
 import { z } from 'zod';
-
 import CommandHandler from '../handlers/CommandHandler.js';
 import EventHandler from '../handlers/EventHandler.js';
 import InhibitorHandler from '../handlers/InhibitorHandler.js';
 import IntegrationHandler from '../handlers/IntegrationHandler.js';
 import XernerxLog from '../tools/XernerxLog.js';
-import { XernerxOptions, ModuleOptions, XernerxCommands, XernerxCache } from '../types/interfaces.js';
-import { XernerxClientEvents } from '../types/extenders.js';
 import ClientUtil from '../utils/ClientUtil.js';
-import XernerxInhibitor from '../build/XernerxInhibitor.js';
-import XernerxEvent from '../build/XernerxEvent.js';
 import ExtensionHandler from '../handlers/ExtensionHandler.js';
 import deploy from '../functions/deploy.js';
 import Cooldowns from '../models/Cooldowns.js';
-
-export default class XernerxClient<T = unknown> extends Client {
-	public declare readonly settings;
-	public declare readonly config: T;
-	public declare readonly commands: XernerxCommands;
-	public declare readonly events: Collection<string, XernerxEvent<keyof XernerxClientEvents>>;
-	public declare readonly inhibitors: Collection<string, XernerxInhibitor>;
-	public declare readonly modules: ModuleOptions;
-	public declare readonly util: ClientUtil;
-	public declare readonly stats: Record<string, number>;
-	public declare readonly cache: XernerxCache;
-	public declare readonly cooldowns: Cooldowns;
-	public declare readonly dbl: any;
-	readonly [index: string]: unknown;
-
-	public constructor(discordOptions: ClientOptions, xernerxOptions: XernerxOptions, config?: T) {
+export default class XernerxClient extends Client {
+	constructor(discordOptions, xernerxOptions, config) {
 		super(discordOptions);
-
 		this.settings = z
 			.object({
 				local: z.string(),
@@ -78,21 +57,15 @@ export default class XernerxClient<T = unknown> extends Client {
 					.optional(),
 			})
 			.parse(xernerxOptions);
-
-		this.config = config as T;
-
+		this.config = config;
 		this.commands = {
 			message: new Collection(),
 			slash: new Collection(),
 			context: new Collection(),
 		};
-
 		this.events = new Collection();
-
 		this.inhibitors = new Collection();
-
 		this.util = new ClientUtil(this);
-
 		this.stats = {
 			guildCount: this.guilds.cache.size,
 			userCount: 0,
@@ -100,16 +73,12 @@ export default class XernerxClient<T = unknown> extends Client {
 			shardCount: this.options.shardCount || 1,
 			voteCount: 0,
 		};
-
 		this.dbl = {};
-
 		this.cache = {
 			messages: new Collection(),
 			cooldowns: new Collection(),
 		};
-
 		this.cooldowns = new Cooldowns(this, xernerxOptions.cooldown?.collections);
-
 		this.modules = {
 			options: {},
 			commandHandler: new CommandHandler(this),
@@ -117,16 +86,12 @@ export default class XernerxClient<T = unknown> extends Client {
 			inhibitorHandler: new InhibitorHandler(this),
 			integrationHandler: new IntegrationHandler(this),
 			extensionHandler: new ExtensionHandler(this),
-		} as const;
+		};
 	}
-
-	public async connect(token: string) {
+	async connect(token) {
 		const login = this.login(token); // TODO add thing to catch and have better error message
-
 		deploy(this);
-
 		new XernerxLog(this).ready();
-
 		return login;
 	}
 }

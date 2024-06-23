@@ -30,7 +30,7 @@ export default function deploy(client: XernerxClient) {
 	client.on('messageCreate', stats);
 	client.on('interactionCreate', stats);
 
-	client.prependOnceListener('ready', (client) => {
+	client.once('ready', (client: any) => {
 		stats();
 
 		client.commands.slash.map((command: XernerxSlashCommand) => commands.push(command));
