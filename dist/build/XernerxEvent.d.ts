@@ -17,5 +17,5 @@ export default class XernerxEvent<Event extends keyof XernerxClientEvents> {
 	readonly filepath: string;
 	readonly client: XernerxClientType;
 	constructor(id: string, options: XernerxEventOptions);
-	run(...args: XernerxClientEvents[Event]): Promise<Awaitable<any>>;
+	run<T = void>(...args: XernerxClientEvents[Event]): Promise<Awaitable<void | any | T>>;
 }

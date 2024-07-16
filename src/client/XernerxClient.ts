@@ -2,6 +2,7 @@
 
 import { Client, ClientOptions, Collection } from 'discord.js';
 import { z } from 'zod';
+import * as clack from '@clack/prompts';
 
 import CommandHandler from '../handlers/CommandHandler.js';
 import EventHandler from '../handlers/EventHandler.js';
@@ -17,7 +18,7 @@ import ExtensionHandler from '../handlers/ExtensionHandler.js';
 import deploy from '../functions/deploy.js';
 import Cooldowns from '../models/Cooldowns.js';
 
-export default class XernerxClient<T = unknown> extends Client {
+export default class XernerxClient<T extends object = { [index: string | number]: any }> extends Client {
 	public declare readonly settings;
 	public declare readonly config: T;
 	public declare readonly commands: XernerxCommands;
@@ -34,10 +35,13 @@ export default class XernerxClient<T = unknown> extends Client {
 	public constructor(discordOptions: ClientOptions, xernerxOptions: XernerxOptions, config?: T) {
 		super(discordOptions);
 
+		clack.intro('Xernerx');
+
 		this.settings = z
 			.object({
 				local: z.string(),
 				global: z.boolean().default(false).optional(),
+				debug: z.boolean().default(false).optional(),
 				ownerId: z.string().or(z.array(z.string())).default([]),
 				ceaseless: z.boolean().default(false),
 				permissions: z
@@ -121,11 +125,21 @@ export default class XernerxClient<T = unknown> extends Client {
 	}
 
 	public async connect(token: string) {
-		const login = this.login(token); // TODO add thing to catch and have better error message
+		if (this.settings.debug) new XernerxLog(this).debug(`Connecting to discord using token ${token}...`);
+
+		const login = await this.login(token).catch(() => {
+			new XernerxLog(this).error('An invalid token was provided. Please make sure to provide a valid Discord bot token.');
+		});
+
+		if (this.settings.debug) new XernerxLog(this).debug(`Connected to discord using token ${token}`);
 
 		deploy(this);
 
 		new XernerxLog(this).ready();
+
+		const spinner = clack.spinner();
+
+		spinner.start();
 
 		return login;
 	}

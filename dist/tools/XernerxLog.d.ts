@@ -17,6 +17,7 @@ export default class XernerxLog {
 	constructor(client: XernerxClient | XernerxClientType | true);
 	info(message: string, force?: boolean): void | null;
 	warn(message: string): void | null;
+	debug(message: string): void;
 	update(version: string, url: string): Promise<void>;
 	error(message: string, error?: XernerxError | unknown): void | null;
 	ready(): void;
@@ -26,4 +27,5 @@ export default class XernerxLog {
 	private purple;
 	private red;
 	private green;
+	private turquoise;
 }

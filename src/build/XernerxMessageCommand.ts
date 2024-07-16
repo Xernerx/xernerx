@@ -161,14 +161,14 @@ export default class XernerxMessageCommand {
 	 * @param message - The message event emitted on this command
 	 * @param options - The args and flags parsed on this command
 	 */
-	public async conditions(message: XernerxMessage, { args, flags }: MessageCommandArguments): Promise<any> {}
+	public async conditions<T = void>(message: XernerxMessage, { args, flags }: MessageCommandArguments): Promise<void | any | T> {}
 
 	/**
 	 * @description Runs the execution rule
 	 * @param message - The message event emitted on this command
 	 * @param options - The args and flags parsed on this command
 	 */
-	public async exec(message: XernerxMessage, { args, flags }: MessageCommandArguments): Promise<any> {
+	public async exec<T = void>(message: XernerxMessage, { args, flags }: MessageCommandArguments): Promise<void | any | T> {
 		new XernerxLog(this.client).error(`${this.id} doesn't have an execution rule.`);
 
 		return await this.client.emit('commandError', message, `${this.id} doesn't have an execution rule.`, this);

@@ -1,5 +1,5 @@
 /** @format */
-import Discord from 'discord.js';
+import Discord, { AutocompleteFocusedOption, AutocompleteInteraction } from 'discord.js';
 import { XernerxClientType, XernerxMessageContextInteraction, XernerxSlashInteraction, XernerxUserContextInteraction } from '../types/extenders.js';
 import { SlashCommandArguments, SlashCommandOptions } from '../types/interfaces.js';
 import { XernerxInteraction } from '../types/types.js';
@@ -79,13 +79,13 @@ export default class XernerxSlashCommand {
 	 * @param focused - The command option that is in focus
 	 * @param options - The full list of options on the command
 	 */
-	autocomplete<T>(interaction: XernerxInteraction<XernerxSlashInteraction | XernerxUserContextInteraction | XernerxMessageContextInteraction>, focused: T, options: T[]): Promise<void | any | T>;
+	autocomplete<T = void>(interaction: AutocompleteInteraction, focused: AutocompleteFocusedOption, options: any[]): Promise<void | any | T>;
 	/**
 	 * @description Checks for conditions before running the command
 	 * @param interaction - The interaction event emitted on this command
 	 * @param options - The args, group and subcommand parsed on this command
 	 */
-	conditions<T>(
+	conditions<T = void>(
 		interaction: XernerxInteraction<XernerxSlashInteraction | XernerxUserContextInteraction | XernerxMessageContextInteraction>,
 		{ args, subcommand, group }: SlashCommandArguments
 	): Promise<void | any | T>;
@@ -94,7 +94,7 @@ export default class XernerxSlashCommand {
 	 * @param interaction - The interaction event emitted on this command
 	 * @param options - The args, group and subcommand parsed on this command
 	 */
-	exec<T>(
+	exec<T = void>(
 		interaction: XernerxInteraction<XernerxSlashInteraction | XernerxUserContextInteraction | XernerxMessageContextInteraction>,
 		{ args, subcommand, group }: SlashCommandArguments
 	): Promise<void | any | T>;

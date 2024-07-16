@@ -78,5 +78,5 @@ export default class XernerxContextCommand {
 	 * @param interaction - Interaction event emitted on command
 	 * @param args - The arguments parsed with the command, if any
 	 */
-	exec(interaction: XernerxUserContextInteraction | XernerxMessageContextInteraction, args: ContextCommandArguments<'user' | 'message'>): Promise<any>;
+	exec<T = void>(interaction: XernerxUserContextInteraction | XernerxMessageContextInteraction, args: ContextCommandArguments<'user' | 'message'>): Promise<void | any | T>;
 }

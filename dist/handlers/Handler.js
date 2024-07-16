@@ -14,16 +14,13 @@ export default class Handler {
 		try {
 			return fs.readdirSync(path.resolve(dir)).filter((file) => file.endsWith('.js'));
 		} catch (error) {
-			// const spinner = clack.spinner();
-			// spinner.start();
 			new XernerxLog(this.client).error(`Cannot load ${type.toLowerCase()}, there is no such directory ${Style.log(dir, { color: Style.BackgroundColor.Grey })}.`);
-			// spinner.stop();
-			// console.log(c);
 		}
 		return [];
 	}
 	async load(filepath, type) {
 		const file = await load(this.client, filepath, type);
+		if (this.client.settings.debug) new XernerxLog(this.client).debug(`Loaded ${Style.log(type, { color: Style.TextColor.Blue })} ${Style.log(file.name, { color: Style.TextColor.Yellow })}`);
 		this.files.push(file);
 		return file;
 	}
@@ -36,10 +33,13 @@ export default class Handler {
 		if (file.filetype === 'Inhibitor') return;
 		if (file.filetype === 'Event' && file.emitter) {
 			if (file.emitter === 'client') {
+				if (this.client.settings.debug) new XernerxLog(this.client).debug(`Listening to client event ${Style.log(file.name, { color: Style.TextColor.Yellow })}`);
 				this.client[file.once ? 'once' : 'on'](file.name, (...args) => file.run(...args));
 			} else if (file.emitter === 'process') {
+				if (this.client.settings.debug) new XernerxLog(this.client).debug(`Listening to process event ${Style.log(file.name, { color: Style.TextColor.Yellow })}`);
 				process[file.once ? 'once' : 'on'](file.name, (...args) => file.run(...args));
 			} else if (file.emitter === 'rest') {
+				if (this.client.settings.debug) new XernerxLog(this.client).debug(`Listening to rest event ${Style.log(file.name, { color: Style.TextColor.Yellow })}`);
 				this.client.rest[file.once ? 'once' : 'on'](file.name, (...args) => file.run(...args));
 			} else {
 				// @ts-expect-error

@@ -73,9 +73,17 @@ export default class XernerxLog {
 			if ((message as any).type == 'xernerx') format.shard = (message as any)?.data?.sharded ? `| ${(message as any)?.data?.shardId} |` : '';
 		});
 
-		this.base = (type: 'info' | 'update' | 'error' | 'warn', message: string) =>
+		this.base = (type: 'info' | 'update' | 'error' | 'warn' | 'debug', message: string) =>
 			`${
-				type == 'info' ? `✔️  | ${this.purple('Xernerx')}` : type == `error` ? `❗ | ${this.red('Xernerx')}` : type == `update` ? `⬆️  | ${this.blue('Xernerx')}` : `⚠️  | ${this.yellow('Xernerx')}`
+				type == 'info'
+					? `✔️  | ${this.purple('Xernerx')}`
+					: type == `error`
+					? `❗ | ${this.red('Xernerx')}`
+					: type == `update`
+					? `⬆️  | ${this.blue('Xernerx')}`
+					: type == `debug`
+					? `🐛 | ${this.turquoise('Xernerx')}`
+					: `⚠️  | ${this.yellow('Xernerx')}`
 			} | ${this.format
 				?.map((c) => (typeof format[c] == 'function' ? (format[c] as Function)() : format[c]) || null)
 				.filter((x) => x)
@@ -88,6 +96,10 @@ export default class XernerxLog {
 
 	public warn(message: string) {
 		return this.warnLog ? console.warn(this.base('warn', message)) : null;
+	}
+
+	public debug(message: string) {
+		return console.debug(this.base('debug', message));
 	}
 
 	public async update(version: string, url: string) {
@@ -183,5 +195,9 @@ export default class XernerxLog {
 
 	private green(string: string | number) {
 		return Style.log(String(string), { color: Style.TextColor.Green });
+	}
+
+	private turquoise(string: string | number) {
+		return Style.log(String(string), { color: Style.TextColor.Turquoise });
 	}
 }

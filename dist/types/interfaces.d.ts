@@ -13,6 +13,7 @@ import { XernerxClientEvents, XernerxMessage, XernerxUser } from './extenders.js
 export interface XernerxOptions {
 	local: string;
 	global?: boolean;
+	debug?: boolean;
 	ownerId?: string | Array<string>;
 	ceaseless?: boolean;
 	permissions?: {
@@ -29,14 +30,16 @@ export interface XernerxOptions {
 		channels?: Array<string>;
 		guilds?: Array<string>;
 	};
-	log?: {
-		ready?: boolean;
-		info?: boolean;
-		warn?: boolean;
-		error?: boolean;
-		table?: Array<'name' | 'aliases' | 'description' | 'filetype' | 'category'>;
-		format?: Array<'name' | 'node' | 'xernerx' | 'discordjs' | 'platform' | 'time' | 'date' | 'ram' | 'version' | 'author' | 'shard' | 'index'>;
-	};
+	log?:
+		| {
+				ready?: boolean;
+				info?: boolean;
+				warn?: boolean;
+				error?: boolean;
+				table?: Array<'name' | 'aliases' | 'description' | 'filetype' | 'category'>;
+				format?: Array<'name' | 'node' | 'xernerx' | 'discordjs' | 'platform' | 'time' | 'date' | 'ram' | 'version' | 'author' | 'shard' | 'index'>;
+		  }
+		| boolean;
 	cooldown?: {
 		command?: number;
 		cache?: number;

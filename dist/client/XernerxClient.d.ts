@@ -6,12 +6,17 @@ import ClientUtil from '../utils/ClientUtil.js';
 import XernerxInhibitor from '../build/XernerxInhibitor.js';
 import XernerxEvent from '../build/XernerxEvent.js';
 import Cooldowns from '../models/Cooldowns.js';
-export default class XernerxClient<T = unknown> extends Client {
+export default class XernerxClient<
+	T extends object = {
+		[index: string | number]: any;
+	},
+> extends Client {
 	readonly settings: {
 		ownerId: (string | string[]) & (string | string[] | undefined);
 		local: string;
 		ceaseless: boolean;
 		global?: boolean | undefined;
+		debug?: boolean | undefined;
 		permissions?:
 			| {
 					user: string[] | null;
@@ -61,5 +66,5 @@ export default class XernerxClient<T = unknown> extends Client {
 	readonly dbl: any;
 	readonly [index: string]: unknown;
 	constructor(discordOptions: ClientOptions, xernerxOptions: XernerxOptions, config?: T);
-	connect(token: string): Promise<string>;
+	connect(token: string): Promise<string | void>;
 }

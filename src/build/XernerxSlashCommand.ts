@@ -1,6 +1,6 @@
 /** @format */
 
-import Discord, { SlashCommandStringOption, SlashCommandSubcommandBuilder, SlashCommandSubcommandGroupBuilder } from 'discord.js';
+import Discord, { AutocompleteFocusedOption, AutocompleteInteraction, SlashCommandStringOption, SlashCommandSubcommandBuilder, SlashCommandSubcommandGroupBuilder } from 'discord.js';
 import { z } from 'zod';
 
 import { XernerxClientType, XernerxMessageContextInteraction, XernerxSlashInteraction, XernerxUserContextInteraction } from '../types/extenders.js';
@@ -180,18 +180,14 @@ export default class XernerxSlashCommand {
 	 * @param focused - The command option that is in focus
 	 * @param options - The full list of options on the command
 	 */
-	public async autocomplete<T>(
-		interaction: XernerxInteraction<XernerxSlashInteraction | XernerxUserContextInteraction | XernerxMessageContextInteraction>,
-		focused: T,
-		options: T[]
-	): Promise<void | any | T> {}
+	public async autocomplete<T = void>(interaction: AutocompleteInteraction, focused: AutocompleteFocusedOption, options: any[]): Promise<void | any | T> {}
 
 	/**
 	 * @description Checks for conditions before running the command
 	 * @param interaction - The interaction event emitted on this command
 	 * @param options - The args, group and subcommand parsed on this command
 	 */
-	public async conditions<T>(
+	public async conditions<T = void>(
 		interaction: XernerxInteraction<XernerxSlashInteraction | XernerxUserContextInteraction | XernerxMessageContextInteraction>,
 		{ args, subcommand, group }: SlashCommandArguments
 	): Promise<void | any | T> {}
@@ -201,7 +197,7 @@ export default class XernerxSlashCommand {
 	 * @param interaction - The interaction event emitted on this command
 	 * @param options - The args, group and subcommand parsed on this command
 	 */
-	public async exec<T>(
+	public async exec<T = void>(
 		interaction: XernerxInteraction<XernerxSlashInteraction | XernerxUserContextInteraction | XernerxMessageContextInteraction>,
 		{ args, subcommand, group }: SlashCommandArguments
 	): Promise<void | any | T> {

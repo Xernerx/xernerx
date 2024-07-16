@@ -2,7 +2,6 @@
 
 import * as fs from 'fs';
 import * as path from 'path';
-// import * as clack from '@clack/prompts';
 
 import XernerxClient from '../client/XernerxClient.js';
 import load from '../functions/load.js';
@@ -26,18 +25,15 @@ export default class Handler {
 		try {
 			return fs.readdirSync(path.resolve(dir)).filter((file) => file.endsWith('.js'));
 		} catch (error) {
-			// const spinner = clack.spinner();
-			// spinner.start();
-
 			new XernerxLog(this.client).error(`Cannot load ${type.toLowerCase()}, there is no such directory ${Style.log(dir, { color: Style.BackgroundColor.Grey })}.`);
-			// spinner.stop();
-			// console.log(c);
 		}
 		return [];
 	}
 
 	public async load(filepath: string, type: filetype) {
 		const file = await load(this.client, filepath, type);
+
+		if (this.client.settings.debug) new XernerxLog(this.client).debug(`Loaded ${Style.log(type, { color: Style.TextColor.Blue })} ${Style.log(file.name, { color: Style.TextColor.Yellow })}`);
 
 		this.files.push(file);
 
@@ -57,17 +53,23 @@ export default class Handler {
 
 		if (file.filetype === 'Event' && file.emitter) {
 			if (file.emitter === 'client') {
+				if (this.client.settings.debug) new XernerxLog(this.client).debug(`Listening to client event ${Style.log(file.name, { color: Style.TextColor.Yellow })}`);
+
 				this.client[file.once ? 'once' : 'on'](file.name, <T extends keyof XernerxClientEvents>(...args: XernerxClientEvents[T][]) => file.run(...(args as XernerxClientEvents[T])));
 			} else if (file.emitter === 'process') {
+				if (this.client.settings.debug) new XernerxLog(this.client).debug(`Listening to process event ${Style.log(file.name, { color: Style.TextColor.Yellow })}`);
+
 				process[file.once ? 'once' : 'on'](file.name, (...args) => file.run(...(args as never)));
 			} else if (file.emitter === 'rest') {
+				if (this.client.settings.debug) new XernerxLog(this.client).debug(`Listening to rest event ${Style.log(file.name, { color: Style.TextColor.Yellow })}`);
+
 				this.client.rest[file.once ? 'once' : 'on'](file.name as keyof RestEvents, (...args) => file.run(...(args as never)));
 			} else {
 				// @ts-expect-error
 				this.client[file.emitter as string][file.once ? 'once' : 'on'](file.name, (...args) => file.run(...(args as never)));
 			}
 		} else {
-			this.client.on(file.name, (...args) => file.run(...(args as never)));
+			this.client.on(file.name, (...args) => file.run(...args));
 		}
 	}
 }

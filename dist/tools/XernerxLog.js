@@ -43,7 +43,15 @@ export default class XernerxLog {
 		});
 		this.base = (type, message) =>
 			`${
-				type == 'info' ? `✔️  | ${this.purple('Xernerx')}` : type == `error` ? `❗ | ${this.red('Xernerx')}` : type == `update` ? `⬆️  | ${this.blue('Xernerx')}` : `⚠️  | ${this.yellow('Xernerx')}`
+				type == 'info'
+					? `✔️  | ${this.purple('Xernerx')}`
+					: type == `error`
+					? `❗ | ${this.red('Xernerx')}`
+					: type == `update`
+					? `⬆️  | ${this.blue('Xernerx')}`
+					: type == `debug`
+					? `🐛 | ${this.turquoise('Xernerx')}`
+					: `⚠️  | ${this.yellow('Xernerx')}`
 			} | ${this.format
 				?.map((c) => (typeof format[c] == 'function' ? format[c]() : format[c]) || null)
 				.filter((x) => x)
@@ -54,6 +62,9 @@ export default class XernerxLog {
 	}
 	warn(message) {
 		return this.warnLog ? console.warn(this.base('warn', message)) : null;
+	}
+	debug(message) {
+		return console.debug(this.base('debug', message));
 	}
 	async update(version, url) {
 		try {
@@ -130,5 +141,8 @@ export default class XernerxLog {
 	}
 	green(string) {
 		return Style.log(String(string), { color: Style.TextColor.Green });
+	}
+	turquoise(string) {
+		return Style.log(String(string), { color: Style.TextColor.Turquoise });
 	}
 }

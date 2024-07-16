@@ -21,6 +21,7 @@
 		"node": ">=16.11.0"
 	},
 	"scripts": {
+		"cover": "jest",
 		"start": "npm i && npm fund && npm audit fix --force && npm link && tsc -w",
 		"commit": "npm run write && git add . && node ./.github/scripts/message.js",
 		"tag": "node ./.github/scripts/tag.js",
@@ -50,7 +51,9 @@
 		"zod": "^3.22.4"
 	},
 	"devDependencies": {
+		"jest": "^29.7.0",
 		"prettier": "3.0.0",
+		"ts-node": "^10.9.2",
 		"typescript": "^5.5.2"
 	}
 }

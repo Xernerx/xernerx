@@ -44,7 +44,7 @@ export default class XernerxEvent<Event extends keyof XernerxClientEvents> {
 		this.client = this.client;
 	}
 
-	public async run(...args: XernerxClientEvents[Event]): Promise<Awaitable<any>> {
+	public async run<T = void>(...args: XernerxClientEvents[Event]): Promise<Awaitable<void | any | T>> {
 		return new XernerxLog(this.client).error(`${this.id} doesn't have a run rule.`);
 	}
 }

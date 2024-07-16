@@ -167,7 +167,7 @@ export default class XernerxContextCommand {
 	 * @param interaction - Interaction event emitted on command
 	 * @param args - The arguments parsed with the command, if any
 	 */
-	public async exec(interaction: XernerxUserContextInteraction | XernerxMessageContextInteraction, args: ContextCommandArguments<'user' | 'message'>): Promise<any> {
+	public async exec<T = void>(interaction: XernerxUserContextInteraction | XernerxMessageContextInteraction, args: ContextCommandArguments<'user' | 'message'>): Promise<void | any | T> {
 		new XernerxLog(this.client).error(`${this.id} doesn't have an execution rule.`);
 
 		return await this.client.emit('commandError', interaction, `${this.id} doesn't have an execution rule.`, this, this.filetype);

@@ -11,6 +11,8 @@ package-lock.json
 .gitattributes
 .github
 .prettierrc
+jest.config.ts
+test
 
 # ? TypeScript
 tsconfig.json

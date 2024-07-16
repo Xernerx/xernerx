@@ -6,7 +6,10 @@ import XernerxContextCommand from '../build/XernerxContextCommand.js';
 import { filetype } from '../types/types.js';
 import { XernerxClientEvents, XernerxEvent, XernerxInhibitor } from '../main.js';
 export default class Handler {
-	readonly client: XernerxClient<unknown>;
+	readonly client: XernerxClient<{
+		[index: string]: any;
+		[index: number]: any;
+	}>;
 	readonly files: Array<MessageCommandBuilder | XernerxSlashCommand | XernerxContextCommand>;
 	constructor(client: XernerxClient);
 	readdir(dir: string, type: string): Promise<string[]>;

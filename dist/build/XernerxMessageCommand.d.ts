@@ -74,11 +74,11 @@ export default class XernerxMessageCommand {
 	 * @param message - The message event emitted on this command
 	 * @param options - The args and flags parsed on this command
 	 */
-	conditions(message: XernerxMessage, { args, flags }: MessageCommandArguments): Promise<any>;
+	conditions<T = void>(message: XernerxMessage, { args, flags }: MessageCommandArguments): Promise<void | any | T>;
 	/**
 	 * @description Runs the execution rule
 	 * @param message - The message event emitted on this command
 	 * @param options - The args and flags parsed on this command
 	 */
-	exec(message: XernerxMessage, { args, flags }: MessageCommandArguments): Promise<any>;
+	exec<T = void>(message: XernerxMessage, { args, flags }: MessageCommandArguments): Promise<void | any | T>;
 }
