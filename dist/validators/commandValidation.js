@@ -122,7 +122,7 @@ export default async function commandValidation(event, command) {
 		);
 	if (userPermissions.length) {
 		const missing = [];
-		userPermissions.map((permission) => (event.guild?.members.me?.permissionsIn(event.channel?.id).has(Style.pascalCase(permission, true)) ? null : missing.push(permission)));
+		userPermissions.map((permission) => ((event.member?.permissions).toArray().includes(Style.pascalCase(permission, true)) ? null : missing.push(permission)));
 		if (missing.length)
 			return await emit(
 				event,
