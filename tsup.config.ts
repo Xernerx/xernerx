@@ -17,5 +17,5 @@ export default defineConfig({
 	target: 'es2022',
 	skipNodeModulesBundle: true,
 	platform: 'node',
-	onSuccess: 'npm run check && npm test',
+	onSuccess: 'npm run check && npm run docs && npm run test',
 });

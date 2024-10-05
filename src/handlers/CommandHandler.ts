@@ -1,5 +1,11 @@
 /** @format */
 
+/**
+ * @module Handler
+ * @category Core
+ * @description Represents a handler for handling commands.
+ */
+
 import { XernerxClient } from '../client/XernerxClient.js';
 import { XernerxContextCommandHandlerOptions, XernerxMessageCommandHandlerOptions, XernerxSlashCommandHandlerOptions } from '../types/interfaces.js';
 import { Handler } from './Handler.js';
@@ -26,6 +32,18 @@ export class CommandHandler extends Handler {
 			}
 		}
 	}
+	/**
+	 * Loads message commands from the specified directory.
+	 *
+	 * This method iterates through the files in the given directory,
+	 * attempts to load each file as a message command, and updates the
+	 * command statistics accordingly.
+	 *
+	 * @param options - The options for loading message commands.
+	 * @param options.directory - The directory from which to load message commands.
+	 *
+	 * @returns {Promise<void>} - A promise that resolves when all message commands have been loaded.
+	 */
 	protected async loadMessageCommands(options: XernerxMessageCommandHandlerOptions) {}
 	protected async loadContextCommands(options: XernerxContextCommandHandlerOptions) {}
 }

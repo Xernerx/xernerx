@@ -1,10 +1,10 @@
 /** @format */
 
-import { XernerxContextCommand } from '../base/XernerxContextCommand.js';
-import { XernerxEvent } from '../base/XernerxEvent.js';
-import { XernerxInhibitor } from '../base/XernerxInhibitor.js';
-import { XernerxMessageCommand } from '../base/XernerxMessageCommand.js';
-import { XernerxSlashCommand } from '../base/XernerxSlashCommand.js';
+import { XernerxContextCommand } from '../builders/XernerxContextCommand.js';
+import { XernerxEvent } from '../builders/XernerxEvent.js';
+import { XernerxInhibitor } from '../builders/XernerxInhibitor.js';
+import { XernerxMessageCommand } from '../builders/XernerxMessageCommand.js';
+import { XernerxSlashCommand } from '../builders/XernerxSlashCommand.js';
 
 export type XernerxFileType = 'XernerxSlashCommand' | 'XernerxMessageCommand' | 'XernerxContextCommand' | 'XernerxEvent' | 'XernerxInhibitor';
 

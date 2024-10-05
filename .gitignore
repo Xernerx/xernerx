@@ -14,11 +14,10 @@
 # .env
 # data
 # config.json
-# config.js
+config.js
 # *.sqlite
 # tokens.json
 # tokens.js
-
 # ________________
 
 # * __Node__
@@ -54,7 +53,7 @@ package-lock.json
 # ? __TypeScript__
 # Everything specific to TypeScript should be here.
 
-# dist
+dist
 # types
 # typings
 # *.tsbuildinfo
