@@ -21,7 +21,7 @@ export class XernerxClient<T = {}> extends Discord.Client {
 	public declare readonly modules: {
 		commandHandler: CommandHandler;
 		options: {
-			message?: { global?: boolean };
+			message?: { global?: boolean; prefix: Array<string> };
 			slash?: { global?: boolean };
 			context?: { global?: boolean };
 		};

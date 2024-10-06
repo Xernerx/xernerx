@@ -38,7 +38,7 @@
 									"fileName": "src/builders/XernerxContextCommand.ts",
 									"line": 16,
 									"character": 1,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/builders/XernerxContextCommand.ts#L16"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/builders/XernerxContextCommand.ts#L16"
 								}
 							],
 							"signatures": [
@@ -53,7 +53,7 @@
 											"fileName": "src/builders/XernerxContextCommand.ts",
 											"line": 16,
 											"character": 1,
-											"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/builders/XernerxContextCommand.ts#L16"
+											"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/builders/XernerxContextCommand.ts#L16"
 										}
 									],
 									"parameters": [
@@ -92,7 +92,7 @@
 									"fileName": "src/builders/XernerxContextCommand.ts",
 									"line": 9,
 									"character": 25,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/builders/XernerxContextCommand.ts#L9"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/builders/XernerxContextCommand.ts#L9"
 								}
 							],
 							"type": {
@@ -114,7 +114,7 @@
 									"fileName": "src/builders/XernerxContextCommand.ts",
 									"line": 14,
 									"character": 25,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/builders/XernerxContextCommand.ts#L14"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/builders/XernerxContextCommand.ts#L14"
 								}
 							],
 							"type": {
@@ -136,7 +136,7 @@
 									"fileName": "src/builders/XernerxContextCommand.ts",
 									"line": 11,
 									"character": 25,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/builders/XernerxContextCommand.ts#L11"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/builders/XernerxContextCommand.ts#L11"
 								}
 							],
 							"type": {
@@ -158,7 +158,7 @@
 									"fileName": "src/builders/XernerxContextCommand.ts",
 									"line": 13,
 									"character": 25,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/builders/XernerxContextCommand.ts#L13"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/builders/XernerxContextCommand.ts#L13"
 								}
 							],
 							"type": {
@@ -180,7 +180,7 @@
 									"fileName": "src/builders/XernerxContextCommand.ts",
 									"line": 12,
 									"character": 25,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/builders/XernerxContextCommand.ts#L12"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/builders/XernerxContextCommand.ts#L12"
 								}
 							],
 							"type": {
@@ -202,7 +202,7 @@
 									"fileName": "src/builders/XernerxContextCommand.ts",
 									"line": 10,
 									"character": 25,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/builders/XernerxContextCommand.ts#L10"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/builders/XernerxContextCommand.ts#L10"
 								}
 							],
 							"type": {
@@ -226,7 +226,7 @@
 							"fileName": "src/builders/XernerxContextCommand.ts",
 							"line": 8,
 							"character": 13,
-							"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/builders/XernerxContextCommand.ts#L8"
+							"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/builders/XernerxContextCommand.ts#L8"
 						}
 					]
 				}
@@ -242,7 +242,7 @@
 					"fileName": "src/builders/XernerxContextCommand.ts",
 					"line": 1,
 					"character": 0,
-					"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/builders/XernerxContextCommand.ts#L1"
+					"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/builders/XernerxContextCommand.ts#L1"
 				}
 			]
 		},
@@ -280,7 +280,7 @@
 									"fileName": "src/builders/XernerxEvent.ts",
 									"line": 10,
 									"character": 1,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/builders/XernerxEvent.ts#L10"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/builders/XernerxEvent.ts#L10"
 								}
 							],
 							"signatures": [
@@ -295,7 +295,7 @@
 											"fileName": "src/builders/XernerxEvent.ts",
 											"line": 10,
 											"character": 1,
-											"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/builders/XernerxEvent.ts#L10"
+											"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/builders/XernerxEvent.ts#L10"
 										}
 									],
 									"parameters": [
@@ -334,7 +334,7 @@
 									"fileName": "src/builders/XernerxEvent.ts",
 									"line": 4,
 									"character": 25,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/builders/XernerxEvent.ts#L4"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/builders/XernerxEvent.ts#L4"
 								}
 							],
 							"type": {
@@ -356,7 +356,7 @@
 									"fileName": "src/builders/XernerxEvent.ts",
 									"line": 8,
 									"character": 25,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/builders/XernerxEvent.ts#L8"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/builders/XernerxEvent.ts#L8"
 								}
 							],
 							"type": {
@@ -378,7 +378,7 @@
 									"fileName": "src/builders/XernerxEvent.ts",
 									"line": 6,
 									"character": 25,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/builders/XernerxEvent.ts#L6"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/builders/XernerxEvent.ts#L6"
 								}
 							],
 							"type": {
@@ -400,7 +400,7 @@
 									"fileName": "src/builders/XernerxEvent.ts",
 									"line": 7,
 									"character": 25,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/builders/XernerxEvent.ts#L7"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/builders/XernerxEvent.ts#L7"
 								}
 							],
 							"type": {
@@ -422,7 +422,7 @@
 									"fileName": "src/builders/XernerxEvent.ts",
 									"line": 5,
 									"character": 25,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/builders/XernerxEvent.ts#L5"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/builders/XernerxEvent.ts#L5"
 								}
 							],
 							"type": {
@@ -446,7 +446,7 @@
 							"fileName": "src/builders/XernerxEvent.ts",
 							"line": 3,
 							"character": 13,
-							"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/builders/XernerxEvent.ts#L3"
+							"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/builders/XernerxEvent.ts#L3"
 						}
 					]
 				}
@@ -462,7 +462,7 @@
 					"fileName": "src/builders/XernerxEvent.ts",
 					"line": 1,
 					"character": 0,
-					"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/builders/XernerxEvent.ts#L1"
+					"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/builders/XernerxEvent.ts#L1"
 				}
 			]
 		},
@@ -500,7 +500,7 @@
 									"fileName": "src/builders/XernerxInhibitor.ts",
 									"line": 10,
 									"character": 1,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/builders/XernerxInhibitor.ts#L10"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/builders/XernerxInhibitor.ts#L10"
 								}
 							],
 							"signatures": [
@@ -515,7 +515,7 @@
 											"fileName": "src/builders/XernerxInhibitor.ts",
 											"line": 10,
 											"character": 1,
-											"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/builders/XernerxInhibitor.ts#L10"
+											"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/builders/XernerxInhibitor.ts#L10"
 										}
 									],
 									"parameters": [
@@ -554,7 +554,7 @@
 									"fileName": "src/builders/XernerxInhibitor.ts",
 									"line": 4,
 									"character": 25,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/builders/XernerxInhibitor.ts#L4"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/builders/XernerxInhibitor.ts#L4"
 								}
 							],
 							"type": {
@@ -576,7 +576,7 @@
 									"fileName": "src/builders/XernerxInhibitor.ts",
 									"line": 8,
 									"character": 25,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/builders/XernerxInhibitor.ts#L8"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/builders/XernerxInhibitor.ts#L8"
 								}
 							],
 							"type": {
@@ -598,7 +598,7 @@
 									"fileName": "src/builders/XernerxInhibitor.ts",
 									"line": 6,
 									"character": 25,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/builders/XernerxInhibitor.ts#L6"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/builders/XernerxInhibitor.ts#L6"
 								}
 							],
 							"type": {
@@ -620,7 +620,7 @@
 									"fileName": "src/builders/XernerxInhibitor.ts",
 									"line": 7,
 									"character": 25,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/builders/XernerxInhibitor.ts#L7"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/builders/XernerxInhibitor.ts#L7"
 								}
 							],
 							"type": {
@@ -642,7 +642,7 @@
 									"fileName": "src/builders/XernerxInhibitor.ts",
 									"line": 5,
 									"character": 25,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/builders/XernerxInhibitor.ts#L5"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/builders/XernerxInhibitor.ts#L5"
 								}
 							],
 							"type": {
@@ -666,7 +666,7 @@
 							"fileName": "src/builders/XernerxInhibitor.ts",
 							"line": 3,
 							"character": 13,
-							"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/builders/XernerxInhibitor.ts#L3"
+							"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/builders/XernerxInhibitor.ts#L3"
 						}
 					]
 				}
@@ -682,7 +682,7 @@
 					"fileName": "src/builders/XernerxInhibitor.ts",
 					"line": 1,
 					"character": 0,
-					"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/builders/XernerxInhibitor.ts#L1"
+					"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/builders/XernerxInhibitor.ts#L1"
 				}
 			]
 		},
@@ -720,7 +720,7 @@
 									"fileName": "src/builders/XernerxMessageCommand.ts",
 									"line": 11,
 									"character": 1,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/builders/XernerxMessageCommand.ts#L11"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/builders/XernerxMessageCommand.ts#L11"
 								}
 							],
 							"signatures": [
@@ -735,7 +735,7 @@
 											"fileName": "src/builders/XernerxMessageCommand.ts",
 											"line": 11,
 											"character": 1,
-											"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/builders/XernerxMessageCommand.ts#L11"
+											"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/builders/XernerxMessageCommand.ts#L11"
 										}
 									],
 									"parameters": [
@@ -774,7 +774,7 @@
 									"fileName": "src/builders/XernerxMessageCommand.ts",
 									"line": 4,
 									"character": 25,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/builders/XernerxMessageCommand.ts#L4"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/builders/XernerxMessageCommand.ts#L4"
 								}
 							],
 							"type": {
@@ -796,7 +796,7 @@
 									"fileName": "src/builders/XernerxMessageCommand.ts",
 									"line": 9,
 									"character": 25,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/builders/XernerxMessageCommand.ts#L9"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/builders/XernerxMessageCommand.ts#L9"
 								}
 							],
 							"type": {
@@ -818,7 +818,7 @@
 									"fileName": "src/builders/XernerxMessageCommand.ts",
 									"line": 6,
 									"character": 25,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/builders/XernerxMessageCommand.ts#L6"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/builders/XernerxMessageCommand.ts#L6"
 								}
 							],
 							"type": {
@@ -840,7 +840,7 @@
 									"fileName": "src/builders/XernerxMessageCommand.ts",
 									"line": 8,
 									"character": 25,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/builders/XernerxMessageCommand.ts#L8"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/builders/XernerxMessageCommand.ts#L8"
 								}
 							],
 							"type": {
@@ -862,7 +862,7 @@
 									"fileName": "src/builders/XernerxMessageCommand.ts",
 									"line": 7,
 									"character": 25,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/builders/XernerxMessageCommand.ts#L7"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/builders/XernerxMessageCommand.ts#L7"
 								}
 							],
 							"type": {
@@ -884,7 +884,7 @@
 									"fileName": "src/builders/XernerxMessageCommand.ts",
 									"line": 5,
 									"character": 25,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/builders/XernerxMessageCommand.ts#L5"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/builders/XernerxMessageCommand.ts#L5"
 								}
 							],
 							"type": {
@@ -908,7 +908,7 @@
 							"fileName": "src/builders/XernerxMessageCommand.ts",
 							"line": 3,
 							"character": 13,
-							"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/builders/XernerxMessageCommand.ts#L3"
+							"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/builders/XernerxMessageCommand.ts#L3"
 						}
 					]
 				}
@@ -924,7 +924,7 @@
 					"fileName": "src/builders/XernerxMessageCommand.ts",
 					"line": 1,
 					"character": 0,
-					"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/builders/XernerxMessageCommand.ts#L1"
+					"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/builders/XernerxMessageCommand.ts#L1"
 				}
 			]
 		},
@@ -953,7 +953,7 @@
 									"fileName": "src/builders/XernerxSlashCommand.ts",
 									"line": 11,
 									"character": 1,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/builders/XernerxSlashCommand.ts#L11"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/builders/XernerxSlashCommand.ts#L11"
 								}
 							],
 							"signatures": [
@@ -968,7 +968,7 @@
 											"fileName": "src/builders/XernerxSlashCommand.ts",
 											"line": 11,
 											"character": 1,
-											"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/builders/XernerxSlashCommand.ts#L11"
+											"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/builders/XernerxSlashCommand.ts#L11"
 										}
 									],
 									"parameters": [
@@ -1017,7 +1017,7 @@
 									"fileName": "src/builders/XernerxSlashCommand.ts",
 									"line": 6,
 									"character": 25,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/builders/XernerxSlashCommand.ts#L6"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/builders/XernerxSlashCommand.ts#L6"
 								}
 							],
 							"type": {
@@ -1039,7 +1039,7 @@
 									"fileName": "src/builders/XernerxSlashCommand.ts",
 									"line": 9,
 									"character": 25,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/builders/XernerxSlashCommand.ts#L9"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/builders/XernerxSlashCommand.ts#L9"
 								}
 							],
 							"type": {
@@ -1543,7 +1543,7 @@
 									"fileName": "src/builders/XernerxSlashCommand.ts",
 									"line": 8,
 									"character": 25,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/builders/XernerxSlashCommand.ts#L8"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/builders/XernerxSlashCommand.ts#L8"
 								}
 							],
 							"type": {
@@ -1565,7 +1565,7 @@
 									"fileName": "src/builders/XernerxSlashCommand.ts",
 									"line": 7,
 									"character": 25,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/builders/XernerxSlashCommand.ts#L7"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/builders/XernerxSlashCommand.ts#L7"
 								}
 							],
 							"type": {
@@ -5671,7 +5671,7 @@
 							"fileName": "src/builders/XernerxSlashCommand.ts",
 							"line": 5,
 							"character": 13,
-							"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/builders/XernerxSlashCommand.ts#L5"
+							"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/builders/XernerxSlashCommand.ts#L5"
 						}
 					],
 					"extendedTypes": [
@@ -5698,7 +5698,7 @@
 					"fileName": "src/builders/XernerxSlashCommand.ts",
 					"line": 1,
 					"character": 0,
-					"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/builders/XernerxSlashCommand.ts#L1"
+					"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/builders/XernerxSlashCommand.ts#L1"
 				}
 			]
 		},
@@ -5727,7 +5727,7 @@
 									"fileName": "src/client/XernerxClient.ts",
 									"line": 34,
 									"character": 1,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/client/XernerxClient.ts#L34"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/client/XernerxClient.ts#L34"
 								}
 							],
 							"signatures": [
@@ -5742,7 +5742,7 @@
 											"fileName": "src/client/XernerxClient.ts",
 											"line": 34,
 											"character": 1,
-											"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/client/XernerxClient.ts#L34"
+											"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/client/XernerxClient.ts#L34"
 										}
 									],
 									"typeParameters": [
@@ -5833,7 +5833,7 @@
 							}
 						},
 						{
-							"id": 272,
+							"id": 273,
 							"name": "application",
 							"variant": "declaration",
 							"kind": 1024,
@@ -5874,7 +5874,7 @@
 							}
 						},
 						{
-							"id": 273,
+							"id": 274,
 							"name": "channels",
 							"variant": "declaration",
 							"kind": 1024,
@@ -5906,7 +5906,7 @@
 							}
 						},
 						{
-							"id": 245,
+							"id": 246,
 							"name": "commands",
 							"variant": "declaration",
 							"kind": 1024,
@@ -5919,20 +5919,20 @@
 									"fileName": "src/client/XernerxClient.ts",
 									"line": 30,
 									"character": 25,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/client/XernerxClient.ts#L30"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/client/XernerxClient.ts#L30"
 								}
 							],
 							"type": {
 								"type": "reflection",
 								"declaration": {
-									"id": 246,
+									"id": 247,
 									"name": "__type",
 									"variant": "declaration",
 									"kind": 65536,
 									"flags": {},
 									"children": [
 										{
-											"id": 249,
+											"id": 250,
 											"name": "context",
 											"variant": "declaration",
 											"kind": 1024,
@@ -5942,7 +5942,7 @@
 													"fileName": "src/client/XernerxClient.ts",
 													"line": 75,
 													"character": 3,
-													"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/client/XernerxClient.ts#L75"
+													"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/client/XernerxClient.ts#L75"
 												}
 											],
 											"type": {
@@ -5969,7 +5969,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 247,
+											"id": 248,
 											"name": "message",
 											"variant": "declaration",
 											"kind": 1024,
@@ -5979,7 +5979,7 @@
 													"fileName": "src/client/XernerxClient.ts",
 													"line": 73,
 													"character": 3,
-													"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/client/XernerxClient.ts#L73"
+													"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/client/XernerxClient.ts#L73"
 												}
 											],
 											"type": {
@@ -6006,7 +6006,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 248,
+											"id": 249,
 											"name": "slash",
 											"variant": "declaration",
 											"kind": 1024,
@@ -6016,7 +6016,7 @@
 													"fileName": "src/client/XernerxClient.ts",
 													"line": 74,
 													"character": 3,
-													"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/client/XernerxClient.ts#L74"
+													"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/client/XernerxClient.ts#L74"
 												}
 											],
 											"type": {
@@ -6043,7 +6043,7 @@
 											"defaultValue": "..."
 										},
 										{
-											"id": 250,
+											"id": 251,
 											"name": "stats",
 											"variant": "declaration",
 											"kind": 1024,
@@ -6053,20 +6053,20 @@
 													"fileName": "src/client/XernerxClient.ts",
 													"line": 76,
 													"character": 3,
-													"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/client/XernerxClient.ts#L76"
+													"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/client/XernerxClient.ts#L76"
 												}
 											],
 											"type": {
 												"type": "reflection",
 												"declaration": {
-													"id": 251,
+													"id": 252,
 													"name": "__type",
 													"variant": "declaration",
 													"kind": 65536,
 													"flags": {},
 													"children": [
 														{
-															"id": 260,
+															"id": 261,
 															"name": "context",
 															"variant": "declaration",
 															"kind": 1024,
@@ -6076,20 +6076,20 @@
 																	"fileName": "src/client/XernerxClient.ts",
 																	"line": 85,
 																	"character": 4,
-																	"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/client/XernerxClient.ts#L85"
+																	"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/client/XernerxClient.ts#L85"
 																}
 															],
 															"type": {
 																"type": "reflection",
 																"declaration": {
-																	"id": 261,
+																	"id": 262,
 																	"name": "__type",
 																	"variant": "declaration",
 																	"kind": 65536,
 																	"flags": {},
 																	"children": [
 																		{
-																			"id": 263,
+																			"id": 264,
 																			"name": "global",
 																			"variant": "declaration",
 																			"kind": 1024,
@@ -6099,7 +6099,7 @@
 																					"fileName": "src/client/XernerxClient.ts",
 																					"line": 87,
 																					"character": 5,
-																					"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/client/XernerxClient.ts#L87"
+																					"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/client/XernerxClient.ts#L87"
 																				}
 																			],
 																			"type": {
@@ -6109,7 +6109,7 @@
 																			"defaultValue": "0"
 																		},
 																		{
-																			"id": 262,
+																			"id": 263,
 																			"name": "local",
 																			"variant": "declaration",
 																			"kind": 1024,
@@ -6119,7 +6119,7 @@
 																					"fileName": "src/client/XernerxClient.ts",
 																					"line": 86,
 																					"character": 5,
-																					"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/client/XernerxClient.ts#L86"
+																					"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/client/XernerxClient.ts#L86"
 																				}
 																			],
 																			"type": {
@@ -6132,7 +6132,7 @@
 																	"groups": [
 																		{
 																			"title": "Properties",
-																			"children": [263, 262]
+																			"children": [264, 263]
 																		}
 																	],
 																	"sources": [
@@ -6140,7 +6140,7 @@
 																			"fileName": "src/client/XernerxClient.ts",
 																			"line": 85,
 																			"character": 13,
-																			"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/client/XernerxClient.ts#L85"
+																			"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/client/XernerxClient.ts#L85"
 																		}
 																	]
 																}
@@ -6148,7 +6148,7 @@
 															"defaultValue": "..."
 														},
 														{
-															"id": 256,
+															"id": 257,
 															"name": "message",
 															"variant": "declaration",
 															"kind": 1024,
@@ -6158,20 +6158,20 @@
 																	"fileName": "src/client/XernerxClient.ts",
 																	"line": 81,
 																	"character": 4,
-																	"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/client/XernerxClient.ts#L81"
+																	"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/client/XernerxClient.ts#L81"
 																}
 															],
 															"type": {
 																"type": "reflection",
 																"declaration": {
-																	"id": 257,
+																	"id": 258,
 																	"name": "__type",
 																	"variant": "declaration",
 																	"kind": 65536,
 																	"flags": {},
 																	"children": [
 																		{
-																			"id": 259,
+																			"id": 260,
 																			"name": "global",
 																			"variant": "declaration",
 																			"kind": 1024,
@@ -6181,7 +6181,7 @@
 																					"fileName": "src/client/XernerxClient.ts",
 																					"line": 83,
 																					"character": 5,
-																					"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/client/XernerxClient.ts#L83"
+																					"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/client/XernerxClient.ts#L83"
 																				}
 																			],
 																			"type": {
@@ -6191,7 +6191,7 @@
 																			"defaultValue": "0"
 																		},
 																		{
-																			"id": 258,
+																			"id": 259,
 																			"name": "local",
 																			"variant": "declaration",
 																			"kind": 1024,
@@ -6201,7 +6201,7 @@
 																					"fileName": "src/client/XernerxClient.ts",
 																					"line": 82,
 																					"character": 5,
-																					"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/client/XernerxClient.ts#L82"
+																					"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/client/XernerxClient.ts#L82"
 																				}
 																			],
 																			"type": {
@@ -6214,7 +6214,7 @@
 																	"groups": [
 																		{
 																			"title": "Properties",
-																			"children": [259, 258]
+																			"children": [260, 259]
 																		}
 																	],
 																	"sources": [
@@ -6222,7 +6222,7 @@
 																			"fileName": "src/client/XernerxClient.ts",
 																			"line": 81,
 																			"character": 13,
-																			"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/client/XernerxClient.ts#L81"
+																			"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/client/XernerxClient.ts#L81"
 																		}
 																	]
 																}
@@ -6230,7 +6230,7 @@
 															"defaultValue": "..."
 														},
 														{
-															"id": 252,
+															"id": 253,
 															"name": "slash",
 															"variant": "declaration",
 															"kind": 1024,
@@ -6240,20 +6240,20 @@
 																	"fileName": "src/client/XernerxClient.ts",
 																	"line": 77,
 																	"character": 4,
-																	"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/client/XernerxClient.ts#L77"
+																	"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/client/XernerxClient.ts#L77"
 																}
 															],
 															"type": {
 																"type": "reflection",
 																"declaration": {
-																	"id": 253,
+																	"id": 254,
 																	"name": "__type",
 																	"variant": "declaration",
 																	"kind": 65536,
 																	"flags": {},
 																	"children": [
 																		{
-																			"id": 255,
+																			"id": 256,
 																			"name": "global",
 																			"variant": "declaration",
 																			"kind": 1024,
@@ -6263,7 +6263,7 @@
 																					"fileName": "src/client/XernerxClient.ts",
 																					"line": 79,
 																					"character": 5,
-																					"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/client/XernerxClient.ts#L79"
+																					"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/client/XernerxClient.ts#L79"
 																				}
 																			],
 																			"type": {
@@ -6273,7 +6273,7 @@
 																			"defaultValue": "0"
 																		},
 																		{
-																			"id": 254,
+																			"id": 255,
 																			"name": "local",
 																			"variant": "declaration",
 																			"kind": 1024,
@@ -6283,7 +6283,7 @@
 																					"fileName": "src/client/XernerxClient.ts",
 																					"line": 78,
 																					"character": 5,
-																					"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/client/XernerxClient.ts#L78"
+																					"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/client/XernerxClient.ts#L78"
 																				}
 																			],
 																			"type": {
@@ -6296,7 +6296,7 @@
 																	"groups": [
 																		{
 																			"title": "Properties",
-																			"children": [255, 254]
+																			"children": [256, 255]
 																		}
 																	],
 																	"sources": [
@@ -6304,7 +6304,7 @@
 																			"fileName": "src/client/XernerxClient.ts",
 																			"line": 77,
 																			"character": 11,
-																			"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/client/XernerxClient.ts#L77"
+																			"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/client/XernerxClient.ts#L77"
 																		}
 																	]
 																}
@@ -6315,7 +6315,7 @@
 													"groups": [
 														{
 															"title": "Properties",
-															"children": [260, 256, 252]
+															"children": [261, 257, 253]
 														}
 													],
 													"sources": [
@@ -6323,7 +6323,7 @@
 															"fileName": "src/client/XernerxClient.ts",
 															"line": 76,
 															"character": 10,
-															"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/client/XernerxClient.ts#L76"
+															"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/client/XernerxClient.ts#L76"
 														}
 													]
 												}
@@ -6334,7 +6334,7 @@
 									"groups": [
 										{
 											"title": "Properties",
-											"children": [249, 247, 248, 250]
+											"children": [250, 248, 249, 251]
 										}
 									],
 									"sources": [
@@ -6342,14 +6342,14 @@
 											"fileName": "src/client/XernerxClient.ts",
 											"line": 72,
 											"character": 18,
-											"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/client/XernerxClient.ts#L72"
+											"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/client/XernerxClient.ts#L72"
 										}
 									]
 								}
 							}
 						},
 						{
-							"id": 264,
+							"id": 265,
 							"name": "events",
 							"variant": "declaration",
 							"kind": 1024,
@@ -6362,7 +6362,7 @@
 									"fileName": "src/client/XernerxClient.ts",
 									"line": 31,
 									"character": 25,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/client/XernerxClient.ts#L31"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/client/XernerxClient.ts#L31"
 								}
 							],
 							"type": {
@@ -6388,7 +6388,7 @@
 							}
 						},
 						{
-							"id": 276,
+							"id": 277,
 							"name": "guilds",
 							"variant": "declaration",
 							"kind": 1024,
@@ -6420,7 +6420,7 @@
 							}
 						},
 						{
-							"id": 265,
+							"id": 266,
 							"name": "inhibitors",
 							"variant": "declaration",
 							"kind": 1024,
@@ -6433,7 +6433,7 @@
 									"fileName": "src/client/XernerxClient.ts",
 									"line": 32,
 									"character": 25,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/client/XernerxClient.ts#L32"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/client/XernerxClient.ts#L32"
 								}
 							],
 							"type": {
@@ -6472,7 +6472,7 @@
 									"fileName": "src/client/XernerxClient.ts",
 									"line": 21,
 									"character": 25,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/client/XernerxClient.ts#L21"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/client/XernerxClient.ts#L21"
 								}
 							],
 							"type": {
@@ -6495,12 +6495,12 @@
 													"fileName": "src/client/XernerxClient.ts",
 													"line": 22,
 													"character": 2,
-													"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/client/XernerxClient.ts#L22"
+													"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/client/XernerxClient.ts#L22"
 												}
 											],
 											"type": {
 												"type": "reference",
-												"target": 464,
+												"target": 465,
 												"name": "CommandHandler",
 												"package": "xernerx"
 											}
@@ -6516,7 +6516,7 @@
 													"fileName": "src/client/XernerxClient.ts",
 													"line": 23,
 													"character": 2,
-													"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/client/XernerxClient.ts#L23"
+													"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/client/XernerxClient.ts#L23"
 												}
 											],
 											"type": {
@@ -6529,7 +6529,7 @@
 													"flags": {},
 													"children": [
 														{
-															"id": 241,
+															"id": 242,
 															"name": "context",
 															"variant": "declaration",
 															"kind": 1024,
@@ -6541,20 +6541,20 @@
 																	"fileName": "src/client/XernerxClient.ts",
 																	"line": 26,
 																	"character": 3,
-																	"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/client/XernerxClient.ts#L26"
+																	"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/client/XernerxClient.ts#L26"
 																}
 															],
 															"type": {
 																"type": "reflection",
 																"declaration": {
-																	"id": 242,
+																	"id": 243,
 																	"name": "__type",
 																	"variant": "declaration",
 																	"kind": 65536,
 																	"flags": {},
 																	"children": [
 																		{
-																			"id": 243,
+																			"id": 244,
 																			"name": "global",
 																			"variant": "declaration",
 																			"kind": 1024,
@@ -6566,7 +6566,7 @@
 																					"fileName": "src/client/XernerxClient.ts",
 																					"line": 26,
 																					"character": 15,
-																					"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/client/XernerxClient.ts#L26"
+																					"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/client/XernerxClient.ts#L26"
 																				}
 																			],
 																			"type": {
@@ -6578,7 +6578,7 @@
 																	"groups": [
 																		{
 																			"title": "Properties",
-																			"children": [243]
+																			"children": [244]
 																		}
 																	],
 																	"sources": [
@@ -6586,7 +6586,7 @@
 																			"fileName": "src/client/XernerxClient.ts",
 																			"line": 26,
 																			"character": 13,
-																			"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/client/XernerxClient.ts#L26"
+																			"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/client/XernerxClient.ts#L26"
 																		}
 																	]
 																}
@@ -6605,7 +6605,7 @@
 																	"fileName": "src/client/XernerxClient.ts",
 																	"line": 24,
 																	"character": 3,
-																	"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/client/XernerxClient.ts#L24"
+																	"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/client/XernerxClient.ts#L24"
 																}
 															],
 															"type": {
@@ -6630,19 +6630,41 @@
 																					"fileName": "src/client/XernerxClient.ts",
 																					"line": 24,
 																					"character": 15,
-																					"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/client/XernerxClient.ts#L24"
+																					"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/client/XernerxClient.ts#L24"
 																				}
 																			],
 																			"type": {
 																				"type": "intrinsic",
 																				"name": "boolean"
 																			}
+																		},
+																		{
+																			"id": 238,
+																			"name": "prefix",
+																			"variant": "declaration",
+																			"kind": 1024,
+																			"flags": {},
+																			"sources": [
+																				{
+																					"fileName": "src/client/XernerxClient.ts",
+																					"line": 24,
+																					"character": 33,
+																					"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/client/XernerxClient.ts#L24"
+																				}
+																			],
+																			"type": {
+																				"type": "array",
+																				"elementType": {
+																					"type": "intrinsic",
+																					"name": "string"
+																				}
+																			}
 																		}
 																	],
 																	"groups": [
 																		{
 																			"title": "Properties",
-																			"children": [237]
+																			"children": [237, 238]
 																		}
 																	],
 																	"sources": [
@@ -6650,14 +6672,14 @@
 																			"fileName": "src/client/XernerxClient.ts",
 																			"line": 24,
 																			"character": 13,
-																			"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/client/XernerxClient.ts#L24"
+																			"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/client/XernerxClient.ts#L24"
 																		}
 																	]
 																}
 															}
 														},
 														{
-															"id": 238,
+															"id": 239,
 															"name": "slash",
 															"variant": "declaration",
 															"kind": 1024,
@@ -6669,20 +6691,20 @@
 																	"fileName": "src/client/XernerxClient.ts",
 																	"line": 25,
 																	"character": 3,
-																	"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/client/XernerxClient.ts#L25"
+																	"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/client/XernerxClient.ts#L25"
 																}
 															],
 															"type": {
 																"type": "reflection",
 																"declaration": {
-																	"id": 239,
+																	"id": 240,
 																	"name": "__type",
 																	"variant": "declaration",
 																	"kind": 65536,
 																	"flags": {},
 																	"children": [
 																		{
-																			"id": 240,
+																			"id": 241,
 																			"name": "global",
 																			"variant": "declaration",
 																			"kind": 1024,
@@ -6694,7 +6716,7 @@
 																					"fileName": "src/client/XernerxClient.ts",
 																					"line": 25,
 																					"character": 13,
-																					"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/client/XernerxClient.ts#L25"
+																					"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/client/XernerxClient.ts#L25"
 																				}
 																			],
 																			"type": {
@@ -6706,7 +6728,7 @@
 																	"groups": [
 																		{
 																			"title": "Properties",
-																			"children": [240]
+																			"children": [241]
 																		}
 																	],
 																	"sources": [
@@ -6714,7 +6736,7 @@
 																			"fileName": "src/client/XernerxClient.ts",
 																			"line": 25,
 																			"character": 11,
-																			"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/client/XernerxClient.ts#L25"
+																			"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/client/XernerxClient.ts#L25"
 																		}
 																	]
 																}
@@ -6724,7 +6746,7 @@
 													"groups": [
 														{
 															"title": "Properties",
-															"children": [241, 235, 238]
+															"children": [242, 235, 239]
 														}
 													],
 													"sources": [
@@ -6732,7 +6754,7 @@
 															"fileName": "src/client/XernerxClient.ts",
 															"line": 23,
 															"character": 11,
-															"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/client/XernerxClient.ts#L23"
+															"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/client/XernerxClient.ts#L23"
 														}
 													]
 												}
@@ -6750,14 +6772,14 @@
 											"fileName": "src/client/XernerxClient.ts",
 											"line": 21,
 											"character": 34,
-											"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/client/XernerxClient.ts#L21"
+											"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/client/XernerxClient.ts#L21"
 										}
 									]
 								}
 							}
 						},
 						{
-							"id": 277,
+							"id": 278,
 							"name": "options",
 							"variant": "declaration",
 							"kind": 1024,
@@ -6803,7 +6825,7 @@
 									{
 										"type": "reflection",
 										"declaration": {
-											"id": 278,
+											"id": 279,
 											"name": "__type",
 											"variant": "declaration",
 											"kind": 65536,
@@ -6812,7 +6834,7 @@
 											},
 											"children": [
 												{
-													"id": 279,
+													"id": 280,
 													"name": "intents",
 													"variant": "declaration",
 													"kind": 1024,
@@ -6840,7 +6862,7 @@
 											"groups": [
 												{
 													"title": "Properties",
-													"children": [279]
+													"children": [280]
 												}
 											],
 											"sources": [
@@ -6861,7 +6883,7 @@
 							}
 						},
 						{
-							"id": 282,
+							"id": 283,
 							"name": "readyTimestamp",
 							"variant": "declaration",
 							"kind": 1024,
@@ -6897,7 +6919,7 @@
 							}
 						},
 						{
-							"id": 400,
+							"id": 401,
 							"name": "rest",
 							"variant": "declaration",
 							"kind": 1024,
@@ -6942,7 +6964,7 @@
 									"fileName": "src/client/XernerxClient.ts",
 									"line": 19,
 									"character": 25,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/client/XernerxClient.ts#L19"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/client/XernerxClient.ts#L19"
 								}
 							],
 							"type": {
@@ -6973,7 +6995,7 @@
 													"fileName": "src/client/XernerxClient.ts",
 													"line": 48,
 													"character": 4,
-													"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/client/XernerxClient.ts#L48"
+													"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/client/XernerxClient.ts#L48"
 												}
 											],
 											"type": {
@@ -7001,7 +7023,7 @@
 													"fileName": "src/client/XernerxClient.ts",
 													"line": 43,
 													"character": 4,
-													"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/client/XernerxClient.ts#L43"
+													"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/client/XernerxClient.ts#L43"
 												}
 											],
 											"type": {
@@ -7021,7 +7043,7 @@
 													"fileName": "src/client/XernerxClient.ts",
 													"line": 45,
 													"character": 4,
-													"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/client/XernerxClient.ts#L45"
+													"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/client/XernerxClient.ts#L45"
 												}
 											],
 											"type": {
@@ -7044,7 +7066,7 @@
 													"fileName": "src/client/XernerxClient.ts",
 													"line": 44,
 													"character": 4,
-													"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/client/XernerxClient.ts#L44"
+													"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/client/XernerxClient.ts#L44"
 												}
 											],
 											"type": {
@@ -7075,7 +7097,7 @@
 													"fileName": "src/client/XernerxClient.ts",
 													"line": 40,
 													"character": 4,
-													"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/client/XernerxClient.ts#L40"
+													"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/client/XernerxClient.ts#L40"
 												}
 											],
 											"type": {
@@ -7102,7 +7124,7 @@
 							}
 						},
 						{
-							"id": 284,
+							"id": 285,
 							"name": "shard",
 							"variant": "declaration",
 							"kind": 1024,
@@ -7156,18 +7178,18 @@
 									"fileName": "src/client/XernerxClient.ts",
 									"line": 20,
 									"character": 25,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/client/XernerxClient.ts#L20"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/client/XernerxClient.ts#L20"
 								}
 							],
 							"type": {
 								"type": "reference",
-								"target": 503,
+								"target": 504,
 								"name": "XernerxStats",
 								"package": "xernerx"
 							}
 						},
 						{
-							"id": 283,
+							"id": 284,
 							"name": "sweepers",
 							"variant": "declaration",
 							"kind": 1024,
@@ -7199,7 +7221,7 @@
 							}
 						},
 						{
-							"id": 285,
+							"id": 286,
 							"name": "token",
 							"variant": "declaration",
 							"kind": 1024,
@@ -7235,7 +7257,7 @@
 							}
 						},
 						{
-							"id": 288,
+							"id": 289,
 							"name": "user",
 							"variant": "declaration",
 							"kind": 1024,
@@ -7276,7 +7298,7 @@
 							}
 						},
 						{
-							"id": 289,
+							"id": 290,
 							"name": "users",
 							"variant": "declaration",
 							"kind": 1024,
@@ -7308,7 +7330,7 @@
 							}
 						},
 						{
-							"id": 244,
+							"id": 245,
 							"name": "util",
 							"variant": "declaration",
 							"kind": 1024,
@@ -7321,18 +7343,18 @@
 									"fileName": "src/client/XernerxClient.ts",
 									"line": 29,
 									"character": 25,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/client/XernerxClient.ts#L29"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/client/XernerxClient.ts#L29"
 								}
 							],
 							"type": {
 								"type": "reference",
-								"target": 527,
+								"target": 528,
 								"name": "ClientUtil",
 								"package": "xernerx"
 							}
 						},
 						{
-							"id": 290,
+							"id": 291,
 							"name": "voice",
 							"variant": "declaration",
 							"kind": 1024,
@@ -7364,7 +7386,7 @@
 							}
 						},
 						{
-							"id": 291,
+							"id": 292,
 							"name": "ws",
 							"variant": "declaration",
 							"kind": 1024,
@@ -7834,7 +7856,7 @@
 							}
 						},
 						{
-							"id": 274,
+							"id": 275,
 							"name": "emojis",
 							"variant": "declaration",
 							"kind": 262144,
@@ -7851,7 +7873,7 @@
 								}
 							],
 							"getSignature": {
-								"id": 275,
+								"id": 276,
 								"name": "emojis",
 								"variant": "signature",
 								"kind": 524288,
@@ -7888,7 +7910,7 @@
 							}
 						},
 						{
-							"id": 280,
+							"id": 281,
 							"name": "readyAt",
 							"variant": "declaration",
 							"kind": 262144,
@@ -7905,7 +7927,7 @@
 								}
 							],
 							"getSignature": {
-								"id": 281,
+								"id": 282,
 								"name": "readyAt",
 								"variant": "signature",
 								"kind": 524288,
@@ -7968,7 +7990,7 @@
 							}
 						},
 						{
-							"id": 286,
+							"id": 287,
 							"name": "uptime",
 							"variant": "declaration",
 							"kind": 262144,
@@ -7985,7 +8007,7 @@
 								}
 							],
 							"getSignature": {
-								"id": 287,
+								"id": 288,
 								"name": "uptime",
 								"variant": "signature",
 								"kind": 524288,
@@ -8043,7 +8065,7 @@
 							}
 						},
 						{
-							"id": 401,
+							"id": 402,
 							"name": "[asyncDispose]",
 							"variant": "declaration",
 							"kind": 2048,
@@ -8061,7 +8083,7 @@
 							],
 							"signatures": [
 								{
-									"id": 402,
+									"id": 403,
 									"name": "[asyncDispose]",
 									"variant": "signature",
 									"kind": 4096,
@@ -8105,7 +8127,7 @@
 							}
 						},
 						{
-							"id": 403,
+							"id": 404,
 							"name": "[captureRejectionSymbol]",
 							"variant": "declaration",
 							"kind": 2048,
@@ -8123,7 +8145,7 @@
 							],
 							"signatures": [
 								{
-									"id": 404,
+									"id": 405,
 									"name": "[captureRejectionSymbol]",
 									"variant": "signature",
 									"kind": 4096,
@@ -8140,7 +8162,7 @@
 									],
 									"typeParameters": [
 										{
-											"id": 405,
+											"id": 406,
 											"name": "K",
 											"variant": "typeParam",
 											"kind": 131072,
@@ -8151,7 +8173,7 @@
 									],
 									"parameters": [
 										{
-											"id": 406,
+											"id": 407,
 											"name": "error",
 											"variant": "param",
 											"kind": 32768,
@@ -8169,7 +8191,7 @@
 											}
 										},
 										{
-											"id": 407,
+											"id": 408,
 											"name": "event",
 											"variant": "param",
 											"kind": 32768,
@@ -8191,7 +8213,7 @@
 											}
 										},
 										{
-											"id": 408,
+											"id": 409,
 											"name": "args",
 											"variant": "param",
 											"kind": 32768,
@@ -8228,7 +8250,7 @@
 							}
 						},
 						{
-							"id": 409,
+							"id": 410,
 							"name": "addListener",
 							"variant": "declaration",
 							"kind": 2048,
@@ -8245,7 +8267,7 @@
 							],
 							"signatures": [
 								{
-									"id": 410,
+									"id": 411,
 									"name": "addListener",
 									"variant": "signature",
 									"kind": 4096,
@@ -8289,7 +8311,7 @@
 									],
 									"typeParameters": [
 										{
-											"id": 411,
+											"id": 412,
 											"name": "K",
 											"variant": "typeParam",
 											"kind": 131072,
@@ -8300,7 +8322,7 @@
 									],
 									"parameters": [
 										{
-											"id": 412,
+											"id": 413,
 											"name": "eventName",
 											"variant": "param",
 											"kind": 32768,
@@ -8322,7 +8344,7 @@
 											}
 										},
 										{
-											"id": 413,
+											"id": 414,
 											"name": "listener",
 											"variant": "param",
 											"kind": 32768,
@@ -8332,7 +8354,7 @@
 											"type": {
 												"type": "reflection",
 												"declaration": {
-													"id": 414,
+													"id": 415,
 													"name": "__type",
 													"variant": "declaration",
 													"kind": 65536,
@@ -8348,7 +8370,7 @@
 													],
 													"signatures": [
 														{
-															"id": 415,
+															"id": 416,
 															"name": "__type",
 															"variant": "signature",
 															"kind": 4096,
@@ -8364,7 +8386,7 @@
 															],
 															"parameters": [
 																{
-																	"id": 416,
+																	"id": 417,
 																	"name": "args",
 																	"variant": "param",
 																	"kind": 32768,
@@ -8409,7 +8431,7 @@
 							}
 						},
 						{
-							"id": 294,
+							"id": 295,
 							"name": "deleteWebhook",
 							"variant": "declaration",
 							"kind": 2048,
@@ -8427,7 +8449,7 @@
 							],
 							"signatures": [
 								{
-									"id": 295,
+									"id": 296,
 									"name": "deleteWebhook",
 									"variant": "signature",
 									"kind": 4096,
@@ -8444,7 +8466,7 @@
 									],
 									"parameters": [
 										{
-											"id": 296,
+											"id": 297,
 											"name": "id",
 											"variant": "param",
 											"kind": 32768,
@@ -8457,7 +8479,7 @@
 											}
 										},
 										{
-											"id": 297,
+											"id": 298,
 											"name": "options",
 											"variant": "param",
 											"kind": 32768,
@@ -8505,7 +8527,7 @@
 							}
 						},
 						{
-							"id": 292,
+							"id": 293,
 							"name": "destroy",
 							"variant": "declaration",
 							"kind": 2048,
@@ -8523,7 +8545,7 @@
 							],
 							"signatures": [
 								{
-									"id": 293,
+									"id": 294,
 									"name": "destroy",
 									"variant": "signature",
 									"kind": 4096,
@@ -8567,7 +8589,7 @@
 							}
 						},
 						{
-							"id": 369,
+							"id": 370,
 							"name": "emit",
 							"variant": "declaration",
 							"kind": 2048,
@@ -8590,7 +8612,7 @@
 							],
 							"signatures": [
 								{
-									"id": 370,
+									"id": 371,
 									"name": "emit",
 									"variant": "signature",
 									"kind": 4096,
@@ -8654,7 +8676,7 @@
 									],
 									"typeParameters": [
 										{
-											"id": 371,
+											"id": 372,
 											"name": "Event",
 											"variant": "typeParam",
 											"kind": 131072,
@@ -8678,7 +8700,7 @@
 									],
 									"parameters": [
 										{
-											"id": 372,
+											"id": 373,
 											"name": "event",
 											"variant": "param",
 											"kind": 32768,
@@ -8687,14 +8709,14 @@
 											},
 											"type": {
 												"type": "reference",
-												"target": 371,
+												"target": 372,
 												"name": "Event",
 												"package": "discord.js",
 												"refersToTypeParameter": true
 											}
 										},
 										{
-											"id": 373,
+											"id": 374,
 											"name": "args",
 											"variant": "param",
 											"kind": 32768,
@@ -8706,7 +8728,7 @@
 												"type": "indexedAccess",
 												"indexType": {
 													"type": "reference",
-													"target": 371,
+													"target": 372,
 													"name": "Event",
 													"package": "discord.js",
 													"refersToTypeParameter": true
@@ -8734,7 +8756,7 @@
 									}
 								},
 								{
-									"id": 374,
+									"id": 375,
 									"name": "emit",
 									"variant": "signature",
 									"kind": 4096,
@@ -8798,7 +8820,7 @@
 									],
 									"typeParameters": [
 										{
-											"id": 375,
+											"id": 376,
 											"name": "Event",
 											"variant": "typeParam",
 											"kind": 131072,
@@ -8822,7 +8844,7 @@
 									],
 									"parameters": [
 										{
-											"id": 376,
+											"id": 377,
 											"name": "event",
 											"variant": "param",
 											"kind": 32768,
@@ -8838,7 +8860,7 @@
 												"typeArguments": [
 													{
 														"type": "reference",
-														"target": 375,
+														"target": 376,
 														"name": "Event",
 														"package": "discord.js",
 														"refersToTypeParameter": true
@@ -8862,7 +8884,7 @@
 											}
 										},
 										{
-											"id": 377,
+											"id": 378,
 											"name": "args",
 											"variant": "param",
 											"kind": 32768,
@@ -8897,7 +8919,7 @@
 							}
 						},
 						{
-							"id": 459,
+							"id": 460,
 							"name": "eventNames",
 							"variant": "declaration",
 							"kind": 2048,
@@ -8914,7 +8936,7 @@
 							],
 							"signatures": [
 								{
-									"id": 460,
+									"id": 461,
 									"name": "eventNames",
 									"variant": "signature",
 									"kind": 4096,
@@ -8990,7 +9012,7 @@
 							}
 						},
 						{
-							"id": 298,
+							"id": 299,
 							"name": "fetchGuildPreview",
 							"variant": "declaration",
 							"kind": 2048,
@@ -9008,7 +9030,7 @@
 							],
 							"signatures": [
 								{
-									"id": 299,
+									"id": 300,
 									"name": "fetchGuildPreview",
 									"variant": "signature",
 									"kind": 4096,
@@ -9025,7 +9047,7 @@
 									],
 									"parameters": [
 										{
-											"id": 300,
+											"id": 301,
 											"name": "guild",
 											"variant": "param",
 											"kind": 32768,
@@ -9077,7 +9099,7 @@
 							}
 						},
 						{
-							"id": 305,
+							"id": 306,
 							"name": "fetchGuildTemplate",
 							"variant": "declaration",
 							"kind": 2048,
@@ -9095,7 +9117,7 @@
 							],
 							"signatures": [
 								{
-									"id": 306,
+									"id": 307,
 									"name": "fetchGuildTemplate",
 									"variant": "signature",
 									"kind": 4096,
@@ -9112,7 +9134,7 @@
 									],
 									"parameters": [
 										{
-											"id": 307,
+											"id": 308,
 											"name": "template",
 											"variant": "param",
 											"kind": 32768,
@@ -9159,7 +9181,7 @@
 							}
 						},
 						{
-							"id": 326,
+							"id": 327,
 							"name": "fetchGuildWidget",
 							"variant": "declaration",
 							"kind": 2048,
@@ -9177,7 +9199,7 @@
 							],
 							"signatures": [
 								{
-									"id": 327,
+									"id": 328,
 									"name": "fetchGuildWidget",
 									"variant": "signature",
 									"kind": 4096,
@@ -9194,7 +9216,7 @@
 									],
 									"parameters": [
 										{
-											"id": 328,
+											"id": 329,
 											"name": "guild",
 											"variant": "param",
 											"kind": 32768,
@@ -9246,7 +9268,7 @@
 							}
 						},
 						{
-							"id": 301,
+							"id": 302,
 							"name": "fetchInvite",
 							"variant": "declaration",
 							"kind": 2048,
@@ -9264,7 +9286,7 @@
 							],
 							"signatures": [
 								{
-									"id": 302,
+									"id": 303,
 									"name": "fetchInvite",
 									"variant": "signature",
 									"kind": 4096,
@@ -9281,7 +9303,7 @@
 									],
 									"parameters": [
 										{
-											"id": 303,
+											"id": 304,
 											"name": "invite",
 											"variant": "param",
 											"kind": 32768,
@@ -9294,7 +9316,7 @@
 											}
 										},
 										{
-											"id": 304,
+											"id": 305,
 											"name": "options",
 											"variant": "param",
 											"kind": 32768,
@@ -9347,7 +9369,7 @@
 							}
 						},
 						{
-							"id": 320,
+							"id": 321,
 							"name": "fetchPremiumStickerPacks",
 							"variant": "declaration",
 							"kind": 2048,
@@ -9365,7 +9387,7 @@
 							],
 							"signatures": [
 								{
-									"id": 321,
+									"id": 322,
 									"name": "fetchPremiumStickerPacks",
 									"variant": "signature",
 									"kind": 4096,
@@ -9456,7 +9478,7 @@
 							}
 						},
 						{
-							"id": 310,
+							"id": 311,
 							"name": "fetchSticker",
 							"variant": "declaration",
 							"kind": 2048,
@@ -9474,7 +9496,7 @@
 							],
 							"signatures": [
 								{
-									"id": 311,
+									"id": 312,
 									"name": "fetchSticker",
 									"variant": "signature",
 									"kind": 4096,
@@ -9491,7 +9513,7 @@
 									],
 									"parameters": [
 										{
-											"id": 312,
+											"id": 313,
 											"name": "id",
 											"variant": "param",
 											"kind": 32768,
@@ -9538,7 +9560,7 @@
 							}
 						},
 						{
-							"id": 313,
+							"id": 314,
 							"name": "fetchStickerPacks",
 							"variant": "declaration",
 							"kind": 2048,
@@ -9561,7 +9583,7 @@
 							],
 							"signatures": [
 								{
-									"id": 314,
+									"id": 315,
 									"name": "fetchStickerPacks",
 									"variant": "signature",
 									"kind": 4096,
@@ -9578,7 +9600,7 @@
 									],
 									"parameters": [
 										{
-											"id": 315,
+											"id": 316,
 											"name": "options",
 											"variant": "param",
 											"kind": 32768,
@@ -9588,7 +9610,7 @@
 											"type": {
 												"type": "reflection",
 												"declaration": {
-													"id": 316,
+													"id": 317,
 													"name": "__type",
 													"variant": "declaration",
 													"kind": 65536,
@@ -9597,7 +9619,7 @@
 													},
 													"children": [
 														{
-															"id": 317,
+															"id": 318,
 															"name": "packId",
 															"variant": "declaration",
 															"kind": 1024,
@@ -9620,7 +9642,7 @@
 													"groups": [
 														{
 															"title": "Properties",
-															"children": [317]
+															"children": [318]
 														}
 													],
 													"sources": [
@@ -9661,7 +9683,7 @@
 									}
 								},
 								{
-									"id": 318,
+									"id": 319,
 									"name": "fetchStickerPacks",
 									"variant": "signature",
 									"kind": 4096,
@@ -9678,7 +9700,7 @@
 									],
 									"parameters": [
 										{
-											"id": 319,
+											"id": 320,
 											"name": "options",
 											"variant": "param",
 											"kind": 32768,
@@ -9746,7 +9768,7 @@
 							}
 						},
 						{
-							"id": 308,
+							"id": 309,
 							"name": "fetchVoiceRegions",
 							"variant": "declaration",
 							"kind": 2048,
@@ -9764,7 +9786,7 @@
 							],
 							"signatures": [
 								{
-									"id": 309,
+									"id": 310,
 									"name": "fetchVoiceRegions",
 									"variant": "signature",
 									"kind": 4096,
@@ -9828,7 +9850,7 @@
 							}
 						},
 						{
-							"id": 322,
+							"id": 323,
 							"name": "fetchWebhook",
 							"variant": "declaration",
 							"kind": 2048,
@@ -9846,7 +9868,7 @@
 							],
 							"signatures": [
 								{
-									"id": 323,
+									"id": 324,
 									"name": "fetchWebhook",
 									"variant": "signature",
 									"kind": 4096,
@@ -9863,7 +9885,7 @@
 									],
 									"parameters": [
 										{
-											"id": 324,
+											"id": 325,
 											"name": "id",
 											"variant": "param",
 											"kind": 32768,
@@ -9876,7 +9898,7 @@
 											}
 										},
 										{
-											"id": 325,
+											"id": 326,
 											"name": "token",
 											"variant": "param",
 											"kind": 32768,
@@ -9935,7 +9957,7 @@
 							}
 						},
 						{
-							"id": 329,
+							"id": 330,
 							"name": "generateInvite",
 							"variant": "declaration",
 							"kind": 2048,
@@ -9953,7 +9975,7 @@
 							],
 							"signatures": [
 								{
-									"id": 330,
+									"id": 331,
 									"name": "generateInvite",
 									"variant": "signature",
 									"kind": 4096,
@@ -9970,7 +9992,7 @@
 									],
 									"parameters": [
 										{
-											"id": 331,
+											"id": 332,
 											"name": "options",
 											"variant": "param",
 											"kind": 32768,
@@ -10007,7 +10029,7 @@
 							}
 						},
 						{
-							"id": 428,
+							"id": 429,
 							"name": "getMaxListeners",
 							"variant": "declaration",
 							"kind": 2048,
@@ -10024,7 +10046,7 @@
 							],
 							"signatures": [
 								{
-									"id": 429,
+									"id": 430,
 									"name": "getMaxListeners",
 									"variant": "signature",
 									"kind": 4096,
@@ -10102,7 +10124,7 @@
 							}
 						},
 						{
-							"id": 335,
+							"id": 336,
 							"name": "isReady",
 							"variant": "declaration",
 							"kind": 2048,
@@ -10120,7 +10142,7 @@
 							],
 							"signatures": [
 								{
-									"id": 336,
+									"id": 337,
 									"name": "isReady",
 									"variant": "signature",
 									"kind": 4096,
@@ -10169,7 +10191,7 @@
 							}
 						},
 						{
-							"id": 438,
+							"id": 439,
 							"name": "listenerCount",
 							"variant": "declaration",
 							"kind": 2048,
@@ -10186,7 +10208,7 @@
 							],
 							"signatures": [
 								{
-									"id": 439,
+									"id": 440,
 									"name": "listenerCount",
 									"variant": "signature",
 									"kind": 4096,
@@ -10238,7 +10260,7 @@
 									],
 									"typeParameters": [
 										{
-											"id": 440,
+											"id": 441,
 											"name": "K",
 											"variant": "typeParam",
 											"kind": 131072,
@@ -10249,7 +10271,7 @@
 									],
 									"parameters": [
 										{
-											"id": 441,
+											"id": 442,
 											"name": "eventName",
 											"variant": "param",
 											"kind": 32768,
@@ -10279,7 +10301,7 @@
 											}
 										},
 										{
-											"id": 442,
+											"id": 443,
 											"name": "listener",
 											"variant": "param",
 											"kind": 32768,
@@ -10324,7 +10346,7 @@
 							}
 						},
 						{
-							"id": 430,
+							"id": 431,
 							"name": "listeners",
 							"variant": "declaration",
 							"kind": 2048,
@@ -10341,7 +10363,7 @@
 							],
 							"signatures": [
 								{
-									"id": 431,
+									"id": 432,
 									"name": "listeners",
 									"variant": "signature",
 									"kind": 4096,
@@ -10389,7 +10411,7 @@
 									],
 									"typeParameters": [
 										{
-											"id": 432,
+											"id": 433,
 											"name": "K",
 											"variant": "typeParam",
 											"kind": 131072,
@@ -10400,7 +10422,7 @@
 									],
 									"parameters": [
 										{
-											"id": 433,
+											"id": 434,
 											"name": "eventName",
 											"variant": "param",
 											"kind": 32768,
@@ -10448,7 +10470,7 @@
 							}
 						},
 						{
-							"id": 332,
+							"id": 333,
 							"name": "login",
 							"variant": "declaration",
 							"kind": 2048,
@@ -10466,7 +10488,7 @@
 							],
 							"signatures": [
 								{
-									"id": 333,
+									"id": 334,
 									"name": "login",
 									"variant": "signature",
 									"kind": 4096,
@@ -10483,7 +10505,7 @@
 									],
 									"parameters": [
 										{
-											"id": 334,
+											"id": 335,
 											"name": "token",
 											"variant": "param",
 											"kind": 32768,
@@ -10526,7 +10548,7 @@
 							}
 						},
 						{
-							"id": 378,
+							"id": 379,
 							"name": "off",
 							"variant": "declaration",
 							"kind": 2048,
@@ -10549,7 +10571,7 @@
 							],
 							"signatures": [
 								{
-									"id": 379,
+									"id": 380,
 									"name": "off",
 									"variant": "signature",
 									"kind": 4096,
@@ -10593,7 +10615,7 @@
 									],
 									"typeParameters": [
 										{
-											"id": 380,
+											"id": 381,
 											"name": "Event",
 											"variant": "typeParam",
 											"kind": 131072,
@@ -10617,7 +10639,7 @@
 									],
 									"parameters": [
 										{
-											"id": 381,
+											"id": 382,
 											"name": "event",
 											"variant": "param",
 											"kind": 32768,
@@ -10626,14 +10648,14 @@
 											},
 											"type": {
 												"type": "reference",
-												"target": 380,
+												"target": 381,
 												"name": "Event",
 												"package": "discord.js",
 												"refersToTypeParameter": true
 											}
 										},
 										{
-											"id": 382,
+											"id": 383,
 											"name": "listener",
 											"variant": "param",
 											"kind": 32768,
@@ -10643,7 +10665,7 @@
 											"type": {
 												"type": "reflection",
 												"declaration": {
-													"id": 383,
+													"id": 384,
 													"name": "__type",
 													"variant": "declaration",
 													"kind": 65536,
@@ -10659,7 +10681,7 @@
 													],
 													"signatures": [
 														{
-															"id": 384,
+															"id": 385,
 															"name": "__type",
 															"variant": "signature",
 															"kind": 4096,
@@ -10675,7 +10697,7 @@
 															],
 															"parameters": [
 																{
-																	"id": 385,
+																	"id": 386,
 																	"name": "args",
 																	"variant": "param",
 																	"kind": 32768,
@@ -10687,7 +10709,7 @@
 																		"type": "indexedAccess",
 																		"indexType": {
 																			"type": "reference",
-																			"target": 380,
+																			"target": 381,
 																			"name": "Event",
 																			"package": "discord.js",
 																			"refersToTypeParameter": true
@@ -10725,7 +10747,7 @@
 									}
 								},
 								{
-									"id": 386,
+									"id": 387,
 									"name": "off",
 									"variant": "signature",
 									"kind": 4096,
@@ -10769,7 +10791,7 @@
 									],
 									"typeParameters": [
 										{
-											"id": 387,
+											"id": 388,
 											"name": "Event",
 											"variant": "typeParam",
 											"kind": 131072,
@@ -10793,7 +10815,7 @@
 									],
 									"parameters": [
 										{
-											"id": 388,
+											"id": 389,
 											"name": "event",
 											"variant": "param",
 											"kind": 32768,
@@ -10809,7 +10831,7 @@
 												"typeArguments": [
 													{
 														"type": "reference",
-														"target": 387,
+														"target": 388,
 														"name": "Event",
 														"package": "discord.js",
 														"refersToTypeParameter": true
@@ -10833,7 +10855,7 @@
 											}
 										},
 										{
-											"id": 389,
+											"id": 390,
 											"name": "listener",
 											"variant": "param",
 											"kind": 32768,
@@ -10843,7 +10865,7 @@
 											"type": {
 												"type": "reflection",
 												"declaration": {
-													"id": 390,
+													"id": 391,
 													"name": "__type",
 													"variant": "declaration",
 													"kind": 65536,
@@ -10859,7 +10881,7 @@
 													],
 													"signatures": [
 														{
-															"id": 391,
+															"id": 392,
 															"name": "__type",
 															"variant": "signature",
 															"kind": 4096,
@@ -10875,7 +10897,7 @@
 															],
 															"parameters": [
 																{
-																	"id": 392,
+																	"id": 393,
 																	"name": "args",
 																	"variant": "param",
 																	"kind": 32768,
@@ -10920,7 +10942,7 @@
 							}
 						},
 						{
-							"id": 339,
+							"id": 340,
 							"name": "on",
 							"variant": "declaration",
 							"kind": 2048,
@@ -10943,7 +10965,7 @@
 							],
 							"signatures": [
 								{
-									"id": 340,
+									"id": 341,
 									"name": "on",
 									"variant": "signature",
 									"kind": 4096,
@@ -11055,7 +11077,7 @@
 									],
 									"typeParameters": [
 										{
-											"id": 341,
+											"id": 342,
 											"name": "Event",
 											"variant": "typeParam",
 											"kind": 131072,
@@ -11079,7 +11101,7 @@
 									],
 									"parameters": [
 										{
-											"id": 342,
+											"id": 343,
 											"name": "event",
 											"variant": "param",
 											"kind": 32768,
@@ -11088,14 +11110,14 @@
 											},
 											"type": {
 												"type": "reference",
-												"target": 341,
+												"target": 342,
 												"name": "Event",
 												"package": "discord.js",
 												"refersToTypeParameter": true
 											}
 										},
 										{
-											"id": 343,
+											"id": 344,
 											"name": "listener",
 											"variant": "param",
 											"kind": 32768,
@@ -11113,7 +11135,7 @@
 											"type": {
 												"type": "reflection",
 												"declaration": {
-													"id": 344,
+													"id": 345,
 													"name": "__type",
 													"variant": "declaration",
 													"kind": 65536,
@@ -11129,7 +11151,7 @@
 													],
 													"signatures": [
 														{
-															"id": 345,
+															"id": 346,
 															"name": "__type",
 															"variant": "signature",
 															"kind": 4096,
@@ -11145,7 +11167,7 @@
 															],
 															"parameters": [
 																{
-																	"id": 346,
+																	"id": 347,
 																	"name": "args",
 																	"variant": "param",
 																	"kind": 32768,
@@ -11157,7 +11179,7 @@
 																		"type": "indexedAccess",
 																		"indexType": {
 																			"type": "reference",
-																			"target": 341,
+																			"target": 342,
 																			"name": "Event",
 																			"package": "discord.js",
 																			"refersToTypeParameter": true
@@ -11195,7 +11217,7 @@
 									}
 								},
 								{
-									"id": 347,
+									"id": 348,
 									"name": "on",
 									"variant": "signature",
 									"kind": 4096,
@@ -11307,7 +11329,7 @@
 									],
 									"typeParameters": [
 										{
-											"id": 348,
+											"id": 349,
 											"name": "Event",
 											"variant": "typeParam",
 											"kind": 131072,
@@ -11331,7 +11353,7 @@
 									],
 									"parameters": [
 										{
-											"id": 349,
+											"id": 350,
 											"name": "event",
 											"variant": "param",
 											"kind": 32768,
@@ -11347,7 +11369,7 @@
 												"typeArguments": [
 													{
 														"type": "reference",
-														"target": 348,
+														"target": 349,
 														"name": "Event",
 														"package": "discord.js",
 														"refersToTypeParameter": true
@@ -11371,7 +11393,7 @@
 											}
 										},
 										{
-											"id": 350,
+											"id": 351,
 											"name": "listener",
 											"variant": "param",
 											"kind": 32768,
@@ -11389,7 +11411,7 @@
 											"type": {
 												"type": "reflection",
 												"declaration": {
-													"id": 351,
+													"id": 352,
 													"name": "__type",
 													"variant": "declaration",
 													"kind": 65536,
@@ -11405,7 +11427,7 @@
 													],
 													"signatures": [
 														{
-															"id": 352,
+															"id": 353,
 															"name": "__type",
 															"variant": "signature",
 															"kind": 4096,
@@ -11421,7 +11443,7 @@
 															],
 															"parameters": [
 																{
-																	"id": 353,
+																	"id": 354,
 																	"name": "args",
 																	"variant": "param",
 																	"kind": 32768,
@@ -11466,7 +11488,7 @@
 							}
 						},
 						{
-							"id": 354,
+							"id": 355,
 							"name": "once",
 							"variant": "declaration",
 							"kind": 2048,
@@ -11489,7 +11511,7 @@
 							],
 							"signatures": [
 								{
-									"id": 355,
+									"id": 356,
 									"name": "once",
 									"variant": "signature",
 									"kind": 4096,
@@ -11577,7 +11599,7 @@
 									],
 									"typeParameters": [
 										{
-											"id": 356,
+											"id": 357,
 											"name": "Event",
 											"variant": "typeParam",
 											"kind": 131072,
@@ -11601,7 +11623,7 @@
 									],
 									"parameters": [
 										{
-											"id": 357,
+											"id": 358,
 											"name": "event",
 											"variant": "param",
 											"kind": 32768,
@@ -11610,14 +11632,14 @@
 											},
 											"type": {
 												"type": "reference",
-												"target": 356,
+												"target": 357,
 												"name": "Event",
 												"package": "discord.js",
 												"refersToTypeParameter": true
 											}
 										},
 										{
-											"id": 358,
+											"id": 359,
 											"name": "listener",
 											"variant": "param",
 											"kind": 32768,
@@ -11635,7 +11657,7 @@
 											"type": {
 												"type": "reflection",
 												"declaration": {
-													"id": 359,
+													"id": 360,
 													"name": "__type",
 													"variant": "declaration",
 													"kind": 65536,
@@ -11651,7 +11673,7 @@
 													],
 													"signatures": [
 														{
-															"id": 360,
+															"id": 361,
 															"name": "__type",
 															"variant": "signature",
 															"kind": 4096,
@@ -11667,7 +11689,7 @@
 															],
 															"parameters": [
 																{
-																	"id": 361,
+																	"id": 362,
 																	"name": "args",
 																	"variant": "param",
 																	"kind": 32768,
@@ -11679,7 +11701,7 @@
 																		"type": "indexedAccess",
 																		"indexType": {
 																			"type": "reference",
-																			"target": 356,
+																			"target": 357,
 																			"name": "Event",
 																			"package": "discord.js",
 																			"refersToTypeParameter": true
@@ -11717,7 +11739,7 @@
 									}
 								},
 								{
-									"id": 362,
+									"id": 363,
 									"name": "once",
 									"variant": "signature",
 									"kind": 4096,
@@ -11805,7 +11827,7 @@
 									],
 									"typeParameters": [
 										{
-											"id": 363,
+											"id": 364,
 											"name": "Event",
 											"variant": "typeParam",
 											"kind": 131072,
@@ -11829,7 +11851,7 @@
 									],
 									"parameters": [
 										{
-											"id": 364,
+											"id": 365,
 											"name": "event",
 											"variant": "param",
 											"kind": 32768,
@@ -11845,7 +11867,7 @@
 												"typeArguments": [
 													{
 														"type": "reference",
-														"target": 363,
+														"target": 364,
 														"name": "Event",
 														"package": "discord.js",
 														"refersToTypeParameter": true
@@ -11869,7 +11891,7 @@
 											}
 										},
 										{
-											"id": 365,
+											"id": 366,
 											"name": "listener",
 											"variant": "param",
 											"kind": 32768,
@@ -11887,7 +11909,7 @@
 											"type": {
 												"type": "reflection",
 												"declaration": {
-													"id": 366,
+													"id": 367,
 													"name": "__type",
 													"variant": "declaration",
 													"kind": 65536,
@@ -11903,7 +11925,7 @@
 													],
 													"signatures": [
 														{
-															"id": 367,
+															"id": 368,
 															"name": "__type",
 															"variant": "signature",
 															"kind": 4096,
@@ -11919,7 +11941,7 @@
 															],
 															"parameters": [
 																{
-																	"id": 368,
+																	"id": 369,
 																	"name": "args",
 																	"variant": "param",
 																	"kind": 32768,
@@ -11964,7 +11986,7 @@
 							}
 						},
 						{
-							"id": 443,
+							"id": 444,
 							"name": "prependListener",
 							"variant": "declaration",
 							"kind": 2048,
@@ -11981,7 +12003,7 @@
 							],
 							"signatures": [
 								{
-									"id": 444,
+									"id": 445,
 									"name": "prependListener",
 									"variant": "signature",
 									"kind": 4096,
@@ -12081,7 +12103,7 @@
 									],
 									"typeParameters": [
 										{
-											"id": 445,
+											"id": 446,
 											"name": "K",
 											"variant": "typeParam",
 											"kind": 131072,
@@ -12092,7 +12114,7 @@
 									],
 									"parameters": [
 										{
-											"id": 446,
+											"id": 447,
 											"name": "eventName",
 											"variant": "param",
 											"kind": 32768,
@@ -12122,7 +12144,7 @@
 											}
 										},
 										{
-											"id": 447,
+											"id": 448,
 											"name": "listener",
 											"variant": "param",
 											"kind": 32768,
@@ -12140,7 +12162,7 @@
 											"type": {
 												"type": "reflection",
 												"declaration": {
-													"id": 448,
+													"id": 449,
 													"name": "__type",
 													"variant": "declaration",
 													"kind": 65536,
@@ -12156,7 +12178,7 @@
 													],
 													"signatures": [
 														{
-															"id": 449,
+															"id": 450,
 															"name": "__type",
 															"variant": "signature",
 															"kind": 4096,
@@ -12172,7 +12194,7 @@
 															],
 															"parameters": [
 																{
-																	"id": 450,
+																	"id": 451,
 																	"name": "args",
 																	"variant": "param",
 																	"kind": 32768,
@@ -12217,7 +12239,7 @@
 							}
 						},
 						{
-							"id": 451,
+							"id": 452,
 							"name": "prependOnceListener",
 							"variant": "declaration",
 							"kind": 2048,
@@ -12234,7 +12256,7 @@
 							],
 							"signatures": [
 								{
-									"id": 452,
+									"id": 453,
 									"name": "prependOnceListener",
 									"variant": "signature",
 									"kind": 4096,
@@ -12310,7 +12332,7 @@
 									],
 									"typeParameters": [
 										{
-											"id": 453,
+											"id": 454,
 											"name": "K",
 											"variant": "typeParam",
 											"kind": 131072,
@@ -12321,7 +12343,7 @@
 									],
 									"parameters": [
 										{
-											"id": 454,
+											"id": 455,
 											"name": "eventName",
 											"variant": "param",
 											"kind": 32768,
@@ -12351,7 +12373,7 @@
 											}
 										},
 										{
-											"id": 455,
+											"id": 456,
 											"name": "listener",
 											"variant": "param",
 											"kind": 32768,
@@ -12369,7 +12391,7 @@
 											"type": {
 												"type": "reflection",
 												"declaration": {
-													"id": 456,
+													"id": 457,
 													"name": "__type",
 													"variant": "declaration",
 													"kind": 65536,
@@ -12385,7 +12407,7 @@
 													],
 													"signatures": [
 														{
-															"id": 457,
+															"id": 458,
 															"name": "__type",
 															"variant": "signature",
 															"kind": 4096,
@@ -12401,7 +12423,7 @@
 															],
 															"parameters": [
 																{
-																	"id": 458,
+																	"id": 459,
 																	"name": "args",
 																	"variant": "param",
 																	"kind": 32768,
@@ -12446,7 +12468,7 @@
 							}
 						},
 						{
-							"id": 434,
+							"id": 435,
 							"name": "rawListeners",
 							"variant": "declaration",
 							"kind": 2048,
@@ -12463,7 +12485,7 @@
 							],
 							"signatures": [
 								{
-									"id": 435,
+									"id": 436,
 									"name": "rawListeners",
 									"variant": "signature",
 									"kind": 4096,
@@ -12519,7 +12541,7 @@
 									],
 									"typeParameters": [
 										{
-											"id": 436,
+											"id": 437,
 											"name": "K",
 											"variant": "typeParam",
 											"kind": 131072,
@@ -12530,7 +12552,7 @@
 									],
 									"parameters": [
 										{
-											"id": 437,
+											"id": 438,
 											"name": "eventName",
 											"variant": "param",
 											"kind": 32768,
@@ -12578,7 +12600,7 @@
 							}
 						},
 						{
-							"id": 393,
+							"id": 394,
 							"name": "removeAllListeners",
 							"variant": "declaration",
 							"kind": 2048,
@@ -12601,7 +12623,7 @@
 							],
 							"signatures": [
 								{
-									"id": 394,
+									"id": 395,
 									"name": "removeAllListeners",
 									"variant": "signature",
 									"kind": 4096,
@@ -12661,7 +12683,7 @@
 									],
 									"typeParameters": [
 										{
-											"id": 395,
+											"id": 396,
 											"name": "Event",
 											"variant": "typeParam",
 											"kind": 131072,
@@ -12685,7 +12707,7 @@
 									],
 									"parameters": [
 										{
-											"id": 396,
+											"id": 397,
 											"name": "event",
 											"variant": "param",
 											"kind": 32768,
@@ -12695,7 +12717,7 @@
 											},
 											"type": {
 												"type": "reference",
-												"target": 395,
+												"target": 396,
 												"name": "Event",
 												"package": "discord.js",
 												"refersToTypeParameter": true
@@ -12713,7 +12735,7 @@
 									}
 								},
 								{
-									"id": 397,
+									"id": 398,
 									"name": "removeAllListeners",
 									"variant": "signature",
 									"kind": 4096,
@@ -12773,7 +12795,7 @@
 									],
 									"typeParameters": [
 										{
-											"id": 398,
+											"id": 399,
 											"name": "Event",
 											"variant": "typeParam",
 											"kind": 131072,
@@ -12797,7 +12819,7 @@
 									],
 									"parameters": [
 										{
-											"id": 399,
+											"id": 400,
 											"name": "event",
 											"variant": "param",
 											"kind": 32768,
@@ -12814,7 +12836,7 @@
 												"typeArguments": [
 													{
 														"type": "reference",
-														"target": 398,
+														"target": 399,
 														"name": "Event",
 														"package": "discord.js",
 														"refersToTypeParameter": true
@@ -12856,7 +12878,7 @@
 							}
 						},
 						{
-							"id": 417,
+							"id": 418,
 							"name": "removeListener",
 							"variant": "declaration",
 							"kind": 2048,
@@ -12873,7 +12895,7 @@
 							],
 							"signatures": [
 								{
-									"id": 418,
+									"id": 419,
 									"name": "removeListener",
 									"variant": "signature",
 									"kind": 4096,
@@ -13029,7 +13051,7 @@
 									],
 									"typeParameters": [
 										{
-											"id": 419,
+											"id": 420,
 											"name": "K",
 											"variant": "typeParam",
 											"kind": 131072,
@@ -13040,7 +13062,7 @@
 									],
 									"parameters": [
 										{
-											"id": 420,
+											"id": 421,
 											"name": "eventName",
 											"variant": "param",
 											"kind": 32768,
@@ -13062,7 +13084,7 @@
 											}
 										},
 										{
-											"id": 421,
+											"id": 422,
 											"name": "listener",
 											"variant": "param",
 											"kind": 32768,
@@ -13072,7 +13094,7 @@
 											"type": {
 												"type": "reflection",
 												"declaration": {
-													"id": 422,
+													"id": 423,
 													"name": "__type",
 													"variant": "declaration",
 													"kind": 65536,
@@ -13088,7 +13110,7 @@
 													],
 													"signatures": [
 														{
-															"id": 423,
+															"id": 424,
 															"name": "__type",
 															"variant": "signature",
 															"kind": 4096,
@@ -13104,7 +13126,7 @@
 															],
 															"parameters": [
 																{
-																	"id": 424,
+																	"id": 425,
 																	"name": "args",
 																	"variant": "param",
 																	"kind": 32768,
@@ -13149,7 +13171,7 @@
 							}
 						},
 						{
-							"id": 425,
+							"id": 426,
 							"name": "setMaxListeners",
 							"variant": "declaration",
 							"kind": 2048,
@@ -13166,7 +13188,7 @@
 							],
 							"signatures": [
 								{
-									"id": 426,
+									"id": 427,
 									"name": "setMaxListeners",
 									"variant": "signature",
 									"kind": 4096,
@@ -13258,7 +13280,7 @@
 									],
 									"parameters": [
 										{
-											"id": 427,
+											"id": 428,
 											"name": "n",
 											"variant": "param",
 											"kind": 32768,
@@ -13289,7 +13311,7 @@
 							}
 						},
 						{
-							"id": 337,
+							"id": 338,
 							"name": "toJSON",
 							"variant": "declaration",
 							"kind": 2048,
@@ -13307,7 +13329,7 @@
 							],
 							"signatures": [
 								{
-									"id": 338,
+									"id": 339,
 									"name": "toJSON",
 									"variant": "signature",
 									"kind": 4096,
@@ -14974,16 +14996,16 @@
 						},
 						{
 							"title": "Properties",
-							"children": [272, 273, 245, 264, 276, 265, 230, 277, 282, 400, 222, 284, 229, 283, 285, 288, 289, 244, 290, 291, 213, 212, 214, 211]
+							"children": [273, 274, 246, 265, 277, 266, 230, 278, 283, 401, 222, 285, 229, 284, 286, 289, 290, 245, 291, 292, 213, 212, 214, 211]
 						},
 						{
 							"title": "Accessors",
-							"children": [274, 280, 286]
+							"children": [275, 281, 287]
 						},
 						{
 							"title": "Methods",
 							"children": [
-								401, 403, 409, 294, 292, 369, 459, 298, 305, 326, 301, 320, 310, 313, 308, 322, 329, 428, 335, 438, 430, 332, 378, 339, 354, 443, 451, 434, 393, 417, 425, 337, 204, 193, 197, 189, 180,
+								402, 404, 410, 295, 293, 370, 460, 299, 306, 327, 302, 321, 311, 314, 309, 323, 330, 429, 336, 439, 431, 333, 379, 340, 355, 444, 452, 435, 394, 418, 426, 338, 204, 193, 197, 189, 180,
 								171, 200
 							]
 						}
@@ -14993,12 +15015,12 @@
 							"fileName": "src/client/XernerxClient.ts",
 							"line": 18,
 							"character": 13,
-							"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/client/XernerxClient.ts#L18"
+							"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/client/XernerxClient.ts#L18"
 						}
 					],
 					"typeParameters": [
 						{
-							"id": 461,
+							"id": 462,
 							"name": "T",
 							"variant": "typeParam",
 							"kind": 131072,
@@ -15006,7 +15028,7 @@
 							"default": {
 								"type": "reflection",
 								"declaration": {
-									"id": 462,
+									"id": 463,
 									"name": "__type",
 									"variant": "declaration",
 									"kind": 65536,
@@ -15016,7 +15038,7 @@
 											"fileName": "src/client/XernerxClient.ts",
 											"line": 18,
 											"character": 31,
-											"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/client/XernerxClient.ts#L18"
+											"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/client/XernerxClient.ts#L18"
 										}
 									]
 								}
@@ -15047,26 +15069,26 @@
 					"fileName": "src/client/XernerxClient.ts",
 					"line": 1,
 					"character": 0,
-					"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/client/XernerxClient.ts#L1"
+					"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/client/XernerxClient.ts#L1"
 				}
 			]
 		},
 		{
-			"id": 463,
+			"id": 464,
 			"name": "handlers/CommandHandler",
 			"variant": "declaration",
 			"kind": 2,
 			"flags": {},
 			"children": [
 				{
-					"id": 464,
+					"id": 465,
 					"name": "CommandHandler",
 					"variant": "declaration",
 					"kind": 128,
 					"flags": {},
 					"children": [
 						{
-							"id": 465,
+							"id": 466,
 							"name": "constructor",
 							"variant": "declaration",
 							"kind": 512,
@@ -15076,12 +15098,12 @@
 									"fileName": "src/handlers/CommandHandler.ts",
 									"line": 15,
 									"character": 1,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/handlers/CommandHandler.ts#L15"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/handlers/CommandHandler.ts#L15"
 								}
 							],
 							"signatures": [
 								{
-									"id": 466,
+									"id": 467,
 									"name": "new CommandHandler",
 									"variant": "signature",
 									"kind": 16384,
@@ -15091,12 +15113,12 @@
 											"fileName": "src/handlers/CommandHandler.ts",
 											"line": 15,
 											"character": 1,
-											"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/handlers/CommandHandler.ts#L15"
+											"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/handlers/CommandHandler.ts#L15"
 										}
 									],
 									"parameters": [
 										{
-											"id": 467,
+											"id": 468,
 											"name": "client",
 											"variant": "param",
 											"kind": 32768,
@@ -15108,7 +15130,7 @@
 													{
 														"type": "reflection",
 														"declaration": {
-															"id": 468,
+															"id": 469,
 															"name": "__type",
 															"variant": "declaration",
 															"kind": 65536,
@@ -15123,25 +15145,25 @@
 									],
 									"type": {
 										"type": "reference",
-										"target": 464,
+										"target": 465,
 										"name": "CommandHandler",
 										"package": "xernerx"
 									},
 									"overwrites": {
 										"type": "reference",
-										"target": 489,
+										"target": 490,
 										"name": "Handler.constructor"
 									}
 								}
 							],
 							"overwrites": {
 								"type": "reference",
-								"target": 488,
+								"target": 489,
 								"name": "Handler.constructor"
 							}
 						},
 						{
-							"id": 478,
+							"id": 479,
 							"name": "client",
 							"variant": "declaration",
 							"kind": 1024,
@@ -15155,7 +15177,7 @@
 									"fileName": "src/handlers/Handler.ts",
 									"line": 14,
 									"character": 25,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/handlers/Handler.ts#L14"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/handlers/Handler.ts#L14"
 								}
 							],
 							"type": {
@@ -15165,7 +15187,7 @@
 									{
 										"type": "reflection",
 										"declaration": {
-											"id": 479,
+											"id": 480,
 											"name": "__type",
 											"variant": "declaration",
 											"kind": 65536,
@@ -15178,12 +15200,12 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"target": 492,
+								"target": 493,
 								"name": "Handler.client"
 							}
 						},
 						{
-							"id": 483,
+							"id": 484,
 							"name": "load",
 							"variant": "declaration",
 							"kind": 2048,
@@ -15196,12 +15218,12 @@
 									"fileName": "src/handlers/Handler.ts",
 									"line": 35,
 									"character": 17,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/handlers/Handler.ts#L35"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/handlers/Handler.ts#L35"
 								}
 							],
 							"signatures": [
 								{
-									"id": 484,
+									"id": 485,
 									"name": "load",
 									"variant": "signature",
 									"kind": 4096,
@@ -15213,12 +15235,12 @@
 											"fileName": "src/handlers/Handler.ts",
 											"line": 35,
 											"character": 17,
-											"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/handlers/Handler.ts#L35"
+											"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/handlers/Handler.ts#L35"
 										}
 									],
 									"parameters": [
 										{
-											"id": 485,
+											"id": 486,
 											"name": "filepath",
 											"variant": "param",
 											"kind": 32768,
@@ -15245,7 +15267,7 @@
 													},
 													{
 														"type": "reference",
-														"target": 522,
+														"target": 523,
 														"name": "XernerxFile",
 														"package": "xernerx"
 													}
@@ -15257,19 +15279,19 @@
 									},
 									"inheritedFrom": {
 										"type": "reference",
-										"target": 498,
+										"target": 499,
 										"name": "Handler.load"
 									}
 								}
 							],
 							"inheritedFrom": {
 								"type": "reference",
-								"target": 497,
+								"target": 498,
 								"name": "Handler.load"
 							}
 						},
 						{
-							"id": 475,
+							"id": 476,
 							"name": "loadContextCommands",
 							"variant": "declaration",
 							"kind": 2048,
@@ -15281,12 +15303,12 @@
 									"fileName": "src/handlers/CommandHandler.ts",
 									"line": 48,
 									"character": 17,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/handlers/CommandHandler.ts#L48"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/handlers/CommandHandler.ts#L48"
 								}
 							],
 							"signatures": [
 								{
-									"id": 476,
+									"id": 477,
 									"name": "loadContextCommands",
 									"variant": "signature",
 									"kind": 4096,
@@ -15296,19 +15318,19 @@
 											"fileName": "src/handlers/CommandHandler.ts",
 											"line": 48,
 											"character": 17,
-											"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/handlers/CommandHandler.ts#L48"
+											"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/handlers/CommandHandler.ts#L48"
 										}
 									],
 									"parameters": [
 										{
-											"id": 477,
+											"id": 478,
 											"name": "options",
 											"variant": "param",
 											"kind": 32768,
 											"flags": {},
 											"type": {
 												"type": "reference",
-												"target": 517,
+												"target": 518,
 												"name": "XernerxContextCommandHandlerOptions",
 												"package": "xernerx"
 											}
@@ -15333,7 +15355,7 @@
 							]
 						},
 						{
-							"id": 472,
+							"id": 473,
 							"name": "loadMessageCommands",
 							"variant": "declaration",
 							"kind": 2048,
@@ -15345,12 +15367,12 @@
 									"fileName": "src/handlers/CommandHandler.ts",
 									"line": 47,
 									"character": 17,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/handlers/CommandHandler.ts#L47"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/handlers/CommandHandler.ts#L47"
 								}
 							],
 							"signatures": [
 								{
-									"id": 473,
+									"id": 474,
 									"name": "loadMessageCommands",
 									"variant": "signature",
 									"kind": 4096,
@@ -15379,12 +15401,12 @@
 											"fileName": "src/handlers/CommandHandler.ts",
 											"line": 47,
 											"character": 17,
-											"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/handlers/CommandHandler.ts#L47"
+											"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/handlers/CommandHandler.ts#L47"
 										}
 									],
 									"parameters": [
 										{
-											"id": 474,
+											"id": 475,
 											"name": "options",
 											"variant": "param",
 											"kind": 32768,
@@ -15399,7 +15421,7 @@
 											},
 											"type": {
 												"type": "reference",
-												"target": 514,
+												"target": 515,
 												"name": "XernerxMessageCommandHandlerOptions",
 												"package": "xernerx"
 											}
@@ -15424,7 +15446,7 @@
 							]
 						},
 						{
-							"id": 469,
+							"id": 470,
 							"name": "loadSlashCommands",
 							"variant": "declaration",
 							"kind": 2048,
@@ -15436,12 +15458,12 @@
 									"fileName": "src/handlers/CommandHandler.ts",
 									"line": 19,
 									"character": 17,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/handlers/CommandHandler.ts#L19"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/handlers/CommandHandler.ts#L19"
 								}
 							],
 							"signatures": [
 								{
-									"id": 470,
+									"id": 471,
 									"name": "loadSlashCommands",
 									"variant": "signature",
 									"kind": 4096,
@@ -15451,19 +15473,19 @@
 											"fileName": "src/handlers/CommandHandler.ts",
 											"line": 19,
 											"character": 17,
-											"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/handlers/CommandHandler.ts#L19"
+											"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/handlers/CommandHandler.ts#L19"
 										}
 									],
 									"parameters": [
 										{
-											"id": 471,
+											"id": 472,
 											"name": "options",
 											"variant": "param",
 											"kind": 32768,
 											"flags": {},
 											"type": {
 												"type": "reference",
-												"target": 511,
+												"target": 512,
 												"name": "XernerxSlashCommandHandlerOptions",
 												"package": "xernerx"
 											}
@@ -15488,7 +15510,7 @@
 							]
 						},
 						{
-							"id": 480,
+							"id": 481,
 							"name": "readdir",
 							"variant": "declaration",
 							"kind": 2048,
@@ -15501,12 +15523,12 @@
 									"fileName": "src/handlers/Handler.ts",
 									"line": 20,
 									"character": 17,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/handlers/Handler.ts#L20"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/handlers/Handler.ts#L20"
 								}
 							],
 							"signatures": [
 								{
-									"id": 481,
+									"id": 482,
 									"name": "readdir",
 									"variant": "signature",
 									"kind": 4096,
@@ -15518,12 +15540,12 @@
 											"fileName": "src/handlers/Handler.ts",
 											"line": 20,
 											"character": 17,
-											"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/handlers/Handler.ts#L20"
+											"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/handlers/Handler.ts#L20"
 										}
 									],
 									"parameters": [
 										{
-											"id": 482,
+											"id": 483,
 											"name": "directory",
 											"variant": "param",
 											"kind": 32768,
@@ -15554,14 +15576,14 @@
 									},
 									"inheritedFrom": {
 										"type": "reference",
-										"target": 495,
+										"target": 496,
 										"name": "Handler.readdir"
 									}
 								}
 							],
 							"inheritedFrom": {
 								"type": "reference",
-								"target": 494,
+								"target": 495,
 								"name": "Handler.readdir"
 							}
 						}
@@ -15569,15 +15591,15 @@
 					"groups": [
 						{
 							"title": "Constructors",
-							"children": [465]
+							"children": [466]
 						},
 						{
 							"title": "Properties",
-							"children": [478]
+							"children": [479]
 						},
 						{
 							"title": "Methods",
-							"children": [483, 475, 472, 469, 480]
+							"children": [484, 476, 473, 470, 481]
 						}
 					],
 					"sources": [
@@ -15585,13 +15607,13 @@
 							"fileName": "src/handlers/CommandHandler.ts",
 							"line": 14,
 							"character": 13,
-							"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/handlers/CommandHandler.ts#L14"
+							"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/handlers/CommandHandler.ts#L14"
 						}
 					],
 					"extendedTypes": [
 						{
 							"type": "reference",
-							"target": 487,
+							"target": 488,
 							"name": "Handler",
 							"package": "xernerx"
 						}
@@ -15601,7 +15623,7 @@
 			"groups": [
 				{
 					"title": "Classes",
-					"children": [464]
+					"children": [465]
 				}
 			],
 			"sources": [
@@ -15609,26 +15631,26 @@
 					"fileName": "src/handlers/CommandHandler.ts",
 					"line": 1,
 					"character": 0,
-					"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/handlers/CommandHandler.ts#L1"
+					"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/handlers/CommandHandler.ts#L1"
 				}
 			]
 		},
 		{
-			"id": 486,
+			"id": 487,
 			"name": "handlers/Handler",
 			"variant": "declaration",
 			"kind": 2,
 			"flags": {},
 			"children": [
 				{
-					"id": 487,
+					"id": 488,
 					"name": "Handler",
 					"variant": "declaration",
 					"kind": 128,
 					"flags": {},
 					"children": [
 						{
-							"id": 488,
+							"id": 489,
 							"name": "constructor",
 							"variant": "declaration",
 							"kind": 512,
@@ -15638,12 +15660,12 @@
 									"fileName": "src/handlers/Handler.ts",
 									"line": 16,
 									"character": 1,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/handlers/Handler.ts#L16"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/handlers/Handler.ts#L16"
 								}
 							],
 							"signatures": [
 								{
-									"id": 489,
+									"id": 490,
 									"name": "new Handler",
 									"variant": "signature",
 									"kind": 16384,
@@ -15653,12 +15675,12 @@
 											"fileName": "src/handlers/Handler.ts",
 											"line": 16,
 											"character": 1,
-											"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/handlers/Handler.ts#L16"
+											"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/handlers/Handler.ts#L16"
 										}
 									],
 									"parameters": [
 										{
-											"id": 490,
+											"id": 491,
 											"name": "client",
 											"variant": "param",
 											"kind": 32768,
@@ -15670,7 +15692,7 @@
 													{
 														"type": "reflection",
 														"declaration": {
-															"id": 491,
+															"id": 492,
 															"name": "__type",
 															"variant": "declaration",
 															"kind": 65536,
@@ -15685,7 +15707,7 @@
 									],
 									"type": {
 										"type": "reference",
-										"target": 487,
+										"target": 488,
 										"name": "Handler",
 										"package": "xernerx"
 									}
@@ -15693,7 +15715,7 @@
 							]
 						},
 						{
-							"id": 492,
+							"id": 493,
 							"name": "client",
 							"variant": "declaration",
 							"kind": 1024,
@@ -15706,7 +15728,7 @@
 									"fileName": "src/handlers/Handler.ts",
 									"line": 14,
 									"character": 25,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/handlers/Handler.ts#L14"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/handlers/Handler.ts#L14"
 								}
 							],
 							"type": {
@@ -15716,7 +15738,7 @@
 									{
 										"type": "reflection",
 										"declaration": {
-											"id": 493,
+											"id": 494,
 											"name": "__type",
 											"variant": "declaration",
 											"kind": 65536,
@@ -15729,7 +15751,7 @@
 							}
 						},
 						{
-							"id": 497,
+							"id": 498,
 							"name": "load",
 							"variant": "declaration",
 							"kind": 2048,
@@ -15741,12 +15763,12 @@
 									"fileName": "src/handlers/Handler.ts",
 									"line": 35,
 									"character": 17,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/handlers/Handler.ts#L35"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/handlers/Handler.ts#L35"
 								}
 							],
 							"signatures": [
 								{
-									"id": 498,
+									"id": 499,
 									"name": "load",
 									"variant": "signature",
 									"kind": 4096,
@@ -15756,12 +15778,12 @@
 											"fileName": "src/handlers/Handler.ts",
 											"line": 35,
 											"character": 17,
-											"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/handlers/Handler.ts#L35"
+											"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/handlers/Handler.ts#L35"
 										}
 									],
 									"parameters": [
 										{
-											"id": 499,
+											"id": 500,
 											"name": "filepath",
 											"variant": "param",
 											"kind": 32768,
@@ -15788,7 +15810,7 @@
 													},
 													{
 														"type": "reference",
-														"target": 522,
+														"target": 523,
 														"name": "XernerxFile",
 														"package": "xernerx"
 													}
@@ -15802,7 +15824,7 @@
 							]
 						},
 						{
-							"id": 494,
+							"id": 495,
 							"name": "readdir",
 							"variant": "declaration",
 							"kind": 2048,
@@ -15814,12 +15836,12 @@
 									"fileName": "src/handlers/Handler.ts",
 									"line": 20,
 									"character": 17,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/handlers/Handler.ts#L20"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/handlers/Handler.ts#L20"
 								}
 							],
 							"signatures": [
 								{
-									"id": 495,
+									"id": 496,
 									"name": "readdir",
 									"variant": "signature",
 									"kind": 4096,
@@ -15829,12 +15851,12 @@
 											"fileName": "src/handlers/Handler.ts",
 											"line": 20,
 											"character": 17,
-											"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/handlers/Handler.ts#L20"
+											"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/handlers/Handler.ts#L20"
 										}
 									],
 									"parameters": [
 										{
-											"id": 496,
+											"id": 497,
 											"name": "directory",
 											"variant": "param",
 											"kind": 32768,
@@ -15870,15 +15892,15 @@
 					"groups": [
 						{
 							"title": "Constructors",
-							"children": [488]
+							"children": [489]
 						},
 						{
 							"title": "Properties",
-							"children": [492]
+							"children": [493]
 						},
 						{
 							"title": "Methods",
-							"children": [497, 494]
+							"children": [498, 495]
 						}
 					],
 					"sources": [
@@ -15886,13 +15908,13 @@
 							"fileName": "src/handlers/Handler.ts",
 							"line": 13,
 							"character": 13,
-							"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/handlers/Handler.ts#L13"
+							"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/handlers/Handler.ts#L13"
 						}
 					],
 					"extendedBy": [
 						{
 							"type": "reference",
-							"target": 464,
+							"target": 465,
 							"name": "CommandHandler"
 						}
 					]
@@ -15901,7 +15923,7 @@
 			"groups": [
 				{
 					"title": "Classes",
-					"children": [487]
+					"children": [488]
 				}
 			],
 			"sources": [
@@ -15909,19 +15931,19 @@
 					"fileName": "src/handlers/Handler.ts",
 					"line": 1,
 					"character": 0,
-					"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/handlers/Handler.ts#L1"
+					"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/handlers/Handler.ts#L1"
 				}
 			]
 		},
 		{
-			"id": 500,
+			"id": 501,
 			"name": "tools/XernerxLog",
 			"variant": "declaration",
 			"kind": 2,
 			"flags": {},
 			"children": [
 				{
-					"id": 501,
+					"id": 502,
 					"name": "default",
 					"variant": "declaration",
 					"kind": 32,
@@ -15931,7 +15953,7 @@
 							"fileName": "src/tools/XernerxLog.ts",
 							"line": 5,
 							"character": 0,
-							"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/tools/XernerxLog.ts#L5"
+							"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/tools/XernerxLog.ts#L5"
 						}
 					],
 					"type": {
@@ -15948,7 +15970,7 @@
 			"groups": [
 				{
 					"title": "Variables",
-					"children": [501]
+					"children": [502]
 				}
 			],
 			"sources": [
@@ -15956,26 +15978,26 @@
 					"fileName": "src/tools/XernerxLog.ts",
 					"line": 1,
 					"character": 0,
-					"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/tools/XernerxLog.ts#L1"
+					"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/tools/XernerxLog.ts#L1"
 				}
 			]
 		},
 		{
-			"id": 502,
+			"id": 503,
 			"name": "types/interfaces",
 			"variant": "declaration",
 			"kind": 2,
 			"flags": {},
 			"children": [
 				{
-					"id": 517,
+					"id": 518,
 					"name": "XernerxContextCommandHandlerOptions",
 					"variant": "declaration",
 					"kind": 256,
 					"flags": {},
 					"children": [
 						{
-							"id": 518,
+							"id": 519,
 							"name": "directory",
 							"variant": "declaration",
 							"kind": 1024,
@@ -15985,7 +16007,7 @@
 									"fileName": "src/types/interfaces.ts",
 									"line": 23,
 									"character": 1,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/types/interfaces.ts#L23"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/types/interfaces.ts#L23"
 								}
 							],
 							"type": {
@@ -15994,7 +16016,7 @@
 							}
 						},
 						{
-							"id": 519,
+							"id": 520,
 							"name": "global",
 							"variant": "declaration",
 							"kind": 1024,
@@ -16004,7 +16026,7 @@
 									"fileName": "src/types/interfaces.ts",
 									"line": 24,
 									"character": 1,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/types/interfaces.ts#L24"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/types/interfaces.ts#L24"
 								}
 							],
 							"type": {
@@ -16016,7 +16038,7 @@
 					"groups": [
 						{
 							"title": "Properties",
-							"children": [518, 519]
+							"children": [519, 520]
 						}
 					],
 					"sources": [
@@ -16024,19 +16046,19 @@
 							"fileName": "src/types/interfaces.ts",
 							"line": 22,
 							"character": 17,
-							"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/types/interfaces.ts#L22"
+							"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/types/interfaces.ts#L22"
 						}
 					]
 				},
 				{
-					"id": 514,
+					"id": 515,
 					"name": "XernerxMessageCommandHandlerOptions",
 					"variant": "declaration",
 					"kind": 256,
 					"flags": {},
 					"children": [
 						{
-							"id": 515,
+							"id": 516,
 							"name": "directory",
 							"variant": "declaration",
 							"kind": 1024,
@@ -16046,7 +16068,7 @@
 									"fileName": "src/types/interfaces.ts",
 									"line": 19,
 									"character": 1,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/types/interfaces.ts#L19"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/types/interfaces.ts#L19"
 								}
 							],
 							"type": {
@@ -16055,7 +16077,7 @@
 							}
 						},
 						{
-							"id": 516,
+							"id": 517,
 							"name": "global",
 							"variant": "declaration",
 							"kind": 1024,
@@ -16065,7 +16087,7 @@
 									"fileName": "src/types/interfaces.ts",
 									"line": 20,
 									"character": 1,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/types/interfaces.ts#L20"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/types/interfaces.ts#L20"
 								}
 							],
 							"type": {
@@ -16077,7 +16099,7 @@
 					"groups": [
 						{
 							"title": "Properties",
-							"children": [515, 516]
+							"children": [516, 517]
 						}
 					],
 					"sources": [
@@ -16085,19 +16107,19 @@
 							"fileName": "src/types/interfaces.ts",
 							"line": 18,
 							"character": 17,
-							"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/types/interfaces.ts#L18"
+							"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/types/interfaces.ts#L18"
 						}
 					]
 				},
 				{
-					"id": 511,
+					"id": 512,
 					"name": "XernerxSlashCommandHandlerOptions",
 					"variant": "declaration",
 					"kind": 256,
 					"flags": {},
 					"children": [
 						{
-							"id": 512,
+							"id": 513,
 							"name": "directory",
 							"variant": "declaration",
 							"kind": 1024,
@@ -16107,7 +16129,7 @@
 									"fileName": "src/types/interfaces.ts",
 									"line": 14,
 									"character": 1,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/types/interfaces.ts#L14"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/types/interfaces.ts#L14"
 								}
 							],
 							"type": {
@@ -16116,7 +16138,7 @@
 							}
 						},
 						{
-							"id": 513,
+							"id": 514,
 							"name": "global",
 							"variant": "declaration",
 							"kind": 1024,
@@ -16126,7 +16148,7 @@
 									"fileName": "src/types/interfaces.ts",
 									"line": 15,
 									"character": 1,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/types/interfaces.ts#L15"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/types/interfaces.ts#L15"
 								}
 							],
 							"type": {
@@ -16138,7 +16160,7 @@
 					"groups": [
 						{
 							"title": "Properties",
-							"children": [512, 513]
+							"children": [513, 514]
 						}
 					],
 					"sources": [
@@ -16146,12 +16168,12 @@
 							"fileName": "src/types/interfaces.ts",
 							"line": 13,
 							"character": 17,
-							"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/types/interfaces.ts#L13"
+							"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/types/interfaces.ts#L13"
 						}
 					]
 				},
 				{
-					"id": 503,
+					"id": 504,
 					"name": "XernerxStats",
 					"variant": "declaration",
 					"kind": 256,
@@ -16167,7 +16189,7 @@
 					},
 					"children": [
 						{
-							"id": 504,
+							"id": 505,
 							"name": "guilds",
 							"variant": "declaration",
 							"kind": 1024,
@@ -16177,63 +16199,7 @@
 									"fileName": "src/types/interfaces.ts",
 									"line": 4,
 									"character": 1,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/types/interfaces.ts#L4"
-								}
-							],
-							"type": {
-								"type": "union",
-								"types": [
-									{
-										"type": "literal",
-										"value": null
-									},
-									{
-										"type": "intrinsic",
-										"name": "number"
-									}
-								]
-							}
-						},
-						{
-							"id": 507,
-							"name": "shardCount",
-							"variant": "declaration",
-							"kind": 1024,
-							"flags": {},
-							"sources": [
-								{
-									"fileName": "src/types/interfaces.ts",
-									"line": 7,
-									"character": 1,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/types/interfaces.ts#L7"
-								}
-							],
-							"type": {
-								"type": "union",
-								"types": [
-									{
-										"type": "literal",
-										"value": null
-									},
-									{
-										"type": "intrinsic",
-										"name": "number"
-									}
-								]
-							}
-						},
-						{
-							"id": 506,
-							"name": "shardId",
-							"variant": "declaration",
-							"kind": 1024,
-							"flags": {},
-							"sources": [
-								{
-									"fileName": "src/types/interfaces.ts",
-									"line": 6,
-									"character": 1,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/types/interfaces.ts#L6"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/types/interfaces.ts#L4"
 								}
 							],
 							"type": {
@@ -16252,16 +16218,16 @@
 						},
 						{
 							"id": 508,
-							"name": "shards",
+							"name": "shardCount",
 							"variant": "declaration",
 							"kind": 1024,
 							"flags": {},
 							"sources": [
 								{
 									"fileName": "src/types/interfaces.ts",
-									"line": 8,
+									"line": 7,
 									"character": 1,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/types/interfaces.ts#L8"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/types/interfaces.ts#L7"
 								}
 							],
 							"type": {
@@ -16279,17 +16245,17 @@
 							}
 						},
 						{
-							"id": 505,
-							"name": "users",
+							"id": 507,
+							"name": "shardId",
 							"variant": "declaration",
 							"kind": 1024,
 							"flags": {},
 							"sources": [
 								{
 									"fileName": "src/types/interfaces.ts",
-									"line": 5,
+									"line": 6,
 									"character": 1,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/types/interfaces.ts#L5"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/types/interfaces.ts#L6"
 								}
 							],
 							"type": {
@@ -16308,16 +16274,44 @@
 						},
 						{
 							"id": 509,
-							"name": "voteCount",
+							"name": "shards",
 							"variant": "declaration",
 							"kind": 1024,
 							"flags": {},
 							"sources": [
 								{
 									"fileName": "src/types/interfaces.ts",
-									"line": 9,
+									"line": 8,
 									"character": 1,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/types/interfaces.ts#L9"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/types/interfaces.ts#L8"
+								}
+							],
+							"type": {
+								"type": "union",
+								"types": [
+									{
+										"type": "literal",
+										"value": null
+									},
+									{
+										"type": "intrinsic",
+										"name": "number"
+									}
+								]
+							}
+						},
+						{
+							"id": 506,
+							"name": "users",
+							"variant": "declaration",
+							"kind": 1024,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "src/types/interfaces.ts",
+									"line": 5,
+									"character": 1,
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/types/interfaces.ts#L5"
 								}
 							],
 							"type": {
@@ -16336,6 +16330,34 @@
 						},
 						{
 							"id": 510,
+							"name": "voteCount",
+							"variant": "declaration",
+							"kind": 1024,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "src/types/interfaces.ts",
+									"line": 9,
+									"character": 1,
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/types/interfaces.ts#L9"
+								}
+							],
+							"type": {
+								"type": "union",
+								"types": [
+									{
+										"type": "literal",
+										"value": null
+									},
+									{
+										"type": "intrinsic",
+										"name": "number"
+									}
+								]
+							}
+						},
+						{
+							"id": 511,
 							"name": "votes",
 							"variant": "declaration",
 							"kind": 1024,
@@ -16345,7 +16367,7 @@
 									"fileName": "src/types/interfaces.ts",
 									"line": 10,
 									"character": 1,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/types/interfaces.ts#L10"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/types/interfaces.ts#L10"
 								}
 							],
 							"type": {
@@ -16366,7 +16388,7 @@
 					"groups": [
 						{
 							"title": "Properties",
-							"children": [504, 507, 506, 508, 505, 509, 510]
+							"children": [505, 508, 507, 509, 506, 510, 511]
 						}
 					],
 					"sources": [
@@ -16374,7 +16396,7 @@
 							"fileName": "src/types/interfaces.ts",
 							"line": 3,
 							"character": 17,
-							"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/types/interfaces.ts#L3"
+							"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/types/interfaces.ts#L3"
 						}
 					]
 				}
@@ -16382,7 +16404,7 @@
 			"groups": [
 				{
 					"title": "Interfaces",
-					"children": [517, 514, 511, 503]
+					"children": [518, 515, 512, 504]
 				}
 			],
 			"sources": [
@@ -16390,19 +16412,19 @@
 					"fileName": "src/types/interfaces.ts",
 					"line": 1,
 					"character": 0,
-					"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/types/interfaces.ts#L1"
+					"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/types/interfaces.ts#L1"
 				}
 			]
 		},
 		{
-			"id": 520,
+			"id": 521,
 			"name": "types/types",
 			"variant": "declaration",
 			"kind": 2,
 			"flags": {},
 			"children": [
 				{
-					"id": 524,
+					"id": 525,
 					"name": "XernerxCommand",
 					"variant": "declaration",
 					"kind": 2097152,
@@ -16412,19 +16434,19 @@
 							"fileName": "src/types/types.ts",
 							"line": 23,
 							"character": 12,
-							"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/types/types.ts#L23"
+							"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/types/types.ts#L23"
 						}
 					],
 					"typeParameters": [
 						{
-							"id": 525,
+							"id": 526,
 							"name": "T",
 							"variant": "typeParam",
 							"kind": 131072,
 							"flags": {},
 							"default": {
 								"type": "reference",
-								"target": 521,
+								"target": 522,
 								"name": "XernerxFileType",
 								"package": "xernerx"
 							}
@@ -16434,7 +16456,7 @@
 						"type": "conditional",
 						"checkType": {
 							"type": "reference",
-							"target": 525,
+							"target": 526,
 							"name": "T",
 							"package": "xernerx",
 							"refersToTypeParameter": true
@@ -16453,7 +16475,7 @@
 							"type": "conditional",
 							"checkType": {
 								"type": "reference",
-								"target": 525,
+								"target": 526,
 								"name": "T",
 								"package": "xernerx",
 								"refersToTypeParameter": true
@@ -16472,7 +16494,7 @@
 								"type": "conditional",
 								"checkType": {
 									"type": "reference",
-									"target": 525,
+									"target": 526,
 									"name": "T",
 									"package": "xernerx",
 									"refersToTypeParameter": true
@@ -16515,7 +16537,7 @@
 					}
 				},
 				{
-					"id": 522,
+					"id": 523,
 					"name": "XernerxFile",
 					"variant": "declaration",
 					"kind": 2097152,
@@ -16525,19 +16547,19 @@
 							"fileName": "src/types/types.ts",
 							"line": 11,
 							"character": 12,
-							"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/types/types.ts#L11"
+							"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/types/types.ts#L11"
 						}
 					],
 					"typeParameters": [
 						{
-							"id": 523,
+							"id": 524,
 							"name": "T",
 							"variant": "typeParam",
 							"kind": 131072,
 							"flags": {},
 							"default": {
 								"type": "reference",
-								"target": 521,
+								"target": 522,
 								"name": "XernerxFileType",
 								"package": "xernerx"
 							}
@@ -16547,7 +16569,7 @@
 						"type": "conditional",
 						"checkType": {
 							"type": "reference",
-							"target": 523,
+							"target": 524,
 							"name": "T",
 							"package": "xernerx",
 							"refersToTypeParameter": true
@@ -16566,7 +16588,7 @@
 							"type": "conditional",
 							"checkType": {
 								"type": "reference",
-								"target": 523,
+								"target": 524,
 								"name": "T",
 								"package": "xernerx",
 								"refersToTypeParameter": true
@@ -16585,7 +16607,7 @@
 								"type": "conditional",
 								"checkType": {
 									"type": "reference",
-									"target": 523,
+									"target": 524,
 									"name": "T",
 									"package": "xernerx",
 									"refersToTypeParameter": true
@@ -16604,7 +16626,7 @@
 									"type": "conditional",
 									"checkType": {
 										"type": "reference",
-										"target": 523,
+										"target": 524,
 										"name": "T",
 										"package": "xernerx",
 										"refersToTypeParameter": true
@@ -16623,7 +16645,7 @@
 										"type": "conditional",
 										"checkType": {
 											"type": "reference",
-											"target": 523,
+											"target": 524,
 											"name": "T",
 											"package": "xernerx",
 											"refersToTypeParameter": true
@@ -16680,7 +16702,7 @@
 					}
 				},
 				{
-					"id": 521,
+					"id": 522,
 					"name": "XernerxFileType",
 					"variant": "declaration",
 					"kind": 2097152,
@@ -16690,7 +16712,7 @@
 							"fileName": "src/types/types.ts",
 							"line": 9,
 							"character": 12,
-							"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/types/types.ts#L9"
+							"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/types/types.ts#L9"
 						}
 					],
 					"type": {
@@ -16723,7 +16745,7 @@
 			"groups": [
 				{
 					"title": "Type Aliases",
-					"children": [524, 522, 521]
+					"children": [525, 523, 522]
 				}
 			],
 			"sources": [
@@ -16731,26 +16753,26 @@
 					"fileName": "src/types/types.ts",
 					"line": 1,
 					"character": 0,
-					"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/types/types.ts#L1"
+					"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/types/types.ts#L1"
 				}
 			]
 		},
 		{
-			"id": 526,
+			"id": 527,
 			"name": "util/ClientUtil",
 			"variant": "declaration",
 			"kind": 2,
 			"flags": {},
 			"children": [
 				{
-					"id": 527,
+					"id": 528,
 					"name": "ClientUtil",
 					"variant": "declaration",
 					"kind": 128,
 					"flags": {},
 					"children": [
 						{
-							"id": 528,
+							"id": 529,
 							"name": "constructor",
 							"variant": "declaration",
 							"kind": 512,
@@ -16760,12 +16782,12 @@
 									"fileName": "src/util/ClientUtil.ts",
 									"line": 7,
 									"character": 1,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/util/ClientUtil.ts#L7"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/util/ClientUtil.ts#L7"
 								}
 							],
 							"signatures": [
 								{
-									"id": 529,
+									"id": 530,
 									"name": "new ClientUtil",
 									"variant": "signature",
 									"kind": 16384,
@@ -16775,12 +16797,12 @@
 											"fileName": "src/util/ClientUtil.ts",
 											"line": 7,
 											"character": 1,
-											"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/util/ClientUtil.ts#L7"
+											"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/util/ClientUtil.ts#L7"
 										}
 									],
 									"parameters": [
 										{
-											"id": 530,
+											"id": 531,
 											"name": "client",
 											"variant": "param",
 											"kind": 32768,
@@ -16792,7 +16814,7 @@
 													{
 														"type": "reflection",
 														"declaration": {
-															"id": 531,
+															"id": 532,
 															"name": "__type",
 															"variant": "declaration",
 															"kind": 65536,
@@ -16807,25 +16829,25 @@
 									],
 									"type": {
 										"type": "reference",
-										"target": 527,
+										"target": 528,
 										"name": "ClientUtil",
 										"package": "xernerx"
 									},
 									"overwrites": {
 										"type": "reference",
-										"target": 545,
+										"target": 546,
 										"name": "Util.constructor"
 									}
 								}
 							],
 							"overwrites": {
 								"type": "reference",
-								"target": 544,
+								"target": 545,
 								"name": "Util.constructor"
 							}
 						},
 						{
-							"id": 535,
+							"id": 536,
 							"name": "client",
 							"variant": "declaration",
 							"kind": 1024,
@@ -16839,7 +16861,7 @@
 									"fileName": "src/util/Util.ts",
 									"line": 6,
 									"character": 25,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/util/Util.ts#L6"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/util/Util.ts#L6"
 								}
 							],
 							"type": {
@@ -16849,7 +16871,7 @@
 									{
 										"type": "reflection",
 										"declaration": {
-											"id": 536,
+											"id": 537,
 											"name": "__type",
 											"variant": "declaration",
 											"kind": 65536,
@@ -16862,12 +16884,12 @@
 							},
 							"inheritedFrom": {
 								"type": "reference",
-								"target": 548,
+								"target": 549,
 								"name": "Util.client"
 							}
 						},
 						{
-							"id": 532,
+							"id": 533,
 							"name": "uptime",
 							"variant": "declaration",
 							"kind": 2048,
@@ -16879,12 +16901,12 @@
 									"fileName": "src/util/ClientUtil.ts",
 									"line": 11,
 									"character": 8,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/util/ClientUtil.ts#L11"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/util/ClientUtil.ts#L11"
 								}
 							],
 							"signatures": [
 								{
-									"id": 533,
+									"id": 534,
 									"name": "uptime",
 									"variant": "signature",
 									"kind": 4096,
@@ -16894,12 +16916,12 @@
 											"fileName": "src/util/ClientUtil.ts",
 											"line": 11,
 											"character": 8,
-											"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/util/ClientUtil.ts#L11"
+											"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/util/ClientUtil.ts#L11"
 										}
 									],
 									"parameters": [
 										{
-											"id": 534,
+											"id": 535,
 											"name": "timestamp",
 											"variant": "param",
 											"kind": 32768,
@@ -16932,15 +16954,15 @@
 					"groups": [
 						{
 							"title": "Constructors",
-							"children": [528]
+							"children": [529]
 						},
 						{
 							"title": "Properties",
-							"children": [535]
+							"children": [536]
 						},
 						{
 							"title": "Methods",
-							"children": [532]
+							"children": [533]
 						}
 					],
 					"sources": [
@@ -16948,13 +16970,13 @@
 							"fileName": "src/util/ClientUtil.ts",
 							"line": 6,
 							"character": 13,
-							"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/util/ClientUtil.ts#L6"
+							"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/util/ClientUtil.ts#L6"
 						}
 					],
 					"extendedTypes": [
 						{
 							"type": "reference",
-							"target": 543,
+							"target": 544,
 							"name": "Util",
 							"package": "xernerx"
 						}
@@ -16964,7 +16986,7 @@
 			"groups": [
 				{
 					"title": "Classes",
-					"children": [527]
+					"children": [528]
 				}
 			],
 			"sources": [
@@ -16972,19 +16994,19 @@
 					"fileName": "src/util/ClientUtil.ts",
 					"line": 1,
 					"character": 0,
-					"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/util/ClientUtil.ts#L1"
+					"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/util/ClientUtil.ts#L1"
 				}
 			]
 		},
 		{
-			"id": 537,
+			"id": 538,
 			"name": "util/prompts",
 			"variant": "declaration",
 			"kind": 2,
 			"flags": {},
 			"children": [
 				{
-					"id": 538,
+					"id": 539,
 					"name": "start",
 					"variant": "declaration",
 					"kind": 64,
@@ -16994,12 +17016,12 @@
 							"fileName": "src/util/prompts.ts",
 							"line": 11,
 							"character": 22,
-							"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/util/prompts.ts#L11"
+							"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/util/prompts.ts#L11"
 						}
 					],
 					"signatures": [
 						{
-							"id": 539,
+							"id": 540,
 							"name": "start",
 							"variant": "signature",
 							"kind": 4096,
@@ -17009,12 +17031,12 @@
 									"fileName": "src/util/prompts.ts",
 									"line": 11,
 									"character": 22,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/util/prompts.ts#L11"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/util/prompts.ts#L11"
 								}
 							],
 							"parameters": [
 								{
-									"id": 540,
+									"id": 541,
 									"name": "client",
 									"variant": "param",
 									"kind": 32768,
@@ -17026,7 +17048,7 @@
 											{
 												"type": "reflection",
 												"declaration": {
-													"id": 541,
+													"id": 542,
 													"name": "__type",
 													"variant": "declaration",
 													"kind": 65536,
@@ -17061,7 +17083,7 @@
 			"groups": [
 				{
 					"title": "Functions",
-					"children": [538]
+					"children": [539]
 				}
 			],
 			"sources": [
@@ -17069,26 +17091,26 @@
 					"fileName": "src/util/prompts.ts",
 					"line": 1,
 					"character": 0,
-					"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/util/prompts.ts#L1"
+					"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/util/prompts.ts#L1"
 				}
 			]
 		},
 		{
-			"id": 542,
+			"id": 543,
 			"name": "util/Util",
 			"variant": "declaration",
 			"kind": 2,
 			"flags": {},
 			"children": [
 				{
-					"id": 543,
+					"id": 544,
 					"name": "Util",
 					"variant": "declaration",
 					"kind": 128,
 					"flags": {},
 					"children": [
 						{
-							"id": 544,
+							"id": 545,
 							"name": "constructor",
 							"variant": "declaration",
 							"kind": 512,
@@ -17098,12 +17120,12 @@
 									"fileName": "src/util/Util.ts",
 									"line": 8,
 									"character": 1,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/util/Util.ts#L8"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/util/Util.ts#L8"
 								}
 							],
 							"signatures": [
 								{
-									"id": 545,
+									"id": 546,
 									"name": "new Util",
 									"variant": "signature",
 									"kind": 16384,
@@ -17113,12 +17135,12 @@
 											"fileName": "src/util/Util.ts",
 											"line": 8,
 											"character": 1,
-											"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/util/Util.ts#L8"
+											"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/util/Util.ts#L8"
 										}
 									],
 									"parameters": [
 										{
-											"id": 546,
+											"id": 547,
 											"name": "client",
 											"variant": "param",
 											"kind": 32768,
@@ -17130,7 +17152,7 @@
 													{
 														"type": "reflection",
 														"declaration": {
-															"id": 547,
+															"id": 548,
 															"name": "__type",
 															"variant": "declaration",
 															"kind": 65536,
@@ -17145,7 +17167,7 @@
 									],
 									"type": {
 										"type": "reference",
-										"target": 543,
+										"target": 544,
 										"name": "Util",
 										"package": "xernerx"
 									}
@@ -17153,7 +17175,7 @@
 							]
 						},
 						{
-							"id": 548,
+							"id": 549,
 							"name": "client",
 							"variant": "declaration",
 							"kind": 1024,
@@ -17166,7 +17188,7 @@
 									"fileName": "src/util/Util.ts",
 									"line": 6,
 									"character": 25,
-									"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/util/Util.ts#L6"
+									"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/util/Util.ts#L6"
 								}
 							],
 							"type": {
@@ -17176,7 +17198,7 @@
 									{
 										"type": "reflection",
 										"declaration": {
-											"id": 549,
+											"id": 550,
 											"name": "__type",
 											"variant": "declaration",
 											"kind": 65536,
@@ -17192,11 +17214,11 @@
 					"groups": [
 						{
 							"title": "Constructors",
-							"children": [544]
+							"children": [545]
 						},
 						{
 							"title": "Properties",
-							"children": [548]
+							"children": [549]
 						}
 					],
 					"sources": [
@@ -17204,13 +17226,13 @@
 							"fileName": "src/util/Util.ts",
 							"line": 5,
 							"character": 13,
-							"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/util/Util.ts#L5"
+							"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/util/Util.ts#L5"
 						}
 					],
 					"extendedBy": [
 						{
 							"type": "reference",
-							"target": 527,
+							"target": 528,
 							"name": "ClientUtil"
 						}
 					]
@@ -17219,7 +17241,7 @@
 			"groups": [
 				{
 					"title": "Classes",
-					"children": [543]
+					"children": [544]
 				}
 			],
 			"sources": [
@@ -17227,7 +17249,7 @@
 					"fileName": "src/util/Util.ts",
 					"line": 1,
 					"character": 0,
-					"url": "https://github.com/xernerx/xernerx/blob/4dfeec51a8e6dcad21ea0cd6e4f0e3013a8d79f0/src/util/Util.ts#L1"
+					"url": "https://github.com/xernerx/xernerx/blob/08cbb89afbb63df2fa6f76d514970550f2990c18/src/util/Util.ts#L1"
 				}
 			]
 		}
@@ -17235,11 +17257,11 @@
 	"groups": [
 		{
 			"title": "Modules",
-			"children": [1, 12, 22, 32, 43, 169, 463, 486, 500, 502, 520, 526, 537, 542]
+			"children": [1, 12, 22, 32, 43, 169, 464, 487, 501, 503, 521, 527, 538, 543]
 		}
 	],
 	"packageName": "xernerx",
-	"packageVersion": "0.1.120-beta.3",
+	"packageVersion": "0.1.120-beta.4",
 	"readme": [
 		{
 			"kind": "text",
@@ -18197,127 +18219,127 @@
 		},
 		"238": {
 			"sourceFileName": "src/client/XernerxClient.ts",
-			"qualifiedName": "__type.slash"
+			"qualifiedName": "__type.prefix"
 		},
 		"239": {
 			"sourceFileName": "src/client/XernerxClient.ts",
-			"qualifiedName": "__type"
+			"qualifiedName": "__type.slash"
 		},
 		"240": {
 			"sourceFileName": "src/client/XernerxClient.ts",
-			"qualifiedName": "__type.global"
+			"qualifiedName": "__type"
 		},
 		"241": {
 			"sourceFileName": "src/client/XernerxClient.ts",
-			"qualifiedName": "__type.context"
+			"qualifiedName": "__type.global"
 		},
 		"242": {
 			"sourceFileName": "src/client/XernerxClient.ts",
-			"qualifiedName": "__type"
+			"qualifiedName": "__type.context"
 		},
 		"243": {
 			"sourceFileName": "src/client/XernerxClient.ts",
-			"qualifiedName": "__type.global"
+			"qualifiedName": "__type"
 		},
 		"244": {
 			"sourceFileName": "src/client/XernerxClient.ts",
-			"qualifiedName": "XernerxClient.util"
+			"qualifiedName": "__type.global"
 		},
 		"245": {
 			"sourceFileName": "src/client/XernerxClient.ts",
-			"qualifiedName": "XernerxClient.commands"
+			"qualifiedName": "XernerxClient.util"
 		},
 		"246": {
 			"sourceFileName": "src/client/XernerxClient.ts",
-			"qualifiedName": "__object"
+			"qualifiedName": "XernerxClient.commands"
 		},
 		"247": {
 			"sourceFileName": "src/client/XernerxClient.ts",
-			"qualifiedName": "__object.message"
+			"qualifiedName": "__object"
 		},
 		"248": {
 			"sourceFileName": "src/client/XernerxClient.ts",
-			"qualifiedName": "__object.slash"
+			"qualifiedName": "__object.message"
 		},
 		"249": {
 			"sourceFileName": "src/client/XernerxClient.ts",
-			"qualifiedName": "__object.context"
+			"qualifiedName": "__object.slash"
 		},
 		"250": {
 			"sourceFileName": "src/client/XernerxClient.ts",
-			"qualifiedName": "__object.stats"
+			"qualifiedName": "__object.context"
 		},
 		"251": {
 			"sourceFileName": "src/client/XernerxClient.ts",
-			"qualifiedName": "__object"
+			"qualifiedName": "__object.stats"
 		},
 		"252": {
 			"sourceFileName": "src/client/XernerxClient.ts",
-			"qualifiedName": "__object.slash"
+			"qualifiedName": "__object"
 		},
 		"253": {
 			"sourceFileName": "src/client/XernerxClient.ts",
-			"qualifiedName": "__object"
+			"qualifiedName": "__object.slash"
 		},
 		"254": {
 			"sourceFileName": "src/client/XernerxClient.ts",
-			"qualifiedName": "__object.local"
+			"qualifiedName": "__object"
 		},
 		"255": {
 			"sourceFileName": "src/client/XernerxClient.ts",
-			"qualifiedName": "__object.global"
+			"qualifiedName": "__object.local"
 		},
 		"256": {
 			"sourceFileName": "src/client/XernerxClient.ts",
-			"qualifiedName": "__object.message"
+			"qualifiedName": "__object.global"
 		},
 		"257": {
 			"sourceFileName": "src/client/XernerxClient.ts",
-			"qualifiedName": "__object"
+			"qualifiedName": "__object.message"
 		},
 		"258": {
 			"sourceFileName": "src/client/XernerxClient.ts",
-			"qualifiedName": "__object.local"
+			"qualifiedName": "__object"
 		},
 		"259": {
 			"sourceFileName": "src/client/XernerxClient.ts",
-			"qualifiedName": "__object.global"
+			"qualifiedName": "__object.local"
 		},
 		"260": {
 			"sourceFileName": "src/client/XernerxClient.ts",
-			"qualifiedName": "__object.context"
+			"qualifiedName": "__object.global"
 		},
 		"261": {
 			"sourceFileName": "src/client/XernerxClient.ts",
-			"qualifiedName": "__object"
+			"qualifiedName": "__object.context"
 		},
 		"262": {
 			"sourceFileName": "src/client/XernerxClient.ts",
-			"qualifiedName": "__object.local"
+			"qualifiedName": "__object"
 		},
 		"263": {
 			"sourceFileName": "src/client/XernerxClient.ts",
-			"qualifiedName": "__object.global"
+			"qualifiedName": "__object.local"
 		},
 		"264": {
 			"sourceFileName": "src/client/XernerxClient.ts",
-			"qualifiedName": "XernerxClient.events"
+			"qualifiedName": "__object.global"
 		},
 		"265": {
 			"sourceFileName": "src/client/XernerxClient.ts",
-			"qualifiedName": "XernerxClient.inhibitors"
+			"qualifiedName": "XernerxClient.events"
 		},
-		"272": {
-			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "Client.application"
+		"266": {
+			"sourceFileName": "src/client/XernerxClient.ts",
+			"qualifiedName": "XernerxClient.inhibitors"
 		},
 		"273": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "Client.channels"
+			"qualifiedName": "Client.application"
 		},
 		"274": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "Client.emojis"
+			"qualifiedName": "Client.channels"
 		},
 		"275": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
@@ -18325,23 +18347,23 @@
 		},
 		"276": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "Client.guilds"
+			"qualifiedName": "Client.emojis"
 		},
 		"277": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "Client.options"
+			"qualifiedName": "Client.guilds"
 		},
 		"278": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "__type"
+			"qualifiedName": "Client.options"
 		},
 		"279": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "__type.intents"
+			"qualifiedName": "__type"
 		},
 		"280": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "Client.readyAt"
+			"qualifiedName": "__type.intents"
 		},
 		"281": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
@@ -18349,23 +18371,23 @@
 		},
 		"282": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "Client.readyTimestamp"
+			"qualifiedName": "Client.readyAt"
 		},
 		"283": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "Client.sweepers"
+			"qualifiedName": "Client.readyTimestamp"
 		},
 		"284": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "Client.shard"
+			"qualifiedName": "Client.sweepers"
 		},
 		"285": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "Client.token"
+			"qualifiedName": "Client.shard"
 		},
 		"286": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "Client.uptime"
+			"qualifiedName": "Client.token"
 		},
 		"287": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
@@ -18373,23 +18395,23 @@
 		},
 		"288": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "Client.user"
+			"qualifiedName": "Client.uptime"
 		},
 		"289": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "Client.users"
+			"qualifiedName": "Client.user"
 		},
 		"290": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "Client.voice"
+			"qualifiedName": "Client.users"
 		},
 		"291": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "Client.ws"
+			"qualifiedName": "Client.voice"
 		},
 		"292": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "Client.destroy"
+			"qualifiedName": "Client.ws"
 		},
 		"293": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
@@ -18397,7 +18419,7 @@
 		},
 		"294": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "Client.deleteWebhook"
+			"qualifiedName": "Client.destroy"
 		},
 		"295": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
@@ -18405,15 +18427,15 @@
 		},
 		"296": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "id"
+			"qualifiedName": "Client.deleteWebhook"
 		},
 		"297": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "options"
+			"qualifiedName": "id"
 		},
 		"298": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "Client.fetchGuildPreview"
+			"qualifiedName": "options"
 		},
 		"299": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
@@ -18421,11 +18443,11 @@
 		},
 		"300": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "guild"
+			"qualifiedName": "Client.fetchGuildPreview"
 		},
 		"301": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "Client.fetchInvite"
+			"qualifiedName": "guild"
 		},
 		"302": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
@@ -18433,15 +18455,15 @@
 		},
 		"303": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "invite"
+			"qualifiedName": "Client.fetchInvite"
 		},
 		"304": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "options"
+			"qualifiedName": "invite"
 		},
 		"305": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "Client.fetchGuildTemplate"
+			"qualifiedName": "options"
 		},
 		"306": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
@@ -18449,11 +18471,11 @@
 		},
 		"307": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "template"
+			"qualifiedName": "Client.fetchGuildTemplate"
 		},
 		"308": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "Client.fetchVoiceRegions"
+			"qualifiedName": "template"
 		},
 		"309": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
@@ -18461,7 +18483,7 @@
 		},
 		"310": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "Client.fetchSticker"
+			"qualifiedName": "Client.fetchVoiceRegions"
 		},
 		"311": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
@@ -18469,11 +18491,11 @@
 		},
 		"312": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "id"
+			"qualifiedName": "Client.fetchSticker"
 		},
 		"313": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "Client.fetchStickerPacks"
+			"qualifiedName": "id"
 		},
 		"314": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
@@ -18481,27 +18503,27 @@
 		},
 		"315": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "options"
+			"qualifiedName": "Client.fetchStickerPacks"
 		},
 		"316": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "__type"
+			"qualifiedName": "options"
 		},
 		"317": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "__type.packId"
+			"qualifiedName": "__type"
 		},
 		"318": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "Client.fetchStickerPacks"
+			"qualifiedName": "__type.packId"
 		},
 		"319": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "options"
+			"qualifiedName": "Client.fetchStickerPacks"
 		},
 		"320": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "Client.fetchPremiumStickerPacks"
+			"qualifiedName": "options"
 		},
 		"321": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
@@ -18509,7 +18531,7 @@
 		},
 		"322": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "Client.fetchWebhook"
+			"qualifiedName": "Client.fetchPremiumStickerPacks"
 		},
 		"323": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
@@ -18517,15 +18539,15 @@
 		},
 		"324": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "id"
+			"qualifiedName": "Client.fetchWebhook"
 		},
 		"325": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "token"
+			"qualifiedName": "id"
 		},
 		"326": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "Client.fetchGuildWidget"
+			"qualifiedName": "token"
 		},
 		"327": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
@@ -18533,11 +18555,11 @@
 		},
 		"328": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "guild"
+			"qualifiedName": "Client.fetchGuildWidget"
 		},
 		"329": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "Client.generateInvite"
+			"qualifiedName": "guild"
 		},
 		"330": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
@@ -18545,11 +18567,11 @@
 		},
 		"331": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "options"
+			"qualifiedName": "Client.generateInvite"
 		},
 		"332": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "Client.login"
+			"qualifiedName": "options"
 		},
 		"333": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
@@ -18557,11 +18579,11 @@
 		},
 		"334": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "token"
+			"qualifiedName": "Client.login"
 		},
 		"335": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "Client.isReady"
+			"qualifiedName": "token"
 		},
 		"336": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
@@ -18569,7 +18591,7 @@
 		},
 		"337": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "Client.toJSON"
+			"qualifiedName": "Client.isReady"
 		},
 		"338": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
@@ -18577,7 +18599,7 @@
 		},
 		"339": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "Client.on"
+			"qualifiedName": "Client.toJSON"
 		},
 		"340": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
@@ -18585,19 +18607,19 @@
 		},
 		"341": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "Event"
+			"qualifiedName": "Client.on"
 		},
 		"342": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "event"
+			"qualifiedName": "Event"
 		},
 		"343": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "listener"
+			"qualifiedName": "event"
 		},
 		"344": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "__type"
+			"qualifiedName": "listener"
 		},
 		"345": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
@@ -18605,27 +18627,27 @@
 		},
 		"346": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "args"
+			"qualifiedName": "__type"
 		},
 		"347": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "Client.on"
+			"qualifiedName": "args"
 		},
 		"348": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "Event"
+			"qualifiedName": "Client.on"
 		},
 		"349": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "event"
+			"qualifiedName": "Event"
 		},
 		"350": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "listener"
+			"qualifiedName": "event"
 		},
 		"351": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "__type"
+			"qualifiedName": "listener"
 		},
 		"352": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
@@ -18633,11 +18655,11 @@
 		},
 		"353": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "args"
+			"qualifiedName": "__type"
 		},
 		"354": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "Client.once"
+			"qualifiedName": "args"
 		},
 		"355": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
@@ -18645,19 +18667,19 @@
 		},
 		"356": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "Event"
+			"qualifiedName": "Client.once"
 		},
 		"357": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "event"
+			"qualifiedName": "Event"
 		},
 		"358": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "listener"
+			"qualifiedName": "event"
 		},
 		"359": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "__type"
+			"qualifiedName": "listener"
 		},
 		"360": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
@@ -18665,27 +18687,27 @@
 		},
 		"361": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "args"
+			"qualifiedName": "__type"
 		},
 		"362": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "Client.once"
+			"qualifiedName": "args"
 		},
 		"363": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "Event"
+			"qualifiedName": "Client.once"
 		},
 		"364": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "event"
+			"qualifiedName": "Event"
 		},
 		"365": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "listener"
+			"qualifiedName": "event"
 		},
 		"366": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "__type"
+			"qualifiedName": "listener"
 		},
 		"367": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
@@ -18693,11 +18715,11 @@
 		},
 		"368": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "args"
+			"qualifiedName": "__type"
 		},
 		"369": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "Client.emit"
+			"qualifiedName": "args"
 		},
 		"370": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
@@ -18705,35 +18727,35 @@
 		},
 		"371": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "Event"
+			"qualifiedName": "Client.emit"
 		},
 		"372": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "event"
+			"qualifiedName": "Event"
 		},
 		"373": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "args"
+			"qualifiedName": "event"
 		},
 		"374": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "Client.emit"
+			"qualifiedName": "args"
 		},
 		"375": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "Event"
+			"qualifiedName": "Client.emit"
 		},
 		"376": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "event"
+			"qualifiedName": "Event"
 		},
 		"377": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "args"
+			"qualifiedName": "event"
 		},
 		"378": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "Client.off"
+			"qualifiedName": "args"
 		},
 		"379": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
@@ -18741,19 +18763,19 @@
 		},
 		"380": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "Event"
+			"qualifiedName": "Client.off"
 		},
 		"381": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "event"
+			"qualifiedName": "Event"
 		},
 		"382": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "listener"
+			"qualifiedName": "event"
 		},
 		"383": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "__type"
+			"qualifiedName": "listener"
 		},
 		"384": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
@@ -18761,27 +18783,27 @@
 		},
 		"385": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "args"
+			"qualifiedName": "__type"
 		},
 		"386": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "Client.off"
+			"qualifiedName": "args"
 		},
 		"387": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "Event"
+			"qualifiedName": "Client.off"
 		},
 		"388": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "event"
+			"qualifiedName": "Event"
 		},
 		"389": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "listener"
+			"qualifiedName": "event"
 		},
 		"390": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "__type"
+			"qualifiedName": "listener"
 		},
 		"391": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
@@ -18789,11 +18811,11 @@
 		},
 		"392": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "args"
+			"qualifiedName": "__type"
 		},
 		"393": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "Client.removeAllListeners"
+			"qualifiedName": "args"
 		},
 		"394": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
@@ -18801,39 +18823,39 @@
 		},
 		"395": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "Event"
+			"qualifiedName": "Client.removeAllListeners"
 		},
 		"396": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "event"
+			"qualifiedName": "Event"
 		},
 		"397": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "Client.removeAllListeners"
+			"qualifiedName": "event"
 		},
 		"398": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "Event"
+			"qualifiedName": "Client.removeAllListeners"
 		},
 		"399": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "event"
+			"qualifiedName": "Event"
 		},
 		"400": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "BaseClient.rest"
+			"qualifiedName": "event"
 		},
 		"401": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
-			"qualifiedName": "BaseClient.[asyncDispose]"
+			"qualifiedName": "BaseClient.rest"
 		},
 		"402": {
 			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
 			"qualifiedName": "BaseClient.[asyncDispose]"
 		},
 		"403": {
-			"sourceFileName": "node_modules/@types/node/events.d.ts",
-			"qualifiedName": "EventEmitter.[captureRejectionSymbol]"
+			"sourceFileName": "node_modules/discord.js/typings/index.d.mts",
+			"qualifiedName": "BaseClient.[asyncDispose]"
 		},
 		"404": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
@@ -18841,23 +18863,23 @@
 		},
 		"405": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
-			"qualifiedName": "K"
+			"qualifiedName": "EventEmitter.[captureRejectionSymbol]"
 		},
 		"406": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
-			"qualifiedName": "error"
+			"qualifiedName": "K"
 		},
 		"407": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
-			"qualifiedName": "event"
+			"qualifiedName": "error"
 		},
 		"408": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
-			"qualifiedName": "args"
+			"qualifiedName": "event"
 		},
 		"409": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
-			"qualifiedName": "__global.NodeJS.EventEmitter.addListener"
+			"qualifiedName": "args"
 		},
 		"410": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
@@ -18865,19 +18887,19 @@
 		},
 		"411": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
-			"qualifiedName": "K"
+			"qualifiedName": "__global.NodeJS.EventEmitter.addListener"
 		},
 		"412": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
-			"qualifiedName": "eventName"
+			"qualifiedName": "K"
 		},
 		"413": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
-			"qualifiedName": "listener"
+			"qualifiedName": "eventName"
 		},
 		"414": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
-			"qualifiedName": "__type"
+			"qualifiedName": "listener"
 		},
 		"415": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
@@ -18885,11 +18907,11 @@
 		},
 		"416": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
-			"qualifiedName": "args"
+			"qualifiedName": "__type"
 		},
 		"417": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
-			"qualifiedName": "__global.NodeJS.EventEmitter.removeListener"
+			"qualifiedName": "args"
 		},
 		"418": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
@@ -18897,19 +18919,19 @@
 		},
 		"419": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
-			"qualifiedName": "K"
+			"qualifiedName": "__global.NodeJS.EventEmitter.removeListener"
 		},
 		"420": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
-			"qualifiedName": "eventName"
+			"qualifiedName": "K"
 		},
 		"421": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
-			"qualifiedName": "listener"
+			"qualifiedName": "eventName"
 		},
 		"422": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
-			"qualifiedName": "__type"
+			"qualifiedName": "listener"
 		},
 		"423": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
@@ -18917,11 +18939,11 @@
 		},
 		"424": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
-			"qualifiedName": "args"
+			"qualifiedName": "__type"
 		},
 		"425": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
-			"qualifiedName": "__global.NodeJS.EventEmitter.setMaxListeners"
+			"qualifiedName": "args"
 		},
 		"426": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
@@ -18929,11 +18951,11 @@
 		},
 		"427": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
-			"qualifiedName": "n"
+			"qualifiedName": "__global.NodeJS.EventEmitter.setMaxListeners"
 		},
 		"428": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
-			"qualifiedName": "__global.NodeJS.EventEmitter.getMaxListeners"
+			"qualifiedName": "n"
 		},
 		"429": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
@@ -18941,7 +18963,7 @@
 		},
 		"430": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
-			"qualifiedName": "__global.NodeJS.EventEmitter.listeners"
+			"qualifiedName": "__global.NodeJS.EventEmitter.getMaxListeners"
 		},
 		"431": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
@@ -18949,15 +18971,15 @@
 		},
 		"432": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
-			"qualifiedName": "K"
+			"qualifiedName": "__global.NodeJS.EventEmitter.listeners"
 		},
 		"433": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
-			"qualifiedName": "eventName"
+			"qualifiedName": "K"
 		},
 		"434": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
-			"qualifiedName": "__global.NodeJS.EventEmitter.rawListeners"
+			"qualifiedName": "eventName"
 		},
 		"435": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
@@ -18965,15 +18987,15 @@
 		},
 		"436": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
-			"qualifiedName": "K"
+			"qualifiedName": "__global.NodeJS.EventEmitter.rawListeners"
 		},
 		"437": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
-			"qualifiedName": "eventName"
+			"qualifiedName": "K"
 		},
 		"438": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
-			"qualifiedName": "__global.NodeJS.EventEmitter.listenerCount"
+			"qualifiedName": "eventName"
 		},
 		"439": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
@@ -18981,19 +19003,19 @@
 		},
 		"440": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
-			"qualifiedName": "K"
+			"qualifiedName": "__global.NodeJS.EventEmitter.listenerCount"
 		},
 		"441": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
-			"qualifiedName": "eventName"
+			"qualifiedName": "K"
 		},
 		"442": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
-			"qualifiedName": "listener"
+			"qualifiedName": "eventName"
 		},
 		"443": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
-			"qualifiedName": "__global.NodeJS.EventEmitter.prependListener"
+			"qualifiedName": "listener"
 		},
 		"444": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
@@ -19001,19 +19023,19 @@
 		},
 		"445": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
-			"qualifiedName": "K"
+			"qualifiedName": "__global.NodeJS.EventEmitter.prependListener"
 		},
 		"446": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
-			"qualifiedName": "eventName"
+			"qualifiedName": "K"
 		},
 		"447": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
-			"qualifiedName": "listener"
+			"qualifiedName": "eventName"
 		},
 		"448": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
-			"qualifiedName": "__type"
+			"qualifiedName": "listener"
 		},
 		"449": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
@@ -19021,11 +19043,11 @@
 		},
 		"450": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
-			"qualifiedName": "args"
+			"qualifiedName": "__type"
 		},
 		"451": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
-			"qualifiedName": "__global.NodeJS.EventEmitter.prependOnceListener"
+			"qualifiedName": "args"
 		},
 		"452": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
@@ -19033,19 +19055,19 @@
 		},
 		"453": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
-			"qualifiedName": "K"
+			"qualifiedName": "__global.NodeJS.EventEmitter.prependOnceListener"
 		},
 		"454": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
-			"qualifiedName": "eventName"
+			"qualifiedName": "K"
 		},
 		"455": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
-			"qualifiedName": "listener"
+			"qualifiedName": "eventName"
 		},
 		"456": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
-			"qualifiedName": "__type"
+			"qualifiedName": "listener"
 		},
 		"457": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
@@ -19053,51 +19075,51 @@
 		},
 		"458": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
-			"qualifiedName": "args"
+			"qualifiedName": "__type"
 		},
 		"459": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
-			"qualifiedName": "__global.NodeJS.EventEmitter.eventNames"
+			"qualifiedName": "args"
 		},
 		"460": {
 			"sourceFileName": "node_modules/@types/node/events.d.ts",
 			"qualifiedName": "__global.NodeJS.EventEmitter.eventNames"
 		},
 		"461": {
-			"sourceFileName": "src/client/XernerxClient.ts",
-			"qualifiedName": "XernerxClient.T"
+			"sourceFileName": "node_modules/@types/node/events.d.ts",
+			"qualifiedName": "__global.NodeJS.EventEmitter.eventNames"
 		},
 		"462": {
 			"sourceFileName": "src/client/XernerxClient.ts",
-			"qualifiedName": "__type"
+			"qualifiedName": "XernerxClient.T"
 		},
 		"463": {
-			"sourceFileName": "src/handlers/CommandHandler.ts",
-			"qualifiedName": ""
+			"sourceFileName": "src/client/XernerxClient.ts",
+			"qualifiedName": "__type"
 		},
 		"464": {
 			"sourceFileName": "src/handlers/CommandHandler.ts",
-			"qualifiedName": "CommandHandler"
+			"qualifiedName": ""
 		},
 		"465": {
 			"sourceFileName": "src/handlers/CommandHandler.ts",
-			"qualifiedName": "CommandHandler.__constructor"
+			"qualifiedName": "CommandHandler"
 		},
 		"466": {
 			"sourceFileName": "src/handlers/CommandHandler.ts",
-			"qualifiedName": "CommandHandler"
+			"qualifiedName": "CommandHandler.__constructor"
 		},
 		"467": {
 			"sourceFileName": "src/handlers/CommandHandler.ts",
-			"qualifiedName": "client"
+			"qualifiedName": "CommandHandler"
 		},
 		"468": {
-			"sourceFileName": "",
-			"qualifiedName": "__type"
+			"sourceFileName": "src/handlers/CommandHandler.ts",
+			"qualifiedName": "client"
 		},
 		"469": {
-			"sourceFileName": "src/handlers/CommandHandler.ts",
-			"qualifiedName": "CommandHandler.loadSlashCommands"
+			"sourceFileName": "",
+			"qualifiedName": "__type"
 		},
 		"470": {
 			"sourceFileName": "src/handlers/CommandHandler.ts",
@@ -19105,11 +19127,11 @@
 		},
 		"471": {
 			"sourceFileName": "src/handlers/CommandHandler.ts",
-			"qualifiedName": "options"
+			"qualifiedName": "CommandHandler.loadSlashCommands"
 		},
 		"472": {
 			"sourceFileName": "src/handlers/CommandHandler.ts",
-			"qualifiedName": "CommandHandler.loadMessageCommands"
+			"qualifiedName": "options"
 		},
 		"473": {
 			"sourceFileName": "src/handlers/CommandHandler.ts",
@@ -19117,11 +19139,11 @@
 		},
 		"474": {
 			"sourceFileName": "src/handlers/CommandHandler.ts",
-			"qualifiedName": "options"
+			"qualifiedName": "CommandHandler.loadMessageCommands"
 		},
 		"475": {
 			"sourceFileName": "src/handlers/CommandHandler.ts",
-			"qualifiedName": "CommandHandler.loadContextCommands"
+			"qualifiedName": "options"
 		},
 		"476": {
 			"sourceFileName": "src/handlers/CommandHandler.ts",
@@ -19129,19 +19151,19 @@
 		},
 		"477": {
 			"sourceFileName": "src/handlers/CommandHandler.ts",
-			"qualifiedName": "options"
+			"qualifiedName": "CommandHandler.loadContextCommands"
 		},
 		"478": {
+			"sourceFileName": "src/handlers/CommandHandler.ts",
+			"qualifiedName": "options"
+		},
+		"479": {
 			"sourceFileName": "src/handlers/Handler.ts",
 			"qualifiedName": "Handler.client"
 		},
-		"479": {
+		"480": {
 			"sourceFileName": "",
 			"qualifiedName": "__type"
-		},
-		"480": {
-			"sourceFileName": "src/handlers/Handler.ts",
-			"qualifiedName": "Handler.readdir"
 		},
 		"481": {
 			"sourceFileName": "src/handlers/Handler.ts",
@@ -19149,11 +19171,11 @@
 		},
 		"482": {
 			"sourceFileName": "src/handlers/Handler.ts",
-			"qualifiedName": "directory"
+			"qualifiedName": "Handler.readdir"
 		},
 		"483": {
 			"sourceFileName": "src/handlers/Handler.ts",
-			"qualifiedName": "Handler.load"
+			"qualifiedName": "directory"
 		},
 		"484": {
 			"sourceFileName": "src/handlers/Handler.ts",
@@ -19161,43 +19183,43 @@
 		},
 		"485": {
 			"sourceFileName": "src/handlers/Handler.ts",
-			"qualifiedName": "filepath"
+			"qualifiedName": "Handler.load"
 		},
 		"486": {
 			"sourceFileName": "src/handlers/Handler.ts",
-			"qualifiedName": ""
+			"qualifiedName": "filepath"
 		},
 		"487": {
 			"sourceFileName": "src/handlers/Handler.ts",
-			"qualifiedName": "Handler"
+			"qualifiedName": ""
 		},
 		"488": {
 			"sourceFileName": "src/handlers/Handler.ts",
-			"qualifiedName": "Handler.__constructor"
+			"qualifiedName": "Handler"
 		},
 		"489": {
 			"sourceFileName": "src/handlers/Handler.ts",
-			"qualifiedName": "Handler"
+			"qualifiedName": "Handler.__constructor"
 		},
 		"490": {
 			"sourceFileName": "src/handlers/Handler.ts",
-			"qualifiedName": "client"
+			"qualifiedName": "Handler"
 		},
 		"491": {
+			"sourceFileName": "src/handlers/Handler.ts",
+			"qualifiedName": "client"
+		},
+		"492": {
 			"sourceFileName": "",
 			"qualifiedName": "__type"
 		},
-		"492": {
+		"493": {
 			"sourceFileName": "src/handlers/Handler.ts",
 			"qualifiedName": "Handler.client"
 		},
-		"493": {
+		"494": {
 			"sourceFileName": "",
 			"qualifiedName": "__type"
-		},
-		"494": {
-			"sourceFileName": "src/handlers/Handler.ts",
-			"qualifiedName": "Handler.readdir"
 		},
 		"495": {
 			"sourceFileName": "src/handlers/Handler.ts",
@@ -19205,11 +19227,11 @@
 		},
 		"496": {
 			"sourceFileName": "src/handlers/Handler.ts",
-			"qualifiedName": "directory"
+			"qualifiedName": "Handler.readdir"
 		},
 		"497": {
 			"sourceFileName": "src/handlers/Handler.ts",
-			"qualifiedName": "Handler.load"
+			"qualifiedName": "directory"
 		},
 		"498": {
 			"sourceFileName": "src/handlers/Handler.ts",
@@ -19217,139 +19239,139 @@
 		},
 		"499": {
 			"sourceFileName": "src/handlers/Handler.ts",
-			"qualifiedName": "filepath"
+			"qualifiedName": "Handler.load"
 		},
 		"500": {
-			"sourceFileName": "src/tools/XernerxLog.ts",
-			"qualifiedName": ""
+			"sourceFileName": "src/handlers/Handler.ts",
+			"qualifiedName": "filepath"
 		},
 		"501": {
 			"sourceFileName": "src/tools/XernerxLog.ts",
-			"qualifiedName": "default"
+			"qualifiedName": ""
 		},
 		"502": {
-			"sourceFileName": "src/types/interfaces.ts",
-			"qualifiedName": ""
+			"sourceFileName": "src/tools/XernerxLog.ts",
+			"qualifiedName": "default"
 		},
 		"503": {
 			"sourceFileName": "src/types/interfaces.ts",
-			"qualifiedName": "XernerxStats"
+			"qualifiedName": ""
 		},
 		"504": {
 			"sourceFileName": "src/types/interfaces.ts",
-			"qualifiedName": "XernerxStats.guilds"
+			"qualifiedName": "XernerxStats"
 		},
 		"505": {
 			"sourceFileName": "src/types/interfaces.ts",
-			"qualifiedName": "XernerxStats.users"
+			"qualifiedName": "XernerxStats.guilds"
 		},
 		"506": {
 			"sourceFileName": "src/types/interfaces.ts",
-			"qualifiedName": "XernerxStats.shardId"
+			"qualifiedName": "XernerxStats.users"
 		},
 		"507": {
 			"sourceFileName": "src/types/interfaces.ts",
-			"qualifiedName": "XernerxStats.shardCount"
+			"qualifiedName": "XernerxStats.shardId"
 		},
 		"508": {
 			"sourceFileName": "src/types/interfaces.ts",
-			"qualifiedName": "XernerxStats.shards"
+			"qualifiedName": "XernerxStats.shardCount"
 		},
 		"509": {
 			"sourceFileName": "src/types/interfaces.ts",
-			"qualifiedName": "XernerxStats.voteCount"
+			"qualifiedName": "XernerxStats.shards"
 		},
 		"510": {
 			"sourceFileName": "src/types/interfaces.ts",
-			"qualifiedName": "XernerxStats.votes"
+			"qualifiedName": "XernerxStats.voteCount"
 		},
 		"511": {
 			"sourceFileName": "src/types/interfaces.ts",
-			"qualifiedName": "XernerxSlashCommandHandlerOptions"
+			"qualifiedName": "XernerxStats.votes"
 		},
 		"512": {
 			"sourceFileName": "src/types/interfaces.ts",
-			"qualifiedName": "XernerxSlashCommandHandlerOptions.directory"
+			"qualifiedName": "XernerxSlashCommandHandlerOptions"
 		},
 		"513": {
 			"sourceFileName": "src/types/interfaces.ts",
-			"qualifiedName": "XernerxSlashCommandHandlerOptions.global"
+			"qualifiedName": "XernerxSlashCommandHandlerOptions.directory"
 		},
 		"514": {
 			"sourceFileName": "src/types/interfaces.ts",
-			"qualifiedName": "XernerxMessageCommandHandlerOptions"
+			"qualifiedName": "XernerxSlashCommandHandlerOptions.global"
 		},
 		"515": {
 			"sourceFileName": "src/types/interfaces.ts",
-			"qualifiedName": "XernerxMessageCommandHandlerOptions.directory"
+			"qualifiedName": "XernerxMessageCommandHandlerOptions"
 		},
 		"516": {
 			"sourceFileName": "src/types/interfaces.ts",
-			"qualifiedName": "XernerxMessageCommandHandlerOptions.global"
+			"qualifiedName": "XernerxMessageCommandHandlerOptions.directory"
 		},
 		"517": {
 			"sourceFileName": "src/types/interfaces.ts",
-			"qualifiedName": "XernerxContextCommandHandlerOptions"
+			"qualifiedName": "XernerxMessageCommandHandlerOptions.global"
 		},
 		"518": {
 			"sourceFileName": "src/types/interfaces.ts",
-			"qualifiedName": "XernerxContextCommandHandlerOptions.directory"
+			"qualifiedName": "XernerxContextCommandHandlerOptions"
 		},
 		"519": {
 			"sourceFileName": "src/types/interfaces.ts",
-			"qualifiedName": "XernerxContextCommandHandlerOptions.global"
+			"qualifiedName": "XernerxContextCommandHandlerOptions.directory"
 		},
 		"520": {
-			"sourceFileName": "src/types/types.ts",
-			"qualifiedName": ""
+			"sourceFileName": "src/types/interfaces.ts",
+			"qualifiedName": "XernerxContextCommandHandlerOptions.global"
 		},
 		"521": {
 			"sourceFileName": "src/types/types.ts",
-			"qualifiedName": "XernerxFileType"
+			"qualifiedName": ""
 		},
 		"522": {
 			"sourceFileName": "src/types/types.ts",
-			"qualifiedName": "XernerxFile"
+			"qualifiedName": "XernerxFileType"
 		},
 		"523": {
 			"sourceFileName": "src/types/types.ts",
-			"qualifiedName": "T"
+			"qualifiedName": "XernerxFile"
 		},
 		"524": {
 			"sourceFileName": "src/types/types.ts",
-			"qualifiedName": "XernerxCommand"
+			"qualifiedName": "T"
 		},
 		"525": {
 			"sourceFileName": "src/types/types.ts",
-			"qualifiedName": "T"
+			"qualifiedName": "XernerxCommand"
 		},
 		"526": {
-			"sourceFileName": "src/util/ClientUtil.ts",
-			"qualifiedName": ""
+			"sourceFileName": "src/types/types.ts",
+			"qualifiedName": "T"
 		},
 		"527": {
 			"sourceFileName": "src/util/ClientUtil.ts",
-			"qualifiedName": "ClientUtil"
+			"qualifiedName": ""
 		},
 		"528": {
 			"sourceFileName": "src/util/ClientUtil.ts",
-			"qualifiedName": "ClientUtil.__constructor"
+			"qualifiedName": "ClientUtil"
 		},
 		"529": {
 			"sourceFileName": "src/util/ClientUtil.ts",
-			"qualifiedName": "ClientUtil"
+			"qualifiedName": "ClientUtil.__constructor"
 		},
 		"530": {
 			"sourceFileName": "src/util/ClientUtil.ts",
-			"qualifiedName": "client"
+			"qualifiedName": "ClientUtil"
 		},
 		"531": {
-			"sourceFileName": "",
-			"qualifiedName": "__type"
+			"sourceFileName": "src/util/ClientUtil.ts",
+			"qualifiedName": "client"
 		},
 		"532": {
-			"sourceFileName": "src/util/ClientUtil.ts",
-			"qualifiedName": "ClientUtil.uptime"
+			"sourceFileName": "",
+			"qualifiedName": "__type"
 		},
 		"533": {
 			"sourceFileName": "src/util/ClientUtil.ts",
@@ -19357,23 +19379,23 @@
 		},
 		"534": {
 			"sourceFileName": "src/util/ClientUtil.ts",
-			"qualifiedName": "timestamp"
+			"qualifiedName": "ClientUtil.uptime"
 		},
 		"535": {
+			"sourceFileName": "src/util/ClientUtil.ts",
+			"qualifiedName": "timestamp"
+		},
+		"536": {
 			"sourceFileName": "src/util/Util.ts",
 			"qualifiedName": "Util.client"
 		},
-		"536": {
+		"537": {
 			"sourceFileName": "",
 			"qualifiedName": "__type"
 		},
-		"537": {
-			"sourceFileName": "src/util/prompts.ts",
-			"qualifiedName": ""
-		},
 		"538": {
 			"sourceFileName": "src/util/prompts.ts",
-			"qualifiedName": "start"
+			"qualifiedName": ""
 		},
 		"539": {
 			"sourceFileName": "src/util/prompts.ts",
@@ -19381,41 +19403,45 @@
 		},
 		"540": {
 			"sourceFileName": "src/util/prompts.ts",
-			"qualifiedName": "client"
+			"qualifiedName": "start"
 		},
 		"541": {
-			"sourceFileName": "",
-			"qualifiedName": "__type"
+			"sourceFileName": "src/util/prompts.ts",
+			"qualifiedName": "client"
 		},
 		"542": {
-			"sourceFileName": "src/util/Util.ts",
-			"qualifiedName": ""
+			"sourceFileName": "",
+			"qualifiedName": "__type"
 		},
 		"543": {
 			"sourceFileName": "src/util/Util.ts",
-			"qualifiedName": "Util"
+			"qualifiedName": ""
 		},
 		"544": {
 			"sourceFileName": "src/util/Util.ts",
-			"qualifiedName": "Util.__constructor"
+			"qualifiedName": "Util"
 		},
 		"545": {
 			"sourceFileName": "src/util/Util.ts",
-			"qualifiedName": "Util"
+			"qualifiedName": "Util.__constructor"
 		},
 		"546": {
 			"sourceFileName": "src/util/Util.ts",
-			"qualifiedName": "client"
+			"qualifiedName": "Util"
 		},
 		"547": {
+			"sourceFileName": "src/util/Util.ts",
+			"qualifiedName": "client"
+		},
+		"548": {
 			"sourceFileName": "",
 			"qualifiedName": "__type"
 		},
-		"548": {
+		"549": {
 			"sourceFileName": "src/util/Util.ts",
 			"qualifiedName": "Util.client"
 		},
-		"549": {
+		"550": {
 			"sourceFileName": "",
 			"qualifiedName": "__type"
 		}
@@ -19444,14 +19470,14 @@
 			"4": 32,
 			"5": 43,
 			"6": 169,
-			"7": 463,
-			"8": 486,
-			"9": 500,
-			"10": 502,
-			"11": 520,
-			"12": 526,
-			"13": 537,
-			"14": 542
+			"7": 464,
+			"8": 487,
+			"9": 501,
+			"10": 503,
+			"11": 521,
+			"12": 527,
+			"13": 538,
+			"14": 543
 		}
 	}
 }
