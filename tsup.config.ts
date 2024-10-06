@@ -9,7 +9,7 @@ export default defineConfig({
 	sourcemap: true,
 	dts: true,
 	clean: true,
-	format: ['esm', 'cjs', 'iife'],
+	format: ['esm', 'cjs'],
 	tsconfig: 'tsconfig.json',
 	treeshake: true,
 	shims: true,
@@ -17,5 +17,4 @@ export default defineConfig({
 	target: 'es2022',
 	skipNodeModulesBundle: true,
 	platform: 'node',
-	onSuccess: 'npm run check && npm run docs && npm run test',
 });
