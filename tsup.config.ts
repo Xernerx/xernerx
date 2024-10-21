@@ -17,4 +17,5 @@ export default defineConfig({
 	target: 'es2022',
 	skipNodeModulesBundle: true,
 	platform: 'node',
+	onSuccess: `nodemon test/main.test.js`,
 });

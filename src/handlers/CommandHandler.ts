@@ -26,9 +26,9 @@ export class CommandHandler extends Handler {
 			if (!command) continue;
 
 			if (command.filetype == 'XernerxMessageCommand' || command.filetype == 'XernerxSlashCommand' || command.filetype == 'XernerxContextCommand') {
-				if (!this.client.modules.options.slash.global) this.client.commands.stats.slash.local++;
-				else if (!command.global) this.client.commands.stats.slash.local++;
-				else this.client.commands.stats.slash.global++;
+				if (!this.client.modules.options.slash.global) this.client.stats.commands.slash.local++;
+				else if (!command.global) this.client.stats.commands.slash.local++;
+				else this.client.stats.commands.slash.global++;
 			}
 		}
 	}

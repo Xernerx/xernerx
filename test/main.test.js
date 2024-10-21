@@ -7,8 +7,8 @@ import * as XCJS from './bot.test.cjs';
 import config from './config.js';
 
 [
-	// [XMJS.XernerxClient, 'MJS'],
-	[XCJS.XernerxClient, 'CJS'],
+	[XMJS.XernerxClient, 'MJS'],
+	// [XCJS.XernerxClient, 'CJS'],
 ].forEach(async ([Client, type]) => {
 	const client = new (class TestClient extends Client {
 		constructor() {
@@ -16,7 +16,12 @@ import config from './config.js';
 				{
 					intents: [1],
 				},
-				{},
+				{
+					log: {
+						type: 'dynamic',
+						info: true,
+					},
+				},
 				config
 			);
 
@@ -25,6 +30,4 @@ import config from './config.js';
 	})();
 
 	await new Promise((resolve) => setTimeout(resolve, 5000));
-
-	console.log(sharpyy(type, 'txRainbow'), '|', client.settings);
 });

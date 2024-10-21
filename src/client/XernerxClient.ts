@@ -15,6 +15,8 @@ import XernerxLog from '../tools/XernerxLog.js';
 import sharpyy from 'sharpyy';
 import { ClientUtil } from '../util/ClientUtil.js';
 
+process.xernerx = {};
+
 export class XernerxClient<T = {}> extends Discord.Client {
 	public declare readonly settings;
 	public declare readonly stats: XernerxStats;
@@ -46,8 +48,19 @@ export class XernerxClient<T = {}> extends Discord.Client {
 
 				// dev settings
 				debug: z.boolean().default(false),
+				log: z
+					.object({
+						type: z.enum(['static', 'dynamic']).default('static'),
+						info: z.boolean().default(false),
+						error: z.boolean().default(false),
+						warn: z.boolean().default(false),
+						debug: z.boolean().default(false),
+					})
+					.default({}),
 			})
 			.parse({ ...XernerxOptions, ...config });
+
+		process.xernerx.log = this.settings.log;
 
 		this.stats = {
 			guilds: null,
@@ -57,6 +70,20 @@ export class XernerxClient<T = {}> extends Discord.Client {
 			shards: null,
 			voteCount: null,
 			votes: null,
+			commands: {
+				slash: {
+					local: 0,
+					global: 0,
+				},
+				message: {
+					local: 0,
+					global: 0,
+				},
+				context: {
+					local: 0,
+					global: 0,
+				},
+			},
 		};
 
 		this.util = new ClientUtil(this);
@@ -73,20 +100,6 @@ export class XernerxClient<T = {}> extends Discord.Client {
 			message: new Discord.Collection() as Discord.Collection<string, XernerxMessageCommand>,
 			slash: new Discord.Collection() as Discord.Collection<string, XernerxSlashCommand>,
 			context: new Discord.Collection() as Discord.Collection<string, XernerxContextCommand>,
-			stats: {
-				slash: {
-					local: 0,
-					global: 0,
-				},
-				message: {
-					local: 0,
-					global: 0,
-				},
-				context: {
-					local: 0,
-					global: 0,
-				},
-			},
 		};
 
 		this.events = new Discord.Collection() as Discord.Collection<string, XernerxEvent>;

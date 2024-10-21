@@ -20,21 +20,19 @@
 		}
 	},
 	"scripts": {
-		"check": "attw --pack",
 		"test": "nodemon test/main.test.js",
 		"dev": "npx tsup --watch",
 		"build": "npx tsup",
-		"docs": "typedoc"
+		"publish": "npx publishyy"
 	},
 	"keywords": [],
 	"author": "",
-	"license": "ISC",
+	"license": "MIT",
 	"description": "",
 	"dependencies": {
 		"boxen": "^8.0.1",
 		"discord.js": "^14.16.3",
 		"dumfunctions": "^2.1.6",
-		"figlet": "^1.7.0",
 		"inquirer": "^11.1.0",
 		"ora": "^8.1.0",
 		"sharpyy": "^1.1.0",
@@ -42,9 +40,6 @@
 	},
 	"devDependencies": {
 		"@arethetypeswrong/cli": "^0.16.4",
-		"@types/figlet": "^1.5.8",
-		"jsdoc": "^4.0.3",
-		"minami": "^1.2.3",
 		"prettier": "^3.3.3",
 		"publishyy": "^0.0.1",
 		"tsup": "^8.3.0",
