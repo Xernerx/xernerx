@@ -1,3 +1,3 @@
 /** @format */
 
-module.exports = require('../dist/main.cjs');
+module.exports = require("../dist/main.cjs");

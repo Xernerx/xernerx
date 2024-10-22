@@ -1,11 +1,11 @@
 /** @format */
 
-import { XernerxClient } from '../main.js';
+import { XernerxClient } from "../main.js";
 
 export class Util {
-	public declare readonly client: XernerxClient;
+  public declare readonly client: XernerxClient;
 
-	constructor(client: XernerxClient) {
-		this.client = client;
-	}
+  constructor(client: XernerxClient) {
+    this.client = client;
+  }
 }

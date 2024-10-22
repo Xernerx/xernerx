@@ -1,3 +1,3 @@
 /** @format */
 
-export * from '../dist/main.js';
+export * from "../dist/main.js";
