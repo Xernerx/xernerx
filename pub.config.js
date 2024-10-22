@@ -1,9 +1,9 @@
 /** @format */
 
 export default {
-  update: false,
-  bundle: true,
-  checkTypes: true,
-  typedoc: true,
-  formatFolders: ["./"],
+	update: false,
+	bundle: true,
+	checkTypes: true,
+	typedoc: true,
+	formatFolders: ['./'],
 };

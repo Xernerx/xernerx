@@ -1,443 +1,231 @@
+<!-- @format -->
+
 <!doctype html>
 <html class="default" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="x-ua-compatible" content="IE=edge" />
-    <title>XERNERX - v0.1.120-beta.111</title>
-    <meta name="description" content="Documentation for XERNERX" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="assets/style.css" />
-    <link rel="stylesheet" href="assets/highlight.css" />
-    <script defer src="assets/main.js"></script>
-    <script async src="assets/icons.js" id="tsd-icons-script"></script>
-    <script async src="assets/search.js" id="tsd-search-script"></script>
-    <script async src="assets/navigation.js" id="tsd-nav-script"></script>
-    <link rel="stylesheet" href="assets/typedoc-github-style.css" />
-  </head>
-  <body>
-    <script>
-      document.documentElement.dataset.theme =
-        localStorage.getItem("tsd-theme") || "os";
-      document.body.style.display = "none";
-      setTimeout(
-        () =>
-          app ? app.showPage() : document.body.style.removeProperty("display"),
-        500,
-      );
-    </script>
-    <header class="tsd-page-toolbar">
-      <div class="tsd-toolbar-contents container">
-        <div class="table-cell" id="tsd-search" data-base="../x/">
-          <div class="field">
-            <label
-              for="tsd-search-field"
-              class="tsd-widget tsd-toolbar-icon search no-caption"
-              ><svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <use href="assets/icons.svg#icon-search"></use></svg></label
-            ><input type="text" id="tsd-search-field" aria-label="Search" />
-          </div>
-          <div class="field"><div id="tsd-toolbar-links"></div></div>
-          <ul class="results">
-            <li class="state loading">Preparing search index...</li>
-            <li class="state failure">The search index is not available</li>
-          </ul>
-          <a href="index.html" class="title">XERNERX - v0.1.120-beta.111</a>
-        </div>
-        <div class="table-cell" id="tsd-widgets">
-          <a
-            href="#"
-            class="tsd-widget tsd-toolbar-icon menu no-caption"
-            data-toggle="menu"
-            aria-label="Menu"
-            ><svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <use href="assets/icons.svg#icon-menu"></use></svg
-          ></a>
-        </div>
-      </div>
-    </header>
-    <div class="container container-main">
-      <div class="col-content">
-        <div class="tsd-page-title"><h1>XERNERX - v0.1.120-beta.111</h1></div>
-        <div class="tsd-panel tsd-typography">
-          <!-- @format -->
-          <center>
-            <p>
-              <img
-                src="https://dummi.me/icons/XernerxLogoPurple.png"
-                alt="ICON"
-              />
-            </p>
-            <p>
-              <a
-                href="https://xernerx.github.io/xernerx"
-                target="_blank"
-                class="external"
-                ><img
-                  src="./docs/icons/Xernerx%20-%20Logo%20-%20Purple.png"
-                  alt=""
-              /></a>
-            </p>
-            <p>
-              <a
-                href="https://discord.gg/teNWyb69dq"
-                target="_blank"
-                class="external"
-                ><img
-                  src="https://img.shields.io/discord/784094726432489522?logo=discord"
-                  alt="Discord"
-              /></a>
-              <img src="https://img.shields.io/npm/dw/xernerx" alt="npm" />
-              <img src="https://img.shields.io/npm/dt/xernerx" alt="npm" />
-              <img
-                src="https://img.shields.io/readthedocs/node"
-                alt="Read the Docs"
-              />
-              <img
-                src="https://img.shields.io/npm/types/xernerx"
-                alt="npm type definitions"
-              />
-              <img
-                src="https://img.shields.io/npm/v/discord.js"
-                alt="node-current"
-              />
-              <a
-                href="https://wakatime.com/badge/user/0eeef1b5-98a7-4ec0-ab4c-db00536d5ed1/project/23ab34b7-623b-45e8-b8db-e9f1910589f7"
-                target="_blank"
-                class="external"
-                ><img
-                  src="https://wakatime.com/badge/user/0eeef1b5-98a7-4ec0-ab4c-db00536d5ed1/project/23ab34b7-623b-45e8-b8db-e9f1910589f7.svg"
-                  alt="wakatime"
-              /></a>
-              <img
-                src="https://img.shields.io/node/v/xernerx"
-                alt="node-current"
-              />
-              <img
-                src="https://img.shields.io/github/commit-activity/t/xernerx/xernerx"
-                alt="GitHub commit activity (branch)"
-              />
-            </p>
-          </center>
-          <a id="md:about" class="tsd-anchor"></a>
-          <h1 class="tsd-anchor-link">
-            About<a
-              href="#md:about"
-              aria-label="Permalink"
-              class="tsd-anchor-icon"
-              ><svg viewBox="0 0 24 24">
-                <use href="assets/icons.svg#icon-anchor"></use></svg
-            ></a>
-          </h1>
-          <p>Xernerx is a class based discord.js framework. [BETA]</p>
-          <p>
-            It can be customized to be a lightweight handler or a heavy
-            customizable framework that does all the hard work for you
-          </p>
-          <a id="md:features" class="tsd-anchor"></a>
-          <h2 class="tsd-anchor-link">
-            Features<a
-              href="#md:features"
-              aria-label="Permalink"
-              class="tsd-anchor-icon"
-              ><svg viewBox="0 0 24 24">
-                <use href="assets/icons.svg#icon-anchor"></use></svg
-            ></a>
-          </h2>
-          <blockquote>
-            <ul>
-              <li>[x] Slash command handler</li>
-              <li>[x] Message command handler</li>
-              <li>[x] Context command handler</li>
-              <li>[x] Event handler (with custom Events)</li>
-              <li>[x] Inhibitor handler</li>
-              <li>[x] Extension handler</li>
-              <li>[x] Client Utilities</li>
-              <li>[x] Message Utilities</li>
-              <li>[x] Interaction Utilities</li>
-              <li>[x] Message command handles</li>
-              <li>[x] Extension support</li>
-              <li>[x] ShardClient</li>
-            </ul>
-          </blockquote>
-          <a id="md:links" class="tsd-anchor"></a>
-          <h2 class="tsd-anchor-link">
-            Links<a
-              href="#md:links"
-              aria-label="Permalink"
-              class="tsd-anchor-icon"
-              ><svg viewBox="0 0 24 24">
-                <use href="assets/icons.svg#icon-anchor"></use></svg
-            ></a>
-          </h2>
-          <blockquote>
-            <ul>
-              <li>
-                <a href="https://xernerx.xyz/" target="_blank" class="external"
-                  >Documentation</a
-                >
-              </li>
-              <li>
-                <a
-                  href="https://xernerx.xyz/guide"
-                  target="_blank"
-                  class="external"
-                  >Guide</a
-                >
-              </li>
-            </ul>
-          </blockquote>
-          <a id="md:notes" class="tsd-anchor"></a>
-          <h2 class="tsd-anchor-link">
-            Notes<a
-              href="#md:notes"
-              aria-label="Permalink"
-              class="tsd-anchor-icon"
-              ><svg viewBox="0 0 24 24">
-                <use href="assets/icons.svg#icon-anchor"></use></svg
-            ></a>
-          </h2>
-          <blockquote>
-            <ul>
-              <li>[x] CJS</li>
-              <li>[x] ESM</li>
-              <li>[x] TypeScript Types</li>
-            </ul>
-          </blockquote>
-        </div>
-      </div>
-      <div class="col-sidebar">
-        <div class="page-menu">
-          <div class="tsd-navigation settings">
-            <details class="tsd-accordion">
-              <summary class="tsd-accordion-summary">
-                <h3>
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                    <use href="assets/icons.svg#icon-chevronDown"></use></svg
-                  >Settings
-                </h3>
-              </summary>
-              <div class="tsd-accordion-details">
-                <div class="tsd-filter-visibility">
-                  <span class="settings-label">Member Visibility</span>
-                  <ul id="tsd-filter-options">
-                    <li class="tsd-filter-item">
-                      <label class="tsd-filter-input"
-                        ><input
-                          type="checkbox"
-                          id="tsd-filter-protected"
-                          name="protected"
-                          checked
-                        /><svg
-                          width="32"
-                          height="32"
-                          viewBox="0 0 32 32"
-                          aria-hidden="true"
-                        >
-                          <rect
-                            class="tsd-checkbox-background"
-                            width="30"
-                            height="30"
-                            x="1"
-                            y="1"
-                            rx="6"
-                            fill="none"
-                          ></rect>
-                          <path
-                            class="tsd-checkbox-checkmark"
-                            d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25"
-                            stroke="none"
-                            stroke-width="3.5"
-                            stroke-linejoin="round"
-                            fill="none"
-                          ></path></svg
-                        ><span>Protected</span></label
-                      >
-                    </li>
-                    <li class="tsd-filter-item">
-                      <label class="tsd-filter-input"
-                        ><input
-                          type="checkbox"
-                          id="tsd-filter-inherited"
-                          name="inherited"
-                          checked
-                        /><svg
-                          width="32"
-                          height="32"
-                          viewBox="0 0 32 32"
-                          aria-hidden="true"
-                        >
-                          <rect
-                            class="tsd-checkbox-background"
-                            width="30"
-                            height="30"
-                            x="1"
-                            y="1"
-                            rx="6"
-                            fill="none"
-                          ></rect>
-                          <path
-                            class="tsd-checkbox-checkmark"
-                            d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25"
-                            stroke="none"
-                            stroke-width="3.5"
-                            stroke-linejoin="round"
-                            fill="none"
-                          ></path></svg
-                        ><span>Inherited</span></label
-                      >
-                    </li>
-                    <li class="tsd-filter-item">
-                      <label class="tsd-filter-input"
-                        ><input
-                          type="checkbox"
-                          id="tsd-filter-external"
-                          name="external"
-                        /><svg
-                          width="32"
-                          height="32"
-                          viewBox="0 0 32 32"
-                          aria-hidden="true"
-                        >
-                          <rect
-                            class="tsd-checkbox-background"
-                            width="30"
-                            height="30"
-                            x="1"
-                            y="1"
-                            rx="6"
-                            fill="none"
-                          ></rect>
-                          <path
-                            class="tsd-checkbox-checkmark"
-                            d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25"
-                            stroke="none"
-                            stroke-width="3.5"
-                            stroke-linejoin="round"
-                            fill="none"
-                          ></path></svg
-                        ><span>External</span></label
-                      >
-                    </li>
-                    <li class="tsd-filter-item">
-                      <label class="tsd-filter-input"
-                        ><input
-                          type="checkbox"
-                          id="tsd-filter-alpha"
-                          name="alpha"
-                        /><svg
-                          width="32"
-                          height="32"
-                          viewBox="0 0 32 32"
-                          aria-hidden="true"
-                        >
-                          <rect
-                            class="tsd-checkbox-background"
-                            width="30"
-                            height="30"
-                            x="1"
-                            y="1"
-                            rx="6"
-                            fill="none"
-                          ></rect>
-                          <path
-                            class="tsd-checkbox-checkmark"
-                            d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25"
-                            stroke="none"
-                            stroke-width="3.5"
-                            stroke-linejoin="round"
-                            fill="none"
-                          ></path></svg
-                        ><span>Alpha</span></label
-                      >
-                    </li>
-                    <li class="tsd-filter-item">
-                      <label class="tsd-filter-input"
-                        ><input
-                          type="checkbox"
-                          id="tsd-filter-beta"
-                          name="beta"
-                        /><svg
-                          width="32"
-                          height="32"
-                          viewBox="0 0 32 32"
-                          aria-hidden="true"
-                        >
-                          <rect
-                            class="tsd-checkbox-background"
-                            width="30"
-                            height="30"
-                            x="1"
-                            y="1"
-                            rx="6"
-                            fill="none"
-                          ></rect>
-                          <path
-                            class="tsd-checkbox-checkmark"
-                            d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25"
-                            stroke="none"
-                            stroke-width="3.5"
-                            stroke-linejoin="round"
-                            fill="none"
-                          ></path></svg
-                        ><span>Beta</span></label
-                      >
-                    </li>
-                  </ul>
-                </div>
-                <div class="tsd-theme-toggle">
-                  <label class="settings-label" for="tsd-theme">Theme</label
-                  ><select id="tsd-theme">
-                    <option value="os">OS</option>
-                    <option value="light">Light</option>
-                    <option value="dark">Dark</option>
-                  </select>
-                </div>
-              </div>
-            </details>
-          </div>
-          <details open class="tsd-accordion tsd-page-navigation">
-            <summary class="tsd-accordion-summary">
-              <h3>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                  <use href="assets/icons.svg#icon-chevronDown"></use></svg
-                >On This Page
-              </h3>
-            </summary>
-            <div class="tsd-accordion-details">
-              <a href="#md:about"><span>About</span></a>
-              <ul>
-                <li>
-                  <a href="#md:features"><span>Features</span></a>
-                </li>
-                <li>
-                  <a href="#md:links"><span>Links</span></a>
-                </li>
-                <li>
-                  <a href="#md:notes"><span>Notes</span></a>
-                </li>
-              </ul>
-            </div>
-          </details>
-        </div>
-        <div class="site-menu">
-          <nav class="tsd-navigation">
-            <a href="modules.html" class="current"
-              ><svg class="tsd-kind-icon" viewBox="0 0 24 24">
-                <use href="assets/icons.svg#icon-1"></use></svg
-              ><span>XERNERX - v0.1.120-beta.111</span></a
-            >
-            <ul
-              class="tsd-small-nested-navigation"
-              id="tsd-nav-container"
-              data-base="../x/"
-            >
-              <li>Loading...</li>
-            </ul>
-          </nav>
-        </div>
-      </div>
-    </div>
-    <footer></footer>
-    <div class="overlay"></div>
-  </body>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="x-ua-compatible" content="IE=edge" />
+		<title>XERNERX - v0.1.120-beta.112</title>
+		<meta name="description" content="Documentation for XERNERX" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/style.css" />
+		<link rel="stylesheet" href="assets/highlight.css" />
+		<script defer src="assets/main.js"></script>
+		<script async src="assets/icons.js" id="tsd-icons-script"></script>
+		<script async src="assets/search.js" id="tsd-search-script"></script>
+		<script async src="assets/navigation.js" id="tsd-nav-script"></script>
+		<link rel="stylesheet" href="assets/typedoc-github-style.css" />
+	</head>
+	<body>
+		<script>
+			document.documentElement.dataset.theme = localStorage.getItem('tsd-theme') || 'os';
+			document.body.style.display = 'none';
+			setTimeout(() => (app ? app.showPage() : document.body.style.removeProperty('display')), 500);
+		</script>
+		<header class="tsd-page-toolbar">
+			<div class="tsd-toolbar-contents container">
+				<div class="table-cell" id="tsd-search" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget tsd-toolbar-icon search no-caption"
+							><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><use href="assets/icons.svg#icon-search"></use></svg></label
+						><input type="text" id="tsd-search-field" aria-label="Search" />
+					</div>
+					<div class="field"><div id="tsd-toolbar-links"></div></div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">XERNERX - v0.1.120-beta.112</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<a href="#" class="tsd-widget tsd-toolbar-icon menu no-caption" data-toggle="menu" aria-label="Menu"
+						><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><use href="assets/icons.svg#icon-menu"></use></svg
+					></a>
+				</div>
+			</div>
+		</header>
+		<div class="container container-main">
+			<div class="col-content">
+				<div class="tsd-page-title"><h1>XERNERX - v0.1.120-beta.112</h1></div>
+				<div class="tsd-panel tsd-typography">
+					<!-- @format -->
+					<center>
+						<p><img src="https://dummi.me/icons/XernerxLogoPurple.png" alt="ICON" /></p>
+						<p>
+							<a href="https://xernerx.github.io/xernerx" target="_blank" class="external"><img src="./docs/icons/Xernerx%20-%20Logo%20-%20Purple.png" alt="" /></a>
+						</p>
+						<p>
+							<a href="https://discord.gg/teNWyb69dq" target="_blank" class="external"><img src="https://img.shields.io/discord/784094726432489522?logo=discord" alt="Discord" /></a>
+							<img src="https://img.shields.io/npm/dw/xernerx" alt="npm" />
+							<img src="https://img.shields.io/npm/dt/xernerx" alt="npm" />
+							<img src="https://img.shields.io/readthedocs/node" alt="Read the Docs" />
+							<img src="https://img.shields.io/npm/types/xernerx" alt="npm type definitions" />
+							<img src="https://img.shields.io/npm/v/discord.js" alt="node-current" />
+							<a href="https://wakatime.com/badge/user/0eeef1b5-98a7-4ec0-ab4c-db00536d5ed1/project/23ab34b7-623b-45e8-b8db-e9f1910589f7" target="_blank" class="external"
+								><img src="https://wakatime.com/badge/user/0eeef1b5-98a7-4ec0-ab4c-db00536d5ed1/project/23ab34b7-623b-45e8-b8db-e9f1910589f7.svg" alt="wakatime"
+							/></a>
+							<img src="https://img.shields.io/node/v/xernerx" alt="node-current" />
+							<img src="https://img.shields.io/github/commit-activity/t/xernerx/xernerx" alt="GitHub commit activity (branch)" />
+						</p>
+					</center>
+					<a id="md:about" class="tsd-anchor"></a>
+					<h1 class="tsd-anchor-link">
+						About<a href="#md:about" aria-label="Permalink" class="tsd-anchor-icon"
+							><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg
+						></a>
+					</h1>
+					<p>Xernerx is a class based discord.js framework. [BETA]</p>
+					<p>It can be customized to be a lightweight handler or a heavy customizable framework that does all the hard work for you</p>
+					<a id="md:features" class="tsd-anchor"></a>
+					<h2 class="tsd-anchor-link">
+						Features<a href="#md:features" aria-label="Permalink" class="tsd-anchor-icon"
+							><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg
+						></a>
+					</h2>
+					<blockquote>
+						<ul>
+							<li>[x] Slash command handler</li>
+							<li>[x] Message command handler</li>
+							<li>[x] Context command handler</li>
+							<li>[x] Event handler (with custom Events)</li>
+							<li>[x] Inhibitor handler</li>
+							<li>[x] Extension handler</li>
+							<li>[x] Client Utilities</li>
+							<li>[x] Message Utilities</li>
+							<li>[x] Interaction Utilities</li>
+							<li>[x] Message command handles</li>
+							<li>[x] Extension support</li>
+							<li>[x] ShardClient</li>
+						</ul>
+					</blockquote>
+					<a id="md:links" class="tsd-anchor"></a>
+					<h2 class="tsd-anchor-link">
+						Links<a href="#md:links" aria-label="Permalink" class="tsd-anchor-icon"
+							><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg
+						></a>
+					</h2>
+					<blockquote>
+						<ul>
+							<li><a href="https://xernerx.xyz/" target="_blank" class="external">Documentation</a></li>
+							<li><a href="https://xernerx.xyz/guide" target="_blank" class="external">Guide</a></li>
+						</ul>
+					</blockquote>
+					<a id="md:notes" class="tsd-anchor"></a>
+					<h2 class="tsd-anchor-link">
+						Notes<a href="#md:notes" aria-label="Permalink" class="tsd-anchor-icon"
+							><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg
+						></a>
+					</h2>
+					<blockquote>
+						<ul>
+							<li>[x] CJS</li>
+							<li>[x] ESM</li>
+							<li>[x] TypeScript Types</li>
+						</ul>
+					</blockquote>
+				</div>
+			</div>
+			<div class="col-sidebar">
+				<div class="page-menu">
+					<div class="tsd-navigation settings">
+						<details class="tsd-accordion">
+							<summary class="tsd-accordion-summary">
+								<h3>
+									<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="assets/icons.svg#icon-chevronDown"></use></svg>Settings
+								</h3>
+							</summary>
+							<div class="tsd-accordion-details">
+								<div class="tsd-filter-visibility">
+									<span class="settings-label">Member Visibility</span>
+									<ul id="tsd-filter-options">
+										<li class="tsd-filter-item">
+											<label class="tsd-filter-input"
+												><input type="checkbox" id="tsd-filter-protected" name="protected" checked /><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
+													<rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect>
+													<path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg
+												><span>Protected</span></label
+											>
+										</li>
+										<li class="tsd-filter-item">
+											<label class="tsd-filter-input"
+												><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked /><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
+													<rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect>
+													<path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg
+												><span>Inherited</span></label
+											>
+										</li>
+										<li class="tsd-filter-item">
+											<label class="tsd-filter-input"
+												><input type="checkbox" id="tsd-filter-external" name="external" /><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
+													<rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect>
+													<path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg
+												><span>External</span></label
+											>
+										</li>
+										<li class="tsd-filter-item">
+											<label class="tsd-filter-input"
+												><input type="checkbox" id="tsd-filter-alpha" name="alpha" /><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
+													<rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect>
+													<path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg
+												><span>Alpha</span></label
+											>
+										</li>
+										<li class="tsd-filter-item">
+											<label class="tsd-filter-input"
+												><input type="checkbox" id="tsd-filter-beta" name="beta" /><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
+													<rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect>
+													<path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg
+												><span>Beta</span></label
+											>
+										</li>
+									</ul>
+								</div>
+								<div class="tsd-theme-toggle">
+									<label class="settings-label" for="tsd-theme">Theme</label
+									><select id="tsd-theme">
+										<option value="os">OS</option>
+										<option value="light">Light</option>
+										<option value="dark">Dark</option>
+									</select>
+								</div>
+							</div>
+						</details>
+					</div>
+					<details open class="tsd-accordion tsd-page-navigation">
+						<summary class="tsd-accordion-summary">
+							<h3>
+								<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="assets/icons.svg#icon-chevronDown"></use></svg>On This Page
+							</h3>
+						</summary>
+						<div class="tsd-accordion-details">
+							<a href="#md:about"><span>About</span></a>
+							<ul>
+								<li>
+									<a href="#md:features"><span>Features</span></a>
+								</li>
+								<li>
+									<a href="#md:links"><span>Links</span></a>
+								</li>
+								<li>
+									<a href="#md:notes"><span>Notes</span></a>
+								</li>
+							</ul>
+						</div>
+					</details>
+				</div>
+				<div class="site-menu">
+					<nav class="tsd-navigation">
+						<a href="modules.html" class="current"
+							><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="assets/icons.svg#icon-1"></use></svg><span>XERNERX - v0.1.120-beta.112</span></a
+						>
+						<ul class="tsd-small-nested-navigation" id="tsd-nav-container" data-base=".">
+							<li>Loading...</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
+		<footer></footer>
+		<div class="overlay"></div>
+	</body>
 </html>
