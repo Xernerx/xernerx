@@ -38,7 +38,7 @@
                   "fileName": "src/builders/XernerxContextCommand.ts",
                   "line": 16,
                   "character": 2,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/builders/XernerxContextCommand.ts#L16"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/builders/XernerxContextCommand.ts#L16"
                 }
               ],
               "signatures": [
@@ -53,7 +53,7 @@
                       "fileName": "src/builders/XernerxContextCommand.ts",
                       "line": 16,
                       "character": 2,
-                      "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/builders/XernerxContextCommand.ts#L16"
+                      "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/builders/XernerxContextCommand.ts#L16"
                     }
                   ],
                   "parameters": [
@@ -92,7 +92,7 @@
                   "fileName": "src/builders/XernerxContextCommand.ts",
                   "line": 9,
                   "character": 26,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/builders/XernerxContextCommand.ts#L9"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/builders/XernerxContextCommand.ts#L9"
                 }
               ],
               "type": {
@@ -114,7 +114,7 @@
                   "fileName": "src/builders/XernerxContextCommand.ts",
                   "line": 14,
                   "character": 26,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/builders/XernerxContextCommand.ts#L14"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/builders/XernerxContextCommand.ts#L14"
                 }
               ],
               "type": {
@@ -136,7 +136,7 @@
                   "fileName": "src/builders/XernerxContextCommand.ts",
                   "line": 11,
                   "character": 26,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/builders/XernerxContextCommand.ts#L11"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/builders/XernerxContextCommand.ts#L11"
                 }
               ],
               "type": {
@@ -158,7 +158,7 @@
                   "fileName": "src/builders/XernerxContextCommand.ts",
                   "line": 13,
                   "character": 26,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/builders/XernerxContextCommand.ts#L13"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/builders/XernerxContextCommand.ts#L13"
                 }
               ],
               "type": {
@@ -180,7 +180,7 @@
                   "fileName": "src/builders/XernerxContextCommand.ts",
                   "line": 12,
                   "character": 26,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/builders/XernerxContextCommand.ts#L12"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/builders/XernerxContextCommand.ts#L12"
                 }
               ],
               "type": {
@@ -202,7 +202,7 @@
                   "fileName": "src/builders/XernerxContextCommand.ts",
                   "line": 10,
                   "character": 26,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/builders/XernerxContextCommand.ts#L10"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/builders/XernerxContextCommand.ts#L10"
                 }
               ],
               "type": {
@@ -226,7 +226,7 @@
               "fileName": "src/builders/XernerxContextCommand.ts",
               "line": 8,
               "character": 13,
-              "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/builders/XernerxContextCommand.ts#L8"
+              "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/builders/XernerxContextCommand.ts#L8"
             }
           ]
         }
@@ -242,7 +242,7 @@
           "fileName": "src/builders/XernerxContextCommand.ts",
           "line": 1,
           "character": 0,
-          "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/builders/XernerxContextCommand.ts#L1"
+          "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/builders/XernerxContextCommand.ts#L1"
         }
       ]
     },
@@ -280,7 +280,7 @@
                   "fileName": "src/builders/XernerxEvent.ts",
                   "line": 10,
                   "character": 2,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/builders/XernerxEvent.ts#L10"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/builders/XernerxEvent.ts#L10"
                 }
               ],
               "signatures": [
@@ -295,7 +295,7 @@
                       "fileName": "src/builders/XernerxEvent.ts",
                       "line": 10,
                       "character": 2,
-                      "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/builders/XernerxEvent.ts#L10"
+                      "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/builders/XernerxEvent.ts#L10"
                     }
                   ],
                   "parameters": [
@@ -334,7 +334,7 @@
                   "fileName": "src/builders/XernerxEvent.ts",
                   "line": 4,
                   "character": 26,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/builders/XernerxEvent.ts#L4"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/builders/XernerxEvent.ts#L4"
                 }
               ],
               "type": {
@@ -356,7 +356,7 @@
                   "fileName": "src/builders/XernerxEvent.ts",
                   "line": 8,
                   "character": 26,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/builders/XernerxEvent.ts#L8"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/builders/XernerxEvent.ts#L8"
                 }
               ],
               "type": {
@@ -378,7 +378,7 @@
                   "fileName": "src/builders/XernerxEvent.ts",
                   "line": 6,
                   "character": 26,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/builders/XernerxEvent.ts#L6"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/builders/XernerxEvent.ts#L6"
                 }
               ],
               "type": {
@@ -400,7 +400,7 @@
                   "fileName": "src/builders/XernerxEvent.ts",
                   "line": 7,
                   "character": 26,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/builders/XernerxEvent.ts#L7"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/builders/XernerxEvent.ts#L7"
                 }
               ],
               "type": {
@@ -422,7 +422,7 @@
                   "fileName": "src/builders/XernerxEvent.ts",
                   "line": 5,
                   "character": 26,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/builders/XernerxEvent.ts#L5"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/builders/XernerxEvent.ts#L5"
                 }
               ],
               "type": {
@@ -446,7 +446,7 @@
               "fileName": "src/builders/XernerxEvent.ts",
               "line": 3,
               "character": 13,
-              "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/builders/XernerxEvent.ts#L3"
+              "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/builders/XernerxEvent.ts#L3"
             }
           ]
         }
@@ -462,7 +462,7 @@
           "fileName": "src/builders/XernerxEvent.ts",
           "line": 1,
           "character": 0,
-          "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/builders/XernerxEvent.ts#L1"
+          "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/builders/XernerxEvent.ts#L1"
         }
       ]
     },
@@ -500,7 +500,7 @@
                   "fileName": "src/builders/XernerxInhibitor.ts",
                   "line": 10,
                   "character": 2,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/builders/XernerxInhibitor.ts#L10"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/builders/XernerxInhibitor.ts#L10"
                 }
               ],
               "signatures": [
@@ -515,7 +515,7 @@
                       "fileName": "src/builders/XernerxInhibitor.ts",
                       "line": 10,
                       "character": 2,
-                      "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/builders/XernerxInhibitor.ts#L10"
+                      "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/builders/XernerxInhibitor.ts#L10"
                     }
                   ],
                   "parameters": [
@@ -554,7 +554,7 @@
                   "fileName": "src/builders/XernerxInhibitor.ts",
                   "line": 4,
                   "character": 26,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/builders/XernerxInhibitor.ts#L4"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/builders/XernerxInhibitor.ts#L4"
                 }
               ],
               "type": {
@@ -576,7 +576,7 @@
                   "fileName": "src/builders/XernerxInhibitor.ts",
                   "line": 8,
                   "character": 26,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/builders/XernerxInhibitor.ts#L8"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/builders/XernerxInhibitor.ts#L8"
                 }
               ],
               "type": {
@@ -598,7 +598,7 @@
                   "fileName": "src/builders/XernerxInhibitor.ts",
                   "line": 6,
                   "character": 26,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/builders/XernerxInhibitor.ts#L6"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/builders/XernerxInhibitor.ts#L6"
                 }
               ],
               "type": {
@@ -620,7 +620,7 @@
                   "fileName": "src/builders/XernerxInhibitor.ts",
                   "line": 7,
                   "character": 26,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/builders/XernerxInhibitor.ts#L7"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/builders/XernerxInhibitor.ts#L7"
                 }
               ],
               "type": {
@@ -642,7 +642,7 @@
                   "fileName": "src/builders/XernerxInhibitor.ts",
                   "line": 5,
                   "character": 26,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/builders/XernerxInhibitor.ts#L5"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/builders/XernerxInhibitor.ts#L5"
                 }
               ],
               "type": {
@@ -666,7 +666,7 @@
               "fileName": "src/builders/XernerxInhibitor.ts",
               "line": 3,
               "character": 13,
-              "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/builders/XernerxInhibitor.ts#L3"
+              "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/builders/XernerxInhibitor.ts#L3"
             }
           ]
         }
@@ -682,7 +682,7 @@
           "fileName": "src/builders/XernerxInhibitor.ts",
           "line": 1,
           "character": 0,
-          "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/builders/XernerxInhibitor.ts#L1"
+          "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/builders/XernerxInhibitor.ts#L1"
         }
       ]
     },
@@ -720,7 +720,7 @@
                   "fileName": "src/builders/XernerxMessageCommand.ts",
                   "line": 11,
                   "character": 2,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/builders/XernerxMessageCommand.ts#L11"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/builders/XernerxMessageCommand.ts#L11"
                 }
               ],
               "signatures": [
@@ -735,7 +735,7 @@
                       "fileName": "src/builders/XernerxMessageCommand.ts",
                       "line": 11,
                       "character": 2,
-                      "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/builders/XernerxMessageCommand.ts#L11"
+                      "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/builders/XernerxMessageCommand.ts#L11"
                     }
                   ],
                   "parameters": [
@@ -774,7 +774,7 @@
                   "fileName": "src/builders/XernerxMessageCommand.ts",
                   "line": 4,
                   "character": 26,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/builders/XernerxMessageCommand.ts#L4"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/builders/XernerxMessageCommand.ts#L4"
                 }
               ],
               "type": {
@@ -796,7 +796,7 @@
                   "fileName": "src/builders/XernerxMessageCommand.ts",
                   "line": 9,
                   "character": 26,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/builders/XernerxMessageCommand.ts#L9"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/builders/XernerxMessageCommand.ts#L9"
                 }
               ],
               "type": {
@@ -818,7 +818,7 @@
                   "fileName": "src/builders/XernerxMessageCommand.ts",
                   "line": 6,
                   "character": 26,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/builders/XernerxMessageCommand.ts#L6"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/builders/XernerxMessageCommand.ts#L6"
                 }
               ],
               "type": {
@@ -840,7 +840,7 @@
                   "fileName": "src/builders/XernerxMessageCommand.ts",
                   "line": 8,
                   "character": 26,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/builders/XernerxMessageCommand.ts#L8"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/builders/XernerxMessageCommand.ts#L8"
                 }
               ],
               "type": {
@@ -862,7 +862,7 @@
                   "fileName": "src/builders/XernerxMessageCommand.ts",
                   "line": 7,
                   "character": 26,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/builders/XernerxMessageCommand.ts#L7"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/builders/XernerxMessageCommand.ts#L7"
                 }
               ],
               "type": {
@@ -884,7 +884,7 @@
                   "fileName": "src/builders/XernerxMessageCommand.ts",
                   "line": 5,
                   "character": 26,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/builders/XernerxMessageCommand.ts#L5"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/builders/XernerxMessageCommand.ts#L5"
                 }
               ],
               "type": {
@@ -908,7 +908,7 @@
               "fileName": "src/builders/XernerxMessageCommand.ts",
               "line": 3,
               "character": 13,
-              "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/builders/XernerxMessageCommand.ts#L3"
+              "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/builders/XernerxMessageCommand.ts#L3"
             }
           ]
         }
@@ -924,7 +924,7 @@
           "fileName": "src/builders/XernerxMessageCommand.ts",
           "line": 1,
           "character": 0,
-          "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/builders/XernerxMessageCommand.ts#L1"
+          "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/builders/XernerxMessageCommand.ts#L1"
         }
       ]
     },
@@ -953,7 +953,7 @@
                   "fileName": "src/builders/XernerxSlashCommand.ts",
                   "line": 11,
                   "character": 2,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/builders/XernerxSlashCommand.ts#L11"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/builders/XernerxSlashCommand.ts#L11"
                 }
               ],
               "signatures": [
@@ -968,7 +968,7 @@
                       "fileName": "src/builders/XernerxSlashCommand.ts",
                       "line": 11,
                       "character": 2,
-                      "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/builders/XernerxSlashCommand.ts#L11"
+                      "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/builders/XernerxSlashCommand.ts#L11"
                     }
                   ],
                   "parameters": [
@@ -1017,7 +1017,7 @@
                   "fileName": "src/builders/XernerxSlashCommand.ts",
                   "line": 6,
                   "character": 26,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/builders/XernerxSlashCommand.ts#L6"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/builders/XernerxSlashCommand.ts#L6"
                 }
               ],
               "type": {
@@ -1039,7 +1039,7 @@
                   "fileName": "src/builders/XernerxSlashCommand.ts",
                   "line": 9,
                   "character": 26,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/builders/XernerxSlashCommand.ts#L9"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/builders/XernerxSlashCommand.ts#L9"
                 }
               ],
               "type": {
@@ -1543,7 +1543,7 @@
                   "fileName": "src/builders/XernerxSlashCommand.ts",
                   "line": 8,
                   "character": 26,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/builders/XernerxSlashCommand.ts#L8"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/builders/XernerxSlashCommand.ts#L8"
                 }
               ],
               "type": {
@@ -1565,7 +1565,7 @@
                   "fileName": "src/builders/XernerxSlashCommand.ts",
                   "line": 7,
                   "character": 26,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/builders/XernerxSlashCommand.ts#L7"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/builders/XernerxSlashCommand.ts#L7"
                 }
               ],
               "type": {
@@ -5676,7 +5676,7 @@
               "fileName": "src/builders/XernerxSlashCommand.ts",
               "line": 5,
               "character": 13,
-              "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/builders/XernerxSlashCommand.ts#L5"
+              "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/builders/XernerxSlashCommand.ts#L5"
             }
           ],
           "extendedTypes": [
@@ -5703,7 +5703,7 @@
           "fileName": "src/builders/XernerxSlashCommand.ts",
           "line": 1,
           "character": 0,
-          "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/builders/XernerxSlashCommand.ts#L1"
+          "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/builders/XernerxSlashCommand.ts#L1"
         }
       ]
     },
@@ -5732,7 +5732,7 @@
                   "fileName": "src/client/XernerxClient.ts",
                   "line": 36,
                   "character": 2,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/client/XernerxClient.ts#L36"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/client/XernerxClient.ts#L36"
                 }
               ],
               "signatures": [
@@ -5747,7 +5747,7 @@
                       "fileName": "src/client/XernerxClient.ts",
                       "line": 36,
                       "character": 2,
-                      "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/client/XernerxClient.ts#L36"
+                      "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/client/XernerxClient.ts#L36"
                     }
                   ],
                   "typeParameters": [
@@ -5924,7 +5924,7 @@
                   "fileName": "src/client/XernerxClient.ts",
                   "line": 32,
                   "character": 26,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/client/XernerxClient.ts#L32"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/client/XernerxClient.ts#L32"
                 }
               ],
               "type": {
@@ -5947,7 +5947,7 @@
                           "fileName": "src/client/XernerxClient.ts",
                           "line": 108,
                           "character": 6,
-                          "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/client/XernerxClient.ts#L108"
+                          "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/client/XernerxClient.ts#L108"
                         }
                       ],
                       "type": {
@@ -5984,7 +5984,7 @@
                           "fileName": "src/client/XernerxClient.ts",
                           "line": 100,
                           "character": 6,
-                          "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/client/XernerxClient.ts#L100"
+                          "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/client/XernerxClient.ts#L100"
                         }
                       ],
                       "type": {
@@ -6021,7 +6021,7 @@
                           "fileName": "src/client/XernerxClient.ts",
                           "line": 104,
                           "character": 6,
-                          "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/client/XernerxClient.ts#L104"
+                          "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/client/XernerxClient.ts#L104"
                         }
                       ],
                       "type": {
@@ -6059,7 +6059,7 @@
                       "fileName": "src/client/XernerxClient.ts",
                       "line": 99,
                       "character": 20,
-                      "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/client/XernerxClient.ts#L99"
+                      "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/client/XernerxClient.ts#L99"
                     }
                   ]
                 }
@@ -6079,7 +6079,7 @@
                   "fileName": "src/client/XernerxClient.ts",
                   "line": 33,
                   "character": 26,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/client/XernerxClient.ts#L33"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/client/XernerxClient.ts#L33"
                 }
               ],
               "type": {
@@ -6150,7 +6150,7 @@
                   "fileName": "src/client/XernerxClient.ts",
                   "line": 34,
                   "character": 26,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/client/XernerxClient.ts#L34"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/client/XernerxClient.ts#L34"
                 }
               ],
               "type": {
@@ -6189,7 +6189,7 @@
                   "fileName": "src/client/XernerxClient.ts",
                   "line": 23,
                   "character": 26,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/client/XernerxClient.ts#L23"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/client/XernerxClient.ts#L23"
                 }
               ],
               "type": {
@@ -6212,7 +6212,7 @@
                           "fileName": "src/client/XernerxClient.ts",
                           "line": 24,
                           "character": 4,
-                          "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/client/XernerxClient.ts#L24"
+                          "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/client/XernerxClient.ts#L24"
                         }
                       ],
                       "type": {
@@ -6233,7 +6233,7 @@
                           "fileName": "src/client/XernerxClient.ts",
                           "line": 25,
                           "character": 4,
-                          "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/client/XernerxClient.ts#L25"
+                          "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/client/XernerxClient.ts#L25"
                         }
                       ],
                       "type": {
@@ -6258,7 +6258,7 @@
                                   "fileName": "src/client/XernerxClient.ts",
                                   "line": 28,
                                   "character": 6,
-                                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/client/XernerxClient.ts#L28"
+                                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/client/XernerxClient.ts#L28"
                                 }
                               ],
                               "type": {
@@ -6283,7 +6283,7 @@
                                           "fileName": "src/client/XernerxClient.ts",
                                           "line": 28,
                                           "character": 18,
-                                          "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/client/XernerxClient.ts#L28"
+                                          "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/client/XernerxClient.ts#L28"
                                         }
                                       ],
                                       "type": {
@@ -6303,7 +6303,7 @@
                                       "fileName": "src/client/XernerxClient.ts",
                                       "line": 28,
                                       "character": 16,
-                                      "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/client/XernerxClient.ts#L28"
+                                      "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/client/XernerxClient.ts#L28"
                                     }
                                   ]
                                 }
@@ -6322,7 +6322,7 @@
                                   "fileName": "src/client/XernerxClient.ts",
                                   "line": 26,
                                   "character": 6,
-                                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/client/XernerxClient.ts#L26"
+                                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/client/XernerxClient.ts#L26"
                                 }
                               ],
                               "type": {
@@ -6347,7 +6347,7 @@
                                           "fileName": "src/client/XernerxClient.ts",
                                           "line": 26,
                                           "character": 18,
-                                          "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/client/XernerxClient.ts#L26"
+                                          "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/client/XernerxClient.ts#L26"
                                         }
                                       ],
                                       "type": {
@@ -6366,7 +6366,7 @@
                                           "fileName": "src/client/XernerxClient.ts",
                                           "line": 26,
                                           "character": 36,
-                                          "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/client/XernerxClient.ts#L26"
+                                          "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/client/XernerxClient.ts#L26"
                                         }
                                       ],
                                       "type": {
@@ -6389,7 +6389,7 @@
                                       "fileName": "src/client/XernerxClient.ts",
                                       "line": 26,
                                       "character": 16,
-                                      "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/client/XernerxClient.ts#L26"
+                                      "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/client/XernerxClient.ts#L26"
                                     }
                                   ]
                                 }
@@ -6408,7 +6408,7 @@
                                   "fileName": "src/client/XernerxClient.ts",
                                   "line": 27,
                                   "character": 6,
-                                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/client/XernerxClient.ts#L27"
+                                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/client/XernerxClient.ts#L27"
                                 }
                               ],
                               "type": {
@@ -6433,7 +6433,7 @@
                                           "fileName": "src/client/XernerxClient.ts",
                                           "line": 27,
                                           "character": 16,
-                                          "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/client/XernerxClient.ts#L27"
+                                          "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/client/XernerxClient.ts#L27"
                                         }
                                       ],
                                       "type": {
@@ -6453,7 +6453,7 @@
                                       "fileName": "src/client/XernerxClient.ts",
                                       "line": 27,
                                       "character": 14,
-                                      "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/client/XernerxClient.ts#L27"
+                                      "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/client/XernerxClient.ts#L27"
                                     }
                                   ]
                                 }
@@ -6471,7 +6471,7 @@
                               "fileName": "src/client/XernerxClient.ts",
                               "line": 25,
                               "character": 13,
-                              "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/client/XernerxClient.ts#L25"
+                              "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/client/XernerxClient.ts#L25"
                             }
                           ]
                         }
@@ -6489,7 +6489,7 @@
                       "fileName": "src/client/XernerxClient.ts",
                       "line": 23,
                       "character": 35,
-                      "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/client/XernerxClient.ts#L23"
+                      "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/client/XernerxClient.ts#L23"
                     }
                   ]
                 }
@@ -6681,7 +6681,7 @@
                   "fileName": "src/client/XernerxClient.ts",
                   "line": 21,
                   "character": 26,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/client/XernerxClient.ts#L21"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/client/XernerxClient.ts#L21"
                 }
               ],
               "type": {
@@ -6712,7 +6712,7 @@
                           "fileName": "src/client/XernerxClient.ts",
                           "line": 50,
                           "character": 8,
-                          "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/client/XernerxClient.ts#L50"
+                          "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/client/XernerxClient.ts#L50"
                         }
                       ],
                       "type": {
@@ -6740,7 +6740,7 @@
                           "fileName": "src/client/XernerxClient.ts",
                           "line": 45,
                           "character": 8,
-                          "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/client/XernerxClient.ts#L45"
+                          "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/client/XernerxClient.ts#L45"
                         }
                       ],
                       "type": {
@@ -6760,7 +6760,7 @@
                           "fileName": "src/client/XernerxClient.ts",
                           "line": 47,
                           "character": 8,
-                          "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/client/XernerxClient.ts#L47"
+                          "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/client/XernerxClient.ts#L47"
                         }
                       ],
                       "type": {
@@ -6783,7 +6783,7 @@
                           "fileName": "src/client/XernerxClient.ts",
                           "line": 51,
                           "character": 8,
-                          "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/client/XernerxClient.ts#L51"
+                          "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/client/XernerxClient.ts#L51"
                         }
                       ],
                       "type": {
@@ -6806,7 +6806,7 @@
                                   "fileName": "src/client/XernerxClient.ts",
                                   "line": 57,
                                   "character": 12,
-                                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/client/XernerxClient.ts#L57"
+                                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/client/XernerxClient.ts#L57"
                                 }
                               ],
                               "type": {
@@ -6826,7 +6826,7 @@
                                   "fileName": "src/client/XernerxClient.ts",
                                   "line": 55,
                                   "character": 12,
-                                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/client/XernerxClient.ts#L55"
+                                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/client/XernerxClient.ts#L55"
                                 }
                               ],
                               "type": {
@@ -6846,7 +6846,7 @@
                                   "fileName": "src/client/XernerxClient.ts",
                                   "line": 54,
                                   "character": 12,
-                                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/client/XernerxClient.ts#L54"
+                                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/client/XernerxClient.ts#L54"
                                 }
                               ],
                               "type": {
@@ -6866,7 +6866,7 @@
                                   "fileName": "src/client/XernerxClient.ts",
                                   "line": 53,
                                   "character": 12,
-                                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/client/XernerxClient.ts#L53"
+                                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/client/XernerxClient.ts#L53"
                                 }
                               ],
                               "type": {
@@ -6895,7 +6895,7 @@
                                   "fileName": "src/client/XernerxClient.ts",
                                   "line": 56,
                                   "character": 12,
-                                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/client/XernerxClient.ts#L56"
+                                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/client/XernerxClient.ts#L56"
                                 }
                               ],
                               "type": {
@@ -6933,7 +6933,7 @@
                           "fileName": "src/client/XernerxClient.ts",
                           "line": 46,
                           "character": 8,
-                          "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/client/XernerxClient.ts#L46"
+                          "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/client/XernerxClient.ts#L46"
                         }
                       ],
                       "type": {
@@ -6964,7 +6964,7 @@
                           "fileName": "src/client/XernerxClient.ts",
                           "line": 42,
                           "character": 8,
-                          "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/client/XernerxClient.ts#L42"
+                          "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/client/XernerxClient.ts#L42"
                         }
                       ],
                       "type": {
@@ -7045,7 +7045,7 @@
                   "fileName": "src/client/XernerxClient.ts",
                   "line": 22,
                   "character": 26,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/client/XernerxClient.ts#L22"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/client/XernerxClient.ts#L22"
                 }
               ],
               "type": {
@@ -7210,7 +7210,7 @@
                   "fileName": "src/client/XernerxClient.ts",
                   "line": 31,
                   "character": 26,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/client/XernerxClient.ts#L31"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/client/XernerxClient.ts#L31"
                 }
               ],
               "type": {
@@ -14886,7 +14886,7 @@
               "fileName": "src/client/XernerxClient.ts",
               "line": 20,
               "character": 13,
-              "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/client/XernerxClient.ts#L20"
+              "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/client/XernerxClient.ts#L20"
             }
           ],
           "typeParameters": [
@@ -14909,7 +14909,7 @@
                       "fileName": "src/client/XernerxClient.ts",
                       "line": 20,
                       "character": 31,
-                      "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/client/XernerxClient.ts#L20"
+                      "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/client/XernerxClient.ts#L20"
                     }
                   ]
                 }
@@ -14940,7 +14940,7 @@
           "fileName": "src/client/XernerxClient.ts",
           "line": 1,
           "character": 0,
-          "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/client/XernerxClient.ts#L1"
+          "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/client/XernerxClient.ts#L1"
         }
       ]
     },
@@ -14969,7 +14969,7 @@
                   "fileName": "src/handlers/CommandHandler.ts",
                   "line": 19,
                   "character": 2,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/handlers/CommandHandler.ts#L19"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/handlers/CommandHandler.ts#L19"
                 }
               ],
               "signatures": [
@@ -14984,7 +14984,7 @@
                       "fileName": "src/handlers/CommandHandler.ts",
                       "line": 19,
                       "character": 2,
-                      "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/handlers/CommandHandler.ts#L19"
+                      "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/handlers/CommandHandler.ts#L19"
                     }
                   ],
                   "parameters": [
@@ -15048,7 +15048,7 @@
                   "fileName": "src/handlers/Handler.ts",
                   "line": 14,
                   "character": 26,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/handlers/Handler.ts#L14"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/handlers/Handler.ts#L14"
                 }
               ],
               "type": {
@@ -15089,7 +15089,7 @@
                   "fileName": "src/handlers/Handler.ts",
                   "line": 46,
                   "character": 18,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/handlers/Handler.ts#L46"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/handlers/Handler.ts#L46"
                 }
               ],
               "signatures": [
@@ -15106,7 +15106,7 @@
                       "fileName": "src/handlers/Handler.ts",
                       "line": 46,
                       "character": 18,
-                      "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/handlers/Handler.ts#L46"
+                      "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/handlers/Handler.ts#L46"
                     }
                   ],
                   "parameters": [
@@ -15174,7 +15174,7 @@
                   "fileName": "src/handlers/CommandHandler.ts",
                   "line": 65,
                   "character": 18,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/handlers/CommandHandler.ts#L65"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/handlers/CommandHandler.ts#L65"
                 }
               ],
               "signatures": [
@@ -15189,7 +15189,7 @@
                       "fileName": "src/handlers/CommandHandler.ts",
                       "line": 65,
                       "character": 18,
-                      "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/handlers/CommandHandler.ts#L65"
+                      "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/handlers/CommandHandler.ts#L65"
                     }
                   ],
                   "parameters": [
@@ -15238,7 +15238,7 @@
                   "fileName": "src/handlers/CommandHandler.ts",
                   "line": 62,
                   "character": 18,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/handlers/CommandHandler.ts#L62"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/handlers/CommandHandler.ts#L62"
                 }
               ],
               "signatures": [
@@ -15272,7 +15272,7 @@
                       "fileName": "src/handlers/CommandHandler.ts",
                       "line": 62,
                       "character": 18,
-                      "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/handlers/CommandHandler.ts#L62"
+                      "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/handlers/CommandHandler.ts#L62"
                     }
                   ],
                   "parameters": [
@@ -15329,7 +15329,7 @@
                   "fileName": "src/handlers/CommandHandler.ts",
                   "line": 23,
                   "character": 18,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/handlers/CommandHandler.ts#L23"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/handlers/CommandHandler.ts#L23"
                 }
               ],
               "signatures": [
@@ -15344,7 +15344,7 @@
                       "fileName": "src/handlers/CommandHandler.ts",
                       "line": 23,
                       "character": 18,
-                      "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/handlers/CommandHandler.ts#L23"
+                      "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/handlers/CommandHandler.ts#L23"
                     }
                   ],
                   "parameters": [
@@ -15394,7 +15394,7 @@
                   "fileName": "src/handlers/Handler.ts",
                   "line": 20,
                   "character": 18,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/handlers/Handler.ts#L20"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/handlers/Handler.ts#L20"
                 }
               ],
               "signatures": [
@@ -15411,7 +15411,7 @@
                       "fileName": "src/handlers/Handler.ts",
                       "line": 20,
                       "character": 18,
-                      "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/handlers/Handler.ts#L20"
+                      "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/handlers/Handler.ts#L20"
                     }
                   ],
                   "parameters": [
@@ -15478,7 +15478,7 @@
               "fileName": "src/handlers/CommandHandler.ts",
               "line": 18,
               "character": 13,
-              "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/handlers/CommandHandler.ts#L18"
+              "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/handlers/CommandHandler.ts#L18"
             }
           ],
           "extendedTypes": [
@@ -15502,7 +15502,7 @@
           "fileName": "src/handlers/CommandHandler.ts",
           "line": 1,
           "character": 0,
-          "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/handlers/CommandHandler.ts#L1"
+          "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/handlers/CommandHandler.ts#L1"
         }
       ]
     },
@@ -15531,7 +15531,7 @@
                   "fileName": "src/handlers/Handler.ts",
                   "line": 16,
                   "character": 2,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/handlers/Handler.ts#L16"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/handlers/Handler.ts#L16"
                 }
               ],
               "signatures": [
@@ -15546,7 +15546,7 @@
                       "fileName": "src/handlers/Handler.ts",
                       "line": 16,
                       "character": 2,
-                      "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/handlers/Handler.ts#L16"
+                      "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/handlers/Handler.ts#L16"
                     }
                   ],
                   "parameters": [
@@ -15599,7 +15599,7 @@
                   "fileName": "src/handlers/Handler.ts",
                   "line": 14,
                   "character": 26,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/handlers/Handler.ts#L14"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/handlers/Handler.ts#L14"
                 }
               ],
               "type": {
@@ -15634,7 +15634,7 @@
                   "fileName": "src/handlers/Handler.ts",
                   "line": 46,
                   "character": 18,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/handlers/Handler.ts#L46"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/handlers/Handler.ts#L46"
                 }
               ],
               "signatures": [
@@ -15649,7 +15649,7 @@
                       "fileName": "src/handlers/Handler.ts",
                       "line": 46,
                       "character": 18,
-                      "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/handlers/Handler.ts#L46"
+                      "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/handlers/Handler.ts#L46"
                     }
                   ],
                   "parameters": [
@@ -15707,7 +15707,7 @@
                   "fileName": "src/handlers/Handler.ts",
                   "line": 20,
                   "character": 18,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/handlers/Handler.ts#L20"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/handlers/Handler.ts#L20"
                 }
               ],
               "signatures": [
@@ -15722,7 +15722,7 @@
                       "fileName": "src/handlers/Handler.ts",
                       "line": 20,
                       "character": 18,
-                      "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/handlers/Handler.ts#L20"
+                      "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/handlers/Handler.ts#L20"
                     }
                   ],
                   "parameters": [
@@ -15779,7 +15779,7 @@
               "fileName": "src/handlers/Handler.ts",
               "line": 13,
               "character": 13,
-              "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/handlers/Handler.ts#L13"
+              "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/handlers/Handler.ts#L13"
             }
           ],
           "extendedBy": [
@@ -15802,7 +15802,7 @@
           "fileName": "src/handlers/Handler.ts",
           "line": 1,
           "character": 0,
-          "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/handlers/Handler.ts#L1"
+          "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/handlers/Handler.ts#L1"
         }
       ]
     },
@@ -15824,7 +15824,7 @@
               "fileName": "src/tools/XernerxLog.ts",
               "line": 5,
               "character": 0,
-              "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/tools/XernerxLog.ts#L5"
+              "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/tools/XernerxLog.ts#L5"
             }
           ],
           "type": {
@@ -15849,7 +15849,7 @@
           "fileName": "src/tools/XernerxLog.ts",
           "line": 1,
           "character": 0,
-          "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/tools/XernerxLog.ts#L1"
+          "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/tools/XernerxLog.ts#L1"
         }
       ]
     },
@@ -15878,7 +15878,7 @@
                   "fileName": "src/types/interfaces.ts",
                   "line": 37,
                   "character": 2,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/types/interfaces.ts#L37"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/types/interfaces.ts#L37"
                 }
               ],
               "type": {
@@ -15897,7 +15897,7 @@
                   "fileName": "src/types/interfaces.ts",
                   "line": 38,
                   "character": 2,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/types/interfaces.ts#L38"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/types/interfaces.ts#L38"
                 }
               ],
               "type": {
@@ -15917,7 +15917,7 @@
               "fileName": "src/types/interfaces.ts",
               "line": 36,
               "character": 17,
-              "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/types/interfaces.ts#L36"
+              "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/types/interfaces.ts#L36"
             }
           ]
         },
@@ -15939,7 +15939,7 @@
                   "fileName": "src/types/interfaces.ts",
                   "line": 33,
                   "character": 2,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/types/interfaces.ts#L33"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/types/interfaces.ts#L33"
                 }
               ],
               "type": {
@@ -15958,7 +15958,7 @@
                   "fileName": "src/types/interfaces.ts",
                   "line": 34,
                   "character": 2,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/types/interfaces.ts#L34"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/types/interfaces.ts#L34"
                 }
               ],
               "type": {
@@ -15978,7 +15978,7 @@
               "fileName": "src/types/interfaces.ts",
               "line": 32,
               "character": 17,
-              "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/types/interfaces.ts#L32"
+              "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/types/interfaces.ts#L32"
             }
           ]
         },
@@ -16000,7 +16000,7 @@
                   "fileName": "src/types/interfaces.ts",
                   "line": 28,
                   "character": 2,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/types/interfaces.ts#L28"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/types/interfaces.ts#L28"
                 }
               ],
               "type": {
@@ -16019,7 +16019,7 @@
                   "fileName": "src/types/interfaces.ts",
                   "line": 29,
                   "character": 2,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/types/interfaces.ts#L29"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/types/interfaces.ts#L29"
                 }
               ],
               "type": {
@@ -16039,7 +16039,7 @@
               "fileName": "src/types/interfaces.ts",
               "line": 27,
               "character": 17,
-              "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/types/interfaces.ts#L27"
+              "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/types/interfaces.ts#L27"
             }
           ]
         },
@@ -16070,7 +16070,7 @@
                   "fileName": "src/types/interfaces.ts",
                   "line": 11,
                   "character": 2,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/types/interfaces.ts#L11"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/types/interfaces.ts#L11"
                 }
               ],
               "type": {
@@ -16093,7 +16093,7 @@
                           "fileName": "src/types/interfaces.ts",
                           "line": 20,
                           "character": 4,
-                          "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/types/interfaces.ts#L20"
+                          "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/types/interfaces.ts#L20"
                         }
                       ],
                       "type": {
@@ -16116,7 +16116,7 @@
                                   "fileName": "src/types/interfaces.ts",
                                   "line": 22,
                                   "character": 6,
-                                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/types/interfaces.ts#L22"
+                                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/types/interfaces.ts#L22"
                                 }
                               ],
                               "type": {
@@ -16135,7 +16135,7 @@
                                   "fileName": "src/types/interfaces.ts",
                                   "line": 21,
                                   "character": 6,
-                                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/types/interfaces.ts#L21"
+                                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/types/interfaces.ts#L21"
                                 }
                               ],
                               "type": {
@@ -16155,7 +16155,7 @@
                               "fileName": "src/types/interfaces.ts",
                               "line": 20,
                               "character": 13,
-                              "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/types/interfaces.ts#L20"
+                              "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/types/interfaces.ts#L20"
                             }
                           ]
                         }
@@ -16172,7 +16172,7 @@
                           "fileName": "src/types/interfaces.ts",
                           "line": 16,
                           "character": 4,
-                          "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/types/interfaces.ts#L16"
+                          "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/types/interfaces.ts#L16"
                         }
                       ],
                       "type": {
@@ -16195,7 +16195,7 @@
                                   "fileName": "src/types/interfaces.ts",
                                   "line": 18,
                                   "character": 6,
-                                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/types/interfaces.ts#L18"
+                                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/types/interfaces.ts#L18"
                                 }
                               ],
                               "type": {
@@ -16214,7 +16214,7 @@
                                   "fileName": "src/types/interfaces.ts",
                                   "line": 17,
                                   "character": 6,
-                                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/types/interfaces.ts#L17"
+                                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/types/interfaces.ts#L17"
                                 }
                               ],
                               "type": {
@@ -16234,7 +16234,7 @@
                               "fileName": "src/types/interfaces.ts",
                               "line": 16,
                               "character": 13,
-                              "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/types/interfaces.ts#L16"
+                              "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/types/interfaces.ts#L16"
                             }
                           ]
                         }
@@ -16251,7 +16251,7 @@
                           "fileName": "src/types/interfaces.ts",
                           "line": 12,
                           "character": 4,
-                          "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/types/interfaces.ts#L12"
+                          "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/types/interfaces.ts#L12"
                         }
                       ],
                       "type": {
@@ -16274,7 +16274,7 @@
                                   "fileName": "src/types/interfaces.ts",
                                   "line": 14,
                                   "character": 6,
-                                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/types/interfaces.ts#L14"
+                                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/types/interfaces.ts#L14"
                                 }
                               ],
                               "type": {
@@ -16293,7 +16293,7 @@
                                   "fileName": "src/types/interfaces.ts",
                                   "line": 13,
                                   "character": 6,
-                                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/types/interfaces.ts#L13"
+                                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/types/interfaces.ts#L13"
                                 }
                               ],
                               "type": {
@@ -16313,7 +16313,7 @@
                               "fileName": "src/types/interfaces.ts",
                               "line": 12,
                               "character": 11,
-                              "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/types/interfaces.ts#L12"
+                              "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/types/interfaces.ts#L12"
                             }
                           ]
                         }
@@ -16331,7 +16331,7 @@
                       "fileName": "src/types/interfaces.ts",
                       "line": 11,
                       "character": 12,
-                      "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/types/interfaces.ts#L11"
+                      "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/types/interfaces.ts#L11"
                     }
                   ]
                 }
@@ -16348,7 +16348,7 @@
                   "fileName": "src/types/interfaces.ts",
                   "line": 4,
                   "character": 2,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/types/interfaces.ts#L4"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/types/interfaces.ts#L4"
                 }
               ],
               "type": {
@@ -16376,7 +16376,7 @@
                   "fileName": "src/types/interfaces.ts",
                   "line": 7,
                   "character": 2,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/types/interfaces.ts#L7"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/types/interfaces.ts#L7"
                 }
               ],
               "type": {
@@ -16404,7 +16404,7 @@
                   "fileName": "src/types/interfaces.ts",
                   "line": 6,
                   "character": 2,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/types/interfaces.ts#L6"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/types/interfaces.ts#L6"
                 }
               ],
               "type": {
@@ -16432,7 +16432,7 @@
                   "fileName": "src/types/interfaces.ts",
                   "line": 8,
                   "character": 2,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/types/interfaces.ts#L8"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/types/interfaces.ts#L8"
                 }
               ],
               "type": {
@@ -16460,7 +16460,7 @@
                   "fileName": "src/types/interfaces.ts",
                   "line": 5,
                   "character": 2,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/types/interfaces.ts#L5"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/types/interfaces.ts#L5"
                 }
               ],
               "type": {
@@ -16488,7 +16488,7 @@
                   "fileName": "src/types/interfaces.ts",
                   "line": 9,
                   "character": 2,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/types/interfaces.ts#L9"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/types/interfaces.ts#L9"
                 }
               ],
               "type": {
@@ -16516,7 +16516,7 @@
                   "fileName": "src/types/interfaces.ts",
                   "line": 10,
                   "character": 2,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/types/interfaces.ts#L10"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/types/interfaces.ts#L10"
                 }
               ],
               "type": {
@@ -16545,7 +16545,7 @@
               "fileName": "src/types/interfaces.ts",
               "line": 3,
               "character": 17,
-              "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/types/interfaces.ts#L3"
+              "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/types/interfaces.ts#L3"
             }
           ]
         }
@@ -16561,7 +16561,7 @@
           "fileName": "src/types/interfaces.ts",
           "line": 1,
           "character": 0,
-          "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/types/interfaces.ts#L1"
+          "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/types/interfaces.ts#L1"
         }
       ]
     },
@@ -16583,7 +16583,7 @@
               "fileName": "src/types/types.ts",
               "line": 33,
               "character": 12,
-              "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/types/types.ts#L33"
+              "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/types/types.ts#L33"
             }
           ],
           "typeParameters": [
@@ -16696,7 +16696,7 @@
               "fileName": "src/types/types.ts",
               "line": 16,
               "character": 12,
-              "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/types/types.ts#L16"
+              "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/types/types.ts#L16"
             }
           ],
           "typeParameters": [
@@ -16861,7 +16861,7 @@
               "fileName": "src/types/types.ts",
               "line": 9,
               "character": 12,
-              "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/types/types.ts#L9"
+              "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/types/types.ts#L9"
             }
           ],
           "type": {
@@ -16902,7 +16902,7 @@
           "fileName": "src/types/types.ts",
           "line": 1,
           "character": 0,
-          "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/types/types.ts#L1"
+          "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/types/types.ts#L1"
         }
       ]
     },
@@ -16931,7 +16931,7 @@
                   "fileName": "src/util/ClientUtil.ts",
                   "line": 7,
                   "character": 2,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/util/ClientUtil.ts#L7"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/util/ClientUtil.ts#L7"
                 }
               ],
               "signatures": [
@@ -16946,7 +16946,7 @@
                       "fileName": "src/util/ClientUtil.ts",
                       "line": 7,
                       "character": 2,
-                      "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/util/ClientUtil.ts#L7"
+                      "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/util/ClientUtil.ts#L7"
                     }
                   ],
                   "parameters": [
@@ -17010,7 +17010,7 @@
                   "fileName": "src/util/Util.ts",
                   "line": 6,
                   "character": 26,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/util/Util.ts#L6"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/util/Util.ts#L6"
                 }
               ],
               "type": {
@@ -17050,7 +17050,7 @@
                   "fileName": "src/util/ClientUtil.ts",
                   "line": 11,
                   "character": 9,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/util/ClientUtil.ts#L11"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/util/ClientUtil.ts#L11"
                 }
               ],
               "signatures": [
@@ -17065,7 +17065,7 @@
                       "fileName": "src/util/ClientUtil.ts",
                       "line": 11,
                       "character": 9,
-                      "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/util/ClientUtil.ts#L11"
+                      "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/util/ClientUtil.ts#L11"
                     }
                   ],
                   "parameters": [
@@ -17119,7 +17119,7 @@
               "fileName": "src/util/ClientUtil.ts",
               "line": 6,
               "character": 13,
-              "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/util/ClientUtil.ts#L6"
+              "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/util/ClientUtil.ts#L6"
             }
           ],
           "extendedTypes": [
@@ -17143,7 +17143,7 @@
           "fileName": "src/util/ClientUtil.ts",
           "line": 1,
           "character": 0,
-          "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/util/ClientUtil.ts#L1"
+          "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/util/ClientUtil.ts#L1"
         }
       ]
     },
@@ -17165,7 +17165,7 @@
               "fileName": "src/util/prompts.ts",
               "line": 11,
               "character": 22,
-              "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/util/prompts.ts#L11"
+              "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/util/prompts.ts#L11"
             }
           ],
           "signatures": [
@@ -17180,7 +17180,7 @@
                   "fileName": "src/util/prompts.ts",
                   "line": 11,
                   "character": 22,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/util/prompts.ts#L11"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/util/prompts.ts#L11"
                 }
               ],
               "parameters": [
@@ -17240,7 +17240,7 @@
           "fileName": "src/util/prompts.ts",
           "line": 1,
           "character": 0,
-          "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/util/prompts.ts#L1"
+          "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/util/prompts.ts#L1"
         }
       ]
     },
@@ -17269,7 +17269,7 @@
                   "fileName": "src/util/Util.ts",
                   "line": 8,
                   "character": 2,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/util/Util.ts#L8"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/util/Util.ts#L8"
                 }
               ],
               "signatures": [
@@ -17284,7 +17284,7 @@
                       "fileName": "src/util/Util.ts",
                       "line": 8,
                       "character": 2,
-                      "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/util/Util.ts#L8"
+                      "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/util/Util.ts#L8"
                     }
                   ],
                   "parameters": [
@@ -17337,7 +17337,7 @@
                   "fileName": "src/util/Util.ts",
                   "line": 6,
                   "character": 26,
-                  "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/util/Util.ts#L6"
+                  "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/util/Util.ts#L6"
                 }
               ],
               "type": {
@@ -17375,7 +17375,7 @@
               "fileName": "src/util/Util.ts",
               "line": 5,
               "character": 13,
-              "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/util/Util.ts#L5"
+              "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/util/Util.ts#L5"
             }
           ],
           "extendedBy": [
@@ -17398,7 +17398,7 @@
           "fileName": "src/util/Util.ts",
           "line": 1,
           "character": 0,
-          "url": "https://github.com/xernerx/xernerx/blob/304deec96ad1881d5c0f1c32f32310f75115c083/src/util/Util.ts#L1"
+          "url": "https://github.com/xernerx/xernerx/blob/91e331889e5a56a0708a78c90eed91a152c91bf8/src/util/Util.ts#L1"
         }
       ]
     }
@@ -17412,7 +17412,7 @@
     }
   ],
   "packageName": "xernerx",
-  "packageVersion": "0.1.120-beta.1",
+  "packageVersion": "0.1.120-beta.10",
   "readme": [
     {
       "kind": "text",
