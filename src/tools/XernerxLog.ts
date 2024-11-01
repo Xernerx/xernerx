@@ -1,112 +1,86 @@
 /** @format */
 
-import sharpyy, { link } from 'sharpyy';
+import ora from 'ora';
+import boxen from 'boxen';
+import sharpyy from 'sharpyy';
 
-export default new (class XernerxLog {
-	public declare readonly baseText;
-	public declare log: any;
+export const XernerxLog = new (class XernerxLog {
+	public readonly spinner;
 
 	constructor() {
-		this.baseText = `${sharpyy('XERNERX', 'txRainbow', 'bold')} | ${new Date()
-			.toLocaleTimeString()
-			.split(/ /gim)
-			.map((str) =>
-				str
-					.split(':')
-					.map((str) => (isNaN(Number(str)) ? str : sharpyy(str, 'txCyan')))
-					.join(':')
-			)
-			.join(' ')} | ${sharpyy(String(Math.round(process.memoryUsage().rss / 10000) / 100), 'txCyan')}mb |`;
+		this.spinner = ora();
+
+		this.spinner.color = 'magenta';
+
+		console.info(this.#box(sharpyy('XERNERX', 'txRainbow', 'bold'), { borderColor: 'magenta' }));
+
+		this.#spin();
 	}
 
-	/**
-	 * Logs an informational message to the console.
-	 *
-	 * @param message - The message to be logged.
-	 *
-	 * @returns - Returns nothing if the 'info' log level is not enabled. Otherwise, logs the message to the console.
-	 *
-	 * @example
-	 * ```typescript
-	 * xernerxLog.info('This is an informational message');
-	 * ```
-	 */
 	public info(message: string) {
-		if (!process.xernerx.log?.info) return;
+		if (process.xernerx.log?.levels.info) this.spinner.info(`${this.#base()} ${message}`);
 
-		return console.info(`✔️  |`, this.baseText, message);
+		this.#spin();
+
+		return process.xernerx.log?.levels.info;
 	}
 
-	/**
-	 * Logs error messages and optionally displays an error stack trace in a boxen format.
-	 *
-	 * @param message - The main error message to be logged.
-	 * @param error - An optional Error object containing the error stack trace.
-	 *
-	 * @returns - Returns nothing if the 'error' log level is not enabled. Otherwise, logs the error message and stack trace (if provided) to the console.
-	 *
-	 * @example
-	 * ```typescript
-	 * xernerxLog.error('An error occurred while processing the request');
-	 * xernerxLog.error('An error occurred while processing the request', new Error('Invalid input'));
-	 * ```
-	 */
-	async error(message: string, error?: Error) {
-		if (!process.xernerx.log?.error) return;
+	#spin() {
+		if (process.xernerx?.log?.type !== 'dynamic') return;
 
-		const { default: boxen } = await import('boxen');
+		this.spinner.start();
 
-		const errorMessage = boxen(error?.stack as string, {
+		this.#status();
+	}
+
+	#status() {
+		setInterval(() => {
+			if (!process.XernerxClient?.user) return (this.spinner.text = `${this.#base()} Connecting to Discord...`);
+
+			const client = process.XernerxClient;
+
+			const data = {
+				'Name': sharpyy(String(client.user?.tag), 'txBlue'),
+				// 'Status': `${sharpyy('Online', 'txGreen')} | ${client.settings.global ? sharpyy('Global', 'txGreen') : sharpyy('Local', 'txRed')}`,
+				// 'Uptime': client.util.uptime(client.uptime).split('').map((c) => (isNaN(Number(c)) ? c : sharpyy(c, 'txCyan'))).join(''),
+				// 'Commands': client.settings.global ? `${counts.local ? `local: ${counts.local}` : ''}|${counts.global ? `global: ${counts.global}` : ''}` : counts.local + counts.global,
+				'RAM Usage': this.#dynamic().ram,
+				// 'Guilds': (await Promise.all(client.settings.guilds.map(async (id) => sharpyy((await client.guilds.fetch(id))?.name || id, 'txBlue')))).join(', '),
+				// 'Owners': (await Promise.all(client.settings.owners.map(async (id) => sharpyy((await client.users.fetch(id))?.username || id, 'txBlue')))).join(', '),
+				// 'GuildCount': sharpyy(String(client.stats.guilds), 'txCyan'),
+				// 'UserCount': sharpyy(String(client.stats.users), 'txCyan'),
+				// 'ShardCount': sharpyy(String(client.stats.shardCount), 'txCyan'),
+			};
+
+			this.spinner.text = boxen(
+				Object.entries(data)
+					.map(([key, value]) => `${key}: ${value}`)
+					.join('\n'),
+				{
+					padding: 1,
+					margin: 1,
+					borderStyle: 'round',
+					borderColor: 'magenta',
+					title: this.#dynamic().time + ' - ' + sharpyy('XERNERX', 'txRainbow', 'bold') + '\x1B[35m',
+					fullscreen: (width, height) => [width - 5, Object.keys(data).length * 3],
+				}
+			);
+		}, 250);
+	}
+
+	#box(text: string, config: any) {
+		return boxen(text, {
 			padding: 1,
 			margin: 1,
 			borderStyle: 'round',
-			borderColor: 'red',
+			height: 3,
+			align: 'center',
+			fullscreen: (width, height) => [width - 3, height],
+			...config,
 		});
-
-		if (error) return console.error(`❗ |`, this.baseText, message, errorMessage);
-		else return console.error(`❗ |`, this.baseText, message);
 	}
 
-	/**
-	 * Logs a warning message to the console, optionally with a link to more information.
-	 *
-	 * @param message - The warning message to be logged.
-	 * @param url - An optional URL object representing the link to more information.
-	 *
-	 * @returns - Returns nothing if the 'warn' log level is not enabled. Otherwise, logs the warning message and link (if provided) to the console.
-	 *
-	 * @example
-	 * ```typescript
-	 * xernerxLog.warn('A warning occurred while processing the request');
-	 * xernerxLog.warn('A warning occurred while processing the request', new URL('https://example.com/more-info'));+
-	 * ```
-	 */
-	warn(message: string, url?: URL) {
-		if (!process.xernerx.log?.warn) return;
-		return console.warn(`⚠️  |`, this.baseText, message, url ? `Read more here ${link('here', url)}` : '');
-	}
-
-	/**
-	 * Logs a debug message to the console.
-	 *
-	 * @param message - The debug message to be logged.
-	 *
-	 * @returns - Returns nothing if the 'debug' log level is not enabled. Otherwise, logs the debug message to the console.
-	 *
-	 * @example
-	 * ```typescript
-	 * xernerxLog.debug('This is a debug message');
-	 * ```
-	 */
-	debug(message: string) {
-		if (!process.xernerx.log?.debug) return;
-
-		return console.debug(`🐛 |`, this.baseText, message);
-	}
-
-	async box(message: string, color?: string, title?: string) {
-		const { default: boxen } = await import('boxen');
-
+	#dynamic() {
 		const time = new Date()
 			.toLocaleTimeString()
 			.split(/ /gim)
@@ -118,14 +92,12 @@ export default new (class XernerxLog {
 			)
 			.join(' ');
 
-		return console.info(
-			boxen(message, {
-				padding: 1,
-				margin: 1,
-				borderStyle: 'round',
-				borderColor: color,
-				title: `${time} - ${sharpyy('XERNERX', 'txRainbow', 'bold')} - ${title || ''}`,
-			})
-		);
+		const ram = `${sharpyy(String(Math.round(process.memoryUsage().rss / 10000) / 100), 'txCyan')}mb`;
+
+		return { time, ram };
+	}
+
+	#base() {
+		return `${sharpyy('XERNERX', 'txRainbow', 'bold')} | ${this.#dynamic().time} | ${this.#dynamic().ram} |`;
 	}
 })();

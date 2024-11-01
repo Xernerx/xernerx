@@ -13,7 +13,7 @@ package-lock.json
 .prettierrc
 jest.config.ts
 test
-pub.config.ts
+pub.config.js
 typedoc.json
 
 
