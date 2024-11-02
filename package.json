@@ -20,7 +20,6 @@
 		}
 	},
 	"scripts": {
-		"test": "nodemon test/main.test.js",
 		"dev": "npx tsup --watch",
 		"build": "npx tsup",
 		"publish": "npx publishyy"

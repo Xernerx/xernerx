@@ -5,7 +5,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta http-equiv="x-ua-compatible" content="IE=edge" />
-		<title>XernerxClient | XERNERX - v0.1.120-beta.111111114</title>
+		<title>XernerxClient | XERNERX - v0.1.120-beta.111111115</title>
 		<meta name="description" content="Documentation for XERNERX" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="../assets/style.css" />
@@ -35,7 +35,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">XERNERX - v0.1.120-beta.111111114</a>
+					<a href="../index.html" class="title">XERNERX - v0.1.120-beta.111111115</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<a href="#" class="tsd-widget tsd-toolbar-icon menu no-caption" data-toggle="menu" aria-label="Menu"
@@ -54,11 +54,27 @@
 					</ul>
 					<h1>Class XernerxClient&lt;T&gt;</h1>
 				</div>
+				<section class="tsd-panel tsd-comment">
+					<div class="tsd-comment tsd-typography">
+						<div class="tsd-tag-Description">
+							<h4 class="tsd-anchor-link">
+								<a id="Description" class="tsd-anchor"></a>Description<a href="#Description" aria-label="Permalink" class="tsd-anchor-icon"
+									><svg viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-anchor"></use></svg
+								></a>
+							</h4>
+							<p>read the super for more information.</p>
+						</div>
+					</div>
+				</section>
 				<section class="tsd-panel">
 					<h4>Type Parameters</h4>
 					<ul class="tsd-type-parameter-list">
 						<li>
-							<span><a id="T" class="tsd-anchor"></a><span class="tsd-kind-type-parameter">T</span> = <span class="tsd-signature-symbol">{}</span></span>
+							<span
+								><a id="T" class="tsd-anchor"></a><span class="tsd-kind-type-parameter">T</span><span class="tsd-signature-keyword"> extends </span><span class="tsd-signature-symbol">{}</span> =
+								<span class="tsd-signature-symbol">{}</span></span
+							>
+							<div class="tsd-comment tsd-typography"></div>
 						</li>
 					</ul>
 				</section>
@@ -75,7 +91,7 @@
 				</section>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/xernerx/xernerx/blob/c89f157a0b00114f1d093ab8c3e1a5f072e3fd66/src/client/XernerxClient.ts#L10">src/client/XernerxClient.ts:10</a></li>
+						<li>Defined in <a href="https://github.com/xernerx/xernerx/blob/ff8900ccb017a1ee37ca079726d787a5b50bf276/src/client/XernerxClient.ts#L28">src/client/XernerxClient.ts:28</a></li>
 					</ul>
 				</aside>
 				<section class="tsd-panel-group tsd-index-group">
@@ -103,6 +119,9 @@
 										>
 										<a href="client_XernerxClient.XernerxClient.html#channels" class="tsd-index-link tsd-is-inherited tsd-is-external"
 											><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-1024"></use></svg><span>channels</span></a
+										>
+										<a href="client_XernerxClient.XernerxClient.html#config" class="tsd-index-link"
+											><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-1024"></use></svg><span>config</span></a
 										>
 										<a href="client_XernerxClient.XernerxClient.html#guilds" class="tsd-index-link tsd-is-inherited tsd-is-external"
 											><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-1024"></use></svg><span>guilds</span></a
@@ -328,11 +347,15 @@
 									></a>
 								</li>
 								<li class="tsd-description">
+									<div class="tsd-comment tsd-typography"><p>Initializes the XernerxClient class with customizable settings, configuration, and logs a connection message.</p></div>
 									<section class="tsd-panel">
 										<h4>Type Parameters</h4>
 										<ul class="tsd-type-parameter-list">
 											<li>
-												<span><a id="constructor.new_XernerxClient.T-1" class="tsd-anchor"></a><span class="tsd-kind-type-parameter">T</span> = <span class="tsd-signature-symbol">{}</span></span>
+												<span
+													><a id="constructor.new_XernerxClient.T-1" class="tsd-anchor"></a><span class="tsd-kind-type-parameter">T</span><span class="tsd-signature-keyword"> extends </span
+													><span class="tsd-signature-symbol">{}</span> = <span class="tsd-signature-symbol">{}</span></span
+												>
 											</li>
 										</ul>
 									</section>
@@ -341,18 +364,29 @@
 										<ul class="tsd-parameter-list">
 											<li>
 												<span><span class="tsd-kind-parameter">DiscordOptions</span>: <span class="tsd-signature-type">ClientOptions</span></span>
+												<div class="tsd-comment tsd-typography"><p>Options for the Discord.Client class.</p></div>
+												<div class="tsd-comment tsd-typography"></div>
 											</li>
 											<li>
 												<span
 													><span class="tsd-kind-parameter">XernerxOptions</span>:
 													<a href="../interfaces/types_interfaces.XernerxOptions.html" class="tsd-signature-type tsd-kind-interface">XernerxOptions</a></span
 												>
+												<div class="tsd-comment tsd-typography"><p>Customizable settings for the XernerxClient instance.</p></div>
+												<div class="tsd-comment tsd-typography"></div>
 											</li>
 											<li>
 												<span
 													><code class="tsd-tag">Optional</code><span class="tsd-kind-parameter">config</span>:
 													<a class="tsd-signature-type tsd-kind-type-parameter" href="client_XernerxClient.XernerxClient.html#constructor.new_XernerxClient.T-1">T</a></span
 												>
+												<div class="tsd-comment tsd-typography">
+													<p>
+														A place to store your config file contents. This will automatically merge with your settings, no need to define data in your config to then import it individually, just add
+														the config to it instead.
+													</p>
+												</div>
+												<div class="tsd-comment tsd-typography"></div>
 											</li>
 										</ul>
 									</div>
@@ -361,10 +395,11 @@
 										><a class="tsd-signature-type tsd-kind-type-parameter" href="client_XernerxClient.XernerxClient.html#constructor.new_XernerxClient.T-1">T</a
 										><span class="tsd-signature-symbol">&gt;</span>
 									</h4>
+									<div class="tsd-comment tsd-typography"></div>
 									<aside class="tsd-sources">
 										<p>Overrides Discord.Client.constructor</p>
 										<ul>
-											<li>Defined in <a href="https://github.com/xernerx/xernerx/blob/c89f157a0b00114f1d093ab8c3e1a5f072e3fd66/src/client/XernerxClient.ts#L13">src/client/XernerxClient.ts:13</a></li>
+											<li>Defined in <a href="https://github.com/xernerx/xernerx/blob/ff8900ccb017a1ee37ca079726d787a5b50bf276/src/client/XernerxClient.ts#L47">src/client/XernerxClient.ts:47</a></li>
 										</ul>
 									</aside>
 								</li>
@@ -411,6 +446,26 @@
 								<p>Inherited from Discord.Client.channels</p>
 								<ul>
 									<li>Defined in node_modules/discord.js/typings/index.d.mts:1009</li>
+								</ul>
+							</aside>
+						</section>
+						<section class="tsd-panel tsd-member">
+							<a id="config" class="tsd-anchor"></a>
+							<h3 class="tsd-anchor-link">
+								<code class="tsd-tag">Readonly</code><span>config</span
+								><a href="#config" aria-label="Permalink" class="tsd-anchor-icon"
+									><svg viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-anchor"></use></svg
+								></a>
+							</h3>
+							<div class="tsd-signature">
+								<span class="tsd-kind-property">config</span><span class="tsd-signature-symbol">:</span>
+								<a class="tsd-signature-type tsd-kind-type-parameter" href="client_XernerxClient.XernerxClient.html#constructor.new_XernerxClient.T-1">T</a>
+							</div>
+							<div class="tsd-comment tsd-typography"><p>Customizable configuration for the XernerxClient instance.</p></div>
+							<div class="tsd-comment tsd-typography"></div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/xernerx/xernerx/blob/ff8900ccb017a1ee37ca079726d787a5b50bf276/src/client/XernerxClient.ts#L39">src/client/XernerxClient.ts:39</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -512,6 +567,7 @@
 								><span class="tsd-signature-type">null</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span
 								><br /><span class="tsd-signature-symbol">}</span>
 							</div>
+							<div class="tsd-comment tsd-typography"><p>Customizable settings for the XernerxClient instance.</p></div>
 							<div class="tsd-type-declaration">
 								<h4>Type declaration</h4>
 								<ul class="tsd-parameters">
@@ -579,9 +635,10 @@
 									</li>
 								</ul>
 							</div>
+							<div class="tsd-comment tsd-typography"></div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/xernerx/xernerx/blob/c89f157a0b00114f1d093ab8c3e1a5f072e3fd66/src/client/XernerxClient.ts#L11">src/client/XernerxClient.ts:11</a></li>
+									<li>Defined in <a href="https://github.com/xernerx/xernerx/blob/ff8900ccb017a1ee37ca079726d787a5b50bf276/src/client/XernerxClient.ts#L33">src/client/XernerxClient.ts:33</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -1166,13 +1223,15 @@
 									></a>
 								</li>
 								<li class="tsd-description">
+									<div class="tsd-comment tsd-typography"><p>Asynchronously connects to Discord using the provided token and logs a connection message.</p></div>
 									<h4 class="tsd-returns-title">
 										Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span
 										><span class="tsd-signature-symbol">&gt;</span>
 									</h4>
+									<div class="tsd-comment tsd-typography"></div>
 									<aside class="tsd-sources">
 										<ul>
-											<li>Defined in <a href="https://github.com/xernerx/xernerx/blob/c89f157a0b00114f1d093ab8c3e1a5f072e3fd66/src/client/XernerxClient.ts#L23">src/client/XernerxClient.ts:23</a></li>
+											<li>Defined in <a href="https://github.com/xernerx/xernerx/blob/ff8900ccb017a1ee37ca079726d787a5b50bf276/src/client/XernerxClient.ts#L62">src/client/XernerxClient.ts:62</a></li>
 										</ul>
 									</aside>
 								</li>
@@ -3932,6 +3991,8 @@
 										><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-1024"></use></svg><span>application</span></a
 									><a href="#channels" class="tsd-is-inherited tsd-is-external"
 										><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-1024"></use></svg><span>channels</span></a
+									><a href="#config" class=""
+										><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-1024"></use></svg><span>config</span></a
 									><a href="#guilds" class="tsd-is-inherited tsd-is-external"
 										><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-1024"></use></svg><span>guilds</span></a
 									><a href="#options" class="tsd-is-inherited tsd-is-external"
@@ -4075,7 +4136,7 @@
 				<div class="site-menu">
 					<nav class="tsd-navigation">
 						<a href="../modules.html"
-							><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-1"></use></svg><span>XERNERX - v0.1.120-beta.111111114</span></a
+							><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-1"></use></svg><span>XERNERX - v0.1.120-beta.111111115</span></a
 						>
 						<ul class="tsd-small-nested-navigation" id="tsd-nav-container" data-base="..">
 							<li>Loading...</li>
