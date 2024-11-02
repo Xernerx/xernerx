@@ -22,7 +22,7 @@
 	"scripts": {
 		"dev": "npx tsup --watch",
 		"build": "npx tsup",
-		"publish": "npx publishyy"
+		"pub": "npx publishyy"
 	},
 	"keywords": [],
 	"author": "",
