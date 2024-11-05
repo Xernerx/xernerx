@@ -1,7 +1,7 @@
 /** @format */
 
 export default {
-	update: false,
+	update: true,
 	bundle: true,
 	engine: true,
 	checkTypes: true,

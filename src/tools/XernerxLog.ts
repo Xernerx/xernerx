@@ -16,6 +16,12 @@ import sharpyy from 'sharpyy';
 let index = 0;
 let init = false;
 
+const records = {
+	info: 0,
+	warn: 0,
+	error: 0,
+};
+
 /**
  * A class for logging messages with customizable settings and dynamic information.
  * @class XernerxLog
@@ -55,7 +61,19 @@ export const XernerxLog = new (class XernerxLog {
 
 		this.#spin();
 
+		records.info++;
+
 		return process.xernerx?.log?.levels?.info || force;
+	}
+
+	public warn(message: string, force: boolean = false) {
+		if (process.xernerx?.log?.levels?.warn || force) this.spinner.warn(` ${this.#base()} ${message}`);
+
+		this.#spin();
+
+		records.warn++;
+
+		return process.xernerx?.log?.levels?.warn || force;
 	}
 
 	/**
@@ -87,7 +105,7 @@ export const XernerxLog = new (class XernerxLog {
 	}
 
 	#status() {
-		setInterval(() => {
+		setInterval(async () => {
 			if (!process.XernerxClient?.user) return (this.spinner.text = `${this.#base()} Connecting to Discord...`);
 
 			if (!init) this.spinner.spinner = spinners.dots12;
@@ -98,16 +116,18 @@ export const XernerxLog = new (class XernerxLog {
 
 			const data = {
 				'Name': sharpyy(String(client.user?.tag), 'txBlue'),
-				'Status': `${this.#presence()} | {client.settings.global ? sharpyy('Global', 'txGreen') : sharpyy('Local', 'txRed')}`,
-				'Uptime': client.uptime,
+				'Status': `${this.#presence()} | ${client.settings.global ? sharpyy('Global', 'txGreen') : sharpyy('Local', 'txRed')}`,
+				'Uptime': client.util.uptime(client.uptime),
 				// 'Commands': client.settings.global ? `${counts.local ? `local: ${counts.local}` : ''}|${counts.global ? `global: ${counts.global}` : ''}` : counts.local + counts.global,
 				'Latency': `${sharpyy(String(client.ws.ping), 'txCyan')}ms`,
 				'RAM Usage': `${this.#dynamic().ram}`,
-				// 'Guilds': (await Promise.all(client.settings.guilds.map(async (id) => sharpyy((await client.guilds.fetch(id))?.name || id, 'txBlue')))).join(', '),
-				// 'Owners': (await Promise.all(client.settings.owners.map(async (id) => sharpyy((await client.users.fetch(id))?.username || id, 'txBlue')))).join(', '),
+				'Guilds': (await Promise.all(client.settings.guilds.map(async (id) => sharpyy((await client.guilds.fetch(id))?.name || id, 'txBlue')))).join(', '),
+				'Owners': (await Promise.all(client.settings.owners.map(async (id) => sharpyy((await client.users.fetch(id))?.username || id, 'txBlue')))).join(', '),
 				// 'GuildCount': sharpyy(String(client.stats.guilds), 'txCyan'),
 				// 'UserCount': sharpyy(String(client.stats.users), 'txCyan'),
 				// 'ShardCount': sharpyy(String(client.stats.shardCount), 'txCyan'),
+				'Logs': `${sharpyy(String(records.info), 'txBlue')} | ${sharpyy(String(records.warn), 'txYellow')} | ${sharpyy(String(records.error), 'txRed')}`,
+				'Intents': `${client.options.intents.toArray().join(', ')}`,
 			};
 
 			this.spinner.text = boxen(
@@ -120,7 +140,7 @@ export const XernerxLog = new (class XernerxLog {
 					borderStyle: 'round',
 					borderColor: 'magenta',
 					title: `${sharpyy('XERNERX', 'txRainbow', 'bold')} ${sharpyy(' - ', 'txMagenta')} ${this.#dynamic().time} ${this.#debug() ? sharpyy(' - ', 'txMagenta') + sharpyy('DEBUG MODE', 'txGreen', 'bold') : ''}\x1B[35m`,
-					fullscreen: (width) => [width - 3, Object.keys(data).length * 1.9],
+					fullscreen: (width) => [width - 3, Object.keys(data).length * 1.75],
 				}
 			);
 

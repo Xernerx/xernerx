@@ -5,7 +5,11 @@ import { z } from 'zod';
 export const XernerxOptionsSchema = {
 	// required settings
 	token: z.string().or(z.null()).default(null),
+	global: z.boolean().default(false),
+	guilds: z.array(z.string()).default([]),
+
 	// optional settings
+	owners: z.array(z.string()).default([]),
 
 	// dev
 	debug: z.boolean().default(false),

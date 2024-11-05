@@ -7,9 +7,11 @@ import { XernerxLog } from '../tools/XernerxLog.js';
 export function init(client: XernerxClient) {
 	XernerxLog.debug('Initialising XernerxClient', client.settings.log.levels.debug && client.settings.debug);
 
-	if (client.settings.debug) {
+	if (client.settings.debug)
 		XernerxLog.info(`Running in debug mode. ${client.settings.log.levels.debug ? 'Logging all actions' : 'Debug logs are disabled. Set the debug log level to true to enable debug logs.'}`);
-	}
+
+	if (client.settings.debug && client.settings.global)
+		XernerxLog.warn(sharpyy(`Running debug mode globally is not advised, consider disabling global command deployment.`, 'bgYellow'), client.settings.log.levels.warn);
 
 	XernerxLog.debug('Creating xernerx property on process', client.settings.log.levels.debug && client.settings.debug);
 	process.xernerx = {};

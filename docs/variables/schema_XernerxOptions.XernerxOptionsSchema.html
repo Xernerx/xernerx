@@ -5,7 +5,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta http-equiv="x-ua-compatible" content="IE=edge" />
-		<title>XernerxOptionsSchema | XERNERX - v0.1.120-beta.111111118</title>
+		<title>XernerxOptionsSchema | XERNERX - v0.1.120-beta.111111119</title>
 		<meta name="description" content="Documentation for XERNERX" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="../assets/style.css" />
@@ -35,7 +35,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">XERNERX - v0.1.120-beta.111111118</a>
+					<a href="../index.html" class="title">XERNERX - v0.1.120-beta.111111119</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<a href="#" class="tsd-widget tsd-toolbar-icon menu no-caption" data-toggle="menu" aria-label="Menu"
@@ -58,19 +58,25 @@
 					<span class="tsd-kind-variable">Xernerx<wbr />Options<wbr />Schema</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span><br /><span>    </span
 					><span class="tsd-kind-property">debug</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ZodDefault</span><span class="tsd-signature-symbol">&lt;</span
 					><span class="tsd-signature-type">ZodBoolean</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span><br /><span>    </span
-					><span class="tsd-kind-property">log</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ZodDefault</span><span class="tsd-signature-symbol">&lt;</span
-					><span class="tsd-signature-type">ZodObject</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">{ </span><br /><span>        </span
-					><span class="tsd-kind-property">levels</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ZodDefault</span><span class="tsd-signature-symbol">&lt;</span
-					><span class="tsd-signature-type">ZodObject</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">{ </span><br /><span>            </span
-					><span class="tsd-kind-property">debug</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ZodDefault</span><span class="tsd-signature-symbol">&lt;</span
-					><span class="tsd-signature-type">ZodBoolean</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span><br /><span>            </span
-					><span class="tsd-kind-property">error</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ZodDefault</span><span class="tsd-signature-symbol">&lt;</span
-					><span class="tsd-signature-type">ZodBoolean</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span><br /><span>            </span
-					><span class="tsd-kind-property">info</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ZodDefault</span><span class="tsd-signature-symbol">&lt;</span
-					><span class="tsd-signature-type">ZodBoolean</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span><br /><span>            </span
-					><span class="tsd-kind-property">warn</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ZodDefault</span><span class="tsd-signature-symbol">&lt;</span
-					><span class="tsd-signature-type">ZodBoolean</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span><br /><span>        </span
-					><span class="tsd-signature-symbol">}</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">&quot;strip&quot;</span><span class="tsd-signature-symbol">, </span
+					><span class="tsd-kind-property">global</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ZodDefault</span><span class="tsd-signature-symbol">&lt;</span
+					><span class="tsd-signature-type">ZodBoolean</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span><br /><span>    </span
+					><span class="tsd-kind-property">guilds</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ZodDefault</span><span class="tsd-signature-symbol">&lt;</span
+					><span class="tsd-signature-type">ZodArray</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ZodString</span><span class="tsd-signature-symbol">, </span
+					><span class="tsd-signature-type">&quot;many&quot;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span
+					><span class="tsd-signature-symbol">; </span><br /><span>    </span><span class="tsd-kind-property">log</span><span class="tsd-signature-symbol">: </span
+					><span class="tsd-signature-type">ZodDefault</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ZodObject</span
+					><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">{ </span><br /><span>        </span><span class="tsd-kind-property">levels</span
+					><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ZodDefault</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ZodObject</span
+					><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">{ </span><br /><span>            </span><span class="tsd-kind-property">debug</span
+					><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ZodDefault</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ZodBoolean</span
+					><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span><br /><span>            </span><span class="tsd-kind-property">error</span
+					><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ZodDefault</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ZodBoolean</span
+					><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span><br /><span>            </span><span class="tsd-kind-property">info</span
+					><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ZodDefault</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ZodBoolean</span
+					><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span><br /><span>            </span><span class="tsd-kind-property">warn</span
+					><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ZodDefault</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ZodBoolean</span
+					><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span><br /><span>        </span><span class="tsd-signature-symbol">}</span
+					><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">&quot;strip&quot;</span><span class="tsd-signature-symbol">, </span
 					><span class="tsd-signature-type">ZodTypeAny</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-symbol">{ </span><br /><span>            </span
 					><span class="tsd-kind-property">debug</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">; </span
 					><br /><span>            </span><span class="tsd-kind-property">error</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span
@@ -110,11 +116,15 @@
 					><span class="tsd-signature-symbol">; </span><br /><span>        </span><span class="tsd-kind-property">type</span><span class="tsd-signature-symbol">?: </span
 					><span class="tsd-signature-type">&quot;static&quot;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">&quot;dynamic&quot;</span
 					><span class="tsd-signature-symbol">; </span><br /><span>    </span><span class="tsd-signature-symbol">}</span><span class="tsd-signature-symbol">&gt;</span
-					><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span><br /><span>    </span><span class="tsd-kind-property">token</span
-					><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ZodDefault</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ZodUnion</span
-					><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">ZodString</span><span class="tsd-signature-symbol">, </span
-					><span class="tsd-signature-type">ZodNull</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span
-					><span class="tsd-signature-symbol">; </span><br /><span class="tsd-signature-symbol">}</span><span class="tsd-signature-symbol"> = ...</span>
+					><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span><br /><span>    </span><span class="tsd-kind-property">owners</span
+					><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ZodDefault</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ZodArray</span
+					><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ZodString</span><span class="tsd-signature-symbol">, </span
+					><span class="tsd-signature-type">&quot;many&quot;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span
+					><span class="tsd-signature-symbol">; </span><br /><span>    </span><span class="tsd-kind-property">token</span><span class="tsd-signature-symbol">: </span
+					><span class="tsd-signature-type">ZodDefault</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ZodUnion</span><span class="tsd-signature-symbol">&lt;</span
+					><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">ZodString</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">ZodNull</span
+					><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span
+					><br /><span class="tsd-signature-symbol">}</span><span class="tsd-signature-symbol"> = ...</span>
 				</div>
 				<div class="tsd-type-declaration">
 					<h4>Type declaration</h4>
@@ -124,8 +134,22 @@
 								<span class="tsd-kind-property">debug</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ZodDefault</span><span class="tsd-signature-symbol">&lt;</span
 								><span class="tsd-signature-type">ZodBoolean</span><span class="tsd-signature-symbol">&gt;</span>
 							</h5>
-							<div class="tsd-comment tsd-typography"><p>optional settings dev</p></div>
+							<div class="tsd-comment tsd-typography"><p>dev</p></div>
 							<div class="tsd-comment tsd-typography"></div>
+						</li>
+						<li class="tsd-parameter">
+							<h5>
+								<span class="tsd-kind-property">global</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ZodDefault</span><span class="tsd-signature-symbol">&lt;</span
+								><span class="tsd-signature-type">ZodBoolean</span><span class="tsd-signature-symbol">&gt;</span>
+							</h5>
+						</li>
+						<li class="tsd-parameter">
+							<h5>
+								<span class="tsd-kind-property">guilds</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ZodDefault</span><span class="tsd-signature-symbol">&lt;</span
+								><span class="tsd-signature-type">ZodArray</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ZodString</span
+								><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">&quot;many&quot;</span><span class="tsd-signature-symbol">&gt;</span
+								><span class="tsd-signature-symbol">&gt;</span>
+							</h5>
 						</li>
 						<li class="tsd-parameter">
 							<h5>
@@ -188,6 +212,16 @@
 						</li>
 						<li class="tsd-parameter">
 							<h5>
+								<span class="tsd-kind-property">owners</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ZodDefault</span><span class="tsd-signature-symbol">&lt;</span
+								><span class="tsd-signature-type">ZodArray</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ZodString</span
+								><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">&quot;many&quot;</span><span class="tsd-signature-symbol">&gt;</span
+								><span class="tsd-signature-symbol">&gt;</span>
+							</h5>
+							<div class="tsd-comment tsd-typography"><p>optional settings</p></div>
+							<div class="tsd-comment tsd-typography"></div>
+						</li>
+						<li class="tsd-parameter">
+							<h5>
 								<span class="tsd-kind-property">token</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ZodDefault</span><span class="tsd-signature-symbol">&lt;</span
 								><span class="tsd-signature-type">ZodUnion</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-symbol">[</span
 								><span class="tsd-signature-type">ZodString</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">ZodNull</span><span class="tsd-signature-symbol">]</span
@@ -200,7 +234,7 @@
 				</div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/xernerx/xernerx/blob/f110d6442cc9ccddf52529ef2670b155d5a7fee5/src/schema/XernerxOptions.ts#L5">src/schema/XernerxOptions.ts:5</a></li>
+						<li>Defined in <a href="https://github.com/xernerx/xernerx/blob/5c703bf272f07f27bbfcf739a31a068f0ea614f9/src/schema/XernerxOptions.ts#L5">src/schema/XernerxOptions.ts:5</a></li>
 					</ul>
 				</aside>
 			</div>
@@ -274,7 +308,7 @@
 				<div class="site-menu">
 					<nav class="tsd-navigation">
 						<a href="../modules.html"
-							><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-1"></use></svg><span>XERNERX - v0.1.120-beta.111111118</span></a
+							><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="../assets/icons.svg#icon-1"></use></svg><span>XERNERX - v0.1.120-beta.111111119</span></a
 						>
 						<ul class="tsd-small-nested-navigation" id="tsd-nav-container" data-base="..">
 							<li>Loading...</li>

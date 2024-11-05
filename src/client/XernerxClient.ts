@@ -14,11 +14,14 @@
 import * as Discord from 'discord.js';
 import { z } from 'zod';
 import sharpyy from 'sharpyy';
+import boxen from 'boxen';
 
 import { XernerxOptions } from '../types/interfaces.js';
 import { init } from '../function/init.js';
 import { XernerxOptionsSchema } from '../schema/XernerxOptions.js';
 import { XernerxLog } from '../tools/XernerxLog.js';
+import { ClientUtil } from '../util/ClientUtil.js';
+import { XernerxError } from '../components/XernerxErrors.js';
 
 /**
  * @description read the super for more information.
@@ -37,6 +40,7 @@ export class XernerxClient<T extends {} = {}> extends Discord.Client {
 	 * @type {T}
 	 */
 	public declare readonly config;
+	public declare readonly util;
 
 	/**
 	 * Initializes the XernerxClient class with customizable settings, configuration, and logs a connection message.
@@ -47,13 +51,21 @@ export class XernerxClient<T extends {} = {}> extends Discord.Client {
 	constructor(DiscordOptions: Discord.ClientOptions, XernerxOptions: XernerxOptions, config?: T) {
 		super(DiscordOptions);
 
+		// properties
+
 		this.config = (config || {}) as T;
 
 		this.settings = z.object(XernerxOptionsSchema).parse({ ...XernerxOptions, ...this.config } as const);
 
+		// setu[]
+
 		init(this);
 
 		this.connect();
+
+		// class appenders
+
+		this.util = new ClientUtil(this);
 	}
 
 	/**
@@ -63,5 +75,40 @@ export class XernerxClient<T extends {} = {}> extends Discord.Client {
 		XernerxLog.debug('Connecting to Discord with token: ' + sharpyy(this.settings.token || 'none', 'txRed'), this.settings.debug && this.settings.log.levels.debug);
 
 		await this.login(this.settings.token || undefined);
+
+		this.deploy();
+	}
+
+	private deploy() {
+		XernerxLog.debug(`Deploying Commands and Events.`, this.settings.debug && this.settings.log.levels.debug);
+
+		this.once('ready', (client) => {
+			XernerxLog.debug(`Checking for local guilds.`);
+
+			if (!this.settings.guilds.length) throw new XernerxError('There are no guilds where commands can be deplyed locally, this is required.');
+
+			if (this.options.intents.missing('Guilds')) XernerxLog.warn(`${client.user.tag} is missing the intent: Guilds, All guild information will be undefined.`);
+
+			this.settings.guilds.map(async (id) => {
+				XernerxLog.debug(`Checking if ${id} is reachable...`);
+
+				const guild = await client.guilds.fetch(id);
+
+				XernerxLog.debug(`${guild.name} validated, deploying commands...`);
+
+				console.info(
+					boxen('TODO - Add commands (only deployed)', {
+						padding: 1,
+						margin: 1,
+						borderStyle: 'round',
+						title: guild.name,
+						borderColor: this.settings.global ? 'green' : 'red',
+						height: 3,
+						align: 'left',
+						fullscreen: (width, height) => [width - 3, height],
+					})
+				);
+			});
+		});
 	}
 }
