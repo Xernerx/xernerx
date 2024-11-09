@@ -22,6 +22,8 @@ import { XernerxOptionsSchema } from '../schema/XernerxOptions.js';
 import { XernerxLog } from '../tools/XernerxLog.js';
 import { ClientUtil } from '../util/ClientUtil.js';
 import { XernerxError } from '../components/XernerxErrors.js';
+import { EventHandler } from '../handler/EventHandler.js';
+import { XernerxEventBuilder } from '../main.js';
 
 /**
  * @description read the super for more information.
@@ -39,8 +41,10 @@ export class XernerxClient<T extends {} = {}> extends Discord.Client {
 	 * Customizable configuration for the XernerxClient instance.
 	 * @type {T}
 	 */
-	public declare readonly config;
+	protected declare readonly config;
 	public declare readonly util;
+	public declare readonly modules;
+	public declare readonly collections;
 
 	/**
 	 * Initializes the XernerxClient class with customizable settings, configuration, and logs a connection message.
@@ -66,6 +70,20 @@ export class XernerxClient<T extends {} = {}> extends Discord.Client {
 		// class appenders
 
 		this.util = new ClientUtil(this);
+
+		// handlers
+
+		this.modules = { eventHandler: new EventHandler(this) };
+
+		this.collections = {
+			events: new Discord.Collection<string, XernerxEventBuilder>(),
+			inhibitors: new Discord.Collection<string, string>(),
+			commands: {
+				slash: new Discord.Collection<string, string>(),
+				message: new Discord.Collection<string, string>(),
+				conmtext: new Discord.Collection<string, string>(),
+			},
+		};
 	}
 
 	/**

@@ -12,6 +12,7 @@
 import ora, { Color, spinners } from 'ora';
 import boxen from 'boxen';
 import sharpyy from 'sharpyy';
+import { inspect } from 'util';
 
 let index = 0;
 let init = false;
@@ -88,6 +89,16 @@ export const XernerxLog = new (class XernerxLog {
 		this.#spin();
 
 		return (process.XernerxClient?.settings?.debug && process.xernerx?.log?.levels?.debug) || force;
+	}
+
+	public error(message: string, error?: Error, force: boolean = false) {
+		if (process.xernerx?.log?.levels?.error || force) this.spinner.fail(` ${this.#base()} ${message}${this.#box(inspect(error), { borderColor: 'red', align: 'left' })}`);
+
+		this.#spin();
+
+		records.error++;
+
+		return process.xernerx?.log?.levels?.error || force;
 	}
 
 	#spin() {
