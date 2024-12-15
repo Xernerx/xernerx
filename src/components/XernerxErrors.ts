@@ -3,8 +3,8 @@
 import sharpyy from 'sharpyy';
 
 export class XernerxError extends Error {
-	public declare readonly name: string;
-	public declare readonly message: string;
+	declare public readonly name: string;
+	declare public readonly message: string;
 
 	constructor(message: string) {
 		super(message);

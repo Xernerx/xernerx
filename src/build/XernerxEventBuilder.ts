@@ -4,10 +4,11 @@ import { XernerxEventOptions } from '../types/interfaces.js';
 import { XernerxBaseBuilder } from './XernerxBaseBuilder.js';
 
 export class XernerxEventBuilder extends XernerxBaseBuilder {
-	public declare readonly collection: 'events';
-	public declare readonly type;
-	public declare readonly emitter;
-	public declare readonly once;
+	declare public readonly collection: 'events';
+	declare public readonly type;
+	declare public readonly emitter;
+	declare public readonly once;
+	declare public readonly watch;
 
 	constructor(id: string, options: XernerxEventOptions) {
 		super(id, options);
@@ -15,8 +16,12 @@ export class XernerxEventBuilder extends XernerxBaseBuilder {
 		this.collection = 'events';
 
 		this.type = options.type;
+
 		this.emitter = options.emitter;
+
 		this.once = options.once;
+
+		this.watch = options.watch || this.name;
 
 		this.run = this.run;
 	}

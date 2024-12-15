@@ -4,12 +4,13 @@ import { XernerxClient } from '../main.js';
 import { XernerxBaseBuilderOptions } from '../types/interfaces.js';
 
 export class XernerxBaseBuilder {
-	public declare client: XernerxClient;
-	public declare readonly id;
-	public declare readonly name;
-	public declare readonly description;
-	public declare readonly filename: string;
-	public declare readonly filepath: string;
+	declare public client: XernerxClient;
+	declare public readonly id;
+	declare public readonly name;
+	declare public readonly description;
+	declare public readonly filename: string;
+	declare public readonly filepath: string;
+	declare public readonly collection: string | null;
 
 	constructor(id: string, options: XernerxBaseBuilderOptions) {
 		this.id = id;
@@ -17,5 +18,7 @@ export class XernerxBaseBuilder {
 		this.name = options.name;
 
 		this.description = options.description;
+
+		this.collection = null;
 	}
 }

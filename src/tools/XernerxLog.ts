@@ -151,7 +151,7 @@ export const XernerxLog = new (class XernerxLog {
 					borderStyle: 'round',
 					borderColor: 'magenta',
 					title: `${sharpyy('XERNERX', 'txRainbow', 'bold')} ${sharpyy(' - ', 'txMagenta')} ${this.#dynamic().time} ${this.#debug() ? sharpyy(' - ', 'txMagenta') + sharpyy('DEBUG MODE', 'txGreen', 'bold') : ''}\x1B[35m`,
-					fullscreen: (width) => [width - 3, Object.keys(data).length * 1.75],
+					fullscreen: (width) => [width - 3, Object.keys(data).length * 1.5],
 				}
 			);
 

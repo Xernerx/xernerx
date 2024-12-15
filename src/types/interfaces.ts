@@ -1,5 +1,7 @@
 /** @format */
 
+import { Events, RESTEvents } from 'discord.js';
+
 export interface XernerxOptions {
 	// Required
 	token?: string;
@@ -22,10 +24,12 @@ export interface XernerxOptions {
 	};
 }
 
-export interface XernerxEventHandlerOptions {
+export interface XernerxBaseHandlerOptions {
 	directory: string;
 	delay?: number;
 }
+
+export interface XernerxEventHandlerOptions extends XernerxBaseHandlerOptions {}
 
 export interface XernerxBaseBuilderOptions {
 	name: string;
@@ -33,7 +37,7 @@ export interface XernerxBaseBuilderOptions {
 }
 
 export interface XernerxEventOptions extends XernerxBaseBuilderOptions {
-	name: string;
+	watch?: Events | RESTEvents;
 	type: 'discord' | 'node' | string;
 	emitter: 'client' | 'process' | 'rest';
 	once: boolean;
@@ -52,3 +56,5 @@ export interface XernerxBaseCommandOptions extends XernerxBaseBuilderOptions {
 		roles?: Array<string>;
 	};
 }
+
+export interface XernerxMessageCommandHandlerOptions extends XernerxBaseHandlerOptions {}
