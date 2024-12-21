@@ -14,6 +14,7 @@ export interface XernerxOptions {
 	// Dev
 	debug?: boolean;
 	log?: {
+		dashboard?: boolean;
 		type?: 'static' | 'dynamic';
 		levels?: {
 			error?: boolean;

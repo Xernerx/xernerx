@@ -25,6 +25,7 @@ import { XernerxError } from '../components/XernerxErrors.js';
 import { EventHandler } from '../handler/EventHandler.js';
 import { XernerxEventBuilder } from '../main.js';
 import { CommandHandler } from '../handler/CommandHandler.js';
+import DashboardHandler from '../handler/DashboardHandler.js';
 
 /**
  * @description read the super for more information.
@@ -74,7 +75,13 @@ export class XernerxClient<T extends {} = {}> extends Discord.Client {
 
 		// handlers
 
-		this.modules = { eventHandler: new EventHandler(this), commandHandler: new CommandHandler(this) };
+		this.modules = {
+			eventHandler: new EventHandler(this),
+
+			commandHandler: new CommandHandler(this),
+
+			dashboardHandler: new DashboardHandler(this),
+		};
 
 		this.collections = {
 			events: new Discord.Collection<string, XernerxEventBuilder>(),

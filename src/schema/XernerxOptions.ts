@@ -17,6 +17,7 @@ export const XernerxOptionsSchema = {
 	// setup
 	log: z
 		.object({
+			dashboard: z.boolean().default(false),
 			type: z.enum(['dynamic', 'static']).default('static'),
 			levels: z
 				.object({
