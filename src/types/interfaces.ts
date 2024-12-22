@@ -1,6 +1,6 @@
 /** @format */
 
-import { Events, RESTEvents } from 'discord.js';
+import { Events, RESTEvents, SKU, User } from 'discord.js';
 
 export interface XernerxOptions {
 	// Required
@@ -23,6 +23,11 @@ export interface XernerxOptions {
 			debug?: boolean;
 		};
 	};
+}
+
+export interface XernerxUser extends User {
+	owner: boolean;
+	premium: Array<SKU>;
 }
 
 export interface XernerxBaseHandlerOptions {

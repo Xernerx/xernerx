@@ -2,6 +2,9 @@
 
 import { XernerxEventBuilder } from '../build/XernerxEventBuilder.js';
 import { Events, Message } from 'discord.js';
+import XernerxUser from '../model/XernerxUser.js';
+import { XernerxClient } from '../main.js';
+import { Client } from 'discord.js';
 
 const XernerxMessageCreate = class Class extends XernerxEventBuilder {
 	public constructor() {
@@ -16,6 +19,11 @@ const XernerxMessageCreate = class Class extends XernerxEventBuilder {
 	}
 
 	override async run(message: Message) {
+		// extenders
+		message.author = new XernerxUser(message.client as XernerxClient & Client<true>, message.author);
+
+		console.log(message.author);
+
 		// util
 		// validation
 		// command

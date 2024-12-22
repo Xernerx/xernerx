@@ -7,6 +7,8 @@ import { Handler } from './Handler.js';
 import * as path from 'path';
 import sharpyy from 'sharpyy';
 
+import { SKU } from 'discord.js';
+
 export class EventHandler extends Handler {
 	public readonly date: Date;
 
@@ -16,7 +18,7 @@ export class EventHandler extends Handler {
 		this.date = new Date();
 	}
 
-	async loadEvents(options: XernerxEventHandlerOptions) {
+	public async loadEvents(options: XernerxEventHandlerOptions) {
 		try {
 			await this.client.util.delay(options.delay || 0);
 
@@ -38,6 +40,23 @@ export class EventHandler extends Handler {
 		} catch (error) {
 			XernerxLog.error('Failed to load events.', error as Error);
 		}
+	}
+
+	public async loadStore() {
+		this.client.on('ready', async () => {
+			const request = await fetch(`https://discord.com/api/v10/applications/${this.client.user?.id}/entitlements`, {
+				headers: {
+					'Authorization': `Bot ${this.client.token}`,
+					'Content-Type': 'application/json',
+				},
+			});
+
+			if (!request.ok) return;
+
+			const body = (await request.json()) as Array<SKU>;
+
+			this.client.store = body;
+		});
 	}
 
 	protected async run(builder: XernerxEventBuilder) {

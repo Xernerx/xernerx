@@ -48,6 +48,8 @@ export class XernerxClient<T extends {} = {}> extends Discord.Client {
 	declare public readonly modules;
 	declare public readonly collections;
 
+	declare public store: Array<Discord.SKU>;
+
 	/**
 	 * Initializes the XernerxClient class with customizable settings, configuration, and logs a connection message.
 	 * @param {DiscordClientOptions} DiscordOptions - Options for the Discord.Client class.

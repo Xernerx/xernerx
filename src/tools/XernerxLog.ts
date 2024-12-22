@@ -57,8 +57,8 @@ export const XernerxLog = new (class XernerxLog {
 	 * @param {boolean} [force=false] - A flag indicating whether the message should be logged regardless of the log level settings.
 	 * @returns {boolean} - True if the message was logged, false otherwise.
 	 */
-	public info(message: string, force: boolean = false) {
-		if (process.xernerx?.log?.levels?.info || force) this.spinner.info(` ${this.#base()} ${message}`);
+	public info(message: unknown, force: boolean = false) {
+		if (process.xernerx?.log?.levels?.info || force) this.spinner.info(` ${this.#base()} ${typeof message !== 'string' ? inspect(message) : message}`);
 
 		this.#spin();
 
@@ -67,8 +67,8 @@ export const XernerxLog = new (class XernerxLog {
 		return process.xernerx?.log?.levels?.info || force;
 	}
 
-	public warn(message: string, force: boolean = false) {
-		if (process.xernerx?.log?.levels?.warn || force) this.spinner.warn(` ${this.#base()} ${message}`);
+	public warn(message: unknown, force: boolean = false) {
+		if (process.xernerx?.log?.levels?.warn || force) this.spinner.warn(` ${this.#base()} ${typeof message !== 'string' ? inspect(message) : message}`);
 
 		this.#spin();
 
@@ -83,16 +83,18 @@ export const XernerxLog = new (class XernerxLog {
 	 * @param {boolean} [force=false] - A flag indicating whether the message should be logged regardless of the log level settings.
 	 * @returns {boolean} - True if the message was logged, false otherwise.
 	 */
-	public debug(message: string, force: boolean = false) {
-		if ((process.XernerxClient?.settings?.debug && process.xernerx?.log?.levels?.debug) || force) this.spinner.stopAndPersist({ symbol: sharpyy('𖠊', 'txGreen'), text: `${this.#base()} ${message}` });
+	public debug(message: unknown, force: boolean = false) {
+		if ((process.XernerxClient?.settings?.debug && process.xernerx?.log?.levels?.debug) || force)
+			this.spinner.stopAndPersist({ symbol: sharpyy('𖠊', 'txGreen'), text: `${this.#base()} ${typeof message !== 'string' ? inspect(message) : message}` });
 
 		this.#spin();
 
 		return (process.XernerxClient?.settings?.debug && process.xernerx?.log?.levels?.debug) || force;
 	}
 
-	public error(message: string, error?: Error, force: boolean = false) {
-		if (process.xernerx?.log?.levels?.error || force) this.spinner.fail(` ${this.#base()} ${message}${this.#box(inspect(error), { borderColor: 'red', align: 'left' })}`);
+	public error(message: unknown, error?: Error, force: boolean = false) {
+		if (process.xernerx?.log?.levels?.error || force)
+			this.spinner.fail(` ${this.#base()} ${typeof message !== 'string' ? inspect(message) : message}${this.#box(inspect(error), { borderColor: 'red', align: 'left' })}`);
 
 		this.#spin();
 
