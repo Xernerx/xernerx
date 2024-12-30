@@ -19,6 +19,9 @@ export function init(client: XernerxClient) {
 	XernerxLog.debug('Adding log to xernerx process', client.settings.log.levels.debug && client.settings.debug);
 	process.xernerx.log = client.settings.log;
 
+	XernerxLog.debug('Adding token to xernerx process', client.settings.log.levels.debug && client.settings.debug);
+	process.xernerx.token = client.settings.token;
+
 	XernerxLog.info(
 		`Logging mode: ${client.settings.log.type} | Levels: ${
 			Object.entries(client.settings.log.levels)

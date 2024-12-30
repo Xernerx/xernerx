@@ -33,9 +33,11 @@ export class CommandHandler extends Handler {
 
 			await this.on(XernerxMessageCreate);
 
-			XernerxLog.info(`Loaded commands: ${this.client.collections.events.map((event) => sharpyy(event.name, 'txYellow')).join(', ')}`);
+			this.client.modules.options.commands.message = options;
+
+			XernerxLog.info(`Loaded message commands: ${this.client.collections.commands.message.map((command) => sharpyy(command.name, 'txYellow')).join(', ')}`);
 		} catch (error) {
-			XernerxLog.error('Failed to load events.', error as Error);
+			XernerxLog.error('Failed to load message commands.', error as Error);
 		}
 	}
 }

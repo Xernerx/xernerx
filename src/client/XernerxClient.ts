@@ -21,11 +21,12 @@ import { init } from '../function/init.js';
 import { XernerxOptionsSchema } from '../schema/XernerxOptions.js';
 import { XernerxLog } from '../tools/XernerxLog.js';
 import { ClientUtil } from '../util/ClientUtil.js';
-import { XernerxError } from '../components/XernerxErrors.js';
+import { XernerxError } from '../components/XernerxError.js';
 import { EventHandler } from '../handler/EventHandler.js';
-import { XernerxEventBuilder } from '../main.js';
+import { XernerxEventBuilder, XernerxMessageCommandBuilder, XernerxSlashCommandBuilder } from '../main.js';
 import { CommandHandler } from '../handler/CommandHandler.js';
 import DashboardHandler from '../handler/DashboardHandler.js';
+import XernerxEntitlement from '../model/XernerxEntitlement.js';
 
 /**
  * @description read the super for more information.
@@ -48,7 +49,7 @@ export class XernerxClient<T extends {} = {}> extends Discord.Client {
 	declare public readonly modules;
 	declare public readonly collections;
 
-	declare public store: Array<Discord.SKU>;
+	declare public store: { front: Array<Discord.SKU>; archive: Array<XernerxEntitlement>; items: Array<XernerxEntitlement> };
 
 	/**
 	 * Initializes the XernerxClient class with customizable settings, configuration, and logs a connection message.
@@ -78,6 +79,12 @@ export class XernerxClient<T extends {} = {}> extends Discord.Client {
 		// handlers
 
 		this.modules = {
+			options: {
+				events: {},
+				commands: { message: {}, slash: {}, context: {} },
+				inhibitors: {},
+			},
+
 			eventHandler: new EventHandler(this),
 
 			commandHandler: new CommandHandler(this),
@@ -89,9 +96,9 @@ export class XernerxClient<T extends {} = {}> extends Discord.Client {
 			events: new Discord.Collection<string, XernerxEventBuilder>(),
 			inhibitors: new Discord.Collection<string, string>(),
 			commands: {
-				slash: new Discord.Collection<string, string>(),
-				message: new Discord.Collection<string, string>(),
-				conmtext: new Discord.Collection<string, string>(),
+				slash: new Discord.Collection<string, XernerxSlashCommandBuilder>(),
+				message: new Discord.Collection<string, XernerxMessageCommandBuilder>(),
+				context: new Discord.Collection<string, string>(),
 			},
 		};
 	}

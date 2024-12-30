@@ -1,6 +1,9 @@
 /** @format */
 
 import { Events, RESTEvents, SKU, User } from 'discord.js';
+import { EventHandler } from '../handler/EventHandler.js';
+import { CommandHandler } from '../handler/CommandHandler.js';
+import DashboardHandler from '../handler/DashboardHandler.js';
 
 export interface XernerxOptions {
 	// Required
@@ -30,6 +33,20 @@ export interface XernerxUser extends User {
 	premium: Array<SKU>;
 }
 
+export interface XernerxModules {
+	options: {
+		events?: Partial<XernerxEventHandlerOptions>;
+		commands: {
+			message?: Partial<XernerxMessageCommandHandlerOptions>;
+			// context: XernerxCommandContextHandlerOptions;
+			slash?: Partial<XernerxSlashCommandHandlerOptions>;
+		};
+	};
+	eventHandler: EventHandler;
+	commandHandler: CommandHandler;
+	dashboardHandler: DashboardHandler;
+}
+
 export interface XernerxBaseHandlerOptions {
 	directory: string;
 	delay?: number;
@@ -54,13 +71,31 @@ export interface XernerxBaseCommandOptions extends XernerxBaseBuilderOptions {
 	category?: string;
 	usage?: string;
 	cooldown?: number;
-	aliases?: Array<string>;
-	strict: {
+	ignore?: {
 		guilds?: Array<string>;
 		channels?: Array<string>;
 		users?: Array<string>;
 		roles?: Array<string>;
+		owner?: boolean;
+	};
+	strict?: {
+		guilds?: Array<string>;
+		channels?: Array<string>;
+		users?: Array<string>;
+		roles?: Array<string>;
+		owner?: boolean;
 	};
 }
 
-export interface XernerxMessageCommandHandlerOptions extends XernerxBaseHandlerOptions {}
+export interface XernerxMessageCommandHandlerOptions extends XernerxBaseHandlerOptions {
+	prefix: string | Array<string>;
+}
+
+export interface XernerxMessageCommandBuilderOptions extends XernerxBaseCommandOptions {
+	aliases?: Array<string>;
+	prefix?: string | Array<string>;
+}
+
+export interface XernerxSlashCommandHandlerOptions extends XernerxBaseHandlerOptions {}
+
+export interface XernerxSlashCommandBuilderOptions extends XernerxBaseCommandOptions {}

@@ -23,7 +23,10 @@ export class Handler {
 
 		Builder.filepath = `file://${file}`;
 
-		if (Builder.collection) this.client.collections[Builder.collection as 'events'].set(Builder.id, Builder);
+		if (Builder.collection)
+			Builder.collection.includes('.')
+				? this.client.collections[Builder.collection.split('.')[0] as 'commands'][Builder.collection.split('.')[1] as 'slash' | 'message' | 'context'].set(Builder.id, Builder)
+				: this.client.collections[Builder.collection as 'events'].set(Builder.id, Builder);
 
 		return Builder;
 	}
