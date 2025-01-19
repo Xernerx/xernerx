@@ -57,7 +57,7 @@ export default class MessageUtil extends Util {
 			return msg;
 		}
 
-		const msg = await this.message.channel.send(content as MessageReplyOptions);
+		const msg = await (this.message.channel as any).send(content as MessageReplyOptions);
 
 		this.client.cache.messages.set(this.message.id, msg.id);
 
@@ -153,10 +153,10 @@ export default class MessageUtil extends Util {
 						components: [options.type == 'combined' || options.type == 'button' ? buttonRow : null, options.type == 'combined' || options.type == 'select-menu' ? menuRow : null].filter((x) => x),
 					} as never)
 					.then(async (msg) => {
-						const collector = this.message.channel
+						const collector = (this.message.channel as any)
 							?.createMessageComponentCollector({ time: options.time })
 
-							.on('collect', (collect) => {
+							.on('collect', (collect: any) => {
 								if (!collect.customId.startsWith(this.message.id)) return;
 
 								if (collect.customId.endsWith('select-menu')) {

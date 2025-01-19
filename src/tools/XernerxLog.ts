@@ -2,7 +2,7 @@
 
 import { Style } from 'dumfunctions';
 import * as fs from 'fs';
-import Discord from 'discord.js';
+import * as Discord from 'discord.js';
 
 import XernerxError from './XernerxError.js';
 import XernerxClient from '../client/XernerxClient.js';

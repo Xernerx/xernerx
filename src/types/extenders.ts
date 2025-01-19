@@ -26,7 +26,7 @@ import XernerxError from '../tools/XernerxError.js';
 
 export interface XernerxUser extends User {
 	owner: boolean;
-	voted: boolean | null;
+	voted?: boolean | null;
 }
 
 export interface XernerxMember extends GuildMember {

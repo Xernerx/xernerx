@@ -42,7 +42,7 @@ export default class InteractionUtil extends Util {
 	public async send(content: any) {
 		if (!content) throw new XernerxError(`Can't send a message without content.`);
 
-		return await this.interaction.channel?.send(content);
+		return await (this.interaction.channel as any)?.send(content);
 	}
 
 	public async reply(content: string | MessagePayload | InteractionReplyOptions | InteractionEditReplyOptions) {
@@ -120,10 +120,10 @@ export default class InteractionUtil extends Util {
 						components: [options.type == 'combined' || options.type == 'button' ? buttonRow : null, options.type == 'combined' || options.type == 'select-menu' ? menuRow : null].filter((x) => x),
 					} as never)
 					.then(async (msg) => {
-						const collector = this.interaction.channel
+						const collector = (this.interaction.channel as any)
 							?.createMessageComponentCollector({ time: options.time })
 
-							.on('collect', (collect) => {
+							.on('collect', (collect: any) => {
 								if (!collect.customId.startsWith(this.interaction.id)) return;
 
 								if (collect.customId.endsWith('select-menu')) {

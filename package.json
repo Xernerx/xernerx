@@ -43,17 +43,18 @@
 		"url": "https://github.com/xernerx/xernerx/issues"
 	},
 	"dependencies": {
-		"@clack/prompts": "^0.7.0",
+		"@clack/prompts": "^0.9.1",
 		"dbl-sdk": "^2.0.3",
-		"discord.js": "^14.14.1",
+		"discord.js": "^14.17.3",
 		"dumfunctions": "^2.1.6",
 		"xernerx-extension-builder": "0.0.16",
-		"zod": "^3.22.4"
+		"zod": "^3.24.1"
 	},
 	"devDependencies": {
 		"jest": "^29.7.0",
 		"prettier": "3.0.0",
 		"ts-node": "^10.9.2",
-		"typescript": "^5.5.2"
+		"tsup": "^8.3.5",
+		"typescript": "^5.7.3"
 	}
 }

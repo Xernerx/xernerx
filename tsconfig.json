@@ -24,7 +24,7 @@
 
 		// Language and Environment
 		"experimentalDecorators": true,
-		"lib": ["ESNext"],
+		"lib": ["dom", "ESNext"],
 		"useDefineForClassFields": true,
 		"target": "ES2022",
 		"module": "NodeNext",

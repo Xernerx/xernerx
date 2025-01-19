@@ -54,7 +54,7 @@ package-lock.json
 # ? __TypeScript__
 # Everything specific to TypeScript should be here.
 
-# dist
+dist
 # types
 # typings
 # *.tsbuildinfo

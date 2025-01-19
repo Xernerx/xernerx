@@ -13,7 +13,7 @@ import XernerxContextCommand from '../build/XernerxContextCommand.js';
 import XernerxMessageCommand from '../build/XernerxMessageCommand.js';
 import XernerxSlashCommand from '../build/XernerxSlashCommand.js';
 import { filetype } from '../types/types.js';
-import { xernerxUser } from '../functions/xernerxUser.js';
+import XernerxUser from '../models/XernerxUser.js';
 import InteractionUtil from '../utils/InteractionUtil.js';
 import commandValidation from '../validators/commandValidation.js';
 import XernerxLog from '../tools/XernerxLog.js';
@@ -222,7 +222,7 @@ export default class CommandHandler extends Handler {
 		if (message.system && this.client.settings.ignore?.system) return;
 
 		message.util = new MessageUtil(this.client, message);
-		message.user = await xernerxUser(message, this.client);
+		message.user = new XernerxUser(this.client as any, message);
 
 		if (await inhibitorValidation(message, undefined, undefined, 'pre')) return;
 
@@ -319,7 +319,7 @@ export default class CommandHandler extends Handler {
 			}
 
 			if (this.client.commands.message.has(commandName as string)) {
-				if (this.client.modules.options.message?.handleTyping) message.channel.sendTyping();
+				if (this.client.modules.options.message?.handleTyping) (message.channel as any).sendTyping();
 
 				cmd = this.client.commands.message.get(commandName as string);
 			}
@@ -349,7 +349,7 @@ export default class CommandHandler extends Handler {
 
 		interaction.util = new InteractionUtil(this.client, interaction);
 
-		interaction.user = await xernerxUser(interaction, this.client);
+		interaction.user = new XernerxUser(this.client as any, interaction);
 
 		if (await inhibitorValidation(interaction, undefined, undefined, 'pre')) return;
 
@@ -389,7 +389,7 @@ export default class CommandHandler extends Handler {
 
 		interaction.util = new InteractionUtil(this.client, interaction);
 
-		interaction.user = await xernerxUser(interaction as XernerxUserContextInteraction, this.client);
+		interaction.user = new XernerxUser(this.client as any, interaction);
 
 		if (await inhibitorValidation(interaction, undefined, undefined, 'pre')) return;
 

@@ -29,6 +29,7 @@ export default class XernerxClient<T extends object = { [index: string | number]
 	public declare readonly stats: Record<string, number>;
 	public declare readonly cache: XernerxCache;
 	public declare readonly cooldowns: Cooldowns;
+	public declare store: { front?: any; archive?: any; items?: any };
 	public declare readonly dbl: any;
 	readonly [index: string]: unknown;
 
@@ -122,6 +123,8 @@ export default class XernerxClient<T extends object = { [index: string | number]
 			integrationHandler: new IntegrationHandler(this),
 			extensionHandler: new ExtensionHandler(this),
 		} as const;
+
+		this.store = {};
 	}
 
 	public async connect(token: string) {

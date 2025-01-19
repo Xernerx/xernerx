@@ -19,7 +19,7 @@ export { XernerxIntents } from './tools/XernerxIntents.js';
 export * from 'discord.js';
 export * from 'dumfunctions';
 
-import Discord from 'discord.js';
+import * as Discord from 'discord.js';
 import XernerxExtension from 'xernerx-extension-builder';
 
 export * from './types/types.js';

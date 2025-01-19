@@ -1,6 +1,6 @@
 /** @format */
 
-import Discord, { AutocompleteFocusedOption, AutocompleteInteraction, SlashCommandStringOption, SlashCommandSubcommandBuilder, SlashCommandSubcommandGroupBuilder } from 'discord.js';
+import { AutocompleteFocusedOption, AutocompleteInteraction, SlashCommandBuilder, SlashCommandStringOption, SlashCommandSubcommandBuilder, SlashCommandSubcommandGroupBuilder } from 'discord.js';
 import { z } from 'zod';
 
 import { XernerxClientType, XernerxMessageContextInteraction, XernerxSlashInteraction, XernerxUserContextInteraction } from '../types/extenders.js';
@@ -33,7 +33,7 @@ export default class XernerxSlashCommand {
 	public constructor(id: string, options: SlashCommandOptions) {
 		this.id = id;
 
-		this.data = new Discord.SlashCommandBuilder();
+		this.data = new SlashCommandBuilder();
 
 		this.data.setName(options.name);
 
@@ -206,7 +206,7 @@ export default class XernerxSlashCommand {
 		return await this.client.emit('commandError', interaction, `${this.id} doesn't have an execution rule.`, this);
 	}
 
-	private addArguments(command: Discord.SlashCommandBuilder | SlashCommandSubcommandBuilder, args: Array<SlashCommandArgumentOptions>) {
+	private addArguments(command: SlashCommandBuilder | SlashCommandSubcommandBuilder, args: Array<SlashCommandArgumentOptions>) {
 		for (const argument of args) {
 			let slashCommandArgumentType: SlashCommandArgumentType | string = `${argument.type.charAt(0).toUpperCase()}${argument.type.slice(1).toLowerCase()}`;
 
@@ -232,7 +232,7 @@ export default class XernerxSlashCommand {
 		}
 	}
 
-	private addSubcommands(method: Discord.SlashCommandBuilder | SlashCommandSubcommandGroupBuilder, subcommands: Array<SlashCommandSubcommandOptions>) {
+	private addSubcommands(method: SlashCommandBuilder | SlashCommandSubcommandGroupBuilder, subcommands: Array<SlashCommandSubcommandOptions>) {
 		for (const subcommand of subcommands) {
 			let sub = new SlashCommandSubcommandBuilder().setName(subcommand.name).setDescription(subcommand.description);
 

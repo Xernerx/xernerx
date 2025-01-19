@@ -63,6 +63,7 @@ export default class Handler {
 			} else if (file.emitter === 'rest') {
 				if (this.client.settings.debug) new XernerxLog(this.client).debug(`Listening to rest event ${Style.log(file.name, { color: Style.TextColor.Yellow })}`);
 
+				// @ts-expect-error
 				this.client.rest[file.once ? 'once' : 'on'](file.name as keyof RestEvents, (...args) => file.run(...(args as never)));
 			} else {
 				// @ts-expect-error

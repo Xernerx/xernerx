@@ -105,7 +105,7 @@ title.innerHTML = `Xernerx v${version}`;
 														subcategory.example,
 														Prism.languages.javascript,
 														'javascript'
-												  )}</pre></code></details>`
+													)}</pre></code></details>`
 												: ''
 										}
                 </div>
