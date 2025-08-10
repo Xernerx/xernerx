@@ -1,87 +1,54 @@
 /** @format */
 
+import { Message } from 'discord.js';
 import { XernerxEventBuilder } from '../build/XernerxEventBuilder.js';
-import { Events, Message } from 'discord.js';
-import XernerxUser from '../model/XernerxUser.js';
-import { XernerxClient, XernerxMessage, XernerxMessageCommandBuilder } from '../main.js';
-import { Client } from 'discord.js';
+import { XernerxUser } from '../model/XernerxUser.js';
+import { XernerxMessageUtil } from '../util/XernerxMessageUtil.js';
+import { XernerxError } from '../tools/XernerxError.js';
 
-import { MessageUtil } from '../util/MessageUtil.js';
-
-const XernerxMessageCreate = class Class extends XernerxEventBuilder {
-	declare public readonly util: MessageUtil;
-	declare public readonly user: XernerxUser;
-
-	public constructor() {
-		super('messageCreate', {
+export class XernerxMessageCreateEvent extends XernerxEventBuilder {
+	constructor() {
+		super('XernerxMessageCreateEvent', {
 			name: 'messageCreate',
-			description: 'An internal xernerx event to make message commands work.',
-			type: 'discord',
 			emitter: 'client',
 			once: false,
-			watch: Events.MessageCreate,
 		});
 	}
 
-	override async run(message: Message & { user: XernerxUser; author: XernerxUser; util: MessageUtil }) {
-		// extenders
-		message.user = new XernerxUser(message.client as XernerxClient & Client<true>, message.author);
+	override async run(message: Message) {
+		this.client = message.client;
 
-		message.author = new XernerxUser(message.client as XernerxClient & Client<true>, message.author);
+		message.user = new XernerxUser(message.client, message.author);
 
-		// util
+		message.util = new XernerxMessageUtil(this.client as Message['client'], message);
 
-		message.util = new MessageUtil(message.client as XernerxClient, message);
+		if (!message.content) return;
+		if (this.client.handler.message.ignore?.bots && message.author.bot) return;
+		if (this.client.handler.message.ignore?.self && message.author.id === this.client.user?.id) return;
+		if (this.client.handler.message.ignore?.system && message.system) return;
+
+		if (!message.util.parsed.command) return;
+
+		const command = this.client.commands.message.get(message.util.parsed.command);
+
+		if (
+			this.client.handler.message.mention &&
+			!message.util.parsed.mention &&
+			!command?.prefix.includes(message.util.parsed.prefix as string) &&
+			!this.client.handler.message.prefix?.includes(message.util.parsed.prefix as string)
+		)
+			return;
+
 		// validation
 
-		// command
+		// args
 
-		const args = message.content.split(' ');
+		// inhibitors
 
-		const command = args.slice()[0];
-
-		let trigger: XernerxMessageCommandBuilder | null = null;
-
-		const parsed: { prefix: null | string; alias: null | string } = {
-			prefix: null,
-			alias: null,
-		};
-
-		this.client.collections.commands.message.map((cmd) => {
-			const prefix = [
-				...(typeof this.client.modules.options.commands.message?.prefix === 'string'
-					? [this.client.modules.options.commands.message?.prefix]
-					: (this.client.modules.options.commands.message?.prefix as Array<string>)),
-				...cmd.prefix,
-			];
-
-			for (const pre of prefix) {
-				if (!command.startsWith(pre)) continue;
-
-				parsed.prefix = pre;
-				break;
-			}
-		});
-
-		if (!parsed.prefix) return;
-
-		this.client.collections.commands.message.map((cmd) => {
-			const alias = [cmd.name, ...(typeof cmd.aliases === 'string' ? [cmd.aliases] : cmd.aliases)];
-
-			for (const ali of alias) {
-				if (command.replace(parsed.prefix as string, '') !== ali) continue;
-
-				parsed.alias = ali;
-
-				trigger = cmd;
-				break;
-			}
-		});
-
-		if (trigger && parsed.prefix) {
-			(trigger as XernerxMessageCommandBuilder).exec(message as unknown as XernerxMessage);
+		try {
+			await command?.exec(message, message.util.args);
+		} catch (error) {
+			new XernerxError((error as Error).message);
 		}
 	}
-};
-
-export { XernerxMessageCreate };
+}

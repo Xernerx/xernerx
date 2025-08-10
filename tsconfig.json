@@ -3,6 +3,7 @@
 	"exclude": ["node_modules", ".github", "docs"],
 	"compilerOptions": {
 		// Type Checking
+		"types": ["node"],
 		"allowUnreachableCode": false,
 		"allowUnusedLabels": false,
 		"noFallthroughCasesInSwitch": true,

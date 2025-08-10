@@ -1,43 +1,98 @@
 /** @format */
 
-import { XernerxClient } from '../main.js';
-import { XernerxLog } from '../tools/XernerxLog.js';
-import { XernerxMessageCommandHandlerOptions } from '../types/interfaces.js';
-import { Handler } from './Handler.js';
-import * as path from 'path';
 import sharpyy from 'sharpyy';
-import { XernerxMessageCreate } from '../events/messageCreate.js';
+import { z } from 'zod';
+
+import { XernerxClient } from '../client/XernerxClient.js';
+import { Handler } from './Handler.js';
+import { XernerxMessageCreateEvent } from '../events/messageCreate.js';
+import { XernerxMessageUpdateEvent } from '../events/messageUpdate.js';
+import { XernerxMessageDeleteEvent } from '../events/messageDelete.js';
+import { XernerxInteractionCreateEvent } from '../events/interactionCreate.js';
+import { XernerxSuccess } from '../tools/XernerxSuccess.js';
+import { XernerxWarn } from '../tools/XernerxWarn.js';
+import { XernerxError } from '../tools/XernerxError.js';
+import { XernerxMessageCommandHandlerOptions } from '../interfaces/XernerxMessageCommandHandlerOptions.js';
+import { XernerxSlashCommandHandlerOptions } from '../interfaces/XernerxSlashCommandHandlerOptions.js';
+import { XernerxEventBuilder } from '../build/XernerxEventBuilder.js';
+import { XernerxReadyEvent } from '../events/ready.js';
 
 export class CommandHandler extends Handler {
 	constructor(client: XernerxClient) {
 		super(client);
 	}
 
+	public async loadMessageCommand(file: string) {
+		return await this.loadFile(file);
+	}
+
 	public async loadMessageCommands(options: XernerxMessageCommandHandlerOptions) {
-		try {
-			await this.client.util.delay(options.delay || 0);
+		const config = z
+			.object({
+				directory: z.string(),
+				prefix: z.union([z.string(), z.array(z.string())]).default([]),
+				mention: z.boolean().default(false),
+				seperator: z.string().default(' '),
+				handleEdits: z.boolean().default(false),
+				handleDeletions: z.boolean().default(false),
+				ignore: z
+					.object({
+						system: z.boolean().default(true),
+						bots: z.boolean().default(true),
+						self: z.boolean().default(true),
+					})
+					.default({ system: true, bots: true, self: true }),
+			})
+			.parse(options);
 
-			XernerxLog.debug(`Loading commands from: ${options.directory}...`);
+		typeof config.prefix == 'string' ? (config.prefix = [config.prefix]) : config.prefix;
 
-			const dir = this.readdir(options.directory);
+		this.client.handler.message = config;
 
-			for (const file of dir) {
-				XernerxLog.debug(`Loading event: ${file}`);
+		const files = this.loadFiles(config.directory);
 
-				const filepath = path.resolve(options.directory, file);
+		this.loadEvents(XernerxMessageCreateEvent, XernerxMessageUpdateEvent, XernerxMessageDeleteEvent);
 
-				const builder = await this.load(filepath);
+		if (!this.client.options.intents.has('GuildMessages')) new XernerxError(`Missing ${sharpyy('GuildMessages', 'txYellow')} intent, message commands will not work.`);
+		if (!this.client.options.intents.has('MessageContent') && !config.mention)
+			new XernerxError(`Missing ${sharpyy('MessageContent', 'txYellow')} intent and bot mention is turned off, message commands will not work.`);
+		if (!this.client.options.intents.has('MessageContent') && config.mention)
+			new XernerxWarn(`Missing ${sharpyy('MessageContent', 'txYellow')} intent, message commands can only be triggered by @mention.`);
 
-				builder;
-			}
+		for (const file of files) {
+			await this.loadMessageCommand(file);
+		}
 
-			await this.on(XernerxMessageCreate);
+		new XernerxSuccess(`Loaded message commands: ${this.client.commands.message.map((command) => sharpyy(command.id, 'txYellow')).join(', ')}`);
+	}
 
-			this.client.modules.options.commands.message = options;
+	public async loadSlashCommand(file: string) {
+		return await this.loadFile(file);
+	}
 
-			XernerxLog.info(`Loaded message commands: ${this.client.collections.commands.message.map((command) => sharpyy(command.name, 'txYellow')).join(', ')}`);
-		} catch (error) {
-			XernerxLog.error('Failed to load message commands.', error as Error);
+	public async loadSlashCommands(options: XernerxSlashCommandHandlerOptions) {
+		const config = z
+			.object({
+				directory: z.string(),
+			})
+			.parse(options);
+
+		this.client.handler.slash = config;
+
+		const files = this.loadFiles(config.directory);
+
+		for (const file of files) {
+			await this.loadSlashCommand(file);
+		}
+
+		this.loadEvents(XernerxInteractionCreateEvent, XernerxReadyEvent);
+
+		new XernerxSuccess(`Loaded slash commands: ${this.client.commands.slash.map((command) => sharpyy(command.id, 'txYellow')).join(', ')}`);
+	}
+
+	private async loadEvents(...args: Array<typeof XernerxEventBuilder>) {
+		for (const event of args) {
+			this.importFile(new event('', { name: '' }));
 		}
 	}
 }

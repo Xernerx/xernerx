@@ -1,149 +1,131 @@
 /** @format */
 
-/**
- * @fileoverview A TypeScript file for the XernerxClient class, which extends the Discord.Client class and provides customizable settings and functionality.
- * @author Dummi
- */
-
-/**
- * @typedef {import('discord.js').ClientOptions} DiscordClientOptions
- * @typedef {import('../types/interfaces.js').XernerxOptions} XernerxOptions
- * @typedef {import('zod').ZodType<any, any, any>} ZodType
- * @typedef {import('sharpyy').default} Sharpyy
- */
-import * as Discord from 'discord.js';
-import { z } from 'zod';
+import { Client, ClientOptions, Collection, RESTGetAPISKUsResult } from 'discord.js';
 import sharpyy from 'sharpyy';
-import boxen from 'boxen';
+import { ClusterClient, DjsDiscordClient, getInfo } from 'discord-hybrid-sharding';
 
-import { XernerxOptions } from '../types/interfaces.js';
-import { init } from '../function/init.js';
-import { XernerxOptionsSchema } from '../schema/XernerxOptions.js';
-import { XernerxLog } from '../tools/XernerxLog.js';
-import { ClientUtil } from '../util/ClientUtil.js';
-import { XernerxError } from '../components/XernerxError.js';
+import { XernerxClientOptions } from '../interfaces/XernerxClientOptions.js';
+import { XernerxInfo } from '../tools/XernerxInfo.js';
+import { XernerxClientStats } from '../interfaces/XernerxClientStats.js';
+import { XernerxInitial } from '../tools/XernerxInitial.js';
+import { XernerxError } from '../tools/XernerxError.js';
+import { XernerxSuccess } from '../tools/XernerxSuccess.js';
+import { XernerxMonitisation } from '../model/XernerxMonitisation.js';
 import { EventHandler } from '../handler/EventHandler.js';
-import { XernerxEventBuilder, XernerxMessageCommandBuilder, XernerxSlashCommandBuilder } from '../main.js';
+import { XernerxEventBuilder } from '../build/XernerxEventBuilder.js';
 import { CommandHandler } from '../handler/CommandHandler.js';
-import DashboardHandler from '../handler/DashboardHandler.js';
-import XernerxEntitlement from '../model/XernerxEntitlement.js';
+import { XernerxMessageCommandBuilder } from '../build/XernerxMessageCommandBuilder.js';
+import { XernerxMessageCommandHandlerOptions } from '../interfaces/XernerxMessageCommandHandlerOptions.js';
+import { XernerxSlashCommandHandlerOptions } from '../interfaces/XernerxSlashCommandHandlerOptions.js';
+import { XernerxSlashCommandBuilder } from '../build/XernerxSlashCommandBuilder.js';
+import z from 'zod';
 
-/**
- * @description read the super for more information.
- * @template T
- * @extends {Discord.Client}
- */
-export class XernerxClient<T extends {} = {}> extends Discord.Client {
-	/**
-	 * Customizable settings for the XernerxClient instance.
-	 * @type {XernerxOptions}
-	 */
-	declare public readonly settings;
+export class XernerxClient extends Client {
+	// Config
+	declare public readonly token: string;
+	declare public readonly sharded: boolean;
+	declare public readonly settings: XernerxClientOptions;
 
-	/**
-	 * Customizable configuration for the XernerxClient instance.
-	 * @type {T}
-	 */
-	declare protected readonly config;
-	declare public readonly util;
-	declare public readonly modules;
-	declare public readonly collections;
+	// Setup
+	declare public readonly monitisation: { skus: RESTGetAPISKUsResult };
+	declare public readonly stats: XernerxClientStats;
+	declare public readonly cluster: ClusterClient | null;
+	declare public readonly cache: { messages: Collection<string, string>; slash: Collection<string, string> };
+	declare public readonly handler: { message: XernerxMessageCommandHandlerOptions; slash: XernerxSlashCommandHandlerOptions };
 
-	declare public store: { front: Array<Discord.SKU>; archive: Array<XernerxEntitlement>; items: Array<XernerxEntitlement> };
+	// Collections
+	declare public readonly commands: {
+		message: Collection<string, XernerxMessageCommandBuilder>;
+		slash: Collection<string, XernerxSlashCommandBuilder>;
+	};
+	declare public readonly events: Collection<string, XernerxEventBuilder>;
 
-	/**
-	 * Initializes the XernerxClient class with customizable settings, configuration, and logs a connection message.
-	 * @param {DiscordClientOptions} DiscordOptions - Options for the Discord.Client class.
-	 * @param {XernerxOptions} XernerxOptions - Customizable settings for the XernerxClient instance.
-	 * @param {T} [config] - A place to store your config file contents. This will automatically merge with your settings, no need to define data in your config to then import it individually, just add the config to it instead.
-	 */
-	constructor(DiscordOptions: Discord.ClientOptions, XernerxOptions: XernerxOptions, config?: T) {
-		super(DiscordOptions);
+	// Handlers
+	declare public readonly modules: { eventHandler: EventHandler; commandHandler: CommandHandler };
 
-		// properties
+	constructor(options: ClientOptions & XernerxClientOptions) {
+		try {
+			options.shards = getInfo().SHARD_LIST;
+			options.shardCount = getInfo().TOTAL_SHARDS;
+		} catch {
+			new XernerxInitial('Client');
+		}
 
-		this.config = (config || {}) as T;
+		super(options);
 
-		this.settings = z.object(XernerxOptionsSchema).parse({ ...this.config, ...XernerxOptions } as const);
+		this.settings = z
+			.object({
+				token: z.string(),
+				global: z.boolean().default(false),
+				guildId: z.string().or(z.array(z.string()).max(5)).default([]),
+			})
+			.parse(options);
 
-		// setup
+		this.sharded = options.shardCount ? true : false;
+		this.token = options.token as string;
 
-		init(this);
+		this.settings.guildId = typeof this.settings.guildId == 'string' ? [this.settings.guildId] : this.settings.guildId;
 
-		this.connect();
+		this.monitisation = { skus: [] };
 
-		// class appenders
-
-		this.util = new ClientUtil(this);
-
-		// handlers
-
-		this.modules = {
-			options: {
-				events: {},
-				commands: { message: {}, slash: {}, context: {} },
-				inhibitors: {},
-			},
-
-			eventHandler: new EventHandler(this),
-
-			commandHandler: new CommandHandler(this),
-
-			dashboardHandler: new DashboardHandler(this),
+		this.stats = {
+			guildCount: null,
+			userCount: null,
+			shardCount: null,
+			shard: null,
+			accurate: false,
 		};
 
-		this.collections = {
-			events: new Discord.Collection<string, XernerxEventBuilder>(),
-			inhibitors: new Discord.Collection<string, string>(),
-			commands: {
-				slash: new Discord.Collection<string, XernerxSlashCommandBuilder>(),
-				message: new Discord.Collection<string, XernerxMessageCommandBuilder>(),
-				context: new Discord.Collection<string, string>(),
-			},
+		this.cache = { messages: new Collection(), slash: new Collection() };
+
+		this.handler = {
+			message: { directory: null },
+			slash: { directory: null },
 		};
+
+		this.commands = { message: new Collection(), slash: new Collection() };
+
+		this.events = new Collection();
+
+		if (this.sharded) this.cluster = new ClusterClient(this as unknown as DjsDiscordClient);
+
+		this.modules = { eventHandler: new EventHandler(this), commandHandler: new CommandHandler(this) };
 	}
 
-	/**
-	 * Asynchronously connects to Discord using the provided token and logs a connection message.
-	 */
 	async connect() {
-		XernerxLog.debug('Connecting to Discord with token: ' + sharpyy(this.settings.token || 'none', 'txRed'), this.settings.debug && this.settings.log.levels.debug);
+		new XernerxInfo(`${this.cluster ? `${sharpyy(`Shard ${this.cluster.id}`, 'txCyan')} | ` : ''}Connecting...`);
 
-		await this.login(this.settings.token || undefined);
+		this.on('ready', async (client) => {
+			this.monitisation.skus = await new XernerxMonitisation(client).sku();
 
-		this.deploy();
-	}
+			/** When the client is sharded */
+			if (this.sharded && this.cluster) {
+				process.on('message', (msg: any) => true);
 
-	private deploy() {
-		XernerxLog.debug(`Deploying Commands and Events.`, this.settings.debug && this.settings.log.levels.debug);
+				this.stats.guildCount = (await this.cluster.broadcastEval('this.guilds.cache.size')).reduce((a, b) => a + b, 0);
+				this.stats.userCount = (await this.cluster.broadcastEval('this.guilds.cache.map((a) => a.memberCount).reduce((a, b) => a + b, 0)')).reduce((a, b) => a + b, 0);
+				this.stats.shard = {
+					guildCount: client.guilds.cache.size,
+					userCount: client.guilds.cache.map((a) => a.memberCount).reduce((a, b) => a + b, 0),
+				};
 
-		this.once('ready', (client) => {
-			XernerxLog.debug(`Checking for local guilds.`);
-
-			if (!this.settings.guilds.length) throw new XernerxError('There are no guilds where commands can be deplyed locally, this is required.');
-
-			if (this.options.intents.missing('Guilds')) XernerxLog.warn(`${client.user.tag} is missing the intent: Guilds, All guild information will be undefined.`);
-
-			this.settings.guilds.map(async (id) => {
-				XernerxLog.debug(`Checking if ${id} is reachable...`);
-
-				const guild = await client.guilds.fetch(id);
-
-				XernerxLog.debug(`${guild.name} validated, deploying commands...`);
-
-				console.info(
-					boxen('TODO - Add commands (only deployed)', {
-						padding: 1,
-						margin: 1,
-						borderStyle: 'round',
-						title: guild.name,
-						borderColor: this.settings.global ? 'green' : 'red',
-						height: 3,
-						align: 'left',
-						fullscreen: (width, height) => [width - 3, height],
-					})
+				new XernerxSuccess(
+					`${sharpyy(`Shard ${this.cluster.id}`, 'txCyan')} | Signed in as ${sharpyy(client.user?.tag, 'txBlue')}, watching ${sharpyy(String(this.stats.shard.guildCount), 'txCyan')} guilds and users: ${sharpyy(String(this.stats.shard.userCount), 'txCyan')}`
 				);
-			});
+			} else {
+				/** When the client is standalone */
+
+				this.stats.guildCount = client.guilds.cache.size;
+				this.stats.userCount = client.guilds.cache.map((a) => a.memberCount).reduce((a, b) => a + b, 0);
+				this.stats.shardCount = 0;
+				this.stats.accurate = true;
+
+				new XernerxSuccess(
+					`Signed in as ${sharpyy(client.user?.tag, 'txBlue')}, watching ${sharpyy(String(this.stats.guildCount), 'txCyan')} guilds and users: ${sharpyy(String(this.stats.userCount), 'txCyan')}`
+				);
+			}
 		});
+
+		return await this.login(this.token).catch((error) => new XernerxError(error.message, 1));
 	}
 }

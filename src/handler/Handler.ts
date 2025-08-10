@@ -1,45 +1,73 @@
 /** @format */
+import fs from 'fs';
+import path from 'path';
 
-import * as fs from 'fs';
-import * as path from 'path';
-
-import { XernerxClient } from '../main.js';
+import { XernerxClient } from '../client/XernerxClient.js';
+import { XernerxError } from '../tools/XernerxError.js';
+import { XernerxEventBuilder } from '../build/XernerxEventBuilder.js';
+import { XernerxMessageCommandBuilder } from '../build/XernerxMessageCommandBuilder.js';
+import { XernerxSlashCommandBuilder } from '../main.js';
 
 export class Handler {
-	protected readonly client: XernerxClient;
+	declare public readonly client: XernerxClient;
+	[index: string]: Record<string, any>;
 
 	constructor(client: XernerxClient) {
 		this.client = client;
 	}
 
-	protected async load(file: any) {
-		const builder = (await import(`file://${file}`)) as any;
+	loadFiles(dir: string) {
+		try {
+			return fs
+				.readdirSync(dir)
+				.filter((file) => file.endsWith('.js'))
+				.map((file) => path.join(dir, file));
+		} catch (error) {
+			new XernerxError((error as Error).message, 0);
 
-		const Builder = new builder.default();
-
-		Builder.client = this.client;
-
-		Builder.filename = path.basename(file);
-
-		Builder.filepath = `file://${file}`;
-
-		if (Builder.collection)
-			Builder.collection.includes('.')
-				? this.client.collections[Builder.collection.split('.')[0] as 'commands'][Builder.collection.split('.')[1] as 'slash' | 'message' | 'context'].set(Builder.id, Builder)
-				: this.client.collections[Builder.collection as 'events'].set(Builder.id, Builder);
-
-		return Builder;
+			return [];
+		}
 	}
 
-	protected readdir(path: string) {
-		return fs.readdirSync(path).filter((file) => file.endsWith('.js') || file.endsWith('.mjs') || file.endsWith('.cjs'));
+	async loadFile(file: string) {
+		const filepath = path.resolve(file);
+		const filename = path.basename(filepath);
+
+		try {
+			const file = await import(`file://${filepath}`);
+
+			if (!file.default) return new XernerxError(`${filename} | ${file} does not have a default export.`, 0);
+
+			const builder = new file.default(this.client);
+
+			builder.filepath = filepath;
+			builder.filename = filename;
+
+			this.importFile(builder);
+		} catch (error) {
+			new XernerxError(`${filename} | ${(error as Error).message}`, 0);
+		}
 	}
 
-	protected async on(builder: any) {
-		const Builder = new builder();
+	async importFile(builder: XernerxEventBuilder | XernerxMessageCommandBuilder | XernerxSlashCommandBuilder, filename?: string) {
+		if (builder.filetype === 'XernerxEvent') {
+			if (this.client.events.has(builder.id)) return new XernerxError(`${filename} | ID must be unique`);
 
-		Builder.client = this.client;
+			this.client.events.set(builder.id, builder);
 
-		return await (Builder.once ? this.client.once(Builder.watch, (...args) => Builder.run(...args)) : this.client.on(Builder.watch, (...args) => Builder.run(...args)));
+			builder.once
+				? this[(builder as XernerxEventBuilder).emitter].once(builder.name, <T extends []>(...args: T) => builder.run(...(args as [])))
+				: this[(builder as XernerxEventBuilder).emitter].on(builder.name, <T extends []>(...args: T) => builder.run(...(args as [])));
+		}
+
+		if (builder.filetype === 'XernerxMessageCommand') {
+			this.client.commands.message.set(builder.id, builder);
+		}
+
+		if (builder.filetype === 'XernerxSlashCommand') {
+			this.client.commands.slash.set(builder.id, builder);
+		}
+
+		return builder;
 	}
 }

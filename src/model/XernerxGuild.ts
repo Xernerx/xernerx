@@ -1,13 +1,13 @@
 /** @format */
 
-import { BaseGuild } from 'discord.js';
+import { BaseGuild, Client } from 'discord.js';
 
-export default class XernerxGuild extends BaseGuild {
-	declare public readonly premium: Array<any>;
-
-	constructor(client: any, data: any) {
-		super(client, data);
-
-		this.premium = client.store.filter((sku: any) => sku.guild_id == this.id);
+export class XernerxGuild extends BaseGuild {
+	constructor(client: Client<true>, guild: BaseGuild) {
+		super(client, guild as any);
 	}
+
+	consumeEntitlement() {}
+
+	entitlements() {}
 }

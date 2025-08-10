@@ -1,30 +1,25 @@
 /** @format */
 
-import { XernerxEventOptions } from '../types/interfaces.js';
+import { XernerxEventBuilderOptions } from '../interfaces/XernerxEventBuilderOptions.js';
 import { XernerxBaseBuilder } from './XernerxBaseBuilder.js';
 
 export class XernerxEventBuilder extends XernerxBaseBuilder {
-	declare public readonly collection: 'events';
-	declare public readonly type;
-	declare public readonly emitter;
-	declare public readonly once;
-	declare public readonly watch;
+	declare public readonly filetype: 'XernerxEvent';
+	declare public readonly name: string;
+	declare public readonly emitter: string;
+	declare public readonly once: boolean;
 
-	constructor(id: string, options: XernerxEventOptions) {
+	constructor(id: string, options: XernerxEventBuilderOptions) {
 		super(id, options);
 
-		this.collection = 'events';
+		this.filetype = 'XernerxEvent';
 
-		this.type = options.type;
+		this.name = options.name;
 
-		this.emitter = options.emitter;
+		this.emitter = options.emitter ?? 'client';
 
-		this.once = options.once;
-
-		this.watch = options.watch || this.name;
-
-		this.run = this.run;
+		this.once = options.once ?? false;
 	}
 
-	public async run(...args: any) {}
+	public async run(...args: any[]): Promise<void> {}
 }

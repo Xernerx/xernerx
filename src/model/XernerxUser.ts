@@ -1,23 +1,23 @@
 /** @format */
 
-import { User } from 'discord.js';
+import { Client, User } from 'discord.js';
+import { XernerxMonitisation } from './XernerxMonitisation.js';
 
-import { Client } from 'discord.js';
-import { XernerxClient } from '../main.js';
-import XernerxEntitlement from './XernerxEntitlement.js';
+export class XernerxUser extends User {
+	readonly #monitisation: XernerxMonitisation;
 
-export default class XernerxUser extends User {
-	declare public readonly owner: boolean;
-	declare public readonly premium: { items: Array<XernerxEntitlement>; archive: Array<XernerxEntitlement> };
+	constructor(client: Client<true>, user: User) {
+		super(client, user as any);
 
-	constructor(client: XernerxClient & Client<true>, data: any) {
-		super(client, data);
+		this.#monitisation = new XernerxMonitisation(client);
+	}
+	consumeEntitlement() {}
 
-		this.owner = client.settings.owners.includes(this.id);
+	async entitlements() {
+		const entitlements = await this.#monitisation.entitlements({ user_id: this.id });
 
-		this.premium = {
-			items: client.store.items.filter((item) => item.userId == this.id),
-			archive: client.store.archive.filter((item) => item.userId == this.id),
-		};
+		const SKU = await this.#monitisation.sku();
+
+		return entitlements.map((entitlement) => ({ entitlement: entitlement, sku: SKU.find((sku) => sku.id === entitlement.sku_id) }));
 	}
 }

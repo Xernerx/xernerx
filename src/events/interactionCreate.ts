@@ -1,41 +1,47 @@
 /** @format */
 
+import { Interaction } from 'discord.js';
 import { XernerxEventBuilder } from '../build/XernerxEventBuilder.js';
-import { Events, Interaction } from 'discord.js';
-import XernerxUser from '../model/XernerxUser.js';
-import { XernerxClient } from '../main.js';
-import { Client } from 'discord.js';
+import { XernerxUser } from '../model/XernerxUser.js';
+import { XernerxClient } from '../client/XernerxClient.js';
+import { XernerxInteractionUtil } from '../util/XernerxInteractionUtil.js';
 
-import { InteractionUtil } from '../util/InteractionUtil.js';
-
-const XernerxInteractionCreate = class Class extends XernerxEventBuilder {
-	declare public readonly util: InteractionUtil;
-	declare public readonly user: XernerxUser;
-
-	public constructor() {
-		super('interactionCreate', {
+export class XernerxInteractionCreateEvent extends XernerxEventBuilder {
+	constructor() {
+		super('XernerxInteractionCreateEvent', {
 			name: 'interactionCreate',
-			description: 'An internal xernerx event to make interaction commands work.',
-			type: 'discord',
 			emitter: 'client',
 			once: false,
-			watch: Events.InteractionCreate,
 		});
 	}
 
-	override async run(interaction: Interaction & { user: XernerxUser; author: XernerxUser; util: InteractionUtil }) {
-		// extenders
-		interaction.user = new XernerxUser(interaction.client as XernerxClient & Client<true>, interaction.author);
+	override async run(interaction: Interaction) {
+		this.client = interaction.client as XernerxClient;
 
-		interaction.author = new XernerxUser(interaction.client as XernerxClient & Client<true>, interaction.author);
+		interaction.user = new XernerxUser(interaction.client, interaction.user);
 
-		// util
+		interaction.util = new XernerxInteractionUtil(this.client as Interaction['client'], interaction);
 
-		interaction.util = new InteractionUtil(interaction.client as XernerxClient, interaction);
+		if (!interaction.isCommand()) return;
+
+		const command = this.client.commands.slash.get(interaction.commandName);
+
+		if (!command) return;
+
 		// validation
 
-		// command
-	}
-};
+		// inhibitors
 
-export { XernerxInteractionCreate };
+		// autocomplete
+
+		// args
+
+		await command.exec(
+			interaction,
+			[
+				/*args*/
+			],
+			command
+		);
+	}
+}

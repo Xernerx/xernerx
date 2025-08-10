@@ -21,6 +21,8 @@
 	--dark-hl-8: #6a9955;
 	--light-hl-9: #267f99;
 	--dark-hl-9: #4ec9b0;
+	--light-hl-10: #000000ff;
+	--dark-hl-10: #d4d4d4;
 	--light-code-background: #ffffff;
 	--dark-code-background: #1e1e1e;
 }
@@ -37,6 +39,7 @@
 		--hl-7: var(--light-hl-7);
 		--hl-8: var(--light-hl-8);
 		--hl-9: var(--light-hl-9);
+		--hl-10: var(--light-hl-10);
 		--code-background: var(--light-code-background);
 	}
 }
@@ -53,6 +56,7 @@
 		--hl-7: var(--dark-hl-7);
 		--hl-8: var(--dark-hl-8);
 		--hl-9: var(--dark-hl-9);
+		--hl-10: var(--dark-hl-10);
 		--code-background: var(--dark-code-background);
 	}
 }
@@ -68,6 +72,7 @@
 	--hl-7: var(--light-hl-7);
 	--hl-8: var(--light-hl-8);
 	--hl-9: var(--light-hl-9);
+	--hl-10: var(--light-hl-10);
 	--code-background: var(--light-code-background);
 }
 
@@ -82,6 +87,7 @@
 	--hl-7: var(--dark-hl-7);
 	--hl-8: var(--dark-hl-8);
 	--hl-9: var(--dark-hl-9);
+	--hl-10: var(--dark-hl-10);
 	--code-background: var(--dark-code-background);
 }
 
@@ -114,6 +120,9 @@
 }
 .hl-9 {
 	color: var(--hl-9);
+}
+.hl-10 {
+	color: var(--hl-10);
 }
 pre,
 code {
