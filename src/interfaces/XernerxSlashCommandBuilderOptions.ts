@@ -5,7 +5,7 @@ export interface XernerxSlashCommandBuilderOptions {
 	description: string;
 	global?: boolean;
 	guildId?: string | Array<string>;
-	args?: any;
+	options?: any;
 	subcommands?: any;
 	groups?: any;
 }

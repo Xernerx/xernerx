@@ -18,6 +18,8 @@ import {
 	SlashCommandUserOption,
 } from 'discord.js';
 
+type XernerxSlashCommandOptions = Array<{ name: string; type: 'string'; description: string; required: boolean }>;
+
 export class XernerxSlashCommandBuilder extends XernerxBaseBuilder {
 	declare public readonly filetype: 'XernerxSlashCommand';
 	declare public readonly name: string;
@@ -25,6 +27,9 @@ export class XernerxSlashCommandBuilder extends XernerxBaseBuilder {
 	declare public readonly data: SlashCommandBuilder;
 	declare public readonly guildId: Array<string>;
 	declare public readonly global: boolean;
+	declare public readonly options: XernerxSlashCommandOptions;
+	declare public readonly subcommands: Array<{ name: string; description: string; options: XernerxSlashCommandOptions }>;
+	declare public readonly groups: Array<{ name: string; description: string; subcommands: Array<{ name: string; description: string; options: XernerxSlashCommandOptions }> }>;
 
 	constructor(id: string, options: XernerxSlashCommandBuilderOptions) {
 		super(id, options);
@@ -35,7 +40,7 @@ export class XernerxSlashCommandBuilder extends XernerxBaseBuilder {
 				description: z.string(),
 				global: z.boolean().default(true),
 				guildId: z.string().or(z.array(z.string())).default([]),
-				args: z.any(),
+				options: z.any(),
 				subcommands: z.any(),
 				groups: z.any(),
 			})
@@ -52,17 +57,22 @@ export class XernerxSlashCommandBuilder extends XernerxBaseBuilder {
 		this.data.setName(this.name);
 
 		this.data.setDescription(this.description);
+		if (options.options && options?.options?.length > 0) {
+			this.addArguments(this.data, options.options);
 
-		if (options.args && options?.args?.length > 0) {
-			this.addArguments(this.data, options.args);
+			this.options = options.options;
 		}
 
 		if (options.subcommands && options?.subcommands?.length > 0) {
 			this.addSubcommands(this.data, options.subcommands);
+
+			this.subcommands = options.subcommands;
 		}
 
 		if (options.groups && options?.groups?.length > 0) {
 			this.addSubcommandGroups(options.groups);
+
+			this.groups = options.groups;
 		}
 
 		this.guildId = typeof options.guildId == 'string' ? [options.guildId] : options.guildId || [];
@@ -73,6 +83,7 @@ export class XernerxSlashCommandBuilder extends XernerxBaseBuilder {
 	public async exec(...args: any[]): Promise<void> {
 		new XernerxWarn(`${this.id} has no exec function, command will not respond.`);
 	}
+
 	private addArguments(command: SlashCommandBuilder | SlashCommandSubcommandBuilder, args: Array<SlashCommandArgumentOptions>) {
 		for (const argument of args) {
 			let slashCommandArgumentType: SlashCommandArgumentType | string = `${argument.type.charAt(0).toUpperCase()}${argument.type.slice(1).toLowerCase()}`;
@@ -103,7 +114,7 @@ export class XernerxSlashCommandBuilder extends XernerxBaseBuilder {
 		for (const subcommand of subcommands) {
 			let sub = new SlashCommandSubcommandBuilder().setName(subcommand.name).setDescription(subcommand.description);
 
-			if (subcommand.args && subcommand?.args?.length > 0) this.addArguments(sub, subcommand.args);
+			if (subcommand.options && subcommand?.options?.length > 0) this.addArguments(sub, subcommand.options);
 
 			method.addSubcommand(sub);
 		}
@@ -136,7 +147,7 @@ type SlashCommandOptionChoices = SlashCommandStringOption | SlashCommandNumberOp
 interface SlashCommandSubcommandOptions {
 	name: string;
 	description: string;
-	args?: Array<SlashCommandArgumentOptions>;
+	options?: Array<SlashCommandArgumentOptions>;
 }
 interface SlashCommandGroupOptions {
 	name: string;

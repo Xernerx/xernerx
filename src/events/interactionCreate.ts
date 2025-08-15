@@ -1,10 +1,11 @@
 /** @format */
 
-import { Interaction } from 'discord.js';
+import { ChatInputCommandInteraction, Interaction } from 'discord.js';
 import { XernerxEventBuilder } from '../build/XernerxEventBuilder.js';
 import { XernerxUser } from '../model/XernerxUser.js';
 import { XernerxClient } from '../client/XernerxClient.js';
 import { XernerxInteractionUtil } from '../util/XernerxInteractionUtil.js';
+import { XernerxInteractionArguments } from '../model/XernerxInteractionArguments.js';
 
 export class XernerxInteractionCreateEvent extends XernerxEventBuilder {
 	constructor() {
@@ -34,14 +35,8 @@ export class XernerxInteractionCreateEvent extends XernerxEventBuilder {
 
 		// autocomplete
 
-		// args
+		const args = new XernerxInteractionArguments(interaction as ChatInputCommandInteraction, command);
 
-		await command.exec(
-			interaction,
-			[
-				/*args*/
-			],
-			command
-		);
+		await command.exec(interaction, { options: args.options(), subcommand: args.subcommand(), group: args.subcommand() }, command);
 	}
 }
