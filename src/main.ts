@@ -11,3 +11,4 @@ export * from 'discord.js';
 
 import './types/Message.d.ts';
 import './types/Interaction.d.ts';
+import './types/Events.d.ts';

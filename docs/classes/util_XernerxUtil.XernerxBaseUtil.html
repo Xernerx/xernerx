@@ -5,7 +5,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta http-equiv="x-ua-compatible" content="IE=edge" />
-		<title>XernerxBaseUtil | XERNERX - v0.1.120-beta.111111128</title>
+		<title>XernerxBaseUtil | XERNERX - v0.1.120-beta.111111129</title>
 		<meta name="description" content="Documentation for XERNERX" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="../assets/style.css" />
@@ -25,7 +25,7 @@
 		</script>
 		<header class="tsd-page-toolbar">
 			<div class="tsd-toolbar-contents container">
-				<a href="../index.html" class="title">XERNERX - v0.1.120-beta.111111128</a>
+				<a href="../index.html" class="title">XERNERX - v0.1.120-beta.111111129</a>
 				<div id="tsd-toolbar-links"></div>
 				<button id="tsd-search-trigger" class="tsd-widget" aria-label="Search">
 					<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-search"></use></svg>
@@ -58,7 +58,7 @@
 					</ul>
 					<h1>Class XernerxBaseUtil</h1>
 				</div>
-				<section class="tsd-panel tsd-hierarchy" data-refl="1124">
+				<section class="tsd-panel tsd-hierarchy" data-refl="1139">
 					<h4>Hierarchy (<a href="../hierarchy.html#util/XernerxUtil.XernerxBaseUtil">View Summary</a>)</h4>
 					<ul class="tsd-hierarchy">
 						<li class="tsd-hierarchy-item">
@@ -72,7 +72,7 @@
 				</section>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/xernerx/xernerx/blob/1bf56b09ab37b89cc1abff0a8f86775581ba7625/src/util/XernerxUtil.ts#L6">src/util/XernerxUtil.ts:6</a></li>
+						<li>Defined in <a href="https://github.com/xernerx/xernerx/blob/8660bba054a35e201be7cc222a7e00f77ab3499b/src/util/XernerxUtil.ts#L6">src/util/XernerxUtil.ts:6</a></li>
 					</ul>
 				</aside>
 				<section class="tsd-panel-group tsd-index-group">
@@ -97,8 +97,19 @@
 										<a href="#client" class="tsd-index-link"
 											><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>client</span></a
 										>
+										<a href="#interaction" class="tsd-index-link"
+											><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>interaction</span></a
+										>
 										<a href="#parsed" class="tsd-index-link"
 											><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>parsed</span></a
+										>
+									</div>
+								</section>
+								<section class="tsd-index-section">
+									<h3 class="tsd-index-heading">Methods</h3>
+									<div class="tsd-index-list">
+										<a href="#webhook" class="tsd-index-link"
+											><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>webhook</span></a
 										>
 									</div>
 								</section>
@@ -122,12 +133,17 @@
 							<ul class="tsd-signatures">
 								<li class="">
 									<div class="tsd-signature tsd-anchor-link" id="constructorxernerxbaseutil">
-										<span class="tsd-signature-keyword">new</span> <span class="tsd-kind-constructor-signature">XernerxBaseUtil</span><span class="tsd-signature-symbol">(</span
-										><span class="tsd-kind-parameter">client</span><span class="tsd-signature-symbol">:</span>
-										<a href="client_XernerxClient.XernerxClient.html" class="tsd-signature-type tsd-kind-class">XernerxClient</a> <span class="tsd-signature-symbol">&amp;</span>
-										<span class="tsd-signature-type">Client</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">true</span
-										><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span>
-										<a href="" class="tsd-signature-type tsd-kind-class">XernerxBaseUtil</a
+										<span class="tsd-signature-keyword">new</span> <span class="tsd-kind-constructor-signature">XernerxBaseUtil</span><span class="tsd-signature-symbol">(</span><br />    <span
+											class="tsd-kind-parameter"
+											>client</span
+										><span class="tsd-signature-symbol">:</span> <a href="client_XernerxClient.XernerxClient.html" class="tsd-signature-type tsd-kind-class">XernerxClient</a>
+										<span class="tsd-signature-symbol">&amp;</span> <span class="tsd-signature-type">Client</span><span class="tsd-signature-symbol">&lt;</span
+										><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">,</span><br />    <span class="tsd-kind-parameter"
+											>interaction</span
+										><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Interaction</span> <span class="tsd-signature-symbol">|</span>
+										<span class="tsd-signature-type">Message</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span
+										><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">,</span><br /><span class="tsd-signature-symbol">)</span
+										><span class="tsd-signature-symbol">:</span> <a href="" class="tsd-signature-type tsd-kind-class">XernerxBaseUtil</a
 										><a href="#constructorxernerxbaseutil" aria-label="Permalink" class="tsd-anchor-icon"
 											><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg
 										></a>
@@ -143,12 +159,19 @@
 														><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol">&gt;</span></span
 													>
 												</li>
+												<li>
+													<span
+														><span class="tsd-kind-parameter">interaction</span>: <span class="tsd-signature-type">Interaction</span> <span class="tsd-signature-symbol">|</span>
+														<span class="tsd-signature-type">Message</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span
+														><span class="tsd-signature-symbol">&gt;</span></span
+													>
+												</li>
 											</ul>
 										</div>
 										<h4 class="tsd-returns-title">Returns <a href="" class="tsd-signature-type tsd-kind-class">XernerxBaseUtil</a></h4>
 										<aside class="tsd-sources">
 											<ul>
-												<li>Defined in <a href="https://github.com/xernerx/xernerx/blob/1bf56b09ab37b89cc1abff0a8f86775581ba7625/src/util/XernerxUtil.ts#L15">src/util/XernerxUtil.ts:15</a></li>
+												<li>Defined in <a href="https://github.com/xernerx/xernerx/blob/8660bba054a35e201be7cc222a7e00f77ab3499b/src/util/XernerxUtil.ts#L16">src/util/XernerxUtil.ts:16</a></li>
 											</ul>
 										</aside>
 									</div>
@@ -177,7 +200,25 @@
 							</div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/xernerx/xernerx/blob/1bf56b09ab37b89cc1abff0a8f86775581ba7625/src/util/XernerxUtil.ts#L7">src/util/XernerxUtil.ts:7</a></li>
+									<li>Defined in <a href="https://github.com/xernerx/xernerx/blob/8660bba054a35e201be7cc222a7e00f77ab3499b/src/util/XernerxUtil.ts#L7">src/util/XernerxUtil.ts:7</a></li>
+								</ul>
+							</aside>
+						</section>
+						<section class="tsd-panel tsd-member">
+							<h3 class="tsd-anchor-link" id="interaction">
+								<span>interaction</span
+								><a href="#interaction" aria-label="Permalink" class="tsd-anchor-icon"
+									><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg
+								></a>
+							</h3>
+							<div class="tsd-signature">
+								<span class="tsd-kind-property">interaction</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Interaction</span>
+								<span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">Message</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span
+								><span class="tsd-signature-symbol">&gt;</span>
+							</div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/xernerx/xernerx/blob/8660bba054a35e201be7cc222a7e00f77ab3499b/src/util/XernerxUtil.ts#L14">src/util/XernerxUtil.ts:14</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -202,9 +243,64 @@
 							</div>
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/xernerx/xernerx/blob/1bf56b09ab37b89cc1abff0a8f86775581ba7625/src/util/XernerxUtil.ts#L8">src/util/XernerxUtil.ts:8</a></li>
+									<li>Defined in <a href="https://github.com/xernerx/xernerx/blob/8660bba054a35e201be7cc222a7e00f77ab3499b/src/util/XernerxUtil.ts#L8">src/util/XernerxUtil.ts:8</a></li>
 								</ul>
 							</aside>
+						</section>
+					</section>
+				</details>
+				<details class="tsd-panel-group tsd-member-group tsd-accordion" open>
+					<summary class="tsd-accordion-summary" data-key="section-Methods">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg>
+						<h2>Methods</h2>
+					</summary>
+					<section>
+						<section class="tsd-panel tsd-member">
+							<h3 class="tsd-anchor-link" id="webhook">
+								<span>webhook</span
+								><a href="#webhook" aria-label="Permalink" class="tsd-anchor-icon"
+									><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg
+								></a>
+							</h3>
+							<ul class="tsd-signatures">
+								<li class="">
+									<div class="tsd-signature tsd-anchor-link" id="webhook-1">
+										<span class="tsd-kind-call-signature">webhook</span><span class="tsd-signature-symbol">(</span><br />    <span class="tsd-kind-parameter">options</span
+										><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span> <span class="tsd-signature-symbol">|</span>
+										<span class="tsd-signature-type">MessagePayload</span> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">WebhookMessageCreateOptions</span
+										><span class="tsd-signature-symbol">,</span><br /><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span>
+										<span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span>
+										<span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">Message</span><span class="tsd-signature-symbol">&lt;</span
+										><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span
+										><a href="#webhook-1" aria-label="Permalink" class="tsd-anchor-icon"
+											><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg
+										></a>
+									</div>
+									<div class="tsd-description">
+										<div class="tsd-parameters">
+											<h4 class="tsd-parameters-title">Parameters</h4>
+											<ul class="tsd-parameter-list">
+												<li>
+													<span
+														><span class="tsd-kind-parameter">options</span>: <span class="tsd-signature-type">string</span> <span class="tsd-signature-symbol">|</span>
+														<span class="tsd-signature-type">MessagePayload</span> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">WebhookMessageCreateOptions</span></span
+													>
+												</li>
+											</ul>
+										</div>
+										<h4 class="tsd-returns-title">
+											Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span>
+											<span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">Message</span><span class="tsd-signature-symbol">&lt;</span
+											><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span>
+										</h4>
+										<aside class="tsd-sources">
+											<ul>
+												<li>Defined in <a href="https://github.com/xernerx/xernerx/blob/8660bba054a35e201be7cc222a7e00f77ab3499b/src/util/XernerxUtil.ts#L24">src/util/XernerxUtil.ts:24</a></li>
+											</ul>
+										</aside>
+									</div>
+								</li>
+							</ul>
 						</section>
 					</section>
 				</details>
@@ -297,8 +393,20 @@
 								<div>
 									<a href="#client"
 										><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>client</span></a
+									><a href="#interaction"
+										><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>interaction</span></a
 									><a href="#parsed"
 										><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>parsed</span></a
+									>
+								</div>
+							</details>
+							<details open class="tsd-accordion tsd-page-navigation-section">
+								<summary class="tsd-accordion-summary" data-key="section-Methods">
+									<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg>Methods
+								</summary>
+								<div>
+									<a href="#webhook"
+										><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>webhook</span></a
 									>
 								</div>
 							</details>
@@ -307,7 +415,7 @@
 				</div>
 				<div class="site-menu">
 					<nav class="tsd-navigation">
-						<a href="../modules.html">XERNERX - v0.1.120-beta.111111128</a>
+						<a href="../modules.html">XERNERX - v0.1.120-beta.111111129</a>
 						<ul class="tsd-small-nested-navigation" id="tsd-nav-container">
 							<li>Loading...</li>
 						</ul>

@@ -4,7 +4,6 @@ import { Message } from 'discord.js';
 import { XernerxEventBuilder } from '../build/XernerxEventBuilder.js';
 import { XernerxUser } from '../model/XernerxUser.js';
 import { XernerxMessageUtil } from '../util/XernerxMessageUtil.js';
-import { XernerxError } from '../tools/XernerxError.js';
 
 export class XernerxMessageCreateEvent extends XernerxEventBuilder {
 	constructor() {
@@ -31,6 +30,8 @@ export class XernerxMessageCreateEvent extends XernerxEventBuilder {
 
 		const command = this.client.commands.message.get(message.util.parsed.command);
 
+		if (!command) return;
+
 		if (
 			this.client.handler.message.mention &&
 			!message.util.parsed.mention &&
@@ -46,9 +47,13 @@ export class XernerxMessageCreateEvent extends XernerxEventBuilder {
 		// inhibitors
 
 		try {
+			await message.client.emit('commandStart', message, {}, command);
+
 			await command?.exec(message, message.util.args);
+
+			await message.client.emit('commandFinish', message, {}, command);
 		} catch (error) {
-			new XernerxError((error as Error).message);
+			await message.client.emit('commandError', message, {}, command, error as Error);
 		}
 	}
 }

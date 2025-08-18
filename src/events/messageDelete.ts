@@ -29,8 +29,12 @@ export class XernerxMessageDeleteEvent extends XernerxEventBuilder {
 
 		if (!id) return;
 
-		const msg = await message.channel.messages.fetch(id);
+		try {
+			const msg = await message.channel.messages.fetch(id);
 
-		await msg.delete();
+			await msg.delete();
+		} catch (error) {
+			await this.client.emit('commandDelete', message, error as Error);
+		}
 	}
 }

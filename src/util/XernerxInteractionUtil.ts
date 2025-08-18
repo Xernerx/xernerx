@@ -22,7 +22,7 @@ export class XernerxInteractionUtil extends XernerxBaseUtil {
 	declare public args: string[];
 
 	constructor(client: XernerxClient & Client<true>, interaction: Interaction) {
-		super(client);
+		super(client, interaction);
 
 		this.interaction = interaction as RepliableInteraction;
 

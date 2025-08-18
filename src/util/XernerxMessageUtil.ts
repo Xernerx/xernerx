@@ -10,7 +10,7 @@ export class XernerxMessageUtil extends XernerxBaseUtil {
 	declare public args: string[];
 
 	constructor(client: XernerxClient & Client<true>, message: Message) {
-		super(client);
+		super(client, message);
 
 		this.message = message;
 

@@ -1,11 +1,14 @@
 /** @format */
 
+import { ClientEvents } from 'discord.js';
+import sharpyy from 'sharpyy';
 import { XernerxEventBuilderOptions } from '../interfaces/XernerxEventBuilderOptions.js';
 import { XernerxBaseBuilder } from './XernerxBaseBuilder.js';
+import { XernerxWarn } from '../tools/XernerxWarn.js';
 
 export class XernerxEventBuilder extends XernerxBaseBuilder {
 	declare public readonly filetype: 'XernerxEvent';
-	declare public readonly name: string;
+	declare public readonly name: ClientEvents | keyof ClientEvents | (string & {});
 	declare public readonly emitter: string;
 	declare public readonly once: boolean;
 
@@ -21,5 +24,7 @@ export class XernerxEventBuilder extends XernerxBaseBuilder {
 		this.once = options.once ?? false;
 	}
 
-	public async run(...args: any[]): Promise<void> {}
+	public async run(...args: any[]): Promise<void> {
+		new XernerxWarn(`Event ${sharpyy(`${this.id}`, 'txYellow')} does not have a run method, and will therefore not work.`);
+	}
 }

@@ -5,7 +5,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta http-equiv="x-ua-compatible" content="IE=edge" />
-		<title>XernerxEventBuilderOptions | XERNERX - v0.1.120-beta.111111128</title>
+		<title>XernerxEventBuilderOptions | XERNERX - v0.1.120-beta.111111129</title>
 		<meta name="description" content="Documentation for XERNERX" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="../assets/style.css" />
@@ -25,7 +25,7 @@
 		</script>
 		<header class="tsd-page-toolbar">
 			<div class="tsd-toolbar-contents container">
-				<a href="../index.html" class="title">XERNERX - v0.1.120-beta.111111128</a>
+				<a href="../index.html" class="title">XERNERX - v0.1.120-beta.111111129</a>
 				<div id="tsd-toolbar-links"></div>
 				<button id="tsd-search-trigger" class="tsd-widget" aria-label="Search">
 					<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-search"></use></svg>
@@ -58,17 +58,6 @@
 					</ul>
 					<h1>Interface XernerxEventBuilderOptions</h1>
 				</div>
-				<section class="tsd-panel tsd-comment">
-					<div class="tsd-comment tsd-typography">
-						<div class="tsd-tag-format">
-							<h4 class="tsd-anchor-link" id="format">
-								Format<a href="#format" aria-label="Permalink" class="tsd-anchor-icon"
-									><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg
-								></a>
-							</h4>
-						</div>
-					</div>
-				</section>
 				<div class="tsd-signature">
 					<span class="tsd-signature-keyword">interface</span> <span class="tsd-kind-interface">XernerxEventBuilderOptions</span> <span class="tsd-signature-symbol">{</span><br />    <a
 						class="tsd-kind-property"
@@ -76,16 +65,19 @@
 						>emitter</a
 					><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">;</span><br />    <a class="tsd-kind-property" href="#name"
 						>name</a
-					><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">;</span><br />    <a class="tsd-kind-property" href="#once"
-						>once</a
-					><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">;</span><br /><span class="tsd-signature-symbol">}</span>
+					><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ClientEvents</span> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">string</span>
+					<span class="tsd-signature-symbol">&amp;</span> <span class="tsd-signature-symbol">{}</span> <span class="tsd-signature-symbol">|</span> (keyof ClientEvents)<span
+						class="tsd-signature-symbol"
+						>;</span
+					><br />    <a class="tsd-kind-property" href="#once">once</a><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span
+					><span class="tsd-signature-symbol">;</span><br /><span class="tsd-signature-symbol">}</span>
 				</div>
 				<aside class="tsd-sources">
 					<ul>
 						<li>
 							Defined in
-							<a href="https://github.com/xernerx/xernerx/blob/1bf56b09ab37b89cc1abff0a8f86775581ba7625/src/interfaces/XernerxEventBuilderOptions.ts#L3"
-								>src/interfaces/XernerxEventBuilderOptions.ts:3</a
+							<a href="https://github.com/xernerx/xernerx/blob/8660bba054a35e201be7cc222a7e00f77ab3499b/src/interfaces/XernerxEventBuilderOptions.ts#L5"
+								>src/interfaces/XernerxEventBuilderOptions.ts:5</a
 							>
 						</li>
 					</ul>
@@ -134,8 +126,8 @@
 								<ul>
 									<li>
 										Defined in
-										<a href="https://github.com/xernerx/xernerx/blob/1bf56b09ab37b89cc1abff0a8f86775581ba7625/src/interfaces/XernerxEventBuilderOptions.ts#L5"
-											>src/interfaces/XernerxEventBuilderOptions.ts:5</a
+										<a href="https://github.com/xernerx/xernerx/blob/8660bba054a35e201be7cc222a7e00f77ab3499b/src/interfaces/XernerxEventBuilderOptions.ts#L7"
+											>src/interfaces/XernerxEventBuilderOptions.ts:7</a
 										>
 									</li>
 								</ul>
@@ -148,13 +140,17 @@
 									><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg
 								></a>
 							</h3>
-							<div class="tsd-signature"><span class="tsd-kind-property">name</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+							<div class="tsd-signature">
+								<span class="tsd-kind-property">name</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ClientEvents</span> <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">string</span> <span class="tsd-signature-symbol">&amp;</span> <span class="tsd-signature-symbol">{}</span>
+								<span class="tsd-signature-symbol">|</span> (keyof ClientEvents)
+							</div>
 							<aside class="tsd-sources">
 								<ul>
 									<li>
 										Defined in
-										<a href="https://github.com/xernerx/xernerx/blob/1bf56b09ab37b89cc1abff0a8f86775581ba7625/src/interfaces/XernerxEventBuilderOptions.ts#L4"
-											>src/interfaces/XernerxEventBuilderOptions.ts:4</a
+										<a href="https://github.com/xernerx/xernerx/blob/8660bba054a35e201be7cc222a7e00f77ab3499b/src/interfaces/XernerxEventBuilderOptions.ts#L6"
+											>src/interfaces/XernerxEventBuilderOptions.ts:6</a
 										>
 									</li>
 								</ul>
@@ -172,8 +168,8 @@
 								<ul>
 									<li>
 										Defined in
-										<a href="https://github.com/xernerx/xernerx/blob/1bf56b09ab37b89cc1abff0a8f86775581ba7625/src/interfaces/XernerxEventBuilderOptions.ts#L6"
-											>src/interfaces/XernerxEventBuilderOptions.ts:6</a
+										<a href="https://github.com/xernerx/xernerx/blob/8660bba054a35e201be7cc222a7e00f77ab3499b/src/interfaces/XernerxEventBuilderOptions.ts#L8"
+											>src/interfaces/XernerxEventBuilderOptions.ts:8</a
 										>
 									</li>
 								</ul>
@@ -272,7 +268,7 @@
 				</div>
 				<div class="site-menu">
 					<nav class="tsd-navigation">
-						<a href="../modules.html">XERNERX - v0.1.120-beta.111111128</a>
+						<a href="../modules.html">XERNERX - v0.1.120-beta.111111129</a>
 						<ul class="tsd-small-nested-navigation" id="tsd-nav-container">
 							<li>Loading...</li>
 						</ul>
