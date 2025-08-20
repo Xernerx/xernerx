@@ -1,6 +1,6 @@
 /** @format */
 
-import { ChatInputCommandInteraction, Interaction } from 'discord.js';
+import { AutocompleteInteraction, ChatInputCommandInteraction, Interaction } from 'discord.js';
 import { XernerxEventBuilder } from '../build/XernerxEventBuilder.js';
 import { XernerxUser } from '../model/XernerxUser.js';
 import { XernerxClient } from '../client/XernerxClient.js';
@@ -33,19 +33,26 @@ export class XernerxInteractionCreateEvent extends XernerxEventBuilder {
 
 		// inhibitors
 
-		// autocomplete
+		new Promise(async (resolve) => {
+			if (interaction.isAutocomplete()) {
+				const focused = (interaction as AutocompleteInteraction).options.getFocused(true);
+				const options = (interaction as AutocompleteInteraction).options;
 
-		const args = new XernerxInteractionArguments(interaction as ChatInputCommandInteraction, command);
-		const options = { options: args.options(), subcommand: args.subcommand(), group: args.subcommand() };
+				await command.autocomplete(interaction, focused, options);
+			} else resolve(true);
+		}).then(async () => {
+			const args = new XernerxInteractionArguments(interaction as ChatInputCommandInteraction, command);
+			const options = { options: args.options(), subcommand: args.subcommand(), group: args.subcommand() };
 
-		try {
-			await interaction.client.emit('commandStart', interaction, options, command);
+			try {
+				await interaction.client.emit('commandStart', interaction, options, command);
 
-			await command.exec(interaction, options, command);
+				await command.exec(interaction, options, command);
 
-			await interaction.client.emit('commandFinish', interaction, options, command);
-		} catch (error) {
-			await interaction.client.emit('commandError', interaction, options, command, error as Error);
-		}
+				await interaction.client.emit('commandFinish', interaction, options, command);
+			} catch (error) {
+				await interaction.client.emit('commandError', interaction, options, command, error as Error);
+			}
+		});
 	}
 }

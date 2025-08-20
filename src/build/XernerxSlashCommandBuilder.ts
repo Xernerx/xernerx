@@ -80,6 +80,8 @@ export class XernerxSlashCommandBuilder extends XernerxBaseBuilder {
 		this.filetype = 'XernerxSlashCommand';
 	}
 
+	public async autocomplete(...args: any[]) {}
+
 	public async exec(...args: any[]): Promise<void> {
 		new XernerxWarn(`${this.id} has no exec function, command will not respond.`);
 	}
