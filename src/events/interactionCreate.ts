@@ -16,14 +16,12 @@ export class XernerxInteractionCreateEvent extends XernerxEventBuilder {
 		});
 	}
 
-	override async run(interaction: Interaction) {
+	override async run(interaction: ChatInputCommandInteraction) {
 		this.client = interaction.client as XernerxClient;
 
 		interaction.user = new XernerxUser(interaction.client, interaction.user);
 
 		interaction.util = new XernerxInteractionUtil(this.client as Interaction['client'], interaction);
-
-		if (!interaction.isCommand()) return;
 
 		const command = this.client.commands.slash.get(interaction.commandName);
 
