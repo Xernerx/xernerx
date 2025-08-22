@@ -14,7 +14,7 @@ export class XernerxInteractionArguments {
 	}
 
 	options() {
-		const options: { [index: string]: any } = {};
+		const options: Record<string, any> = {};
 
 		if (this.command.groups) {
 			const group = this.command.groups.find((group) => group.name === this.group());
@@ -25,7 +25,7 @@ export class XernerxInteractionArguments {
 
 			if (!subcommand) return;
 
-			for (const option of subcommand.options) {
+			for (const option of subcommand.options || []) {
 				options[option.name] = this.interaction.options.get(option.name);
 			}
 		}
@@ -35,7 +35,7 @@ export class XernerxInteractionArguments {
 
 			if (!subcommand) return;
 
-			for (const option of subcommand.options) {
+			for (const option of subcommand?.options || []) {
 				options[option.name] = this.interaction.options.get(option.name);
 			}
 		}

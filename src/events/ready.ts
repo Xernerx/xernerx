@@ -35,8 +35,8 @@ export class XernerxReadyEvent extends XernerxEventBuilder {
 				this.commands.global = [];
 				this.commands.local = commands;
 			} else {
-				this.commands.global = commands.filter((command) => command.global);
-				this.commands.local = commands.filter((command) => !command.global);
+				this.commands.global = commands.filter((command) => command.deploy?.global);
+				this.commands.local = commands.filter((command) => !command.deploy?.global);
 			}
 
 			this.put(client);
@@ -60,7 +60,7 @@ export class XernerxReadyEvent extends XernerxEventBuilder {
 			const guilds: { [index: string]: Array<XernerxSlashCommandBuilder> } = {};
 
 			for (const command of this.commands.local) {
-				command.guildId.map((id) => (guilds[id] ? guilds[id].push(command) : (guilds[id] = [command])));
+				(command.deploy?.guilds as Array<string>)?.map((id) => (guilds[id] ? guilds[id].push(command) : (guilds[id] = [command])));
 			}
 
 			if (!client.settings.guildId?.length && !Object.keys(guilds).length) return new XernerxError('Cannot locally deploy slash commands without a guild ID');

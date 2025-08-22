@@ -32,7 +32,7 @@ export class XernerxMessageCommandBuilder extends XernerxBaseBuilder {
 		this.filetype = 'XernerxMessageCommand';
 	}
 
-	public async exec(...args: any[]): Promise<void> {
+	public async exec(...args: any[]): Promise<any> {
 		new XernerxWarn(`${this.id} has no exec function, command will not respond.`);
 	}
 }

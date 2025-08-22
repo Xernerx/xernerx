@@ -5,7 +5,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta http-equiv="x-ua-compatible" content="IE=edge" />
-		<title>XernerxInfo | XERNERX - v0.1.120-beta.111111132</title>
+		<title>XernerxSlashCommand | XERNERX - v0.1.120-beta.111111132</title>
 		<meta name="description" content="Documentation for XERNERX" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="../assets/style.css" />
@@ -53,25 +53,38 @@
 			<div class="col-content">
 				<div class="tsd-page-title">
 					<ul class="tsd-breadcrumb" aria-label="Breadcrumb">
-						<li><a href="../modules/tools_XernerxInfo.html">tools/XernerxInfo</a></li>
-						<li><a href="" aria-current="page">XernerxInfo</a></li>
+						<li><a href="../modules/interfaces_XernerxSlashCommand.html">interfaces/XernerxSlashCommand</a></li>
+						<li><a href="" aria-current="page">XernerxSlashCommand</a></li>
 					</ul>
-					<h1>Class XernerxInfo</h1>
+					<h1>Interface XernerxSlashCommand</h1>
 				</div>
-				<section class="tsd-panel tsd-hierarchy" data-refl="1143">
-					<h4>Hierarchy (<a href="../hierarchy.html#tools/XernerxInfo.XernerxInfo">View Summary</a>)</h4>
-					<ul class="tsd-hierarchy">
-						<li class="tsd-hierarchy-item">
-							<a href="tools_XernerxBase.XernerxBase.html" class="tsd-signature-type tsd-kind-class">XernerxBase</a>
-							<ul class="tsd-hierarchy">
-								<li class="tsd-hierarchy-item"><span class="tsd-hierarchy-target">XernerxInfo</span></li>
-							</ul>
-						</li>
-					</ul>
-				</section>
+				<div class="tsd-signature">
+					<span class="tsd-signature-keyword">interface</span> <span class="tsd-kind-interface">XernerxSlashCommand</span> <span class="tsd-signature-symbol">{</span><br />    <a
+						class="tsd-kind-property"
+						href="#command"
+						>command</a
+					><span class="tsd-signature-symbol">:</span>
+					<a href="../classes/build_XernerxSlashCommandBuilder.XernerxSlashCommandBuilder.html" class="tsd-signature-type tsd-kind-class">XernerxSlashCommandBuilder</a
+					><span class="tsd-signature-symbol">;</span><br />    <a class="tsd-kind-property" href="#group">group</a><span class="tsd-signature-symbol">:</span>
+					<span class="tsd-signature-type">null</span> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">;</span><br />    <a
+						class="tsd-kind-property"
+						href="#interaction"
+						>interaction</a
+					><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ChatInputCommandInteraction</span><span class="tsd-signature-symbol">;</span><br />    <a
+						class="tsd-kind-property"
+						href="#options"
+						>options</a
+					><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span
+					><span class="tsd-signature-symbol">,</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">;</span><br />    <a
+						class="tsd-kind-property"
+						href="#subcommand"
+						>subcommand</a
+					><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">string</span
+					><span class="tsd-signature-symbol">;</span><br /><span class="tsd-signature-symbol">}</span>
+				</div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/xernerx/xernerx/blob/ade640b857ca5e7f2beaeb8c51e0e867f75436c7/src/tools/XernerxInfo.ts#L6">src/tools/XernerxInfo.ts:6</a></li>
+						<li>Defined in src/interfaces/XernerxSlashCommand.ts:6</li>
 					</ul>
 				</aside>
 				<section class="tsd-panel-group tsd-index-group">
@@ -83,18 +96,22 @@
 							</summary>
 							<div class="tsd-accordion-details">
 								<section class="tsd-index-section">
-									<h3 class="tsd-index-heading">Constructors</h3>
-									<div class="tsd-index-list">
-										<a href="#constructor" class="tsd-index-link"
-											><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Constructor"><use href="../assets/icons.svg#icon-512"></use></svg><span>constructor</span></a
-										>
-									</div>
-								</section>
-								<section class="tsd-index-section">
 									<h3 class="tsd-index-heading">Properties</h3>
 									<div class="tsd-index-list">
-										<a href="#base" class="tsd-index-link tsd-is-inherited"
-											><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>base</span></a
+										<a href="#command" class="tsd-index-link"
+											><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>command</span></a
+										>
+										<a href="#group" class="tsd-index-link"
+											><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>group</span></a
+										>
+										<a href="#interaction" class="tsd-index-link"
+											><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>interaction</span></a
+										>
+										<a href="#options" class="tsd-index-link"
+											><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>options?</span></a
+										>
+										<a href="#subcommand" class="tsd-index-link"
+											><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>subcommand</span></a
 										>
 									</div>
 								</section>
@@ -103,71 +120,92 @@
 					</section>
 				</section>
 				<details class="tsd-panel-group tsd-member-group tsd-accordion" open>
-					<summary class="tsd-accordion-summary" data-key="section-Constructors">
-						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg>
-						<h2>Constructors</h2>
-					</summary>
-					<section>
-						<section class="tsd-panel tsd-member">
-							<h3 class="tsd-anchor-link" id="constructor">
-								<span>constructor</span
-								><a href="#constructor" aria-label="Permalink" class="tsd-anchor-icon"
-									><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg
-								></a>
-							</h3>
-							<ul class="tsd-signatures">
-								<li class="">
-									<div class="tsd-signature tsd-anchor-link" id="constructorxernerxinfo">
-										<span class="tsd-signature-keyword">new</span> <span class="tsd-kind-constructor-signature">XernerxInfo</span><span class="tsd-signature-symbol">(</span
-										><span class="tsd-kind-parameter">message</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span
-										><span class="tsd-signature-symbol">:</span> <a href="" class="tsd-signature-type tsd-kind-class">XernerxInfo</a
-										><a href="#constructorxernerxinfo" aria-label="Permalink" class="tsd-anchor-icon"
-											><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg
-										></a>
-									</div>
-									<div class="tsd-description">
-										<div class="tsd-parameters">
-											<h4 class="tsd-parameters-title">Parameters</h4>
-											<ul class="tsd-parameter-list">
-												<li>
-													<span><span class="tsd-kind-parameter">message</span>: <span class="tsd-signature-type">string</span></span>
-												</li>
-											</ul>
-										</div>
-										<h4 class="tsd-returns-title">Returns <a href="" class="tsd-signature-type tsd-kind-class">XernerxInfo</a></h4>
-										<aside class="tsd-sources">
-											<p>Overrides <a href="tools_XernerxBase.XernerxBase.html">XernerxBase</a>.<a href="tools_XernerxBase.XernerxBase.html#constructor">constructor</a></p>
-											<ul>
-												<li>Defined in <a href="https://github.com/xernerx/xernerx/blob/ade640b857ca5e7f2beaeb8c51e0e867f75436c7/src/tools/XernerxInfo.ts#L7">src/tools/XernerxInfo.ts:7</a></li>
-											</ul>
-										</aside>
-									</div>
-								</li>
-							</ul>
-						</section>
-					</section>
-				</details>
-				<details class="tsd-panel-group tsd-member-group tsd-accordion" open>
 					<summary class="tsd-accordion-summary" data-key="section-Properties">
 						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg>
 						<h2>Properties</h2>
 					</summary>
 					<section>
-						<section class="tsd-panel tsd-member tsd-is-inherited">
-							<h3 class="tsd-anchor-link" id="base">
-								<code class="tsd-tag">Readonly</code><span>base</span
-								><a href="#base" aria-label="Permalink" class="tsd-anchor-icon"
+						<section class="tsd-panel tsd-member">
+							<h3 class="tsd-anchor-link" id="command">
+								<span>command</span
+								><a href="#command" aria-label="Permalink" class="tsd-anchor-icon"
 									><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg
 								></a>
 							</h3>
 							<div class="tsd-signature">
-								<span class="tsd-kind-property">base</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">()</span> <span class="tsd-signature-symbol">=&gt;</span>
+								<span class="tsd-kind-property">command</span><span class="tsd-signature-symbol">:</span>
+								<a href="../classes/build_XernerxSlashCommandBuilder.XernerxSlashCommandBuilder.html" class="tsd-signature-type tsd-kind-class">XernerxSlashCommandBuilder</a>
+							</div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in src/interfaces/XernerxSlashCommand.ts:11</li>
+								</ul>
+							</aside>
+						</section>
+						<section class="tsd-panel tsd-member">
+							<h3 class="tsd-anchor-link" id="group">
+								<span>group</span
+								><a href="#group" aria-label="Permalink" class="tsd-anchor-icon"
+									><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg
+								></a>
+							</h3>
+							<div class="tsd-signature">
+								<span class="tsd-kind-property">group</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span> <span class="tsd-signature-symbol">|</span>
 								<span class="tsd-signature-type">string</span>
 							</div>
 							<aside class="tsd-sources">
-								<p>Inherited from <a href="tools_XernerxBase.XernerxBase.html">XernerxBase</a>.<a href="tools_XernerxBase.XernerxBase.html#base">base</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/xernerx/xernerx/blob/ade640b857ca5e7f2beaeb8c51e0e867f75436c7/src/tools/XernerxBase.ts#L6">src/tools/XernerxBase.ts:6</a></li>
+									<li>Defined in src/interfaces/XernerxSlashCommand.ts:10</li>
+								</ul>
+							</aside>
+						</section>
+						<section class="tsd-panel tsd-member">
+							<h3 class="tsd-anchor-link" id="interaction">
+								<span>interaction</span
+								><a href="#interaction" aria-label="Permalink" class="tsd-anchor-icon"
+									><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg
+								></a>
+							</h3>
+							<div class="tsd-signature">
+								<span class="tsd-kind-property">interaction</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ChatInputCommandInteraction</span>
+							</div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in src/interfaces/XernerxSlashCommand.ts:7</li>
+								</ul>
+							</aside>
+						</section>
+						<section class="tsd-panel tsd-member">
+							<h3 class="tsd-anchor-link" id="options">
+								<code class="tsd-tag">Optional</code><span>options</span
+								><a href="#options" aria-label="Permalink" class="tsd-anchor-icon"
+									><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg
+								></a>
+							</h3>
+							<div class="tsd-signature">
+								<span class="tsd-kind-property">options</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span
+								><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">,</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span>
+							</div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in src/interfaces/XernerxSlashCommand.ts:8</li>
+								</ul>
+							</aside>
+						</section>
+						<section class="tsd-panel tsd-member">
+							<h3 class="tsd-anchor-link" id="subcommand">
+								<span>subcommand</span
+								><a href="#subcommand" aria-label="Permalink" class="tsd-anchor-icon"
+									><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg
+								></a>
+							</h3>
+							<div class="tsd-signature">
+								<span class="tsd-kind-property">subcommand</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span> <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">string</span>
+							</div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in src/interfaces/XernerxSlashCommand.ts:9</li>
 								</ul>
 							</aside>
 						</section>
@@ -246,22 +284,20 @@
 						</summary>
 						<div class="tsd-accordion-details">
 							<details open class="tsd-accordion tsd-page-navigation-section">
-								<summary class="tsd-accordion-summary" data-key="section-Constructors">
-									<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg>Constructors
-								</summary>
-								<div>
-									<a href="#constructor"
-										><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Constructor"><use href="../assets/icons.svg#icon-512"></use></svg><span>constructor</span></a
-									>
-								</div>
-							</details>
-							<details open class="tsd-accordion tsd-page-navigation-section">
 								<summary class="tsd-accordion-summary" data-key="section-Properties">
 									<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg>Properties
 								</summary>
 								<div>
-									<a href="#base" class="tsd-is-inherited"
-										><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>base</span></a
+									<a href="#command"
+										><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>command</span></a
+									><a href="#group"
+										><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>group</span></a
+									><a href="#interaction"
+										><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>interaction</span></a
+									><a href="#options"
+										><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>options</span></a
+									><a href="#subcommand"
+										><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>subcommand</span></a
 									>
 								</div>
 							</details>

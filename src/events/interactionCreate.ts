@@ -36,16 +36,20 @@ export class XernerxInteractionCreateEvent extends XernerxEventBuilder {
 				const focused = (interaction as AutocompleteInteraction).options.getFocused(true);
 				const options = (interaction as AutocompleteInteraction).options;
 
-				await command.autocomplete(interaction, focused, options);
+				await command.autocomplete({ interaction, focused, options });
 			} else resolve(true);
 		}).then(async () => {
 			const args = new XernerxInteractionArguments(interaction as ChatInputCommandInteraction, command);
 			const options = { options: args.options(), subcommand: args.subcommand(), group: args.subcommand() };
 
 			try {
+				if (command.defer) await interaction.deferReply();
+
 				await interaction.client.emit('commandStart', interaction, options, command);
 
-				await command.exec(interaction, options, command);
+				if (await command.conditions({ interaction, ...options, command })) return;
+
+				await command.exec({ interaction, ...options, command });
 
 				await interaction.client.emit('commandFinish', interaction, options, command);
 			} catch (error) {

@@ -24,7 +24,7 @@ export class XernerxEventBuilder extends XernerxBaseBuilder {
 		this.once = options.once ?? false;
 	}
 
-	public async run(...args: any[]): Promise<void> {
+	public async run(...args: any[]): Promise<any> {
 		new XernerxWarn(`Event ${sharpyy(`${this.id}`, 'txYellow')} does not have a run method, and will therefore not work.`);
 	}
 }

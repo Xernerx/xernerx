@@ -5,7 +5,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta http-equiv="x-ua-compatible" content="IE=edge" />
-		<title>XernerxSlashCommandBuilderOptions | XERNERX - v0.1.120-beta.111111131</title>
+		<title>XernerxSlashCommandBuilderOptions | XERNERX - v0.1.120-beta.111111132</title>
 		<meta name="description" content="Documentation for XERNERX" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="../assets/style.css" />
@@ -25,7 +25,7 @@
 		</script>
 		<header class="tsd-page-toolbar">
 			<div class="tsd-toolbar-contents container">
-				<a href="../index.html" class="title">XERNERX - v0.1.120-beta.111111131</a>
+				<a href="../index.html" class="title">XERNERX - v0.1.120-beta.111111132</a>
 				<div id="tsd-toolbar-links"></div>
 				<button id="tsd-search-trigger" class="tsd-widget" aria-label="Search">
 					<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-search"></use></svg>
@@ -58,42 +58,201 @@
 					</ul>
 					<h1>Interface XernerxSlashCommandBuilderOptions</h1>
 				</div>
-				<section class="tsd-panel tsd-comment">
-					<div class="tsd-comment tsd-typography">
-						<div class="tsd-tag-format">
-							<h4 class="tsd-anchor-link" id="format">
-								Format<a href="#format" aria-label="Permalink" class="tsd-anchor-icon"
-									><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg
-								></a>
-							</h4>
-						</div>
-					</div>
-				</section>
 				<div class="tsd-signature">
 					<span class="tsd-signature-keyword">interface</span> <span class="tsd-kind-interface">XernerxSlashCommandBuilderOptions</span> <span class="tsd-signature-symbol">{</span><br />    <a
 						class="tsd-kind-property"
-						href="#description"
-						>description</a
-					><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">;</span><br />    <a class="tsd-kind-property" href="#global"
-						>global</a
-					><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">;</span><br />    <a class="tsd-kind-property" href="#groups"
+						href="#category"
+						>category</a
+					><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">;</span><br />    <a class="tsd-kind-property" href="#contexts"
+						>contexts</a
+					><span class="tsd-signature-symbol">?:</span> (<span class="tsd-signature-type">&quot;Guild&quot;</span> <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;BotDM&quot;</span> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;PrivateChannel&quot;</span>)<span
+						class="tsd-signature-symbol"
+						>[]</span
+					><span class="tsd-signature-symbol">;</span><br />    <a class="tsd-kind-property" href="#cooldown">cooldown</a><span class="tsd-signature-symbol">?:</span>
+					<span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">;</span><br />    <a class="tsd-kind-property" href="#defer">defer</a
+					><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">;</span><br />    <a class="tsd-kind-property" href="#deploy"
+						>deploy</a
+					><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-symbol">{</span> <span class="tsd-kind-property">global</span><span class="tsd-signature-symbol">?:</span>
+					<span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">;</span> <span class="tsd-kind-property">guilds</span><span class="tsd-signature-symbol">?:</span>
+					<span class="tsd-signature-type">string</span> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span>
+					<span class="tsd-signature-symbol">}</span><span class="tsd-signature-symbol">;</span><br />    <a class="tsd-kind-property" href="#description">description</a
+					><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">;</span><br />    <a class="tsd-kind-property" href="#groups"
 						>groups</a
-					><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">;</span><br />    <a class="tsd-kind-property" href="#guildid"
-						>guildId</a
-					><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">string</span
-					><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">;</span><br />    <a class="tsd-kind-property" href="#name">name</a
-					><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">;</span><br />    <a class="tsd-kind-property" href="#options"
+					><span class="tsd-signature-symbol">?:</span>
+					<a href="interfaces_XernerxSlashCommandBuilderOptions.XernerxSlashCommandBuilderGroup.html" class="tsd-signature-type tsd-kind-interface">XernerxSlashCommandBuilderGroup</a
+					><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">;</span><br />    <a class="tsd-kind-property" href="#ignore">ignore</a
+					><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-symbol">{</span><br />        <span class="tsd-kind-property">channels</span
+					><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">;</span
+					><br />        <span class="tsd-kind-property">guilds</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span
+					><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">;</span><br />        <span class="tsd-kind-property">owner</span
+					><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">;</span><br />        <span class="tsd-kind-property"
+						>types</span
+					><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">ChannelType</span><span class="tsd-signature-symbol">;</span><br />        <span class="tsd-kind-property"
+						>users</span
+					><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">;</span
+					><br />    <span class="tsd-signature-symbol">}</span><span class="tsd-signature-symbol">;</span><br />    <a class="tsd-kind-property" href="#info">info</a
+					><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">;</span><br />    <a
+						class="tsd-kind-property"
+						href="#integration"
+						>integration</a
+					><span class="tsd-signature-symbol">?:</span> (<span class="tsd-signature-type">&quot;GuildInstall&quot;</span> <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;UserInstall&quot;</span>)<span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">;</span><br />    <a
+						class="tsd-kind-property"
+						href="#locales"
+						>locales</a
+					><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Record</span
+					><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Locale</span><span class="tsd-signature-symbol">,</span> <span class="tsd-signature-symbol">{</span>
+					<span class="tsd-kind-property">description</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">;</span>
+					<span class="tsd-kind-property">name</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span> <span class="tsd-signature-symbol">}</span
+					><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">;</span><br />    <a class="tsd-kind-property" href="#name"
+						>name</a
+					><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">;</span><br />    <a class="tsd-kind-property" href="#nsfw"
+						>nsfw</a
+					><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">;</span><br />    <a class="tsd-kind-property" href="#options"
 						>options</a
-					><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">;</span><br />    <a class="tsd-kind-property" href="#subcommands"
-						>subcommands</a
-					><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">;</span><br /><span class="tsd-signature-symbol">}</span>
+					><span class="tsd-signature-symbol">?:</span>
+					<a href="interfaces_XernerxSlashCommandBuilderOptions.XernerxSlashCommandBuilderOption.html" class="tsd-signature-type tsd-kind-interface">XernerxSlashCommandBuilderOption</a
+					><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">;</span><br />    <a class="tsd-kind-property" href="#permissions">permissions</a
+					><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-symbol">{</span><br />        <span class="tsd-kind-property">client</span
+					><span class="tsd-signature-symbol">?:</span><br />            <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">null</span><br />            <span
+						class="tsd-signature-symbol"
+						>|</span
+					>
+					<span class="tsd-signature-type">number</span><br />            <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">bigint</span><br />            <span
+						class="tsd-signature-symbol"
+						>|</span
+					>
+					(<br />                <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;CreateInstantInvite&quot;</span><br />                <span
+						class="tsd-signature-symbol"
+						>|</span
+					>
+					<span class="tsd-signature-type">&quot;KickMembers&quot;</span><br />                <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;BanMembers&quot;</span
+					><br />                <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;Administrator&quot;</span><br />                <span class="tsd-signature-symbol"
+						>|</span
+					>
+					<span class="tsd-signature-type">&quot;ManageChannels&quot;</span><br />                <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;ManageGuild&quot;</span><br />                <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;AddReactions&quot;</span><br />                <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;ViewAuditLog&quot;</span><br />                <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;PrioritySpeaker&quot;</span><br />                <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;Stream&quot;</span
+					><br />                <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;ViewChannel&quot;</span><br />                <span class="tsd-signature-symbol"
+						>|</span
+					>
+					<span class="tsd-signature-type">&quot;SendMessages&quot;</span><br />                <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;SendTTSMessages&quot;</span><br />                <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;ManageMessages&quot;</span><br />                <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;EmbedLinks&quot;</span><br />                <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;AttachFiles&quot;</span
+					><br />                <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;ReadMessageHistory&quot;</span><br />                <span
+						class="tsd-signature-symbol"
+						>|</span
+					>
+					<span class="tsd-signature-type">&quot;MentionEveryone&quot;</span><br />                <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;UseExternalEmojis&quot;</span><br />                <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;ViewGuildInsights&quot;</span><br />                <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;Connect&quot;</span><br />                <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;Speak&quot;</span
+					><br />                <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;MuteMembers&quot;</span><br />                <span class="tsd-signature-symbol"
+						>|</span
+					>
+					<span class="tsd-signature-type">&quot;DeafenMembers&quot;</span><br />                <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;MoveMembers&quot;</span><br />                <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;UseVAD&quot;</span
+					><br />                <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;ChangeNickname&quot;</span><br />                <span class="tsd-signature-symbol"
+						>|</span
+					>
+					<span class="tsd-signature-type">&quot;ManageNicknames&quot;</span><br />                <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;ManageRoles&quot;</span><br />                <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;ManageWebhooks&quot;</span><br />                <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;ManageEmojisAndStickers&quot;</span><br />                <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;ManageGuildExpressions&quot;</span><br />                <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;UseApplicationCommands&quot;</span><br />                <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;RequestToSpeak&quot;</span><br />                <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;ManageEvents&quot;</span><br />                <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;ManageThreads&quot;</span><br />                <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;CreatePublicThreads&quot;</span><br />                <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;CreatePrivateThreads&quot;</span><br />                <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;UseExternalStickers&quot;</span><br />                <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;SendMessagesInThreads&quot;</span><br />                <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;UseEmbeddedActivities&quot;</span><br />                <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;ModerateMembers&quot;</span><br />                <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;ViewCreatorMonetizationAnalytics&quot;</span><br />                <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;UseSoundboard&quot;</span><br />                <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;CreateGuildExpressions&quot;</span><br />                <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;CreateEvents&quot;</span><br />                <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;UseExternalSounds&quot;</span><br />                <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;SendVoiceMessages&quot;</span><br />                <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;SendPolls&quot;</span><br />                <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;UseExternalApps&quot;</span><br />            )<span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">;</span
+					><br />        <span class="tsd-kind-property">user</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">null</span
+					><br />        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">number</span><br />        <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">bigint</span><br />        <span class="tsd-signature-symbol">|</span> (<br />            <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;CreateInstantInvite&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;KickMembers&quot;</span><br />            <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;BanMembers&quot;</span
+					><br />            <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;Administrator&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;ManageChannels&quot;</span><br />            <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;ManageGuild&quot;</span
+					><br />            <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;AddReactions&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;ViewAuditLog&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;PrioritySpeaker&quot;</span><br />            <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;Stream&quot;</span
+					><br />            <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;ViewChannel&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;SendMessages&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;SendTTSMessages&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;ManageMessages&quot;</span><br />            <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;EmbedLinks&quot;</span
+					><br />            <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;AttachFiles&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;ReadMessageHistory&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;MentionEveryone&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;UseExternalEmojis&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;ViewGuildInsights&quot;</span><br />            <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;Connect&quot;</span
+					><br />            <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;Speak&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;MuteMembers&quot;</span><br />            <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;DeafenMembers&quot;</span
+					><br />            <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;MoveMembers&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;UseVAD&quot;</span><br />            <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;ChangeNickname&quot;</span
+					><br />            <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;ManageNicknames&quot;</span><br />            <span class="tsd-signature-symbol"
+						>|</span
+					>
+					<span class="tsd-signature-type">&quot;ManageRoles&quot;</span><br />            <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;ManageWebhooks&quot;</span
+					><br />            <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;ManageEmojisAndStickers&quot;</span><br />            <span class="tsd-signature-symbol"
+						>|</span
+					>
+					<span class="tsd-signature-type">&quot;ManageGuildExpressions&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;UseApplicationCommands&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;RequestToSpeak&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;ManageEvents&quot;</span><br />            <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;ManageThreads&quot;</span
+					><br />            <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;CreatePublicThreads&quot;</span><br />            <span class="tsd-signature-symbol"
+						>|</span
+					>
+					<span class="tsd-signature-type">&quot;CreatePrivateThreads&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;UseExternalStickers&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;SendMessagesInThreads&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;UseEmbeddedActivities&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;ModerateMembers&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;ViewCreatorMonetizationAnalytics&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;UseSoundboard&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;CreateGuildExpressions&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;CreateEvents&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;UseExternalSounds&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;SendVoiceMessages&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+					<span class="tsd-signature-type">&quot;SendPolls&quot;</span><br />            <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;UseExternalApps&quot;</span
+					><br />        )<span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">;</span><br />    <span class="tsd-signature-symbol">}</span
+					><span class="tsd-signature-symbol">;</span><br />    <a class="tsd-kind-property" href="#strict">strict</a><span class="tsd-signature-symbol">?:</span>
+					<span class="tsd-signature-symbol">{</span><br />        <span class="tsd-kind-property">channels</span><span class="tsd-signature-symbol">?:</span>
+					<span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">;</span><br />        <span class="tsd-kind-property"
+						>guilds</span
+					><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">;</span
+					><br />        <span class="tsd-kind-property">owner</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span
+					><span class="tsd-signature-symbol">;</span><br />        <span class="tsd-kind-property">types</span><span class="tsd-signature-symbol">?:</span>
+					<span class="tsd-signature-type">ChannelType</span><span class="tsd-signature-symbol">;</span><br />        <span class="tsd-kind-property">users</span
+					><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">;</span
+					><br />    <span class="tsd-signature-symbol">}</span><span class="tsd-signature-symbol">;</span><br />    <a class="tsd-kind-property" href="#subcommands">subcommands</a
+					><span class="tsd-signature-symbol">?:</span>
+					<a href="interfaces_XernerxSlashCommandBuilderOptions.XernerxSlashCommandBuilderSubcommand.html" class="tsd-signature-type tsd-kind-interface">XernerxSlashCommandBuilderSubcommand</a
+					><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">;</span><br />    <a class="tsd-kind-property" href="#usage">usage</a
+					><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">;</span><br /><span class="tsd-signature-symbol">}</span>
 				</div>
 				<aside class="tsd-sources">
 					<ul>
 						<li>
 							Defined in
-							<a href="https://github.com/xernerx/xernerx/blob/091ab8780839da7b70a2cc01fe5a3316f32e3e08/src/interfaces/XernerxSlashCommandBuilderOptions.ts#L3"
-								>src/interfaces/XernerxSlashCommandBuilderOptions.ts:3</a
+							<a href="https://github.com/xernerx/xernerx/blob/ade640b857ca5e7f2beaeb8c51e0e867f75436c7/src/interfaces/XernerxSlashCommandBuilderOptions.ts#L5"
+								>src/interfaces/XernerxSlashCommandBuilderOptions.ts:5</a
 							>
 						</li>
 					</ul>
@@ -109,26 +268,59 @@
 								<section class="tsd-index-section">
 									<h3 class="tsd-index-heading">Properties</h3>
 									<div class="tsd-index-list">
+										<a href="#category" class="tsd-index-link"
+											><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>category?</span></a
+										>
+										<a href="#contexts" class="tsd-index-link"
+											><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>contexts?</span></a
+										>
+										<a href="#cooldown" class="tsd-index-link"
+											><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>cooldown?</span></a
+										>
+										<a href="#defer" class="tsd-index-link"
+											><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>defer?</span></a
+										>
+										<a href="#deploy" class="tsd-index-link"
+											><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>deploy?</span></a
+										>
 										<a href="#description" class="tsd-index-link"
 											><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>description</span></a
-										>
-										<a href="#global" class="tsd-index-link"
-											><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>global?</span></a
 										>
 										<a href="#groups" class="tsd-index-link"
 											><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>groups?</span></a
 										>
-										<a href="#guildid" class="tsd-index-link"
-											><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>guild<wbr />Id?</span></a
+										<a href="#ignore" class="tsd-index-link"
+											><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>ignore?</span></a
+										>
+										<a href="#info" class="tsd-index-link"
+											><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>info?</span></a
+										>
+										<a href="#integration" class="tsd-index-link"
+											><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>integration?</span></a
+										>
+										<a href="#locales" class="tsd-index-link"
+											><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>locales?</span></a
 										>
 										<a href="#name" class="tsd-index-link"
 											><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>name</span></a
 										>
+										<a href="#nsfw" class="tsd-index-link"
+											><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>nsfw?</span></a
+										>
 										<a href="#options" class="tsd-index-link"
 											><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>options?</span></a
 										>
+										<a href="#permissions" class="tsd-index-link"
+											><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>permissions?</span></a
+										>
+										<a href="#strict" class="tsd-index-link"
+											><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>strict?</span></a
+										>
 										<a href="#subcommands" class="tsd-index-link"
 											><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>subcommands?</span></a
+										>
+										<a href="#usage" class="tsd-index-link"
+											><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>usage?</span></a
 										>
 									</div>
 								</section>
@@ -143,6 +335,112 @@
 					</summary>
 					<section>
 						<section class="tsd-panel tsd-member">
+							<h3 class="tsd-anchor-link" id="category">
+								<code class="tsd-tag">Optional</code><span>category</span
+								><a href="#category" aria-label="Permalink" class="tsd-anchor-icon"
+									><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg
+								></a>
+							</h3>
+							<div class="tsd-signature"><span class="tsd-kind-property">category</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span></div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>
+										Defined in
+										<a href="https://github.com/xernerx/xernerx/blob/ade640b857ca5e7f2beaeb8c51e0e867f75436c7/src/interfaces/XernerxSlashCommandBuilderOptions.ts#L22"
+											>src/interfaces/XernerxSlashCommandBuilderOptions.ts:22</a
+										>
+									</li>
+								</ul>
+							</aside>
+						</section>
+						<section class="tsd-panel tsd-member">
+							<h3 class="tsd-anchor-link" id="contexts">
+								<code class="tsd-tag">Optional</code><span>contexts</span
+								><a href="#contexts" aria-label="Permalink" class="tsd-anchor-icon"
+									><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg
+								></a>
+							</h3>
+							<div class="tsd-signature">
+								<span class="tsd-kind-property">contexts</span><span class="tsd-signature-symbol">?:</span> (<span class="tsd-signature-type">&quot;Guild&quot;</span>
+								<span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;BotDM&quot;</span> <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;PrivateChannel&quot;</span>)<span class="tsd-signature-symbol">[]</span>
+							</div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>
+										Defined in
+										<a href="https://github.com/xernerx/xernerx/blob/ade640b857ca5e7f2beaeb8c51e0e867f75436c7/src/interfaces/XernerxSlashCommandBuilderOptions.ts#L10"
+											>src/interfaces/XernerxSlashCommandBuilderOptions.ts:10</a
+										>
+									</li>
+								</ul>
+							</aside>
+						</section>
+						<section class="tsd-panel tsd-member">
+							<h3 class="tsd-anchor-link" id="cooldown">
+								<code class="tsd-tag">Optional</code><span>cooldown</span
+								><a href="#cooldown" aria-label="Permalink" class="tsd-anchor-icon"
+									><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg
+								></a>
+							</h3>
+							<div class="tsd-signature"><span class="tsd-kind-property">cooldown</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">number</span></div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>
+										Defined in
+										<a href="https://github.com/xernerx/xernerx/blob/ade640b857ca5e7f2beaeb8c51e0e867f75436c7/src/interfaces/XernerxSlashCommandBuilderOptions.ts#L23"
+											>src/interfaces/XernerxSlashCommandBuilderOptions.ts:23</a
+										>
+									</li>
+								</ul>
+							</aside>
+						</section>
+						<section class="tsd-panel tsd-member">
+							<h3 class="tsd-anchor-link" id="defer">
+								<code class="tsd-tag">Optional</code><span>defer</span
+								><a href="#defer" aria-label="Permalink" class="tsd-anchor-icon"
+									><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg
+								></a>
+							</h3>
+							<div class="tsd-signature"><span class="tsd-kind-property">defer</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span></div>
+							<div class="tsd-comment tsd-typography"><p>Xernerx</p></div>
+							<div class="tsd-comment tsd-typography"></div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>
+										Defined in
+										<a href="https://github.com/xernerx/xernerx/blob/ade640b857ca5e7f2beaeb8c51e0e867f75436c7/src/interfaces/XernerxSlashCommandBuilderOptions.ts#L18"
+											>src/interfaces/XernerxSlashCommandBuilderOptions.ts:18</a
+										>
+									</li>
+								</ul>
+							</aside>
+						</section>
+						<section class="tsd-panel tsd-member">
+							<h3 class="tsd-anchor-link" id="deploy">
+								<code class="tsd-tag">Optional</code><span>deploy</span
+								><a href="#deploy" aria-label="Permalink" class="tsd-anchor-icon"
+									><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg
+								></a>
+							</h3>
+							<div class="tsd-signature">
+								<span class="tsd-kind-property">deploy</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-symbol">{</span> <span class="tsd-kind-property">global</span
+								><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">;</span> <span class="tsd-kind-property">guilds</span
+								><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">string</span
+								><span class="tsd-signature-symbol">[]</span> <span class="tsd-signature-symbol">}</span>
+							</div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>
+										Defined in
+										<a href="https://github.com/xernerx/xernerx/blob/ade640b857ca5e7f2beaeb8c51e0e867f75436c7/src/interfaces/XernerxSlashCommandBuilderOptions.ts#L19"
+											>src/interfaces/XernerxSlashCommandBuilderOptions.ts:19</a
+										>
+									</li>
+								</ul>
+							</aside>
+						</section>
+						<section class="tsd-panel tsd-member">
 							<h3 class="tsd-anchor-link" id="description">
 								<span>description</span
 								><a href="#description" aria-label="Permalink" class="tsd-anchor-icon"
@@ -154,27 +452,8 @@
 								<ul>
 									<li>
 										Defined in
-										<a href="https://github.com/xernerx/xernerx/blob/091ab8780839da7b70a2cc01fe5a3316f32e3e08/src/interfaces/XernerxSlashCommandBuilderOptions.ts#L5"
-											>src/interfaces/XernerxSlashCommandBuilderOptions.ts:5</a
-										>
-									</li>
-								</ul>
-							</aside>
-						</section>
-						<section class="tsd-panel tsd-member">
-							<h3 class="tsd-anchor-link" id="global">
-								<code class="tsd-tag">Optional</code><span>global</span
-								><a href="#global" aria-label="Permalink" class="tsd-anchor-icon"
-									><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg
-								></a>
-							</h3>
-							<div class="tsd-signature"><span class="tsd-kind-property">global</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span></div>
-							<aside class="tsd-sources">
-								<ul>
-									<li>
-										Defined in
-										<a href="https://github.com/xernerx/xernerx/blob/091ab8780839da7b70a2cc01fe5a3316f32e3e08/src/interfaces/XernerxSlashCommandBuilderOptions.ts#L6"
-											>src/interfaces/XernerxSlashCommandBuilderOptions.ts:6</a
+										<a href="https://github.com/xernerx/xernerx/blob/ade640b857ca5e7f2beaeb8c51e0e867f75436c7/src/interfaces/XernerxSlashCommandBuilderOptions.ts#L9"
+											>src/interfaces/XernerxSlashCommandBuilderOptions.ts:9</a
 										>
 									</li>
 								</ul>
@@ -187,35 +466,114 @@
 									><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg
 								></a>
 							</h3>
-							<div class="tsd-signature"><span class="tsd-kind-property">groups</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">any</span></div>
+							<div class="tsd-signature">
+								<span class="tsd-kind-property">groups</span><span class="tsd-signature-symbol">?:</span>
+								<a href="interfaces_XernerxSlashCommandBuilderOptions.XernerxSlashCommandBuilderGroup.html" class="tsd-signature-type tsd-kind-interface">XernerxSlashCommandBuilderGroup</a
+								><span class="tsd-signature-symbol">[]</span>
+							</div>
 							<aside class="tsd-sources">
 								<ul>
 									<li>
 										Defined in
-										<a href="https://github.com/xernerx/xernerx/blob/091ab8780839da7b70a2cc01fe5a3316f32e3e08/src/interfaces/XernerxSlashCommandBuilderOptions.ts#L10"
-											>src/interfaces/XernerxSlashCommandBuilderOptions.ts:10</a
+										<a href="https://github.com/xernerx/xernerx/blob/ade640b857ca5e7f2beaeb8c51e0e867f75436c7/src/interfaces/XernerxSlashCommandBuilderOptions.ts#L15"
+											>src/interfaces/XernerxSlashCommandBuilderOptions.ts:15</a
 										>
 									</li>
 								</ul>
 							</aside>
 						</section>
 						<section class="tsd-panel tsd-member">
-							<h3 class="tsd-anchor-link" id="guildid">
-								<code class="tsd-tag">Optional</code><span>guild<wbr />Id</span
-								><a href="#guildid" aria-label="Permalink" class="tsd-anchor-icon"
+							<h3 class="tsd-anchor-link" id="ignore">
+								<code class="tsd-tag">Optional</code><span>ignore</span
+								><a href="#ignore" aria-label="Permalink" class="tsd-anchor-icon"
 									><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg
 								></a>
 							</h3>
 							<div class="tsd-signature">
-								<span class="tsd-kind-property">guildId</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span> <span class="tsd-signature-symbol">|</span>
-								<span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span>
+								<span class="tsd-kind-property">ignore</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-symbol">{</span><br />    <span class="tsd-kind-property"
+									>channels</span
+								><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">;</span
+								><br />    <span class="tsd-kind-property">guilds</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span
+								><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">;</span><br />    <span class="tsd-kind-property">owner</span
+								><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">;</span><br />    <span class="tsd-kind-property"
+									>types</span
+								><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">ChannelType</span><span class="tsd-signature-symbol">;</span><br />    <span class="tsd-kind-property"
+									>users</span
+								><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">;</span
+								><br /><span class="tsd-signature-symbol">}</span>
 							</div>
 							<aside class="tsd-sources">
 								<ul>
 									<li>
 										Defined in
-										<a href="https://github.com/xernerx/xernerx/blob/091ab8780839da7b70a2cc01fe5a3316f32e3e08/src/interfaces/XernerxSlashCommandBuilderOptions.ts#L7"
-											>src/interfaces/XernerxSlashCommandBuilderOptions.ts:7</a
+										<a href="https://github.com/xernerx/xernerx/blob/ade640b857ca5e7f2beaeb8c51e0e867f75436c7/src/interfaces/XernerxSlashCommandBuilderOptions.ts#L35"
+											>src/interfaces/XernerxSlashCommandBuilderOptions.ts:35</a
+										>
+									</li>
+								</ul>
+							</aside>
+						</section>
+						<section class="tsd-panel tsd-member">
+							<h3 class="tsd-anchor-link" id="info">
+								<code class="tsd-tag">Optional</code><span>info</span
+								><a href="#info" aria-label="Permalink" class="tsd-anchor-icon"
+									><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg
+								></a>
+							</h3>
+							<div class="tsd-signature"><span class="tsd-kind-property">info</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span></div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>
+										Defined in
+										<a href="https://github.com/xernerx/xernerx/blob/ade640b857ca5e7f2beaeb8c51e0e867f75436c7/src/interfaces/XernerxSlashCommandBuilderOptions.ts#L20"
+											>src/interfaces/XernerxSlashCommandBuilderOptions.ts:20</a
+										>
+									</li>
+								</ul>
+							</aside>
+						</section>
+						<section class="tsd-panel tsd-member">
+							<h3 class="tsd-anchor-link" id="integration">
+								<code class="tsd-tag">Optional</code><span>integration</span
+								><a href="#integration" aria-label="Permalink" class="tsd-anchor-icon"
+									><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg
+								></a>
+							</h3>
+							<div class="tsd-signature">
+								<span class="tsd-kind-property">integration</span><span class="tsd-signature-symbol">?:</span> (<span class="tsd-signature-type">&quot;GuildInstall&quot;</span>
+								<span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;UserInstall&quot;</span>)<span class="tsd-signature-symbol">[]</span>
+							</div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>
+										Defined in
+										<a href="https://github.com/xernerx/xernerx/blob/ade640b857ca5e7f2beaeb8c51e0e867f75436c7/src/interfaces/XernerxSlashCommandBuilderOptions.ts#L11"
+											>src/interfaces/XernerxSlashCommandBuilderOptions.ts:11</a
+										>
+									</li>
+								</ul>
+							</aside>
+						</section>
+						<section class="tsd-panel tsd-member">
+							<h3 class="tsd-anchor-link" id="locales">
+								<code class="tsd-tag">Optional</code><span>locales</span
+								><a href="#locales" aria-label="Permalink" class="tsd-anchor-icon"
+									><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg
+								></a>
+							</h3>
+							<div class="tsd-signature">
+								<span class="tsd-kind-property">locales</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span
+								><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Locale</span><span class="tsd-signature-symbol">,</span>
+								<span class="tsd-signature-symbol">{</span> <span class="tsd-kind-property">description</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span
+								><span class="tsd-signature-symbol">;</span> <span class="tsd-kind-property">name</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span>
+								<span class="tsd-signature-symbol">}</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span>
+							</div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>
+										Defined in
+										<a href="https://github.com/xernerx/xernerx/blob/ade640b857ca5e7f2beaeb8c51e0e867f75436c7/src/interfaces/XernerxSlashCommandBuilderOptions.ts#L8"
+											>src/interfaces/XernerxSlashCommandBuilderOptions.ts:8</a
 										>
 									</li>
 								</ul>
@@ -229,12 +587,33 @@
 								></a>
 							</h3>
 							<div class="tsd-signature"><span class="tsd-kind-property">name</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+							<div class="tsd-comment tsd-typography"><p>Discord</p></div>
+							<div class="tsd-comment tsd-typography"></div>
 							<aside class="tsd-sources">
 								<ul>
 									<li>
 										Defined in
-										<a href="https://github.com/xernerx/xernerx/blob/091ab8780839da7b70a2cc01fe5a3316f32e3e08/src/interfaces/XernerxSlashCommandBuilderOptions.ts#L4"
-											>src/interfaces/XernerxSlashCommandBuilderOptions.ts:4</a
+										<a href="https://github.com/xernerx/xernerx/blob/ade640b857ca5e7f2beaeb8c51e0e867f75436c7/src/interfaces/XernerxSlashCommandBuilderOptions.ts#L7"
+											>src/interfaces/XernerxSlashCommandBuilderOptions.ts:7</a
+										>
+									</li>
+								</ul>
+							</aside>
+						</section>
+						<section class="tsd-panel tsd-member">
+							<h3 class="tsd-anchor-link" id="nsfw">
+								<code class="tsd-tag">Optional</code><span>nsfw</span
+								><a href="#nsfw" aria-label="Permalink" class="tsd-anchor-icon"
+									><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg
+								></a>
+							</h3>
+							<div class="tsd-signature"><span class="tsd-kind-property">nsfw</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span></div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>
+										Defined in
+										<a href="https://github.com/xernerx/xernerx/blob/ade640b857ca5e7f2beaeb8c51e0e867f75436c7/src/interfaces/XernerxSlashCommandBuilderOptions.ts#L12"
+											>src/interfaces/XernerxSlashCommandBuilderOptions.ts:12</a
 										>
 									</li>
 								</ul>
@@ -247,13 +626,194 @@
 									><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg
 								></a>
 							</h3>
-							<div class="tsd-signature"><span class="tsd-kind-property">options</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">any</span></div>
+							<div class="tsd-signature">
+								<span class="tsd-kind-property">options</span><span class="tsd-signature-symbol">?:</span>
+								<a href="interfaces_XernerxSlashCommandBuilderOptions.XernerxSlashCommandBuilderOption.html" class="tsd-signature-type tsd-kind-interface">XernerxSlashCommandBuilderOption</a
+								><span class="tsd-signature-symbol">[]</span>
+							</div>
 							<aside class="tsd-sources">
 								<ul>
 									<li>
 										Defined in
-										<a href="https://github.com/xernerx/xernerx/blob/091ab8780839da7b70a2cc01fe5a3316f32e3e08/src/interfaces/XernerxSlashCommandBuilderOptions.ts#L8"
-											>src/interfaces/XernerxSlashCommandBuilderOptions.ts:8</a
+										<a href="https://github.com/xernerx/xernerx/blob/ade640b857ca5e7f2beaeb8c51e0e867f75436c7/src/interfaces/XernerxSlashCommandBuilderOptions.ts#L13"
+											>src/interfaces/XernerxSlashCommandBuilderOptions.ts:13</a
+										>
+									</li>
+								</ul>
+							</aside>
+						</section>
+						<section class="tsd-panel tsd-member">
+							<h3 class="tsd-anchor-link" id="permissions">
+								<code class="tsd-tag">Optional</code><span>permissions</span
+								><a href="#permissions" aria-label="Permalink" class="tsd-anchor-icon"
+									><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg
+								></a>
+							</h3>
+							<div class="tsd-signature">
+								<span class="tsd-kind-property">permissions</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-symbol">{</span><br />    <span class="tsd-kind-property"
+									>client</span
+								><span class="tsd-signature-symbol">?:</span><br />        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">null</span><br />        <span
+									class="tsd-signature-symbol"
+									>|</span
+								>
+								<span class="tsd-signature-type">number</span><br />        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">bigint</span><br />        <span
+									class="tsd-signature-symbol"
+									>|</span
+								>
+								(<br />            <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;CreateInstantInvite&quot;</span><br />            <span
+									class="tsd-signature-symbol"
+									>|</span
+								>
+								<span class="tsd-signature-type">&quot;KickMembers&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;BanMembers&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;Administrator&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;ManageChannels&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;ManageGuild&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;AddReactions&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;ViewAuditLog&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;PrioritySpeaker&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;Stream&quot;</span><br />            <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;ViewChannel&quot;</span
+								><br />            <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;SendMessages&quot;</span><br />            <span class="tsd-signature-symbol"
+									>|</span
+								>
+								<span class="tsd-signature-type">&quot;SendTTSMessages&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;ManageMessages&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;EmbedLinks&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;AttachFiles&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;ReadMessageHistory&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;MentionEveryone&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;UseExternalEmojis&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;ViewGuildInsights&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;Connect&quot;</span><br />            <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;Speak&quot;</span
+								><br />            <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;MuteMembers&quot;</span><br />            <span class="tsd-signature-symbol"
+									>|</span
+								>
+								<span class="tsd-signature-type">&quot;DeafenMembers&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;MoveMembers&quot;</span><br />            <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;UseVAD&quot;</span
+								><br />            <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;ChangeNickname&quot;</span><br />            <span class="tsd-signature-symbol"
+									>|</span
+								>
+								<span class="tsd-signature-type">&quot;ManageNicknames&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;ManageRoles&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;ManageWebhooks&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;ManageEmojisAndStickers&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;ManageGuildExpressions&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;UseApplicationCommands&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;RequestToSpeak&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;ManageEvents&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;ManageThreads&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;CreatePublicThreads&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;CreatePrivateThreads&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;UseExternalStickers&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;SendMessagesInThreads&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;UseEmbeddedActivities&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;ModerateMembers&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;ViewCreatorMonetizationAnalytics&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;UseSoundboard&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;CreateGuildExpressions&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;CreateEvents&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;UseExternalSounds&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;SendVoiceMessages&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;SendPolls&quot;</span><br />            <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;UseExternalApps&quot;</span><br />        )<span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">;</span><br />    <span
+									class="tsd-kind-property"
+									>user</span
+								><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">null</span><br />    <span class="tsd-signature-symbol"
+									>|</span
+								>
+								<span class="tsd-signature-type">number</span><br />    <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">bigint</span><br />    <span
+									class="tsd-signature-symbol"
+									>|</span
+								>
+								(<br />        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;CreateInstantInvite&quot;</span><br />        <span class="tsd-signature-symbol"
+									>|</span
+								>
+								<span class="tsd-signature-type">&quot;KickMembers&quot;</span><br />        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;BanMembers&quot;</span
+								><br />        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;Administrator&quot;</span><br />        <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;ManageChannels&quot;</span><br />        <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;ManageGuild&quot;</span><br />        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;AddReactions&quot;</span
+								><br />        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;ViewAuditLog&quot;</span><br />        <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;PrioritySpeaker&quot;</span><br />        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;Stream&quot;</span
+								><br />        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;ViewChannel&quot;</span><br />        <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;SendMessages&quot;</span><br />        <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;SendTTSMessages&quot;</span><br />        <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;ManageMessages&quot;</span><br />        <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;EmbedLinks&quot;</span><br />        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;AttachFiles&quot;</span
+								><br />        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;ReadMessageHistory&quot;</span><br />        <span class="tsd-signature-symbol"
+									>|</span
+								>
+								<span class="tsd-signature-type">&quot;MentionEveryone&quot;</span><br />        <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;UseExternalEmojis&quot;</span><br />        <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;ViewGuildInsights&quot;</span><br />        <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;Connect&quot;</span><br />        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;Speak&quot;</span
+								><br />        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;MuteMembers&quot;</span><br />        <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;DeafenMembers&quot;</span><br />        <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;MoveMembers&quot;</span><br />        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;UseVAD&quot;</span
+								><br />        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;ChangeNickname&quot;</span><br />        <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;ManageNicknames&quot;</span><br />        <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;ManageRoles&quot;</span><br />        <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;ManageWebhooks&quot;</span><br />        <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;ManageEmojisAndStickers&quot;</span><br />        <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;ManageGuildExpressions&quot;</span><br />        <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;UseApplicationCommands&quot;</span><br />        <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;RequestToSpeak&quot;</span><br />        <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;ManageEvents&quot;</span><br />        <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;ManageThreads&quot;</span><br />        <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;CreatePublicThreads&quot;</span><br />        <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;CreatePrivateThreads&quot;</span><br />        <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;UseExternalStickers&quot;</span><br />        <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;SendMessagesInThreads&quot;</span><br />        <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;UseEmbeddedActivities&quot;</span><br />        <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;ModerateMembers&quot;</span><br />        <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;ViewCreatorMonetizationAnalytics&quot;</span><br />        <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;UseSoundboard&quot;</span><br />        <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;CreateGuildExpressions&quot;</span><br />        <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;CreateEvents&quot;</span><br />        <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;UseExternalSounds&quot;</span><br />        <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;SendVoiceMessages&quot;</span><br />        <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;SendPolls&quot;</span><br />        <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">&quot;UseExternalApps&quot;</span><br />    )<span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">;</span><br /><span
+									class="tsd-signature-symbol"
+									>}</span
+								>
+							</div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>
+										Defined in
+										<a href="https://github.com/xernerx/xernerx/blob/ade640b857ca5e7f2beaeb8c51e0e867f75436c7/src/interfaces/XernerxSlashCommandBuilderOptions.ts#L24"
+											>src/interfaces/XernerxSlashCommandBuilderOptions.ts:24</a
+										>
+									</li>
+								</ul>
+							</aside>
+						</section>
+						<section class="tsd-panel tsd-member">
+							<h3 class="tsd-anchor-link" id="strict">
+								<code class="tsd-tag">Optional</code><span>strict</span
+								><a href="#strict" aria-label="Permalink" class="tsd-anchor-icon"
+									><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg
+								></a>
+							</h3>
+							<div class="tsd-signature">
+								<span class="tsd-kind-property">strict</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-symbol">{</span><br />    <span class="tsd-kind-property"
+									>channels</span
+								><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">;</span
+								><br />    <span class="tsd-kind-property">guilds</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span
+								><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">;</span><br />    <span class="tsd-kind-property">owner</span
+								><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">;</span><br />    <span class="tsd-kind-property"
+									>types</span
+								><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">ChannelType</span><span class="tsd-signature-symbol">;</span><br />    <span class="tsd-kind-property"
+									>users</span
+								><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">;</span
+								><br /><span class="tsd-signature-symbol">}</span>
+							</div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>
+										Defined in
+										<a href="https://github.com/xernerx/xernerx/blob/ade640b857ca5e7f2beaeb8c51e0e867f75436c7/src/interfaces/XernerxSlashCommandBuilderOptions.ts#L28"
+											>src/interfaces/XernerxSlashCommandBuilderOptions.ts:28</a
 										>
 									</li>
 								</ul>
@@ -266,13 +826,36 @@
 									><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg
 								></a>
 							</h3>
-							<div class="tsd-signature"><span class="tsd-kind-property">subcommands</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">any</span></div>
+							<div class="tsd-signature">
+								<span class="tsd-kind-property">subcommands</span><span class="tsd-signature-symbol">?:</span>
+								<a href="interfaces_XernerxSlashCommandBuilderOptions.XernerxSlashCommandBuilderSubcommand.html" class="tsd-signature-type tsd-kind-interface">XernerxSlashCommandBuilderSubcommand</a
+								><span class="tsd-signature-symbol">[]</span>
+							</div>
 							<aside class="tsd-sources">
 								<ul>
 									<li>
 										Defined in
-										<a href="https://github.com/xernerx/xernerx/blob/091ab8780839da7b70a2cc01fe5a3316f32e3e08/src/interfaces/XernerxSlashCommandBuilderOptions.ts#L9"
-											>src/interfaces/XernerxSlashCommandBuilderOptions.ts:9</a
+										<a href="https://github.com/xernerx/xernerx/blob/ade640b857ca5e7f2beaeb8c51e0e867f75436c7/src/interfaces/XernerxSlashCommandBuilderOptions.ts#L14"
+											>src/interfaces/XernerxSlashCommandBuilderOptions.ts:14</a
+										>
+									</li>
+								</ul>
+							</aside>
+						</section>
+						<section class="tsd-panel tsd-member">
+							<h3 class="tsd-anchor-link" id="usage">
+								<code class="tsd-tag">Optional</code><span>usage</span
+								><a href="#usage" aria-label="Permalink" class="tsd-anchor-icon"
+									><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg
+								></a>
+							</h3>
+							<div class="tsd-signature"><span class="tsd-kind-property">usage</span><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">string</span></div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>
+										Defined in
+										<a href="https://github.com/xernerx/xernerx/blob/ade640b857ca5e7f2beaeb8c51e0e867f75436c7/src/interfaces/XernerxSlashCommandBuilderOptions.ts#L21"
+											>src/interfaces/XernerxSlashCommandBuilderOptions.ts:21</a
 										>
 									</li>
 								</ul>
@@ -357,20 +940,42 @@
 									<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg>Properties
 								</summary>
 								<div>
-									<a href="#description"
+									<a href="#category"
+										><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>category</span></a
+									><a href="#contexts"
+										><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>contexts</span></a
+									><a href="#cooldown"
+										><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>cooldown</span></a
+									><a href="#defer"
+										><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>defer</span></a
+									><a href="#deploy"
+										><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>deploy</span></a
+									><a href="#description"
 										><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>description</span></a
-									><a href="#global"
-										><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>global</span></a
 									><a href="#groups"
 										><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>groups</span></a
-									><a href="#guildid"
-										><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>guild<wbr />Id</span></a
+									><a href="#ignore"
+										><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>ignore</span></a
+									><a href="#info"
+										><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>info</span></a
+									><a href="#integration"
+										><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>integration</span></a
+									><a href="#locales"
+										><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>locales</span></a
 									><a href="#name"
 										><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>name</span></a
+									><a href="#nsfw"
+										><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>nsfw</span></a
 									><a href="#options"
 										><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>options</span></a
+									><a href="#permissions"
+										><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>permissions</span></a
+									><a href="#strict"
+										><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>strict</span></a
 									><a href="#subcommands"
 										><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>subcommands</span></a
+									><a href="#usage"
+										><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>usage</span></a
 									>
 								</div>
 							</details>
@@ -379,7 +984,7 @@
 				</div>
 				<div class="site-menu">
 					<nav class="tsd-navigation">
-						<a href="../modules.html">XERNERX - v0.1.120-beta.111111131</a>
+						<a href="../modules.html">XERNERX - v0.1.120-beta.111111132</a>
 						<ul class="tsd-small-nested-navigation" id="tsd-nav-container">
 							<li>Loading...</li>
 						</ul>
