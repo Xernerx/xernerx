@@ -1,0 +1,55 @@
+# @format
+
+name: Release to npm and GitHub
+
+on:
+  push:
+    branches:
+      - main
+      - beta
+    tags:
+      - 'v*.*.*' # stable
+      - 'v*-beta.*' # beta pre-releases
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Determine release type
+        id: release
+        run: |
+          if [[ $GITHUB_REF == refs/heads/beta ]]; then
+            echo "RELEASE_TAG=beta" >> $GITHUB_ENV
+            echo "PRERELEASE=true" >> $GITHUB_ENV
+          else
+            echo "RELEASE_TAG=latest" >> $GITHUB_ENV
+            echo "PRERELEASE=false" >> $GITHUB_ENV
+          fi
+
+      - name: Publish to npm
+        run: |
+          if [ "$RELEASE_TAG" == "beta" ]; then
+            npm publish --tag beta
+          else
+            npm publish
+          fi
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Create GitHub Release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ github.ref }}
+          name: Release ${{ github.ref }}
+          body: 'Automated release for version ${{ github.ref }}'
+          prerelease: ${{ env.PRERELEASE }}
