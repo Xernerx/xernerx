@@ -1,8 +1,10 @@
 /** @format */
 
 import { Interaction, Message } from 'discord.js';
+
 import { XernerxClient } from '../client/XernerxClient.js';
-import { XernerxMessageCommandBuilder, XernerxSlashCommandBuilder } from '../main.js';
+import { XernerxMessageCommandBuilder } from '../build/XernerxMessageCommandBuilder.js';
+import { XernerxSlashCommandBuilder } from '../build/XernerxSlashCommandBuilder.js';
 
 export class XernerxBaseValidator {
 	declare public readonly client: XernerxClient;
@@ -17,9 +19,25 @@ export class XernerxBaseValidator {
 
 		this.command = command;
 
-		this.global();
-
 		this.satisified = true;
+	}
+
+	/**
+	 * Checks if the command requires a premium subscription and validates the user's premium status.
+	 * If the user does not have a premium subscription, it emits an error and sets the validation status to false.
+	 *
+	 * @returns A promise that resolves when the premium check is complete.
+	 */
+	public async premium() {
+		if (!this.command.premium) return;
+
+		const premium = await this.interaction.user.premium('');
+
+		if (!premium) {
+			this.emit({ type: 'premiumCommand', message: 'This command requires a premium subscription.', data: [] });
+
+			this.satisified = false;
+		}
 	}
 
 	/**
@@ -50,11 +68,15 @@ export class XernerxBaseValidator {
 	}
 
 	/**
-	 * Validates the current command execution context.
+	 * Validates the command by checking its global availability and premium status.
 	 *
-	 * @returns {boolean} - Returns true if the command execution context is valid and satisfies all conditions; otherwise, false.
+	 * @returns A promise that resolves to a boolean indicating whether all validation checks are satisfied.
 	 */
-	validate() {
+	async validate() {
+		await this.global();
+
+		await this.premium();
+
 		return this.satisified;
 	}
 }

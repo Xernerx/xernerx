@@ -1,7 +1,7 @@
 /** @format */
 
 import { ChatInputCommandInteraction } from 'discord.js';
-import { XernerxSlashCommandBuilder } from '../main.js';
+import { XernerxSlashCommandBuilder } from '../build/XernerxSlashCommandBuilder.js';
 
 export class XernerxInteractionArguments {
 	declare private readonly interaction: ChatInputCommandInteraction;
@@ -14,13 +14,13 @@ export class XernerxInteractionArguments {
 	}
 
 	/**
-	 * Retrieves the options for the current interaction command.
+	 * Retrieves the options from the current interaction based on the command structure.
 	 *
-	 * This method aggregates options from the command's groups, subcommands, and direct options,
-	 * based on the current interaction context.
+	 * This method processes the command's groups, subcommands, and options to extract
+	 * the relevant options from the interaction. It returns a record of option names
+	 * and their corresponding values from the interaction.
 	 *
-	 * @returns {Record<string, any>} An object containing the options for the command,
-	 * where each key is the option name and the value is the option value from the interaction.
+	 * @returns {Record<string, any> | null} A record of option names and values if available, otherwise null.
 	 */
 	options() {
 		const options: Record<string, any> = {};
@@ -28,11 +28,11 @@ export class XernerxInteractionArguments {
 		if (this.command.groups) {
 			const group = this.command.groups.find((group) => group.name === this.group());
 
-			if (!group) return;
+			if (!group) return null;
 
 			const subcommand = group.subcommands.find((subcommand) => subcommand.name === this.subcommand());
 
-			if (!subcommand) return;
+			if (!subcommand) return null;
 
 			for (const option of subcommand.options || []) {
 				options[option.name] = this.interaction.options.get(option.name);
@@ -42,7 +42,7 @@ export class XernerxInteractionArguments {
 		if (this.command.subcommands) {
 			const subcommand = this.command.subcommands.find((subcommand) => subcommand.name === this.subcommand());
 
-			if (!subcommand) return;
+			if (!subcommand) return null;
 
 			for (const option of subcommand?.options || []) {
 				options[option.name] = this.interaction.options.get(option.name);
@@ -55,7 +55,7 @@ export class XernerxInteractionArguments {
 			}
 		}
 
-		return options;
+		return options || null;
 	}
 
 	/**

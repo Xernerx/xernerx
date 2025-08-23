@@ -1,6 +1,7 @@
 /** @format */
 
 import { AutocompleteInteraction, ChatInputCommandInteraction } from 'discord.js';
+
 import { XernerxEventBuilder } from '../build/XernerxEventBuilder.js';
 import { XernerxInteractionArguments } from '../model/XernerxInteractionArguments.js';
 import { XernerxSlashCommandValidator } from '../validators/XernerxSlashCommandValidator.js';
@@ -29,7 +30,7 @@ export class XernerxSlashCommandInteractionEvent extends XernerxEventBuilder {
 				await command.autocomplete({ interaction, focused, options });
 			} else resolve(true);
 		}).then(async () => {
-			const args = new XernerxInteractionArguments(interaction as ChatInputCommandInteraction, command);
+			const args = new XernerxInteractionArguments(interaction, command);
 			const options = { options: args.options(), subcommand: args.subcommand(), group: args.subcommand() };
 
 			try {
@@ -37,7 +38,7 @@ export class XernerxSlashCommandInteractionEvent extends XernerxEventBuilder {
 
 				const validation = new XernerxSlashCommandValidator(interaction, command);
 
-				if (!validation.validate()) return;
+				if (!(await validation.validate())) return;
 
 				if (command.defer) await interaction.deferReply();
 

@@ -3,6 +3,7 @@
 import { Client, ClientOptions, Collection, RESTGetAPISKUsResult } from 'discord.js';
 import sharpyy from 'sharpyy';
 import { ClusterClient, DjsDiscordClient, getInfo } from 'discord-hybrid-sharding';
+import z from 'zod';
 
 import { XernerxClientOptions } from '../interfaces/XernerxClientOptions.js';
 import { XernerxInfo } from '../tools/XernerxInfo.js';
@@ -18,13 +19,17 @@ import { XernerxMessageCommandBuilder } from '../build/XernerxMessageCommandBuil
 import { XernerxMessageCommandHandlerOptions } from '../interfaces/XernerxMessageCommandHandlerOptions.js';
 import { XernerxSlashCommandHandlerOptions } from '../interfaces/XernerxSlashCommandHandlerOptions.js';
 import { XernerxSlashCommandBuilder } from '../build/XernerxSlashCommandBuilder.js';
-import z from 'zod';
 
 export class XernerxClient extends Client {
 	// Config
 	declare public readonly token: string;
 	declare public readonly sharded: boolean;
 	declare public readonly settings: XernerxClientOptions;
+	declare public readonly premium: {
+		owners?: boolean;
+		consume?: boolean;
+		synchronize?: boolean;
+	};
 
 	// Setup
 	declare public readonly monitisation: { skus: RESTGetAPISKUsResult };
@@ -58,6 +63,14 @@ export class XernerxClient extends Client {
 				token: z.string(),
 				global: z.boolean().default(false),
 				guildId: z.string().or(z.array(z.string()).max(5)).default([]),
+				owners: z.string().or(z.array(z.string()).max(5)).default([]),
+				premium: z
+					.object({
+						owners: z.boolean().default(true),
+						consume: z.boolean().default(true),
+						synchronize: z.boolean().default(true),
+					})
+					.optional(),
 			})
 			.parse(options);
 
@@ -65,6 +78,15 @@ export class XernerxClient extends Client {
 		this.token = options.token as string;
 
 		this.settings.guildId = typeof this.settings.guildId == 'string' ? [this.settings.guildId] : this.settings.guildId;
+		this.settings.owners = typeof this.settings.owners == 'string' ? [this.settings.owners] : this.settings.owners;
+
+		this.premium = this.settings.premium || {
+			owners: true,
+			consume: true,
+			synchronize: true,
+		};
+
+		delete this.settings.premium;
 
 		this.monitisation = { skus: [] };
 

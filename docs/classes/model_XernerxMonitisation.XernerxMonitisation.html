@@ -5,7 +5,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta http-equiv="x-ua-compatible" content="IE=edge" />
-		<title>XernerxMonitisation | XERNERX - v0.1.120-beta.18</title>
+		<title>XernerxMonitisation | XERNERX - v0.1.120-beta.19</title>
 		<meta name="description" content="Documentation for XERNERX" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="../assets/style.css" />
@@ -25,7 +25,7 @@
 		</script>
 		<header class="tsd-page-toolbar">
 			<div class="tsd-toolbar-contents container">
-				<a href="../index.html" class="title">XERNERX - v0.1.120-beta.18</a>
+				<a href="../index.html" class="title">XERNERX - v0.1.120-beta.19</a>
 				<div id="tsd-toolbar-links"></div>
 				<button id="tsd-search-trigger" class="tsd-widget" aria-label="Search">
 					<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-search"></use></svg>
@@ -58,7 +58,7 @@
 					</ul>
 					<h1>Class XernerxMonitisation</h1>
 				</div>
-				<section class="tsd-panel tsd-hierarchy" data-refl="1014">
+				<section class="tsd-panel tsd-hierarchy" data-refl="1045">
 					<h4>Hierarchy</h4>
 					<ul class="tsd-hierarchy">
 						<li class="tsd-hierarchy-item">
@@ -71,7 +71,7 @@
 				</section>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/xernerx/xernerx/blob/d9c31b5acf5d0e9bc9b6ea137e3e250d11c09f4a/src/model/XernerxMonitisation.ts#L6">src/model/XernerxMonitisation.ts:6</a></li>
+						<li>Defined in <a href="https://github.com/xernerx/xernerx/blob/7b630a0a5fc2c085714508aa343be8baf900af7f/src/model/XernerxMonitisation.ts#L6">src/model/XernerxMonitisation.ts:6</a></li>
 					</ul>
 				</aside>
 				<section class="tsd-panel-group tsd-index-group">
@@ -171,7 +171,7 @@
 											<ul>
 												<li>
 													Defined in
-													<a href="https://github.com/xernerx/xernerx/blob/d9c31b5acf5d0e9bc9b6ea137e3e250d11c09f4a/src/model/XernerxMonitisation.ts#L9">src/model/XernerxMonitisation.ts:9</a>
+													<a href="https://github.com/xernerx/xernerx/blob/7b630a0a5fc2c085714508aa343be8baf900af7f/src/model/XernerxMonitisation.ts#L9">src/model/XernerxMonitisation.ts:9</a>
 												</li>
 											</ul>
 										</aside>
@@ -197,18 +197,21 @@
 							<ul class="tsd-signatures">
 								<li class="">
 									<div class="tsd-signature tsd-anchor-link" id="consume-1">
-										<span class="tsd-kind-call-signature">consume</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">id</span
-										><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">,</span>
-										<span class="tsd-kind-parameter">options</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">&quot;auth&quot;</span>
-										<span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;signal&quot;</span><span class="tsd-signature-symbol">)</span
-										><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span
-										><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span
+										<span class="tsd-kind-call-signature">consume</span><span class="tsd-signature-symbol">(</span><br />    <span class="tsd-kind-parameter">id</span
+										><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">,</span><br />    <span class="tsd-kind-parameter"
+											>options</span
+										><span class="tsd-signature-symbol">?:</span> <span class="tsd-signature-type">Pick</span><span class="tsd-signature-symbol">&lt;</span
+										><span class="tsd-signature-type">RequestData</span><span class="tsd-signature-symbol">,</span> <span class="tsd-signature-type">&quot;auth&quot;</span>
+										<span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;signal&quot;</span><span class="tsd-signature-symbol">&gt;</span
+										><span class="tsd-signature-symbol">,</span><br /><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span>
+										<span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span
+										><span class="tsd-signature-symbol">&gt;</span
 										><a href="#consume-1" aria-label="Permalink" class="tsd-anchor-icon"
 											><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg
 										></a>
 									</div>
 									<div class="tsd-description">
-										<div class="tsd-comment tsd-typography"><p>Consumes an entitlement based on the provided ID and options.</p></div>
+										<div class="tsd-comment tsd-typography"><p>Consumes an entitlement for the current user.</p></div>
 										<div class="tsd-parameters">
 											<h4 class="tsd-parameters-title">Parameters</h4>
 											<ul class="tsd-parameter-list">
@@ -219,10 +222,12 @@
 												</li>
 												<li>
 													<span
-														><span class="tsd-kind-parameter">options</span>: <span class="tsd-signature-type">&quot;auth&quot;</span> <span class="tsd-signature-symbol">|</span>
-														<span class="tsd-signature-type">&quot;signal&quot;</span></span
+														><code class="tsd-tag">Optional</code><span class="tsd-kind-parameter">options</span>: <span class="tsd-signature-type">Pick</span
+														><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">RequestData</span><span class="tsd-signature-symbol">,</span>
+														<span class="tsd-signature-type">&quot;auth&quot;</span> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;signal&quot;</span
+														><span class="tsd-signature-symbol">&gt;</span></span
 													>
-													<div class="tsd-comment tsd-typography"><p>Specifies the method of consumption, either 'auth' for authentication or 'signal' for signaling.</p></div>
+													<div class="tsd-comment tsd-typography"><p>Optional request options specifying authentication or signaling method.</p></div>
 													<div class="tsd-comment tsd-typography"></div>
 												</li>
 											</ul>
@@ -237,7 +242,7 @@
 											<ul>
 												<li>
 													Defined in
-													<a href="https://github.com/xernerx/xernerx/blob/d9c31b5acf5d0e9bc9b6ea137e3e250d11c09f4a/src/model/XernerxMonitisation.ts#L22">src/model/XernerxMonitisation.ts:22</a>
+													<a href="https://github.com/xernerx/xernerx/blob/7b630a0a5fc2c085714508aa343be8baf900af7f/src/model/XernerxMonitisation.ts#L22">src/model/XernerxMonitisation.ts:22</a>
 												</li>
 											</ul>
 										</aside>
@@ -334,43 +339,53 @@
 								<li class="">
 									<div class="tsd-signature tsd-anchor-link" id="create-1">
 										<span class="tsd-kind-call-signature">create</span><span class="tsd-signature-symbol">(</span><br />    <span class="tsd-kind-parameter">id</span
+										><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">,</span><br />    <span class="tsd-kind-parameter"
+											>user</span
 										><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">,</span><br /><span class="tsd-signature-symbol"
 											>)</span
-										><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span
-										><span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Omit</span
-										><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">APIEntitlement</span><span class="tsd-signature-symbol">,</span>
-										<span class="tsd-signature-type">&quot;ends_at&quot;</span> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;starts_at&quot;</span
-										><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span
+										><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><br />    <span class="tsd-signature-type"
+											>undefined</span
+										><br />    <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span
+										><span class="tsd-signature-type">Omit</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">APIEntitlement</span
+										><span class="tsd-signature-symbol">,</span> <span class="tsd-signature-type">&quot;ends_at&quot;</span> <span class="tsd-signature-symbol">|</span>
+										<span class="tsd-signature-type">&quot;starts_at&quot;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span
+										><span class="tsd-signature-symbol">,</span><br /><span class="tsd-signature-symbol">&gt;</span
 										><a href="#create-1" aria-label="Permalink" class="tsd-anchor-icon"
 											><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg
 										></a>
 									</div>
 									<div class="tsd-description">
-										<div class="tsd-comment tsd-typography"><p>Creates a test entitlement for the current user.</p></div>
+										<div class="tsd-comment tsd-typography"><p>Creates a test entitlement for a specified user and SKU.</p></div>
 										<div class="tsd-parameters">
 											<h4 class="tsd-parameters-title">Parameters</h4>
 											<ul class="tsd-parameter-list">
 												<li>
 													<span><span class="tsd-kind-parameter">id</span>: <span class="tsd-signature-type">string</span></span>
-													<div class="tsd-comment tsd-typography"><p>The SKU identifier for which the test entitlement is to be created.</p></div>
+													<div class="tsd-comment tsd-typography"><p>The unique identifier of the SKU for which the entitlement is to be created.</p></div>
+													<div class="tsd-comment tsd-typography"></div>
+												</li>
+												<li>
+													<span><span class="tsd-kind-parameter">user</span>: <span class="tsd-signature-type">string</span></span>
+													<div class="tsd-comment tsd-typography"><p>The unique identifier of the user who will own the entitlement.</p></div>
 													<div class="tsd-comment tsd-typography"></div>
 												</li>
 											</ul>
 										</div>
 										<h4 class="tsd-returns-title">
-											Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Partial</span
-											><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Omit</span><span class="tsd-signature-symbol">&lt;</span
-											><span class="tsd-signature-type">APIEntitlement</span><span class="tsd-signature-symbol">,</span> <span class="tsd-signature-type">&quot;ends_at&quot;</span>
-											<span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;starts_at&quot;</span><span class="tsd-signature-symbol">&gt;</span
-											><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span>
+											Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">undefined</span>
+											<span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">Partial</span><span class="tsd-signature-symbol">&lt;</span
+											><span class="tsd-signature-type">Omit</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">APIEntitlement</span
+											><span class="tsd-signature-symbol">,</span> <span class="tsd-signature-type">&quot;ends_at&quot;</span> <span class="tsd-signature-symbol">|</span>
+											<span class="tsd-signature-type">&quot;starts_at&quot;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span
+											><span class="tsd-signature-symbol">&gt;</span>
 										</h4>
-										<p>A promise that resolves when the test entitlement is successfully created.</p>
+										<p>A promise that resolves with the created test entitlement, or undefined if the SKU is not found.</p>
 										<div class="tsd-comment tsd-typography"></div>
 										<aside class="tsd-sources">
 											<ul>
 												<li>
 													Defined in
-													<a href="https://github.com/xernerx/xernerx/blob/d9c31b5acf5d0e9bc9b6ea137e3e250d11c09f4a/src/model/XernerxMonitisation.ts#L53">src/model/XernerxMonitisation.ts:53</a>
+													<a href="https://github.com/xernerx/xernerx/blob/7b630a0a5fc2c085714508aa343be8baf900af7f/src/model/XernerxMonitisation.ts#L54">src/model/XernerxMonitisation.ts:54</a>
 												</li>
 											</ul>
 										</aside>
@@ -502,7 +517,7 @@
 											<ul>
 												<li>
 													Defined in
-													<a href="https://github.com/xernerx/xernerx/blob/d9c31b5acf5d0e9bc9b6ea137e3e250d11c09f4a/src/model/XernerxMonitisation.ts#L63">src/model/XernerxMonitisation.ts:63</a>
+													<a href="https://github.com/xernerx/xernerx/blob/7b630a0a5fc2c085714508aa343be8baf900af7f/src/model/XernerxMonitisation.ts#L70">src/model/XernerxMonitisation.ts:70</a>
 												</li>
 											</ul>
 										</aside>
@@ -644,7 +659,7 @@
 											<ul>
 												<li>
 													Defined in
-													<a href="https://github.com/xernerx/xernerx/blob/d9c31b5acf5d0e9bc9b6ea137e3e250d11c09f4a/src/model/XernerxMonitisation.ts#L33">src/model/XernerxMonitisation.ts:33</a>
+													<a href="https://github.com/xernerx/xernerx/blob/7b630a0a5fc2c085714508aa343be8baf900af7f/src/model/XernerxMonitisation.ts#L33">src/model/XernerxMonitisation.ts:33</a>
 												</li>
 											</ul>
 										</aside>
@@ -840,7 +855,7 @@
 											<ul>
 												<li>
 													Defined in
-													<a href="https://github.com/xernerx/xernerx/blob/d9c31b5acf5d0e9bc9b6ea137e3e250d11c09f4a/src/model/XernerxMonitisation.ts#L43">src/model/XernerxMonitisation.ts:43</a>
+													<a href="https://github.com/xernerx/xernerx/blob/7b630a0a5fc2c085714508aa343be8baf900af7f/src/model/XernerxMonitisation.ts#L43">src/model/XernerxMonitisation.ts:43</a>
 												</li>
 											</ul>
 										</aside>
@@ -965,7 +980,7 @@
 				</div>
 				<div class="site-menu">
 					<nav class="tsd-navigation">
-						<a href="../modules.html">XERNERX - v0.1.120-beta.18</a>
+						<a href="../modules.html">XERNERX - v0.1.120-beta.19</a>
 						<ul class="tsd-small-nested-navigation" id="tsd-nav-container">
 							<li>Loading...</li>
 						</ul>

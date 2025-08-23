@@ -1,6 +1,7 @@
 /** @format */
 
 import { Message } from 'discord.js';
+
 import { XernerxEventBuilder } from '../build/XernerxEventBuilder.js';
 import { XernerxUser } from '../model/XernerxUser.js';
 import { XernerxMessageUtil } from '../util/XernerxMessageUtil.js';

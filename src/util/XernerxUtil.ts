@@ -1,6 +1,7 @@
 /** @format */
 
 import { Client, Interaction, Message, MessagePayload, Webhook, WebhookMessageCreateOptions } from 'discord.js';
+
 import { XernerxClient } from '../client/XernerxClient.js';
 
 export class XernerxBaseUtil {

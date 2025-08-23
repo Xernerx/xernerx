@@ -1,9 +1,10 @@
 /** @format */
 
 import ora from 'ora';
-import { XernerxBase } from './XernerxBase.js';
 import boxen from 'boxen';
 import sharpyy from 'sharpyy';
+
+import { XernerxBase } from './XernerxBase.js';
 
 export class XernerxInitial extends XernerxBase {
 	constructor(type: 'Client' | 'ShardClient') {

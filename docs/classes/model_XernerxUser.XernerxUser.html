@@ -5,7 +5,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta http-equiv="x-ua-compatible" content="IE=edge" />
-		<title>XernerxUser | XERNERX - v0.1.120-beta.18</title>
+		<title>XernerxUser | XERNERX - v0.1.120-beta.19</title>
 		<meta name="description" content="Documentation for XERNERX" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="../assets/style.css" />
@@ -25,7 +25,7 @@
 		</script>
 		<header class="tsd-page-toolbar">
 			<div class="tsd-toolbar-contents container">
-				<a href="../index.html" class="title">XERNERX - v0.1.120-beta.18</a>
+				<a href="../index.html" class="title">XERNERX - v0.1.120-beta.19</a>
 				<div id="tsd-toolbar-links"></div>
 				<button id="tsd-search-trigger" class="tsd-widget" aria-label="Search">
 					<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-search"></use></svg>
@@ -58,7 +58,7 @@
 					</ul>
 					<h1>Class XernerxUser</h1>
 				</div>
-				<section class="tsd-panel tsd-hierarchy" data-refl="1061">
+				<section class="tsd-panel tsd-hierarchy" data-refl="1093">
 					<h4>Hierarchy</h4>
 					<ul class="tsd-hierarchy">
 						<li class="tsd-hierarchy-item">
@@ -71,7 +71,7 @@
 				</section>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/xernerx/xernerx/blob/d9c31b5acf5d0e9bc9b6ea137e3e250d11c09f4a/src/model/XernerxUser.ts#L6">src/model/XernerxUser.ts:6</a></li>
+						<li>Defined in <a href="https://github.com/xernerx/xernerx/blob/7b630a0a5fc2c085714508aa343be8baf900af7f/src/model/XernerxUser.ts#L8">src/model/XernerxUser.ts:8</a></li>
 					</ul>
 				</aside>
 				<section class="tsd-panel-group tsd-index-group">
@@ -181,9 +181,6 @@
 										<a href="#bannerurl" class="tsd-index-link tsd-is-inherited tsd-is-external"
 											><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>banner<wbr />URL</span></a
 										>
-										<a href="#consumeentitlement" class="tsd-index-link"
-											><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>consume<wbr />Entitlement</span></a
-										>
 										<a href="#createdm" class="tsd-index-link tsd-is-inherited tsd-is-external"
 											><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>create<wbr />DM</span></a
 										>
@@ -208,8 +205,14 @@
 										<a href="#guildtagbadgeurl" class="tsd-index-link tsd-is-inherited tsd-is-external"
 											><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>guild<wbr />Tag<wbr />Badge<wbr />URL</span></a
 										>
+										<a href="#premium" class="tsd-index-link"
+											><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>premium</span></a
+										>
 										<a href="#send" class="tsd-index-link tsd-is-inherited tsd-is-external"
 											><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>send</span></a
+										>
+										<a href="#synchronize" class="tsd-index-link"
+											><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>synchronize</span></a
 										>
 										<a href="#tojson" class="tsd-index-link tsd-is-inherited tsd-is-external"
 											><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>to<wbr />JSON</span></a
@@ -244,7 +247,8 @@
 									<div class="tsd-signature tsd-anchor-link" id="constructorxernerxuser">
 										<span class="tsd-signature-keyword">new</span> <span class="tsd-kind-constructor-signature">XernerxUser</span><span class="tsd-signature-symbol">(</span
 										><span class="tsd-kind-parameter">client</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Client</span
-										><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol">&gt;</span
+										><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol">&gt;</span>
+										<span class="tsd-signature-symbol">|</span> <a href="client_XernerxClient.XernerxClient.html" class="tsd-signature-type tsd-kind-class">XernerxClient</a
 										><span class="tsd-signature-symbol">,</span> <span class="tsd-kind-parameter">user</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">User</span
 										><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span> <a href="" class="tsd-signature-type tsd-kind-class">XernerxUser</a
 										><a href="#constructorxernerxuser" aria-label="Permalink" class="tsd-anchor-icon"
@@ -258,7 +262,8 @@
 												<li>
 													<span
 														><span class="tsd-kind-parameter">client</span>: <span class="tsd-signature-type">Client</span><span class="tsd-signature-symbol">&lt;</span
-														><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol">&gt;</span></span
+														><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol">&gt;</span> <span class="tsd-signature-symbol">|</span>
+														<a href="client_XernerxClient.XernerxClient.html" class="tsd-signature-type tsd-kind-class">XernerxClient</a></span
 													>
 												</li>
 												<li>
@@ -270,7 +275,7 @@
 										<aside class="tsd-sources">
 											<p>Overrides User.constructor</p>
 											<ul>
-												<li>Defined in <a href="https://github.com/xernerx/xernerx/blob/d9c31b5acf5d0e9bc9b6ea137e3e250d11c09f4a/src/model/XernerxUser.ts#L9">src/model/XernerxUser.ts:9</a></li>
+												<li>Defined in <a href="https://github.com/xernerx/xernerx/blob/7b630a0a5fc2c085714508aa343be8baf900af7f/src/model/XernerxUser.ts#L11">src/model/XernerxUser.ts:11</a></li>
 											</ul>
 										</aside>
 									</div>
@@ -891,33 +896,6 @@
 								</li>
 							</ul>
 						</section>
-						<section class="tsd-panel tsd-member">
-							<h3 class="tsd-anchor-link" id="consumeentitlement">
-								<span>consume<wbr />Entitlement</span
-								><a href="#consumeentitlement" aria-label="Permalink" class="tsd-anchor-icon"
-									><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg
-								></a>
-							</h3>
-							<ul class="tsd-signatures">
-								<li class="">
-									<div class="tsd-signature tsd-anchor-link" id="consumeentitlement-1">
-										<span class="tsd-kind-call-signature">consumeEntitlement</span><span class="tsd-signature-symbol">()</span><span class="tsd-signature-symbol">:</span>
-										<span class="tsd-signature-type">void</span
-										><a href="#consumeentitlement-1" aria-label="Permalink" class="tsd-anchor-icon"
-											><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg
-										></a>
-									</div>
-									<div class="tsd-description">
-										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-										<aside class="tsd-sources">
-											<ul>
-												<li>Defined in <a href="https://github.com/xernerx/xernerx/blob/d9c31b5acf5d0e9bc9b6ea137e3e250d11c09f4a/src/model/XernerxUser.ts#L14">src/model/XernerxUser.ts:14</a></li>
-											</ul>
-										</aside>
-									</div>
-								</li>
-							</ul>
-						</section>
 						<section class="tsd-panel tsd-member tsd-is-inherited tsd-is-external">
 							<h3 class="tsd-anchor-link" id="createdm">
 								<span>create<wbr />DM</span
@@ -1061,7 +1039,7 @@
 										<div class="tsd-comment tsd-typography"></div>
 										<aside class="tsd-sources">
 											<ul>
-												<li>Defined in <a href="https://github.com/xernerx/xernerx/blob/d9c31b5acf5d0e9bc9b6ea137e3e250d11c09f4a/src/model/XernerxUser.ts#L21">src/model/XernerxUser.ts:21</a></li>
+												<li>Defined in <a href="https://github.com/xernerx/xernerx/blob/7b630a0a5fc2c085714508aa343be8baf900af7f/src/model/XernerxUser.ts#L35">src/model/XernerxUser.ts:35</a></li>
 											</ul>
 										</aside>
 									</div>
@@ -1234,6 +1212,51 @@
 								</li>
 							</ul>
 						</section>
+						<section class="tsd-panel tsd-member">
+							<h3 class="tsd-anchor-link" id="premium">
+								<span>premium</span
+								><a href="#premium" aria-label="Permalink" class="tsd-anchor-icon"
+									><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg
+								></a>
+							</h3>
+							<ul class="tsd-signatures">
+								<li class="">
+									<div class="tsd-signature tsd-anchor-link" id="premium-1">
+										<span class="tsd-kind-call-signature">premium</span><span class="tsd-signature-symbol">(</span><span class="tsd-kind-parameter">id</span
+										><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">:</span>
+										<span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span
+										><span class="tsd-signature-symbol">&gt;</span
+										><a href="#premium-1" aria-label="Permalink" class="tsd-anchor-icon"
+											><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg
+										></a>
+									</div>
+									<div class="tsd-description">
+										<div class="tsd-comment tsd-typography"><p>Checks if the user has any entitlements, indicating premium status.</p></div>
+										<div class="tsd-parameters">
+											<h4 class="tsd-parameters-title">Parameters</h4>
+											<ul class="tsd-parameter-list">
+												<li>
+													<span><span class="tsd-kind-parameter">id</span>: <span class="tsd-signature-type">string</span></span>
+													<div class="tsd-comment tsd-typography"><p>The ID of the user to check for premium entitlements.</p></div>
+													<div class="tsd-comment tsd-typography"></div>
+												</li>
+											</ul>
+										</div>
+										<h4 class="tsd-returns-title">
+											Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">boolean</span
+											><span class="tsd-signature-symbol">&gt;</span>
+										</h4>
+										<p>A promise that resolves to a boolean indicating whether the user has any entitlements (true) or not (false).</p>
+										<div class="tsd-comment tsd-typography"></div>
+										<aside class="tsd-sources">
+											<ul>
+												<li>Defined in <a href="https://github.com/xernerx/xernerx/blob/7b630a0a5fc2c085714508aa343be8baf900af7f/src/model/XernerxUser.ts#L23">src/model/XernerxUser.ts:23</a></li>
+											</ul>
+										</aside>
+									</div>
+								</li>
+							</ul>
+						</section>
 						<section class="tsd-panel tsd-member tsd-is-inherited tsd-is-external">
 							<h3 class="tsd-anchor-link" id="send">
 								<span>send</span
@@ -1276,6 +1299,45 @@
 											<p>Inherited from User.send</p>
 											<ul>
 												<li>Defined in node_modules/discord.js/typings/index.d.mts:5224</li>
+											</ul>
+										</aside>
+									</div>
+								</li>
+							</ul>
+						</section>
+						<section class="tsd-panel tsd-member">
+							<h3 class="tsd-anchor-link" id="synchronize">
+								<span>synchronize</span
+								><a href="#synchronize" aria-label="Permalink" class="tsd-anchor-icon"
+									><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg
+								></a>
+							</h3>
+							<ul class="tsd-signatures">
+								<li class="">
+									<div class="tsd-signature tsd-anchor-link" id="synchronize-1">
+										<span class="tsd-kind-call-signature">synchronize</span><span class="tsd-signature-symbol">()</span><span class="tsd-signature-symbol">:</span>
+										<span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span
+										><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span
+										><a href="#synchronize-1" aria-label="Permalink" class="tsd-anchor-icon"
+											><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg
+										></a>
+									</div>
+									<div class="tsd-description">
+										<div class="tsd-comment tsd-typography">
+											<p>
+												Synchronizes the user's entitlements with the current SKU data and performs necessary actions such as consuming, deleting, or creating entitlements based on their type and the
+												client's premium settings.
+											</p>
+										</div>
+										<h4 class="tsd-returns-title">
+											Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span
+											><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span>
+										</h4>
+										<p>A promise that resolves to an array of error messages, if any occurred during the synchronization process.</p>
+										<div class="tsd-comment tsd-typography"></div>
+										<aside class="tsd-sources">
+											<ul>
+												<li>Defined in <a href="https://github.com/xernerx/xernerx/blob/7b630a0a5fc2c085714508aa343be8baf900af7f/src/model/XernerxUser.ts#L49">src/model/XernerxUser.ts:49</a></li>
 											</ul>
 										</aside>
 									</div>
@@ -1546,8 +1608,6 @@
 										><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>avatar<wbr />URL</span></a
 									><a href="#bannerurl" class="tsd-is-inherited tsd-is-external"
 										><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>banner<wbr />URL</span></a
-									><a href="#consumeentitlement"
-										><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>consume<wbr />Entitlement</span></a
 									><a href="#createdm" class="tsd-is-inherited tsd-is-external"
 										><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>create<wbr />DM</span></a
 									><a href="#deletedm" class="tsd-is-inherited tsd-is-external"
@@ -1564,8 +1624,12 @@
 										><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>fetch<wbr />Flags</span></a
 									><a href="#guildtagbadgeurl" class="tsd-is-inherited tsd-is-external"
 										><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>guild<wbr />Tag<wbr />Badge<wbr />URL</span></a
+									><a href="#premium"
+										><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>premium</span></a
 									><a href="#send" class="tsd-is-inherited tsd-is-external"
 										><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>send</span></a
+									><a href="#synchronize"
+										><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>synchronize</span></a
 									><a href="#tojson" class="tsd-is-inherited tsd-is-external"
 										><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Method"><use href="../assets/icons.svg#icon-2048"></use></svg><span>to<wbr />JSON</span></a
 									><a href="#tostring" class="tsd-is-inherited tsd-is-external"
@@ -1580,7 +1644,7 @@
 				</div>
 				<div class="site-menu">
 					<nav class="tsd-navigation">
-						<a href="../modules.html">XERNERX - v0.1.120-beta.18</a>
+						<a href="../modules.html">XERNERX - v0.1.120-beta.19</a>
 						<ul class="tsd-small-nested-navigation" id="tsd-nav-container">
 							<li>Loading...</li>
 						</ul>

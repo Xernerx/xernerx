@@ -15,6 +15,7 @@ export interface XernerxSlashCommandBuilderOptions {
 	groups?: Array<XernerxSlashCommandBuilderGroup>;
 
 	// Xernerx
+	premium?: boolean;
 	defer?: boolean;
 	deploy?: { global?: boolean; guilds?: Array<string> | string };
 	info?: string;

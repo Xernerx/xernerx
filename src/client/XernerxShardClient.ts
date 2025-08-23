@@ -2,7 +2,6 @@
 
 import { Cluster, ClusterManager, ClusterManagerOptions } from 'discord-hybrid-sharding';
 import sharpyy from 'sharpyy';
-
 import fs from 'fs';
 
 import { XernerxInfo } from '../tools/XernerxInfo.js';

@@ -1,10 +1,11 @@
 /** @format */
 
 import 'discord.js';
+import { ChatInputCommandInteraction } from 'discord.js';
+
 import { XernerxClient } from '../client/XernerxClient.ts';
 import { XernerxUser } from '../model/XernerxUser.ts';
 import { XernerxInteractionUtil } from '../util/XernerxInteractionUtil.ts';
-import { ChatInputCommandInteraction } from 'discord.js';
 
 declare module 'discord.js' {
 	interface Interaction {

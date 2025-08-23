@@ -13,14 +13,14 @@ export class XernerxMonitisation extends MonetizationAPI {
 	}
 
 	/**
-	 * Consumes an entitlement based on the provided ID and options.
+	 * Consumes an entitlement for the current user.
 	 *
 	 * @param id - The unique identifier of the entitlement to be consumed.
-	 * @param options - Specifies the method of consumption, either 'auth' for authentication or 'signal' for signaling.
+	 * @param options - Optional request options specifying authentication or signaling method.
 	 * @returns A promise that resolves when the entitlement is successfully consumed.
 	 */
-	consume(id: string, options: 'auth' | 'signal') {
-		return this.consumeEntitlement(id, options);
+	consume(id: string, options?: Pick<RequestData, 'auth' | 'signal'>) {
+		return this.consumeEntitlement(this.client.user.id, id, options);
 	}
 
 	/**
@@ -45,13 +45,20 @@ export class XernerxMonitisation extends MonetizationAPI {
 	}
 
 	/**
-	 * Creates a test entitlement for the current user.
+	 * Creates a test entitlement for a specified user and SKU.
 	 *
-	 * @param id - The SKU identifier for which the test entitlement is to be created.
-	 * @returns A promise that resolves when the test entitlement is successfully created.
+	 * @param id - The unique identifier of the SKU for which the entitlement is to be created.
+	 * @param user - The unique identifier of the user who will own the entitlement.
+	 * @returns A promise that resolves with the created test entitlement, or undefined if the SKU is not found.
 	 */
-	create(id: string) {
-		return this.createTestEntitlement(this.client.user.id, { owner_id: this.client.user.id, owner_type: 1, sku_id: id });
+	async create(id: string, user: string) {
+		const skus = await this.sku();
+
+		const sku = skus.find((s) => s.id === id);
+
+		if (!sku) return;
+
+		return await this.createTestEntitlement(this.client.user.id, { owner_id: user, owner_type: sku.type == 5 ? 2 : 1, sku_id: id });
 	}
 
 	/**

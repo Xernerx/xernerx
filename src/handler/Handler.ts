@@ -6,7 +6,7 @@ import { XernerxClient } from '../client/XernerxClient.js';
 import { XernerxError } from '../tools/XernerxError.js';
 import { XernerxEventBuilder } from '../build/XernerxEventBuilder.js';
 import { XernerxMessageCommandBuilder } from '../build/XernerxMessageCommandBuilder.js';
-import { XernerxSlashCommandBuilder } from '../main.js';
+import { XernerxSlashCommandBuilder } from '../build/XernerxSlashCommandBuilder.js';
 
 export class Handler {
 	declare public readonly client: XernerxClient;

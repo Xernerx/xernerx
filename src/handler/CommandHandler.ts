@@ -17,10 +17,13 @@ import { XernerxSlashCommandHandlerOptions } from '../interfaces/XernerxSlashCom
 import { XernerxEventBuilder } from '../build/XernerxEventBuilder.js';
 import { XernerxClientReadyEvent } from '../events/clientReady.js';
 import { XernerxSlashCommandInteractionEvent } from '../events/slashCommandInteraction.js';
+import { XernerxEntitlementCreateEvent } from '../events/entitlementCreate.js';
 
 export class CommandHandler extends Handler {
 	constructor(client: XernerxClient) {
 		super(client);
+
+		this.loadEvents(XernerxEntitlementCreateEvent, XernerxClientReadyEvent);
 	}
 
 	/**
@@ -110,7 +113,7 @@ export class CommandHandler extends Handler {
 			await this.loadSlashCommand(file);
 		}
 
-		this.loadEvents(XernerxInteractionCreateEvent, XernerxClientReadyEvent, XernerxSlashCommandInteractionEvent);
+		this.loadEvents(XernerxInteractionCreateEvent, XernerxSlashCommandInteractionEvent);
 
 		new XernerxSuccess(`Loaded slash commands: ${this.client.commands.slash.map((command) => sharpyy(command.id, 'txYellow')).join(', ')}`);
 	}

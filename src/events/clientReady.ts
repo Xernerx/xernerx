@@ -1,12 +1,14 @@
 /** @format */
 
+import { Client, GatewayVersion, REST, Routes } from 'discord.js';
+
 import { XernerxEventBuilder } from '../build/XernerxEventBuilder.js';
 import { XernerxClient } from '../client/XernerxClient.js';
 import { XernerxSlashCommandBuilder } from '../build/XernerxSlashCommandBuilder.js';
 import { XernerxError } from '../tools/XernerxError.js';
 import { XernerxSuccess } from '../tools/XernerxSuccess.js';
-import { GatewayVersion, REST, Routes } from 'discord.js';
 import { XernerxInfo } from '../tools/XernerxInfo.js';
+import { XernerxUser } from '../model/XernerxUser.js';
 
 export class XernerxClientReadyEvent extends XernerxEventBuilder {
 	declare private readonly commands: {
@@ -28,6 +30,25 @@ export class XernerxClientReadyEvent extends XernerxEventBuilder {
 	}
 
 	override async run(client: XernerxClient) {
+		// premium for owners
+
+		if (client.settings.owners?.length) {
+			const owners = [];
+
+			if (client.premium?.synchronize) new XernerxInfo(`Synchronizing entitlements for premium owners...`);
+
+			for (const owner of client.settings.owners) {
+				const user = await client.users.fetch(owner);
+
+				new XernerxUser(client as Client<true>, user).synchronize();
+
+				owners.push(user);
+			}
+
+			if (client.premium?.synchronize) new XernerxSuccess(`Successfully synchronized entitlements for ${owners.map((owner) => owner.username).join(',')}`);
+		}
+
+		// interaction commands
 		try {
 			const commands = [...client.commands.slash].map(([, command]) => command);
 

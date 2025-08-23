@@ -1,13 +1,5 @@
 /** @format */
 
-import { XernerxWarn } from '../tools/XernerxWarn.js';
-import {
-	XernerxSlashCommandBuilderGroup,
-	XernerxSlashCommandBuilderOption,
-	XernerxSlashCommandBuilderOptions,
-	XernerxSlashCommandBuilderSubcommand,
-} from '../interfaces/XernerxSlashCommandBuilderOptions.js';
-import { XernerxBaseBuilder } from './XernerxBaseBuilder.js';
 import { z } from 'zod';
 import {
 	ApplicationIntegrationType,
@@ -30,6 +22,15 @@ import {
 	SlashCommandSubcommandGroupBuilder,
 	SlashCommandUserOption,
 } from 'discord.js';
+
+import { XernerxWarn } from '../tools/XernerxWarn.js';
+import {
+	XernerxSlashCommandBuilderGroup,
+	XernerxSlashCommandBuilderOption,
+	XernerxSlashCommandBuilderOptions,
+	XernerxSlashCommandBuilderSubcommand,
+} from '../interfaces/XernerxSlashCommandBuilderOptions.js';
+import { XernerxBaseBuilder } from './XernerxBaseBuilder.js';
 import { XernerxSlashCommand, XernerxSlashCommandAutocomplete } from '../interfaces/XernerxSlashCommand.js';
 
 export class XernerxSlashCommandBuilder extends XernerxBaseBuilder {
@@ -43,6 +44,7 @@ export class XernerxSlashCommandBuilder extends XernerxBaseBuilder {
 	declare public readonly groups: Array<XernerxSlashCommandBuilderGroup>;
 
 	// Xernerx
+	declare public readonly premium?: boolean;
 	declare public readonly defer?: boolean;
 	declare public readonly deploy?: { global?: boolean; guilds?: Array<string> | string };
 	declare public readonly info?: string;
@@ -50,7 +52,6 @@ export class XernerxSlashCommandBuilder extends XernerxBaseBuilder {
 	declare public readonly category?: string;
 	declare public readonly cooldown?: number;
 	declare public readonly permissions: { client: Permissions | number | bigint | null; user: Permissions | number | bigint | null };
-
 	declare public readonly strict?: { owner?: boolean; users?: Array<string>; channels?: Array<string>; guilds?: Array<string>; types?: ChannelType };
 	declare public readonly ignore?: { owner?: boolean; users?: Array<string>; channels?: Array<string>; guilds?: Array<string>; types?: ChannelType };
 
@@ -74,6 +75,7 @@ export class XernerxSlashCommandBuilder extends XernerxBaseBuilder {
 				groups: z.any(),
 
 				// Xernerx
+				premium: z.boolean().default(false),
 				defer: z.boolean().default(false),
 				deploy: z.object({ global: z.boolean().default(true), guilds: z.string().or(z.array(z.string())).default([]) }).optional(),
 				info: z.string().optional(),
@@ -124,6 +126,8 @@ export class XernerxSlashCommandBuilder extends XernerxBaseBuilder {
 		this.category = options.category;
 
 		this.cooldown = options.cooldown;
+
+		this.premium = options.premium || false;
 
 		this.defer = options.defer;
 
@@ -260,6 +264,11 @@ export class XernerxSlashCommandBuilder extends XernerxBaseBuilder {
 		}
 	}
 
+	/**
+	 * Adds subcommand groups to the slash command builder.
+	 *
+	 * @param groups - An array of subcommand groups to be added. Each group contains a name, description, locales, and subcommands.
+	 */
 	private addSubcommandGroups(groups: Array<XernerxSlashCommandBuilderGroup>) {
 		for (const group of groups) {
 			let subcommandGroup = new SlashCommandSubcommandGroupBuilder().setName(group.name).setDescription(group.description);
