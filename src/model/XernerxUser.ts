@@ -13,6 +13,11 @@ export class XernerxUser extends User {
 	}
 	consumeEntitlement() {}
 
+	/**
+	 * Retrieves the entitlements for the user and maps them to their corresponding SKU.
+	 *
+	 * @returns A promise that resolves to an array of objects, each containing an entitlement and its associated SKU.
+	 */
 	async entitlements() {
 		const entitlements = await this.#monitisation.entitlements({ user_id: this.id });
 

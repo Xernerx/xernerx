@@ -92,15 +92,20 @@ export class XernerxClient extends Client {
 		this.modules = { eventHandler: new EventHandler(this), commandHandler: new CommandHandler(this) };
 	}
 
+	/**
+	 * Connects the client to Discord and initializes various client statistics and handlers.
+	 *
+	 * @returns A promise that resolves when the client successfully logs in, or rejects with an error message if the login fails.
+	 */
 	async connect() {
 		new XernerxInfo(`${this.cluster ? `${sharpyy(`Shard ${this.cluster.id}`, 'txCyan')} | ` : ''}Connecting...`);
 
-		this.on('ready', async (client) => {
+		this.on('clientReady', async (client) => {
 			this.monitisation.skus = await new XernerxMonitisation(client).sku();
 
 			/** When the client is sharded */
 			if (this.sharded && this.cluster) {
-				process.on('message', (msg: any) => true);
+				process.on('message', () => true);
 
 				this.stats.guildCount = (await this.cluster.broadcastEval('this.guilds.cache.size')).reduce((a, b) => a + b, 0);
 				this.stats.userCount = (await this.cluster.broadcastEval('this.guilds.cache.map((a) => a.memberCount).reduce((a, b) => a + b, 0)')).reduce((a, b) => a + b, 0);

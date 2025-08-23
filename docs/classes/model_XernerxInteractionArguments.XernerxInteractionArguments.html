@@ -5,7 +5,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta http-equiv="x-ua-compatible" content="IE=edge" />
-		<title>XernerxInteractionArguments | XERNERX - v0.1.120-beta.17</title>
+		<title>XernerxInteractionArguments | XERNERX - v0.1.120-beta.18</title>
 		<meta name="description" content="Documentation for XERNERX" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="../assets/style.css" />
@@ -25,7 +25,7 @@
 		</script>
 		<header class="tsd-page-toolbar">
 			<div class="tsd-toolbar-contents container">
-				<a href="../index.html" class="title">XERNERX - v0.1.120-beta.17</a>
+				<a href="../index.html" class="title">XERNERX - v0.1.120-beta.18</a>
 				<div id="tsd-toolbar-links"></div>
 				<button id="tsd-search-trigger" class="tsd-widget" aria-label="Search">
 					<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-search"></use></svg>
@@ -62,7 +62,7 @@
 					<ul>
 						<li>
 							Defined in
-							<a href="https://github.com/xernerx/xernerx/blob/78edb6143517ae3e109c747e4628feeb60890d4e/src/model/XernerxInteractionArguments.ts#L6">src/model/XernerxInteractionArguments.ts:6</a>
+							<a href="https://github.com/xernerx/xernerx/blob/d9c31b5acf5d0e9bc9b6ea137e3e250d11c09f4a/src/model/XernerxInteractionArguments.ts#L6">src/model/XernerxInteractionArguments.ts:6</a>
 						</li>
 					</ul>
 				</aside>
@@ -146,7 +146,7 @@
 											<ul>
 												<li>
 													Defined in
-													<a href="https://github.com/xernerx/xernerx/blob/78edb6143517ae3e109c747e4628feeb60890d4e/src/model/XernerxInteractionArguments.ts#L10"
+													<a href="https://github.com/xernerx/xernerx/blob/d9c31b5acf5d0e9bc9b6ea137e3e250d11c09f4a/src/model/XernerxInteractionArguments.ts#L10"
 														>src/model/XernerxInteractionArguments.ts:10</a
 													>
 												</li>
@@ -181,13 +181,19 @@
 										></a>
 									</div>
 									<div class="tsd-description">
+										<div class="tsd-comment tsd-typography">
+											<p>Retrieves the name of the subcommand group from the current interaction.</p>
+											<p>This method attempts to extract the subcommand group name from the interaction options. If no subcommand group is present or an error occurs, it returns null.</p>
+										</div>
 										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">null</span> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">string</span></h4>
+										<p>The name of the subcommand group if available, otherwise null.</p>
+										<div class="tsd-comment tsd-typography"></div>
 										<aside class="tsd-sources">
 											<ul>
 												<li>
 													Defined in
-													<a href="https://github.com/xernerx/xernerx/blob/78edb6143517ae3e109c747e4628feeb60890d4e/src/model/XernerxInteractionArguments.ts#L60"
-														>src/model/XernerxInteractionArguments.ts:60</a
+													<a href="https://github.com/xernerx/xernerx/blob/d9c31b5acf5d0e9bc9b6ea137e3e250d11c09f4a/src/model/XernerxInteractionArguments.ts#L85"
+														>src/model/XernerxInteractionArguments.ts:85</a
 													>
 												</li>
 											</ul>
@@ -215,17 +221,23 @@
 										></a>
 									</div>
 									<div class="tsd-description">
+										<div class="tsd-comment tsd-typography">
+											<p>Retrieves the options for the current interaction command.</p>
+											<p>This method aggregates options from the command's groups, subcommands, and direct options, based on the current interaction context.</p>
+										</div>
 										<h4 class="tsd-returns-title">
 											Returns <span class="tsd-signature-type">undefined</span> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">Record</span
 											><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">,</span>
 											<span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span>
 										</h4>
+										<p>An object containing the options for the command, where each key is the option name and the value is the option value from the interaction.</p>
+										<div class="tsd-comment tsd-typography"></div>
 										<aside class="tsd-sources">
 											<ul>
 												<li>
 													Defined in
-													<a href="https://github.com/xernerx/xernerx/blob/78edb6143517ae3e109c747e4628feeb60890d4e/src/model/XernerxInteractionArguments.ts#L16"
-														>src/model/XernerxInteractionArguments.ts:16</a
+													<a href="https://github.com/xernerx/xernerx/blob/d9c31b5acf5d0e9bc9b6ea137e3e250d11c09f4a/src/model/XernerxInteractionArguments.ts#L25"
+														>src/model/XernerxInteractionArguments.ts:25</a
 													>
 												</li>
 											</ul>
@@ -251,13 +263,19 @@
 										></a>
 									</div>
 									<div class="tsd-description">
+										<div class="tsd-comment tsd-typography">
+											<p>Retrieves the name of the subcommand from the current interaction.</p>
+											<p>This method attempts to extract the subcommand name from the interaction options. If no subcommand is present or an error occurs, it returns null.</p>
+										</div>
 										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">null</span> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">string</span></h4>
+										<p>The name of the subcommand if available, otherwise null.</p>
+										<div class="tsd-comment tsd-typography"></div>
 										<aside class="tsd-sources">
 											<ul>
 												<li>
 													Defined in
-													<a href="https://github.com/xernerx/xernerx/blob/78edb6143517ae3e109c747e4628feeb60890d4e/src/model/XernerxInteractionArguments.ts#L52"
-														>src/model/XernerxInteractionArguments.ts:52</a
+													<a href="https://github.com/xernerx/xernerx/blob/d9c31b5acf5d0e9bc9b6ea137e3e250d11c09f4a/src/model/XernerxInteractionArguments.ts#L69"
+														>src/model/XernerxInteractionArguments.ts:69</a
 													>
 												</li>
 											</ul>
@@ -369,7 +387,7 @@
 				</div>
 				<div class="site-menu">
 					<nav class="tsd-navigation">
-						<a href="../modules.html">XERNERX - v0.1.120-beta.17</a>
+						<a href="../modules.html">XERNERX - v0.1.120-beta.18</a>
 						<ul class="tsd-small-nested-navigation" id="tsd-nav-container">
 							<li>Loading...</li>
 						</ul>

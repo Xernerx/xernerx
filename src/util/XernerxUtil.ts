@@ -21,6 +21,12 @@ export class XernerxBaseUtil {
 		this.interaction = interaction;
 	}
 
+	/**
+	 * Sends a message using a webhook in the current interaction's channel.
+	 *
+	 * @param options - The message content or options to send via the webhook. This can be a string, MessagePayload, or WebhookMessageCreateOptions.
+	 * @returns A promise that resolves to the message sent by the webhook.
+	 */
 	public async webhook(options: string | MessagePayload | WebhookMessageCreateOptions) {
 		if (!this.interaction.channel) return;
 

@@ -24,6 +24,12 @@ export class XernerxEventBuilder extends XernerxBaseBuilder {
 		this.once = options.once ?? false;
 	}
 
+	/**
+	 * Executes the event logic. This method should be overridden in subclasses to provide specific event handling.
+	 *
+	 * @param args - A variable number of arguments that are passed to the event handler.
+	 * @returns A promise that resolves when the event handling is complete.
+	 */
 	public async run(...args: any[]): Promise<any> {
 		new XernerxWarn(`Event ${sharpyy(`${this.id}`, 'txYellow')} does not have a run method, and will therefore not work.`);
 	}

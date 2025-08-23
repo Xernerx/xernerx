@@ -1,11 +1,10 @@
 /** @format */
 
-import { AutocompleteInteraction, ChatInputCommandInteraction, Interaction } from 'discord.js';
+import { Interaction } from 'discord.js';
 import { XernerxEventBuilder } from '../build/XernerxEventBuilder.js';
 import { XernerxUser } from '../model/XernerxUser.js';
 import { XernerxClient } from '../client/XernerxClient.js';
 import { XernerxInteractionUtil } from '../util/XernerxInteractionUtil.js';
-import { XernerxInteractionArguments } from '../model/XernerxInteractionArguments.js';
 
 export class XernerxInteractionCreateEvent extends XernerxEventBuilder {
 	constructor() {
@@ -16,45 +15,21 @@ export class XernerxInteractionCreateEvent extends XernerxEventBuilder {
 		});
 	}
 
-	override async run(interaction: ChatInputCommandInteraction) {
+	override async run(interaction: Interaction) {
 		this.client = interaction.client as XernerxClient;
 
 		interaction.user = new XernerxUser(interaction.client, interaction.user);
 
 		interaction.util = new XernerxInteractionUtil(this.client as Interaction['client'], interaction);
 
-		const command = this.client.commands.slash.get(interaction.commandName);
+		if (interaction.isChatInputCommand()) return await interaction.client.emit('slashCommandInteraction', interaction);
 
-		if (!command) return;
+		if (interaction.isContextMenuCommand()) return await interaction.client.emit('contextCommandInteraction', interaction);
 
-		// validation
+		if (interaction.isAnySelectMenu()) return await interaction.client.emit('selectMenuInteraction', interaction);
 
-		// inhibitors
+		if (interaction.isButton()) return await interaction.client.emit('buttonInteraction', interaction);
 
-		new Promise(async (resolve) => {
-			if (interaction.isAutocomplete()) {
-				const focused = (interaction as AutocompleteInteraction).options.getFocused(true);
-				const options = (interaction as AutocompleteInteraction).options;
-
-				await command.autocomplete({ interaction, focused, options });
-			} else resolve(true);
-		}).then(async () => {
-			const args = new XernerxInteractionArguments(interaction as ChatInputCommandInteraction, command);
-			const options = { options: args.options(), subcommand: args.subcommand(), group: args.subcommand() };
-
-			try {
-				if (command.defer) await interaction.deferReply();
-
-				await interaction.client.emit('commandStart', interaction, options, command);
-
-				if (await command.conditions({ interaction, ...options, command })) return;
-
-				await command.exec({ interaction, ...options, command });
-
-				await interaction.client.emit('commandFinish', interaction, options, command);
-			} catch (error) {
-				await interaction.client.emit('commandError', interaction, options, command, error as Error);
-			}
-		});
+		if (interaction.isModalSubmit()) return await interaction.client.emit('modalInteraction', interaction);
 	}
 }

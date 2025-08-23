@@ -5,7 +5,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta http-equiv="x-ua-compatible" content="IE=edge" />
-		<title>XernerxMonitisation | XERNERX - v0.1.120-beta.17</title>
+		<title>XernerxMonitisation | XERNERX - v0.1.120-beta.18</title>
 		<meta name="description" content="Documentation for XERNERX" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="../assets/style.css" />
@@ -25,7 +25,7 @@
 		</script>
 		<header class="tsd-page-toolbar">
 			<div class="tsd-toolbar-contents container">
-				<a href="../index.html" class="title">XERNERX - v0.1.120-beta.17</a>
+				<a href="../index.html" class="title">XERNERX - v0.1.120-beta.18</a>
 				<div id="tsd-toolbar-links"></div>
 				<button id="tsd-search-trigger" class="tsd-widget" aria-label="Search">
 					<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-search"></use></svg>
@@ -58,7 +58,7 @@
 					</ul>
 					<h1>Class XernerxMonitisation</h1>
 				</div>
-				<section class="tsd-panel tsd-hierarchy" data-refl="996">
+				<section class="tsd-panel tsd-hierarchy" data-refl="1014">
 					<h4>Hierarchy</h4>
 					<ul class="tsd-hierarchy">
 						<li class="tsd-hierarchy-item">
@@ -71,7 +71,7 @@
 				</section>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/xernerx/xernerx/blob/78edb6143517ae3e109c747e4628feeb60890d4e/src/model/XernerxMonitisation.ts#L6">src/model/XernerxMonitisation.ts:6</a></li>
+						<li>Defined in <a href="https://github.com/xernerx/xernerx/blob/d9c31b5acf5d0e9bc9b6ea137e3e250d11c09f4a/src/model/XernerxMonitisation.ts#L6">src/model/XernerxMonitisation.ts:6</a></li>
 					</ul>
 				</aside>
 				<section class="tsd-panel-group tsd-index-group">
@@ -171,7 +171,7 @@
 											<ul>
 												<li>
 													Defined in
-													<a href="https://github.com/xernerx/xernerx/blob/78edb6143517ae3e109c747e4628feeb60890d4e/src/model/XernerxMonitisation.ts#L9">src/model/XernerxMonitisation.ts:9</a>
+													<a href="https://github.com/xernerx/xernerx/blob/d9c31b5acf5d0e9bc9b6ea137e3e250d11c09f4a/src/model/XernerxMonitisation.ts#L9">src/model/XernerxMonitisation.ts:9</a>
 												</li>
 											</ul>
 										</aside>
@@ -208,17 +208,22 @@
 										></a>
 									</div>
 									<div class="tsd-description">
+										<div class="tsd-comment tsd-typography"><p>Consumes an entitlement based on the provided ID and options.</p></div>
 										<div class="tsd-parameters">
 											<h4 class="tsd-parameters-title">Parameters</h4>
 											<ul class="tsd-parameter-list">
 												<li>
 													<span><span class="tsd-kind-parameter">id</span>: <span class="tsd-signature-type">string</span></span>
+													<div class="tsd-comment tsd-typography"><p>The unique identifier of the entitlement to be consumed.</p></div>
+													<div class="tsd-comment tsd-typography"></div>
 												</li>
 												<li>
 													<span
 														><span class="tsd-kind-parameter">options</span>: <span class="tsd-signature-type">&quot;auth&quot;</span> <span class="tsd-signature-symbol">|</span>
 														<span class="tsd-signature-type">&quot;signal&quot;</span></span
 													>
+													<div class="tsd-comment tsd-typography"><p>Specifies the method of consumption, either 'auth' for authentication or 'signal' for signaling.</p></div>
+													<div class="tsd-comment tsd-typography"></div>
 												</li>
 											</ul>
 										</div>
@@ -226,11 +231,13 @@
 											Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span
 											><span class="tsd-signature-symbol">&gt;</span>
 										</h4>
+										<p>A promise that resolves when the entitlement is successfully consumed.</p>
+										<div class="tsd-comment tsd-typography"></div>
 										<aside class="tsd-sources">
 											<ul>
 												<li>
 													Defined in
-													<a href="https://github.com/xernerx/xernerx/blob/78edb6143517ae3e109c747e4628feeb60890d4e/src/model/XernerxMonitisation.ts#L15">src/model/XernerxMonitisation.ts:15</a>
+													<a href="https://github.com/xernerx/xernerx/blob/d9c31b5acf5d0e9bc9b6ea137e3e250d11c09f4a/src/model/XernerxMonitisation.ts#L22">src/model/XernerxMonitisation.ts:22</a>
 												</li>
 											</ul>
 										</aside>
@@ -339,11 +346,14 @@
 										></a>
 									</div>
 									<div class="tsd-description">
+										<div class="tsd-comment tsd-typography"><p>Creates a test entitlement for the current user.</p></div>
 										<div class="tsd-parameters">
 											<h4 class="tsd-parameters-title">Parameters</h4>
 											<ul class="tsd-parameter-list">
 												<li>
 													<span><span class="tsd-kind-parameter">id</span>: <span class="tsd-signature-type">string</span></span>
+													<div class="tsd-comment tsd-typography"><p>The SKU identifier for which the test entitlement is to be created.</p></div>
+													<div class="tsd-comment tsd-typography"></div>
 												</li>
 											</ul>
 										</div>
@@ -354,11 +364,13 @@
 											<span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;starts_at&quot;</span><span class="tsd-signature-symbol">&gt;</span
 											><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span>
 										</h4>
+										<p>A promise that resolves when the test entitlement is successfully created.</p>
+										<div class="tsd-comment tsd-typography"></div>
 										<aside class="tsd-sources">
 											<ul>
 												<li>
 													Defined in
-													<a href="https://github.com/xernerx/xernerx/blob/78edb6143517ae3e109c747e4628feeb60890d4e/src/model/XernerxMonitisation.ts#L27">src/model/XernerxMonitisation.ts:27</a>
+													<a href="https://github.com/xernerx/xernerx/blob/d9c31b5acf5d0e9bc9b6ea137e3e250d11c09f4a/src/model/XernerxMonitisation.ts#L53">src/model/XernerxMonitisation.ts:53</a>
 												</li>
 											</ul>
 										</aside>
@@ -469,11 +481,14 @@
 										></a>
 									</div>
 									<div class="tsd-description">
+										<div class="tsd-comment tsd-typography"><p>Deletes a test entitlement for the current user.</p></div>
 										<div class="tsd-parameters">
 											<h4 class="tsd-parameters-title">Parameters</h4>
 											<ul class="tsd-parameter-list">
 												<li>
 													<span><span class="tsd-kind-parameter">id</span>: <span class="tsd-signature-type">string</span></span>
+													<div class="tsd-comment tsd-typography"><p>The unique identifier of the test entitlement to be deleted.</p></div>
+													<div class="tsd-comment tsd-typography"></div>
 												</li>
 											</ul>
 										</div>
@@ -481,11 +496,13 @@
 											Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span
 											><span class="tsd-signature-symbol">&gt;</span>
 										</h4>
+										<p>A promise that resolves when the test entitlement is successfully deleted.</p>
+										<div class="tsd-comment tsd-typography"></div>
 										<aside class="tsd-sources">
 											<ul>
 												<li>
 													Defined in
-													<a href="https://github.com/xernerx/xernerx/blob/78edb6143517ae3e109c747e4628feeb60890d4e/src/model/XernerxMonitisation.ts#L31">src/model/XernerxMonitisation.ts:31</a>
+													<a href="https://github.com/xernerx/xernerx/blob/d9c31b5acf5d0e9bc9b6ea137e3e250d11c09f4a/src/model/XernerxMonitisation.ts#L63">src/model/XernerxMonitisation.ts:63</a>
 												</li>
 											</ul>
 										</aside>
@@ -596,11 +613,14 @@
 										></a>
 									</div>
 									<div class="tsd-description">
+										<div class="tsd-comment tsd-typography"><p>Retrieves entitlements for the current user.</p></div>
 										<div class="tsd-parameters">
 											<h4 class="tsd-parameters-title">Parameters</h4>
 											<ul class="tsd-parameter-list">
 												<li>
 													<span><code class="tsd-tag">Optional</code><span class="tsd-kind-parameter">id</span>: <span class="tsd-signature-type">RESTGetAPIEntitlementsQuery</span></span>
+													<div class="tsd-comment tsd-typography"><p>An optional query object to filter entitlements.</p></div>
+													<div class="tsd-comment tsd-typography"></div>
 												</li>
 												<li>
 													<span
@@ -609,6 +629,8 @@
 														<span class="tsd-signature-type">&quot;auth&quot;</span> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;signal&quot;</span
 														><span class="tsd-signature-symbol">&gt;</span></span
 													>
+													<div class="tsd-comment tsd-typography"><p>Optional request options specifying authentication or signaling method.</p></div>
+													<div class="tsd-comment tsd-typography"></div>
 												</li>
 											</ul>
 										</div>
@@ -616,11 +638,13 @@
 											Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">RESTGetAPIEntitlementsResult</span
 											><span class="tsd-signature-symbol">&gt;</span>
 										</h4>
+										<p>A promise that resolves with the entitlements for the current user.</p>
+										<div class="tsd-comment tsd-typography"></div>
 										<aside class="tsd-sources">
 											<ul>
 												<li>
 													Defined in
-													<a href="https://github.com/xernerx/xernerx/blob/78edb6143517ae3e109c747e4628feeb60890d4e/src/model/XernerxMonitisation.ts#L19">src/model/XernerxMonitisation.ts:19</a>
+													<a href="https://github.com/xernerx/xernerx/blob/d9c31b5acf5d0e9bc9b6ea137e3e250d11c09f4a/src/model/XernerxMonitisation.ts#L33">src/model/XernerxMonitisation.ts:33</a>
 												</li>
 											</ul>
 										</aside>
@@ -790,6 +814,7 @@
 										></a>
 									</div>
 									<div class="tsd-description">
+										<div class="tsd-comment tsd-typography"><p>Retrieves the Stock Keeping Units (SKUs) for the current user.</p></div>
 										<div class="tsd-parameters">
 											<h4 class="tsd-parameters-title">Parameters</h4>
 											<ul class="tsd-parameter-list">
@@ -800,6 +825,8 @@
 														<span class="tsd-signature-type">&quot;auth&quot;</span> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">&quot;signal&quot;</span
 														><span class="tsd-signature-symbol">&gt;</span></span
 													>
+													<div class="tsd-comment tsd-typography"><p>Optional request options specifying authentication or signaling method.</p></div>
+													<div class="tsd-comment tsd-typography"></div>
 												</li>
 											</ul>
 										</div>
@@ -807,11 +834,13 @@
 											Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">RESTGetAPISKUsResult</span
 											><span class="tsd-signature-symbol">&gt;</span>
 										</h4>
+										<p>A promise that resolves with the SKUs for the current user.</p>
+										<div class="tsd-comment tsd-typography"></div>
 										<aside class="tsd-sources">
 											<ul>
 												<li>
 													Defined in
-													<a href="https://github.com/xernerx/xernerx/blob/78edb6143517ae3e109c747e4628feeb60890d4e/src/model/XernerxMonitisation.ts#L23">src/model/XernerxMonitisation.ts:23</a>
+													<a href="https://github.com/xernerx/xernerx/blob/d9c31b5acf5d0e9bc9b6ea137e3e250d11c09f4a/src/model/XernerxMonitisation.ts#L43">src/model/XernerxMonitisation.ts:43</a>
 												</li>
 											</ul>
 										</aside>
@@ -936,7 +965,7 @@
 				</div>
 				<div class="site-menu">
 					<nav class="tsd-navigation">
-						<a href="../modules.html">XERNERX - v0.1.120-beta.17</a>
+						<a href="../modules.html">XERNERX - v0.1.120-beta.18</a>
 						<ul class="tsd-small-nested-navigation" id="tsd-nav-container">
 							<li>Loading...</li>
 						</ul>

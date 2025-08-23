@@ -32,6 +32,13 @@ export class XernerxMessageCommandBuilder extends XernerxBaseBuilder {
 		this.filetype = 'XernerxMessageCommand';
 	}
 
+	/**
+	 * Executes the command logic. This function is intended to be overridden by subclasses.
+	 * If not overridden, it will log a warning indicating that the command will not respond.
+	 *
+	 * @param args - A variable number of arguments that can be passed to the command execution.
+	 * @returns A promise that resolves to any value, depending on the implementation.
+	 */
 	public async exec(...args: any[]): Promise<any> {
 		new XernerxWarn(`${this.id} has no exec function, command will not respond.`);
 	}

@@ -5,7 +5,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta http-equiv="x-ua-compatible" content="IE=edge" />
-		<title>CommandHandler | XERNERX - v0.1.120-beta.17</title>
+		<title>CommandHandler | XERNERX - v0.1.120-beta.18</title>
 		<meta name="description" content="Documentation for XERNERX" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="../assets/style.css" />
@@ -25,7 +25,7 @@
 		</script>
 		<header class="tsd-page-toolbar">
 			<div class="tsd-toolbar-contents container">
-				<a href="../index.html" class="title">XERNERX - v0.1.120-beta.17</a>
+				<a href="../index.html" class="title">XERNERX - v0.1.120-beta.18</a>
 				<div id="tsd-toolbar-links"></div>
 				<button id="tsd-search-trigger" class="tsd-widget" aria-label="Search">
 					<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-search"></use></svg>
@@ -58,7 +58,7 @@
 					</ul>
 					<h1>Class CommandHandler</h1>
 				</div>
-				<section class="tsd-panel tsd-hierarchy" data-refl="738">
+				<section class="tsd-panel tsd-hierarchy" data-refl="752">
 					<h4>Hierarchy (<a href="../hierarchy.html#handler/CommandHandler.CommandHandler">View Summary</a>)</h4>
 					<ul class="tsd-hierarchy">
 						<li class="tsd-hierarchy-item">
@@ -83,7 +83,7 @@
 				</section>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/xernerx/xernerx/blob/78edb6143517ae3e109c747e4628feeb60890d4e/src/handler/CommandHandler.ts#L20">src/handler/CommandHandler.ts:20</a></li>
+						<li>Defined in <a href="https://github.com/xernerx/xernerx/blob/d9c31b5acf5d0e9bc9b6ea137e3e250d11c09f4a/src/handler/CommandHandler.ts#L21">src/handler/CommandHandler.ts:21</a></li>
 					</ul>
 				</aside>
 				<section class="tsd-panel-group tsd-index-group">
@@ -178,7 +178,7 @@
 											<p>Overrides <a href="handler_Handler.Handler.html">Handler</a>.<a href="handler_Handler.Handler.html#constructor">constructor</a></p>
 											<ul>
 												<li>
-													Defined in <a href="https://github.com/xernerx/xernerx/blob/78edb6143517ae3e109c747e4628feeb60890d4e/src/handler/CommandHandler.ts#L21">src/handler/CommandHandler.ts:21</a>
+													Defined in <a href="https://github.com/xernerx/xernerx/blob/d9c31b5acf5d0e9bc9b6ea137e3e250d11c09f4a/src/handler/CommandHandler.ts#L22">src/handler/CommandHandler.ts:22</a>
 												</li>
 											</ul>
 										</aside>
@@ -208,7 +208,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from <a href="handler_Handler.Handler.html">Handler</a>.<a href="handler_Handler.Handler.html#client">client</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/xernerx/xernerx/blob/78edb6143517ae3e109c747e4628feeb60890d4e/src/handler/Handler.ts#L12">src/handler/Handler.ts:12</a></li>
+									<li>Defined in <a href="https://github.com/xernerx/xernerx/blob/d9c31b5acf5d0e9bc9b6ea137e3e250d11c09f4a/src/handler/Handler.ts#L12">src/handler/Handler.ts:12</a></li>
 								</ul>
 							</aside>
 						</section>
@@ -259,6 +259,7 @@
 										></a>
 									</div>
 									<div class="tsd-description">
+										<div class="tsd-comment tsd-typography"><p>Imports a file by registering it with the client based on its type.</p></div>
 										<div class="tsd-parameters">
 											<h4 class="tsd-parameters-title">Parameters</h4>
 											<ul class="tsd-parameter-list">
@@ -270,9 +271,20 @@
 														<span class="tsd-signature-symbol">|</span>
 														<a href="build_XernerxSlashCommandBuilder.XernerxSlashCommandBuilder.html" class="tsd-signature-type tsd-kind-class">XernerxSlashCommandBuilder</a></span
 													>
+													<div class="tsd-comment tsd-typography">
+														<p>
+															An instance of XernerxEventBuilder, XernerxMessageCommandBuilder, or XernerxSlashCommandBuilder. This object contains the necessary information to register the file with
+															the client.
+														</p>
+													</div>
+													<div class="tsd-comment tsd-typography"></div>
 												</li>
 												<li>
 													<span><code class="tsd-tag">Optional</code><span class="tsd-kind-parameter">filename</span>: <span class="tsd-signature-type">string</span></span>
+													<div class="tsd-comment tsd-typography">
+														<p>An optional string representing the name of the file being imported. Used for error reporting if the builder ID is not unique.</p>
+													</div>
+													<div class="tsd-comment tsd-typography"></div>
 												</li>
 											</ul>
 										</div>
@@ -289,10 +301,15 @@
 											<a href="build_XernerxSlashCommandBuilder.XernerxSlashCommandBuilder.html" class="tsd-signature-type tsd-kind-class">XernerxSlashCommandBuilder</a
 											><span class="tsd-signature-symbol">,</span><br /><span class="tsd-signature-symbol">&gt;</span>
 										</h4>
+										<p>
+											The builder object after it has been registered with the client. If the builder is of type XernerxEvent, it is registered as an event listener. If the builder is of type
+											XernerxMessageCommand or XernerxSlashCommand, it is registered as a command.
+										</p>
+										<div class="tsd-comment tsd-typography"></div>
 										<aside class="tsd-sources">
 											<p>Inherited from <a href="handler_Handler.Handler.html">Handler</a>.<a href="handler_Handler.Handler.html#importfile">importFile</a></p>
 											<ul>
-												<li>Defined in <a href="https://github.com/xernerx/xernerx/blob/78edb6143517ae3e109c747e4628feeb60890d4e/src/handler/Handler.ts#L52">src/handler/Handler.ts:52</a></li>
+												<li>Defined in <a href="https://github.com/xernerx/xernerx/blob/d9c31b5acf5d0e9bc9b6ea137e3e250d11c09f4a/src/handler/Handler.ts#L77">src/handler/Handler.ts:77</a></li>
 											</ul>
 										</aside>
 									</div>
@@ -319,11 +336,14 @@
 										></a>
 									</div>
 									<div class="tsd-description">
+										<div class="tsd-comment tsd-typography"><p>Asynchronously loads a JavaScript file and imports its default export.</p></div>
 										<div class="tsd-parameters">
 											<h4 class="tsd-parameters-title">Parameters</h4>
 											<ul class="tsd-parameter-list">
 												<li>
 													<span><span class="tsd-kind-parameter">file</span>: <span class="tsd-signature-type">string</span></span>
+													<div class="tsd-comment tsd-typography"><p>The path to the JavaScript file to be loaded.</p></div>
+													<div class="tsd-comment tsd-typography"></div>
 												</li>
 											</ul>
 										</div>
@@ -332,10 +352,12 @@
 											<span class="tsd-signature-symbol">|</span> <a href="tools_XernerxError.XernerxError.html" class="tsd-signature-type tsd-kind-class">XernerxError</a
 											><span class="tsd-signature-symbol">&gt;</span>
 										</h4>
+										<p>A promise that resolves when the file is successfully loaded and imported. If the file does not have a default export, an error is thrown.</p>
+										<div class="tsd-comment tsd-typography"></div>
 										<aside class="tsd-sources">
 											<p>Inherited from <a href="handler_Handler.Handler.html">Handler</a>.<a href="handler_Handler.Handler.html#loadfile">loadFile</a></p>
 											<ul>
-												<li>Defined in <a href="https://github.com/xernerx/xernerx/blob/78edb6143517ae3e109c747e4628feeb60890d4e/src/handler/Handler.ts#L32">src/handler/Handler.ts:32</a></li>
+												<li>Defined in <a href="https://github.com/xernerx/xernerx/blob/d9c31b5acf5d0e9bc9b6ea137e3e250d11c09f4a/src/handler/Handler.ts#L46">src/handler/Handler.ts:46</a></li>
 											</ul>
 										</aside>
 									</div>
@@ -360,19 +382,24 @@
 										></a>
 									</div>
 									<div class="tsd-description">
+										<div class="tsd-comment tsd-typography"><p>Loads JavaScript files from a specified directory.</p></div>
 										<div class="tsd-parameters">
 											<h4 class="tsd-parameters-title">Parameters</h4>
 											<ul class="tsd-parameter-list">
 												<li>
 													<span><span class="tsd-kind-parameter">dir</span>: <span class="tsd-signature-type">string</span></span>
+													<div class="tsd-comment tsd-typography"><p>The directory path from which to load the files.</p></div>
+													<div class="tsd-comment tsd-typography"></div>
 												</li>
 											</ul>
 										</div>
 										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h4>
+										<p>An array of file paths for JavaScript files in the specified directory. Returns an empty array if an error occurs during the file reading process.</p>
+										<div class="tsd-comment tsd-typography"></div>
 										<aside class="tsd-sources">
 											<p>Inherited from <a href="handler_Handler.Handler.html">Handler</a>.<a href="handler_Handler.Handler.html#loadfiles">loadFiles</a></p>
 											<ul>
-												<li>Defined in <a href="https://github.com/xernerx/xernerx/blob/78edb6143517ae3e109c747e4628feeb60890d4e/src/handler/Handler.ts#L19">src/handler/Handler.ts:19</a></li>
+												<li>Defined in <a href="https://github.com/xernerx/xernerx/blob/d9c31b5acf5d0e9bc9b6ea137e3e250d11c09f4a/src/handler/Handler.ts#L26">src/handler/Handler.ts:26</a></li>
 											</ul>
 										</aside>
 									</div>
@@ -399,11 +426,14 @@
 										></a>
 									</div>
 									<div class="tsd-description">
+										<div class="tsd-comment tsd-typography"><p>Loads a message command from a specified file.</p></div>
 										<div class="tsd-parameters">
 											<h4 class="tsd-parameters-title">Parameters</h4>
 											<ul class="tsd-parameter-list">
 												<li>
 													<span><span class="tsd-kind-parameter">file</span>: <span class="tsd-signature-type">string</span></span>
+													<div class="tsd-comment tsd-typography"><p>The path to the file containing the message command to be loaded.</p></div>
+													<div class="tsd-comment tsd-typography"></div>
 												</li>
 											</ul>
 										</div>
@@ -412,10 +442,12 @@
 											<span class="tsd-signature-symbol">|</span> <a href="tools_XernerxError.XernerxError.html" class="tsd-signature-type tsd-kind-class">XernerxError</a
 											><span class="tsd-signature-symbol">&gt;</span>
 										</h4>
+										<p>A promise that resolves when the file has been successfully loaded.</p>
+										<div class="tsd-comment tsd-typography"></div>
 										<aside class="tsd-sources">
 											<ul>
 												<li>
-													Defined in <a href="https://github.com/xernerx/xernerx/blob/78edb6143517ae3e109c747e4628feeb60890d4e/src/handler/CommandHandler.ts#L25">src/handler/CommandHandler.ts:25</a>
+													Defined in <a href="https://github.com/xernerx/xernerx/blob/d9c31b5acf5d0e9bc9b6ea137e3e250d11c09f4a/src/handler/CommandHandler.ts#L32">src/handler/CommandHandler.ts:32</a>
 												</li>
 											</ul>
 										</aside>
@@ -444,6 +476,7 @@
 										></a>
 									</div>
 									<div class="tsd-description">
+										<div class="tsd-comment tsd-typography"><p>Loads message commands based on the provided options.</p></div>
 										<div class="tsd-parameters">
 											<h4 class="tsd-parameters-title">Parameters</h4>
 											<ul class="tsd-parameter-list">
@@ -454,6 +487,10 @@
 															>XernerxMessageCommandHandlerOptions</a
 														></span
 													>
+													<div class="tsd-comment tsd-typography">
+														<p>Configuration options for loading message commands, including directory, prefix, mention, separator, handleEdits, handleDeletions, and ignore settings.</p>
+													</div>
+													<div class="tsd-comment tsd-typography"></div>
 												</li>
 											</ul>
 										</div>
@@ -461,10 +498,12 @@
 											Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span
 											><span class="tsd-signature-symbol">&gt;</span>
 										</h4>
+										<p>A promise that resolves when all message commands have been successfully loaded.</p>
+										<div class="tsd-comment tsd-typography"></div>
 										<aside class="tsd-sources">
 											<ul>
 												<li>
-													Defined in <a href="https://github.com/xernerx/xernerx/blob/78edb6143517ae3e109c747e4628feeb60890d4e/src/handler/CommandHandler.ts#L29">src/handler/CommandHandler.ts:29</a>
+													Defined in <a href="https://github.com/xernerx/xernerx/blob/d9c31b5acf5d0e9bc9b6ea137e3e250d11c09f4a/src/handler/CommandHandler.ts#L42">src/handler/CommandHandler.ts:42</a>
 												</li>
 											</ul>
 										</aside>
@@ -492,11 +531,14 @@
 										></a>
 									</div>
 									<div class="tsd-description">
+										<div class="tsd-comment tsd-typography"><p>Loads a slash command from a specified file.</p></div>
 										<div class="tsd-parameters">
 											<h4 class="tsd-parameters-title">Parameters</h4>
 											<ul class="tsd-parameter-list">
 												<li>
 													<span><span class="tsd-kind-parameter">file</span>: <span class="tsd-signature-type">string</span></span>
+													<div class="tsd-comment tsd-typography"><p>The path to the file containing the slash command to be loaded.</p></div>
+													<div class="tsd-comment tsd-typography"></div>
 												</li>
 											</ul>
 										</div>
@@ -505,10 +547,12 @@
 											<span class="tsd-signature-symbol">|</span> <a href="tools_XernerxError.XernerxError.html" class="tsd-signature-type tsd-kind-class">XernerxError</a
 											><span class="tsd-signature-symbol">&gt;</span>
 										</h4>
+										<p>A promise that resolves when the file has been successfully loaded.</p>
+										<div class="tsd-comment tsd-typography"></div>
 										<aside class="tsd-sources">
 											<ul>
 												<li>
-													Defined in <a href="https://github.com/xernerx/xernerx/blob/78edb6143517ae3e109c747e4628feeb60890d4e/src/handler/CommandHandler.ts#L69">src/handler/CommandHandler.ts:69</a>
+													Defined in <a href="https://github.com/xernerx/xernerx/blob/d9c31b5acf5d0e9bc9b6ea137e3e250d11c09f4a/src/handler/CommandHandler.ts#L88">src/handler/CommandHandler.ts:88</a>
 												</li>
 											</ul>
 										</aside>
@@ -537,6 +581,7 @@
 										></a>
 									</div>
 									<div class="tsd-description">
+										<div class="tsd-comment tsd-typography"><p>Loads slash commands based on the provided options.</p></div>
 										<div class="tsd-parameters">
 											<h4 class="tsd-parameters-title">Parameters</h4>
 											<ul class="tsd-parameter-list">
@@ -547,6 +592,8 @@
 															>XernerxSlashCommandHandlerOptions</a
 														></span
 													>
+													<div class="tsd-comment tsd-typography"><p>Configuration options for loading slash commands, including the directory where the command files are located.</p></div>
+													<div class="tsd-comment tsd-typography"></div>
 												</li>
 											</ul>
 										</div>
@@ -554,10 +601,12 @@
 											Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span
 											><span class="tsd-signature-symbol">&gt;</span>
 										</h4>
+										<p>A promise that resolves when all slash commands have been successfully loaded.</p>
+										<div class="tsd-comment tsd-typography"></div>
 										<aside class="tsd-sources">
 											<ul>
 												<li>
-													Defined in <a href="https://github.com/xernerx/xernerx/blob/78edb6143517ae3e109c747e4628feeb60890d4e/src/handler/CommandHandler.ts#L73">src/handler/CommandHandler.ts:73</a>
+													Defined in <a href="https://github.com/xernerx/xernerx/blob/d9c31b5acf5d0e9bc9b6ea137e3e250d11c09f4a/src/handler/CommandHandler.ts#L98">src/handler/CommandHandler.ts:98</a>
 												</li>
 											</ul>
 										</aside>
@@ -686,7 +735,7 @@
 				</div>
 				<div class="site-menu">
 					<nav class="tsd-navigation">
-						<a href="../modules.html">XERNERX - v0.1.120-beta.17</a>
+						<a href="../modules.html">XERNERX - v0.1.120-beta.18</a>
 						<ul class="tsd-small-nested-navigation" id="tsd-nav-container">
 							<li>Loading...</li>
 						</ul>

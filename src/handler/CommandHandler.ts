@@ -15,17 +15,30 @@ import { XernerxError } from '../tools/XernerxError.js';
 import { XernerxMessageCommandHandlerOptions } from '../interfaces/XernerxMessageCommandHandlerOptions.js';
 import { XernerxSlashCommandHandlerOptions } from '../interfaces/XernerxSlashCommandHandlerOptions.js';
 import { XernerxEventBuilder } from '../build/XernerxEventBuilder.js';
-import { XernerxReadyEvent } from '../events/ready.js';
+import { XernerxClientReadyEvent } from '../events/clientReady.js';
+import { XernerxSlashCommandInteractionEvent } from '../events/slashCommandInteraction.js';
 
 export class CommandHandler extends Handler {
 	constructor(client: XernerxClient) {
 		super(client);
 	}
 
+	/**
+	 * Loads a message command from a specified file.
+	 *
+	 * @param file - The path to the file containing the message command to be loaded.
+	 * @returns A promise that resolves when the file has been successfully loaded.
+	 */
 	public async loadMessageCommand(file: string) {
 		return await this.loadFile(file);
 	}
 
+	/**
+	 * Loads message commands based on the provided options.
+	 *
+	 * @param options - Configuration options for loading message commands, including directory, prefix, mention, separator, handleEdits, handleDeletions, and ignore settings.
+	 * @returns A promise that resolves when all message commands have been successfully loaded.
+	 */
 	public async loadMessageCommands(options: XernerxMessageCommandHandlerOptions) {
 		const config = z
 			.object({
@@ -66,10 +79,22 @@ export class CommandHandler extends Handler {
 		new XernerxSuccess(`Loaded message commands: ${this.client.commands.message.map((command) => sharpyy(command.id, 'txYellow')).join(', ')}`);
 	}
 
+	/**
+	 * Loads a slash command from a specified file.
+	 *
+	 * @param file - The path to the file containing the slash command to be loaded.
+	 * @returns A promise that resolves when the file has been successfully loaded.
+	 */
 	public async loadSlashCommand(file: string) {
 		return await this.loadFile(file);
 	}
 
+	/**
+	 * Loads slash commands based on the provided options.
+	 *
+	 * @param options - Configuration options for loading slash commands, including the directory where the command files are located.
+	 * @returns A promise that resolves when all slash commands have been successfully loaded.
+	 */
 	public async loadSlashCommands(options: XernerxSlashCommandHandlerOptions) {
 		const config = z
 			.object({
@@ -85,11 +110,17 @@ export class CommandHandler extends Handler {
 			await this.loadSlashCommand(file);
 		}
 
-		this.loadEvents(XernerxInteractionCreateEvent, XernerxReadyEvent);
+		this.loadEvents(XernerxInteractionCreateEvent, XernerxClientReadyEvent, XernerxSlashCommandInteractionEvent);
 
 		new XernerxSuccess(`Loaded slash commands: ${this.client.commands.slash.map((command) => sharpyy(command.id, 'txYellow')).join(', ')}`);
 	}
 
+	/**
+	 * Loads and imports event files based on the provided event classes.
+	 *
+	 * @param args - An array of event classes extending XernerxEventBuilder. Each class represents an event to be loaded and imported.
+	 * @returns A promise that resolves when all specified events have been successfully imported.
+	 */
 	private async loadEvents(...args: Array<typeof XernerxEventBuilder>) {
 		for (const event of args) {
 			this.importFile(new event('', { name: '' }));

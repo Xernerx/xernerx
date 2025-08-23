@@ -5,7 +5,7 @@ import { XernerxSlashCommandBuilder } from '../main.js';
 
 export interface XernerxSlashCommand {
 	interaction: ChatInputCommandInteraction;
-	options?: Record<string, any>;
+	options?: Record<string, { name: string; type: number; value: string | number | boolean | object }>;
 	subcommand: string | null;
 	group: string | null;
 	command: XernerxSlashCommandBuilder;

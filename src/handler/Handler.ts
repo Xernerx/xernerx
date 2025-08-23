@@ -16,6 +16,13 @@ export class Handler {
 		this.client = client;
 	}
 
+	/**
+	 * Loads JavaScript files from a specified directory.
+	 *
+	 * @param dir - The directory path from which to load the files.
+	 * @returns An array of file paths for JavaScript files in the specified directory.
+	 *          Returns an empty array if an error occurs during the file reading process.
+	 */
 	loadFiles(dir: string) {
 		try {
 			return fs
@@ -29,6 +36,13 @@ export class Handler {
 		}
 	}
 
+	/**
+	 * Asynchronously loads a JavaScript file and imports its default export.
+	 *
+	 * @param file - The path to the JavaScript file to be loaded.
+	 * @returns A promise that resolves when the file is successfully loaded and imported.
+	 *          If the file does not have a default export, an error is thrown.
+	 */
 	async loadFile(file: string) {
 		const filepath = path.resolve(file);
 		const filename = path.basename(filepath);
@@ -49,6 +63,17 @@ export class Handler {
 		}
 	}
 
+	/**
+	 * Imports a file by registering it with the client based on its type.
+	 *
+	 * @param builder - An instance of XernerxEventBuilder, XernerxMessageCommandBuilder, or XernerxSlashCommandBuilder.
+	 *                  This object contains the necessary information to register the file with the client.
+	 * @param filename - An optional string representing the name of the file being imported.
+	 *                   Used for error reporting if the builder ID is not unique.
+	 * @returns The builder object after it has been registered with the client.
+	 *          If the builder is of type XernerxEvent, it is registered as an event listener.
+	 *          If the builder is of type XernerxMessageCommand or XernerxSlashCommand, it is registered as a command.
+	 */
 	async importFile(builder: XernerxEventBuilder | XernerxMessageCommandBuilder | XernerxSlashCommandBuilder, filename?: string) {
 		if (builder.filetype === 'XernerxEvent') {
 			if (this.client.events.has(builder.id)) return new XernerxError(`${filename} | ID must be unique`);

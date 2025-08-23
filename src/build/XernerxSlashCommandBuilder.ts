@@ -184,17 +184,35 @@ export class XernerxSlashCommandBuilder extends XernerxBaseBuilder {
 		this.client = this.client;
 	}
 
-	public async autocomplete(args: XernerxSlashCommandAutocomplete): Promise<any> {}
+	/**
+	 * Handles the autocomplete functionality for a slash command.
+	 *
+	 * @param args - The arguments for the autocomplete function, which include the context and options for the command.
+	 * @returns A promise that resolves to either void or any value, depending on the implementation.
+	 */
+	public async autocomplete(args: XernerxSlashCommandAutocomplete): Promise<void | any> {}
 
-	public async conditions(args: XernerxSlashCommand): Promise<any> {}
+	/**
+	 * Evaluates conditions for executing a slash command.
+	 *
+	 * @param args - The arguments for the conditions function, which include the context and options for the command.
+	 * @returns A promise that resolves to either void or any value, depending on the implementation.
+	 */
+	public async conditions(args: XernerxSlashCommand): Promise<void | any> {}
 
-	public async exec(args: XernerxSlashCommand): Promise<any> {
+	/**
+	 * Executes the slash command.
+	 *
+	 * @param args - The arguments for the exec function, which include the context and options for the command.
+	 * @returns A promise that resolves to either void or any value, depending on the implementation.
+	 */
+	public async exec(args: XernerxSlashCommand): Promise<void | any> {
 		new XernerxWarn(`${this.id} has no exec function, command will not respond.`);
 	}
 
-	private addArguments(command: SlashCommandBuilder, args: Array<XernerxSlashCommandBuilderOption>) {
+	private addArguments(command: SlashCommandBuilder | SlashCommandSubcommandBuilder, args: Array<XernerxSlashCommandBuilderOption>) {
 		for (const argument of args) {
-			let slashCommandArgumentType: SlashCommandArgumentType | string = `${argument.type.charAt(0).toUpperCase()}${argument.type.slice(1).toLowerCase()}`;
+			let slashCommandArgumentType: string = `${argument.type.charAt(0).toUpperCase()}${argument.type.slice(1).toLowerCase()}`;
 
 			(command[`add${slashCommandArgumentType as UpperCasedSlashCommandArgumentOptions}Option`] as Function)((option: SlashCommandOption) => {
 				option
@@ -236,7 +254,7 @@ export class XernerxSlashCommandBuilder extends XernerxBaseBuilder {
 				sub.setDescriptionLocalization(locale[0] as Locale, locale[1].description);
 			}
 
-			if (subcommand.options && subcommand?.options?.length > 0) this.addArguments(sub as any, subcommand.options);
+			if (subcommand.options && subcommand?.options?.length > 0) this.addArguments(sub, subcommand.options);
 
 			method.addSubcommand(sub);
 		}
@@ -257,8 +275,6 @@ export class XernerxSlashCommandBuilder extends XernerxBaseBuilder {
 		}
 	}
 }
-
-type SlashCommandArgumentType = 'attachment' | 'boolean' | 'channel' | 'integer' | 'mentionable' | 'number' | 'role' | 'string' | 'user';
 
 type UpperCasedSlashCommandArgumentOptions = 'Attachment' | 'Boolean' | 'Channel' | 'Integer' | 'Mentionable' | 'Number' | 'Role' | 'String' | 'User';
 type SlashCommandOption = SlashCommandOptionChoices | SlashCommandBooleanOption | SlashCommandUserOption | SlashCommandChannelOption | SlashCommandRoleOption | SlashCommandMentionableOption;

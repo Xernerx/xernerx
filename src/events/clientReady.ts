@@ -8,15 +8,15 @@ import { XernerxSuccess } from '../tools/XernerxSuccess.js';
 import { GatewayVersion, REST, Routes } from 'discord.js';
 import { XernerxInfo } from '../tools/XernerxInfo.js';
 
-export class XernerxReadyEvent extends XernerxEventBuilder {
+export class XernerxClientReadyEvent extends XernerxEventBuilder {
 	declare private readonly commands: {
 		global: Array<XernerxSlashCommandBuilder>;
 		local: Array<XernerxSlashCommandBuilder>;
 	};
 
 	constructor() {
-		super('XernerxReadyEvent', {
-			name: 'ready',
+		super('XernerxClientReadyEvent', {
+			name: 'clientReady',
 			emitter: 'client',
 			once: true,
 		});

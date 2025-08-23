@@ -13,6 +13,15 @@ export class XernerxInteractionArguments {
 		this.command = command;
 	}
 
+	/**
+	 * Retrieves the options for the current interaction command.
+	 *
+	 * This method aggregates options from the command's groups, subcommands, and direct options,
+	 * based on the current interaction context.
+	 *
+	 * @returns {Record<string, any>} An object containing the options for the command,
+	 * where each key is the option name and the value is the option value from the interaction.
+	 */
 	options() {
 		const options: Record<string, any> = {};
 
@@ -49,6 +58,14 @@ export class XernerxInteractionArguments {
 		return options;
 	}
 
+	/**
+	 * Retrieves the name of the subcommand from the current interaction.
+	 *
+	 * This method attempts to extract the subcommand name from the interaction options.
+	 * If no subcommand is present or an error occurs, it returns null.
+	 *
+	 * @returns {string | null} The name of the subcommand if available, otherwise null.
+	 */
 	subcommand() {
 		try {
 			return this.interaction.options.getSubcommand();
@@ -57,6 +74,14 @@ export class XernerxInteractionArguments {
 		}
 	}
 
+	/**
+	 * Retrieves the name of the subcommand group from the current interaction.
+	 *
+	 * This method attempts to extract the subcommand group name from the interaction options.
+	 * If no subcommand group is present or an error occurs, it returns null.
+	 *
+	 * @returns {string | null} The name of the subcommand group if available, otherwise null.
+	 */
 	group() {
 		try {
 			return this.interaction.options.getSubcommandGroup();

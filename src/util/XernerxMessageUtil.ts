@@ -21,6 +21,10 @@ export class XernerxMessageUtil extends XernerxBaseUtil {
 		this.#parse();
 	}
 
+	/**
+	 * Parses the message content to extract command, alias, prefix, and arguments.
+	 * It also checks if the message mentions the bot.
+	 */
 	#parse() {
 		if (this.message.content.trim().startsWith(`<@${this.client.user.id}>`)) this.message.content = this.message.content.replace(`<@${this.client.user.id}>`, '').trimStart();
 
@@ -45,6 +49,13 @@ export class XernerxMessageUtil extends XernerxBaseUtil {
 		this.args = args;
 	}
 
+	/**
+	 * Sends a message to the channel or edits an existing message if applicable.
+	 *
+	 * @param options - The content or options for the message to be sent or edited.
+	 *                  It can be a string, MessagePayload, MessageCreateOptions, or MessageEditOptions.
+	 * @returns The sent or edited message, or null if the message ID is not found in the cache.
+	 */
 	async send(options: string | MessagePayload | MessageCreateOptions | MessageEditOptions) {
 		if (this.cache.has(this.message.id) && this.client.handler.message.handleEdits) {
 			const id = this.cache.get(this.message.id);
@@ -64,6 +75,13 @@ export class XernerxMessageUtil extends XernerxBaseUtil {
 		return msg;
 	}
 
+	/**
+	 * Replies to the current message or edits an existing reply if applicable.
+	 *
+	 * @param options - The content or options for the reply message.
+	 *                  It can be a string, MessagePayload, or MessageReplyOptions.
+	 * @returns The sent or edited message, or null if the message ID is not found in the cache.
+	 */
 	async reply(options: string | MessagePayload | MessageReplyOptions) {
 		if (this.cache.has(this.message.id) && this.client.handler.message.handleEdits) {
 			const id = this.cache.get(this.message.id);
