@@ -11,6 +11,7 @@ import { XernerxShardClientOptions } from '../interfaces/XernerxShardClientOptio
 import { XernerxInitial } from '../tools/XernerxInitial.js';
 
 export class XernerxShardClient extends ClusterManager {
+	declare public id: string;
 	declare public readonly onlineShards: Set<Cluster>;
 	declare public readonly stats: {
 		onlineSince: number | null;
@@ -78,6 +79,8 @@ export class XernerxShardClient extends ClusterManager {
 			this.stats.shardCount = stats[0].shardCount;
 			this.stats.voteCount = stats[0].voteCount;
 			this.stats.shards = shards;
+
+			this.id = await this.fetchClientValues('user.id');
 		}, 1000);
 
 		await new Promise((resolve) => setTimeout(resolve, 4000));

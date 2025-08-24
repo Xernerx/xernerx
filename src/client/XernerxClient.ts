@@ -97,6 +97,7 @@ export class XernerxClient extends Client {
 			shardCount: null,
 			voteCount: null,
 			shard: null,
+			shards: [],
 		};
 
 		this.cache = { messages: new Collection(), slash: new Collection() };

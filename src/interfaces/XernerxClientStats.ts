@@ -12,4 +12,5 @@ export interface XernerxClientStats {
 		guildCount: number | null;
 		userCount: number | null;
 	} | null;
+	shards: [];
 }
