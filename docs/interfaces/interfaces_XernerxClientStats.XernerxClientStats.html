@@ -5,7 +5,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta http-equiv="x-ua-compatible" content="IE=edge" />
-		<title>XernerxClientStats | XERNERX - v0.1.120-beta.19</title>
+		<title>XernerxClientStats | XERNERX - v0.1.120-beta.20</title>
 		<meta name="description" content="Documentation for XERNERX" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="../assets/style.css" />
@@ -25,7 +25,7 @@
 		</script>
 		<header class="tsd-page-toolbar">
 			<div class="tsd-toolbar-contents container">
-				<a href="../index.html" class="title">XERNERX - v0.1.120-beta.19</a>
+				<a href="../index.html" class="title">XERNERX - v0.1.120-beta.20</a>
 				<div id="tsd-toolbar-links"></div>
 				<button id="tsd-search-trigger" class="tsd-widget" aria-label="Search">
 					<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-search"></use></svg>
@@ -72,32 +72,43 @@
 				<div class="tsd-signature">
 					<span class="tsd-signature-keyword">interface</span> <span class="tsd-kind-interface">XernerxClientStats</span> <span class="tsd-signature-symbol">{</span><br />    <a
 						class="tsd-kind-property"
-						href="#accurate"
-						>accurate</a
-					><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">;</span><br />    <a
-						class="tsd-kind-property"
 						href="#guildcount"
 						>guildCount</a
 					><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">number</span
-					><span class="tsd-signature-symbol">;</span><br />    <a class="tsd-kind-property" href="#shard">shard</a><span class="tsd-signature-symbol">:</span>
-					<span class="tsd-signature-type">null</span> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-symbol">{</span> <span class="tsd-kind-property">guildCount</span
+					><span class="tsd-signature-symbol">;</span><br />    <a class="tsd-kind-property" href="#onlinesince">onlineSince</a><span class="tsd-signature-symbol">:</span>
+					<span class="tsd-signature-type">null</span> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">;</span><br />    <a
+						class="tsd-kind-property"
+						href="#shard"
+						>shard</a
+					><span class="tsd-signature-symbol">:</span><br />        <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">null</span><br />        <span
+						class="tsd-signature-symbol"
+						>|</span
+					>
+					<span class="tsd-signature-symbol">{</span><br />            <span class="tsd-kind-property">guildCount</span><span class="tsd-signature-symbol">:</span>
+					<span class="tsd-signature-type">null</span><br />            <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">number</span
+					><span class="tsd-signature-symbol">;</span><br />            <span class="tsd-kind-property">onlineSince</span><span class="tsd-signature-symbol">:</span>
+					<span class="tsd-signature-type">null</span> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">;</span
+					><br />            <span class="tsd-kind-property">shardId</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span>
+					<span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">;</span><br />            <span class="tsd-kind-property"
+						>userCount</span
 					><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">number</span
-					><span class="tsd-signature-symbol">;</span> <span class="tsd-kind-property">userCount</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span>
-					<span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">number</span> <span class="tsd-signature-symbol">}</span><span class="tsd-signature-symbol">;</span><br />    <a
+					><span class="tsd-signature-symbol">;</span><br />        <span class="tsd-signature-symbol">}</span><span class="tsd-signature-symbol">;</span><br />    <a
 						class="tsd-kind-property"
 						href="#shardcount"
 						>shardCount</a
-					><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">number</span
+					><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span><br />    <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">number</span
 					><span class="tsd-signature-symbol">;</span><br />    <a class="tsd-kind-property" href="#usercount">userCount</a><span class="tsd-signature-symbol">:</span>
-					<span class="tsd-signature-type">null</span> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">;</span><br /><span
-						class="tsd-signature-symbol"
-						>}</span
-					>
+					<span class="tsd-signature-type">null</span> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">;</span><br />    <a
+						class="tsd-kind-property"
+						href="#votecount"
+						>voteCount</a
+					><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">number</span
+					><span class="tsd-signature-symbol">;</span><br /><span class="tsd-signature-symbol">}</span>
 				</div>
 				<aside class="tsd-sources">
 					<ul>
 						<li>
-							Defined in <a href="https://github.com/xernerx/xernerx/blob/7b630a0a5fc2c085714508aa343be8baf900af7f/src/interfaces/XernerxClientStats.ts#L3">src/interfaces/XernerxClientStats.ts:3</a>
+							Defined in <a href="https://github.com/xernerx/xernerx/blob/2808bdd08952ed2e1ac37fc178b7c51354ecedff/src/interfaces/XernerxClientStats.ts#L3">src/interfaces/XernerxClientStats.ts:3</a>
 						</li>
 					</ul>
 				</aside>
@@ -112,11 +123,11 @@
 								<section class="tsd-index-section">
 									<h3 class="tsd-index-heading">Properties</h3>
 									<div class="tsd-index-list">
-										<a href="#accurate" class="tsd-index-link"
-											><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>accurate</span></a
-										>
 										<a href="#guildcount" class="tsd-index-link"
 											><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>guild<wbr />Count</span></a
+										>
+										<a href="#onlinesince" class="tsd-index-link"
+											><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>online<wbr />Since</span></a
 										>
 										<a href="#shard" class="tsd-index-link"
 											><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>shard</span></a
@@ -126,6 +137,9 @@
 										>
 										<a href="#usercount" class="tsd-index-link"
 											><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>user<wbr />Count</span></a
+										>
+										<a href="#votecount" class="tsd-index-link"
+											><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>vote<wbr />Count</span></a
 										>
 									</div>
 								</section>
@@ -139,23 +153,6 @@
 						<h2>Properties</h2>
 					</summary>
 					<section>
-						<section class="tsd-panel tsd-member">
-							<h3 class="tsd-anchor-link" id="accurate">
-								<span>accurate</span
-								><a href="#accurate" aria-label="Permalink" class="tsd-anchor-icon"
-									><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg
-								></a>
-							</h3>
-							<div class="tsd-signature"><span class="tsd-kind-property">accurate</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span></div>
-							<aside class="tsd-sources">
-								<ul>
-									<li>
-										Defined in
-										<a href="https://github.com/xernerx/xernerx/blob/7b630a0a5fc2c085714508aa343be8baf900af7f/src/interfaces/XernerxClientStats.ts#L12">src/interfaces/XernerxClientStats.ts:12</a>
-									</li>
-								</ul>
-							</aside>
-						</section>
 						<section class="tsd-panel tsd-member">
 							<h3 class="tsd-anchor-link" id="guildcount">
 								<span>guild<wbr />Count</span
@@ -171,7 +168,27 @@
 								<ul>
 									<li>
 										Defined in
-										<a href="https://github.com/xernerx/xernerx/blob/7b630a0a5fc2c085714508aa343be8baf900af7f/src/interfaces/XernerxClientStats.ts#L4">src/interfaces/XernerxClientStats.ts:4</a>
+										<a href="https://github.com/xernerx/xernerx/blob/2808bdd08952ed2e1ac37fc178b7c51354ecedff/src/interfaces/XernerxClientStats.ts#L5">src/interfaces/XernerxClientStats.ts:5</a>
+									</li>
+								</ul>
+							</aside>
+						</section>
+						<section class="tsd-panel tsd-member">
+							<h3 class="tsd-anchor-link" id="onlinesince">
+								<span>online<wbr />Since</span
+								><a href="#onlinesince" aria-label="Permalink" class="tsd-anchor-icon"
+									><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg
+								></a>
+							</h3>
+							<div class="tsd-signature">
+								<span class="tsd-kind-property">onlineSince</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span> <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">number</span>
+							</div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>
+										Defined in
+										<a href="https://github.com/xernerx/xernerx/blob/2808bdd08952ed2e1ac37fc178b7c51354ecedff/src/interfaces/XernerxClientStats.ts#L4">src/interfaces/XernerxClientStats.ts:4</a>
 									</li>
 								</ul>
 							</aside>
@@ -184,17 +201,23 @@
 								></a>
 							</h3>
 							<div class="tsd-signature">
-								<span class="tsd-kind-property">shard</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span> <span class="tsd-signature-symbol">|</span>
-								<span class="tsd-signature-symbol">{</span> <span class="tsd-kind-property">guildCount</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span>
-								<span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">;</span> <span class="tsd-kind-property">userCount</span
-								><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">number</span>
-								<span class="tsd-signature-symbol">}</span>
+								<span class="tsd-kind-property">shard</span><span class="tsd-signature-symbol">:</span><br />    <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">null</span
+								><br />    <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-symbol">{</span><br />        <span class="tsd-kind-property">guildCount</span
+								><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span><br />        <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">;</span><br />        <span class="tsd-kind-property">onlineSince</span
+								><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">number</span
+								><span class="tsd-signature-symbol">;</span><br />        <span class="tsd-kind-property">shardId</span><span class="tsd-signature-symbol">:</span>
+								<span class="tsd-signature-type">null</span> <span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">;</span
+								><br />        <span class="tsd-kind-property">userCount</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span>
+								<span class="tsd-signature-symbol">|</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">;</span><br />    <span class="tsd-signature-symbol"
+									>}</span
+								>
 							</div>
 							<aside class="tsd-sources">
 								<ul>
 									<li>
 										Defined in
-										<a href="https://github.com/xernerx/xernerx/blob/7b630a0a5fc2c085714508aa343be8baf900af7f/src/interfaces/XernerxClientStats.ts#L8">src/interfaces/XernerxClientStats.ts:8</a>
+										<a href="https://github.com/xernerx/xernerx/blob/2808bdd08952ed2e1ac37fc178b7c51354ecedff/src/interfaces/XernerxClientStats.ts#L9">src/interfaces/XernerxClientStats.ts:9</a>
 									</li>
 								</ul>
 							</aside>
@@ -214,7 +237,7 @@
 								<ul>
 									<li>
 										Defined in
-										<a href="https://github.com/xernerx/xernerx/blob/7b630a0a5fc2c085714508aa343be8baf900af7f/src/interfaces/XernerxClientStats.ts#L6">src/interfaces/XernerxClientStats.ts:6</a>
+										<a href="https://github.com/xernerx/xernerx/blob/2808bdd08952ed2e1ac37fc178b7c51354ecedff/src/interfaces/XernerxClientStats.ts#L7">src/interfaces/XernerxClientStats.ts:7</a>
 									</li>
 								</ul>
 							</aside>
@@ -234,7 +257,27 @@
 								<ul>
 									<li>
 										Defined in
-										<a href="https://github.com/xernerx/xernerx/blob/7b630a0a5fc2c085714508aa343be8baf900af7f/src/interfaces/XernerxClientStats.ts#L5">src/interfaces/XernerxClientStats.ts:5</a>
+										<a href="https://github.com/xernerx/xernerx/blob/2808bdd08952ed2e1ac37fc178b7c51354ecedff/src/interfaces/XernerxClientStats.ts#L6">src/interfaces/XernerxClientStats.ts:6</a>
+									</li>
+								</ul>
+							</aside>
+						</section>
+						<section class="tsd-panel tsd-member">
+							<h3 class="tsd-anchor-link" id="votecount">
+								<span>vote<wbr />Count</span
+								><a href="#votecount" aria-label="Permalink" class="tsd-anchor-icon"
+									><svg viewBox="0 0 24 24" aria-hidden="true"><use href="../assets/icons.svg#icon-anchor"></use></svg
+								></a>
+							</h3>
+							<div class="tsd-signature">
+								<span class="tsd-kind-property">voteCount</span><span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">null</span> <span class="tsd-signature-symbol">|</span>
+								<span class="tsd-signature-type">number</span>
+							</div>
+							<aside class="tsd-sources">
+								<ul>
+									<li>
+										Defined in
+										<a href="https://github.com/xernerx/xernerx/blob/2808bdd08952ed2e1ac37fc178b7c51354ecedff/src/interfaces/XernerxClientStats.ts#L8">src/interfaces/XernerxClientStats.ts:8</a>
 									</li>
 								</ul>
 							</aside>
@@ -318,16 +361,18 @@
 									<svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="../assets/icons.svg#icon-chevronDown"></use></svg>Properties
 								</summary>
 								<div>
-									<a href="#accurate"
-										><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>accurate</span></a
-									><a href="#guildcount"
+									<a href="#guildcount"
 										><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>guild<wbr />Count</span></a
+									><a href="#onlinesince"
+										><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>online<wbr />Since</span></a
 									><a href="#shard"
 										><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>shard</span></a
 									><a href="#shardcount"
 										><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>shard<wbr />Count</span></a
 									><a href="#usercount"
 										><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>user<wbr />Count</span></a
+									><a href="#votecount"
+										><svg class="tsd-kind-icon" viewBox="0 0 24 24" aria-label="Property"><use href="../assets/icons.svg#icon-1024"></use></svg><span>vote<wbr />Count</span></a
 									>
 								</div>
 							</details>
@@ -336,7 +381,7 @@
 				</div>
 				<div class="site-menu">
 					<nav class="tsd-navigation">
-						<a href="../modules.html">XERNERX - v0.1.120-beta.19</a>
+						<a href="../modules.html">XERNERX - v0.1.120-beta.20</a>
 						<ul class="tsd-small-nested-navigation" id="tsd-nav-container">
 							<li>Loading...</li>
 						</ul>

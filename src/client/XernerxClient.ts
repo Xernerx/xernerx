@@ -91,11 +91,12 @@ export class XernerxClient extends Client {
 		this.monitisation = { skus: [] };
 
 		this.stats = {
+			onlineSince: Number(new Date()),
 			guildCount: null,
 			userCount: null,
 			shardCount: null,
+			voteCount: null,
 			shard: null,
-			accurate: false,
 		};
 
 		this.cache = { messages: new Collection(), slash: new Collection() };
@@ -127,28 +128,42 @@ export class XernerxClient extends Client {
 
 			/** When the client is sharded */
 			if (this.sharded && this.cluster) {
-				process.on('message', () => true);
-
-				this.stats.guildCount = (await this.cluster.broadcastEval('this.guilds.cache.size')).reduce((a, b) => a + b, 0);
-				this.stats.userCount = (await this.cluster.broadcastEval('this.guilds.cache.map((a) => a.memberCount).reduce((a, b) => a + b, 0)')).reduce((a, b) => a + b, 0);
 				this.stats.shard = {
-					guildCount: client.guilds.cache.size,
-					userCount: client.guilds.cache.map((a) => a.memberCount).reduce((a, b) => a + b, 0),
+					shardId: this.cluster.id,
+					onlineSince: Number(new Date()),
+					guildCount: null,
+					userCount: null,
 				};
 
+				setInterval(async () => {
+					if (!this.cluster || !this.stats.shard) return;
+
+					this.stats.guildCount = (await this.cluster.broadcastEval('this.guilds.cache.size')).reduce((a, b) => a + b, 0);
+					this.stats.userCount = (await this.cluster.broadcastEval('this.guilds.cache.map((a) => a.memberCount).reduce((a, b) => a + b, 0)')).reduce((a, b) => a + b, 0);
+					this.stats.shardCount = getInfo().TOTAL_SHARDS;
+					this.stats.shard.guildCount = client.guilds.cache.size;
+					this.stats.voteCount = 0;
+					this.stats.shard.userCount = client.guilds.cache.map((a) => a.memberCount).reduce((a, b) => a + b, 0);
+				}, 1000);
+
+				await new Promise((resolve) => setTimeout(resolve, 2000));
+
 				new XernerxSuccess(
-					`${sharpyy(`Shard ${this.cluster.id}`, 'txCyan')} | Signed in as ${sharpyy(client.user?.tag, 'txBlue')}, watching ${sharpyy(String(this.stats.shard.guildCount), 'txCyan')} guilds and users: ${sharpyy(String(this.stats.shard.userCount), 'txCyan')}`
+					`${sharpyy(`Shard ${this.cluster.id}`, 'txCyan')} | Signed in as ${sharpyy(client.user?.tag, 'txBlue')}, watching ${sharpyy(String(this.stats.shard?.guildCount?.toLocaleString()), 'txCyan')} guilds and users: ${sharpyy(String(this.stats.shard?.userCount?.toLocaleString()), 'txCyan')}`
 				);
 			} else {
 				/** When the client is standalone */
+				setInterval(() => {
+					this.stats.guildCount = client.guilds.cache.size;
+					this.stats.userCount = client.guilds.cache.map((a) => a.memberCount).reduce((a, b) => a + b, 0);
+					this.stats.voteCount = 0;
+					this.stats.shardCount = 0;
+				}, 1000);
 
-				this.stats.guildCount = client.guilds.cache.size;
-				this.stats.userCount = client.guilds.cache.map((a) => a.memberCount).reduce((a, b) => a + b, 0);
-				this.stats.shardCount = 0;
-				this.stats.accurate = true;
+				await new Promise((resolve) => setTimeout(resolve, 2000));
 
 				new XernerxSuccess(
-					`Signed in as ${sharpyy(client.user?.tag, 'txBlue')}, watching ${sharpyy(String(this.stats.guildCount), 'txCyan')} guilds and users: ${sharpyy(String(this.stats.userCount), 'txCyan')}`
+					`Signed in as ${sharpyy(client.user?.tag, 'txBlue')}, watching ${sharpyy(String(this.stats.guildCount?.toLocaleString()), 'txCyan')} guilds and users: ${sharpyy(String(this.stats.userCount?.toLocaleString()), 'txCyan')}`
 				);
 			}
 		});

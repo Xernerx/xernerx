@@ -12,7 +12,14 @@ import { XernerxInitial } from '../tools/XernerxInitial.js';
 
 export class XernerxShardClient extends ClusterManager {
 	declare public readonly onlineShards: Set<Cluster>;
-
+	declare public readonly stats: {
+		onlineSince: number | null;
+		guildCount: number | null;
+		userCount: number | null;
+		shardCount: number | null;
+		voteCount: number | null;
+		shards: [] | null;
+	};
 	constructor(options: ClusterManagerOptions & XernerxShardClientOptions) {
 		new XernerxInitial('ShardClient');
 
@@ -28,17 +35,22 @@ export class XernerxShardClient extends ClusterManager {
 
 		this.onlineShards = new Set();
 
+		this.stats = {
+			onlineSince: Number(new Date()),
+			guildCount: null,
+			userCount: null,
+			shardCount: null,
+			voteCount: null,
+			shards: [],
+		};
+
 		this.on('clusterCreate', (cluster) => {
 			new XernerxInfo(`${sharpyy(`Shard ${cluster.id}`, 'txCyan')} | Creating...`);
 
 			cluster.on('ready', () => {
 				this.onlineShards.add(cluster);
 
-				if (this.onlineShards.size == this.totalShards) {
-					new XernerxSuccess(`All Shards are online!`);
-
-					cluster.send({ type: 'xernerx', ready: true });
-				}
+				if (this.onlineShards.size == (this.totalClusters || this.totalShards)) this.#update();
 			});
 
 			cluster.on('disconnect', () => {
@@ -51,5 +63,27 @@ export class XernerxShardClient extends ClusterManager {
 		});
 
 		this.spawn({ timeout: -1 });
+	}
+
+	async #update() {
+		await new Promise((resolve) => setTimeout(resolve, 1000));
+
+		setInterval(async () => {
+			const stats = await this.fetchClientValues('stats');
+
+			const shards = await this.fetchClientValues('stats.shard');
+
+			this.stats.guildCount = stats[0].guildCount;
+			this.stats.userCount = stats[0].userCount;
+			this.stats.shardCount = stats[0].shardCount;
+			this.stats.voteCount = stats[0].voteCount;
+			this.stats.shards = shards;
+		}, 1000);
+
+		await new Promise((resolve) => setTimeout(resolve, 4000));
+
+		new XernerxSuccess(
+			`All Shards are online! Watching ${sharpyy(String(this.stats.guildCount?.toLocaleString()), 'txCyan')} guilds and users: ${sharpyy(String(this.stats.userCount?.toLocaleString()), 'txCyan')}, and ${sharpyy(String(this.stats.shardCount?.toLocaleString()), 'txCyan')} shards.`
+		);
 	}
 }

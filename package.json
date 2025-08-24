@@ -1,5 +1,5 @@
 {
-	"name": "@xernerx/framework",
+	"name": "xernerx",
 	"version": "0.1.120-beta.20",
 	"type": "module",
 	"main": "./dist/main.cjs",
@@ -41,7 +41,7 @@
 		"dumfunctions": "2.1.6",
 		"ora": "8.2.0",
 		"sharpyy": "1.1.0",
-		"zod": "4.0.5"
+		"zod": "4.1.1"
 	},
 	"devDependencies": {
 		"@arethetypeswrong/cli": "^0.18.2",
