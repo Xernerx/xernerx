@@ -11,39 +11,46 @@ jobs:
   build-and-push-docs:
     runs-on: ubuntu-latest
     steps:
-      # Checkout package repo
+      # Checkout the package repo
       - name: Checkout package
         uses: actions/checkout@v4
 
       # Install dependencies
       - name: Install dependencies
-        run: npm i
+        run: npm install
 
       # Build Typedoc using typedoc.json
       - name: Generate Typedoc
         run: npx typedoc
 
+      # Get package name from package.json
+      - name: Get package name
+        id: pkg
+        run: |
+          echo "PACKAGE_NAME=$(jq -r .name package.json)" >> $GITHUB_ENV
+
       # Checkout central docs repo (docs branch)
       - name: Checkout docs repo
         uses: actions/checkout@v4
         with:
-          repository: xernerx/docs       # your central docs repo
-          ref: docs                      # checkout docs branch
+          repository: xernerx/docs
           token: ${{ secrets.XERNERX_ACCESS_TOKEN }}
           path: docs-repo
+          ref: docs
 
-      # Copy Typedoc output into root of docs branch
+      # Copy Typedoc output into package-name folder in docs repo
       - name: Sync docs
         run: |
-          rm -rf docs-repo/*
-          cp -r docs/* docs-repo/
+          rm -rf docs-repo/${PACKAGE_NAME}
+          mkdir -p docs-repo/${PACKAGE_NAME}
+          cp -r docs/* docs-repo/${PACKAGE_NAME}/
 
-      # Commit & push changes to docs branch
+      # Commit & push changes
       - name: Commit and push
         run: |
           cd docs-repo
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add .
-          git commit -m "Update docs from $(date +'%Y-%m-%d %H:%M:%S')" || echo "No changes to commit"
+          git commit -m "Update ${PACKAGE_NAME} docs from $(date +'%Y-%m-%d %H:%M:%S')" || echo "No changes to commit"
           git push origin docs
