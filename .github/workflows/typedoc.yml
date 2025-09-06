@@ -1,0 +1,47 @@
+# .github/workflows/publish-docs.yml
+name: Build and Push Typedoc
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build-and-push-docs:
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout package repo
+      - name: Checkout package
+        uses: actions/checkout@v4
+
+      # Install dependencies
+      - name: Install dependencies
+        run: npm ci
+
+      # Build Typedoc using typedoc.json
+      - name: Generate Typedoc
+        run: npx typedoc
+
+      # Checkout central docs repo (docs branch)
+      - name: Checkout docs repo
+        uses: actions/checkout@v4
+        with:
+          repository: xernerx/docs       # your central docs repo
+          ref: docs                      # checkout docs branch
+          token: ${{ secrets.XERNERX_ACCESS_TOKEN }}
+          path: docs-repo
+
+      # Copy Typedoc output into root of docs branch
+      - name: Sync docs
+        run: |
+          rm -rf docs-repo/*
+          cp -r docs/* docs-repo/
+
+      # Commit & push changes to docs branch
+      - name: Commit and push
+        run: |
+          cd docs-repo
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add .
+          git commit -m "Update docs from $(date +'%Y-%m-%d %H:%M:%S')" || echo "No changes to commit"
+          git push origin docs
