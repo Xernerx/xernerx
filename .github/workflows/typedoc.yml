@@ -29,29 +29,27 @@ jobs:
         run: |
           echo "PACKAGE_NAME=$(jq -r .name package.json)" >> $GITHUB_ENV
 
-      # Checkout central docs repo (docs branch)
+      # Checkout central docs repo (main branch)
       - name: Checkout docs repo
         uses: actions/checkout@v4
         with:
           repository: xernerx/docs
           token: ${{ secrets.XERNERX_ACCESS_TOKEN }}
-          path: docs-repo
-          ref: docs
+          ref: main
 
       # Copy Typedoc output into docs/<package-name> folder in docs repo
       - name: Sync docs
         run: |
-          mkdir -p docs-repo/docs
-          rm -rf docs-repo/docs/${PACKAGE_NAME}
-          mkdir -p docs-repo/docs/${PACKAGE_NAME}
-          cp -r docs/* docs-repo/docs/${PACKAGE_NAME}/
+          mkdir -p docs
+          rm -rf docs/${PACKAGE_NAME}
+          mkdir -p docs/${PACKAGE_NAME}
+          cp -r docs/* docs/${PACKAGE_NAME}/
 
       # Commit & push changes
       - name: Commit and push
         run: |
-          cd docs-repo
           git config user.name "github-actions"
           git config user.email "actions@github.com"
           git add .
           git commit -m "Update ${PACKAGE_NAME} docs from $(date +'%Y-%m-%d %H:%M:%S')" || echo "No changes to commit"
-          git push origin docs
+          git push origin main
