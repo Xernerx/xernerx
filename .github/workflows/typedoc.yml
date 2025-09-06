@@ -38,12 +38,13 @@ jobs:
           path: docs-repo
           ref: docs
 
-      # Copy Typedoc output into package-name folder in docs repo
+      # Copy Typedoc output into docs/<package-name> folder in docs repo
       - name: Sync docs
         run: |
-          rm -rf docs-repo/${PACKAGE_NAME}
-          mkdir -p docs-repo/${PACKAGE_NAME}
-          cp -r docs/* docs-repo/${PACKAGE_NAME}/
+          mkdir -p docs-repo/docs
+          rm -rf docs-repo/docs/${PACKAGE_NAME}
+          mkdir -p docs-repo/docs/${PACKAGE_NAME}
+          cp -r docs/* docs-repo/docs/${PACKAGE_NAME}/
 
       # Commit & push changes
       - name: Commit and push
