@@ -21,9 +21,9 @@
 # About
 
 e
-Xernerx is a class based discord.js framework. \[BETA\]
+Xernerx is a class based discord.js framework. 
 
-It can be customized to be a lightweight handler or a heavy customizable framework that does all the hard work for you
+It can be customized to be a lightweight handler or a heavy customizable framework that does all the hard work for you.
 
 ## Features
 
@@ -42,8 +42,7 @@ It can be customized to be a lightweight handler or a heavy customizable framewo
 
 ## Links
 
-> - [Documentation](https://xernerx.xyz/)
-> - [Guide](https://xernerx.xyz/guide)
+> - [Documentation](https://app.xernerx.com/docs)
 
 ## Notes
 
