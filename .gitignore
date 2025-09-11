@@ -19,6 +19,8 @@ config.js
 # *.sqlite
 # tokens.json
 # tokens.js
+docs
+
 # ________________
 
 # * __Node__
