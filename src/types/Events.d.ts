@@ -3,7 +3,7 @@
 import 'discord.js';
 
 import { XernerxMessageCommandBuilder } from '../build/XernerxMessageCommandBuilder.ts';
-import { XernerxslashCommandBuilder } from '../build/XernerxslashCommandBuilder.ts';
+import { XernerxSlashCommandBuilder } from '../build/XernerxSlashCommandBuilder.ts';
 
 declare module 'discord.js' {
 	interface ClientEvents {
