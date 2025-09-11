@@ -5,10 +5,6 @@
 	"main": "./dist/main.cjs",
 	"module": "./dist/main.js",
 	"types": "./dist/main.d.ts",
-	"publishConfig": {
-		"access": "public",
-		"registry": "https://registry.npmjs.org/"
-	},
 	"homepage": "app.xernerx.com/docs",
 	"files": [
 		"src",
@@ -23,6 +19,10 @@
 			"types": "./dist/main.d.ts",
 			"default": "./dist/main.js"
 		}
+	},
+	"publishConfig": {
+		"access": "public",
+		"registry": "https://registry.npmjs.org/"
 	},
 	"scripts": {
 		"beta": "npm version prerelease --preid=beta",
