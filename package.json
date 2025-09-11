@@ -9,7 +9,7 @@
 		"access": "public",
 		"registry": "https://registry.npmjs.org/"
 	},
-	"homepage": "docs.xernerx.com",
+	"homepage": "app.xernerx.com/docs",
 	"files": [
 		"src",
 		"dist"
@@ -25,9 +25,13 @@
 		}
 	},
 	"scripts": {
-		"dev": "npm link && npx tsup --watch",
-		"build": "npx tsup",
-		"pub": "npx publishyy"
+		"beta": "npm version prerelease --preid=beta",
+		"patch": "npm version patch",
+		"minor": "npm version minor",
+		"major": "npm version major",
+		"docs": "npx typedoc",
+		"build": "npm i && npx tsup && npx @arethetypeswrong/cli --pack && npm run docs",
+		"dev": "npm i && npx tsc-watch --onSuccess 'npm run build'"
 	},
 	"keywords": [],
 	"author": "Dummi",
