@@ -1,6 +1,5 @@
 # @format
 
-# .github/workflows/publish.yml
 name: Publish Packages
 
 on:

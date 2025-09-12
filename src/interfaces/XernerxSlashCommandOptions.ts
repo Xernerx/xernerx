@@ -4,7 +4,7 @@ import { AutocompleteFocusedOption, AutocompleteInteraction, ChatInputCommandInt
 
 import { XernerxSlashCommandBuilder } from '../main.js';
 
-export interface XernerxSlashCommand {
+export interface XernerxSlashCommandOptions {
 	interaction: ChatInputCommandInteraction;
 	options?: Record<string, { name: string; type: number; value: string | number | boolean | object }> | null;
 	subcommand: string | null;

@@ -62,7 +62,7 @@ export class XernerxClientReadyEvent extends XernerxEventBuilder {
 
 			this.put(client);
 
-			new XernerxSuccess(`Successfully deployed slash commands ${client.settings.global ? 'globally' : 'locally'}`);
+			commands.length && new XernerxSuccess(`Successfully deployed slash commands ${client.settings.global ? 'globally' : 'locally'}`);
 		} catch (error) {
 			new XernerxError((error as Error).message);
 		}

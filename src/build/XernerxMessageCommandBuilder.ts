@@ -5,14 +5,26 @@ import { z } from 'zod';
 import { XernerxWarn } from '../tools/XernerxWarn.js';
 import { XernerxMessageCommandBuilderOptions } from '../interfaces/XernerxMessageCommandBuilderOptions.js';
 import { XernerxBaseBuilder } from './XernerxBaseBuilder.js';
+import { ChannelType, Permissions } from 'discord.js';
 
 export class XernerxMessageCommandBuilder extends XernerxBaseBuilder {
-	declare public readonly filetype: 'XernerxMessageCommand';
+	// Discord
 	declare public readonly name: string;
 	declare public readonly description: string;
-	declare public readonly alias: string[];
-	declare public readonly prefix: string[];
-	declare public readonly premium: Array<string>;
+	declare public readonly alias: Array<string>;
+	declare public readonly prefix: Array<string>;
+	declare public readonly premium?: boolean;
+	declare public readonly deploy?: { global?: boolean; guilds?: Array<string> | string };
+	declare public readonly info?: string;
+	declare public readonly usage?: string;
+	declare public readonly category?: string;
+	declare public readonly cooldown?: number;
+	declare public readonly permissions: { client: Permissions | number | bigint | null; user: Permissions | number | bigint | null };
+	declare public readonly strict?: { owner?: boolean; users?: Array<string>; channels?: Array<string>; guilds?: Array<string>; types?: ChannelType };
+	declare public readonly ignore?: { owner?: boolean; users?: Array<string>; channels?: Array<string>; guilds?: Array<string>; types?: ChannelType };
+
+	// Static
+	declare public readonly filetype: 'XernerxMessageCommand';
 
 	/**
 	 * Constructs an instance of XernerxMessageCommandBuilder.

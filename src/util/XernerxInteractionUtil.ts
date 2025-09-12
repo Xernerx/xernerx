@@ -1,6 +1,7 @@
 /** @format */
 
 import {
+	BitFieldResolvable,
 	Client,
 	Collection,
 	Interaction,
@@ -37,8 +38,18 @@ export class XernerxInteractionUtil extends XernerxBaseUtil {
 	 * @returns A promise that resolves to the sent message.
 	 * @throws {XernerxError} Throws an error if the options parameter is not provided.
 	 */
-	public async send(options: string | MessagePayload | MessageCreateOptions) {
-		if (!options) throw new XernerxError(`Can't send a message without content.`);
+	public async send(options: (string | MessagePayload | MessageCreateOptions) & { display?: boolean }) {
+		const flags = [];
+
+		if (!options) throw new XernerxError(`Can't send a message without options.`);
+
+		if (options.display) flags.push(MessageFlags.IsComponentsV2);
+
+		if (typeof options !== 'string') {
+			delete options.display;
+
+			(options as InteractionEditReplyOptions).flags = flags as BitFieldResolvable<'SuppressEmbeds' | 'IsComponentsV2', MessageFlags.SuppressEmbeds | MessageFlags.IsComponentsV2> | undefined;
+		}
 
 		return await (this.interaction.channel as TextChannel).send(options);
 	}
@@ -50,33 +61,21 @@ export class XernerxInteractionUtil extends XernerxBaseUtil {
 	 * @returns A promise that resolves to the sent message or the edited reply.
 	 * @throws {XernerxError} Throws an error if the options parameter is not provided.
 	 */
-	public async reply(options: string | MessagePayload | InteractionEditReplyOptions) {
+	public async reply(options: (string | MessagePayload | InteractionEditReplyOptions) & { ephemeral?: boolean; display?: boolean }) {
+		const flags = [];
+
 		if (!options) throw new XernerxError(`Can't send a message without options.`);
 
+		if (options.ephemeral) flags.push(MessageFlags.Ephemeral);
+		if (options.display) flags.push(MessageFlags.IsComponentsV2);
+
+		if (typeof options !== 'string') {
+			delete options.ephemeral;
+			delete options.display;
+
+			(options as InteractionEditReplyOptions).flags = flags as BitFieldResolvable<'SuppressEmbeds' | 'IsComponentsV2', MessageFlags.SuppressEmbeds | MessageFlags.IsComponentsV2> | undefined;
+		}
+
 		return await (this.interaction.replied || this.interaction.deferred ? this.interaction.editReply(options) : this.interaction.reply(options as InteractionReplyOptions));
-	}
-
-	/**
-	 * Sends a message to the channel associated with the interaction with componentsV2 flag.
-	 *
-	 * @param options - The options for the message to be sent, including content and other message properties.
-	 * @returns A promise that resolves to the sent message.
-	 */
-	public async send2(options: MessageCreateOptions) {
-		options.flags = MessageFlags.IsComponentsV2;
-
-		return await this.send(options);
-	}
-
-	/**
-	 * Replies to the interaction with the provided options, using the componentsV2 flag.
-	 *
-	 * @param options - The options for the reply, including content and other message properties.
-	 * @returns A promise that resolves to the sent message or the edited reply.
-	 */
-	public async reply2(options: InteractionEditReplyOptions) {
-		options.flags = MessageFlags.IsComponentsV2;
-
-		return await this.reply(options);
 	}
 }

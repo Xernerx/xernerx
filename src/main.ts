@@ -18,4 +18,4 @@ import './types/Message.d.ts';
 import './types/Interaction.d.ts';
 import './types/Events.d.ts';
 
-export * from './interfaces/XernerxSlashCommand.js';
+export * from './interfaces/XernerxSlashCommandOptions.js';

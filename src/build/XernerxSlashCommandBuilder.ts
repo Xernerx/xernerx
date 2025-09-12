@@ -31,7 +31,7 @@ import {
 	XernerxSlashCommandBuilderSubcommand,
 } from '../interfaces/XernerxSlashCommandBuilderOptions.js';
 import { XernerxBaseBuilder } from './XernerxBaseBuilder.js';
-import { XernerxSlashCommand, XernerxSlashCommandAutocomplete } from '../interfaces/XernerxSlashCommand.js';
+import { XernerxSlashCommandOptions, XernerxSlashCommandAutocomplete } from '../interfaces/XernerxSlashCommandOptions.js';
 
 export class XernerxSlashCommandBuilder extends XernerxBaseBuilder {
 	// Discord
@@ -202,7 +202,7 @@ export class XernerxSlashCommandBuilder extends XernerxBaseBuilder {
 	 * @param args - The arguments for the conditions function, which include the context and options for the command.
 	 * @returns A promise that resolves to either void or any value, depending on the implementation.
 	 */
-	public async conditions(args: XernerxSlashCommand): Promise<void | any> {}
+	public async conditions(args: XernerxSlashCommandOptions): Promise<void | any> {}
 
 	/**
 	 * Executes the slash command.
@@ -210,7 +210,7 @@ export class XernerxSlashCommandBuilder extends XernerxBaseBuilder {
 	 * @param args - The arguments for the exec function, which include the context and options for the command.
 	 * @returns A promise that resolves to either void or any value, depending on the implementation.
 	 */
-	public async exec(args: XernerxSlashCommand): Promise<void | any> {
+	public async exec(args: XernerxSlashCommandOptions): Promise<void | any> {
 		new XernerxWarn(`${this.id} has no exec function, command will not respond.`);
 	}
 
