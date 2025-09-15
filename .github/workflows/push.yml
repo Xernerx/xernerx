@@ -72,9 +72,10 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          git remote set-url origin https://x-access-token:${{ secrets.XERNERX_ACCESS_TOKEN }}@github.com/Xernerx/docs.git
           git add package.json
-          git commit -m "chore: update engines.node and packageManager" || echo "No changes"
-          git push https://x-access-token:${{ secrets.XERNERX_ACCESS_TOKEN }}@github.com/Xernerx/docs.git
+          git commit -m "docs: update for ${{ steps.pkg.outputs.name }}@${{ steps.pkg.outputs.version }}" || echo "No changes"
+          git push origin main
 
       - name: Get package info
         id: pkg
