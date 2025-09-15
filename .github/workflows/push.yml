@@ -35,18 +35,30 @@ jobs:
       - name: Determine lowest supported Node
         id: engines
         run: |
-          echo "Available LTS versions: '${{ steps.lts.outputs.versions }}'"
+          versions="${{ steps.lts.outputs.versions }}"
           lowest=""
-          for v in ${{ steps.lts.outputs.versions }}; do
+
+          for v in $versions; do
             echo "Testing Node $v..."
-            if npx -p node@$v npm install --silent && npx -p node@$v npm test --silent; then
+            # temporarily setup Node
+            echo "Setting up Node $v"
+            curl -fsSL https://deb.nodesource.com/setup_$v.x | sudo -E bash -
+            sudo apt-get install -y nodejs
+            
+            node -v
+            npm -v
+            
+            npm install --silent
+            if npm test --silent; then
               lowest=$v
               break
             fi
           done
+            
           if [ -z "$lowest" ]; then
             echo "No supported Node version found" && exit 1
           fi
+
           echo "lowest=$lowest" >> $GITHUB_OUTPUT
 
       - name: Setup Node.js
