@@ -22,10 +22,12 @@ jobs:
           versions=$(curl -s https://endoflife.date/api/nodejs.json \
             | jq -r '[.[] | select(.support == true) | .cycle] | sort | join(" ")')
           echo "versions=$versions" >> $GITHUB_OUTPUT
+          echo "Fetched Node LTS versions: $versions"
 
       - name: Determine lowest supported Node
         id: engines
         run: |
+          echo "Available LTS versions: '${{ steps.lts.outputs.versions }}'"
           lowest=""
           for v in ${{ steps.lts.outputs.versions }}; do
             echo "Testing Node $v..."
