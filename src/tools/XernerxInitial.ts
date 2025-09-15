@@ -37,7 +37,7 @@ export class XernerxInitial extends XernerxBase {
 			.catch(() => null)) as unknown as Array<{ type: string; name: string }> | null;
 		const project = JSON.parse(fs.readFileSync(path.resolve('package.json'), 'utf-8'));
 
-		if (!latest) return;
+		if (!latest || !Array.isArray(latest)) return;
 
 		const versions = latest.filter((file) => file.type === 'dir').map((file) => file.name);
 

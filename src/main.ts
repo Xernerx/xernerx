@@ -8,6 +8,7 @@ export * from './client/XernerxClient.js';
 export * from './build/XernerxEventBuilder.js';
 export * from './build/XernerxMessageCommandBuilder.js';
 export * from './build/XernerxSlashCommandBuilder.js';
+export * from './build/XernerxContextCommandBuilder.js';
 
 // lib
 export * from 'discord.js';

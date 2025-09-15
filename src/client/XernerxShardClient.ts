@@ -45,10 +45,12 @@ export class XernerxShardClient extends ClusterManager {
 		};
 
 		this.on('clusterCreate', (cluster) => {
-			new XernerxInfo(`${sharpyy(`Shard ${cluster.id}`, 'txCyan')} | Creating...`);
+			new XernerxInfo(`Creating shard ${cluster.id}...`);
 
-			cluster.on('ready', () => {
+			cluster.on('ready', async () => {
 				this.onlineShards.add(cluster);
+
+				await cluster.send({ type: 'xernerx' });
 
 				if (this.onlineShards.size == (this.totalClusters || this.totalShards)) this.#update();
 			});

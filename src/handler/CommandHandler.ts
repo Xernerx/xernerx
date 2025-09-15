@@ -1,29 +1,24 @@
 /** @format */
 
-import sharpyy from 'sharpyy';
-import { z } from 'zod';
-
-import { XernerxClient } from '../client/XernerxClient.js';
 import { Handler } from './Handler.js';
-import { XernerxMessageCreateEvent } from '../events/messageCreate.js';
-import { XernerxMessageUpdateEvent } from '../events/messageUpdate.js';
-import { XernerxMessageDeleteEvent } from '../events/messageDelete.js';
+import { XernerxClient } from '../client/XernerxClient.js';
+import { XernerxContextCommandHandlerOptions } from '../interfaces/XernerxContextCommandHandlerOptions.js';
+import { XernerxError } from '../tools/XernerxError.js';
 import { XernerxInteractionCreateEvent } from '../events/interactionCreate.js';
+import { XernerxMessageCommandHandlerOptions } from '../interfaces/XernerxMessageCommandHandlerOptions.js';
+import { XernerxMessageCreateEvent } from '../events/messageCreate.js';
+import { XernerxMessageDeleteEvent } from '../events/messageDelete.js';
+import { XernerxMessageUpdateEvent } from '../events/messageUpdate.js';
+import { XernerxSlashCommandHandlerOptions } from '../interfaces/XernerxSlashCommandHandlerOptions.js';
+import { XernerxSlashCommandInteractionEvent } from '../events/slashCommandInteraction.js';
 import { XernerxSuccess } from '../tools/XernerxSuccess.js';
 import { XernerxWarn } from '../tools/XernerxWarn.js';
-import { XernerxError } from '../tools/XernerxError.js';
-import { XernerxMessageCommandHandlerOptions } from '../interfaces/XernerxMessageCommandHandlerOptions.js';
-import { XernerxSlashCommandHandlerOptions } from '../interfaces/XernerxSlashCommandHandlerOptions.js';
-import { XernerxEventBuilder } from '../build/XernerxEventBuilder.js';
-import { XernerxClientReadyEvent } from '../events/clientReady.js';
-import { XernerxSlashCommandInteractionEvent } from '../events/slashCommandInteraction.js';
-import { XernerxEntitlementCreateEvent } from '../events/entitlementCreate.js';
+import sharpyy from 'sharpyy';
+import { z } from 'zod';
 
 export class CommandHandler extends Handler {
 	constructor(client: XernerxClient) {
 		super(client);
-
-		this.loadEvents(XernerxEntitlementCreateEvent, XernerxClientReadyEvent);
 	}
 
 	/**
@@ -67,7 +62,7 @@ export class CommandHandler extends Handler {
 
 		const files = this.loadFiles(config.directory);
 
-		this.loadEvents(XernerxMessageCreateEvent, XernerxMessageUpdateEvent, XernerxMessageDeleteEvent);
+		this.loadBuilder(XernerxMessageCreateEvent, XernerxMessageUpdateEvent, XernerxMessageDeleteEvent);
 
 		if (!this.client.options.intents.has('GuildMessages')) new XernerxError(`Missing ${sharpyy('GuildMessages', 'txYellow')} intent, message commands will not work.`);
 		if (!this.client.options.intents.has('MessageContent') && !config.mention)
@@ -113,20 +108,32 @@ export class CommandHandler extends Handler {
 			await this.loadSlashCommand(file);
 		}
 
-		this.loadEvents(XernerxInteractionCreateEvent, XernerxSlashCommandInteractionEvent);
+		this.loadBuilder(XernerxInteractionCreateEvent, XernerxSlashCommandInteractionEvent);
 
 		new XernerxSuccess(`Loaded slash commands: ${this.client.commands.slash.map((command) => sharpyy(command.id, 'txYellow')).join(', ')}`);
 	}
 
-	/**
-	 * Loads and imports event files based on the provided event classes.
-	 *
-	 * @param args - An array of event classes extending XernerxEventBuilder. Each class represents an event to be loaded and imported.
-	 * @returns A promise that resolves when all specified events have been successfully imported.
-	 */
-	private async loadEvents(...args: Array<typeof XernerxEventBuilder>) {
-		for (const event of args) {
-			this.importFile(new event('', { name: '' }));
+	public async loadContextCommand(file: string) {
+		return await this.loadFile(file);
+	}
+
+	public async loadContextCommands(options: XernerxContextCommandHandlerOptions) {
+		const config = z
+			.object({
+				directory: z.string(),
+			})
+			.parse(options);
+
+		this.client.handler.context = config;
+
+		const files = this.loadFiles(config.directory);
+
+		for (const file of files) {
+			await this.loadContextCommand(file);
 		}
+
+		this.loadBuilder(XernerxInteractionCreateEvent);
+
+		new XernerxSuccess(`Loaded context commands: ${this.client.commands.context.map((command) => sharpyy(command.id, 'txYellow')).join(', ')}`);
 	}
 }

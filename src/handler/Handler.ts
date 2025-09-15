@@ -1,12 +1,14 @@
 /** @format */
-import fs from 'fs';
-import path from 'path';
 
 import { XernerxClient } from '../client/XernerxClient.js';
+import { XernerxContextCommandBuilder } from '../main.js';
 import { XernerxError } from '../tools/XernerxError.js';
 import { XernerxEventBuilder } from '../build/XernerxEventBuilder.js';
 import { XernerxMessageCommandBuilder } from '../build/XernerxMessageCommandBuilder.js';
 import { XernerxSlashCommandBuilder } from '../build/XernerxSlashCommandBuilder.js';
+/** @format */
+import fs from 'fs';
+import path from 'path';
 
 export class Handler {
 	declare public readonly client: XernerxClient;
@@ -74,11 +76,17 @@ export class Handler {
 	 *          If the builder is of type XernerxEvent, it is registered as an event listener.
 	 *          If the builder is of type XernerxMessageCommand or XernerxSlashCommand, it is registered as a command.
 	 */
-	async importFile(builder: XernerxEventBuilder | XernerxMessageCommandBuilder | XernerxSlashCommandBuilder, filename?: string) {
+	async importFile(builder: XernerxEventBuilder | XernerxMessageCommandBuilder | XernerxSlashCommandBuilder | XernerxContextCommandBuilder, filename?: string) {
+		if (!filename) filename = builder.id;
+
+		builder.client = this.client;
+
 		if (builder.filetype === 'XernerxEvent') {
-			if (this.client.events.has(builder.id)) return new XernerxError(`${filename} | ID must be unique`);
+			if (this.client.events.has(builder.id) && !builder.id.startsWith('Xernerx')) return new XernerxError(`${filename} | ID must be unique`);
 
 			this.client.events.set(builder.id, builder);
+
+			this.process = process;
 
 			builder.once
 				? this[(builder as XernerxEventBuilder).emitter].once(builder.name, <T extends []>(...args: T) => builder.run(...(args as [])))
@@ -86,13 +94,29 @@ export class Handler {
 		}
 
 		if (builder.filetype === 'XernerxMessageCommand') {
+			if (this.client.commands.message.has(builder.id)) return new XernerxError(`${filename} | ID must be unique`);
+
 			this.client.commands.message.set(builder.id, builder);
 		}
 
 		if (builder.filetype === 'XernerxSlashCommand') {
+			if (this.client.commands.slash.has(builder.id)) return new XernerxError(`${filename} | ID must be unique`);
+
 			this.client.commands.slash.set(builder.id, builder);
 		}
 
+		if (builder.filetype === 'XernerxContextCommand') {
+			if (this.client.commands.slash.has(builder.id)) return new XernerxError(`${filename} | ID must be unique`);
+
+			this.client.commands.context.set(builder.id, builder);
+		}
+
 		return builder;
+	}
+
+	public async loadBuilder(...args: Array<typeof XernerxEventBuilder>) {
+		for (const event of args) {
+			this.importFile(new event('', { name: '' }));
+		}
 	}
 }

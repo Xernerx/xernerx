@@ -1,29 +1,34 @@
 /** @format */
 
 import { Client, ClientOptions, Collection, RESTGetAPISKUsResult } from 'discord.js';
-import sharpyy from 'sharpyy';
 import { ClusterClient, DjsDiscordClient, getInfo } from 'discord-hybrid-sharding';
-import z from 'zod';
 
-import { XernerxClientOptions } from '../interfaces/XernerxClientOptions.js';
-import { XernerxInfo } from '../tools/XernerxInfo.js';
-import { XernerxClientStats } from '../interfaces/XernerxClientStats.js';
-import { XernerxInitial } from '../tools/XernerxInitial.js';
-import { XernerxError } from '../tools/XernerxError.js';
-import { XernerxSuccess } from '../tools/XernerxSuccess.js';
-import { XernerxMonitisation } from '../model/XernerxMonitisation.js';
-import { EventHandler } from '../handler/EventHandler.js';
-import { XernerxEventBuilder } from '../build/XernerxEventBuilder.js';
 import { CommandHandler } from '../handler/CommandHandler.js';
+import { EventHandler } from '../handler/EventHandler.js';
+import { XernerxClientOptions } from '../interfaces/XernerxClientOptions.js';
+import { XernerxClientReadyEvent } from '../events/clientReady.js';
+import { XernerxClientStats } from '../interfaces/XernerxClientStats.js';
+import { XernerxContextCommandBuilder } from '../build/XernerxContextCommandBuilder.js';
+import { XernerxContextCommandHandlerOptions } from '../interfaces/XernerxContextCommandHandlerOptions.js';
+import { XernerxError } from '../tools/XernerxError.js';
+import { XernerxEventBuilder } from '../build/XernerxEventBuilder.js';
+import { XernerxInfo } from '../tools/XernerxInfo.js';
+import { XernerxInitial } from '../tools/XernerxInitial.js';
 import { XernerxMessageCommandBuilder } from '../build/XernerxMessageCommandBuilder.js';
 import { XernerxMessageCommandHandlerOptions } from '../interfaces/XernerxMessageCommandHandlerOptions.js';
-import { XernerxSlashCommandHandlerOptions } from '../interfaces/XernerxSlashCommandHandlerOptions.js';
+import { XernerxMessageEvent } from '../events/XernerxMessage.js';
+import { XernerxMonitisation } from '../model/XernerxMonitisation.js';
 import { XernerxSlashCommandBuilder } from '../build/XernerxSlashCommandBuilder.js';
+import { XernerxSlashCommandHandlerOptions } from '../interfaces/XernerxSlashCommandHandlerOptions.js';
+import { XernerxSuccess } from '../tools/XernerxSuccess.js';
+import sharpyy from 'sharpyy';
+import z from 'zod';
 
 export class XernerxClient extends Client {
 	// Config
 	declare public readonly token: string;
 	declare public readonly sharded: boolean;
+	declare public shardId: number | null;
 	declare public readonly settings: XernerxClientOptions;
 	declare public readonly premium: {
 		owners?: boolean;
@@ -36,12 +41,13 @@ export class XernerxClient extends Client {
 	declare public readonly stats: XernerxClientStats;
 	declare public readonly cluster: ClusterClient | null;
 	declare public readonly cache: { messages: Collection<string, string>; slash: Collection<string, string> };
-	declare public readonly handler: { message: XernerxMessageCommandHandlerOptions; slash: XernerxSlashCommandHandlerOptions };
+	declare public readonly handler: { message: XernerxMessageCommandHandlerOptions; slash: XernerxSlashCommandHandlerOptions; context: XernerxContextCommandHandlerOptions };
 
 	// Collections
 	declare public readonly commands: {
 		message: Collection<string, XernerxMessageCommandBuilder>;
 		slash: Collection<string, XernerxSlashCommandBuilder>;
+		context: Collection<string, XernerxContextCommandBuilder>;
 	};
 	declare public readonly events: Collection<string, XernerxEventBuilder>;
 
@@ -66,24 +72,25 @@ export class XernerxClient extends Client {
 				owners: z.string().or(z.array(z.string()).max(5)).default([]),
 				premium: z
 					.object({
-						owners: z.boolean().default(true),
-						consume: z.boolean().default(true),
-						synchronize: z.boolean().default(true),
+						owners: z.boolean().default(false),
+						consume: z.boolean().default(false),
+						synchronize: z.boolean().default(false),
 					})
 					.optional(),
 			})
 			.parse(options);
 
 		this.sharded = options.shardCount ? true : false;
+		this.shardId = null;
 		this.token = options.token as string;
 
 		this.settings.guildId = typeof this.settings.guildId == 'string' ? [this.settings.guildId] : this.settings.guildId;
 		this.settings.owners = typeof this.settings.owners == 'string' ? [this.settings.owners] : this.settings.owners;
 
 		this.premium = this.settings.premium || {
-			owners: true,
-			consume: true,
-			synchronize: true,
+			owners: false,
+			consume: false,
+			synchronize: false,
 		};
 
 		delete this.settings.premium;
@@ -105,15 +112,23 @@ export class XernerxClient extends Client {
 		this.handler = {
 			message: { directory: null },
 			slash: { directory: null },
+			context: { directory: null },
 		};
 
-		this.commands = { message: new Collection(), slash: new Collection() };
+		this.commands = { message: new Collection(), slash: new Collection(), context: new Collection() };
 
 		this.events = new Collection();
 
 		if (this.sharded) this.cluster = new ClusterClient(this as unknown as DjsDiscordClient);
 
 		this.modules = { eventHandler: new EventHandler(this), commandHandler: new CommandHandler(this) };
+
+		this.modules.eventHandler.loadBuilder(XernerxMessageEvent, XernerxClientReadyEvent);
+
+		(process as any).xernerx = {
+			id: this.cluster?.id,
+			global: this.settings.global,
+		};
 	}
 
 	/**
@@ -122,7 +137,7 @@ export class XernerxClient extends Client {
 	 * @returns A promise that resolves when the client successfully logs in, or rejects with an error message if the login fails.
 	 */
 	async connect() {
-		new XernerxInfo(`${this.cluster ? `${sharpyy(`Shard ${this.cluster.id}`, 'txCyan')} | ` : ''}Connecting...`);
+		new XernerxInfo(`Connecting...`);
 
 		this.on('clientReady', async (client) => {
 			this.monitisation.skus = await new XernerxMonitisation(client).sku();
@@ -150,7 +165,7 @@ export class XernerxClient extends Client {
 				await new Promise((resolve) => setTimeout(resolve, 2000));
 
 				new XernerxSuccess(
-					`${sharpyy(`Shard ${this.cluster.id}`, 'txCyan')} | Signed in as ${sharpyy(client.user?.tag, 'txBlue')}, watching ${sharpyy(String(this.stats.shard?.guildCount?.toLocaleString()), 'txCyan')} guilds and users: ${sharpyy(String(this.stats.shard?.userCount?.toLocaleString()), 'txCyan')}`
+					`Signed in as ${sharpyy(client.user?.tag, 'txBlue')}, watching ${sharpyy(String(this.stats.shard?.guildCount?.toLocaleString()), 'txCyan')} guilds and users: ${sharpyy(String(this.stats.shard?.userCount?.toLocaleString()), 'txCyan')}`
 				);
 			} else {
 				/** When the client is standalone */

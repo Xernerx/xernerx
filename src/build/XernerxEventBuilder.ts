@@ -1,11 +1,10 @@
 /** @format */
 
 import { ClientEvents } from 'discord.js';
-import sharpyy from 'sharpyy';
-
-import { XernerxEventBuilderOptions } from '../interfaces/XernerxEventBuilderOptions.js';
 import { XernerxBaseBuilder } from './XernerxBaseBuilder.js';
+import { XernerxEventBuilderOptions } from '../interfaces/XernerxEventBuilderOptions.js';
 import { XernerxWarn } from '../tools/XernerxWarn.js';
+import sharpyy from 'sharpyy';
 
 export class XernerxEventBuilder extends XernerxBaseBuilder {
 	declare public readonly filetype: 'XernerxEvent';
