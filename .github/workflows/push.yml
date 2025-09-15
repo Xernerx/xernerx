@@ -9,61 +9,88 @@ on:
       - beta
 
 jobs:
-  detect-lowest-node:
-    runs-on: ubuntu-latest
-    outputs:
-      lowest: ${{ steps.set-lowest.outputs.lowest }}
-    strategy:
-      matrix:
-        node: [18, 20, 22]
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node }}
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run tests
-        run: npm test
-
-      - name: Set lowest node
-        if: success()
-        id: set-lowest
-        run: echo "lowest=${{ matrix.node }}" >> $GITHUB_OUTPUT
-
   build-and-publish:
     runs-on: ubuntu-latest
-    needs: detect-lowest-node
-    steps:
-      - uses: actions/checkout@v4
 
-      - name: Setup Node
+    steps:
+      # -----------------------------
+      # Checkout repo
+      # -----------------------------
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      # -----------------------------
+      # Determine lowest supported Node
+      # -----------------------------
+      - name: Determine lowest supported Node
+        id: engines
+        run: |
+          echo "Fetching active LTS Node versions..."
+          versions=$(curl -s https://endoflife.date/api/nodejs.json \
+            | jq -r '[.[] | select(.support == true) | .cycle] | sort | join(" ")')
+          echo "Available LTS versions: $versions"
+
+          lowest=""
+          for v in $versions; do
+            echo "Testing Node $v..."
+            # Install Node + npm silently and run tests
+            if npx -p node@$v npm install --silent && npx -p node@$v npm test --silent; then
+              lowest=$v
+              echo "Found lowest supported Node: $v"
+              break
+            fi
+          done
+
+          if [ -z "$lowest" ]; then
+            echo "No supported Node version found"
+            exit 1
+          fi
+
+          echo "lowest=$lowest" >> $GITHUB_OUTPUT
+
+      # -----------------------------
+      # Setup Node.js (latest CI version)
+      # -----------------------------
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          registry-url: 'https://registry.npmjs.org'
 
+      # -----------------------------
+      # Install dependencies
+      # -----------------------------
       - name: Install dependencies
         run: npm install
 
+      # -----------------------------
+      # Build with tsup
+      # -----------------------------
       - name: Build with tsup
         run: npx tsup
 
+      # -----------------------------
+      # Check exports
+      # -----------------------------
       - name: Check exports with arethetypeswrong
         run: npx @arethetypeswrong/cli --pack
 
+      # -----------------------------
+      # Run Prettier
+      # -----------------------------
       - name: Run Prettier
         run: npx prettier --write .
 
-      - name: Update package.json engines and packageManager
+      # -----------------------------
+      # Update package.json engines and packageManager
+      # -----------------------------
+      - name: Update package.json
         run: |
-          npm pkg set "engines.node=>=${{ needs.detect-lowest-node.outputs.lowest }}"
+          npm pkg set "engines.node=>=${{ steps.engines.outputs.lowest }}"
           npm pkg set "packageManager=npm@$(npm -v)"
 
+      # -----------------------------
+      # Commit updated package.json
+      # -----------------------------
       - name: Commit updated package.json
         run: |
           git config user.name "github-actions[bot]"
@@ -72,38 +99,53 @@ jobs:
           git commit -m "chore: update engines.node and packageManager" || echo "No changes"
           git push https://x-access-token:${{ secrets.XERNERX_ACCESS_TOKEN }}@github.com/Xernerx/app.xernerx.com.git
 
+      # -----------------------------
+      # Get package info
+      # -----------------------------
       - name: Get package info
         id: pkg
         run: |
           echo "name=$(node -p "require('./package.json').name")" >> $GITHUB_OUTPUT
           echo "version=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
 
-      - name: Push docs and changelog to docs repo
+      # -----------------------------
+      # Generate typedoc docs
+      # -----------------------------
+      - name: Generate docs
         run: |
           mkdir -p typedoc_out
           npx typedoc --out typedoc_out src
 
-          # Clone docs repo
+      # -----------------------------
+      # Add CHANGELOG.md for this release
+      # -----------------------------
+      - name: Add CHANGELOG.md
+        run: |
+          mkdir -p typedoc_out/packages/${{ steps.pkg.outputs.name }}/${{ steps.pkg.outputs.version }}/documents
+          echo "# Changelog for ${{ steps.pkg.outputs.name }} v${{ steps.pkg.outputs.version }}" \
+            > typedoc_out/packages/${{ steps.pkg.outputs.name }}/${{ steps.pkg.outputs.version }}/documents/CHANGELOG.md
+          echo "Release notes:" >> typedoc_out/packages/${{ steps.pkg.outputs.name }}/${{ steps.pkg.outputs.version }}/documents/CHANGELOG.md
+          # Append autogenerated GitHub release notes if needed
+          git log -1 --pretty=format:"- %s" >> typedoc_out/packages/${{ steps.pkg.outputs.name }}/${{ steps.pkg.outputs.version }}/documents/CHANGELOG.md
+
+      # -----------------------------
+      # Push docs to docs repo
+      # -----------------------------
+      - name: Push docs
+        run: |
           git clone https://github.com/Xernerx/docs.git docs-repo
           cd docs-repo
-
-          # Make package version folder
           mkdir -p packages/${{ steps.pkg.outputs.name }}/${{ steps.pkg.outputs.version }}
-
-          # Copy Typedoc output
-          cp -r ../typedoc_out/* packages/${{ steps.pkg.outputs.name }}/${{ steps.pkg.outputs.version }}/
-
-          # Add changelog
-          curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-            "https://api.github.com/repos/${GITHUB_REPOSITORY}/releases/latest" \
-            | jq -r '.body' > packages/${{ steps.pkg.outputs.name }}/${{ steps.pkg.outputs.version }}/documents/CHANGELOG.md
-
+          cp -r ../typedoc_out/packages/${{ steps.pkg.outputs.name }}/${{ steps.pkg.outputs.version }}/* packages/${{ steps.pkg.outputs.name }}/${{ steps.pkg.outputs.version }}/
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add .
           git commit -m "docs: update for ${{ steps.pkg.outputs.name }}@${{ steps.pkg.outputs.version }}" || echo "No changes to commit"
           git push https://x-access-token:${{ secrets.XERNERX_ACCESS_TOKEN }}@github.com/Xernerx/docs.git
 
+      # -----------------------------
+      # Publish to npm
+      # -----------------------------
       - name: Publish to npmjs.org
         run: |
           if [ "${GITHUB_REF##*/}" = "beta" ]; then
@@ -114,11 +156,18 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
 
+      # -----------------------------
+      # Publish to GitHub Packages
+      # -----------------------------
       - name: Publish to GitHub Packages
-        run: npm publish --registry=https://npm.pkg.github.com/ --access public
+        run: |
+          npm publish --registry=https://npm.pkg.github.com/ --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.XERNERX_ACCESS_TOKEN }}
 
+      # -----------------------------
+      # Create GitHub Release
+      # -----------------------------
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
