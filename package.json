@@ -1,6 +1,6 @@
 {
 	"name": "xernerx",
-	"version": "0.1.120-beta.29",
+	"version": "0.1.120-beta.30",
 	"type": "module",
 	"main": "./dist/main.cjs",
 	"module": "./dist/main.js",
