@@ -30,8 +30,7 @@ jobs:
 
       - name: Run tests
         id: test
-        run: |
-          npm test
+        run: npm test
         continue-on-error: true
 
       - name: Set lowest passing Node version
@@ -72,7 +71,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git remote set-url origin https://x-access-token:${{ secrets.XERNERX_ACCESS_TOKEN }}@github.com/Xernerx/docs.git
           git add package.json
           git commit -m "chore: update engines.node and packageManager" || echo "No changes"
           git push origin main || echo "Push failed, likely no changes"
@@ -97,18 +95,18 @@ jobs:
           if [ "${GITHUB_REF##*/}" = "beta" ]; then
             npm publish --tag beta --access public
           else
-            npm publish --access public
+            npm publish --tag latest --access public
           fi
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
 
       - name: Configure npm for GitHub Packages
         run: |
-          echo "//npm.pkg.github.com/:_authToken=${{ secrets.XERNERX_ACCESS_TOKEN }}" > ~/.npmrc
+          echo "@xernerx:registry=https://npm.pkg.github.com///npm.pkg.github.com/:_authToken=${XERNERX_ACCESS_TOKEN}" > ~/.npmrc
 
       - name: Publish to GitHub Packages
-        run: |
-          npm publish --registry=https://npm.pkg.github.com/ --access public
+        if: false # disabled until scoped package is ready
+        run: npm publish --registry=https://npm.pkg.github.com/ --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.XERNERX_ACCESS_TOKEN }}
 
@@ -120,16 +118,17 @@ jobs:
           name: ${{ steps.pkg.outputs.name }} v${{ steps.pkg.outputs.version }}
           generate_release_notes: true
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.XERNERX_ACCESS_TOKEN }}
 
       - name: Generate CHANGELOG from GitHub Release
         run: |
           mkdir -p typedoc_out/documents
           TAG=v${{ steps.pkg.outputs.version }}
-          RELEASE_NOTES=$(gh release view "$TAG" --repo "$GITHUB_REPOSITORY" --json body -q ".body")
-          echo "$RELEASE_NOTES" > typedoc_out/documents/CHANGELOG.md
+          RELEASE_NOTES=$(gh release view "$TAG" --repo "$GITHUB_REPOSITORY" --json body -q ".body" || echo "")
+          # Ensure CHANGELOG.md exists even if release notes are empty
+          echo "${RELEASE_NOTES:-}" > typedoc_out/documents/CHANGELOG.md
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.XERNERX_ACCESS_TOKEN }}
 
       - name: Push docs to docs repo
         run: |

@@ -28,7 +28,7 @@
 		"docs": "npx typedoc",
 		"build": "npm i && npx tsup && npx @arethetypeswrong/cli --pack && npm run docs",
 		"dev": "npm i && npm link && npx tsup --watch",
-		"test": "npm run build"
+		"test": "npm install --engine-strict=true"
 	},
 	"keywords": [],
 	"author": "Dummi",
