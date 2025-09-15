@@ -11,7 +11,7 @@
 	"githubPages": true,
 	"excludeReferences": true,
 	"includeVersion": true,
-	"projectDocuments": ["*.md"],
+	"projectDocuments": ["documents/*.md"],
 	"router": "structure-dir",
 	"footerLastModified": true,
 
