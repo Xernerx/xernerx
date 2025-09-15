@@ -39,7 +39,6 @@ jobs:
           lowest=""
           for v in $versions; do
             echo "Testing Node $v..."
-            # Install Node + npm silently and run tests
             if npx -p node@$v npm install --silent && npx -p node@$v npm test --silent; then
               lowest=$v
               echo "Found lowest supported Node: $v"
