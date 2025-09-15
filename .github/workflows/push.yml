@@ -1,4 +1,5 @@
 # @format
+
 name: Publish Packages
 
 on:
@@ -29,7 +30,9 @@ jobs:
 
       - name: Run tests
         id: test
-        run: npm test || true
+        run: |
+          npm test
+        continue-on-error: true
 
       - name: Set lowest passing Node version
         id: set-lowest
@@ -72,7 +75,7 @@ jobs:
           git remote set-url origin https://x-access-token:${{ secrets.XERNERX_ACCESS_TOKEN }}@github.com/Xernerx/docs.git
           git add package.json
           git commit -m "chore: update engines.node and packageManager" || echo "No changes"
-          git push origin main || echo "Push failed, possibly nothing to push"
+          git push origin main || echo "Push failed, likely no changes"
 
       - name: Get package info
         id: pkg
@@ -85,34 +88,6 @@ jobs:
           mkdir -p typedoc_out
           npx typedoc --out typedoc_out src
 
-      - name: Install GitHub CLI
-        run: sudo apt update && sudo apt install gh -y
-
-      - name: Generate CHANGELOG from GitHub Release
-        id: changelog
-        run: |
-          mkdir -p typedoc_out/documents
-          TAG=v${{ steps.pkg.outputs.version }}
-          echo "Fetching release notes for $TAG"
-          RELEASE_NOTES=$(gh release view "$TAG" --repo "$GITHUB_REPOSITORY" --json body -q ".body")
-          echo "$RELEASE_NOTES" > typedoc_out/documents/CHANGELOG.md
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Push docs to docs repo
-        run: |
-          git clone https://github.com/Xernerx/docs.git docs-repo
-          cd docs-repo
-          default_branch=$(git remote show origin | sed -n '/HEAD branch/s/.*: //p')
-          git checkout $default_branch || git checkout -b $default_branch
-          mkdir -p packages/${{ steps.pkg.outputs.name }}/${{ steps.pkg.outputs.version }}
-          cp -r ../typedoc_out/* packages/${{ steps.pkg.outputs.name }}/${{ steps.pkg.outputs.version }}/
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add .
-          git commit -m "docs: update for ${{ steps.pkg.outputs.name }}@${{ steps.pkg.outputs.version }}" || echo "No changes to commit"
-          git push https://x-access-token:${{ secrets.XERNERX_ACCESS_TOKEN }}@github.com/Xernerx/docs.git $default_branch
-
       - name: Publish to npmjs.org
         run: |
           if [ "${GITHUB_REF##*/}" = "beta" ]; then
@@ -124,11 +99,13 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
 
       - name: Publish to GitHub Packages
-        run: npm publish --registry=https://npm.pkg.github.com/ --access public
+        run: |
+          npm publish --registry=https://npm.pkg.github.com/ --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.XERNERX_ACCESS_TOKEN }}
 
       - name: Create GitHub Release
+        id: gh-release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: v${{ steps.pkg.outputs.version }}
@@ -136,3 +113,32 @@ jobs:
           generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate CHANGELOG from GitHub Release
+        run: |
+          mkdir -p typedoc_out/documents
+          TAG=v${{ steps.pkg.outputs.version }}
+          RELEASE_NOTES=$(gh release view "$TAG" --repo "$GITHUB_REPOSITORY" --json body -q ".body")
+          echo "$RELEASE_NOTES" > typedoc_out/documents/CHANGELOG.md
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Push docs to docs repo
+        run: |
+          git clone https://github.com/Xernerx/docs.git docs-repo
+          cd docs-repo
+
+          # Detect remote default branch
+          default_branch=$(git remote show origin | sed -n '/HEAD branch/s/.*: //p')
+          git checkout $default_branch || git checkout -b $default_branch
+
+          # Copy docs to versioned package folder
+          mkdir -p packages/${{ steps.pkg.outputs.name }}/${{ steps.pkg.outputs.version }}
+          cp -r ../typedoc_out/* packages/${{ steps.pkg.outputs.name }}/${{ steps.pkg.outputs.version }}/
+
+          # Commit & push
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "docs: update for ${{ steps.pkg.outputs.name }}@${{ steps.pkg.outputs.version }}" || echo "No changes to commit"
+          git push https://x-access-token:${{ secrets.XERNERX_ACCESS_TOKEN }}@github.com/Xernerx/docs.git $default_branch
