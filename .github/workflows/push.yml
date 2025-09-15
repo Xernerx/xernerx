@@ -19,10 +19,18 @@ jobs:
       - name: Fetch active LTS Node versions
         id: lts
         run: |
+          # fetch Node LTS cycles from endoflife.date
           versions=$(curl -s https://endoflife.date/api/nodejs.json \
             | jq -r '[.[] | select(.support == true) | .cycle] | sort | join(" ")')
-          echo "versions=$versions" >> $GITHUB_OUTPUT
+
+          # fallback if empty
+          if [ -z "$versions" ]; then
+            echo "Warning: Could not fetch LTS versions, using fallback"
+            versions="18 20 22"
+          fi
+
           echo "Fetched Node LTS versions: $versions"
+          echo "versions=$versions" >> $GITHUB_OUTPUT
 
       - name: Determine lowest supported Node
         id: engines
