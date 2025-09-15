@@ -102,6 +102,10 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
 
+      - name: Configure npm for GitHub Packages
+        run: |
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.XERNERX_ACCESS_TOKEN }}" > ~/.npmrc
+
       - name: Publish to GitHub Packages
         run: |
           npm publish --registry=https://npm.pkg.github.com/ --access public
