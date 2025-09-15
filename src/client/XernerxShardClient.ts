@@ -1,14 +1,14 @@
 /** @format */
 
 import { Cluster, ClusterManager, ClusterManagerOptions } from 'discord-hybrid-sharding';
-import sharpyy from 'sharpyy';
-import fs from 'fs';
 
-import { XernerxInfo } from '../tools/XernerxInfo.js';
 import { XernerxError } from '../tools/XernerxError.js';
-import { XernerxSuccess } from '../tools/XernerxSuccess.js';
-import { XernerxShardClientOptions } from '../interfaces/XernerxShardClientOptions.js';
+import { XernerxInfo } from '../tools/XernerxInfo.js';
 import { XernerxInitial } from '../tools/XernerxInitial.js';
+import { XernerxShardClientOptions } from '../interfaces/XernerxShardClientOptions.js';
+import { XernerxSuccess } from '../tools/XernerxSuccess.js';
+import fs from 'fs';
+import sharpyy from 'sharpyy';
 
 export class XernerxShardClient extends ClusterManager {
 	declare public readonly onlineShards: Set<Cluster>;
