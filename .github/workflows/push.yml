@@ -94,7 +94,7 @@ jobs:
           mkdir -p typedoc_out/documents
           TAG=v${{ steps.pkg.outputs.version }}
           echo "Fetching release notes for $TAG"
-          RELEASE_NOTES=$(gh release view "$TAG" --repo Xernerx/app.xernerx.com --json body -q ".body")
+          RELEASE_NOTES=$(gh release view "$TAG" --repo "$GITHUB_REPOSITORY" --json body -q ".body")
           echo "$RELEASE_NOTES" > typedoc_out/documents/CHANGELOG.md
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
