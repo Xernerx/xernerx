@@ -9,7 +9,7 @@ on:
       - beta
 
 jobs:
-  detect-and-build:
+  detect-lowest-node:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -30,9 +30,7 @@ jobs:
 
       - name: Run tests
         id: test
-        run: |
-          npm test
-        continue-on-error: true
+        run: npm test || exit 0
 
       - name: Set lowest passing Node version
         id: set-lowest
@@ -41,7 +39,7 @@ jobs:
 
   build-and-publish:
     runs-on: ubuntu-latest
-    needs: detect-and-build
+    needs: detect-lowest-node
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -49,7 +47,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ needs.detect-and-build.outputs.lowest-node }}
+          node-version: ${{ needs.detect-lowest-node.outputs.lowest-node }}
 
       - name: Install dependencies
         run: npm install
@@ -65,17 +63,8 @@ jobs:
 
       - name: Update package.json engines and packageManager
         run: |
-          npm pkg set "engines.node=>=${{ needs.detect-and-build.outputs.lowest-node }}"
+          npm pkg set "engines.node=>=${{ needs.detect-lowest-node.outputs.lowest-node }}"
           npm pkg set "packageManager=npm@$(npm -v)"
-
-      - name: Commit updated package.json
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git remote set-url origin https://x-access-token:${{ secrets.XERNERX_ACCESS_TOKEN }}@github.com/Xernerx/docs.git
-          git add package.json
-          git commit -m "docs: update for ${{ steps.pkg.outputs.name }}@${{ steps.pkg.outputs.version }}" || echo "No changes"
-          git push origin main
 
       - name: Get package info
         id: pkg
@@ -87,30 +76,22 @@ jobs:
         run: |
           mkdir -p typedoc_out
           npx typedoc --out typedoc_out src
-
-      - name: Add CHANGELOG to docs
-        run: |
           mkdir -p typedoc_out/documents
           cp documents/CHANGELOG.md typedoc_out/documents/
 
       - name: Push docs to docs repo
         run: |
-          mkdir -p typedoc_out
-          npx typedoc --out typedoc_out src
-              
-          # Clone docs repo
           git clone https://github.com/Xernerx/docs.git docs-repo
           cd docs-repo
-              
-          # Detect remote default branch
+
+          # Checkout default branch
           default_branch=$(git remote show origin | sed -n '/HEAD branch/s/.*: //p')
-          echo "Default branch is $default_branch"
           git checkout $default_branch || git checkout -b $default_branch
-              
+
           # Copy docs to versioned package folder
           mkdir -p packages/${{ steps.pkg.outputs.name }}/${{ steps.pkg.outputs.version }}
           cp -r ../typedoc_out/* packages/${{ steps.pkg.outputs.name }}/${{ steps.pkg.outputs.version }}/
-              
+
           # Commit & push
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
