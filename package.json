@@ -27,7 +27,8 @@
 		"major": "npm version major",
 		"docs": "npx typedoc",
 		"build": "npm i && npx tsup && npx @arethetypeswrong/cli --pack && npm run docs",
-		"dev": "npm i && npm link && npx tsup --watch"
+		"dev": "npm i && npm link && npx tsup --watch",
+		"test": "npm run build"
 	},
 	"keywords": [],
 	"author": "Dummi",
