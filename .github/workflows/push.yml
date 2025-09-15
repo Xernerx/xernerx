@@ -81,10 +81,22 @@ jobs:
           echo "name=$(node -p "require('./package.json').name")" >> $GITHUB_OUTPUT
           echo "version=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
 
+      - name: Generate CHANGELOG from GitHub Release
+        run: |
+          mkdir -p documents
+          TAG=v${{ steps.pkg.outputs.version }}
+          RELEASE_NOTES=$(gh release view "$TAG" --repo "$GITHUB_REPOSITORY" --json body -q ".body" || echo "")
+          # Ensure CHANGELOG.md exists even if release notes are empty
+          echo "${RELEASE_NOTES:-}" > documents/CHANGELOG.md
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_ACCESS_TOKEN }}
+
       - name: Generate docs
         run: |
+          rm -rf typedoc_out
           mkdir -p typedoc_out
           npx typedoc --out typedoc_out src
+          # Typedoc will include documents/CHANGELOG.md automatically
 
       - name: Configure npm for publishing
         run: |
@@ -117,16 +129,6 @@ jobs:
           tag_name: v${{ steps.pkg.outputs.version }}
           name: ${{ steps.pkg.outputs.name }} v${{ steps.pkg.outputs.version }}
           generate_release_notes: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.XERNERX_ACCESS_TOKEN }}
-
-      - name: Generate CHANGELOG from GitHub Release
-        run: |
-          mkdir -p typedoc_out/documents
-          TAG=v${{ steps.pkg.outputs.version }}
-          RELEASE_NOTES=$(gh release view "$TAG" --repo "$GITHUB_REPOSITORY" --json body -q ".body" || echo "")
-          # Ensure CHANGELOG.md exists even if release notes are empty
-          echo "${RELEASE_NOTES:-}" > typedoc_out/documents/CHANGELOG.md
         env:
           GITHUB_TOKEN: ${{ secrets.XERNERX_ACCESS_TOKEN }}
 
