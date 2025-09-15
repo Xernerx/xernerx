@@ -20,8 +20,7 @@
 
 # About
 
-e
-Xernerx is a class based discord.js framework. 
+Xernerx is a class based discord.js framework.
 
 It can be customized to be a lightweight handler or a heavy customizable framework that does all the hard work for you.
 

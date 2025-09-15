@@ -1,5 +1,5 @@
 {
-	"plugin": ["typedoc-github-theme"],
+	"plugin": ["typedoc-github-theme", "typedoc-plugin-extras", "typedoc-plugin-zod", "typedoc-umlclass"],
 	"theme": "typedoc-github-theme",
 
 	"name": "XERNERX",
@@ -7,9 +7,13 @@
 	"entryPointStrategy": "expand",
 	"exclude": ["node_modules", "src/main.ts", "src/types"],
 	"readme": "README.md",
+	"gitRevision": "HEAD",
+	"githubPages": true,
 	"excludeReferences": true,
 	"includeVersion": true,
 	"projectDocuments": ["documents/*.md"],
+	"router": "structure-dir",
+	"footerLastModified": true,
 
 	"out": "./docs",
 	"json": "./docs/docs.json",
@@ -18,7 +22,7 @@
 		"html": true,
 		"linkify": true
 	},
-	"hideGenerator": true,
+	"hideGenerator": false,
 	"searchInComments": true,
 	"searchInDocuments": true,
 	"navigation": {

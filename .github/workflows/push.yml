@@ -16,11 +16,33 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
+      - name: Fetch active LTS Node versions
+        id: lts
+        run: |
+          versions=$(curl -s https://endoflife.date/api/nodejs.json \
+            | jq -r '[.[] | select(.support == true) | .cycle] | sort | join(" ")')
+          echo "versions=$versions" >> $GITHUB_OUTPUT
+
+      - name: Determine lowest supported Node
+        id: engines
+        run: |
+          lowest=""
+          for v in ${{ steps.lts.outputs.versions }}; do
+            echo "Testing Node $v..."
+            if npx -p node@$v npm install --silent && npx -p node@$v npm test --silent; then
+              lowest=$v
+              break
+            fi
+          done
+          if [ -z "$lowest" ]; then
+            echo "No supported Node version found" && exit 1
+          fi
+          echo "lowest=$lowest" >> $GITHUB_OUTPUT
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
         run: npm install
@@ -34,11 +56,36 @@ jobs:
       - name: Run Prettier
         run: npx prettier --write .
 
+      - name: Update package.json engines and packageManager
+        run: |
+          npm pkg set "engines.node=>=${{ steps.engines.outputs.lowest }}"
+          npm pkg set "packageManager=npm@$(npm -v)"
+
+      - name: Commit updated package.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add package.json
+          git commit -m "chore: update engines.node and packageManager" || echo "No changes"
+          git push https://x-access-token:${{ secrets.XERNERX_ACCESS_TOKEN }}@github.com/Xernerx/app.xernerx.com.git
+
       - name: Get package info
         id: pkg
         run: |
           echo "name=$(node -p "require('./package.json').name")" >> $GITHUB_OUTPUT
           echo "version=$(node -p "require('./package.json').version")" >> $GITHUB_OUTPUT
+
+      - name: Generate release notes CHANGELOG
+        id: changelog
+        run: |
+          notes=$(gh api repos/${{ github.repository }}/releases/generate-notes \
+            -f tag_name="v${{ steps.pkg.outputs.version }}" \
+            -q '.body')
+          mkdir -p docs/packages/${{ steps.pkg.outputs.name }}/${{ steps.pkg.outputs.version }}/documents
+          echo -e "## ${{ steps.pkg.outputs.name }} v${{ steps.pkg.outputs.version }}\n\n$notes" \
+            > docs/packages/${{ steps.pkg.outputs.name }}/${{ steps.pkg.outputs.version }}/documents/CHANGELOG.md
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Push docs to docs repo
         run: |
@@ -46,16 +93,18 @@ jobs:
           npx typedoc --out typedoc_out src
           git clone https://github.com/Xernerx/docs.git docs-repo
           cd docs-repo
-          mkdir -p packages
           mkdir -p packages/${{ steps.pkg.outputs.name }}/${{ steps.pkg.outputs.version }}
           cp -r ../typedoc_out/* packages/${{ steps.pkg.outputs.name }}/${{ steps.pkg.outputs.version }}/
+          mkdir -p packages/${{ steps.pkg.outputs.name }}/${{ steps.pkg.outputs.version }}/documents
+          cp ../docs/packages/${{ steps.pkg.outputs.name }}/${{ steps.pkg.outputs.version }}/documents/CHANGELOG.md \
+             packages/${{ steps.pkg.outputs.name }}/${{ steps.pkg.outputs.version }}/documents/CHANGELOG.md
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add .
           git commit -m "docs: update for ${{ steps.pkg.outputs.name }}@${{ steps.pkg.outputs.version }}" || echo "No changes to commit"
           git push https://x-access-token:${{ secrets.XERNERX_ACCESS_TOKEN }}@github.com/Xernerx/docs.git
 
-      - name: Publish to npm
+      - name: Publish to npmjs.org
         run: |
           if [ "${GITHUB_REF##*/}" = "beta" ]; then
             npm publish --tag beta --access public
@@ -64,3 +113,18 @@ jobs:
           fi
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
+
+      - name: Publish to GitHub Packages
+        run: |
+          npm publish --registry=https://npm.pkg.github.com/ --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.XERNERX_ACCESS_TOKEN }}
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ steps.pkg.outputs.version }}
+          name: ${{ steps.pkg.outputs.name }} v${{ steps.pkg.outputs.version }}
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
