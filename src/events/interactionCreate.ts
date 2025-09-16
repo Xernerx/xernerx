@@ -4,7 +4,6 @@ import { Interaction } from 'discord.js';
 
 import { XernerxEventBuilder } from '../build/XernerxEventBuilder.js';
 import { XernerxUser } from '../model/XernerxUser.js';
-import { XernerxClient } from '../client/XernerxClient.js';
 import { XernerxInteractionUtil } from '../util/XernerxInteractionUtil.js';
 
 export class XernerxInteractionCreateEvent extends XernerxEventBuilder {
@@ -17,8 +16,6 @@ export class XernerxInteractionCreateEvent extends XernerxEventBuilder {
 	}
 
 	override async run(interaction: Interaction) {
-		this.client = interaction.client as XernerxClient;
-
 		interaction.user = new XernerxUser(interaction.client, interaction.user);
 
 		interaction.util = new XernerxInteractionUtil(this.client as Interaction['client'], interaction);

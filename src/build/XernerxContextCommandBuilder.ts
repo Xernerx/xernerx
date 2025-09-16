@@ -12,10 +12,10 @@ import {
 	Permissions,
 	RestOrArray,
 } from 'discord.js';
-import { XernerxSlashCommandAutocomplete, XernerxSlashCommandOptions } from '../interfaces/XernerxSlashCommandOptions.js';
 
 import { XernerxBaseBuilder } from './XernerxBaseBuilder.js';
 import { XernerxContextCommandBuilderOptions } from '../interfaces/XernerxContextCommandBuilderOptions.js';
+import { XernerxContextCommandOptions } from '../interfaces/XernerxContextCommandOptions.js';
 import { XernerxWarn } from '../tools/XernerxWarn.js';
 import { z } from 'zod';
 
@@ -147,22 +147,13 @@ export class XernerxContextCommandBuilder extends XernerxBaseBuilder {
 
 		this.client = this.client;
 	}
-
-	/**
-	 * Handles the autocomplete functionality for a slash command.
-	 *
-	 * @param args - The arguments for the autocomplete function, which include the context and options for the command.
-	 * @returns A promise that resolves to either void or any value, depending on the implementation.
-	 */
-	public async autocomplete(args: XernerxSlashCommandAutocomplete): Promise<void | any> {}
-
 	/**
 	 * Evaluates conditions for executing a slash command.
 	 *
 	 * @param args - The arguments for the conditions function, which include the context and options for the command.
 	 * @returns A promise that resolves to either void or any value, depending on the implementation.
 	 */
-	public async conditions(args: XernerxSlashCommandOptions): Promise<void | any> {}
+	public async conditions(args: XernerxContextCommandOptions<'message' | 'user'>): Promise<void | any> {}
 
 	/**
 	 * Executes the slash command.
@@ -170,7 +161,7 @@ export class XernerxContextCommandBuilder extends XernerxBaseBuilder {
 	 * @param args - The arguments for the exec function, which include the context and options for the command.
 	 * @returns A promise that resolves to either void or any value, depending on the implementation.
 	 */
-	public async exec(args: XernerxSlashCommandOptions): Promise<void | any> {
+	public async exec(args: XernerxContextCommandOptions<'message' | 'user'>): Promise<void | any> {
 		new XernerxWarn(`${this.id} has no exec function, command will not respond.`);
 	}
 }

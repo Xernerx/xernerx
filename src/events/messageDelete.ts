@@ -16,8 +16,6 @@ export class XernerxMessageDeleteEvent extends XernerxEventBuilder {
 	}
 
 	override async run(message: Message) {
-		this.client = message.client;
-
 		message.user = new XernerxUser(message.client, message.author);
 
 		message.util = new XernerxMessageUtil(this.client as Message['client'], message);

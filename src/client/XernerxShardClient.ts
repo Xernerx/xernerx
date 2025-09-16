@@ -45,7 +45,7 @@ export class XernerxShardClient extends ClusterManager {
 		};
 
 		this.on('clusterCreate', (cluster) => {
-			new XernerxInfo(`Creating shard ${cluster.id}...`);
+			new XernerxInfo(`Launching ${`${sharpyy(`shard ${cluster.id}`, 'txMagenta')}`}...`);
 
 			cluster.on('ready', async () => {
 				this.onlineShards.add(cluster);
@@ -85,7 +85,7 @@ export class XernerxShardClient extends ClusterManager {
 		await new Promise((resolve) => setTimeout(resolve, 4000));
 
 		new XernerxSuccess(
-			`All Shards are online! Watching ${sharpyy(String(this.stats.guildCount?.toLocaleString()), 'txCyan')} guilds and users: ${sharpyy(String(this.stats.userCount?.toLocaleString()), 'txCyan')}, and ${sharpyy(String(this.stats.shardCount?.toLocaleString()), 'txCyan')} shards.`
+			`${sharpyy('All Shards are online', 'bold')}! Watching ${sharpyy(String(this.stats.guildCount?.toLocaleString()), 'txCyan')} guilds and ${sharpyy(String(this.stats.userCount?.toLocaleString()), 'txCyan')} users and ${sharpyy(String(this.stats.shardCount?.toLocaleString()), 'txCyan')} shards.`
 		);
 	}
 }

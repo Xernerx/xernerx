@@ -20,3 +20,4 @@ import './types/Interaction.d.ts';
 import './types/Events.d.ts';
 
 export * from './interfaces/XernerxSlashCommandOptions.js';
+export * from './interfaces/XernerxContextCommandOptions.js';

@@ -3,6 +3,7 @@
 import { Handler } from './Handler.js';
 import { XernerxClient } from '../client/XernerxClient.js';
 import { XernerxContextCommandHandlerOptions } from '../interfaces/XernerxContextCommandHandlerOptions.js';
+import { XernerxContextCommandInteractionEvent } from '../events/contextCommandInteraction.js';
 import { XernerxError } from '../tools/XernerxError.js';
 import { XernerxInteractionCreateEvent } from '../events/interactionCreate.js';
 import { XernerxMessageCommandHandlerOptions } from '../interfaces/XernerxMessageCommandHandlerOptions.js';
@@ -132,7 +133,7 @@ export class CommandHandler extends Handler {
 			await this.loadContextCommand(file);
 		}
 
-		this.loadBuilder(XernerxInteractionCreateEvent);
+		this.loadBuilder(XernerxInteractionCreateEvent, XernerxContextCommandInteractionEvent);
 
 		new XernerxSuccess(`Loaded context commands: ${this.client.commands.context.map((command) => sharpyy(command.id, 'txYellow')).join(', ')}`);
 	}

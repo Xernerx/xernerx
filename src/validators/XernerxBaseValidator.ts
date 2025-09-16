@@ -3,16 +3,17 @@
 import { Interaction, Message } from 'discord.js';
 
 import { XernerxClient } from '../client/XernerxClient.js';
+import { XernerxContextCommandBuilder } from '../build/XernerxContextCommandBuilder.js';
 import { XernerxMessageCommandBuilder } from '../build/XernerxMessageCommandBuilder.js';
 import { XernerxSlashCommandBuilder } from '../build/XernerxSlashCommandBuilder.js';
 
 export class XernerxBaseValidator {
 	declare public readonly client: XernerxClient;
 	declare public readonly interaction: Interaction | Message;
-	declare public readonly command: XernerxSlashCommandBuilder | XernerxMessageCommandBuilder;
+	declare public readonly command: XernerxSlashCommandBuilder | XernerxMessageCommandBuilder | XernerxContextCommandBuilder;
 	declare public satisified: boolean;
 
-	constructor(interaction: Interaction | Message, command: XernerxSlashCommandBuilder | XernerxMessageCommandBuilder) {
+	constructor(interaction: Interaction | Message, command: XernerxSlashCommandBuilder | XernerxMessageCommandBuilder | XernerxContextCommandBuilder) {
 		this.client = interaction.client;
 
 		this.interaction = interaction;

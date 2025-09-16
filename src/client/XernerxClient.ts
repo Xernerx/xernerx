@@ -137,9 +137,9 @@ export class XernerxClient extends Client {
 	 * @returns A promise that resolves when the client successfully logs in, or rejects with an error message if the login fails.
 	 */
 	async connect() {
-		new XernerxInfo(`Connecting...`);
-
 		this.on('clientReady', async (client) => {
+			new XernerxInfo(`Signing in as ${sharpyy(client.user?.tag, 'txBlue')}...`);
+
 			this.monitisation.skus = await new XernerxMonitisation(client).sku();
 
 			/** When the client is sharded */

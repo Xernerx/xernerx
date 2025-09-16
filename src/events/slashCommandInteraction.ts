@@ -16,7 +16,7 @@ export class XernerxSlashCommandInteractionEvent extends XernerxEventBuilder {
 	}
 
 	override async run(interaction: ChatInputCommandInteraction) {
-		const command = interaction.client.commands.slash.get(interaction.commandName);
+		const command = this.client.commands.slash.get(interaction.commandName);
 
 		if (!command) return;
 
@@ -34,7 +34,7 @@ export class XernerxSlashCommandInteractionEvent extends XernerxEventBuilder {
 			const options = { options: args.options(), subcommand: args.subcommand(), group: args.subcommand() };
 
 			try {
-				await interaction.client.emit('commandStart', interaction, options, command);
+				await this.client.emit('commandStart', interaction, options, command);
 
 				const validation = new XernerxSlashCommandValidator(interaction, command);
 
@@ -46,9 +46,9 @@ export class XernerxSlashCommandInteractionEvent extends XernerxEventBuilder {
 
 				await command.exec({ interaction, ...options, command });
 
-				await interaction.client.emit('commandFinish', interaction, options, command);
+				await this.client.emit('commandFinish', interaction, options, command);
 			} catch (error) {
-				await interaction.client.emit('commandError', interaction, options, command, error as Error);
+				await this.client.emit('commandError', interaction, options, command, error as Error);
 			}
 		});
 	}

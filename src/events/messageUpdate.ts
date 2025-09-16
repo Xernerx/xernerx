@@ -16,8 +16,6 @@ export class XernerxMessageUpdateEvent extends XernerxEventBuilder {
 	}
 
 	override async run(oldMessage: Message, message: Message) {
-		this.client = message.client;
-
 		message.user = new XernerxUser(message.client, message.author);
 
 		message.util = new XernerxMessageUtil(this.client as Message['client'], message);

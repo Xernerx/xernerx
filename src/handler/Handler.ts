@@ -82,7 +82,11 @@ export class Handler {
 		builder.client = this.client;
 
 		if (builder.filetype === 'XernerxEvent') {
-			if (this.client.events.has(builder.id) && !builder.id.startsWith('Xernerx')) return new XernerxError(`${filename} | ID must be unique`);
+			if (this.client.events.has(builder.id)) {
+				if (!builder.id.startsWith('Xernerx')) return new XernerxError(`${filename} | ID must be unique`);
+
+				return;
+			}
 
 			this.client.events.set(builder.id, builder);
 

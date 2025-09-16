@@ -1,6 +1,7 @@
 /** @format */
 
 import { Client, GatewayVersion, REST, Routes } from 'discord.js';
+import sharpyy from 'sharpyy';
 
 import { XernerxEventBuilder } from '../build/XernerxEventBuilder.js';
 import { XernerxClient } from '../client/XernerxClient.js';
@@ -91,30 +92,15 @@ export class XernerxClientReadyEvent extends XernerxEventBuilder {
 
 			(client.settings.guildId as Array<string>).map((id: string) => (guilds[id] ? guilds[id] : (guilds[id] = this.commands.local)));
 
-			const deployed: { success: Array<string>; failed: Record<string, string> } = {
-				success: [],
-				failed: {},
-			};
-
 			for (const [guildId, commands] of Object.entries(guilds)) {
 				try {
 					await rest.put(Routes.applicationGuildCommands(client.user?.id as string, guildId), { body: commands.map((command) => command.data.toJSON()) });
 
-					deployed.success.push(guildId);
+					new XernerxInfo(`Successfully deployed commands locally in guild ${sharpyy(guildId, 'txBlue')}: ${commands.map((command) => sharpyy(command.id, 'txYellow')).join(', ')}`);
 				} catch (error) {
-					deployed.failed[guildId] = (error as Error).message;
+					new XernerxError(`Failed to deploy commands locally in guild ${sharpyy(guildId, 'txBlue')}: ${(error as Error).message}`);
 				}
 			}
-
-			if (deployed.success.length) {
-				new XernerxSuccess(`Successfully deployed commands locally in ${deployed.success.join(', ')}`);
-			}
-			if (Object.keys(deployed.failed).length)
-				new XernerxError(
-					`Unable to deploy commands locally in ${Object.entries(deployed.failed)
-						.map(([id, message]) => `${id} (${message})`)
-						.join(', ')}`
-				);
 		}
 	}
 }
