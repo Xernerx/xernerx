@@ -1,18 +1,19 @@
 /** @format */
 
-import { z } from 'zod';
+import { ApplicationIntegrationType, ChannelType, PermissionFlags, Permissions } from 'discord.js';
 
-import { XernerxWarn } from '../tools/XernerxWarn.js';
-import { XernerxMessageCommandBuilderOptions } from '../interfaces/XernerxMessageCommandBuilderOptions.js';
 import { XernerxBaseBuilder } from './XernerxBaseBuilder.js';
-import { ChannelType, Permissions } from 'discord.js';
+import { XernerxMessageCommandBuilderOptions } from '../interfaces/XernerxMessageCommandBuilderOptions.js';
+import { XernerxWarn } from '../tools/XernerxWarn.js';
+import { z } from 'zod';
 
 export class XernerxMessageCommandBuilder extends XernerxBaseBuilder {
 	// Discord
 	declare public readonly name: string;
-	declare public readonly description: string;
+	declare public readonly description?: string;
 	declare public readonly alias: Array<string>;
 	declare public readonly prefix: Array<string>;
+	declare public readonly separator: string;
 	declare public readonly premium?: boolean;
 	declare public readonly deploy?: { global?: boolean; guilds?: Array<string> | string };
 	declare public readonly info?: string;
@@ -42,9 +43,50 @@ export class XernerxMessageCommandBuilder extends XernerxBaseBuilder {
 		options = z
 			.object({
 				name: z.string(),
+				description: z.string().optional(),
 				alias: z.union([z.string(), z.array(z.string())]).default([]),
 				prefix: z.union([z.string(), z.array(z.string())]).default([]),
-				premium: z.any(),
+				separator: z.string().default(' '),
+				locales: z.record(z.string(), z.object({ name: z.string(), description: z.string() })).optional(),
+				integration: z.array(z.custom<keyof typeof ApplicationIntegrationType>()).default(['GuildInstall']),
+				nsfw: z.boolean().default(false),
+				options: z.any(),
+				premium: z.boolean().default(false),
+				deploy: z.object({ global: z.boolean().default(true), guilds: z.string().or(z.array(z.string())).default([]) }).optional(),
+				info: z.string().optional(),
+				usage: z.string().optional(),
+				category: z.string().optional(),
+				cooldown: z.number().min(0).default(0),
+				strict: z
+					.object({
+						owner: z.boolean().default(false),
+						users: z.array(z.string()).default([]),
+						channels: z.array(z.string()).default([]),
+						guilds: z.array(z.string()).default([]),
+						types: z.enum(ChannelType).optional(),
+					})
+					.optional(),
+				ignore: z
+					.object({
+						owner: z.boolean().default(false),
+						users: z.array(z.string()).default([]),
+						channels: z.array(z.string()).default([]),
+						guilds: z.array(z.string()).default([]),
+						types: z.enum(ChannelType).optional(),
+					})
+					.optional(),
+				permissions: z
+					.object({
+						client: z
+							.union([z.array(z.custom<keyof PermissionFlags>()), z.number(), z.bigint()])
+							.nullable()
+							.default(null),
+						user: z
+							.union([z.array(z.custom<keyof PermissionFlags>()), z.number(), z.bigint()])
+							.nullable()
+							.default(null),
+					})
+					.default({ client: null, user: null }),
 			})
 			.parse(options);
 
@@ -54,10 +96,35 @@ export class XernerxMessageCommandBuilder extends XernerxBaseBuilder {
 
 		this.prefix = typeof options.prefix == 'string' ? [options.prefix] : (options.prefix as Array<string>);
 
-		this.premium = options.premium;
+		this.separator = options.separator || ' ';
+
+		this.description = options.description;
+
+		this.info = options.info;
+
+		this.usage = options.usage;
+
+		this.category = options.category;
+
+		this.cooldown = options.cooldown;
+
+		this.premium = options.premium || false;
+
+		this.deploy = {
+			global: options.deploy?.global ?? true,
+			guilds: typeof options.deploy?.guilds == 'string' ? [options.deploy.guilds] : options.deploy?.guilds || [],
+		};
+
+		this.permissions = options.permissions as typeof this.permissions;
+
+		this.strict = options.strict;
+
+		this.ignore = options.ignore;
 
 		this.filetype = 'XernerxMessageCommand';
 	}
+
+	public async conditions(args: any): Promise<void | any> {}
 
 	/**
 	 * Executes the command logic. This function is intended to be overridden by subclasses.
