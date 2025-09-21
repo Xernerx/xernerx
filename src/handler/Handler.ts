@@ -95,6 +95,8 @@ export class Handler {
 			if (!this[builder.emitter] && !(this.client as Record<string, any>)[builder.emitter])
 				return new XernerxError(`${filename} | ${builder.emitter} does not exist on client, make sure you add it to the root client.`);
 
+			if (!this[builder.emitter]) this[builder.emitter] = (this.client as Record<string, any>)[builder.emitter];
+
 			if (this[builder.emitter])
 				builder.once
 					? this[(builder as XernerxEventBuilder).emitter].once(builder.name, <T extends []>(...args: T) => builder.run(...(args as [])))
