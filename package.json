@@ -29,7 +29,7 @@
 		"build": "npm i && npx tsup && npx @arethetypeswrong/cli --pack && npm run docs",
 		"dev": "npm i && npm link && npx tsup --watch",
 		"test": "npm install --engine-strict=true",
-		"pub": "git add . && git commit -m \"workflow test\" && npm run beta && git push origin beta"
+		"pub": "git add . && git commit -m \"type update\" && npm run beta && git push origin beta"
 	},
 	"keywords": [],
 	"author": "Dummi",

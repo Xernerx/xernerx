@@ -1,6 +1,5 @@
 /** @format */
 
-import { z } from 'zod';
 import {
 	ApplicationIntegrationType,
 	ChannelType,
@@ -22,16 +21,17 @@ import {
 	SlashCommandSubcommandGroupBuilder,
 	SlashCommandUserOption,
 } from 'discord.js';
-
-import { XernerxWarn } from '../tools/XernerxWarn.js';
+import { XernerxSlashCommandAutocomplete, XernerxSlashCommandOptions } from '../interfaces/XernerxSlashCommandOptions.js';
 import {
 	XernerxSlashCommandBuilderGroup,
 	XernerxSlashCommandBuilderOption,
 	XernerxSlashCommandBuilderOptions,
 	XernerxSlashCommandBuilderSubcommand,
 } from '../interfaces/XernerxSlashCommandBuilderOptions.js';
+
 import { XernerxBaseBuilder } from './XernerxBaseBuilder.js';
-import { XernerxSlashCommandOptions, XernerxSlashCommandAutocomplete } from '../interfaces/XernerxSlashCommandOptions.js';
+import { XernerxWarn } from '../tools/XernerxWarn.js';
+import { z } from 'zod';
 
 export class XernerxSlashCommandBuilder extends XernerxBaseBuilder {
 	// Discord

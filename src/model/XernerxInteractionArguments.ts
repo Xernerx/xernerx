@@ -51,11 +51,26 @@ export class XernerxInteractionArguments {
 
 		if (this.command.options) {
 			for (const option of this.command.options) {
-				options[option.name] = this.interaction.options.get(option.name);
+				const o = this.interaction.options.get(option.name);
+
+				if (!o) return (options[option.name] = null);
+
+				const optionName = { 3: 'string', 4: 'number', 5: 'boolean', 6: 'user', 7: 'channel', 8: 'role', 9: 'mentionable', 10: 'integer', 11: 'attachment' } as const;
+
+				options[option.name] = {
+					name: o.name,
+					type: optionName[o.type as keyof typeof optionName],
+					value: o.value,
+				};
+
+				if (o.user) options[option.name].user = o.user;
+				if (o.channel) options[option.name].channel = o.channel;
+				if (o.role) options[option.name].role = o.role;
+				if (o.attachment) options[option.name].attachment = o.attachment;
 			}
 		}
 
-		return options || null;
+		return options;
 	}
 
 	/**
