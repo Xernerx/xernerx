@@ -24,6 +24,10 @@ export interface XernerxSlashCommandOptions {
 	command: XernerxSlashCommandBuilder;
 }
 
+export interface XernerxSlashCommandError extends XernerxSlashCommandOptions {
+	error: Error;
+}
+
 export interface XernerxSlashCommandAutocomplete {
 	interaction: AutocompleteInteraction;
 	focused: AutocompleteFocusedOption;

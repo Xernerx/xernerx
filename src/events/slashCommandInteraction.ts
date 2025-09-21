@@ -48,6 +48,8 @@ export class XernerxSlashCommandInteractionEvent extends XernerxEventBuilder {
 
 				await this.client.emit('commandFinish', interaction, options, command);
 			} catch (error) {
+				await command.error({ interaction, ...options, command, error: error as Error });
+
 				await this.client.emit('commandError', interaction, options, command, error as Error);
 			}
 		});

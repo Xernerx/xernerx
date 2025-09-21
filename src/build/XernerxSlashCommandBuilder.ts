@@ -21,7 +21,7 @@ import {
 	SlashCommandSubcommandGroupBuilder,
 	SlashCommandUserOption,
 } from 'discord.js';
-import { XernerxSlashCommandAutocomplete, XernerxSlashCommandOptions } from '../interfaces/XernerxSlashCommandOptions.js';
+import { XernerxSlashCommandAutocomplete, XernerxSlashCommandError, XernerxSlashCommandOptions } from '../interfaces/XernerxSlashCommandOptions.js';
 import {
 	XernerxSlashCommandBuilderGroup,
 	XernerxSlashCommandBuilderOption,
@@ -213,6 +213,8 @@ export class XernerxSlashCommandBuilder extends XernerxBaseBuilder {
 	public async exec(args: XernerxSlashCommandOptions): Promise<void | any> {
 		new XernerxWarn(`${this.id} has no exec function, command will not respond.`);
 	}
+
+	public async error(args: XernerxSlashCommandError): Promise<void | any> {}
 
 	private addArguments(command: SlashCommandBuilder | SlashCommandSubcommandBuilder, args: Array<XernerxSlashCommandBuilderOption>) {
 		for (const argument of args) {
