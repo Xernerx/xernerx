@@ -92,11 +92,13 @@ export class Handler {
 
 			this.process = process;
 
-			if (!(this.client as Record<string, any>)[builder.emitter]) return new XernerxError(`${filename} | ${builder.emitter} does not exist on client, make sure you add it to the root client.`);
+			if (!this[builder.emitter] && !(this.client as Record<string, any>)[builder.emitter])
+				return new XernerxError(`${filename} | ${builder.emitter} does not exist on client, make sure you add it to the root client.`);
 
-			builder.once
-				? this[(builder as XernerxEventBuilder).emitter].once(builder.name, <T extends []>(...args: T) => builder.run(...(args as [])))
-				: this[(builder as XernerxEventBuilder).emitter].on(builder.name, <T extends []>(...args: T) => builder.run(...(args as [])));
+			if (this[builder.emitter])
+				builder.once
+					? this[(builder as XernerxEventBuilder).emitter].once(builder.name, <T extends []>(...args: T) => builder.run(...(args as [])))
+					: this[(builder as XernerxEventBuilder).emitter].on(builder.name, <T extends []>(...args: T) => builder.run(...(args as [])));
 		}
 
 		if (builder.filetype === 'XernerxMessageCommand') {
