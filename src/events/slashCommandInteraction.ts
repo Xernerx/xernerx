@@ -31,7 +31,7 @@ export class XernerxSlashCommandInteractionEvent extends XernerxEventBuilder {
 			} else resolve(true);
 		}).then(async () => {
 			const args = new XernerxInteractionArguments(interaction, command);
-			const options = { options: args.options(), subcommand: args.subcommand(), group: args.subcommand() };
+			const options = { options: args.options(), subcommand: args.subcommand(), group: args.group() };
 
 			try {
 				await this.client.emit('commandStart', interaction, options, command);

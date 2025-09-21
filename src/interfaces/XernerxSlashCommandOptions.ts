@@ -4,7 +4,7 @@ import { Attachment, AutocompleteFocusedOption, AutocompleteInteraction, Channel
 
 import { XernerxSlashCommandBuilder } from '../main.js';
 
-type XernerxOption = { name: string; value: string } & (
+export type XernerxSlashCommandOption = { name: string; value: string } & (
 	| { type: 'string' }
 	| { type: 'number'; value: number }
 	| { type: 'boolean'; value: boolean }
@@ -18,7 +18,7 @@ type XernerxOption = { name: string; value: string } & (
 
 export interface XernerxSlashCommandOptions {
 	interaction: ChatInputCommandInteraction;
-	options: Record<string, XernerxOption>;
+	options: Record<string, XernerxSlashCommandOption>;
 	subcommand: string | null;
 	group: string | null;
 	command: XernerxSlashCommandBuilder;
