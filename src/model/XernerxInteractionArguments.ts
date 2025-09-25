@@ -35,7 +35,7 @@ export class XernerxInteractionArguments {
 
 			if (!subcommand) return options;
 
-			this.formatOptions(subcommand?.options, options);
+			if (subcommand?.options) this.formatOptions(subcommand?.options, options);
 		}
 
 		if (this.command.subcommands) {
@@ -43,7 +43,7 @@ export class XernerxInteractionArguments {
 
 			if (!subcommand) return options;
 
-			this.formatOptions(subcommand?.options, options);
+			if (subcommand?.options) this.formatOptions(subcommand?.options, options);
 		}
 
 		if (this.command.options) {
