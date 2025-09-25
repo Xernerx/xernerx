@@ -31,7 +31,9 @@
 		"test": "npm install --engine-strict=true",
 		"pub": "git add . && git commit -m \"type update\" && npm run beta && git push origin beta"
 	},
-	"keywords": [],
+	"keywords": [
+		"framework"
+	],
 	"author": "Dummi",
 	"license": "MIT",
 	"description": "",
