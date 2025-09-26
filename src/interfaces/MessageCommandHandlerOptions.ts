@@ -1,6 +1,6 @@
 /** @format */
 
-export interface XernerxMessageCommandHandlerOptions {
+export interface MessageCommandHandlerOptions {
 	directory: string | null;
 	prefix?: string | string[];
 	mention?: boolean;

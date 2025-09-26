@@ -14,11 +14,11 @@ import {
 	TextChannel,
 } from 'discord.js';
 
-import { XernerxBaseUtil } from '../util/XernerxUtil.js';
+import { BaseUtil } from './BaseUtil.js';
 import { XernerxClient } from '../client/XernerxClient.js';
 import { XernerxError } from '../tools/XernerxError.js';
 
-export class XernerxInteractionUtil extends XernerxBaseUtil {
+export class InteractionUtil extends BaseUtil {
 	declare public readonly interaction: RepliableInteraction;
 	declare public readonly cache: Collection<string, string>;
 	declare public args: string[];

@@ -2,11 +2,11 @@
 
 import { Message } from 'discord.js';
 
-import { XernerxEventBuilder } from '../build/XernerxEventBuilder.js';
+import { EventBuilder } from '../build/EventBuilder.js';
 import { XernerxUser } from '../model/XernerxUser.js';
-import { XernerxMessageUtil } from '../util/XernerxMessageUtil.js';
+import { MessageUtil } from '../util/MessageUtil.js';
 
-export class XernerxMessageDeleteEvent extends XernerxEventBuilder {
+export class XernerxMessageDeleteEvent extends EventBuilder {
 	constructor() {
 		super('XernerxMessageDeleteEvent', {
 			name: 'messageDelete',
@@ -18,7 +18,7 @@ export class XernerxMessageDeleteEvent extends XernerxEventBuilder {
 	override async run(message: Message) {
 		message.user = new XernerxUser(message.client, message.author);
 
-		message.util = new XernerxMessageUtil(this.client as Message['client'], message);
+		message.util = new MessageUtil(this.client as Message['client'], message);
 
 		if (!this.client.handler.message.handleDeletions) return;
 

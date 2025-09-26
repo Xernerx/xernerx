@@ -2,11 +2,11 @@
 
 import { Message } from 'discord.js';
 
-import { XernerxEventBuilder } from '../build/XernerxEventBuilder.js';
+import { EventBuilder } from '../build/EventBuilder.js';
 import { XernerxUser } from '../model/XernerxUser.js';
-import { XernerxMessageUtil } from '../util/XernerxMessageUtil.js';
+import { MessageUtil } from '../util/MessageUtil.js';
 
-export class XernerxMessageUpdateEvent extends XernerxEventBuilder {
+export class XernerxMessageUpdateEvent extends EventBuilder {
 	constructor() {
 		super('XernerxMessageUpdateEvent', {
 			name: 'messageUpdate',
@@ -18,7 +18,7 @@ export class XernerxMessageUpdateEvent extends XernerxEventBuilder {
 	override async run(oldMessage: Message, message: Message) {
 		message.user = new XernerxUser(message.client, message.author);
 
-		message.util = new XernerxMessageUtil(this.client as Message['client'], message);
+		message.util = new MessageUtil(this.client as Message['client'], message);
 
 		if (!message.content) return;
 		if (this.client.handler.message.ignore?.bots && message.author.bot) return;

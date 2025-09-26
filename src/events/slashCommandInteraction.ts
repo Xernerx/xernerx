@@ -2,11 +2,12 @@
 
 import { AutocompleteInteraction, ChatInputCommandInteraction } from 'discord.js';
 
-import { XernerxEventBuilder } from '../build/XernerxEventBuilder.js';
-import { XernerxInteractionArguments } from '../model/XernerxInteractionArguments.js';
-import { XernerxSlashCommandValidator } from '../validators/XernerxSlashCommandValidator.js';
+import { EventBuilder } from '../build/EventBuilder.js';
+import { InteractionArguments } from '../model/InteractionArguments.js';
+import { SlashCommandValidator } from '../validators/SlashCommandValidator.js';
+import { InhibitorValidator } from '../validators/InhibitorValidator.js';
 
-export class XernerxSlashCommandInteractionEvent extends XernerxEventBuilder {
+export class XernerxSlashCommandInteractionEvent extends EventBuilder {
 	constructor() {
 		super('XernerxSlashCommandInteractionEvent', {
 			name: 'slashCommandInteraction',
@@ -20,7 +21,9 @@ export class XernerxSlashCommandInteractionEvent extends XernerxEventBuilder {
 
 		if (!command) return;
 
-		// inhibitors
+		const inhibitor = new InhibitorValidator(interaction.client);
+
+		if (await inhibitor.pre('command', interaction, command)) return;
 
 		new Promise(async (resolve) => {
 			if (interaction.isAutocomplete()) {
@@ -30,13 +33,13 @@ export class XernerxSlashCommandInteractionEvent extends XernerxEventBuilder {
 				await command.autocomplete({ interaction, focused, options });
 			} else resolve(true);
 		}).then(async () => {
-			const args = new XernerxInteractionArguments(interaction, command);
+			const args = new InteractionArguments(interaction, command);
 			const options = { options: args.options(), subcommand: args.subcommand(), group: args.group() };
 
 			try {
 				await this.client.emit('commandStart', interaction, options, command);
 
-				const validation = new XernerxSlashCommandValidator(interaction, command);
+				const validation = new SlashCommandValidator(interaction, command);
 
 				if (!(await validation.validate())) return;
 
@@ -47,6 +50,8 @@ export class XernerxSlashCommandInteractionEvent extends XernerxEventBuilder {
 				await command.exec({ interaction, ...options, command });
 
 				await this.client.emit('commandFinish', interaction, options, command);
+
+				await inhibitor.post('command', interaction, command);
 			} catch (error) {
 				await command.error({ interaction, ...options, command, error: error as Error });
 

@@ -1,14 +1,18 @@
 /** @format */
 
+import { BaseHandler } from './BaseHandler.js';
+import { EventHandlerOptions } from '../interfaces/EventHandlerOptions.js';
+import { XernerxClient } from '../client/XernerxClient.js';
+import { XernerxClientReadyEvent } from '../events/clientReady.js';
+import { XernerxMessageEvent } from '../events/XernerxMessage.js';
+import { XernerxSuccess } from '../tools/XernerxSuccess.js';
 import sharpyy from 'sharpyy';
 
-import { XernerxClient } from '../client/XernerxClient.js';
-import { Handler } from './Handler.js';
-import { XernerxSuccess } from '../tools/XernerxSuccess.js';
-
-export class EventHandler extends Handler {
+export class EventHandler extends BaseHandler {
 	constructor(client: XernerxClient) {
 		super(client);
+
+		this.loadBuilder(XernerxMessageEvent, XernerxClientReadyEvent);
 	}
 
 	/**
@@ -28,7 +32,7 @@ export class EventHandler extends Handler {
 	 * @param options.directory - The directory path where event files are located.
 	 * @returns A promise that resolves when all events have been loaded.
 	 */
-	public async loadEvents(options: { directory: string }) {
+	public async loadEvents(options: EventHandlerOptions) {
 		const files = this.loadFiles(options.directory);
 
 		for (const file of files) {

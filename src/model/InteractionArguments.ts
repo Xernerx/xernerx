@@ -1,14 +1,14 @@
 /** @format */
 
 import { ChatInputCommandInteraction } from 'discord.js';
-import { XernerxSlashCommandBuilder } from '../build/XernerxSlashCommandBuilder.js';
-import { XernerxSlashCommandOption } from '../main.js';
+import { SlashCommandBuilder } from '../build/SlashCommandBuilder.js';
+import { SlashCommandOption } from '../main.js';
 
-export class XernerxInteractionArguments {
+export class InteractionArguments {
 	declare private readonly interaction: ChatInputCommandInteraction;
-	declare private readonly command: XernerxSlashCommandBuilder;
+	declare private readonly command: SlashCommandBuilder;
 
-	constructor(interaction: ChatInputCommandInteraction, command: XernerxSlashCommandBuilder) {
+	constructor(interaction: ChatInputCommandInteraction, command: SlashCommandBuilder) {
 		this.interaction = interaction;
 
 		this.command = command;
@@ -24,7 +24,7 @@ export class XernerxInteractionArguments {
 	 * @returns {Record<string, any> | null} A record of option names and values if available, otherwise null.
 	 */
 	options() {
-		const options: Record<string, XernerxSlashCommandOption> = {};
+		const options: Record<string, SlashCommandOption> = {};
 
 		if (this.command.groups) {
 			const group = this.command.groups.find((group) => group.name === this.group());

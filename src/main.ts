@@ -5,13 +5,11 @@ export * from './client/XernerxShardClient.js';
 export * from './client/XernerxClient.js';
 
 // Builders
-export * from './build/XernerxEventBuilder.js';
-export * from './build/XernerxMessageCommandBuilder.js';
-export * from './build/XernerxSlashCommandBuilder.js';
-export * from './build/XernerxContextCommandBuilder.js';
-
-// lib
-export * from 'discord.js';
+export * from './build/EventBuilder.js';
+export * from './build/MessageCommandBuilder.js';
+export * from './build/SlashCommandBuilder.js';
+export * from './build/ContextCommandBuilder.js';
+export * from './build/InhibitorBuilder.js';
 
 // Types
 
@@ -19,5 +17,5 @@ import './types/Message.d.ts';
 import './types/Interaction.d.ts';
 import './types/Events.d.ts';
 
-export * from './interfaces/XernerxSlashCommandOptions.js';
-export * from './interfaces/XernerxContextCommandOptions.js';
+export * from './interfaces/SlashCommandOptions.js';
+export * from './interfaces/ContextCommandOptions.js';

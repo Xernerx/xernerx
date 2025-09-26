@@ -3,19 +3,19 @@
 import { Client, GatewayVersion, REST, Routes } from 'discord.js';
 import sharpyy from 'sharpyy';
 
-import { XernerxEventBuilder } from '../build/XernerxEventBuilder.js';
+import { EventBuilder } from '../build/EventBuilder.js';
 import { XernerxClient } from '../client/XernerxClient.js';
-import { XernerxSlashCommandBuilder } from '../build/XernerxSlashCommandBuilder.js';
+import { SlashCommandBuilder } from '../build/SlashCommandBuilder.js';
 import { XernerxError } from '../tools/XernerxError.js';
 import { XernerxSuccess } from '../tools/XernerxSuccess.js';
 import { XernerxInfo } from '../tools/XernerxInfo.js';
 import { XernerxUser } from '../model/XernerxUser.js';
-import { XernerxContextCommandBuilder } from '../build/XernerxContextCommandBuilder.js';
+import { ContextCommandBuilder } from '../build/ContextCommandBuilder.js';
 
-export class XernerxClientReadyEvent extends XernerxEventBuilder {
+export class XernerxClientReadyEvent extends EventBuilder {
 	declare private readonly commands: {
-		global: Array<XernerxSlashCommandBuilder | XernerxContextCommandBuilder>;
-		local: Array<XernerxSlashCommandBuilder | XernerxContextCommandBuilder>;
+		global: Array<SlashCommandBuilder | ContextCommandBuilder>;
+		local: Array<SlashCommandBuilder | ContextCommandBuilder>;
 	};
 
 	constructor() {
@@ -82,7 +82,7 @@ export class XernerxClientReadyEvent extends XernerxEventBuilder {
 		}
 
 		if (this.commands.local.length) {
-			const guilds: { [index: string]: Array<XernerxSlashCommandBuilder | XernerxContextCommandBuilder> } = {};
+			const guilds: { [index: string]: Array<SlashCommandBuilder | ContextCommandBuilder> } = {};
 
 			for (const command of this.commands.local) {
 				(command.deploy?.guilds as Array<string>)?.map((id) => (guilds[id] ? guilds[id].push(command) : (guilds[id] = [command])));

@@ -2,12 +2,12 @@
 
 import { ApplicationIntegrationType, ChannelType, PermissionFlags, Permissions } from 'discord.js';
 
-import { XernerxBaseBuilder } from './XernerxBaseBuilder.js';
-import { XernerxMessageCommandBuilderOptions } from '../interfaces/XernerxMessageCommandBuilderOptions.js';
+import { BaseBuilder } from './BaseBuilder.js';
+import { MessageCommandBuilderOptions } from '../interfaces/MessageCommandBuilderOptions.js';
 import { XernerxWarn } from '../tools/XernerxWarn.js';
 import { z } from 'zod';
 
-export class XernerxMessageCommandBuilder extends XernerxBaseBuilder {
+export class MessageCommandBuilder extends BaseBuilder {
 	// Discord
 	declare public readonly name: string;
 	declare public readonly description?: string;
@@ -37,7 +37,7 @@ export class XernerxMessageCommandBuilder extends XernerxBaseBuilder {
 	 * @param options.prefix - A prefix or an array of prefixes for the command.
 	 * @param options.premium - An array indicating premium features or settings.
 	 */
-	constructor(id: string, options: XernerxMessageCommandBuilderOptions) {
+	constructor(id: string, options: MessageCommandBuilderOptions) {
 		super(id, options);
 
 		options = z

@@ -4,22 +4,22 @@ import { Client, ClientOptions, Collection, RESTGetAPISKUsResult } from 'discord
 import { ClusterClient, DjsDiscordClient, getInfo } from 'discord-hybrid-sharding';
 
 import { CommandHandler } from '../handler/CommandHandler.js';
+import { ContextCommandBuilder } from '../build/ContextCommandBuilder.js';
+import { ContextCommandHandlerOptions } from '../interfaces/ContextCommandHandlerOptions.js';
+import { EventBuilder } from '../build/EventBuilder.js';
 import { EventHandler } from '../handler/EventHandler.js';
+import { InhibitorBuilder } from '../build/InhibitorBuilder.js';
+import { InhibitorHandler } from '../handler/InhibitorHandler.js';
+import { MessageCommandBuilder } from '../build/MessageCommandBuilder.js';
+import { MessageCommandHandlerOptions } from '../interfaces/MessageCommandHandlerOptions.js';
+import { SlashCommandBuilder } from '../build/SlashCommandBuilder.js';
+import { SlashCommandHandlerOptions } from '../interfaces/SlashCommandHandlerOptions.js';
 import { XernerxClientOptions } from '../interfaces/XernerxClientOptions.js';
-import { XernerxClientReadyEvent } from '../events/clientReady.js';
 import { XernerxClientStats } from '../interfaces/XernerxClientStats.js';
-import { XernerxContextCommandBuilder } from '../build/XernerxContextCommandBuilder.js';
-import { XernerxContextCommandHandlerOptions } from '../interfaces/XernerxContextCommandHandlerOptions.js';
 import { XernerxError } from '../tools/XernerxError.js';
-import { XernerxEventBuilder } from '../build/XernerxEventBuilder.js';
 import { XernerxInfo } from '../tools/XernerxInfo.js';
 import { XernerxInitial } from '../tools/XernerxInitial.js';
-import { XernerxMessageCommandBuilder } from '../build/XernerxMessageCommandBuilder.js';
-import { XernerxMessageCommandHandlerOptions } from '../interfaces/XernerxMessageCommandHandlerOptions.js';
-import { XernerxMessageEvent } from '../events/XernerxMessage.js';
 import { XernerxMonitisation } from '../model/XernerxMonitisation.js';
-import { XernerxSlashCommandBuilder } from '../build/XernerxSlashCommandBuilder.js';
-import { XernerxSlashCommandHandlerOptions } from '../interfaces/XernerxSlashCommandHandlerOptions.js';
 import { XernerxSuccess } from '../tools/XernerxSuccess.js';
 import sharpyy from 'sharpyy';
 import z from 'zod';
@@ -41,18 +41,19 @@ export class XernerxClient extends Client {
 	declare public readonly stats: XernerxClientStats;
 	declare public readonly cluster: ClusterClient | null;
 	declare public readonly cache: { messages: Collection<string, string>; slash: Collection<string, string> };
-	declare public readonly handler: { message: XernerxMessageCommandHandlerOptions; slash: XernerxSlashCommandHandlerOptions; context: XernerxContextCommandHandlerOptions };
+	declare public readonly handler: { message: MessageCommandHandlerOptions; slash: SlashCommandHandlerOptions; context: ContextCommandHandlerOptions };
 
 	// Collections
 	declare public readonly commands: {
-		message: Collection<string, XernerxMessageCommandBuilder>;
-		slash: Collection<string, XernerxSlashCommandBuilder>;
-		context: Collection<string, XernerxContextCommandBuilder>;
+		message: Collection<string, MessageCommandBuilder>;
+		slash: Collection<string, SlashCommandBuilder>;
+		context: Collection<string, ContextCommandBuilder>;
 	};
-	declare public readonly events: Collection<string, XernerxEventBuilder>;
+	declare public readonly events: Collection<string, EventBuilder>;
+	declare public readonly inhibitors: Collection<string, InhibitorBuilder>;
 
 	// Handlers
-	declare public readonly modules: { eventHandler: EventHandler; commandHandler: CommandHandler };
+	declare public readonly modules: { eventHandler: EventHandler; commandHandler: CommandHandler; inhibitorHandler: InhibitorHandler };
 
 	constructor(options: ClientOptions & XernerxClientOptions) {
 		try {
@@ -97,6 +98,8 @@ export class XernerxClient extends Client {
 
 		this.monitisation = { skus: [] };
 
+		// Data
+
 		this.stats = {
 			onlineSince: Number(new Date()),
 			guildCount: null,
@@ -115,15 +118,21 @@ export class XernerxClient extends Client {
 			context: { directory: null },
 		};
 
+		// Collections
+
 		this.commands = { message: new Collection(), slash: new Collection(), context: new Collection() };
 
 		this.events = new Collection();
 
+		this.inhibitors = new Collection();
+
+		// Modules
+
+		this.modules = { eventHandler: new EventHandler(this), commandHandler: new CommandHandler(this), inhibitorHandler: new InhibitorHandler(this) };
+
+		// Process
+
 		if (this.sharded) this.cluster = new ClusterClient(this as unknown as DjsDiscordClient);
-
-		this.modules = { eventHandler: new EventHandler(this), commandHandler: new CommandHandler(this) };
-
-		this.modules.eventHandler.loadBuilder(XernerxMessageEvent, XernerxClientReadyEvent);
 
 		(process as any).xernerx = {
 			id: this.cluster?.id,

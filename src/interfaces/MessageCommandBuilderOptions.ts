@@ -2,7 +2,7 @@
 
 import { ChannelType, InteractionContextType, Locale, PermissionFlags } from 'discord.js';
 
-export interface XernerxMessageCommandBuilderOptions {
+export interface MessageCommandBuilderOptions {
 	// Discord
 	name: string;
 	description?: string;

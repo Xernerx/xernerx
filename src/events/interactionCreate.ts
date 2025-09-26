@@ -2,11 +2,12 @@
 
 import { Interaction } from 'discord.js';
 
-import { XernerxEventBuilder } from '../build/XernerxEventBuilder.js';
+import { EventBuilder } from '../build/EventBuilder.js';
 import { XernerxUser } from '../model/XernerxUser.js';
-import { XernerxInteractionUtil } from '../util/XernerxInteractionUtil.js';
+import { InteractionUtil } from '../util/InteractionUtil.js';
+import { InhibitorValidator } from '../validators/InhibitorValidator.js';
 
-export class XernerxInteractionCreateEvent extends XernerxEventBuilder {
+export class XernerxInteractionCreateEvent extends EventBuilder {
 	constructor() {
 		super('XernerxInteractionCreateEvent', {
 			name: 'interactionCreate',
@@ -18,16 +19,22 @@ export class XernerxInteractionCreateEvent extends XernerxEventBuilder {
 	override async run(interaction: Interaction) {
 		interaction.user = new XernerxUser(interaction.client, interaction.user);
 
-		interaction.util = new XernerxInteractionUtil(this.client as Interaction['client'], interaction);
+		interaction.util = new InteractionUtil(this.client as Interaction['client'], interaction);
 
-		if (interaction.isChatInputCommand()) return await interaction.client.emit('slashCommandInteraction', interaction);
+		const inhibitor = new InhibitorValidator(interaction.client);
 
-		if (interaction.isContextMenuCommand()) return await interaction.client.emit('contextCommandInteraction', interaction);
+		if (await inhibitor.pre('interaction', interaction)) return;
 
-		if (interaction.isAnySelectMenu()) return await interaction.client.emit('selectMenuInteraction', interaction);
+		if (interaction.isChatInputCommand()) await interaction.client.emit('slashCommandInteraction', interaction);
 
-		if (interaction.isButton()) return await interaction.client.emit('buttonInteraction', interaction);
+		if (interaction.isContextMenuCommand()) await interaction.client.emit('contextCommandInteraction', interaction);
 
-		if (interaction.isModalSubmit()) return await interaction.client.emit('modalInteraction', interaction);
+		if (interaction.isAnySelectMenu()) await interaction.client.emit('selectMenuInteraction', interaction);
+
+		if (interaction.isButton()) await interaction.client.emit('buttonInteraction', interaction);
+
+		if (interaction.isModalSubmit()) await interaction.client.emit('modalInteraction', interaction);
+
+		await inhibitor.post('interaction', interaction);
 	}
 }

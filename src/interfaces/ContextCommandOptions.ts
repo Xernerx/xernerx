@@ -2,14 +2,14 @@
 
 import { Message, MessageContextMenuCommandInteraction, UserContextMenuCommandInteraction } from 'discord.js';
 
-import { XernerxContextCommandBuilder } from '../build/XernerxContextCommandBuilder.js';
+import { ContextCommandBuilder } from '../build/ContextCommandBuilder.js';
 import { XernerxUser } from '../model/XernerxUser.js';
 
 type BaseOptions = {
-	command: XernerxContextCommandBuilder;
+	command: ContextCommandBuilder;
 };
 
-export type XernerxContextCommandOptions<T extends 'message' | 'user'> = T extends 'user'
+export type ContextCommandOptions<T extends 'message' | 'user'> = T extends 'user'
 	? BaseOptions & {
 			interaction: UserContextMenuCommandInteraction;
 			user: XernerxUser;

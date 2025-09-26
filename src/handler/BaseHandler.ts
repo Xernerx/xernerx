@@ -1,16 +1,17 @@
 /** @format */
 
+import { ContextCommandBuilder } from '../main.js';
+import { EventBuilder } from '../build/EventBuilder.js';
+import { InhibitorBuilder } from '../build/InhibitorBuilder.js';
+import { MessageCommandBuilder } from '../build/MessageCommandBuilder.js';
+import { SlashCommandBuilder } from '../build/SlashCommandBuilder.js';
 import { XernerxClient } from '../client/XernerxClient.js';
-import { XernerxContextCommandBuilder } from '../main.js';
 import { XernerxError } from '../tools/XernerxError.js';
-import { XernerxEventBuilder } from '../build/XernerxEventBuilder.js';
-import { XernerxMessageCommandBuilder } from '../build/XernerxMessageCommandBuilder.js';
-import { XernerxSlashCommandBuilder } from '../build/XernerxSlashCommandBuilder.js';
 /** @format */
 import fs from 'fs';
 import path from 'path';
 
-export class Handler {
+export class BaseHandler {
 	declare public readonly client: XernerxClient;
 	[index: string]: Record<string, any>;
 
@@ -25,7 +26,7 @@ export class Handler {
 	 * @returns An array of file paths for JavaScript files in the specified directory.
 	 *          Returns an empty array if an error occurs during the file reading process.
 	 */
-	loadFiles(dir: string) {
+	protected loadFiles(dir: string) {
 		try {
 			return fs
 				.readdirSync(dir)
@@ -45,7 +46,7 @@ export class Handler {
 	 * @returns A promise that resolves when the file is successfully loaded and imported.
 	 *          If the file does not have a default export, an error is thrown.
 	 */
-	async loadFile(file: string) {
+	protected async loadFile(file: string) {
 		const filepath = path.resolve(file);
 		const filename = path.basename(filepath);
 
@@ -76,7 +77,7 @@ export class Handler {
 	 *          If the builder is of type XernerxEvent, it is registered as an event listener.
 	 *          If the builder is of type XernerxMessageCommand or XernerxSlashCommand, it is registered as a command.
 	 */
-	async importFile(builder: XernerxEventBuilder | XernerxMessageCommandBuilder | XernerxSlashCommandBuilder | XernerxContextCommandBuilder, filename?: string) {
+	protected async importFile(builder: EventBuilder | MessageCommandBuilder | SlashCommandBuilder | ContextCommandBuilder | InhibitorBuilder, filename?: string) {
 		if (!filename) filename = builder.id;
 
 		builder.client = this.client;
@@ -99,8 +100,8 @@ export class Handler {
 
 			if (this[builder.emitter])
 				builder.once
-					? this[(builder as XernerxEventBuilder).emitter].once(builder.name, <T extends []>(...args: T) => builder.run(...(args as [])))
-					: this[(builder as XernerxEventBuilder).emitter].on(builder.name, <T extends []>(...args: T) => builder.run(...(args as [])));
+					? this[(builder as EventBuilder).emitter].once(builder.name, <T extends []>(...args: T) => builder.run(...(args as [])))
+					: this[(builder as EventBuilder).emitter].on(builder.name, <T extends []>(...args: T) => builder.run(...(args as [])));
 		}
 
 		if (builder.filetype === 'XernerxMessageCommand') {
@@ -121,10 +122,16 @@ export class Handler {
 			this.client.commands.context.set(builder.id, builder);
 		}
 
+		if (builder.filetype === 'XernerxInhibitor') {
+			if (this.client.inhibitors.has(builder.id)) return new XernerxError(`${filename} | ID must be unique`);
+
+			this.client.inhibitors.set(builder.id, builder);
+		}
+
 		return builder;
 	}
 
-	public async loadBuilder(...args: Array<typeof XernerxEventBuilder>) {
+	protected async loadBuilder(...args: Array<typeof EventBuilder>) {
 		for (const event of args) {
 			this.importFile(new event('', { name: '' }));
 		}

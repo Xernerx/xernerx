@@ -2,10 +2,10 @@
 
 import { Client, Collection, Message, MessageCreateOptions, MessageEditOptions, MessagePayload, MessageReplyOptions, TextChannel } from 'discord.js';
 
-import { XernerxBaseUtil } from '../util/XernerxUtil.js';
+import { BaseUtil } from './BaseUtil.js';
 import { XernerxClient } from '../client/XernerxClient.js';
 
-export class XernerxMessageUtil extends XernerxBaseUtil {
+export class MessageUtil extends BaseUtil {
 	declare public readonly message: Message;
 	declare public readonly cache: Collection<string, string>;
 	declare public args: string[];

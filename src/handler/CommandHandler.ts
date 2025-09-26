@@ -1,23 +1,23 @@
 /** @format */
 
-import { Handler } from './Handler.js';
+import { BaseHandler } from './BaseHandler.js';
+import { ContextCommandHandlerOptions } from '../interfaces/ContextCommandHandlerOptions.js';
+import { MessageCommandHandlerOptions } from '../interfaces/MessageCommandHandlerOptions.js';
+import { SlashCommandHandlerOptions } from '../interfaces/SlashCommandHandlerOptions.js';
 import { XernerxClient } from '../client/XernerxClient.js';
-import { XernerxContextCommandHandlerOptions } from '../interfaces/XernerxContextCommandHandlerOptions.js';
 import { XernerxContextCommandInteractionEvent } from '../events/contextCommandInteraction.js';
 import { XernerxError } from '../tools/XernerxError.js';
 import { XernerxInteractionCreateEvent } from '../events/interactionCreate.js';
-import { XernerxMessageCommandHandlerOptions } from '../interfaces/XernerxMessageCommandHandlerOptions.js';
 import { XernerxMessageCreateEvent } from '../events/messageCreate.js';
 import { XernerxMessageDeleteEvent } from '../events/messageDelete.js';
 import { XernerxMessageUpdateEvent } from '../events/messageUpdate.js';
-import { XernerxSlashCommandHandlerOptions } from '../interfaces/XernerxSlashCommandHandlerOptions.js';
 import { XernerxSlashCommandInteractionEvent } from '../events/slashCommandInteraction.js';
 import { XernerxSuccess } from '../tools/XernerxSuccess.js';
 import { XernerxWarn } from '../tools/XernerxWarn.js';
 import sharpyy from 'sharpyy';
 import { z } from 'zod';
 
-export class CommandHandler extends Handler {
+export class CommandHandler extends BaseHandler {
 	constructor(client: XernerxClient) {
 		super(client);
 	}
@@ -38,7 +38,7 @@ export class CommandHandler extends Handler {
 	 * @param options - Configuration options for loading message commands, including directory, prefix, mention, separator, handleEdits, handleDeletions, and ignore settings.
 	 * @returns A promise that resolves when all message commands have been successfully loaded.
 	 */
-	public async loadMessageCommands(options: XernerxMessageCommandHandlerOptions) {
+	public async loadMessageCommands(options: MessageCommandHandlerOptions) {
 		const config = z
 			.object({
 				directory: z.string(),
@@ -94,7 +94,7 @@ export class CommandHandler extends Handler {
 	 * @param options - Configuration options for loading slash commands, including the directory where the command files are located.
 	 * @returns A promise that resolves when all slash commands have been successfully loaded.
 	 */
-	public async loadSlashCommands(options: XernerxSlashCommandHandlerOptions) {
+	public async loadSlashCommands(options: SlashCommandHandlerOptions) {
 		const config = z
 			.object({
 				directory: z.string(),
@@ -118,7 +118,7 @@ export class CommandHandler extends Handler {
 		return await this.loadFile(file);
 	}
 
-	public async loadContextCommands(options: XernerxContextCommandHandlerOptions) {
+	public async loadContextCommands(options: ContextCommandHandlerOptions) {
 		const config = z
 			.object({
 				directory: z.string(),

@@ -4,7 +4,7 @@ import { Client, Interaction, Message, MessagePayload, Webhook, WebhookMessageCr
 
 import { XernerxClient } from '../client/XernerxClient.js';
 
-export class XernerxBaseUtil {
+export class BaseUtil {
 	declare public readonly client: XernerxClient & Client<true>;
 	declare public readonly parsed: {
 		command: string | null;

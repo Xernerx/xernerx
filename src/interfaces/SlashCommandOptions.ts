@@ -2,9 +2,9 @@
 
 import { Attachment, AutocompleteFocusedOption, AutocompleteInteraction, Channel, ChatInputCommandInteraction, Role, User } from 'discord.js';
 
-import { XernerxSlashCommandBuilder } from '../main.js';
+import { SlashCommandBuilder } from '../build/SlashCommandBuilder.js';
 
-export type XernerxSlashCommandOption = { name: string; value: string } & (
+export type SlashCommandOption = { name: string; value: string } & (
 	| { type: 'string' }
 	| { type: 'number'; value: number }
 	| { type: 'boolean'; value: boolean }
@@ -16,19 +16,19 @@ export type XernerxSlashCommandOption = { name: string; value: string } & (
 	| { type: 'attachment'; attachment: Attachment }
 );
 
-export interface XernerxSlashCommandOptions {
+export interface SlashCommandOptions {
 	interaction: ChatInputCommandInteraction;
-	options: Record<string, XernerxSlashCommandOption>;
+	options: Record<string, SlashCommandOption>;
 	subcommand: string | null;
 	group: string | null;
-	command: XernerxSlashCommandBuilder;
+	command: SlashCommandBuilder;
 }
 
-export interface XernerxSlashCommandError extends XernerxSlashCommandOptions {
+export interface SlashCommandError extends SlashCommandOptions {
 	error: Error;
 }
 
-export interface XernerxSlashCommandAutocomplete {
+export interface SlashCommandAutocomplete {
 	interaction: AutocompleteInteraction;
 	focused: AutocompleteFocusedOption;
 	options: any;

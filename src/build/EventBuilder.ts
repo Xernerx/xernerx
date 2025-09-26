@@ -1,18 +1,18 @@
 /** @format */
 
+import { BaseBuilder } from './BaseBuilder.js';
 import { ClientEvents } from 'discord.js';
-import { XernerxBaseBuilder } from './XernerxBaseBuilder.js';
-import { XernerxEventBuilderOptions } from '../interfaces/XernerxEventBuilderOptions.js';
+import { EventBuilderOptions } from '../interfaces/EventBuilderOptions.js';
 import { XernerxWarn } from '../tools/XernerxWarn.js';
 import sharpyy from 'sharpyy';
 
-export class XernerxEventBuilder extends XernerxBaseBuilder {
+export class EventBuilder extends BaseBuilder {
 	declare public readonly filetype: 'XernerxEvent';
 	declare public readonly name: ClientEvents | keyof ClientEvents | (string & {});
 	declare public readonly emitter: string;
 	declare public readonly once: boolean;
 
-	constructor(id: string, options: XernerxEventBuilderOptions) {
+	constructor(id: string, options: EventBuilderOptions) {
 		super(id, options);
 
 		this.filetype = 'XernerxEvent';

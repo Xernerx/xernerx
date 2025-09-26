@@ -2,7 +2,7 @@
 
 import { ApplicationIntegrationType, ChannelType, InteractionContextType, Locale, PermissionFlags } from 'discord.js';
 
-export interface XernerxSlashCommandBuilderOptions {
+export interface SlashCommandBuilderOptions {
 	// Discord
 	name: string;
 	locales?: Partial<Record<Locale, { name: string; description: string }>>;
@@ -10,9 +10,9 @@ export interface XernerxSlashCommandBuilderOptions {
 	contexts?: Array<keyof typeof InteractionContextType>;
 	integration?: Array<keyof typeof ApplicationIntegrationType>;
 	nsfw?: boolean;
-	options?: Array<XernerxSlashCommandBuilderOption>;
-	subcommands?: Array<XernerxSlashCommandBuilderSubcommand>;
-	groups?: Array<XernerxSlashCommandBuilderGroup>;
+	options?: Array<SlashCommandBuilderOption>;
+	subcommands?: Array<SlashCommandBuilderSubcommand>;
+	groups?: Array<SlashCommandBuilderGroup>;
 
 	// Xernerx
 	premium?: boolean;
@@ -42,7 +42,7 @@ export interface XernerxSlashCommandBuilderOptions {
 	};
 }
 
-export interface XernerxSlashCommandBuilderOption {
+export interface SlashCommandBuilderOption {
 	type: 'attachment' | 'boolean' | 'channel' | 'integer' | 'mentionable' | 'number' | 'role' | 'string' | 'user';
 	name: string;
 	locales?: Partial<Record<Locale, { name: string; description: string }>>;
@@ -55,16 +55,16 @@ export interface XernerxSlashCommandBuilderOption {
 	choices?: Array<{ name: string; value: string; locales?: Partial<Record<Locale, string>> }>;
 }
 
-export interface XernerxSlashCommandBuilderSubcommand {
+export interface SlashCommandBuilderSubcommand {
 	name: string;
 	description: string;
-	options?: Array<XernerxSlashCommandBuilderOption>;
+	options?: Array<SlashCommandBuilderOption>;
 	locales?: Partial<Record<Locale, { name: string; description: string }>>;
 }
 
-export interface XernerxSlashCommandBuilderGroup {
+export interface SlashCommandBuilderGroup {
 	name: string;
 	description: string;
-	subcommands: Array<XernerxSlashCommandBuilderSubcommand>;
+	subcommands: Array<SlashCommandBuilderSubcommand>;
 	locales?: Partial<Record<Locale, { name: string; description: string }>>;
 }

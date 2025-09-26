@@ -13,13 +13,13 @@ import {
 	RestOrArray,
 } from 'discord.js';
 
-import { XernerxBaseBuilder } from './XernerxBaseBuilder.js';
-import { XernerxContextCommandBuilderOptions } from '../interfaces/XernerxContextCommandBuilderOptions.js';
-import { XernerxContextCommandOptions } from '../interfaces/XernerxContextCommandOptions.js';
+import { BaseBuilder } from './BaseBuilder.js';
+import { ContextCommandBuilderOptions } from '../interfaces/ContextCommandBuilderOptions.js';
+import { ContextCommandOptions } from '../interfaces/ContextCommandOptions.js';
 import { XernerxWarn } from '../tools/XernerxWarn.js';
 import { z } from 'zod';
 
-export class XernerxContextCommandBuilder extends XernerxBaseBuilder {
+export class ContextCommandBuilder extends BaseBuilder {
 	// Discord
 	declare public readonly name: string;
 	declare public readonly description: string;
@@ -42,7 +42,7 @@ export class XernerxContextCommandBuilder extends XernerxBaseBuilder {
 	// Static
 	declare public readonly filetype: 'XernerxContextCommand';
 
-	constructor(id: string, options: XernerxContextCommandBuilderOptions) {
+	constructor(id: string, options: ContextCommandBuilderOptions) {
 		super(id, options);
 
 		options = z
@@ -153,7 +153,7 @@ export class XernerxContextCommandBuilder extends XernerxBaseBuilder {
 	 * @param args - The arguments for the conditions function, which include the context and options for the command.
 	 * @returns A promise that resolves to either void or any value, depending on the implementation.
 	 */
-	public async conditions(args: XernerxContextCommandOptions<'message' | 'user'>): Promise<void | any> {}
+	public async conditions(args: ContextCommandOptions<'message' | 'user'>): Promise<void | any> {}
 
 	/**
 	 * Executes the slash command.
@@ -161,7 +161,7 @@ export class XernerxContextCommandBuilder extends XernerxBaseBuilder {
 	 * @param args - The arguments for the exec function, which include the context and options for the command.
 	 * @returns A promise that resolves to either void or any value, depending on the implementation.
 	 */
-	public async exec(args: XernerxContextCommandOptions<'message' | 'user'>): Promise<void | any> {
+	public async exec(args: ContextCommandOptions<'message' | 'user'>): Promise<void | any> {
 		new XernerxWarn(`${this.id} has no exec function, command will not respond.`);
 	}
 }

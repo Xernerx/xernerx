@@ -2,7 +2,7 @@
 
 import { ApplicationIntegrationType, ChannelType, ContextMenuCommandType, InteractionContextType, Locale, PermissionFlags } from 'discord.js';
 
-export interface XernerxContextCommandBuilderOptions {
+export interface ContextCommandBuilderOptions {
 	// Discord
 	name: string;
 	locales?: Partial<Record<Locale, { name: string; description: string }>>;

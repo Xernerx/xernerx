@@ -1,8 +1,8 @@
 /** @format */
 
-import { XernerxEventBuilder } from '../build/XernerxEventBuilder.js';
+import { EventBuilder } from '../build/EventBuilder.js';
 
-export class XernerxMessageEvent extends XernerxEventBuilder {
+export class XernerxMessageEvent extends EventBuilder {
 	constructor() {
 		super('XernerxMessage', {
 			name: 'message',

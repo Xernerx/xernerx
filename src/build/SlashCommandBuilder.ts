@@ -3,6 +3,7 @@
 import {
 	ApplicationIntegrationType,
 	ChannelType,
+	SlashCommandBuilder as DiscordSlashCommandBuilder,
 	InteractionContextType,
 	Locale,
 	PermissionFlags,
@@ -10,7 +11,6 @@ import {
 	Permissions,
 	RestOrArray,
 	SlashCommandBooleanOption,
-	SlashCommandBuilder,
 	SlashCommandChannelOption,
 	SlashCommandIntegerOption,
 	SlashCommandMentionableOption,
@@ -21,27 +21,22 @@ import {
 	SlashCommandSubcommandGroupBuilder,
 	SlashCommandUserOption,
 } from 'discord.js';
-import { XernerxSlashCommandAutocomplete, XernerxSlashCommandError, XernerxSlashCommandOptions } from '../interfaces/XernerxSlashCommandOptions.js';
-import {
-	XernerxSlashCommandBuilderGroup,
-	XernerxSlashCommandBuilderOption,
-	XernerxSlashCommandBuilderOptions,
-	XernerxSlashCommandBuilderSubcommand,
-} from '../interfaces/XernerxSlashCommandBuilderOptions.js';
+import { SlashCommandAutocomplete, SlashCommandError, SlashCommandOptions } from '../interfaces/SlashCommandOptions.js';
+import { SlashCommandBuilderGroup, SlashCommandBuilderOption, SlashCommandBuilderOptions, SlashCommandBuilderSubcommand } from '../interfaces/SlashCommandBuilderOptions.js';
 
-import { XernerxBaseBuilder } from './XernerxBaseBuilder.js';
+import { BaseBuilder } from './BaseBuilder.js';
 import { XernerxWarn } from '../tools/XernerxWarn.js';
 import { z } from 'zod';
 
-export class XernerxSlashCommandBuilder extends XernerxBaseBuilder {
+export class SlashCommandBuilder extends BaseBuilder {
 	// Discord
 	declare public readonly name: string;
 	declare public readonly description: string;
 	declare public readonly integration: RestOrArray<InteractionContextType>;
-	declare public readonly data: SlashCommandBuilder;
-	declare public readonly options: Array<XernerxSlashCommandBuilderOption>;
-	declare public readonly subcommands: Array<XernerxSlashCommandBuilderSubcommand>;
-	declare public readonly groups: Array<XernerxSlashCommandBuilderGroup>;
+	declare public readonly data: DiscordSlashCommandBuilder;
+	declare public readonly options: Array<SlashCommandBuilderOption>;
+	declare public readonly subcommands: Array<SlashCommandBuilderSubcommand>;
+	declare public readonly groups: Array<SlashCommandBuilderGroup>;
 
 	// Xernerx
 	declare public readonly premium?: boolean;
@@ -58,7 +53,7 @@ export class XernerxSlashCommandBuilder extends XernerxBaseBuilder {
 	// Static
 	declare public readonly filetype: 'XernerxSlashCommand';
 
-	constructor(id: string, options: XernerxSlashCommandBuilderOptions) {
+	constructor(id: string, options: SlashCommandBuilderOptions) {
 		super(id, options);
 
 		options = z
@@ -144,7 +139,7 @@ export class XernerxSlashCommandBuilder extends XernerxBaseBuilder {
 
 		this.ignore = options.ignore;
 
-		this.data = new SlashCommandBuilder();
+		this.data = new DiscordSlashCommandBuilder();
 
 		this.data.setName(this.name);
 
@@ -194,7 +189,7 @@ export class XernerxSlashCommandBuilder extends XernerxBaseBuilder {
 	 * @param args - The arguments for the autocomplete function, which include the context and options for the command.
 	 * @returns A promise that resolves to either void or any value, depending on the implementation.
 	 */
-	public async autocomplete(args: XernerxSlashCommandAutocomplete): Promise<void | any> {}
+	public async autocomplete(args: SlashCommandAutocomplete): Promise<void | any> {}
 
 	/**
 	 * Evaluates conditions for executing a slash command.
@@ -202,7 +197,7 @@ export class XernerxSlashCommandBuilder extends XernerxBaseBuilder {
 	 * @param args - The arguments for the conditions function, which include the context and options for the command.
 	 * @returns A promise that resolves to either void or any value, depending on the implementation.
 	 */
-	public async conditions(args: XernerxSlashCommandOptions): Promise<void | any> {}
+	public async conditions(args: SlashCommandOptions): Promise<void | any> {}
 
 	/**
 	 * Executes the slash command.
@@ -210,13 +205,13 @@ export class XernerxSlashCommandBuilder extends XernerxBaseBuilder {
 	 * @param args - The arguments for the exec function, which include the context and options for the command.
 	 * @returns A promise that resolves to either void or any value, depending on the implementation.
 	 */
-	public async exec(args: XernerxSlashCommandOptions): Promise<void | any> {
+	public async exec(args: SlashCommandOptions): Promise<void | any> {
 		new XernerxWarn(`${this.id} has no exec function, command will not respond.`);
 	}
 
-	public async error(args: XernerxSlashCommandError): Promise<void | any> {}
+	public async error(args: SlashCommandError): Promise<void | any> {}
 
-	private addArguments(command: SlashCommandBuilder | SlashCommandSubcommandBuilder, args: Array<XernerxSlashCommandBuilderOption>) {
+	private addArguments(command: DiscordSlashCommandBuilder | SlashCommandSubcommandBuilder, args: Array<SlashCommandBuilderOption>) {
 		for (const argument of args) {
 			let slashCommandArgumentType: string = `${argument.type.charAt(0).toUpperCase()}${argument.type.slice(1).toLowerCase()}`;
 
@@ -251,7 +246,7 @@ export class XernerxSlashCommandBuilder extends XernerxBaseBuilder {
 		}
 	}
 
-	private addSubcommands(method: SlashCommandBuilder | SlashCommandSubcommandGroupBuilder, subcommands: Array<XernerxSlashCommandBuilderSubcommand>) {
+	private addSubcommands(method: DiscordSlashCommandBuilder | SlashCommandSubcommandGroupBuilder, subcommands: Array<SlashCommandBuilderSubcommand>) {
 		for (const subcommand of subcommands) {
 			let sub = new SlashCommandSubcommandBuilder().setName(subcommand.name).setDescription(subcommand.description);
 
@@ -271,7 +266,7 @@ export class XernerxSlashCommandBuilder extends XernerxBaseBuilder {
 	 *
 	 * @param groups - An array of subcommand groups to be added. Each group contains a name, description, locales, and subcommands.
 	 */
-	private addSubcommandGroups(groups: Array<XernerxSlashCommandBuilderGroup>) {
+	private addSubcommandGroups(groups: Array<SlashCommandBuilderGroup>) {
 		for (const group of groups) {
 			let subcommandGroup = new SlashCommandSubcommandGroupBuilder().setName(group.name).setDescription(group.description);
 
