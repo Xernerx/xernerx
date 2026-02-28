@@ -131,9 +131,9 @@ export class BaseHandler {
 		return builder;
 	}
 
-	protected async loadBuilder(...args: Array<typeof EventBuilder>) {
-		for (const event of args) {
-			this.importFile(new event('', { name: '' }));
+	protected async loadBuilder(...builders: Array<typeof EventBuilder>) {
+		for (const builder of builders) {
+			this.importFile(new builder('', { name: '' }));
 		}
 	}
 }

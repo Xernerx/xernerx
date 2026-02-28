@@ -8,6 +8,7 @@ import { ContextCommandBuilder } from '../build/ContextCommandBuilder.js';
 import { ContextCommandHandlerOptions } from '../interfaces/ContextCommandHandlerOptions.js';
 import { EventBuilder } from '../build/EventBuilder.js';
 import { EventHandler } from '../handler/EventHandler.js';
+import { ExtensionHandler } from '../handler/ExtensionHandler.js';
 import { InhibitorBuilder } from '../build/InhibitorBuilder.js';
 import { InhibitorHandler } from '../handler/InhibitorHandler.js';
 import { MessageCommandBuilder } from '../build/MessageCommandBuilder.js';
@@ -51,9 +52,10 @@ export class XernerxClient extends Client {
 	};
 	declare public readonly events: Collection<string, EventBuilder>;
 	declare public readonly inhibitors: Collection<string, InhibitorBuilder>;
+	declare public readonly extensions: Collection<string, any>;
 
 	// Handlers
-	declare public readonly modules: { eventHandler: EventHandler; commandHandler: CommandHandler; inhibitorHandler: InhibitorHandler };
+	declare public readonly modules: { eventHandler: EventHandler; commandHandler: CommandHandler; inhibitorHandler: InhibitorHandler; extensionHandler: ExtensionHandler };
 
 	constructor(options: ClientOptions & XernerxClientOptions) {
 		try {
@@ -126,9 +128,16 @@ export class XernerxClient extends Client {
 
 		this.inhibitors = new Collection();
 
+		this.extensions = new Collection();
+
 		// Modules
 
-		this.modules = { eventHandler: new EventHandler(this), commandHandler: new CommandHandler(this), inhibitorHandler: new InhibitorHandler(this) };
+		this.modules = {
+			eventHandler: new EventHandler(this),
+			commandHandler: new CommandHandler(this),
+			inhibitorHandler: new InhibitorHandler(this),
+			extensionHandler: new ExtensionHandler(this),
+		};
 
 		// Process
 
