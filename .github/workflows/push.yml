@@ -95,8 +95,12 @@ jobs:
         run: |
           rm -rf typedoc_out
           mkdir -p typedoc_out
+
+          # HTML (for browsing)
           npx typedoc --out typedoc_out src
-          # Typedoc will include documents/CHANGELOG.md automatically
+
+          # JSON (for your API)
+          npx typedoc --json typedoc_out/docs.json src
 
       - name: Configure npm for publishing
         run: |
