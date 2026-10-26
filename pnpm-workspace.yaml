@@ -2,10 +2,10 @@
 
 allowBuilds:
   esbuild: true
-
-overrides:
-  '@xernerx/commands': 'link:../commands'
-  '@xernerx/framework': 'link:../framework'
-  '@xernerx/stats': 'link:../stats'
-  '@xernerx/terminal': 'link:../terminal'
-  '@xernerx/websocket': 'link:../websocket'
+minimumReleaseAgeExclude:
+  - '@xernerx/commands@0.2.2'
+  - '@xernerx/commands@0.2.3'
+  - '@xernerx/framework@1.0.3'
+  - '@xernerx/stats@1.0.12'
+  - '@xernerx/terminal@1.1.14'
+  - '@xernerx/websocket@0.4.15'

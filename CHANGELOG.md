@@ -2,6 +2,12 @@
 
 # xernerx
 
+## 5.0.2
+
+### Patch Changes
+
+- Update `@xernerx/commands` to `^0.2.3` and remove local workspace overrides.
+
 ## 5.0.1
 
 ### Patch Changes

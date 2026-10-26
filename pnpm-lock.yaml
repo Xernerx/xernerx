@@ -4,32 +4,25 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-overrides:
-  '@xernerx/commands': link:../commands
-  '@xernerx/framework': link:../framework
-  '@xernerx/stats': link:../stats
-  '@xernerx/terminal': link:../terminal
-  '@xernerx/websocket': link:../websocket
-
 importers:
 
   .:
     dependencies:
       '@xernerx/commands':
-        specifier: link:../commands
-        version: link:../commands
+        specifier: ^0.2.3
+        version: 0.2.3(@xernerx/framework@1.0.3(@discordjs/core@2.2.2)(discord.js@14.22.1))(discord.js@14.22.1)
       '@xernerx/framework':
-        specifier: link:../framework
-        version: link:../framework
+        specifier: ^1.0.3
+        version: 1.0.3(@discordjs/core@2.2.2)(discord.js@14.22.1)
       '@xernerx/stats':
-        specifier: link:../stats
-        version: link:../stats
+        specifier: ^1.0.12
+        version: 1.0.12
       '@xernerx/terminal':
-        specifier: link:../terminal
-        version: link:../terminal
+        specifier: ^1.1.14
+        version: 1.1.14
       '@xernerx/websocket':
-        specifier: link:../websocket
-        version: link:../websocket
+        specifier: ^0.4.15
+        version: 0.4.15
     devDependencies:
       '@arethetypeswrong/cli':
         specifier: ^0.18.2
@@ -587,10 +580,43 @@ packages:
     resolution: {integrity: sha512-Xfe6rpCTxSxfbswi/W/Pz7zp1WWSNn4A0eW4mLkQUewCrXXtMj31lCg+iQyTkh/CkusZSq9eDflu7tjEDXUY6g==}
     engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
 
+  '@xernerx/commands@0.2.3':
+    resolution: {integrity: sha512-nrqxapTzLdUyKT8uuDLD8TLjidtAyX7okDY182titi1gFfY5BG9EWcW3G2OuqadfHPJiqnlIfCPA/9boZgNxUA==}
+    engines: {node: '>=24'}
+    peerDependencies:
+      '@xernerx/framework': '>=1.0.0'
+      discord.js: '>=14.0.0'
+
+  '@xernerx/framework@1.0.3':
+    resolution: {integrity: sha512-aMZyypMW2e4kKpfdMvZQqnCJ44+KC8w7X55TousR25MlhYiIB6N3spNfS+2fFnhbZn0XT3xh9hGl3TWSGaIUfQ==}
+    engines: {node: '>=24'}
+    peerDependencies:
+      '@discordjs/core': 2.2.2
+      discord.js: 14.22.1
+
+  '@xernerx/stats@1.0.12':
+    resolution: {integrity: sha512-otrI42XIQw7M92TGwUmSWXobN3UsvzHX66aoaj633w7WsVMMApJsLV4ymnKiNx46GxeIstFP10tT4wbYyXl8OQ==}
+    engines: {node: '>=24'}
+
+  '@xernerx/terminal@1.1.14':
+    resolution: {integrity: sha512-8F/BQQcC30mP8eR9XQMQj4uK/Iav8wpzxKn/LZiJMY44bvSW9EZG+z0R1pB1J5e/nOmr8A/SbYRqLZrjPyKc2Q==}
+    engines: {node: '>=24'}
+
+  '@xernerx/websocket@0.4.15':
+    resolution: {integrity: sha512-A7oW+wg4qGTe6fB47c9qhd/2SuT4toMiogysdo9Y7nizI+m64ylkWJnhILL5soe5iCKe+VskD4xgUCAyQ1nV3g==}
+    engines: {node: '>=24'}
+
   acorn@8.19.0:
     resolution: {integrity: sha512-oJlA3XiRm7Cyk6qFD2Jn8ak9B7jSy0qy00ADO3+8dpT0LSjFihQYv4C02LFCSYJV3Q37xYwwRy5m+IpIiUzqWw==}
     engines: {node: '>=0.4.0'}
     hasBin: true
+
+  ansi-align@3.0.1:
+    resolution: {integrity: sha512-IOfwwBF5iczOjp/WeY4YxyjqAFMQoZufdQWDd19SEExbVLNXqvpzSJ/M7Za4/sCPmQ0+GRquoA7bGcINcxew6w==}
+
+  ansi-escapes@4.3.2:
+    resolution: {integrity: sha512-gKXj5ALrKWQLsYG9jlTRmR/xKluxHV+Z9QEwNIgCfM1/uwPMCuzVVnh5mwTd+OuBZcwSIMbqssNWRm1lE51QaQ==}
+    engines: {node: '>=8'}
 
   ansi-escapes@7.3.0:
     resolution: {integrity: sha512-BvU8nYgGQBxcmMuEeUEmNTvrMVjJNSH7RgW24vXexN4Ven6qCvy4TntnvlnwnMLTVlcRQQdbRY8NKnaIoeWDNg==}
@@ -608,6 +634,10 @@ packages:
     resolution: {integrity: sha512-zbB9rCJAT1rbjiVDb2hqKFHNYLxgtk8NURxZ3IZwD3F6NtxbXZQCnnSi1Lkx+IDohdPlFp222wVALIheZJQSEg==}
     engines: {node: '>=8'}
 
+  ansi-styles@6.2.3:
+    resolution: {integrity: sha512-4Dj6M28JB+oAH8kFkTLUo+a2jwOFkuqb3yucU0CANcRRUbxS0cP0nZYCGjcc3BNXwRIsUVmDGgzawme7zvJHvg==}
+    engines: {node: '>=12'}
+
   any-promise@1.3.0:
     resolution: {integrity: sha512-7UvmKalWRt1wgjL1RrGxoSJW/0QZFIegpeGvZG9kjp8vrRu55XTHbwnqq2GpXm9uLbcuhxm3IqX9OB4MZR1b2A==}
 
@@ -617,6 +647,10 @@ packages:
   balanced-match@4.0.4:
     resolution: {integrity: sha512-BLrgEcRTwX2o6gGxGOCNyMvGSp35YofuYzw9h1IMTRmKqttAZZVU67bdb9Pr2vUHA8+j3i2tJfjO6C6+4myGTA==}
     engines: {node: 18 || 20 || >=22}
+
+  boxen@8.0.1:
+    resolution: {integrity: sha512-F3PH5k5juxom4xktynS7MoFY+NUWH5LC4CnH11YB8NPew+HLpmBLCybSAEyb2F+4pRXhuhWqFesoQd6DAyc2hw==}
+    engines: {node: '>=18'}
 
   brace-expansion@5.0.12:
     resolution: {integrity: sha512-YovQ3rzhaLMIrDjNDMkNS01tea93qhEhG5xy8f6+R0l+dw3Ki+5sCoIoI942iuLZTHWogWktgwVDhU09iNEimQ==}
@@ -636,6 +670,10 @@ packages:
     resolution: {integrity: sha512-LMDU/U2yA4IPIY8KT0NsNPWEYZvAMkbgyspxJ6btJaYV+WMDOHAZCmB0lsTObiHaRS1V/ztKAl7+TSkTqXyeoA==}
     engines: {node: '>=20.19.0'}
 
+  camelcase@8.0.0:
+    resolution: {integrity: sha512-8WB3Jcas3swSvjIeA2yvCJ+Miyz5l1ZmB6HFb9R1317dt9LCQoswg/BGrmAmkWVEszSrrg4RwmO46qIm2OEnSA==}
+    engines: {node: '>=16'}
+
   chalk@4.1.2:
     resolution: {integrity: sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==}
     engines: {node: '>=10'}
@@ -654,6 +692,10 @@ packages:
 
   cjs-module-lexer@1.4.3:
     resolution: {integrity: sha512-9z8TZaGM1pfswYeXrUpzPrkx8UnWYdhJclsiYMm6x/w5+nN+8Tf/LnAgfLGQCm59qAOxU8WwHEq2vNwF6i4j+Q==}
+
+  cli-boxes@3.0.0:
+    resolution: {integrity: sha512-/lzGpEWL/8PfI0BmBOPRwp0c/wFNX1RdUML3jK/RcSBA9T8mZDdQpqYBKtCFTOfQbwPqWEOpjqW+Fnayc0969g==}
+    engines: {node: '>=10'}
 
   cli-highlight@2.1.11:
     resolution: {integrity: sha512-9KDcoEVwyUXrjcJNvHD0NFc/hiwe/WPVYIleQh2O1N2Zro5gWJZ/K+3DGn8w8P/F6FxOgzyC5bxDyHIgCSPhGg==}
@@ -701,9 +743,15 @@ packages:
   discord-api-types@0.38.57:
     resolution: {integrity: sha512-R1CTSSt4RshqCq23j2Xq2ZscvzB4LzG9OB1CYQdKUGdw8Ti/oF/72EEtK2mNpagG/Vj9NcBT7dw9lKLf+Dacfg==}
 
+  discord-hybrid-sharding@3.0.1:
+    resolution: {integrity: sha512-a4MhJs9Ga2yiIGEz+Lj0WgBOS785DSqX3PIr/vkOMpqugS1QJk79T8YFvGr26JmOVRAhgqaWE2eUjuekR/8MJA==}
+
   discord.js@14.22.1:
     resolution: {integrity: sha512-3k+Kisd/v570Jr68A1kNs7qVhNehDwDJAPe4DZ2Syt+/zobf9zEcuYFvsfIaAOgCa0BiHMfOOKQY4eYINl0z7w==}
     engines: {node: '>=18'}
+
+  emoji-regex@10.6.0:
+    resolution: {integrity: sha512-toUI84YS5YmxW219erniWD0CIVOo46xGKColeNQRgOzDorgBi1v4D71/OFzgD9GO2UGKIv1C3Sp8DAn0+j5w7A==}
 
   emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
@@ -763,6 +811,10 @@ packages:
   get-caller-file@2.0.5:
     resolution: {integrity: sha512-DyFP3BM/3YHTQOCUL/w0OZHR0lpKeGrxotcHWcqNEdnltqFwXVfhEBQ94eIo34AfQpo0rGki4cyIiftY06h2Fg==}
     engines: {node: 6.* || 8.* || >= 10.*}
+
+  get-east-asian-width@1.7.0:
+    resolution: {integrity: sha512-XjH1AECxf0giL2V1aU8vKyRR2ppRUb5c0EvT7zuJTokQ74bNo52zOtghqdWIqrhUD79fo3x0WfKZdOqxF6LG1Q==}
+    engines: {node: '>=18'}
 
   has-flag@4.0.0:
     resolution: {integrity: sha512-EykJT/Q1KjTWctppgIAgfSO0tKVuZUjhgMr17kqTumMl6Afv3EISleU7qZUzoXDFTAHTDC4NOoG/ZxU3EvlMPQ==}
@@ -945,6 +997,9 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
 
+  sharpyy@1.1.0:
+    resolution: {integrity: sha512-sM93sTl/ld7+vzLpujjxMOFjoTBOBVzUqNTvq2cXuoDXP7sMZbBmIxZ3EboT5mTnLlT1BH6qm3Zl+ENn/T3W/A==}
+
   shell-quote@1.12.0:
     resolution: {integrity: sha512-PcByqNyT/38F2kDNi006HAMRJaULuBzq/FOsw3qdZvX/GA9W/jamDaRskgHjubHiftXK5sIFxLNkvrXUwcof6Q==}
     engines: {node: '>= 0.4'}
@@ -964,9 +1019,17 @@ packages:
     resolution: {integrity: sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==}
     engines: {node: '>=8'}
 
+  string-width@7.2.0:
+    resolution: {integrity: sha512-tsaTIkKW9b4N+AEj+SVA+WhJzV7/zMhcSu78mLKWSk7cXMOSHsBKFWUs0fWwq8QyK3MgJBQRX6Gbi4kYbdvGkQ==}
+    engines: {node: '>=18'}
+
   strip-ansi@6.0.1:
     resolution: {integrity: sha512-Y38VPSHcqkFrCpFnQ9vuSXmquuv5oXOKpGeT6aGrr3o3Gc9AlVa6JBfUSOCnbxGGZF+/0ooI7KrPuUSztUdU5A==}
     engines: {node: '>=8'}
+
+  strip-ansi@7.2.0:
+    resolution: {integrity: sha512-yDPMNjp4WyfYBkHnjIRLfca1i6KMyGCtsVgoKe/z1+6vukgaENdgGBZt+ZmKPc4gavvEZ5OgHfHdrazhgNyG7w==}
+    engines: {node: '>=12'}
 
   sucrase@3.35.1:
     resolution: {integrity: sha512-DhuTmvZWux4H1UOnWMB3sk0sbaCVOoQZjv8u1rDoTV0HTdGem9hkAZtl4JZy8P2z4Bg0nT+YMeOFyVr4zcG5Tw==}
@@ -977,9 +1040,17 @@ packages:
     resolution: {integrity: sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw==}
     engines: {node: '>=8'}
 
+  supports-hyperlinks@2.3.0:
+    resolution: {integrity: sha512-RpsAZlpWcDwOPQA22aCH4J0t7L8JmAvsCxfOSEwm7cQs3LshN36QaTkwd70DnBOXDWGssw2eUoc8CaRWT0XunA==}
+    engines: {node: '>=8'}
+
   supports-hyperlinks@3.2.0:
     resolution: {integrity: sha512-zFObLMyZeEwzAoKCyu1B91U79K2t7ApXuQfo8OuxwXLDgcKxuwM+YvcbIhm6QWqz7mHUH1TVytR1PwVVjEuMig==}
     engines: {node: '>=14.18'}
+
+  terminal-link@2.1.1:
+    resolution: {integrity: sha512-un0FmiRUQNr5PJqy9kP7c40F5BOfpGlYTrxonDChEZB7pzZxRNp/bt+ymiy9/npwXya9KH99nJ/GXFIiUkYGFQ==}
+    engines: {node: '>=8'}
 
   thenify-all@1.6.0:
     resolution: {integrity: sha512-RNxQH/qI8/t3thXJDwcstUO4zeqo64+Uy/+sNVRBx4Xn2OX+OZ9oP+iJnNFqplFra2ZUVeKCSa2oVWi3T4uVmA==}
@@ -1030,6 +1101,14 @@ packages:
         optional: true
       typescript:
         optional: true
+
+  type-fest@0.21.3:
+    resolution: {integrity: sha512-t0rzBq87m3fVcduHDUFhKmyyX+9eo6WQjZvf51Ea/M0Q7+T374Jp1aUiyUl0GKxp8M/OETVHSDvmkyPgvX+X2w==}
+    engines: {node: '>=10'}
+
+  type-fest@4.41.0:
+    resolution: {integrity: sha512-TeTSQ6H5YHvpqVwBRcnLDCBnDOHWYu7IvGbHT6N8AOymcr9PJGjc1GTtiWZTYg0NCgYwvnYWEkVChQAr9bjfwA==}
+    engines: {node: '>=16'}
 
   typedoc-github-theme@0.4.0:
     resolution: {integrity: sha512-lo/hr4EFZxq0SsMGeAscKUzljIKFgrJf5fb4nOAJcqaiSShQv7kzwF6M1s2fVRvUyx6UsmD4zEb+MtKkbucYpg==}
@@ -1089,9 +1168,17 @@ packages:
     resolution: {integrity: sha512-OljLrQ9SQdOUqTaQxqL5dEfZWrXExyyWsozYlAWFawPVNuD83igl7uJD2RTkNMbniIYgt8l81eCJGIdQF7avLQ==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
 
+  widest-line@5.0.0:
+    resolution: {integrity: sha512-c9bZp7b5YtRj2wOe6dlj32MK+Bx/M/d+9VB2SHM1OtsUHR0aV0tdP6DWh/iMt0kWi1t5g1Iudu6hQRNd1A4PVA==}
+    engines: {node: '>=18'}
+
   wrap-ansi@7.0.0:
     resolution: {integrity: sha512-YVGIj2kamLSTxw6NsZjoBxfSwsn0ycdesmc4p+Q21c5zPuZ1pl+NfxVdxPtdHvmNVOQ6XSYG4AUtyt/Fi7D16Q==}
     engines: {node: '>=10'}
+
+  wrap-ansi@9.0.2:
+    resolution: {integrity: sha512-42AtmgqjV+X1VpdOfyTGOYRi0/zsoLqtXQckTmqTeybT+BDIbM/Guxo7x3pE2vtpr1ok6xRqM9OpBe+Jyoqyww==}
+    engines: {node: '>=18'}
 
   ws@8.22.0:
     resolution: {integrity: sha512-Ydggc987+RO0AnWtZ/7Wq9FtNvcrL1b/RO0ud9mWjUPgDrsAAwQSF51sm2hm1XofbU/4jkpGEsLFsZZxU+1DOg==}
@@ -1121,6 +1208,9 @@ packages:
   yargs@16.2.2:
     resolution: {integrity: sha512-Nt9ZJjXTv5R8MHbqby/wXQ6Gi0Bb3TcYZkR1bzuL4yB2OxWPkXknz513gEF0GoA6tn00UpbPvERW8rzCuWCA6w==}
     engines: {node: '>=10'}
+
+  zod@4.1.8:
+    resolution: {integrity: sha512-5R1P+WwQqmmMIEACyzSvo4JXHY5WiAFHRMg+zBZKgKS+Q1viRa0C1hmUKtHltoIFKtIdki3pRxkmpP74jnNYHQ==}
 
 snapshots:
 
@@ -1594,7 +1684,43 @@ snapshots:
 
   '@vladfrangu/async_event_emitter@2.4.7': {}
 
+  '@xernerx/commands@0.2.3(@xernerx/framework@1.0.3(@discordjs/core@2.2.2)(discord.js@14.22.1))(discord.js@14.22.1)':
+    dependencies:
+      '@xernerx/framework': 1.0.3(@discordjs/core@2.2.2)(discord.js@14.22.1)
+      '@xernerx/terminal': 1.1.14
+      discord.js: 14.22.1
+
+  '@xernerx/framework@1.0.3(@discordjs/core@2.2.2)(discord.js@14.22.1)':
+    dependencies:
+      '@discordjs/core': 2.2.2
+      '@xernerx/terminal': 1.1.14
+      discord-hybrid-sharding: 3.0.1
+      discord.js: 14.22.1
+      sharpyy: 1.1.0
+      zod: 4.1.8
+
+  '@xernerx/stats@1.0.12':
+    dependencies:
+      '@xernerx/terminal': 1.1.14
+
+  '@xernerx/terminal@1.1.14':
+    dependencies:
+      boxen: 8.0.1
+      chalk: 5.6.2
+
+  '@xernerx/websocket@0.4.15':
+    dependencies:
+      '@xernerx/terminal': 1.1.14
+
   acorn@8.19.0: {}
+
+  ansi-align@3.0.1:
+    dependencies:
+      string-width: 4.2.3
+
+  ansi-escapes@4.3.2:
+    dependencies:
+      type-fest: 0.21.3
 
   ansi-escapes@7.3.0:
     dependencies:
@@ -1608,11 +1734,24 @@ snapshots:
     dependencies:
       color-convert: 2.0.1
 
+  ansi-styles@6.2.3: {}
+
   any-promise@1.3.0: {}
 
   argparse@2.0.1: {}
 
   balanced-match@4.0.4: {}
+
+  boxen@8.0.1:
+    dependencies:
+      ansi-align: 3.0.1
+      camelcase: 8.0.0
+      chalk: 5.6.2
+      cli-boxes: 3.0.0
+      string-width: 7.2.0
+      type-fest: 4.41.0
+      widest-line: 5.0.0
+      wrap-ansi: 9.0.2
 
   brace-expansion@5.0.12:
     dependencies:
@@ -1626,6 +1765,8 @@ snapshots:
   cac@6.7.14: {}
 
   cac@7.1.0: {}
+
+  camelcase@8.0.0: {}
 
   chalk@4.1.2:
     dependencies:
@@ -1641,6 +1782,8 @@ snapshots:
       readdirp: 4.1.2
 
   cjs-module-lexer@1.4.3: {}
+
+  cli-boxes@3.0.0: {}
 
   cli-highlight@2.1.11:
     dependencies:
@@ -1685,6 +1828,8 @@ snapshots:
 
   discord-api-types@0.38.57: {}
 
+  discord-hybrid-sharding@3.0.1: {}
+
   discord.js@14.22.1:
     dependencies:
       '@discordjs/builders': 1.14.1
@@ -1703,6 +1848,8 @@ snapshots:
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
+
+  emoji-regex@10.6.0: {}
 
   emoji-regex@8.0.0: {}
 
@@ -1771,6 +1918,8 @@ snapshots:
     optional: true
 
   get-caller-file@2.0.5: {}
+
+  get-east-asian-width@1.7.0: {}
 
   has-flag@4.0.0: {}
 
@@ -1943,6 +2092,10 @@ snapshots:
 
   semver@7.8.5: {}
 
+  sharpyy@1.1.0:
+    dependencies:
+      terminal-link: 2.1.1
+
   shell-quote@1.12.0: {}
 
   sisteransi@1.0.5: {}
@@ -1959,9 +2112,19 @@ snapshots:
       is-fullwidth-code-point: 3.0.0
       strip-ansi: 6.0.1
 
+  string-width@7.2.0:
+    dependencies:
+      emoji-regex: 10.6.0
+      get-east-asian-width: 1.7.0
+      strip-ansi: 7.2.0
+
   strip-ansi@6.0.1:
     dependencies:
       ansi-regex: 5.0.1
+
+  strip-ansi@7.2.0:
+    dependencies:
+      ansi-regex: 6.4.0
 
   sucrase@3.35.1:
     dependencies:
@@ -1977,10 +2140,20 @@ snapshots:
     dependencies:
       has-flag: 4.0.0
 
+  supports-hyperlinks@2.3.0:
+    dependencies:
+      has-flag: 4.0.0
+      supports-color: 7.2.0
+
   supports-hyperlinks@3.2.0:
     dependencies:
       has-flag: 4.0.0
       supports-color: 7.2.0
+
+  terminal-link@2.1.1:
+    dependencies:
+      ansi-escapes: 4.3.2
+      supports-hyperlinks: 2.3.0
 
   thenify-all@1.6.0:
     dependencies:
@@ -2034,6 +2207,10 @@ snapshots:
       - tsx
       - yaml
 
+  type-fest@0.21.3: {}
+
+  type-fest@4.41.0: {}
+
   typedoc-github-theme@0.4.0(typedoc@0.28.20(typescript@6.0.3)):
     dependencies:
       typedoc: 0.28.20(typescript@6.0.3)
@@ -2073,11 +2250,21 @@ snapshots:
 
   validate-npm-package-name@5.0.1: {}
 
+  widest-line@5.0.0:
+    dependencies:
+      string-width: 7.2.0
+
   wrap-ansi@7.0.0:
     dependencies:
       ansi-styles: 4.3.0
       string-width: 4.2.3
       strip-ansi: 6.0.1
+
+  wrap-ansi@9.0.2:
+    dependencies:
+      ansi-styles: 6.2.3
+      string-width: 7.2.0
+      strip-ansi: 7.2.0
 
   ws@8.22.0: {}
 
@@ -2096,3 +2283,5 @@ snapshots:
       string-width: 4.2.3
       y18n: 5.0.8
       yargs-parser: 20.2.9
+
+  zod@4.1.8: {}
