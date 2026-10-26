@@ -1,0 +1,65 @@
+{
+	"plugin": ["typedoc-github-theme", "typedoc-plugin-extras", "typedoc-plugin-zod"],
+	"theme": "typedoc-github-theme",
+
+	"name": "XERNERX",
+	"entryPoints": ["src/*"],
+	"entryPointStrategy": "expand",
+	"exclude": ["node_modules"],
+	"readme": "README.md",
+	"gitRevision": "HEAD",
+	"githubPages": true,
+	"excludeReferences": false,
+	"includeVersion": true,
+	"projectDocuments": ["CHANGELOG.md"],
+	"router": "structure-dir",
+	"footerLastModified": true,
+
+	"out": "./docs",
+	"json": "./docs/docs.json",
+	"pretty": true,
+	"markdownItOptions": {
+		"html": true,
+		"linkify": true
+	},
+	"hideGenerator": false,
+	"searchInComments": true,
+	"searchInDocuments": true,
+	"navigation": {
+		"includeCategories": false,
+		"includeGroups": false,
+		"includeFolders": true
+	},
+	"categorizeByGroup": false,
+	"visibilityFilters": {
+		"protected": true,
+		"private": false,
+		"inherited": true,
+		"external": false,
+		"@alpha": false,
+		"@beta": false
+	},
+	"externalSymbolLinkMappings": {
+		"discord.js": {
+			"Client.fetchStickerPacks": "#",
+			"User.avatarDecorationData": "#"
+		},
+		"discord-hybrid-sharding": {
+			"ClusterManager.mode": "#",
+			"ClusterManager#mode": "#",
+			"DjsDiscordClient": "#"
+		}
+	},
+
+	"commentStyle": "all",
+	"jsDocCompatibility": {
+		"inheritDocTag": true,
+		"ignoreUnescapedBraces": true
+	},
+
+	"validation": {
+		"notExported": true,
+		"invalidLink": true,
+		"notDocumented": false
+	}
+}

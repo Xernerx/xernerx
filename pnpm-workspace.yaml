@@ -1,0 +1,11 @@
+# @format
+
+allowBuilds:
+  esbuild: true
+
+overrides:
+  '@xernerx/commands': 'link:../commands'
+  '@xernerx/framework': 'link:../framework'
+  '@xernerx/stats': 'link:../stats'
+  '@xernerx/terminal': 'link:../terminal'
+  '@xernerx/websocket': 'link:../websocket'
