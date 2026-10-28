@@ -66,7 +66,7 @@ export class WebSocket extends XernerxWebsocket {
 	constructor() {
 		super({
 			token: process.env.XERNERX_WS_TOKEN!,
-			dev: process.env.NODE_ENV === 'DEVELOPMENT',
+			dev: process.env.ENVIRONMENT === 'DEVELOPMENT',
 		});
 
 		this.connect();
@@ -83,7 +83,7 @@ export class Client extends XernerxClient {
 			token: process.env.DISCORD_BOT_TOKEN!,
 			guildId: ['784094726432489522'],
 			owners: ['482513687417061376'],
-			global: process.env.NODE_ENV !== 'DEVELOPMENT',
+			global: process.env.ENVIRONMENT !== 'DEVELOPMENT',
 		});
 
 		this.modules.eventHandler.loadEvents({

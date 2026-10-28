@@ -12,7 +12,10 @@ import fs from 'node:fs';
 import path from 'node:path';
 import readline from 'node:readline';
 import { fileURLToPath } from 'node:url';
-import { Spinner, Terminal } from '@xernerx/terminal';
+import { Spinner, Terminal, terminal } from '@xernerx/terminal';
+
+// Immediately stop the default singleton spinner started by `@xernerx/terminal` on import
+terminal.stop();
 
 /**
  * Supported package managers detected from `npm_config_user_agent`.
@@ -104,6 +107,7 @@ export class XernerxCLI {
 	 * Creates a new `XernerxCLI` instance.
 	 */
 	constructor() {
+		terminal.stop();
 		this.terminal = new Terminal({ title: 'XERNERX', scope: 'CLI', spin: false });
 	}
 
@@ -362,11 +366,13 @@ export class XernerxCLI {
 		this.terminal.info(`Starting bot (${entry})...`);
 		this.registerSignalHandlers();
 
-		this.activeChild = spawn(process.execPath, [fullEntryPath], {
+		const envArgs = fs.existsSync(path.join(cwd, '.env')) ? ['--env-file=.env'] : [];
+		this.activeChild = spawn(process.execPath, [...envArgs, fullEntryPath], {
 			cwd,
 			stdio: 'inherit',
 			env: {
 				...process.env,
+				ENVIRONMENT: process.env.ENVIRONMENT || 'PRODUCTION',
 				NODE_ENV: process.env.NODE_ENV || 'PRODUCTION',
 			},
 		});
@@ -397,11 +403,13 @@ export class XernerxCLI {
 
 		if (!fs.existsSync(tsconfigPath)) {
 			this.terminal.info(`Starting JavaScript project in watch mode (${entry})...`);
-			this.activeChild = spawn(process.execPath, ['--watch', fullEntryPath], {
+			const envArgs = fs.existsSync(path.join(cwd, '.env')) ? ['--env-file=.env'] : [];
+			this.activeChild = spawn(process.execPath, ['--watch', ...envArgs, fullEntryPath], {
 				cwd,
 				stdio: 'inherit',
 				env: {
 					...process.env,
+					ENVIRONMENT: 'DEVELOPMENT',
 					NODE_ENV: 'DEVELOPMENT',
 				},
 			});
@@ -480,11 +488,13 @@ export class XernerxCLI {
 		}
 
 		this.terminal.info(`Starting bot process (${path.relative(cwd, fullEntryPath)})...`);
-		this.activeChild = spawn(process.execPath, [fullEntryPath], {
+		const envArgs = fs.existsSync(path.join(cwd, '.env')) ? ['--env-file=.env'] : [];
+		this.activeChild = spawn(process.execPath, [...envArgs, fullEntryPath], {
 			cwd,
 			stdio: 'inherit',
 			env: {
 				...process.env,
+				ENVIRONMENT: 'DEVELOPMENT',
 				NODE_ENV: 'DEVELOPMENT',
 			},
 		});
@@ -581,15 +591,27 @@ export class XernerxCLI {
 		fs.mkdirSync(path.join(targetDir, 'src', 'commands', 'slash'), { recursive: true });
 		fs.mkdirSync(path.join(targetDir, 'src', 'events'), { recursive: true });
 
-		const dependencies: Record<string, string> = {
+		const pkgVersions = this.getDependencyVersions();
+		const rawDeps: Record<string, string> = {
+			'@xernerx/framework': pkgVersions['@xernerx/framework'],
+			'@xernerx/terminal': pkgVersions['@xernerx/terminal'],
 			'discord.js': '^14.22.1',
-			'dotenv': '^17.0.0',
-			'xernerx': `^${this.getVersion()}`,
 		};
 
-		if (config.integrations.includes('hooks')) {
-			dependencies['@xernerx/hooks'] = '^0.1.0';
+		if (config.integrations.includes('commands')) {
+			rawDeps['@xernerx/commands'] = pkgVersions['@xernerx/commands'];
 		}
+		if (config.integrations.includes('hooks')) {
+			rawDeps['@xernerx/hooks'] = pkgVersions['@xernerx/hooks'];
+		}
+		if (config.integrations.includes('stats')) {
+			rawDeps['@xernerx/stats'] = pkgVersions['@xernerx/stats'];
+		}
+		if (config.integrations.includes('websocket')) {
+			rawDeps['@xernerx/websocket'] = pkgVersions['@xernerx/websocket'];
+		}
+
+		const dependencies = Object.fromEntries(Object.entries(rawDeps).sort(([a], [b]) => a.localeCompare(b)));
 
 		const pkgJson: Record<string, unknown> = {
 			name: config.pkgName,
@@ -597,11 +619,17 @@ export class XernerxCLI {
 			description: 'A Discord bot built with the Xernerx Framework.',
 			main: `${runtimeDir}/main.js`,
 			type: 'module',
-			scripts: {
-				dev: 'xernerx dev',
-				build: 'xernerx build',
-				start: 'xernerx start',
-			},
+			scripts: isTs
+				? {
+						dev: 'tsc && node --watch --env-file=.env .',
+						build: 'tsc',
+						start: 'node --env-file=.env .',
+					}
+				: {
+						dev: 'node --watch --env-file=.env .',
+						build: 'node --check src/main.js',
+						start: 'node --env-file=.env .',
+					},
 			engines: {
 				node: '>=22',
 			},
@@ -640,6 +668,9 @@ export class XernerxCLI {
 		}
 
 		const envLines = [
+			'# Environment',
+			'ENVIRONMENT="DEVELOPMENT"',
+			'',
 			'# Discord Bot Configuration',
 			`TOKEN="${config.token}"`,
 			`GUILD_ID="${config.guildId}"`,
@@ -659,23 +690,31 @@ export class XernerxCLI {
 		}
 
 		fs.writeFileSync(path.join(targetDir, '.env'), envLines.join('\n') + '\n', 'utf8');
-		fs.writeFileSync(path.join(targetDir, '.env.example'), envLines.map((line) => (line.includes('=') ? `${line.split('=')[0]}=""` : line)).join('\n') + '\n', 'utf8');
+		fs.writeFileSync(
+			path.join(targetDir, '.env.example'),
+			envLines.map((line) => (line.startsWith('ENVIRONMENT=') ? line : line.includes('=') ? `${line.split('=')[0]}=""` : line)).join('\n') + '\n',
+			'utf8'
+		);
 
 		fs.writeFileSync(path.join(targetDir, '.gitignore'), ['node_modules', 'dist', '.env', '*.log'].join('\n') + '\n', 'utf8');
 
 		// Generate src/main.{ts,js}
-		const xernerxImports = ['XernerxClient'];
-		if (config.integrations.includes('commands')) xernerxImports.push('XernerxCommands');
-		if (config.integrations.includes('stats')) xernerxImports.push('XernerxStats');
-		if (config.integrations.includes('websocket')) xernerxImports.push('XernerxWebsocket');
+		const mainLines: string[] = ['/** @format */', '', `import { XernerxClient } from '@xernerx/framework';`];
 
-		const mainLines: string[] = ['/** @format */', '', `import { ${xernerxImports.join(', ')} } from 'xernerx';`];
-
+		if (config.integrations.includes('commands')) {
+			mainLines.push(`import { XernerxCommands } from '@xernerx/commands';`);
+		}
+		if (config.integrations.includes('stats')) {
+			mainLines.push(`import { XernerxStats } from '@xernerx/stats';`);
+		}
 		if (config.integrations.includes('hooks')) {
 			mainLines.push(`import { XernerxHooks } from '@xernerx/hooks';`);
 		}
+		if (config.integrations.includes('websocket')) {
+			mainLines.push(`import { XernerxWebsocket } from '@xernerx/websocket';`);
+		}
 
-		mainLines.push(`import { config } from 'dotenv';`, '', 'config({ quiet: true });', '');
+		mainLines.push('');
 
 		if (config.integrations.includes('websocket')) {
 			mainLines.push(
@@ -683,7 +722,7 @@ export class XernerxCLI {
 				'\tconstructor() {',
 				'\t\tsuper({',
 				`\t\t\ttoken: process.env.WS_TOKEN || '',`,
-				`\t\t\tdev: process.env.NODE_ENV === 'DEVELOPMENT',`,
+				`\t\t\tdev: process.env.ENVIRONMENT === 'DEVELOPMENT',`,
 				'\t\t});',
 				'\t}',
 				'}',
@@ -706,7 +745,7 @@ export class XernerxCLI {
 			isTs ? `\t\t\ttoken: process.env.TOKEN as string,` : `\t\t\ttoken: process.env.TOKEN || '',`,
 			`\t\t\tguildId: process.env.GUILD_ID || undefined,`,
 			`\t\t\towners: process.env.OWNER_ID || undefined,`,
-			`\t\t\tglobal: process.env.NODE_ENV !== 'DEVELOPMENT',`,
+			`\t\t\tglobal: process.env.ENVIRONMENT !== 'DEVELOPMENT',`,
 			'\t\t});',
 			'',
 			'\t\tthis.modules.eventHandler.loadEvents({',
@@ -718,25 +757,27 @@ export class XernerxCLI {
 			'\t\t});'
 		);
 
+		const extensionEntries: string[] = [];
 		if (config.integrations.includes('commands')) {
-			mainLines.push('', '\t\tthis.modules.extensionHandler.loadExtensions(', '\t\t\tnew XernerxCommands(this, {', `\t\t\t\ttoken: process.env.XERNERX_TOKEN || '',`, '\t\t\t})', '\t\t);');
+			extensionEntries.push(['\t\t\tnew XernerxCommands(this, {', `\t\t\t\ttoken: process.env.XERNERX_TOKEN || '',`, '\t\t\t})'].join('\n'));
 		}
-
 		if (config.integrations.includes('stats')) {
-			mainLines.push('', '\t\tnew XernerxStats(this, {', `\t\t\ttoken: process.env.XERNERX_TOKEN || '',`, '\t\t});');
+			extensionEntries.push(['\t\t\tnew XernerxStats(this, {', `\t\t\t\ttoken: process.env.XERNERX_TOKEN || '',`, '\t\t\t})'].join('\n'));
+		}
+		if (config.integrations.includes('hooks')) {
+			extensionEntries.push(
+				[
+					'\t\t\tnew XernerxHooks(this, {',
+					`\t\t\t\tsecret: process.env.WEBHOOK_SECRET || 'secret',`,
+					`\t\t\t\tport: Number(process.env.WEBHOOK_PORT || 8080),`,
+					`\t\t\t\ttoken: process.env.XERNERX_TOKEN || undefined,`,
+					'\t\t\t})',
+				].join('\n')
+			);
 		}
 
-		if (config.integrations.includes('hooks')) {
-			mainLines.push(
-				'',
-				'\t\tthis.hooks = new XernerxHooks({',
-				`\t\t\tsecret: process.env.WEBHOOK_SECRET || 'secret',`,
-				`\t\t\tport: Number(process.env.WEBHOOK_PORT || 8080),`,
-				`\t\t\tapiToken: process.env.XERNERX_TOKEN || undefined,`,
-				'\t\t});',
-				'\t\tthis.hooks.attach(this);',
-				'\t\tthis.hooks.listen();'
-			);
+		if (extensionEntries.length > 0) {
+			mainLines.push('', '\t\tthis.modules.extensionHandler.loadExtensions(', extensionEntries.join(',\n'), '\t\t);');
 		}
 
 		if (config.integrations.includes('websocket')) {
@@ -751,7 +792,8 @@ export class XernerxCLI {
 		const readyLines = [
 			'/** @format */',
 			'',
-			`import { EventBuilder, Terminal } from 'xernerx';`,
+			`import { EventBuilder } from '@xernerx/framework';`,
+			`import { Terminal } from '@xernerx/terminal';`,
 			'',
 			'export default class ClientReadyEvent extends EventBuilder {',
 			isTs ? `\tprivate readonly logger = new Terminal({ scope: 'READY', spin: false });` : `\tlogger = new Terminal({ scope: 'READY', spin: false });`,
@@ -776,7 +818,7 @@ export class XernerxCLI {
 		const pingLines = [
 			'/** @format */',
 			'',
-			isTs ? `import { SlashCommandBuilder, type SlashCommandOptions } from 'xernerx';` : `import { SlashCommandBuilder } from 'xernerx';`,
+			isTs ? `import { SlashCommandBuilder, type SlashCommandOptions } from '@xernerx/framework';` : `import { SlashCommandBuilder } from '@xernerx/framework';`,
 			'',
 			'export default class PingCommand extends SlashCommandBuilder {',
 			'\tconstructor() {',
@@ -834,14 +876,16 @@ export class XernerxCLI {
 	 * Prompts the user for a single line of text input.
 	 */
 	private async promptText(question: string, defaultValue = ''): Promise<string> {
+		terminal.stop();
 		const rl = readline.createInterface({
 			input: process.stdin,
 			output: process.stdout,
 		});
 
+		const cleanQuestion = question.replace(/:\s*$/, '');
 		const hint = defaultValue ? ` ${this.dim}(${defaultValue})${this.reset}` : '';
 		return new Promise<string>((resolve) => {
-			rl.question(`${this.xerple}?${this.reset} ${this.bold}${question}${this.reset}${hint}: `, (answer) => {
+			rl.question(`${this.xerple}?${this.reset} ${this.bold}${cleanQuestion}${this.reset}${hint}: `, (answer) => {
 				rl.close();
 				resolve(answer.trim() || defaultValue);
 			});
@@ -1040,11 +1084,39 @@ export class XernerxCLI {
 			const pkgPath = path.resolve(currentDir, '..', 'package.json');
 			if (fs.existsSync(pkgPath)) {
 				const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'));
-				return pkg.version || '5.0.2';
+				return pkg.version || '5.1.0';
 			}
 		} catch {
 			// Fallback version
 		}
-		return '5.0.2';
+		return '5.1.0';
+	}
+
+	/**
+	 * Reads the `@xernerx/*` dependency version ranges from `xernerx`'s `package.json`.
+	 */
+	private getDependencyVersions(): Record<string, string> {
+		const defaults: Record<string, string> = {
+			'@xernerx/commands': '^0.2.6',
+			'@xernerx/extension-builder': '^0.1.0',
+			'@xernerx/framework': '^1.1.1',
+			'@xernerx/hooks': '^0.2.1',
+			'@xernerx/stats': '^1.0.14',
+			'@xernerx/terminal': '^1.1.15',
+			'@xernerx/websocket': '^0.4.16',
+		};
+		try {
+			const currentDir = path.dirname(fileURLToPath(import.meta.url));
+			const pkgPath = path.resolve(currentDir, '..', 'package.json');
+			if (fs.existsSync(pkgPath)) {
+				const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'));
+				if (pkg.dependencies && typeof pkg.dependencies === 'object') {
+					return { ...defaults, ...pkg.dependencies };
+				}
+			}
+		} catch {
+			// Fallback to defaults
+		}
+		return defaults;
 	}
 }

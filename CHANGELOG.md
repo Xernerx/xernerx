@@ -2,6 +2,12 @@
 
 # xernerx
 
+## 5.1.1
+
+### Patch Changes
+
+- Update `XernerxCLI.create` to install only the selected `@xernerx/*` packages, use Node's native `--env-file=.env` flag instead of `dotenv`, default `ENVIRONMENT="DEVELOPMENT"` for `global` / `dev` checks, and stop `@xernerx/terminal`'s default singleton spinner during interactive CLI prompts.
+
 ## 5.1.0
 
 ### Minor Changes
