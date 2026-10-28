@@ -3,7 +3,7 @@
 	"publishConfig": {
 		"access": "public"
 	},
-	"version": "5.0.2",
+	"version": "5.1.0",
 	"type": "module",
 	"main": "./dist/main.cjs",
 	"module": "./dist/main.js",
@@ -14,6 +14,10 @@
 		"src",
 		"dist"
 	],
+	"bin": {
+		"xernerx": "./dist/bin.js",
+		"create-xernerx-app": "./dist/bin.js"
+	},
 	"exports": {
 		"require": {
 			"types": "./dist/main.d.cts",
@@ -44,11 +48,13 @@
 	"license": "MIT",
 	"packageManager": "pnpm@11.24.0",
 	"dependencies": {
-		"@xernerx/commands": "^0.2.3",
-		"@xernerx/framework": "^1.0.3",
-		"@xernerx/stats": "^1.0.12",
-		"@xernerx/terminal": "^1.1.14",
-		"@xernerx/websocket": "^0.4.15"
+		"@xernerx/commands": "^0.2.6",
+		"@xernerx/extension-builder": "^0.1.0",
+		"@xernerx/framework": "^1.1.1",
+		"@xernerx/hooks": "^0.2.1",
+		"@xernerx/stats": "^1.0.14",
+		"@xernerx/terminal": "^1.1.15",
+		"@xernerx/websocket": "^0.4.16"
 	},
 	"peerDependencies": {
 		"@discordjs/core": ">=2.0.0",

@@ -2,6 +2,12 @@
 
 # xernerx
 
+## 5.1.0
+
+### Minor Changes
+
+- Add built-in `XernerxCLI` (`xernerx` and `create-xernerx-app` binaries supporting `create`, `dev`, `build`, and `start`), re-export `@xernerx/hooks`, and update documentation and JSDoc comments.
+
 ## 5.0.2
 
 ### Patch Changes

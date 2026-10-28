@@ -4,7 +4,7 @@ import { defineConfig } from 'tsup';
 
 export default defineConfig({
 	plugins: [],
-	entry: ['src/main.ts'],
+	entry: ['src/main.ts', 'src/bin.ts'],
 	splitting: true,
 	sourcemap: true,
 	dts: true,
