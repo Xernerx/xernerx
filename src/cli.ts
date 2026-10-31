@@ -1097,12 +1097,12 @@ export class XernerxCLI {
 	 */
 	private getDependencyVersions(): Record<string, string> {
 		const defaults: Record<string, string> = {
-			'@xernerx/commands': '^0.2.6',
+			'@xernerx/commands': '^0.2.7',
 			'@xernerx/extension-builder': '^0.1.0',
-			'@xernerx/framework': '^1.1.1',
+			'@xernerx/framework': '^1.1.2',
 			'@xernerx/hooks': '^0.2.1',
 			'@xernerx/stats': '^1.0.14',
-			'@xernerx/terminal': '^1.1.15',
+			'@xernerx/terminal': '^1.2.0',
 			'@xernerx/websocket': '^0.4.16',
 		};
 		try {

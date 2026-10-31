@@ -10,22 +10,22 @@ importers:
     dependencies:
       '@xernerx/commands':
         specifier: ^0.2.7
-        version: 0.2.7(@xernerx/framework@1.1.1(@discordjs/core@2.2.2)(discord.js@14.22.1))(discord.js@14.22.1)
+        version: 0.2.7(@xernerx/framework@1.1.2(@discordjs/core@2.2.2)(discord.js@14.22.1))(discord.js@14.22.1)
       '@xernerx/extension-builder':
         specifier: ^0.1.0
         version: 0.1.0
       '@xernerx/framework':
-        specifier: ^1.1.1
-        version: 1.1.1(@discordjs/core@2.2.2)(discord.js@14.22.1)
+        specifier: ^1.1.2
+        version: 1.1.2(@discordjs/core@2.2.2)(discord.js@14.22.1)
       '@xernerx/hooks':
         specifier: ^0.2.1
-        version: 0.2.1(@xernerx/framework@1.1.1(@discordjs/core@2.2.2)(discord.js@14.22.1))(discord.js@14.22.1)(supports-color@7.2.0)
+        version: 0.2.1(@xernerx/framework@1.1.2(@discordjs/core@2.2.2)(discord.js@14.22.1))(discord.js@14.22.1)(supports-color@7.2.0)
       '@xernerx/stats':
         specifier: ^1.0.14
         version: 1.0.14
       '@xernerx/terminal':
-        specifier: ^1.1.15
-        version: 1.1.15
+        specifier: ^1.2.0
+        version: 1.2.0
       '@xernerx/websocket':
         specifier: ^0.4.16
         version: 0.4.16
@@ -597,8 +597,8 @@ packages:
     resolution: {integrity: sha512-6CS/HEmbSpoIi+DaAgjXQa7ilxTB4GAxwDHXYzvLyk+Zyyrp1V1kLBS5uIqjqb99M7Tnq2r2CiZdKLCkKoj3rw==}
     engines: {node: '>=24'}
 
-  '@xernerx/framework@1.1.1':
-    resolution: {integrity: sha512-B0YMrAHbm5I8bebrI3bn94mlThW8eSvMj6uniHcQpcM0vxnmbRoWb3rCloUVabXYxcLiJUJXrF1OFaWiLrReZg==}
+  '@xernerx/framework@1.1.2':
+    resolution: {integrity: sha512-lQPTqcpTaiM7yanuKNmfmsSSNpsj8jmDToCDAjA8e8yyK2R/2gDsubjylMT09SvX9q+U0uK5iVlSnlChMyVS2Q==}
     engines: {node: '>=24'}
     peerDependencies:
       '@discordjs/core': 2.2.2
@@ -622,6 +622,10 @@ packages:
 
   '@xernerx/terminal@1.1.15':
     resolution: {integrity: sha512-wsHZegZmpStUjSyY9QXLPh0bIyywsoLMHKqY1yzDHrrOekkEqWSNgJFaN4+45MYUXhNhOpFlzVlVf6dg82bdNA==}
+    engines: {node: '>=24'}
+
+  '@xernerx/terminal@1.2.0':
+    resolution: {integrity: sha512-0ZMxqETGgNea1s1Uv5qDIp/7mciG4lpPawtzTUaYvqX6NylrKBNDvb1GB+u5eSdAeJRFj7ZNNa8Eb16CS5BFlw==}
     engines: {node: '>=24'}
 
   '@xernerx/websocket@0.4.16':
@@ -1948,32 +1952,32 @@ snapshots:
 
   '@vladfrangu/async_event_emitter@2.4.7': {}
 
-  '@xernerx/commands@0.2.7(@xernerx/framework@1.1.1(@discordjs/core@2.2.2)(discord.js@14.22.1))(discord.js@14.22.1)':
+  '@xernerx/commands@0.2.7(@xernerx/framework@1.1.2(@discordjs/core@2.2.2)(discord.js@14.22.1))(discord.js@14.22.1)':
     dependencies:
       '@xernerx/extension-builder': 0.1.0
-      '@xernerx/framework': 1.1.1(@discordjs/core@2.2.2)(discord.js@14.22.1)
+      '@xernerx/framework': 1.1.2(@discordjs/core@2.2.2)(discord.js@14.22.1)
       '@xernerx/terminal': 1.1.15
       discord.js: 14.22.1
 
   '@xernerx/extension-builder@0.1.0': {}
 
-  '@xernerx/framework@1.1.1(@discordjs/core@2.2.2)(discord.js@14.22.1)':
+  '@xernerx/framework@1.1.2(@discordjs/core@2.2.2)(discord.js@14.22.1)':
     dependencies:
       '@discordjs/core': 2.2.2
       '@xernerx/extension-builder': 0.1.0
-      '@xernerx/terminal': 1.1.15
+      '@xernerx/terminal': 1.2.0
       discord-hybrid-sharding: 3.0.1
       discord.js: 14.22.1
       sharpyy: 1.1.0
       zod: 4.1.8
 
-  '@xernerx/hooks@0.2.1(@xernerx/framework@1.1.1(@discordjs/core@2.2.2)(discord.js@14.22.1))(discord.js@14.22.1)(supports-color@7.2.0)':
+  '@xernerx/hooks@0.2.1(@xernerx/framework@1.1.2(@discordjs/core@2.2.2)(discord.js@14.22.1))(discord.js@14.22.1)(supports-color@7.2.0)':
     dependencies:
       '@xernerx/extension-builder': 0.1.0
       '@xernerx/terminal': 1.1.15
       express: 5.3.0(supports-color@7.2.0)
     optionalDependencies:
-      '@xernerx/framework': 1.1.1(@discordjs/core@2.2.2)(discord.js@14.22.1)
+      '@xernerx/framework': 1.1.2(@discordjs/core@2.2.2)(discord.js@14.22.1)
       discord.js: 14.22.1
     transitivePeerDependencies:
       - supports-color
@@ -1984,6 +1988,11 @@ snapshots:
       '@xernerx/terminal': 1.1.15
 
   '@xernerx/terminal@1.1.15':
+    dependencies:
+      boxen: 8.0.1
+      chalk: 5.6.2
+
+  '@xernerx/terminal@1.2.0':
     dependencies:
       boxen: 8.0.1
       chalk: 5.6.2

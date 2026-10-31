@@ -2,6 +2,12 @@
 
 # xernerx
 
+## 5.1.3
+
+### Patch Changes
+
+- Update `@xernerx/framework` to `^1.1.2` and `@xernerx/terminal` to `^1.2.0` with unified `terminal.update()` support.
+
 ## 5.1.2
 
 ### Patch Changes
