@@ -2,6 +2,12 @@
 
 # xernerx
 
+## 5.1.4
+
+### Patch Changes
+
+- Update `@xernerx/framework` to `^1.1.3` with fixed `XernerxUser` and `XernerxGuild` monetization and premium checks.
+
 ## 5.1.3
 
 ### Patch Changes

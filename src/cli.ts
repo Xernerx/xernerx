@@ -1099,7 +1099,7 @@ export class XernerxCLI {
 		const defaults: Record<string, string> = {
 			'@xernerx/commands': '^0.2.7',
 			'@xernerx/extension-builder': '^0.1.0',
-			'@xernerx/framework': '^1.1.2',
+			'@xernerx/framework': '^1.1.3',
 			'@xernerx/hooks': '^0.2.1',
 			'@xernerx/stats': '^1.0.14',
 			'@xernerx/terminal': '^1.2.0',
