@@ -45,7 +45,7 @@
 		"websocket"
 	],
 	"author": "Xernerx Studios",
-	"license": "MIT",
+	"license": "Apache-2.0",
 	"packageManager": "pnpm@11.24.0",
 	"dependencies": {
 		"@xernerx/commands": "^0.2.7",
