@@ -2,6 +2,14 @@
 
 # xernerx
 
+## 5.2.0
+
+### Minor Changes
+
+- <!-- @format -->
+  
+  Update `@xernerx/framework` to `^1.2.0`, `@xernerx/hooks` to `^0.3.0` (`XernerxUser.shadowban` and `UserEngagementState.shadowban` support), and `@xernerx/commands` to `^0.2.8`.
+
 ## 5.1.4
 
 ### Patch Changes
