@@ -1097,13 +1097,13 @@ export class XernerxCLI {
 	 */
 	private getDependencyVersions(): Record<string, string> {
 		const defaults: Record<string, string> = {
-			'@xernerx/commands': '^0.2.8',
-			'@xernerx/extension-builder': '^0.1.0',
-			'@xernerx/framework': '^1.2.0',
-			'@xernerx/hooks': '^0.3.0',
-			'@xernerx/stats': '^1.0.14',
-			'@xernerx/terminal': '^1.2.1',
-			'@xernerx/websocket': '^0.4.16',
+			'@xernerx/commands': '^0.2.9',
+			'@xernerx/extension-builder': '^0.1.2',
+			'@xernerx/framework': '^1.3.0',
+			'@xernerx/hooks': '^0.3.2',
+			'@xernerx/stats': '^1.0.16',
+			'@xernerx/terminal': '^1.2.2',
+			'@xernerx/websocket': '^0.5.1',
 		};
 		try {
 			const currentDir = path.dirname(fileURLToPath(import.meta.url));

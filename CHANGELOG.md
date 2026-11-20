@@ -2,6 +2,14 @@
 
 # xernerx
 
+## 5.3.0
+
+### Minor Changes
+
+- <!-- @format -->
+  
+  Update `@xernerx/*` dependencies (`@xernerx/framework@^1.3.0`, `@xernerx/websocket@^0.5.0`, `@xernerx/terminal@^1.2.1`, `@xernerx/extension-builder@^0.1.1`, `@xernerx/hooks@^0.3.1`, `@xernerx/stats@^1.0.15`) and authenticate `Xernerx/docs` clone in `.github/workflows/push.yml`.
+
 ## 5.2.1
 
 ### Patch Changes
