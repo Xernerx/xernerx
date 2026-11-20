@@ -2,6 +2,14 @@
 
 # xernerx
 
+## 5.2.1
+
+### Patch Changes
+
+- <!-- @format -->
+  
+  Update `packageManager` to `pnpm@12.21.0`.
+
 ## 5.2.0
 
 ### Minor Changes

@@ -1102,7 +1102,7 @@ export class XernerxCLI {
 			'@xernerx/framework': '^1.2.0',
 			'@xernerx/hooks': '^0.3.0',
 			'@xernerx/stats': '^1.0.14',
-			'@xernerx/terminal': '^1.2.0',
+			'@xernerx/terminal': '^1.2.1',
 			'@xernerx/websocket': '^0.4.16',
 		};
 		try {
