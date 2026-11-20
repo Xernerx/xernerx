@@ -844,7 +844,7 @@ export class XernerxCLI {
 		const readmeLines = [
 			'<!-- @format -->',
 			'',
-			'![Xernerx Banner](https://xernerx.com/banner.png)',
+			'![Xernerx Banner](https://docs.xernerx.com/packages/banners/xernerx.svg)',
 			'',
 			`# ${config.pkgName}`,
 			'',

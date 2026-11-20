@@ -176,26 +176,26 @@ importers:
   .:
     dependencies:
       '@xernerx/commands':
-        specifier: ^0.2.9
-        version: 0.2.9(@xernerx/framework@1.3.0(@discordjs/core@2.2.2)(discord.js@14.22.1))(discord.js@14.22.1)
+        specifier: ^0.2.11
+        version: 0.2.11(@xernerx/framework@1.3.1(@discordjs/core@2.2.2)(discord.js@14.22.1))(discord.js@14.22.1)
       '@xernerx/extension-builder':
-        specifier: ^0.1.2
-        version: 0.1.2
+        specifier: ^0.1.3
+        version: 0.1.3
       '@xernerx/framework':
-        specifier: ^1.3.0
-        version: 1.3.0(@discordjs/core@2.2.2)(discord.js@14.22.1)
+        specifier: ^1.3.1
+        version: 1.3.1(@discordjs/core@2.2.2)(discord.js@14.22.1)
       '@xernerx/hooks':
-        specifier: ^0.3.2
-        version: 0.3.2(@xernerx/framework@1.3.0(@discordjs/core@2.2.2)(discord.js@14.22.1))(discord.js@14.22.1)(supports-color@7.2.0)
+        specifier: ^0.3.3
+        version: 0.3.3(@xernerx/framework@1.3.1(@discordjs/core@2.2.2)(discord.js@14.22.1))(discord.js@14.22.1)(supports-color@7.2.0)
       '@xernerx/stats':
-        specifier: ^1.0.16
-        version: 1.0.16
+        specifier: ^1.0.17
+        version: 1.0.17
       '@xernerx/terminal':
-        specifier: ^1.2.2
-        version: 1.2.2
+        specifier: ^1.2.4
+        version: 1.2.4
       '@xernerx/websocket':
-        specifier: ^0.5.1
-        version: 0.5.1
+        specifier: ^0.5.2
+        version: 0.5.2
     devDependencies:
       '@arethetypeswrong/cli':
         specifier: ^0.18.5
@@ -753,30 +753,26 @@ packages:
     resolution: {integrity: sha512-Xfe6rpCTxSxfbswi/W/Pz7zp1WWSNn4A0eW4mLkQUewCrXXtMj31lCg+iQyTkh/CkusZSq9eDflu7tjEDXUY6g==}
     engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
 
-  '@xernerx/commands@0.2.9':
-    resolution: {integrity: sha512-nPD85tx/nlCxq/gBMdQn18S69I/QbdLrY2XRSjwk3DDzImDsgDg5ocgpViirlgzlqk7KU0XpiV5zkoQXS0YpOg==}
+  '@xernerx/commands@0.2.11':
+    resolution: {integrity: sha512-WnmKGgi5FrkKs9HxprqZDspYX6IOBJTJ8ko/kPMbbFgY+DjMD4fNkXufEArJJ/Q1ZV8Sj+z1240xZ2WGIk/r8A==}
     engines: {node: '>=24'}
     peerDependencies:
       '@xernerx/framework': '>=1.0.0'
       discord.js: '>=14.0.0'
 
-  '@xernerx/extension-builder@0.1.1':
-    resolution: {integrity: sha512-p0uFJIsdqAYmX4BizP7H+lvq/QSp7+ejgoCi6sHK6EgLrorRQVd1FGu0A47avKURPr2dQEjQaqAbINwF/yEH0w==}
+  '@xernerx/extension-builder@0.1.3':
+    resolution: {integrity: sha512-B0s0LZUiggzGMwEQM860shnP+uxD6jXoWWql2q5tHKPTNSN6W+eBaqQnzH9ZP75ckRKki1iAj1+6sq+lm7ATlw==}
     engines: {node: '>=24'}
 
-  '@xernerx/extension-builder@0.1.2':
-    resolution: {integrity: sha512-yfNXMbQ3onYRaa/rKyyHZ+DXBp2q3698jDM8HmnqbYYemNVpReRskuipM7cbGlIKThqJgFiitonBiKPbPiISPA==}
-    engines: {node: '>=24'}
-
-  '@xernerx/framework@1.3.0':
-    resolution: {integrity: sha512-WqgXxcQUVgFhl+GNg3L0UKJphLYgARkrY6i4o9XSER8yTAxR2Yd0t8oSS5+fHYO96wgoNTVmypueejD49b76qQ==}
+  '@xernerx/framework@1.3.1':
+    resolution: {integrity: sha512-8vFflWWdXYl1S53ssQfJkndZteiXWRkUeWlUPc/7igh1PiEoJyc1Zp52nHMoo4PuuXgcjfQyFUanp7ssDwXx0g==}
     engines: {node: '>=24'}
     peerDependencies:
       '@discordjs/core': 2.2.2
       discord.js: 14.22.1
 
-  '@xernerx/hooks@0.3.2':
-    resolution: {integrity: sha512-JlfWWL7NmDX67+eNsZWUMKAL4H1aLdTTLX7iRfXnT7KzAbIwYqyx+/gP2xNfR9WqI4By6ivjDehyy3AaZLHvHQ==}
+  '@xernerx/hooks@0.3.3':
+    resolution: {integrity: sha512-1citDP3lexR/VIIt2zLiD2cgiZN2OC5k9EbszimQV69ilLoeZui6sj3iiSncoamFQlcv1R1YhERB0KUYZSlTOQ==}
     engines: {node: '>=24'}
     peerDependencies:
       '@xernerx/framework': '>=1.0.0'
@@ -787,20 +783,16 @@ packages:
       discord.js:
         optional: true
 
-  '@xernerx/stats@1.0.16':
-    resolution: {integrity: sha512-AtavFU7z7DfBDS4ZiQR1B9ElRw57orXOGsIPXq1ng/1XKh194ZcpMxgZB5nfVpXpiTQRXr4Ovfr2RTCgSCibRQ==}
+  '@xernerx/stats@1.0.17':
+    resolution: {integrity: sha512-i8eP/dIvXI/+M6rak+5s+oxvTPhEt5OK27B718x7n6D29kAuplbRX0Ad/nhj0cM+56JZJ2oyvThQkaFp9boIdg==}
     engines: {node: '>=24'}
 
-  '@xernerx/terminal@1.2.1':
-    resolution: {integrity: sha512-hWsBSD365uJFVpMKrO+UwossAno54u3yLSaWSB3i8fb1DSiq3LOtmKwSi1D2p+Vh/oO5+2tNmIc4SUsgfgCq8A==}
+  '@xernerx/terminal@1.2.4':
+    resolution: {integrity: sha512-NpvGWArLQtfdmyaFXPINhhjwhOHcIt5cNzENZeQ1ElQbXxz3kyCFp9pBfZHbLeXay74n9qsoz1EMD1JvWCpvQw==}
     engines: {node: '>=24'}
 
-  '@xernerx/terminal@1.2.2':
-    resolution: {integrity: sha512-m6ZGgbvz3YeuXiywDnPmTZwfzKf/vbtGJVTwAmb7fCSI1Zm0ApxeVlMn6dA3LEyy8I2foahGfZBbxUsCK2D5iQ==}
-    engines: {node: '>=24'}
-
-  '@xernerx/websocket@0.5.1':
-    resolution: {integrity: sha512-aWYQ7xNzoq0quYrf1v4qq/NZB/tJa4pqk9Pmx1BJShBeCbjnnETXgjiRQdIjEMu9Ul4Mb0QI8RAGLXbLkCLEww==}
+  '@xernerx/websocket@0.5.2':
+    resolution: {integrity: sha512-Y9NxOPjNTnUvw9/GrtFKPNJmP8Udl0uGw/HA+W9e/vQa7PeiBXypoH2J43sO4h27817XhANWM2M8H2rBJIdTmA==}
     engines: {node: '>=24'}
 
   accepts@2.0.0:
@@ -2123,56 +2115,49 @@ snapshots:
 
   '@vladfrangu/async_event_emitter@2.4.7': {}
 
-  '@xernerx/commands@0.2.9(@xernerx/framework@1.3.0(@discordjs/core@2.2.2)(discord.js@14.22.1))(discord.js@14.22.1)':
+  '@xernerx/commands@0.2.11(@xernerx/framework@1.3.1(@discordjs/core@2.2.2)(discord.js@14.22.1))(discord.js@14.22.1)':
     dependencies:
-      '@xernerx/extension-builder': 0.1.1
-      '@xernerx/framework': 1.3.0(@discordjs/core@2.2.2)(discord.js@14.22.1)
-      '@xernerx/terminal': 1.2.1
+      '@xernerx/extension-builder': 0.1.3
+      '@xernerx/framework': 1.3.1(@discordjs/core@2.2.2)(discord.js@14.22.1)
+      '@xernerx/terminal': 1.2.4
       discord.js: 14.22.1
 
-  '@xernerx/extension-builder@0.1.1': {}
+  '@xernerx/extension-builder@0.1.3': {}
 
-  '@xernerx/extension-builder@0.1.2': {}
-
-  '@xernerx/framework@1.3.0(@discordjs/core@2.2.2)(discord.js@14.22.1)':
+  '@xernerx/framework@1.3.1(@discordjs/core@2.2.2)(discord.js@14.22.1)':
     dependencies:
       '@discordjs/core': 2.2.2
-      '@xernerx/extension-builder': 0.1.2
-      '@xernerx/terminal': 1.2.2
+      '@xernerx/extension-builder': 0.1.3
+      '@xernerx/terminal': 1.2.4
       discord-hybrid-sharding: 3.0.1
       discord.js: 14.22.1
       sharpyy: 1.1.0
       zod: 4.1.8
 
-  '@xernerx/hooks@0.3.2(@xernerx/framework@1.3.0(@discordjs/core@2.2.2)(discord.js@14.22.1))(discord.js@14.22.1)(supports-color@7.2.0)':
+  '@xernerx/hooks@0.3.3(@xernerx/framework@1.3.1(@discordjs/core@2.2.2)(discord.js@14.22.1))(discord.js@14.22.1)(supports-color@7.2.0)':
     dependencies:
-      '@xernerx/extension-builder': 0.1.1
-      '@xernerx/terminal': 1.2.1
+      '@xernerx/extension-builder': 0.1.3
+      '@xernerx/terminal': 1.2.4
       express: 5.3.0(supports-color@7.2.0)
     optionalDependencies:
-      '@xernerx/framework': 1.3.0(@discordjs/core@2.2.2)(discord.js@14.22.1)
+      '@xernerx/framework': 1.3.1(@discordjs/core@2.2.2)(discord.js@14.22.1)
       discord.js: 14.22.1
     transitivePeerDependencies:
       - supports-color
 
-  '@xernerx/stats@1.0.16':
+  '@xernerx/stats@1.0.17':
     dependencies:
-      '@xernerx/extension-builder': 0.1.1
-      '@xernerx/terminal': 1.2.1
+      '@xernerx/extension-builder': 0.1.3
+      '@xernerx/terminal': 1.2.4
 
-  '@xernerx/terminal@1.2.1':
+  '@xernerx/terminal@1.2.4':
     dependencies:
       boxen: 8.0.1
       chalk: 5.6.2
 
-  '@xernerx/terminal@1.2.2':
+  '@xernerx/websocket@0.5.2':
     dependencies:
-      boxen: 8.0.1
-      chalk: 5.6.2
-
-  '@xernerx/websocket@0.5.1':
-    dependencies:
-      '@xernerx/terminal': 1.2.1
+      '@xernerx/terminal': 1.2.4
 
   accepts@2.0.0:
     dependencies:
